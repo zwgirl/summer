@@ -187,36 +187,37 @@ public class ParameterizedTypeConformanceStrategy extends
 	}
 
 	/**
-	 * See Java Language Specification <a href="http://java.sun.com/docs/books/jls/third_edition/html/conversions.html#5.1.2">§{5.1.2} Widening Primitive Conversion</a>
+	 * See Java Language Specification <a href="http://java.sun.com/docs/books/jls/third_edition/html/conversions.html#5.1.2">ï¿½{5.1.2} Widening Primitive Conversion</a>
 	 */
+	//cym comment
 	protected boolean isWideningConversion(JvmPrimitiveType leftType, JvmPrimitiveType rightType) {
 		final Primitive left = primitiveKind(leftType);
 		final Primitive right = primitiveKind(rightType);
 		switch (right) {
 			case Byte :
 				return left == Primitive.Short 
-					|| left == Primitive.Char // listed in section 5.1.4
+//					|| left == Primitive.Char // listed in section 5.1.4
 					|| left == Primitive.Int
-					|| left == Primitive.Long
+//					|| left == Primitive.Long
 					|| left == Primitive.Float
 					|| left == Primitive.Double;
 			case Short :
 				return left == Primitive.Int
-				|| left == Primitive.Long
+//				|| left == Primitive.Long
 				|| left == Primitive.Float
 				|| left == Primitive.Double;
-			case Char :
-				return left == Primitive.Int
-				|| left == Primitive.Long
-				|| left == Primitive.Float
-				|| left == Primitive.Double;
+//			case Char :
+//				return left == Primitive.Int
+//				|| left == Primitive.Long
+//				|| left == Primitive.Float
+//				|| left == Primitive.Double;
 			case Int :
-				return left == Primitive.Long
-				|| left == Primitive.Float
+				return //left ==  Primitive.Long || 
+				left == Primitive.Float
 				|| left == Primitive.Double;
-			case Long :
-				return left == Primitive.Float
-				|| left == Primitive.Double;
+//			case Long :
+//				return left == Primitive.Float
+//				|| left == Primitive.Double;
 			case Float :
 				return left == Primitive.Double;
 			default :

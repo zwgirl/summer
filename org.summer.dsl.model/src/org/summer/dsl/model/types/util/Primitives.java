@@ -178,21 +178,21 @@ public class Primitives {
 	}
 
 	public boolean isWrapperType(JvmType type) {
-		if (typeReferences.is(type, BuildInTypes.getInstance().getBooleanType(type.eResource()), type)) {
+		if (typeReferences.is(type, BuildInTypes.getInstance().getByteType(type.eResource()))) { 
 			return true;
-		} else if (typeReferences.is(type, Short.class)) {
+		} else if (typeReferences.is(type, BuildInTypes.getInstance().getShortType(type.eResource()))) {
 			return true;
 //		} else if (typeReferences.is(type, Character.class)) {
 //			return true;
-		} else if (typeReferences.is(type, Integer.class)) {
+		} else if (typeReferences.is(type, BuildInTypes.getInstance().getIntegerType(type.eResource()))) {
 			return true;
 //		} else if (typeReferences.is(type, Long.class)) {
 //			return true;
-		} else if (typeReferences.is(type, Float.class)) {
+		} else if (typeReferences.is(type, BuildInTypes.getInstance().getFloatType(type.eResource()))) {
 			return true;
-		} else if (typeReferences.is(type, Double.class)) {
+		} else if (typeReferences.is(type, BuildInTypes.getInstance().getDoubleType(type.eResource()))) {
 			return true;
-		} else if (typeReferences.is(type, Boolean.class)) {
+		} else if (typeReferences.is(type, BuildInTypes.getInstance().getBooleanType(type.eResource()))) {
 			return true;
 //		} else if (typeReferences.is(type, Void.class)) {
 //			return true;
