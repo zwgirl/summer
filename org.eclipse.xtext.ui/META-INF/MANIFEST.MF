@@ -1,0 +1,3895 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.eclipse.xtext.ui;singleton:=true
+Bundle-Activator: org.eclipse.xtext.ui.internal.Activator
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0";visibi
+ lity:="reexport",org.eclipse.core.resources;bundle-version="3.4.0";vi
+ sibility:="reexport",org.eclipse.ui;bundle-version="3.4.0";visibility
+ :="reexport",org.eclipse.ui.editors;bundle-version="3.4.0";visibility
+ :="reexport",org.eclipse.jface.text;bundle-version="3.4.0";visibility
+ :="reexport",org.eclipse.ui.ide;bundle-version="3.4.0",org.eclipse.xt
+ ext;bundle-version="2.5.0";visibility:="reexport",org.eclipse.ui.view
+ s;bundle-version="3.3.0",org.eclipse.emf.edit.ui;bundle-version="2.3.
+ 1";visibility:="reexport",org.eclipse.ui.workbench.texteditor;bundle-
+ version="3.4.0",org.eclipse.xtext.util;bundle-version="[2.5.0,3.0.0)"
+ ,org.eclipse.jdt.core;bundle-version="3.5.2";resolution:="optional";x
+ -installation:="greedy",org.eclipse.core.expressions;bundle-version="
+ 3.4.0",org.eclipse.search;bundle-version="3.5.0";resolution:="optiona
+ l";x-installation:="greedy",org.eclipse.ltk.core.refactoring;bundle-v
+ ersion="3.5.0";resolution:="optional";x-installation:="greedy";visibi
+ lity:="reexport",org.eclipse.ltk.ui.refactoring;bundle-version="3.4.0
+ ";resolution:="optional";x-installation:="greedy",org.eclipse.compare
+ ;bundle-version="3.5.0";resolution:="optional";x-installation:="greed
+ y",org.eclipse.team.core;bundle-version="3.5.0";resolution:="optional
+ ";x-installation:="greedy",org.eclipse.team.ui;bundle-version="3.5.0"
+ ;resolution:="optional";x-installation:="greedy",org.eclipse.core.fil
+ esystem;bundle-version="1.2.1";resolution:="optional";x-installation:
+ ="greedy",org.eclipse.jdt.launching;bundle-version="3.5.0";resolution
+ :="optional";x-installation:="greedy",org.eclipse.xtext.xbase.lib;bun
+ dle-version="[2.5.0,3.0.0)",org.eclipse.jdt.annotation;bundle-version
+ ="1.0.0";resolution:="optional";x-installation:="greedy",org.eclipse.
+ ui.forms;bundle-version="3.4.1"
+Export-Package: org.eclipse.xtext.common.ui.contentassist,org.eclipse.
+ xtext.ui,org.eclipse.xtext.ui.compare;x-internal:=true,org.eclipse.xt
+ ext.ui.containers,org.eclipse.xtext.ui.editor,org.eclipse.xtext.ui.ed
+ itor.actions,org.eclipse.xtext.ui.editor.autoedit,org.eclipse.xtext.u
+ i.editor.bracketmatching,org.eclipse.xtext.ui.editor.contentassist,or
+ g.eclipse.xtext.ui.editor.contentassist.antlr,org.eclipse.xtext.ui.ed
+ itor.contentassist.antlr.internal,org.eclipse.xtext.ui.editor.copyqua
+ lifiedname;x-internal:=true,org.eclipse.xtext.ui.editor.doubleClickin
+ g,org.eclipse.xtext.ui.editor.embedded;x-friends:="org.eclipse.xtext.
+ ui.codetemplates.ui",org.eclipse.xtext.ui.editor.findrefs;x-friends:=
+ "org.eclipse.xtext.ui.tests,org.eclipse.xtext.ui.shared",org.eclipse.
+ xtext.ui.editor.folding,org.eclipse.xtext.ui.editor.formatting,org.ec
+ lipse.xtext.ui.editor.handler,org.eclipse.xtext.ui.editor.hover,org.e
+ clipse.xtext.ui.editor.hover.html,org.eclipse.xtext.ui.editor.hyperli
+ nking,org.eclipse.xtext.ui.editor.info,org.eclipse.xtext.ui.editor.mo
+ del,org.eclipse.xtext.ui.editor.model.edit,org.eclipse.xtext.ui.edito
+ r.occurrences,org.eclipse.xtext.ui.editor.outline,org.eclipse.xtext.u
+ i.editor.outline.actions,org.eclipse.xtext.ui.editor.outline.impl,org
+ .eclipse.xtext.ui.editor.outline.quickoutline,org.eclipse.xtext.ui.ed
+ itor.preferences,org.eclipse.xtext.ui.editor.preferences.fields,org.e
+ clipse.xtext.ui.editor.quickfix,org.eclipse.xtext.ui.editor.reconcile
+ r,org.eclipse.xtext.ui.editor.selection;x-friends:="org.eclipse.xtext
+ .ui.tests",org.eclipse.xtext.ui.editor.syntaxcoloring,org.eclipse.xte
+ xt.ui.editor.tasks,org.eclipse.xtext.ui.editor.tasks.dialogfields,org
+ .eclipse.xtext.ui.editor.templates,org.eclipse.xtext.ui.editor.toggle
+ Comments,org.eclipse.xtext.ui.editor.utils,org.eclipse.xtext.ui.edito
+ r.validation,org.eclipse.xtext.ui.generator.trace;x-internal:=true,or
+ g.eclipse.xtext.ui.guice,org.eclipse.xtext.ui.label,org.eclipse.xtext
+ .ui.notification,org.eclipse.xtext.ui.preferences;x-internal:=true,or
+ g.eclipse.xtext.ui.refactoring;x-internal:=true,org.eclipse.xtext.ui.
+ refactoring.impl;x-internal:=true,org.eclipse.xtext.ui.refactoring.ui
+ ;x-internal:=true,org.eclipse.xtext.ui.resource,org.eclipse.xtext.ui.
+ resource.generic,org.eclipse.xtext.ui.search,org.eclipse.xtext.ui.sha
+ red.contribution,org.eclipse.xtext.ui.util,org.eclipse.xtext.ui.valid
+ ation,org.eclipse.xtext.ui.views,org.eclipse.xtext.ui.wizard
+Bundle-Version: 2.5.0.v201312110906
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Import-Package: com.ibm.icu.text;version="4.0.0",org.apache.commons.la
+ ng,org.apache.log4j;version="1.2.15"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/xtext/ui/editor/quickfix/LanguageResourceHelper.clas
+ s
+SHA1-Digest: kBYH9/fuWx3OLvoyQdzSQQiwp1M=
+
+Name: org/eclipse/xtext/ui/validation/DefaultResourceUIValidatorExtens
+ ion.class
+SHA1-Digest: ouD7tMWc/GCyjvNB5hJfb7XG64I=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/AbstractDetailsPa
+ rt.class
+SHA1-Digest: 1WdNzi1kO/iQH1++nYL+n2gaByY=
+
+Name: org/eclipse/xtext/ui/util/messages.properties
+SHA1-Digest: pefXzrONLzKAToimgRfGcHUtdw8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$1$1.class
+SHA1-Digest: hSkd5NH7HqtSG6MbIHjIKMIdlvk=
+
+Name: org/eclipse/xtext/ui/editor/preferences/FixedScopedPreferenceSto
+ re.class
+SHA1-Digest: VZChakYX+nZnf5gE4bG/7EesJdI=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/XtextQuickAssistProcessor.c
+ lass
+SHA1-Digest: KT/OlwKbp6Qj3bsCpoQ0K9Zptog=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport.class
+SHA1-Digest: ShU6s+LuBg4DEwoqJHHETfEV/Vs=
+
+Name: org/eclipse/xtext/ui/editor/model/ILexerTokenRegion.class
+SHA1-Digest: /cK+R1sFZ7clA/pJSO6hDLFYW3s=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/PartitionDeletionEditStrate
+ gy.class
+SHA1-Digest: L0mqq+JLhE3ymsnN04P6GoCjXJI=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$7.class
+SHA1-Digest: LUlHxVrysa5VHwrg8hyP7MgYGlM=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/IOutlineContribution
+ .class
+SHA1-Digest: cSPuwxIUuIhAP7pMPh6oDSNlk3I=
+
+Name: org/eclipse/xtext/ui/util/IProjectFactoryContributor.class
+SHA1-Digest: W79fnjuOG38PCUz9+Ujt+Jf/QxI=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContextInformationComp
+ uter$State.class
+SHA1-Digest: SnJkI9KLqLCyzQm24Sy3/Qqto+4=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IssueModificationContext$
+ Factory$Default.class
+SHA1-Digest: saRJ4oh6KuEFUYYGifKELT2Htco=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$4.class
+SHA1-Digest: lQmGi0nyE9DUWlSFC4T3QKNl1zo=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$SelectNextSubWordAction.
+ class
+SHA1-Digest: gFqrvnK28c8knBPcEs6tE7shvBg=
+
+Name: org/eclipse/xtext/ui/editor/hover/IEObjectHoverProvider.class
+SHA1-Digest: PbQQxYumH3+ZU0phT592Gf4atO4=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$6.class
+SHA1-Digest: sQ1H3p6ibJkRkpCRIZQVMcj4naU=
+
+Name: org/eclipse/xtext/ui/editor/preferences/IPreferenceStoreAccess.c
+ lass
+SHA1-Digest: j8gm9la/yNMAyNx3EGuO04ojtTs=
+
+Name: org/eclipse/xtext/ui/util/DisplayRunnable$1.class
+SHA1-Digest: gn18ZULUq4MdPZlyF0+maTdocOc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractJavaBasedConte
+ ntProposalProvider$DefaultProposalCreator.class
+SHA1-Digest: TYJO4a7qYtDXaP6hLNhsfOCWbXU=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/DefaultReferenceFinder.clas
+ s
+SHA1-Digest: G2B+9qfik39Fq2Z2sVEWSV716TU=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/OccurrenceMarker$1.class
+SHA1-Digest: t2AzYvyYMryLK1CmBvSJVdPK3ag=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultLinkedPositionGroupCa
+ lculator.class
+SHA1-Digest: a7LWk4RePB+3NSu9lk3jIGrEIxk=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/PartitionInsertEditStrategy
+ .class
+SHA1-Digest: yirRAp89pcGexi+yeVz55V05CNc=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/AbstractRenameProcessor.cl
+ ass
+SHA1-Digest: 9QIqSha01QaSala/pwRSt3fCMuM=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock$Build
+ Job.class
+SHA1-Digest: f1MMOkOFbszRozGzh5G5PVMUj2I=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$6$1.c
+ lass
+SHA1-Digest: xrD0fMHmrx+C/UcCPKwqpvwkFuo=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$NextSubWordAction.class
+SHA1-Digest: /zKVYt8FraFjmTXg3RQfGIvn86I=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RefactoringCrossReferenceS
+ erializer$RefTextEvaluator.class
+SHA1-Digest: WJz2Se8uoS7u958TObGLOL/M+mg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditor.class
+SHA1-Digest: 8ffL/FsecMLWZxMAM+0J9IBkyzE=
+
+Name: org/eclipse/xtext/ui/editor/doubleClicking/LexerTokenAndCharacte
+ rPairAwareStrategy.class
+SHA1-Digest: jPE8RC4B6xDssosRoqfibttzrOw=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/DefaultAntlrTokenToAt
+ tributeIdMapper.class
+SHA1-Digest: KcdznyAzGwNMVD1RtM/jO9gs3K0=
+
+Name: org/eclipse/xtext/ui/editor/folding/IFoldingStructureProvider.cl
+ ass
+SHA1-Digest: qm5vgdmh48LNhY+b7tBW/oHicxk=
+
+Name: org/eclipse/xtext/ui/editor/bracketmatching/Messages.class
+SHA1-Digest: JrQn83tl5DdcBuJtjYOMlwtWXFk=
+
+Name: org/eclipse/xtext/ui/util/ResourceUtil.class
+SHA1-Digest: unGvgFN+R2QwAD8pmOrEer4qbKc=
+
+Name: org/eclipse/xtext/ui/resource/generic/AdapterFactoryDescriptionL
+ abelProvider.class
+SHA1-Digest: X7NkPVKpS8Ol0ZNGxsqhUj2Z8R4=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock.class
+SHA1-Digest: Mue+kLZIpcs9wvTtt1kRp928qNE=
+
+Name: org/eclipse/xtext/ui/editor/formatting/PreferenceStoreWhitespace
+ InformationProvider.class
+SHA1-Digest: lgReICYDY7hzOcoNwaTONkGEe7Y=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconcilerDebugger.c
+ lass
+SHA1-Digest: LJwPEFoejefesrHWpMl24n2ThUg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerShiftAction$1.cla
+ ss
+SHA1-Digest: KRILrbJcOtTpkmWOFiqAKaZo4lI=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/IDialogFieldListe
+ ner.class
+SHA1-Digest: MxPdlFgVxogfWZB8LOzuHyS0pXo=
+
+Name: org/eclipse/xtext/ui/compare/DefaultMergeEditor.class
+SHA1-Digest: xfZdTlVWwPYv9asgOuBDNQSS6pA=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeElementOpene
+ r.class
+SHA1-Digest: diTfKS4Pc/mOUmTj32EpRvVlvwo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalAcc
+ eptor.class
+SHA1-Digest: Aa1bA1aEkpBDB6YVThI+GZap7wM=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/LightweightPosition$I
+ ntToStringArray.class
+SHA1-Digest: fOYiTXkJkfBh6mUc0cqj6nxGUdM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/AbstractRenameStrategy.cla
+ ss
+SHA1-Digest: y8E+g9IBvq8fdBdDP+GI3Qso5QE=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IContentProposalPriori
+ ties.class
+SHA1-Digest: CZ72nUDWggyR3mZXEItl2CVXfiA=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionContributor.cla
+ ss
+SHA1-Digest: 4wmDO/4EwpWYIXC7SKz90ds3k6c=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TokenTypeDefMasterDet
+ ailFieldEditor.class
+SHA1-Digest: sjy8CJge6H1ShffKHRRah4RV4WU=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameSupport$Factory.class
+SHA1-Digest: F4uGUFXYDYG9+HWnpCzSIXh8JzA=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/OccurrenceMarker.class
+SHA1-Digest: wrB7/j9Z/D33Ze1seGUhiSFfMBU=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$9.class
+SHA1-Digest: UUmbPeFcTsi/oPCNiLOZV397TNQ=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RenamedElementTracker.clas
+ s
+SHA1-Digest: qtAU84OlzL/IpdGAT7EjiO/deZc=
+
+Name: org/eclipse/xtext/ui/editor/templates/CrossReferenceTemplateVari
+ ableResolver.class
+SHA1-Digest: vCaXhe2KS3MWHbnJjH7+F4xolG8=
+
+Name: org/eclipse/xtext/ui/resource/generic/EmfUiModule.class
+SHA1-Digest: nj8/3fS4T7MZ8fOfCuKbWriyJ8U=
+
+Name: org/eclipse/xtext/ui/editor/outline/IOutlineNode$Extension.class
+SHA1-Digest: TPzPiZc97hnwOCkukICfoQVo55s=
+
+Name: org/eclipse/xtext/ui/editor/SmartCaretPreferenceInitializer.clas
+ s
+SHA1-Digest: jXWjEtaXP2yqhGYC5xy1HaQWfvU=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/DefaultTextEditComposer$1
+ .class
+SHA1-Digest: Ft7sHfTjg5CPTF1xHAnVDhLTr+Q=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$2.class
+SHA1-Digest: Z1qVSfiFsHqxS0ilB4tu5PSeBPE=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/MarkerResolutionGenerator$1
+ .class
+SHA1-Digest: +HNGf/REiH6yLbrFqZ8MjvyxQRs=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/LookaheadKeyword
+ .class
+SHA1-Digest: rHRdU9LY29bM1XexqAHrcL15jv4=
+
+Name: org/eclipse/xtext/ui/preferences/ProjectSelectionDialog$1.class
+SHA1-Digest: Px4pArtudrnUt/rViJq/gG/llRw=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$PresenterControlCreator$1.class
+SHA1-Digest: aDVfZLDID4rufqtl0xcu/dqFxeQ=
+
+Name: org/eclipse/xtext/ui/editor/preferences/LanguageRootPreferencePa
+ ge.class
+SHA1-Digest: o1+QJwkltI8szg3Jxq9jny0YqEM=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter$
+ IFilter.class
+SHA1-Digest: E6flpk2/5xJ04XO1HipHR4nMbJM=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPage$3.c
+ lass
+SHA1-Digest: zlKWlVNeInTjgc2sD6vwgFeMkQU=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IModificationContext.clas
+ s
+SHA1-Digest: QpALdOv88UJ9p5Opm3m6/o9wvY4=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ReferenceUpdaterDispatcher
+ .class
+SHA1-Digest: lFV+8ZnwkSzn2Q4DDJBhPOu5nFo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/CompletionProposalComp
+ uter$State.class
+SHA1-Digest: qAihz3XCwuHpC4CQsLE7M432Tqs=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$NamePatternFilter.class
+SHA1-Digest: 9bRdo3ljo/x3H4v4th7cuxPr/8Y=
+
+Name: icons/ovr16/over_co.gif
+SHA1-Digest: 4lE0p00NwQhPcYivFej1IZBt21w=
+
+Name: org/eclipse/xtext/ui/resource/IStorage2UriMapper.class
+SHA1-Digest: EV5Sm7JeklvxxaC7FcxU3H4PZTk=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/SortOutlineContribut
+ ion.class
+SHA1-Digest: L8Q+Ct8CPvInnZvxsduf8+MNoLE=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/EditorCopyQualifie
+ dNameHandler$1.class
+SHA1-Digest: y6e5sn1qr7++5BMLxiPoXP7cjis=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IssueModificationContext.
+ class
+SHA1-Digest: SJZ4btckV7YWBjR8GKjiZ7wiqhk=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/FindReferencesHandler.class
+SHA1-Digest: +MLgiaEWTKdZhMisosKCo/rFwR4=
+
+Name: org/eclipse/xtext/ui/editor/model/IXtextDocumentContentObserver$
+ Processor.class
+SHA1-Digest: i9YP+4dmJEGNt+RGDVlBkUsmHMQ=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultRenameElementHandler.
+ class
+SHA1-Digest: eEUhsTONIM3KZ3nm6DRuHvPc9iU=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory$StatefulFactory$1.class
+SHA1-Digest: ALRZ7bfrLvgO/hTf56pmQaeY9VE=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingReconcile
+ r$1.class
+SHA1-Digest: Zbj70bsveNsJys0DfcCV/RVzhXo=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$5.cla
+ ss
+SHA1-Digest: S0/Z7y7XH43/IJlQUp96r3qxYDc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractContentProposa
+ lProvider.class
+SHA1-Digest: nVJME8OlHLjJbaDHzlWNuJNca68=
+
+Name: org/eclipse/xtext/ui/search/IXtextEObjectSearch$Default$1.class
+SHA1-Digest: 3QcfKJtqvFoowc0GwzCFeUMlYzg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions$2.cla
+ ss
+SHA1-Digest: WCStbB/JyxPbnXW1vml90e9N4GA=
+
+Name: org/eclipse/xtext/ui/label/DeclarativeLabelProvider.class
+SHA1-Digest: h9slpG6af6c4VUEzhcC3x/6jn4Q=
+
+Name: org/eclipse/xtext/ui/editor/model/IXtextModelListener.class
+SHA1-Digest: b/XCe8oMIqHyWFwHEVPtPIKo6fc=
+
+Name: org/eclipse/xtext/ui/editor/actions/AbstractToggleActionContribu
+ tor.class
+SHA1-Digest: FQqXYrQBG33tkYHUKDrffKwiFb8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AbstractContentA
+ ssistParser$2.class
+SHA1-Digest: N+L7XXXZZfojMK3cfTBlqysCTrM=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TokenTypeDefDetailsPa
+ rt.class
+SHA1-Digest: SHaTh1/NKQo/a5b+B73cspVCNKo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentProposalPriorit
+ ies.class
+SHA1-Digest: Ztm3CI9pX1fZR2oNSvtqtV1PVaw=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$2.class
+SHA1-Digest: APSL95GHXbyKVTXQlNFtltJzSXg=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionMessages.class
+SHA1-Digest: hABmOdXUAMa9JbhSoPqGW/BbbC8=
+
+Name: org/eclipse/xtext/ui/editor/embedded/ConstructedEmbeddedEditorMe
+ ssages.properties
+SHA1-Digest: i1mkJBv01htzg0SFO7iRYkA/HZs=
+
+Name: org/eclipse/xtext/ui/editor/info/ResourceWorkingCopyFileEditorIn
+ put$ResourceWorkingCopyFileInvocationHandler.class
+SHA1-Digest: FHaOf9dJ1U6BILYoOfH1eVvCgcc=
+
+Name: org/eclipse/xtext/ui/validation/DefaultResourceUIValidatorExtens
+ ion$1.class
+SHA1-Digest: BJX8g0PN+0/Mwm6V30BJrFjRB8A=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/ITextEditComposer.class
+SHA1-Digest: nmhWpONoC/M4qeX/3sfE4cgd5Nk=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/ViewFreezer.class
+SHA1-Digest: WZ+QD168brdzN2msbGY8Mh4Nqy8=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/PartitionDeletionEditStrate
+ gy$Factory.class
+SHA1-Digest: 1x+BU4bRjOoOL6Xry2ge53iu6DU=
+
+Name: org/eclipse/xtext/ui/editor/hover/IEObjectHover.class
+SHA1-Digest: F+TaZTIIM7Q9eF/2RAUrjADSGmc=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPageActi
+ ons$ShowNext.class
+SHA1-Digest: eotiPkfmeicZk4yD9z2jRMGZDzE=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ITemplateAcceptor$Dele
+ gate.class
+SHA1-Digest: qtMFmY9YruojgR/U3qQXlXE2QwQ=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineRefreshJob$1.cla
+ ss
+SHA1-Digest: YqPSne5Mun9FYCg0z2+mEsS9mxo=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractProblemHover.class
+SHA1-Digest: SHDHLGLr3lB521yeu33fcRxcsR8=
+
+Name: org/eclipse/xtext/ui/util/FeatureProjectFactory.class
+SHA1-Digest: QWfZCBPYfq4cOgGUd0PJXmcIXlo=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/DefaultOutlineTreeProvi
+ der$1.class
+SHA1-Digest: mBf0REwGRf4FKZYeZTlR71JuKys=
+
+Name: org/eclipse/xtext/ui/resource/JarEntryLocator.class
+SHA1-Digest: oPtO41xwnHwhAp64PrIYKfKDdG4=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingMessages.properties
+SHA1-Digest: 46lWxOgQQT/y1j/ZITAeh7cf9jg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerOperationAction.c
+ lass
+SHA1-Digest: Vb0zO12su29p00u/Ku4H3OFi4T0=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/DefaultTokenScanner.c
+ lass
+SHA1-Digest: Vc4y3lILLHiPD2mtDTCU+zAgfGc=
+
+Name: org/eclipse/xtext/ui/resource/IResourceUIServiceProvider.class
+SHA1-Digest: jEjJaLoIOHE8kBigZjE/DuLjneI=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ReferenceDescriptionSorter
+ .class
+SHA1-Digest: dPCKwudvP1aSw6kTpG5ZYIWLXEQ=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractEObjectHover$1.class
+SHA1-Digest: tFoXKhrEJ5Q2cfWqHVdTtt4BAew=
+
+Name: org/eclipse/xtext/ui/editor/model/PartitionTokenScanner.class
+SHA1-Digest: +LBjSQPr/ZoM8WnynH/FSw53I5g=
+
+Name: org/eclipse/xtext/ui/search/IteratorJob.class
+SHA1-Digest: UF4wgWoAaHA/8KKM+A8JRPZDCxQ=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/ISemanticModification.cla
+ ss
+SHA1-Digest: JgQ0LQKcvaFNK9Qs6yohu79VwYU=
+
+Name: org/eclipse/xtext/ui/preferences/PropertyAndPreferencePage.class
+SHA1-Digest: OqRoHu9VgIF4G5yEFEKhGJ//4ag=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ComboDialogField$
+ 1.class
+SHA1-Digest: d1HAATPwSUNdWEtMcKf93XZqIjw=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringController$
+ 2.class
+SHA1-Digest: 5nX26r5GmBmJ6Z6nlDH2GQf9MWQ=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler$DocumentL
+ istener$1.class
+SHA1-Digest: l2f7NsbOVujHzm6e1BMv7ibIcDE=
+
+Name: org/eclipse/xtext/ui/editor/hover/DefaultCompositeHover.class
+SHA1-Digest: t5tpUu4LLHe9c9o+k785AUSWiB0=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage$3.class
+SHA1-Digest: bEo/v1oCKs+03Ey0zksiFYus9Ag=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerMarkAction.class
+SHA1-Digest: 0JhqyCtZl2QwgkQcjJPVCMT+IGI=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultRenameSupport$Factory
+ .class
+SHA1-Digest: u2p9Xp5WCu1s6ffgvjgOTpLHK2c=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingRegionProvider
+ $1.class
+SHA1-Digest: zj+xS0hqyeqNxLwYzMLpPQGf4DI=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeFactory.clas
+ s
+SHA1-Digest: Sb4e1i7PD/e81QJrhoaSnXP9hhU=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TokenTypeDefDetailsPa
+ rt$1.class
+SHA1-Digest: Zuelra+JAgUGBVMvuYmYdfTPFqQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPageActi
+ ons.class
+SHA1-Digest: c1s7/rmkWfnqJd3P5+1Iaf4F8N4=
+
+Name: org/eclipse/xtext/ui/label/DefaultEObjectLabelProvider.class
+SHA1-Digest: QgiXn2b2p2sdS796VMyRiMzm/Vg=
+
+Name: org/eclipse/xtext/ui/label/ILabelProviderImageDescriptorExtensio
+ n.class
+SHA1-Digest: hL22Sgr5EhchEzfNKy9XoyCsuHc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractContentAssistC
+ ontextFactory.class
+SHA1-Digest: UBnOg05ezFi0u3MZGJxzDwKpn5E=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/IContentAssistPa
+ rser.class
+SHA1-Digest: geqIJaSdfy0SCIsl33jyLxizuaU=
+
+Name: org/eclipse/xtext/ui/util/ProjectFactory$1.class
+SHA1-Digest: wheMUms+bkG/maIwkWPBj2siIeo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IContentAssistantFacto
+ ry.class
+SHA1-Digest: ZH2pfNO8M0r/o/kOa9sBBnj4pEM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IProposalConflictHelpe
+ r$NullHelper.class
+SHA1-Digest: gMwgaO9nRf69EOa0pQtO2VpqaEQ=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RefactoringUpdateAcceptor.
+ class
+SHA1-Digest: 6KjPGoLpMwbcQbhgIlWFSWo8qz0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRenameRefactoringPr
+ ovider$RenameRefactoring.class
+SHA1-Digest: o83mBAxzjxH7dViR8JevVvcu07Y=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameLinkedMode$FocusEditin
+ gSupport.class
+SHA1-Digest: vZXRwuqZBOpFZmhPBShJPQ1fNFE=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter$
+ 1.class
+SHA1-Digest: M3cvfJFBww8JMz6Xqk3RbfJuPVU=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl$2.class
+SHA1-Digest: ul88l7fl8pelPfHwqw67o9u46Qc=
+
+Name: org/eclipse/xtext/ui/editor/IDirtyResource.class
+SHA1-Digest: nB5uGgsbgjjcoVqMdZSFW28v/YA=
+
+Name: org/eclipse/xtext/ui/editor/validation/Messages.class
+SHA1-Digest: V0caFUM63oeDvlkjHrgRh7Pdw5M=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperImpl$1.class
+SHA1-Digest: jUMgnWtOlVqxRFMBC5uLyCaw07Q=
+
+Name: org/eclipse/xtext/ui/editor/model/IXtextDocument.class
+SHA1-Digest: OzK9WjiA7AjDlI4C/ZYCa/nY0Ak=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/SemanticModificationWrapp
+ er$1.class
+SHA1-Digest: p17gjS6iOShQ2FISRrV8zuLV7qg=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateContextType.c
+ lass
+SHA1-Digest: Yxr2gu9ZOTYp69FFomNt8X9ayVI=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameLinkedMode$EditorSynch
+ ronizer.class
+SHA1-Digest: XcS5p9MLN0anqAbjceHA/xAC7t8=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringType.class
+SHA1-Digest: JsjewhBnYVsdapsLeDPHw5m+jds=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IFollowElementAcceptor
+ $NullSafeElementAcceptor.class
+SHA1-Digest: wlV4X8LAYICXSE/ohLtg1bIJ/fg=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/ReplaceModification.class
+SHA1-Digest: 9aY7o11H4os+xGtCsLw2Zk/Kgvk=
+
+Name: org/eclipse/xtext/ui/compare/DefaultMergeViewer.class
+SHA1-Digest: h9yyEykpmnd3VG3qJQ2y08rjJVc=
+
+Name: org/eclipse/xtext/ui/preferences/messages.properties
+SHA1-Digest: bV8T2UHSi80wY8pkRGI4lQyBJ18=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/ClipboardUtil.clas
+ s
+SHA1-Digest: nfcqh2HyM00CICS9ythzVuEDM1U=
+
+Name: org/eclipse/xtext/ui/notification/StateChangeEventBroker.class
+SHA1-Digest: DZWC9sIW/7EPqPO0ak0GrAaF1NE=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/MultiLineTerminalsEditStrat
+ egy.class
+SHA1-Digest: cb6i5yRL4DAVEShc55rZr64C4tY=
+
+Name: org/eclipse/xtext/ui/util/WorkspaceClasspathUriResolver.class
+SHA1-Digest: XU7kJ0fjBbxhEY0VNYDTrC8KqYA=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractEditStrategy$1.clas
+ s
+SHA1-Digest: gIm1pQpk7LlVvtnU+TIey7w50qE=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$4.class
+SHA1-Digest: PCn/yMatr+95uFbMIn+ZpZR6eLM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$DefaultFollowElementFactory.class
+SHA1-Digest: H2APzEzSF8ztEcnq7bn3qt+KwvQ=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeLabelProvide
+ r.class
+SHA1-Digest: AF4UBzSAcdKIe4Fu1AjdB9KVnWg=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/OpenBrowserUtil$2.class
+SHA1-Digest: fA/EZIN4RaGcq3S4bm/1ug07HVQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultEvents
+ $Reset.class
+SHA1-Digest: wMVrLrkTHL+yYIDknD9q0nLiIbw=
+
+Name: org/eclipse/xtext/ui/preferences/PropertyAndPreferencePage$2.cla
+ ss
+SHA1-Digest: CT7584+keJkLe0smoPctQHr6JOE=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/OutlineCopyQualifi
+ edNameHandler$1.class
+SHA1-Digest: +GhK2Rg9hwOkpcv0CZSy5PoT5/Q=
+
+Name: org/eclipse/xtext/ui/LanguageSpecific.class
+SHA1-Digest: ts2TYCmWm+izXzjaNfrDdMWqPmI=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ConfigurableCompletion
+ Proposal$IReplacementTextApplier.class
+SHA1-Digest: Eshn9uyIJEnh5oa4nvO7pKEQ0hg=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IProposalConflictHelpe
+ r.class
+SHA1-Digest: VUG+G8pTaquHaFqqjDZGDQW/Ktc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractContentProposa
+ lProvider$DefaultContentAssistProcessorSwitch.class
+SHA1-Digest: HMbxwaOvbq5PBpI1Ft5SfKAv5P0=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/AbstractDeclarativeQuickfix
+ Provider$1.class
+SHA1-Digest: Hw1sdAsMhbSHMBmKYusDGYc6eFc=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractEditStrategyProvide
+ r$1.class
+SHA1-Digest: q+kIF316FRODbz/JAJoKfBWXv9U=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPageActi
+ ons$ShowPrevious.class
+SHA1-Digest: RLoptqr0w4MLgxbEYfpk+QPOEnQ=
+
+Name: org/eclipse/xtext/ui/containers/JavaProjectsState.class
+SHA1-Digest: V9QGJjjAsAyv2ubCHsXrdpUm7oU=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/LoadingResourceAccess.class
+SHA1-Digest: A4MkNlQFk8kI1RDUWL4S0bC+prc=
+
+Name: org/eclipse/xtext/ui/editor/validation/AddMarkersOperation.class
+SHA1-Digest: G7Um06ymPftdhtI3h+SetJkNUJk=
+
+Name: org/eclipse/xtext/ui/resource/generic/EmfResourceUIServiceProvid
+ er.class
+SHA1-Digest: RXsKVw+enkLCP42fht5BjqvyS54=
+
+Name: org/eclipse/xtext/ui/wizard/XtextNewProjectWizard.class
+SHA1-Digest: 9bPTzs/RGwxD6gYFB8H96tDaVug=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentAssistContext$F
+ actory.class
+SHA1-Digest: anjGMHjEJMAomo7FG4BQvYV10kM=
+
+Name: org/eclipse/xtext/ui/editor/templates/DefaultTemplateProposalPro
+ vider.class
+SHA1-Digest: MWokjbX9ehzf542Reb2sbfavVjs=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingHelper.cl
+ ass
+SHA1-Digest: b8TpuBhEUBhIgvkpKFG74NXp39Y=
+
+Name: org/eclipse/xtext/ui/editor/CompoundXtextEditorCallback.class
+SHA1-Digest: 0USI+SjR89DyMEXrx9eyw6Qb3QY=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/ToggleSLCommentAction
+ $Factory.class
+SHA1-Digest: JwuyAaHH5/M2v9FI7XSTdHnt3k0=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlineFil
+ terAndSorter.class
+SHA1-Digest: /qRsalz47qn/LK5Akuyb8k2LpY0=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ComboDialogField.
+ class
+SHA1-Digest: 1Cl39F1fbLLe3dLLuPSOnm4pBdk=
+
+Name: org/eclipse/xtext/ui/editor/doubleClicking/AbstractPartitionDoub
+ leClickSelector.class
+SHA1-Digest: SHNHut4ga6eZeYDmSZKqPfr0QXo=
+
+Name: org/eclipse/xtext/ui/containers/WorkspaceProjectsStateHelper.cla
+ ss
+SHA1-Digest: QV6cSSbSNNGO27j/hPkQU6jk6DQ=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/AbstractOutlineNode$1.c
+ lass
+SHA1-Digest: 7HiG+kN+DiejzJudbqzTxwlPXBc=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/IListAdapter.clas
+ s
+SHA1-Digest: n30JNryAmDwrV2sGVIbBG1pzFyo=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/IRefactoringDocument.class
+SHA1-Digest: pUqf4plnkYJPphQS0FJShrg+Xow=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/DefaultContentAssistan
+ tFactory.class
+SHA1-Digest: bSU1Y+9HMSpQlq72RZCnmHqNjks=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/ISemanticHighlighting
+ Calculator.class
+SHA1-Digest: w94z9N1oSWMwnLYN4ir5WyJWSgo=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorInfo.class
+SHA1-Digest: fyD2hdzQSEaYqL/vzy/YzVevLJc=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultEvents
+ $Finish.class
+SHA1-Digest: aNX41V/ah7tRRvI1O7tFNK57afE=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceQueryExecutor.clas
+ s
+SHA1-Digest: yA8+ENTajbGmqEajiK5DLWtxj3g=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$BackAction.class
+SHA1-Digest: A8/0xWgLsCdir31gl8VQHf0fd6I=
+
+Name: org/eclipse/xtext/ui/editor/templates/EnumTemplateVariableResolv
+ er$1.class
+SHA1-Digest: ga6h0/Lamjz3D187dtc8RVW/O7A=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$NavigateNextSubWordActio
+ n.class
+SHA1-Digest: dw0kMzsGXesTQhOWLvNKPkx58X0=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocumentProvider.class
+SHA1-Digest: DzgsOg9YmyuVJGjx1raDXi9PnMg=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$5.class
+SHA1-Digest: 5egzRYId89poX/XxSDa8KY9C46I=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl.class
+SHA1-Digest: gw2tdquHWyhKHqOqr6c3E9EmkUo=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/DefaultAutoEditStrategyProv
+ ider.class
+SHA1-Digest: /OOU+fad3EwzW+4neV3MlChNTy8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory$LeafNodeFinder.class
+SHA1-Digest: IAc4WuGcjSLHr9SyZNAwFVjWO44=
+
+Name: org/eclipse/xtext/ui/editor/bracketmatching/GoToMatchingBracketA
+ ction.class
+SHA1-Digest: xd7xvKy0KEjxz3OU/YjColk1y2I=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingStructureProvi
+ der.class
+SHA1-Digest: PTUcGUHYGrksaKGDakf7YzBaMfQ=
+
+Name: org/eclipse/xtext/ui/editor/model/Regions.class
+SHA1-Digest: 77YvC5731wvXa0fYC0rw03cxvFI=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerAction.class
+SHA1-Digest: P/x55k9e7w5eJHf1AAjhcT/aqLk=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$2.class
+SHA1-Digest: FLgClvS0nMClcAqCulyDGZYSWWs=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/XtextQuickAssistAssistant$1
+ .class
+SHA1-Digest: CKIcxJOodZ7EAU0rAMq5ZOTTnY4=
+
+Name: org/eclipse/xtext/ui/editor/preferences/PreferenceConstants.clas
+ s
+SHA1-Digest: ZpsXtNHp/pDpQV9UdkG7ojo0B1o=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$4.class
+SHA1-Digest: 0WXFy0NMTV5jJ9UJrplephO9ZFI=
+
+Name: org/eclipse/xtext/ui/editor/ValidationJobScheduler.class
+SHA1-Digest: TkaQTRMxzLfnTJgdLCLzKFmjPFg=
+
+Name: org/eclipse/xtext/ui/XtextProjectHelper.class
+SHA1-Digest: pKMjtr9KBwr7GRUf4K8rxikeSOM=
+
+Name: org/eclipse/xtext/ui/editor/formatting/ContentFormatterFactory$C
+ ontentFormatter.class
+SHA1-Digest: 85yHBOWLofSrzRKY8ikbZ6MM4IQ=
+
+Name: org/eclipse/xtext/ui/util/FeatureProjectFactory$1.class
+SHA1-Digest: ruu2LrOvVwcDA1IOrRFRd1TZ7Oo=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/messages.properties
+SHA1-Digest: fRCQmBZYk3l3awGI1BCzM5QWqds=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AbstractContentA
+ ssistParser.class
+SHA1-Digest: 8K0uJEm1aY6vEbWH4SfEJL6a8tw=
+
+Name: org/eclipse/xtext/ui/editor/preferences/PreferenceStoreAccessImp
+ l.class
+SHA1-Digest: hOh+e7GAlmMxoXovmf03aYlZgs8=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/DefaultReferenceFinder$2.cl
+ ass
+SHA1-Digest: N95Vq+78BRsef1FtuwIwGfaDJCs=
+
+Name: icons/nature_overlay3.png
+SHA1-Digest: INChNpYO2ICKV4V8wQJyuNzNAkI=
+
+Name: org/eclipse/xtext/ui/editor/templates/ContextTypeIdHelper.class
+SHA1-Digest: odWEh+OkbBOpaxFu5l93fRh0Fik=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$IRegionIte
+ rable.class
+SHA1-Digest: RmLi+WjOb9yNok8MoRuLqGYM4tM=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineTreeState$1.clas
+ s
+SHA1-Digest: lKS3b2e4pfJEkMrKWBtV7fYxtUA=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorPropertyTester.class
+SHA1-Digest: 52RrUOIHxieKhRmk3ZcFGhQKC3c=
+
+Name: org/eclipse/xtext/ui/util/DisplayRunHelper.class
+SHA1-Digest: zM0Lb9vvJ2HmjlvSvL2ySyGXSv4=
+
+Name: org/eclipse/xtext/ui/resource/DefaultResourceUIServiceProvider.c
+ lass
+SHA1-Digest: b4HVpBiJKXoPboOy0Y7o39p/OII=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/OpenDocumentTracker$PartLis
+ tener.class
+SHA1-Digest: ZJW1reLQhRUbadIXFbEwUtBf6L8=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SyncUtil.class
+SHA1-Digest: 2hGa+UZAIvV0TTCDiuv2uhPGW14=
+
+Name: org/eclipse/xtext/ui/refactoring/IRenameStrategy.class
+SHA1-Digest: ATRdIcDXlPsAlAQK7jVEqx+LWjQ=
+
+Name: org/eclipse/xtext/ui/containers/AbstractJavaProjectsState.class
+SHA1-Digest: kRtLLeD3/+R1/XJRtwH369Db8NI=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewerConfiguration$1.cla
+ ss
+SHA1-Digest: LU5K7r+c1jeS0I05ct39TnE1pTM=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/IOutlineContribution
+ $Sort.class
+SHA1-Digest: tlgcSzcaQWbPd2+8PqsIMZGbB9s=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SyncUtil$1.class
+SHA1-Digest: x9qVLfWAkUoDuzBWDQWg+r6gdjo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalAcc
+ eptor$Delegate.class
+SHA1-Digest: 8wt7ScA5+qipywRttzJuIGOedcg=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ConfigurableCompletion
+ Proposal.class
+SHA1-Digest: R6Ek96qCXWT1pN41xZN4uIWHKKY=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/StringDialogField
+ .class
+SHA1-Digest: QhrpxML2KAUVzDz1sCuZlR/RVVw=
+
+Name: icons/elcl16/class_hi.gif
+SHA1-Digest: vYgFu3TSq5m9t5d1POqGcLSLpAg=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingMessages.class
+SHA1-Digest: 2iLJjwRKCbeU7ckmzvqUbBXAuWQ=
+
+Name: org/eclipse/xtext/ui/search/IXtextSearchFilter$Registry.class
+SHA1-Digest: 9oI7bDScVZSymB0TKLydQL8oqc4=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$7.class
+SHA1-Digest: jF+YWbOHNDDq/RCRNAsXhhZynu0=
+
+Name: org/eclipse/xtext/ui/compare/StreamContentDocumentProvider.class
+SHA1-Digest: 2Ux4LzDuTb2icPTYJaEc9lNteX8=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/SelectionButtonDi
+ alogField.class
+SHA1-Digest: oq8YTULLrnwKf5QNFjfb5SaWxAQ=
+
+Name: org/eclipse/xtext/ui/resource/JavaProjectResourceSetInitializer.
+ class
+SHA1-Digest: s7Xg1qps3KTavB2kJQdx226YAH0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper.class
+SHA1-Digest: QXsr3vn5Hqhvzfyz+vUfBOzovB8=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/PrefixMatcherOu
+ tlineAdapter.class
+SHA1-Digest: +UNT1yYw3IMEunu8YHddDfxhSeQ=
+
+Name: org/eclipse/xtext/ui/views/ReadOnlySourceViewerConfiguration.cla
+ ss
+SHA1-Digest: 1qGH2A1ork8DEo4X/HNAT1m6gRc=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextDocumentReconcileStr
+ ategy.class
+SHA1-Digest: C/PST87PeSdk8ZuE4u1VBMj9mxE=
+
+Name: org/eclipse/xtext/ui/editor/IDirtyStateManager.class
+SHA1-Digest: SJ0jBXiiCi2vRdDiQ8vyAOX3Eeo=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/AbstractTokenScanner.
+ class
+SHA1-Digest: 1cieFZ647ebcVWEgwltrpaz0m1s=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/ReconcilerReplaceRegion$B
+ uilder.class
+SHA1-Digest: 7KRv1rj5D8xrJ4u5rVPRzsI/pwo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/FollowElement.cl
+ ass
+SHA1-Digest: hPPT89HiSV7f9lryYFvuy6DHkX8=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$2
+ .class
+SHA1-Digest: uY3bRgkhFgSC5YaKksaCb53Cyv0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider$1.class
+SHA1-Digest: e7XDNKHNCqkxBeqRlLAC6M0kniM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper$TextE
+ ditBased.class
+SHA1-Digest: PvoZMSPVeAzAnmllaYDD5MkIQb0=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/SingleLineTerminalsStrategy
+ $StrategyPredicate.class
+SHA1-Digest: Bu5vxxZ+5v2eLpgk+YPchCnFz+4=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory$CallHierarchyHelper.class
+SHA1-Digest: qcOKus80NakDBLTxjLXoyJI6hBs=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/AbstractDeclarativeQuickfix
+ Provider.class
+SHA1-Digest: O8zOkKh/gy2HQFGikHv3cnJBiP4=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/DFA.cla
+ ss
+SHA1-Digest: t917i/35I+FlMMMNeP4bdRjmCqo=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPage$1.c
+ lass
+SHA1-Digest: kKtVVWkfWvTLlQkpBNNjqViEA1M=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/messages.proper
+ ties
+SHA1-Digest: K27AyRdBCS8leQ/0+U+0VlOuo4w=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/ShowQuickOutlin
+ eActionHandler$1.class
+SHA1-Digest: jL7qQ6B6Hp4ZIdQ0eYYOwM+NQ+s=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$IRegionIte
+ rable$1.class
+SHA1-Digest: OrWPyX0onh1yVSDhxiZhzDwX4Ok=
+
+Name: org/eclipse/xtext/ui/editor/preferences/FixedScopedPreferenceSto
+ re$3.class
+SHA1-Digest: CPCRDYFvQ2tN1ELiWrgQVw3LnHE=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/QuickAssistInvocationContex
+ t.class
+SHA1-Digest: RKUa+ex43UYRzNlUyKWaJZRELAg=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewer.class
+SHA1-Digest: mCc5bY8/W457E0XrUpng1Ih4bZ0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/AbstractProcessorBasedRena
+ meParticipant.class
+SHA1-Digest: YNFbhBMQT0YQBQaQdqgsEC+xsvQ=
+
+Name: org/eclipse/xtext/ui/label/DefaultEditorInputLabelProvider.class
+SHA1-Digest: cVyPmH8A5zWcYqcTjiRwjWblNOY=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/IXtextBrowserInformationC
+ ontrol.class
+SHA1-Digest: cuYpQCala9PPw98sWe/7x7QoGIo=
+
+Name: org/eclipse/xtext/ui/editor/model/BacktrackingLexerDocumentToken
+ Source.class
+SHA1-Digest: gjhaDW2REG91gx2acsPUcfEdAy0=
+
+Name: org/eclipse/xtext/ui/editor/preferences/AbstractPreferencePage$2
+ .class
+SHA1-Digest: Ns+m8XCoBdSVZ3HUdnooXrPYNYk=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/SLCommentPrefixCalcul
+ ator.class
+SHA1-Digest: kAC5k39LcL2GnNdwaGhUI7tgek8=
+
+Name: org/eclipse/xtext/ui/refactoring/IRefactoringUpdateAcceptor.clas
+ s
+SHA1-Digest: vb8c8atRP4qOa8lOAyRoIkDpTGA=
+
+Name: org/eclipse/xtext/ui/views/AbstractSourceView$1$1.class
+SHA1-Digest: oTMEw+Cnmu4vN2x4U10SUlsrTy0=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorErrorTickUpdater$2.class
+SHA1-Digest: WxjY2vCwr9LyZjgiGlaWfo9h53k=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/ReplaceRegion.class
+SHA1-Digest: 4WBZ6mhBgvZxSW6BooGvlScKypQ=
+
+Name: org/eclipse/xtext/ui/containers/JavaProjectsStateHelper.class
+SHA1-Digest: zFig50NYvz1sYjyUyvw3XwoJiDA=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$3.cla
+ ss
+SHA1-Digest: NNvT310+LI3jSPq3LYmsTZ8dSAk=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$Popup
+ VisibilityManager$1.class
+SHA1-Digest: Rz7l2fpMos0fvMJX6OLlhxpjjC8=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/DefaultOccurrenceCompute
+ r$1.class
+SHA1-Digest: RTGJ/316zyO0weUODlMa1TrXoF4=
+
+Name: org/eclipse/xtext/ui/editor/StatefulResourceDescription$1.class
+SHA1-Digest: GwfnanXXgsEV/ptqfxkPNYUk4Zk=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor.class
+SHA1-Digest: LJPNXRliOzlFsBdwK9EyesI6Rj0=
+
+Name: icons/ovr16/warning_co.gif
+SHA1-Digest: 76fAklsFV/Jw7hyoXj0qFN8pgPQ=
+
+Name: org/eclipse/xtext/ui/compare/DefaultContentViewer.class
+SHA1-Digest: Pd2glk0B+7MTLaxjF6YHdfZ5QGg=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocumentProvider$Unchange
+ dElementListener.class
+SHA1-Digest: waI5VxsjCD7Jd40IgJTzruaXpxc=
+
+Name: org/eclipse/xtext/ui/validation/LanguageAwareMarkerTypeProvider.
+ class
+SHA1-Digest: PPcjz5fre1iUkHbJujG00UOUbTA=
+
+Name: icons/nature_overlay2.png
+SHA1-Digest: V+Vjg/Emj7ay+MaNIVMbuekktok=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldedPosition.class
+SHA1-Digest: Y6CcAHueOA0lxIiU8ovBQY0i+fE=
+
+Name: org/eclipse/xtext/ui/editor/validation/ValidationJob$1.class
+SHA1-Digest: CTRQP3vF68UcJHtoXXgDMG6yJYc=
+
+Name: org/eclipse/xtext/ui/util/ProjectFactory.class
+SHA1-Digest: PPki5E9cK7K3QyrvaWxRsfbCR7Y=
+
+Name: org/eclipse/xtext/ui/preferences/ProjectSelectionDialog$4.class
+SHA1-Digest: m0fpj5+l7lSTEmaYP9VKdXess8E=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ProposalConflictHelper
+ .class
+SHA1-Digest: vGiCOpRTLlV4W2q9wFuTJ1FBn7c=
+
+Name: org/eclipse/xtext/ui/validation/ValidatorPreferencePage.class
+SHA1-Digest: nWWmNi2AovmsLYWqj6OlpA70xc8=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/SortOutlineContribut
+ ion$DefaultComparator.class
+SHA1-Digest: tZh6uFr76TPGm43WqIvDlNZaW60=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$UpdateEditor
+ StateJob.class
+SHA1-Digest: jd4OqLrE8hGQueX5wbEdAUmWl8Y=
+
+Name: org/eclipse/xtext/ui/compare/InjectableViewerCreator.class
+SHA1-Digest: 7fpf3cjxLLKGcsjE/5qPejK8nCk=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock$2.cla
+ ss
+SHA1-Digest: wDqSkvphFx9moOelB29aAxXZedk=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconcilerDebugger$1
+ .class
+SHA1-Digest: c0wAF2AqBcr+DkVpkc7YNjGI844=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractEObjectHover.class
+SHA1-Digest: zAwyrJSr1KHcQFNJz2twCQEy2H0=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/HyperlinkHelper$Hyperli
+ nkAcceptor.class
+SHA1-Digest: STMpPmZCMLxeSf+CzMB3IjX0vfc=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RenameElementProcessor.cla
+ ss
+SHA1-Digest: rbTTypO7GM4d6I+DpxPFQXxS3ck=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/MergingHighlightedPos
+ itionAcceptor.class
+SHA1-Digest: 0Va+2WfLiHCEnl00FvvgWZgNZ2c=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/DefaultOccurrenceCompute
+ r.class
+SHA1-Digest: NrVyoNPH24nGUwJJdPFzovlVPXw=
+
+Name: icons/elcl16/goto_input.gif
+SHA1-Digest: pKhTTuI3FBJO0wiWYySE+g1H2Wc=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/CopyQualifiedNameS
+ ervice.class
+SHA1-Digest: RPWyzHS9tEhBzHHBCrd/QGYGE20=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingStructureProvi
+ der$ProjectionChangeListener.class
+SHA1-Digest: HYnt5AqzP0geOEtUiuBC/vhsJuM=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextSpellingReconcileStr
+ ategy.class
+SHA1-Digest: aSoVo+UlyVUUCnTrTwNaMrFIWyI=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$1.class
+SHA1-Digest: jxaFuCDjWU4uOttVJTqgM2dQS24=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$SequenceCh
+ aracterIterator.class
+SHA1-Digest: A+0DymN1TMApIukUMt2HWPcx5ec=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerJoinLinesAction.c
+ lass
+SHA1-Digest: sd6Mrm0HqtBM/PogZah7cjy8TnQ=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalPos
+ tProcessor.class
+SHA1-Digest: +InKD3ii5eQ1FgX/kNRhxOFhrQ4=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider.class
+SHA1-Digest: eKpHYFKuqYeE7J/hR31RXl/6PSc=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/XtextHyperlink.class
+SHA1-Digest: ROUmiMqsmRwiMh0Ggx+NXwl64JA=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler$DocumentL
+ istener.class
+SHA1-Digest: 6/HigxoyR/IFq/S+4yqsXTi0CiM=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionProvider$3.cla
+ ss
+SHA1-Digest: RCFMr+dSI/Ufh63ve45KBL/rTRg=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$ForwardAction.class
+SHA1-Digest: E/3tPUCQce1BeSgWqxwJtjZFfmw=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$Identifier
+ .class
+SHA1-Digest: ZgruKST20rzCprNrfs3Rfhhsyvw=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextElementLinks$ILinkHa
+ ndler.class
+SHA1-Digest: rY98vV9tWrz5zNRjU1o8NepReVA=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/FQNPrefixMatcher$Defau
+ ltLastSegmentFinder.class
+SHA1-Digest: 8EGVssh1iivClpdC3fjFNaY4E8E=
+
+Name: org/eclipse/xtext/ui/editor/templates/AbstractTemplateProposalPr
+ ovider.class
+SHA1-Digest: j4a8Sf/IdnFHpvTYiyDL47sD84A=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultLinkedPositionGroupCa
+ lculator$3.class
+SHA1-Digest: skFbfemmMBJf6ObcaTKu6RYoaFA=
+
+Name: icons/ovr16/annotation_tsk.gif
+SHA1-Digest: M4yHHAdkOuUyT3s0tOfOXeYQubU=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage$1.class
+SHA1-Digest: dbXJyXL6HzB6uhOCWCmDmk9KOKY=
+
+Name: org/eclipse/xtext/ui/label/DeclarativeLabelProvider$1.class
+SHA1-Digest: 7nC9ErQCEQJ/LLsX4CtzI+GXDls=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/CommandInfo.class
+SHA1-Digest: OP/32YPHXN4VgOI/ORhvYNysHFQ=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IModification.class
+SHA1-Digest: 7KdaTotOJQVVyy7zMALXNx5R88c=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/DocumentRootNode$1.clas
+ s
+SHA1-Digest: eKrQdL1jhS+z3gUKVKRAdiaW1xA=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultRenameSupport$1.class
+SHA1-Digest: DK0/FbKP4VsrHBlq1sC4gflGLtY=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$DeleteNextSubWordAction.
+ class
+SHA1-Digest: /R51O2rqWoDJRoQykbod5FBRBNI=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/CheckBoxGroupFiel
+ dEditor$1.class
+SHA1-Digest: 0rZ4YgAfiCbwliBAGsZYK7rc+e0=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameSupport.class
+SHA1-Digest: hVF0E761bIIQ2UIvkEKQ7GAn77Y=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$SelectPreviousSubWordAct
+ ion.class
+SHA1-Digest: jQ+9tB0An/kqoj/bXwZl7WKSX1E=
+
+Name: org/eclipse/xtext/ui/validation/MarkerEraser.class
+SHA1-Digest: UJb107wEmlStH8qGA4+6Yi/AWmU=
+
+Name: org/eclipse/xtext/ui/compare/AbstractContentViewer.class
+SHA1-Digest: dYmNYFfH4crNOJCqscqb98gL+Cc=
+
+Name: org/eclipse/xtext/ui/editor/validation/XtextAnnotation.class
+SHA1-Digest: GHQIatyU8WBphHP4g2SxA0+rSD8=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/StringDialogField
+ $1.class
+SHA1-Digest: gWz3d9XCD4PX1NYX2+gnooEqfuY=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/ToggleSLCommentAction
+ .class
+SHA1-Digest: UJkhQnMT+GERWCFufSBh6pI7wRs=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SaveHelper$1.class
+SHA1-Digest: QoUk68E9oc5ibRea1knAGFe6B1Y=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/IHighlightingConfigur
+ ation.class
+SHA1-Digest: efmtY3FBztSgdJzdmSpbIXpmka8=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions$Facto
+ ry.class
+SHA1-Digest: d77hhST22XYlWyqQKjY/5dQhaf4=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/IssueResolutionAcceptor.cla
+ ss
+SHA1-Digest: kRbWhNmIcmj3Nuf8+AXAQsC8Xu8=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineTreeState.class
+SHA1-Digest: TncjeXuffId4mRiXj8+kVkq92mM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRenameStrategy.clas
+ s
+SHA1-Digest: e/nPSUIl6V9e4JOaBP2NvpzJheM=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractEditStrategy.class
+SHA1-Digest: vR2QbWGMtuMMPra/h3P1y1jxZL0=
+
+Name: icons/nature_overlay1.png
+SHA1-Digest: hf3cWI/wojm0MHw5yWKxs54SZJE=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/DefaultOccurrenceCompute
+ r$1$1.class
+SHA1-Digest: W0g/ivqQ4pdjxeDVSrTjFkp5v7c=
+
+Name: org/eclipse/xtext/ui/editor/doubleClicking/AbstractWordAwareDoub
+ leClickStrategy.class
+SHA1-Digest: lIWZuuisjC3dYxhmhXrzDVgAnUE=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ProjectUtil.class
+SHA1-Digest: G3PmY1VvdqOWZz9y91Pk76BkeY8=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultConten
+ tProvider$1.class
+SHA1-Digest: qdygQoNG81/JAkIlfHKhmd935hU=
+
+Name: org/eclipse/xtext/ui/views/DefaultWorkbenchPartSelection.class
+SHA1-Digest: h3hWcJQoLCI4i+A3WPHLMEOcqjI=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$2.class
+SHA1-Digest: JUvaOMcXHw1NetYThvh++Mub6NM=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/ITextAttributeProvide
+ r.class
+SHA1-Digest: SRLJWw0YxjfElmbdjv4QC2BPYxM=
+
+Name: org/eclipse/xtext/ui/editor/info/ResourceWorkingCopyFileEditorIn
+ put.class
+SHA1-Digest: TsOprEBmrccIDpWgPsd0Usr8tSg=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EmfResourceReferenceUpdate
+ r.class
+SHA1-Digest: 31AvwvQfCKX8Q0NWMHcl1rq6H14=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/FQNPrefixMatcher$LastS
+ egmentFinder.class
+SHA1-Digest: +r8+CW6mRWTcGxZQaJW9vZUGIFI=
+
+Name: org/eclipse/xtext/ui/editor/preferences/messages.properties
+SHA1-Digest: 5nzb+UmUQQvHrWWyA9ue1kLJwS0=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/DefaultCompletionPropo
+ salPostProcessor.class
+SHA1-Digest: s5GyJ5ixA9lxXbUf3kJYWMPVn+w=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup.class
+SHA1-Digest: 3mfV79QCvsMwUK+N/eUEAiQ4M8U=
+
+Name: org/eclipse/xtext/ui/editor/templates/AbstractTemplateVariableRe
+ solver.class
+SHA1-Digest: k2sCRxo6q8+vPH+qafBPGGHPBwY=
+
+Name: org/eclipse/xtext/ui/generator/trace/ExtensibleTraceURIConverter
+ .class
+SHA1-Digest: LZktQUxDFzYMgsRdSak6hFZAMAM=
+
+Name: org/eclipse/xtext/ui/editor/DocumentBasedDirtyResource$2.class
+SHA1-Digest: sJLToO1MeAjuwePBW1ZVfFqfGDU=
+
+Name: org/eclipse/xtext/ui/util/Messages.class
+SHA1-Digest: k8cW4vXkOvogRbQJiyNDdoWJr10=
+
+Name: org/eclipse/xtext/ui/util/IProjectFactoryContributor$IFileCreato
+ r.class
+SHA1-Digest: 2xLhOVQOl7c6xsfNU88tFGizzV0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RefactoringCrossReferenceS
+ erializer.class
+SHA1-Digest: 0+Lu6qmYOpnoHR1l3dAKZYi2a9k=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl$5.class
+SHA1-Digest: rpeAD72NpRjh/YTzWy3PJgQRnKM=
+
+Name: org/eclipse/xtext/ui/editor/StatefulResourceDescription.class
+SHA1-Digest: 2ZQLbW9Hl2YrP4kD/R1DXKC3ejg=
+
+Name: org/eclipse/xtext/ui/resource/IResourceSetProvider.class
+SHA1-Digest: fq390Ifb3EXUUb7m677i5rMmYxs=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperJavaImpl$1.class
+SHA1-Digest: 0rp0WvdYMniseE9np6r/DlvbJDY=
+
+Name: org/eclipse/xtext/ui/search/IXtextEObjectSearch$Default.class
+SHA1-Digest: VZGZ6yHie2vicVFna3Em07PltBE=
+
+Name: org/eclipse/xtext/ui/util/BundleClasspathUriResolver.class
+SHA1-Digest: 1PqxivXfrHN8Xszix2ulBKMBjoU=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentUtil.class
+SHA1-Digest: IyMhH3rdFPdN3lD5oWRKz5zheKU=
+
+Name: org/eclipse/xtext/ui/wizard/AbstractProjectCreator$1.class
+SHA1-Digest: LqLdmLnHRz/kGBpgAdpBYvRcBQ8=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/EObjectNode.class
+SHA1-Digest: ulev6iAFLPwqsioBJY/GAukj57s=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultReferenceUpdater$1.
+ class
+SHA1-Digest: gVWf4Z/9xQ/+SKgXZSu26cvV1Vw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Lexer.c
+ lass
+SHA1-Digest: dm3Ndcbdzr+79yf/YtA8yxFN1rg=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringController.
+ class
+SHA1-Digest: lLMBhD26qm4xT6FDkBZWZo1Bpq8=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EditorDocumentChange.class
+SHA1-Digest: r9G+zM+F/vHdY+Q6RHoxwLKL5L0=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/IHyperlinkHelper.class
+SHA1-Digest: CvW7vSryemuKq7MlWI+nrSvb6Fo=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/AbstractCopyQualif
+ iedNameHandler.class
+SHA1-Digest: RVbTghfEFZkf2ZZxgrP4xLrxfEM=
+
+Name: icons/obj16/quickfix_error_obj.gif
+SHA1-Digest: syy/dePAYAEfMNGOGwFWBBH993s=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/OutlineWithEditorLin
+ ker$TreeListener.class
+SHA1-Digest: rsoM8uQUus5RtFPoA0vqZsP6q3U=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/EditorResourceAccess$1.clas
+ s
+SHA1-Digest: L4iUJ9Tza69ZWiVsJip2nejHY9Q=
+
+Name: org/eclipse/xtext/ui/compare/DefaultMergeViewer$2.class
+SHA1-Digest: Ddfed4jCUsvi0p/ymu7PCuGB2CI=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$OpenDeclarationAction.class
+SHA1-Digest: cCxSpu+MpY1XQe18cp+3Uh21gLs=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractEditStrategyProvide
+ r.class
+SHA1-Digest: 3R+h9GOKriARQtlZcOMiG9J7Wuw=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$3.class
+SHA1-Digest: 3GrBXnPCyXIEpRHgfedUHnjvzh4=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$T
+ ableLayoutComposite.class
+SHA1-Digest: 6wpEZAp4TE8xs3HWom+QJUkA3cM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ObservableXtextT
+ okenStream.class
+SHA1-Digest: gplwExd8NhrgoUSB69HeH0el63I=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/IssueResolutionProviderExte
+ nsion.class
+SHA1-Digest: Rl81gLp55bAaOnXHZgtuKhRhYqw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ISmartContextInformati
+ on.class
+SHA1-Digest: yBibKLQfLuv/zsttxkpbPq2JSZQ=
+
+Name: org/eclipse/xtext/ui/editor/SchedulingRuleFactory$Sequence.class
+SHA1-Digest: UgEZNH/ow5oCrkG1NQKpmBzj5wI=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RefactoringException.class
+SHA1-Digest: zVJJ7exd1m2Kp/o7A7c4ENEHBVo=
+
+Name: org/eclipse/xtext/ui/editor/tasks/TaskTagsMarkerListener.class
+SHA1-Digest: nceAC3rnKifOPIWnR0idVXhJoEg=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperImpl.class
+SHA1-Digest: QK9PGoLgDkvfZkDwqZp3VOhVpew=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/ModeAwareOutlineTreePro
+ vider.class
+SHA1-Digest: 88u2EJKyRZd6t+ghQ6+IkMWEq5M=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$2.class
+SHA1-Digest: rFekHeH6WQ6phZZtyaFWRWHmgag=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameElementWizard.class
+SHA1-Digest: lpemjqbSAYHJ72Mx0FcUKssE4/0=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser.class
+SHA1-Digest: CCliSRxkTxfq6a6wC1TUqx1vckw=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextMarkerAnnotationImageProv
+ ider.class
+SHA1-Digest: ufn20/WwNst3Xyp2L0z8XDyJBKE=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/DialogField.class
+SHA1-Digest: BBTKXyStg8D8nr3pqOeJBwOBEjM=
+
+Name: org/eclipse/xtext/ui/editor/outline/IOutlineNode.class
+SHA1-Digest: ABQ8rNCmNupNsRePFUjmxZ5X7ZA=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalCom
+ parator$NaturalOrder.class
+SHA1-Digest: ec3x4eHGxOLBH2KlzqLGZ/dd9OM=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TokenScanner.class
+SHA1-Digest: oRZ/xDmC0NKHpUjon7ulN4eO8QU=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler$TextInput
+ Listener.class
+SHA1-Digest: mo33TYlsrQDCtZXjSEfWI1llAwI=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringWizardOpenOperati
+ on_NonForking.class
+SHA1-Digest: lqQdMrTWK9ZjLGtaZHCI6e8XXfM=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/IssueResolutionProvider.cla
+ ss
+SHA1-Digest: AoevD86IxbbD8iR4IJLI5ZVaiFc=
+
+Name: org/eclipse/xtext/ui/editor/templates/DefaultTemplateProposalPro
+ vider$FollowElementAcceptor.class
+SHA1-Digest: JbUlIJm4EJyZ0o2zG8aM5CG+6j4=
+
+Name: org/eclipse/xtext/ui/refactoring/IReferenceUpdater.class
+SHA1-Digest: lMnh9zPVx6hB6zFU+SI1OvaPPbw=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionGroup.class
+SHA1-Digest: Cna8ZWNLdnDAnejnx73WY3/P08w=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultRenameSupport.class
+SHA1-Digest: Y5OT6K+5BQJoLid2KpZ74S7BQ+I=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewer$DefaultFactory.cla
+ ss
+SHA1-Digest: Ah8qMeAERxM/4QhcSBodhD5dUaU=
+
+Name: org/eclipse/xtext/ui/containers/AbstractStorage2UriMapperClient.
+ class
+SHA1-Digest: uA8B20ffj8mlQcmIeRkYTydQIFQ=
+
+Name: icons/ovr16/error_co.gif
+SHA1-Digest: 837WZOYq5P1nCsjer7IptxeeAX0=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/XtextContentAssistProc
+ essor.class
+SHA1-Digest: It2uUadDZI6OSIgODUK81GBpgac=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/DefaultQuickfixProvider$1.c
+ lass
+SHA1-Digest: +SBbEfNrYaV+Axh7CuMnR3ZnRhc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/LookAheadTermina
+ lRuleCall.class
+SHA1-Digest: /2kGBt0Df3zrbUunAQJtt5vhSbQ=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/EditorCopyQualifie
+ dNameHandler.class
+SHA1-Digest: 1+FNKkFs/Sgutq0Tcw+L1Ou4qWg=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/RefactoringResourceSetProv
+ ider.class
+SHA1-Digest: q1Zdip5cDPAvKGxS/pzTP6uvOw0=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EditorDocumentChange$1.cla
+ ss
+SHA1-Digest: b4Ztg60hXMrCynOCM4VKMgWKRkA=
+
+Name: org/eclipse/xtext/ui/refactoring/IRenameStrategy$Provider.class
+SHA1-Digest: 1xJfvJmJC4ddB7CatteqSgeb9YE=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/CompoundMultiLineTerminalsE
+ ditStrategy$Factory.class
+SHA1-Digest: Al7t83VqxF69oryoaprAec8gebo=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/ISingleLineCommentHel
+ per.class
+SHA1-Digest: DIrhmL4OqqY402RLQXVV00/Gqiw=
+
+Name: org/eclipse/xtext/ui/editor/outline/IOutlineTreeProvider$ModeAwa
+ re.class
+SHA1-Digest: YQouEWVB2BdysoUBzPk8vszeG9Q=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$UpdateEditor
+ StateJob$1.class
+SHA1-Digest: /5VKEHprAhhBLt3Qd6p3K+BsCYc=
+
+Name: org/eclipse/xtext/common/ui/contentassist/TerminalsProposalProvi
+ der.class
+SHA1-Digest: c/34LkgExGkGjsH2QcqilwvQnFE=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$5.class
+SHA1-Digest: 6nGoftg79GaRhBVS4Fp9zVJbLYc=
+
+Name: org/eclipse/xtext/ui/editor/hover/ProblemAnnotationHover.class
+SHA1-Digest: VfS7U13CTkI8Tj5C3+D7ME8+LTs=
+
+Name: org/eclipse/xtext/ui/wizard/XtextNewProjectWizard$1.class
+SHA1-Digest: gchIPE5Eigg8isBriDUopmBvIu8=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingRegionAcceptor
+ .class
+SHA1-Digest: mUJFAl1tLnqa5YThqtiH3NqTvIM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper$Wrapp
+ er.class
+SHA1-Digest: Q9hCeKQ6WYCdOKyz3Kz5fj1vhC8=
+
+Name: org/eclipse/xtext/ui/editor/IXtextEditorCallback.class
+SHA1-Digest: JvB7jVIE4oqWWHUMWKiYUUnC2lo=
+
+Name: org/eclipse/xtext/ui/editor/actions/IActionContributor.class
+SHA1-Digest: TGROupXvKxssCBG15pROWCNl9Nw=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/IHighlightingConfigur
+ ationAcceptor.class
+SHA1-Digest: gR/gai+bshM6gN0N3q/g0AjuZNY=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerDeleteLineAction.
+ class
+SHA1-Digest: vUjWaZLiVaaX+16b+O5DpfMbe5Q=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/SyntaxColoringPrefere
+ ncePage.class
+SHA1-Digest: WSG1Sr0hGSf2+Pq/iOmbM4PoUQY=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$6$2.c
+ lass
+SHA1-Digest: /tQdYw/XhZXfQMeUIoG7xCNyjvQ=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionGroup$Preferenc
+ eAction.class
+SHA1-Digest: Q+3p0kx0ijQw5R6k4VUOhjzirHY=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$1.class
+SHA1-Digest: tqaqSwklgOEoJBWZG9R5PwK5A50=
+
+Name: icons/ovr16/abstract_co.gif
+SHA1-Digest: o0TNJknZu5NbXHpcHiJK731jVZo=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ HoverControlCreator.class
+SHA1-Digest: xfzsfkEGZOnCmA/jjJNAR7oW4Q8=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider$AbstractRefactoringDocument.class
+SHA1-Digest: 1kdyJBMpxjzBQqCB3u6VF4RPPm4=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/CompoundMultiLineTerminalsE
+ ditStrategy.class
+SHA1-Digest: Bs5BjblN4U3ZFPcFyl/aJccDNPY=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeContentProvi
+ der.class
+SHA1-Digest: i1RYB94DMOWpdHgMOOPVvM8Ce2Y=
+
+Name: org/eclipse/xtext/ui/editor/templates/AbstractTemplateProposalPr
+ ovider$NullSafeTemplateAcceptor.class
+SHA1-Digest: s92ktjVkFlUor/olx8viz04hRQw=
+
+Name: org/eclipse/xtext/ui/search/IXtextSearchFilter.class
+SHA1-Digest: W06OQGspKkOnJeG4R5mLMol7zNg=
+
+Name: org/eclipse/xtext/ui/label/GlobalDescriptionLabelProvider.class
+SHA1-Digest: za4eHnjei1F1bXugbigmdt4pruI=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineRefreshJob.class
+SHA1-Digest: YkovOPCsPIQHZGLFeNGxW3/7OM0=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionGroup$1.class
+SHA1-Digest: g+IbYTi4wFM3Kl7OcgU6iBRTHKk=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/ReconcilingUnitOfWork$Doc
+ umentChangeListener.class
+SHA1-Digest: otC7cZTGxy/G0Q0RVn0JnClQqpg=
+
+Name: org/eclipse/xtext/ui/editor/preferences/Messages.class
+SHA1-Digest: 0Oh1p750F/HzpR+gxUlT1Q5SVl8=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager.class
+SHA1-Digest: QOzhaEdKs8F9GjEYpKWoc49ZDng=
+
+Name: org/eclipse/xtext/ui/editor/preferences/FixedScopedPreferenceSto
+ re$1.class
+SHA1-Digest: G74JcYoPSG6qvLs8LCP1ljzuZjI=
+
+Name: org/eclipse/xtext/ui/notification/IStateChangeEventBroker$Event.
+ class
+SHA1-Digest: Y27x8C+O/uIOcZQZZvTTtXh3Mjo=
+
+Name: org/eclipse/xtext/ui/util/IssueUtil.class
+SHA1-Digest: xtn1IWpgtKgCa6kkXqdVRX4MscY=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionGroup$FoldingAc
+ tion.class
+SHA1-Digest: S+ED5BukX2U7A4H0c7HWOjQdsQY=
+
+Name: org/eclipse/xtext/ui/containers/StrictJavaProjectsState.class
+SHA1-Digest: sz6OKLw+/VQr9tNOm2lAApt5qMc=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$StreamAdapter.class
+SHA1-Digest: wlkdsvJ8NDlvRRnVarz1Y0h4pqw=
+
+Name: icons/ovr16/java_ovr.gif
+SHA1-Digest: vKP7IU4z89GaX3oH4ZUrE1sC7ZI=
+
+Name: org/eclipse/xtext/ui/editor/XtextMarkerRulerAction.class
+SHA1-Digest: AcJWOEmdt7C0Nfzw77MxYZEWinw=
+
+Name: org/eclipse/xtext/ui/editor/templates/messages.properties
+SHA1-Digest: QHDHTMQFrPuWzgoBYZDEQaePqMQ=
+
+Name: org/eclipse/xtext/ui/preferences/StatusInfo.class
+SHA1-Digest: Cu9udo19GjChAfAs+jcxnjs5rMs=
+
+Name: org/eclipse/xtext/ui/editor/WorkspaceEncodingProvider.class
+SHA1-Digest: IakOGoONUDtgbxnBk3JHmt2PH+4=
+
+Name: org/eclipse/xtext/ui/editor/validation/messages.properties
+SHA1-Digest: Nu8NlI6mozQNTyxf4Bi47YALR/g=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/messages.properties
+SHA1-Digest: sO/m6QMFwej3Xj3mwObIQS+vn8A=
+
+Name: icons/elcl16/collapseall.gif
+SHA1-Digest: lLQ3zHD8+td65WxRKfB1kMRzOqQ=
+
+Name: org/eclipse/xtext/ui/editor/IDirtyResource$NormalizedURISupportE
+ xtension.class
+SHA1-Digest: 8Mg9JlsI/oc24e36Ei7ZY4uNyiw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentAssistContext.c
+ lass
+SHA1-Digest: AxYm5gKG8LIzrO2eUtGMcn7gnLU=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/CompletionProposalBasedModi
+ fication.class
+SHA1-Digest: WSS/W6AyWbTq3OmlJXt8SNLFHro=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingPresenter
+ $1.class
+SHA1-Digest: emy4L80QO6z6cljs2c7JQj2/mIk=
+
+Name: org/eclipse/xtext/ui/util/JdtClasspathUriResolver.class
+SHA1-Digest: 5rD42AV7R8uPNqIFheANinUWr3o=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/OpenDocumentTracker.class
+SHA1-Digest: qNS7W7QblBqhWs7MmESDyqPAlhI=
+
+Name: org/eclipse/xtext/ui/resource/XtextResourceSetProvider.class
+SHA1-Digest: mxtbD1hY8eL/oKAfS2iZb1qWiM0=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/AbstractOutlineNode.cla
+ ss
+SHA1-Digest: 4pZxrGI+mtK2dwuJvRmeAs2Jm/c=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$1.cla
+ ss
+SHA1-Digest: rCiibci26C0lzMT8GKJp4IB15+Y=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/HyperlinkHelper.class
+SHA1-Digest: +NrTavqhyYDe8zDziG6MwVlrA4M=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$5$1.class
+SHA1-Digest: ypABsrhYEokNm3jgWKXgWRn/FEw=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultRenameElementHandler$
+ 1.class
+SHA1-Digest: wDHTLHakNoyQyNOnET7DcaO+pCo=
+
+Name: org/eclipse/xtext/ui/compare/CompareInputResourceProvider.class
+SHA1-Digest: KpgNQL/7p9S2wxiIrgIXbvKoM6w=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$3.class
+SHA1-Digest: rY+4HaSi9CR6nQCvIOOsWc0hRa4=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorMessages.prop
+ erties
+SHA1-Digest: NuNLwi0/tMBBKQXED4SJwSH8Dv0=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/DialogField$1.cla
+ ss
+SHA1-Digest: 0k+M9XsoYKaxLLJiIsFXQfC3iiU=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog.class
+SHA1-Digest: C+9E/r9/FjDnwE3fsq1l/zJnT9g=
+
+Name: org/eclipse/xtext/ui/preferences/ProjectSelectionDialog$2.class
+SHA1-Digest: YRV5olBRphRBr8CVSgGVnvbH4rU=
+
+Name: icons/elcl16/view_menu.gif
+SHA1-Digest: 6S83KJ2GsQRIP4V5DPnLo7jaXsQ=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/IOccurrenceComputer.clas
+ s
+SHA1-Digest: LiK1kxG2IJ2O0LWrge1PWYqu1Qw=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter.
+ class
+SHA1-Digest: 23QsWtJFdtjimZzPZCAig0317yA=
+
+Name: org/eclipse/xtext/ui/XtextUIMessages.class
+SHA1-Digest: 3SAYiaua3qcJNxyqTa2ZDX1TOOg=
+
+Name: org/eclipse/xtext/ui/editor/DocumentBasedDirtyResource.class
+SHA1-Digest: 2cA1wVykTzO30dQWgPO3pzsZDE4=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/LightweightPosition.c
+ lass
+SHA1-Digest: T7LNrMyG2yjRNczhf4oOndnk7/Y=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$ClientAwareD
+ irtyResource.class
+SHA1-Digest: ZuGsvkNvKgMz9Un3edlh305Kb/8=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentPartitioner.class
+SHA1-Digest: i+WTjs1uMhxJ04uDeAAfzYlYKX4=
+
+Name: org/eclipse/xtext/ui/refactoring/IRenameRefactoringProvider.clas
+ s
+SHA1-Digest: 712+Y3u/TfFqYGkcu8GcSlNw/nw=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingStructureProvi
+ der$1.class
+SHA1-Digest: hvMcKnSyw6Qx1j5N+Q3b97b/E14=
+
+Name: org/eclipse/xtext/ui/editor/embedded/OperationHistoryListener.cl
+ ass
+SHA1-Digest: JRTy6uVxdk29wf/Ef2j1epr15ow=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/IssueResolution.class
+SHA1-Digest: p0LHj+upXAW3HvhTQxPQvQuyn2U=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions.class
+SHA1-Digest: zaOe/UMb5gW5win0GSJwt29NeRs=
+
+Name: org/eclipse/xtext/ui/editor/PresentationDamager.class
+SHA1-Digest: JONS7gJWqc3D1jl1VUyuYv+iMeM=
+
+Name: org/eclipse/xtext/ui/label/InjectableAdapterFactoryLabelProvider
+ .class
+SHA1-Digest: rWJvLC9m5el0oEPjeBZv28uedRY=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$6.cla
+ ss
+SHA1-Digest: 8UhzQ0usioDz7rh1tLzaBh4VIyE=
+
+Name: org/eclipse/xtext/ui/resource/ResourceServiceDescriptionLabelPro
+ vider.class
+SHA1-Digest: szBt1hqo3LuWGkNcNbyJl/VScQ0=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ PresenterControlCreator.class
+SHA1-Digest: GnuH7o/FGX2BXtcBb6Ah3sRUQ6c=
+
+Name: org/eclipse/xtext/ui/util/FileOpener$1.class
+SHA1-Digest: +p4quzkvLuA7jH4S7zPdcUZTC5k=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionProvider$1.cla
+ ss
+SHA1-Digest: yn7cdInZ/f7fYod7te4IfaQRszQ=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameContextFactory$Defaul
+ t.class
+SHA1-Digest: qgW0ji/Vx6WyNbVAH4/abPaO9bM=
+
+Name: org/eclipse/xtext/ui/search/IXtextEObjectSearch$Default$2.class
+SHA1-Digest: L8LUdziwnzCGbqWVW7sW5yTxEZk=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions$3.cla
+ ss
+SHA1-Digest: p3KU8nYqbWieK4qaNOkJDGgiSB4=
+
+Name: org/eclipse/xtext/ui/search/Messages.class
+SHA1-Digest: LRr6chKQImOssVZfffUa7gq6WbM=
+
+Name: org/eclipse/xtext/ui/IImageHelper$IImageDescriptorHelper.class
+SHA1-Digest: uUElsM0rA//PHTNN7bLSg7RcxQA=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldingRegionProvider
+ .class
+SHA1-Digest: RodemJMDn2BQD9P8XECs2LnTrhA=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TextAttributeProvider
+ .class
+SHA1-Digest: 6aDteYg67SlSt3PQxClj6MQzx74=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameElementContext$Impl.c
+ lass
+SHA1-Digest: bd3NVoXCR7nR8sZvIew+3ohGiWk=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/StringMatcher.c
+ lass
+SHA1-Digest: XuCuRU+rQNyQsvaoKrqWHOjzNDI=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultLinkedPositionGroupCa
+ lculator$1.class
+SHA1-Digest: qA1u/tZfUBTStLyoOnnolBl+AEg=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AbstractContentA
+ ssistParser$3.class
+SHA1-Digest: ZH/FVUy1wBUxuADUjOmYVd//N6M=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$3.class
+SHA1-Digest: QJNP20rxfeI0ZRfENOLGzDoCsY0=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/MultiLineTerminalsEditStrat
+ egy$Factory.class
+SHA1-Digest: G5utIcGbmix1Pjc1/MS6MWc4r9Y=
+
+Name: org/eclipse/xtext/ui/resource/JarEntryURIHelper.class
+SHA1-Digest: s0uuwMqHenughbFkRLhkRWR5AqI=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRenameStrategyProvi
+ der.class
+SHA1-Digest: YZlj/ZG0ekYP1ATeV99EKTkjafs=
+
+Name: org/eclipse/xtext/ui/util/JavaProjectFactory.class
+SHA1-Digest: vQFDuShh/sUxCNthWOC9UBxUD+8=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$CamelCaseI
+ dentifier.class
+SHA1-Digest: 3sEekJvEbz2ldKfWvRKLfq55Jwk=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractContentProposa
+ lProvider$NullSafeCompletionProposalAcceptor.class
+SHA1-Digest: Vyezgvj3r43ldYZtDT6q0VDUc4I=
+
+Name: org/eclipse/xtext/ui/search/EObjectDescriptionContentProvider.cl
+ ass
+SHA1-Digest: 2FTIlnzUwQovcXuLhj2OUaAH1BY=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRenameStrategyProvi
+ der$IInitializable.class
+SHA1-Digest: OQBtvgsVw8Eg3oKOpvV16aVtbnw=
+
+Name: org/eclipse/xtext/ui/editor/hover/IEObjectHoverProvider$IInforma
+ tionControlCreatorProvider.class
+SHA1-Digest: aTKahX8zp9G92Wck+LXD8DtRIlU=
+
+Name: org/eclipse/xtext/ui/editor/IXtextEditorAware.class
+SHA1-Digest: AxRcakpf6fCcOe6xndLDAMHFZ4c=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineRefreshJob$2.cla
+ ss
+SHA1-Digest: 5HcJHHDHNA0zuAhOzTohs48cVIg=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover.
+ class
+SHA1-Digest: UgsA6mxp/79IZhv65NjvwHyJNew=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/RepeatedContentAssistP
+ rocessor.class
+SHA1-Digest: L9jgpgJimNBtwIcjwkQ43zZTrug=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EmfResourceChangeUtil.clas
+ s
+SHA1-Digest: DLzngoDIhAcFVCkB0tzuA4cUMvY=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/DefaultOutlineTreeProvi
+ der$2.class
+SHA1-Digest: xEST/kDY10Ri8hrs49Se3aFCC5E=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractEObjectHover$2.class
+SHA1-Digest: jltbZxGvEGJjLfyVuiSoTF49Ejc=
+
+Name: icons/elcl16/alphab_sort_co.gif
+SHA1-Digest: JjLUPavD/jFA7MwWtXEyWh+PFu8=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateContext$Inden
+ tationAwareTemplateTranslator.class
+SHA1-Digest: 2rH++1qCqJQWko6ZtIQEzCvGYBM=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/MarkerResolutionGenerator.c
+ lass
+SHA1-Digest: eJTnXCfoFz5cvyrwRNM5y61yByw=
+
+Name: org/eclipse/xtext/ui/editor/IURIEditorOpener.class
+SHA1-Digest: RGWZ1k51UvS3CSwFXdLXoey2Smw=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up.class
+SHA1-Digest: 4v+XicqXGfpGAYYfSOY6u0m8xjg=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/ToggleSLCommentAction
+ $1.class
+SHA1-Digest: 8qD7ne8R3VS1Vqd27J78C7Es/TE=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultEvents
+ $Added.class
+SHA1-Digest: bigLzwIH4P/gKkqQJRjDiNoscLU=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameContextFactory.class
+SHA1-Digest: lsAlXArNoI+dB2CKedesjYpaDec=
+
+Name: org/eclipse/xtext/ui/editor/handler/ValidateActionHandler.class
+SHA1-Digest: zbG4GCvIduL5PbqUgEDl2N6RV6g=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/AttributedPosition.cl
+ ass
+SHA1-Digest: SOqTfhH9O3xnJj2Vu18nY0Yg40A=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ComboDialogField$
+ 2.class
+SHA1-Digest: z0WottCDH7iRe97hMn1qOi7leN8=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/IReferenceFinder$ILocalReso
+ urceAccess.class
+SHA1-Digest: 8zq3FLjIxhYuWVnYOdCApUMrigk=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/StatusWrapper.class
+SHA1-Digest: OS+8W3nRuehpPeQsDAETOwzbh64=
+
+Name: org/eclipse/xtext/ui/views/AbstractSourceView.class
+SHA1-Digest: cUgAuMPLQc1xiJZRA8X8tI/QMzo=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage$4.class
+SHA1-Digest: 9CxNpcsPtoXC1+E6SuNxJUsNF50=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EditorDocumentUndoChange$1
+ .class
+SHA1-Digest: aVA8SzzDP0HbdpjLfjAGySNDw2Q=
+
+Name: org/eclipse/xtext/ui/editor/model/JavaClassPathResourceForIEdito
+ rInputFactory.class
+SHA1-Digest: Rgv8i+5/GMjIbHQTZjjMN3Tgt1Q=
+
+Name: org/eclipse/xtext/ui/util/ProjectFactory$2.class
+SHA1-Digest: ZfVrRz38jIfrgTJXkS1Tu2HPQ0M=
+
+Name: icons/obj16/quickfix_warning_obj.gif
+SHA1-Digest: n+3qzrl8rIap2UC2CC9vnfF3MgM=
+
+Name: org/eclipse/xtext/ui/editor/embedded/ActivationCodeTrigger.class
+SHA1-Digest: O2f28dS5ZPOiSfc/ORYsULTJowA=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter$
+ 2.class
+SHA1-Digest: zOFWGDPkoNFDpAFvYctfbpR1Kng=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/DefaultQuickfixProvider$Cro
+ ssRefResolutionConverter.class
+SHA1-Digest: /TANPeSztJ+577ruFjuZnouF1E0=
+
+Name: org/eclipse/xtext/ui/editor/model/TokenTypeToStringMapper.class
+SHA1-Digest: tpl+92CkYm3ttyAv19nk8f3+EsI=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$C
+ olumnsDescription.class
+SHA1-Digest: sDwXyPn7pd2cFuUE+JWBvBsrX60=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl$3.class
+SHA1-Digest: qPBnTttaMK2QtfUo5WUE6SCcOpM=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperImpl$2.class
+SHA1-Digest: px55M1sczGU7v2VnAHi6ZtIQOfQ=
+
+Name: org/eclipse/xtext/ui/internal/Activator.class
+SHA1-Digest: N1JScHpR9rvWkH+YRY4sQCTsdwo=
+
+Name: org/eclipse/xtext/ui/label/Messages.class
+SHA1-Digest: BQL3aW6aB4pfQ36JMnkrddNYY7E=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/IOutlineContribution
+ $LinkWithEditor.class
+SHA1-Digest: NYin0J4Af/2+2tqIt1BkLpGphl8=
+
+Name: org/eclipse/xtext/ui/refactoring/IRenamedElementTracker.class
+SHA1-Digest: hljBeSLtdXX+99YvoHtXuCylbfc=
+
+Name: org/eclipse/xtext/ui/preferences/ScrolledPageContent.class
+SHA1-Digest: hPzmwVuOSlipIeiDaoIxb7ZLxbU=
+
+Name: org/eclipse/xtext/ui/editor/model/IResourceForEditorInputFactory
+ .class
+SHA1-Digest: vRcf6OjW/oX9QZWsdFOqaf+HYTM=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerOperationAction$1
+ .class
+SHA1-Digest: lB9kK8TPHc7HVMP7sSKeOk8ZUY0=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$IDirtyStateE
+ ditorSupportClient.class
+SHA1-Digest: jJBko41uncv9du7uQDO57oYS6O0=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource.class
+SHA1-Digest: clD2JmKBEyiQU/TjZBz+bu3v2mw=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/XtextResourceMarkerAnnotati
+ onModel.class
+SHA1-Digest: pLfciacxqNZ+pDsHPxjHBtsbTGo=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/EditorResourceAccess.class
+SHA1-Digest: buAIgi33NFkYJ68TrLBdkhadSTg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerMoveLinesAction$1
+ .class
+SHA1-Digest: JMBlPIqqCKRxhk9IRuWxBkVtHhA=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/AbstractMasterDet
+ ailsFieldEditor$1.class
+SHA1-Digest: dlmsw7cCc3252aMsgQPof4w+7qE=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage.class
+SHA1-Digest: /jK1W9e5+xVs0AhnmuNaO7R4qAI=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPage.cla
+ ss
+SHA1-Digest: mBmbI3+KBo5LjAUu+pFDKB8YhWI=
+
+Name: org/eclipse/xtext/ui/editor/templates/EnumTemplateVariableResolv
+ er.class
+SHA1-Digest: ST7WblCNx2Q/X5VKnAq1Foiw08E=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/IReferenceFinder.class
+SHA1-Digest: dZGIng5qgKBW/Po6bx9B//Hvs+g=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/Messages.class
+SHA1-Digest: H7V741orJkbok65mkcQmFgWSX1k=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$5.class
+SHA1-Digest: hHmAcQu6NImV++to9sn7WHylzCw=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/OpenBrowserUtil$3.class
+SHA1-Digest: ONXow1YQwxJxzU+ZqKCd/tWkE7Y=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$1.class
+SHA1-Digest: pbpYAeCO4Pg2sDE7I6EQoRXUpp4=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameElementWizard$UserInpu
+ tPage.class
+SHA1-Digest: TEmiOZ8B0e5ovdacTNlu+C9Yg+A=
+
+Name: org/eclipse/xtext/ui/editor/model/ResourceForIEditorInputFactory
+ .class
+SHA1-Digest: N4WMOx/6myM+JtaKUMf2f3PRY/4=
+
+Name: org/eclipse/xtext/ui/preferences/PropertyAndPreferencePage$3.cla
+ ss
+SHA1-Digest: SxfAh0UhE2KhRfk62jp5PdP7yCU=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineMode.class
+SHA1-Digest: DEH2Fg0Yc5BAS3xoVkmcEh7dZbc=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$DeletePreviousSubWordAct
+ ion.class
+SHA1-Digest: rJgVYQSb04/P/qUKwF7cYEvGXkE=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/ISimilarityMatcher.class
+SHA1-Digest: rmWSqgcJNoUnlt2OQHn0XQvSGho=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Infinit
+ eRecursion.class
+SHA1-Digest: CVM4jX20jhFfBrgSg6JlAMkBkFk=
+
+Name: org/eclipse/xtext/ui/resource/SimpleResourceSetProvider.class
+SHA1-Digest: 0/5NqnRM+XaQZTINfPRT0KR20yo=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$HoverControlCreator$1.class
+SHA1-Digest: 5OB49cdKYG2d1RPSSCw33a+RiZ0=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorErrorTickUpdater.class
+SHA1-Digest: ZjNQmYckg5yGhY5DCGqBu7YbPN4=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/EStructuralFeatureNode.
+ class
+SHA1-Digest: rKhN5HNw9jsK+3uQNBwgeebsz6o=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$10.class
+SHA1-Digest: zac8uXxUI98Sn1UlfGWbO+35N5A=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingReconcile
+ r.class
+SHA1-Digest: QcjifB3/A7cwATWLJyl4DTmjNWE=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultHoverDocumentation
+ Provider.class
+SHA1-Digest: OCH5P3+nRLDoAyjbNomWNqfuqtM=
+
+Name: org/eclipse/xtext/ui/preferences/EclipsePreferencesProvider$1.cl
+ ass
+SHA1-Digest: H+S9k7GpjMyBC1xG5InhBHRU6hg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorMessages.clas
+ s
+SHA1-Digest: Gmqiclhn36XlfIZOnn2El39AiRM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$IFollowElementFactory.class
+SHA1-Digest: gGeek+EzHx73XAlo5mB5Xo8r7tk=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentAssistContext$F
+ actory$Null.class
+SHA1-Digest: KOjI+JqxDOCw9Zf0sh++57Q1q6M=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeLabelProvide
+ r$Delegate.class
+SHA1-Digest: sZz4IlhQxM7lUjR894Vu8SQBQss=
+
+Name: org/eclipse/xtext/ui/wizard/AbstractPluginProjectCreator.class
+SHA1-Digest: 6ra24GA/PxsX8TtGZ0pQeYXZ3e8=
+
+Name: org/eclipse/xtext/ui/label/messages.properties
+SHA1-Digest: CkUdZeErvOSDj89++DJc9nOKMtg=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/AbstractOutlineNode$2.c
+ lass
+SHA1-Digest: 6XNRRB/yKzwuH9UjBJxS/ynGW6w=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$PreviousSubWordAction.cl
+ ass
+SHA1-Digest: 6vbc7LyLDNyLwk0PnGvLOU2s6v0=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$5$1$1.class
+SHA1-Digest: fFtPpnjO2x4x959u0BXFru32lmg=
+
+Name: org/eclipse/xtext/ui/editor/model/ITokenTypeToPartitionTypeMappe
+ r.class
+SHA1-Digest: ucBg8jOI6LWJqwWHYrYn2lEcLOo=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator.class
+SHA1-Digest: V2y7suRb8MfXxEHDI4WIsRGAsrc=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/OutlineCopyQualifi
+ edNameHandler.class
+SHA1-Digest: lU4IjPDPQDEHzdVYD27ZFAwkflU=
+
+Name: org/eclipse/xtext/ui/containers/AbstractAllContainersState.class
+SHA1-Digest: fgD/D3dOhAU9F2fX2EyhFGzB6sY=
+
+Name: icons/ovr16/library_ovr.gif
+SHA1-Digest: qtTY38ZP4D/J6NAqA5yQuJgvuko=
+
+Name: org/eclipse/xtext/ui/resource/IStorage2UriMapperContribution.cla
+ ss
+SHA1-Digest: pob8nKr9FMvnhh86q++sjvoeqZ8=
+
+Name: org/eclipse/xtext/ui/editor/IContentTypeSpecific.class
+SHA1-Digest: MolRht5c35uRWyknRLwf4Wf2C1o=
+
+Name: org/eclipse/xtext/ui/compare/DefaultViewerCreator.class
+SHA1-Digest: mphizmh6/jmpJdDvTAqEeB1DzcE=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/AbstractFilterOutlin
+ eContribution$1.class
+SHA1-Digest: sxMu+u+JqGhHFbbAX1b72hGNBMI=
+
+Name: org/eclipse/xtext/ui/util/SWTUtil.class
+SHA1-Digest: ZEw4CawFdwdrASrokcF9PicZrqo=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/OccurrenceMarker$MarkOcc
+ urrenceJob$1.class
+SHA1-Digest: 3zmot3AwGta+WKxdYMvkYsjO0yk=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/OpenDeclarationHandler.
+ class
+SHA1-Digest: ajzDfc/iT0V3lSkynkxcMiNjf8o=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$6.class
+SHA1-Digest: p+RedKBYL9nM/RXMQLR2zqv9fZQ=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/Messages.class
+SHA1-Digest: uhdONF/QfxdXonRhe/1/a5Mdm3w=
+
+Name: XtextHoverStyleSheet.css
+SHA1-Digest: /sxMAnVSyzGqPZ6qiQwjtKzV1wg=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorModelAccess.c
+ lass
+SHA1-Digest: hNXvOGaqLXYeFy0ZLmwgY6L3olk=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$3.class
+SHA1-Digest: xdxblTMA1/k46Fbb5C7kbiQQ4pc=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/XtextQuickAssistAssistant$2
+ .class
+SHA1-Digest: N1ftMRLW8mAwH9iZrFd788/zRt4=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/LinkedEditingUndoSupport.cla
+ ss
+SHA1-Digest: 2zX5gANMj8x/ux2IWK93siAU9HE=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EmfResourceRenameStrategy.
+ class
+SHA1-Digest: WV+v/mFSw5PKL1S5poP6213PJn8=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$5.class
+SHA1-Digest: jy2eWngyIJNBAYkFmBaYLf4wdAA=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/DefaultTextEditComposer.c
+ lass
+SHA1-Digest: g6Xa0sn/kyJNOqnMWYwNr22cdTI=
+
+Name: icons/dlcl16/goto_input.gif
+SHA1-Digest: X2iIBFAUt0RDO5h4EGKP0B7kkFg=
+
+Name: org/eclipse/xtext/ui/containers/WorkspaceProjectsState.class
+SHA1-Digest: 8NgpQeaxfA0MBR2239jTsxENBKQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ResourceAccess.class
+SHA1-Digest: EKh3QEsM1vuNYeo9ThaxeOQjOEo=
+
+Name: org/eclipse/xtext/ui/util/FeatureProjectFactory$2.class
+SHA1-Digest: dt9COVu6LN+BF3glH4Utuz5uwdQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewTreeNode
+ .class
+SHA1-Digest: 3MjVJPkrWzfZEVsWG0l+fkNH1vE=
+
+Name: org/eclipse/xtext/ui/guice/AbstractGuiceAwareExecutableExtension
+ Factory.class
+SHA1-Digest: fObntNjkYZpRy5xldvO9rbQeFNE=
+
+Name: org/eclipse/xtext/ui/editor/model/ITokenTypeToPartitionTypeMappe
+ rExtension.class
+SHA1-Digest: rnJEO+aRBd2uSvWCQhat2izjZOw=
+
+Name: org/eclipse/xtext/ui/preferences/IStatusChangeListener.class
+SHA1-Digest: Qf/dVGijpJIhvWoJWUKWnr9nss4=
+
+Name: org/eclipse/xtext/ui/editor/model/TerminalsTokenTypeToPartitionM
+ apper.class
+SHA1-Digest: AcWRgPdHB0AEEbko2j5jeaHw6Xw=
+
+Name: org/eclipse/xtext/ui/resource/PackageFragmentRootWalker.class
+SHA1-Digest: romHrKfDXc5QhFbwcmCuiastCZM=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameElementContext.class
+SHA1-Digest: AR8hBQeuIvookDDQ8MgJM02XZDc=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/LabelFieldEditor.
+ class
+SHA1-Digest: IUnep1/1zp5nP8DOcupnRiD8yT4=
+
+Name: org/eclipse/xtext/ui/editor/actions/AbstractToggleActionContribu
+ tor$InternalToggleAction.class
+SHA1-Digest: dvefGIoIz3jyL/dPtLIr8jlwxwc=
+
+Name: org/eclipse/xtext/ui/resource/IResourceSetInitializer.class
+SHA1-Digest: CzeOyGn6IQr90G6yjpZZbY4+nmU=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ITemplateProposalProvi
+ der.class
+SHA1-Digest: t0eJrg8wUQeBN02qecElnqkTJWI=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateProposal.clas
+ s
+SHA1-Digest: KdApvnvMfVwwHWvYq9BxyB+K2SI=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPageActi
+ ons$CollapseAll.class
+SHA1-Digest: bcPxYkYzHftX5t4g7gISbCPS8VU=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineTreeState$2.clas
+ s
+SHA1-Digest: I4gihN+ngZY/ibSFbD168Si9bsk=
+
+Name: org/eclipse/xtext/ui/resource/IStorage2UriMapperJdtExtensions.cl
+ ass
+SHA1-Digest: IGN3c1b7gmRGmLOu8X40kkz9hes=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EditorDocumentUndoChange.c
+ lass
+SHA1-Digest: rvkjKIovRYOjvWYOdhWt87KpShs=
+
+Name: icons/nature_overlay.png
+SHA1-Digest: plBs0CeJ4FiIXdtKpQAm3l8FZFM=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextBrowserInformationCo
+ ntrol.class
+SHA1-Digest: UXDMhq83lItKIoTR0N/uhgf1IKM=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/SingleLineTerminalsStrategy
+ $Factory.class
+SHA1-Digest: Q+ihF7gwuyYcRRUxqnYSjmR/cL4=
+
+Name: org/eclipse/xtext/ui/util/ResourceUtil$1MyArchiveURLConnection.c
+ lass
+SHA1-Digest: /mlR8udeMRDl4wmvobh4hXwJ8ZM=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewerConfiguration.class
+SHA1-Digest: 01U2Iw6XDg4619rmkwPVnw4NMHQ=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/messages.properties
+SHA1-Digest: lX9j/8UtluCWzA8fF9rLQs4VJEU=
+
+Name: org/eclipse/xtext/ui/refactoring/ElementRenameArguments.class
+SHA1-Digest: 62tsWRNWQr6oOs2tH7xMMMxLCGo=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/SingleLineTerminalsStrategy
+ $1.class
+SHA1-Digest: CGKtf3mzpeLSDNq6L7Cb6N2wOgM=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$InteractiveC
+ oncurrentEditingQuestion.class
+SHA1-Digest: LMtdAK06ZOX9fyU14RYkavuMcFk=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/PrefixMatcher.class
+SHA1-Digest: 3OYL6hCZPHWOHF3S1pOwCwCIa94=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler$1.class
+SHA1-Digest: XZle10c8n6/y0//x0gzzf+lnB6I=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingPresenter
+ .class
+SHA1-Digest: MtCLKCbPG23G9R+AtkhLrVY2UA8=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/Fix.class
+SHA1-Digest: rNPnnYIBIOkGzo25KenmRIiEOd4=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/Messages.class
+SHA1-Digest: BZR1xRoc558aiqNhRiCLbwzY78A=
+
+Name: org/eclipse/xtext/ui/editor/validation/ValidatingEditorCallback.
+ class
+SHA1-Digest: Uga8qRC0/M/hK+vJuK7grMqyCcA=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SyncUtil$2.class
+SHA1-Digest: ZxGchbnLl8ym12iX2iwfWRPAlN4=
+
+Name: org/eclipse/xtext/ui/editor/IXtextEditorCallback$NullImpl.class
+SHA1-Digest: 9Io5leMNjxM/NmxtUMlQMfAMTeQ=
+
+Name: org/eclipse/xtext/ui/editor/outline/IOutlineTreeProvider.class
+SHA1-Digest: HWVGTuWye+0JI/k1IJRGCWXUg68=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/ILanguageResourceHelper.cla
+ ss
+SHA1-Digest: pGHUZkwnRzRKaDfANHPaqZuaaqs=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$8.class
+SHA1-Digest: BdaaeJ1HIalmja/gEm0x8jLBSoo=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/Messages.class
+SHA1-Digest: oLlLc+Kti3XwgCAFzU0tBna7rB8=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/messages.properties
+SHA1-Digest: rlcELG+ZXkswfssLSJkI4yd305c=
+
+Name: org/eclipse/xtext/ui/generator/trace/ITraceURIConverterContribut
+ ion.class
+SHA1-Digest: VVMCuJIZILXYNWKyC2i/4uQKg3o=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalFac
+ tory.class
+SHA1-Digest: Iw3+gXOWV4F0lIN+f7qf5E2Wi+g=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/LinkedEditingUndoSupport$1.c
+ lass
+SHA1-Digest: xxR8NBhLWarhhW2OXhSmMq5xbUM=
+
+Name: org/eclipse/xtext/ui/editor/GlobalURIEditorOpener.class
+SHA1-Digest: F5M0VxaLAu7KCuxStBjBus8dBHw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$RecoveryListener.class
+SHA1-Digest: wfe7qSkhEd/DLmiOvBdqH3Sfzqg=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameLinkedMode$ExitPolicy.
+ class
+SHA1-Digest: 2Rj2swKOUcFSlyzeiLX6ZSCGMWo=
+
+Name: org/eclipse/xtext/ui/DefaultUiModule.java.rej
+SHA1-Digest: oJ034i4XaGGdq6fRTqQIYeX9XzQ=
+
+Name: org/eclipse/xtext/ui/editor/ISourceViewerAware.class
+SHA1-Digest: O7o9CkqJRsxgerxiqi32cP3mDGw=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextSpellingReconcileStr
+ ategy$Factory.class
+SHA1-Digest: ULzEqaZv/SOx/pgE9Gq4ot89w2A=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$1.class
+SHA1-Digest: ky9RAogzT23RPqwAbSh/YKMUypc=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$SmartLineStartAction.cla
+ ss
+SHA1-Digest: ujVAEC62/lcgrSKkwFeOYdYkFv8=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$1$1.c
+ lass
+SHA1-Digest: zxDkfGOqxqlRdfnz95M7PK5Sp90=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentCharacterIterator.clas
+ s
+SHA1-Digest: hdLoHOqPU/vAmZubnWd5eyaSqL8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalPos
+ tProcessor$NullProcessor.class
+SHA1-Digest: QO3oemo9O9RrO+AzkQzeIV9HgEQ=
+
+Name: org/eclipse/xtext/ui/editor/actions/IActionContributor$Composite
+ Impl.class
+SHA1-Digest: pvd7I0HnyU3X56HBAvTQgJRsz+Q=
+
+Name: org/eclipse/xtext/ui/editor/formatting/IContentFormatterFactory.
+ class
+SHA1-Digest: sbMyXU5T/8I1f5KxY6lruhM/AO4=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$3
+ .class
+SHA1-Digest: /KPYGIY1ONbN3Ee4CrBLZwnENOA=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/SingleLineTerminalsStrategy
+ .class
+SHA1-Digest: t2o7OvYvbEWsGnvdl6PTb3A+KB0=
+
+Name: icons/dlcl16/mark_occurrences.gif
+SHA1-Digest: PVdECHU79ZkkZORJNQEUiudhJfo=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPage$2.c
+ lass
+SHA1-Digest: hHYOibQpHYnVQm34CUY9hA43/ms=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/IOutlineNodeComparer$De
+ fault.class
+SHA1-Digest: Omx1q6UCG3CKkZ2a78trpA9pwhQ=
+
+Name: org/eclipse/xtext/ui/editor/actions/AbstractToggleActionContribu
+ tor$1.class
+SHA1-Digest: J+H3HNmU7ns7+gXj12vQxV4VjJQ=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/CheckBoxGroupFiel
+ dEditor.class
+SHA1-Digest: V9OoV/hKBxFxCCr/LibTYvD6JZY=
+
+Name: org/eclipse/xtext/ui/resource/UriValidator.class
+SHA1-Digest: aAkU9VviIAcJqCCmscnuknSxUrE=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$Whitespace
+ .class
+SHA1-Digest: A9DPngbfxHpOeoy4HCRP+ndN+w8=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/XtextQuickAssistAssistant.c
+ lass
+SHA1-Digest: CK/CisxL4gNtqBdtWlVzPDS1fAM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractJavaBasedConte
+ ntProposalProvider$1.class
+SHA1-Digest: rs5g0vvB1XA+PawDlJT52YPnbBM=
+
+Name: org/eclipse/xtext/ui/editor/validation/ValidationJob$1$1.class
+SHA1-Digest: /6CDAoPWLzNdyZ4BJZS7C3Tsc9I=
+
+Name: org/eclipse/xtext/ui/util/DisplayRunnable.class
+SHA1-Digest: LZgaktbGZFMBt3yaU7VqlDNnMo0=
+
+Name: org/eclipse/xtext/ui/shared/contribution/IEagerContribution.clas
+ s
+SHA1-Digest: xYgFW/NwI6wzDWy88YyEQWyyLd8=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperJavaImpl.class
+SHA1-Digest: 3QrMbl4XBo32Fspf3kwTkb5vUjE=
+
+Name: org/eclipse/xtext/ui/editor/embedded/ActionActivationCode.class
+SHA1-Digest: umR0Idfj4tkIbE0r9xzj2QmDblk=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewer$1.class
+SHA1-Digest: YQiaWXHCxKBYEYw6QkpHrroBk9k=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/ReconcilerReplaceRegion.c
+ lass
+SHA1-Digest: zlNQImZzYxRy0J2ds2DjCFdOCS0=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractTerminalsEditStrate
+ gy.class
+SHA1-Digest: nNtBlYD1MG904PpvnCkgBycURdc=
+
+Name: org/eclipse/xtext/ui/preferences/Messages.class
+SHA1-Digest: wspYkkiUPG4QEIGr+r4VPK58F8w=
+
+Name: about.html
+SHA1-Digest: m//+sZd+LYcO5OY/bjEiZVm0dk0=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$4.cla
+ ss
+SHA1-Digest: 4X3vZvGe4KxOjaNnyelH79ecxwE=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/SelectionButtonDi
+ alogField$1.class
+SHA1-Digest: YuhhH91fnT5OK2l6fHQh61Z5pcg=
+
+Name: org/eclipse/xtext/ui/editor/AbstractDirtyStateAwareEditorCallbac
+ k.class
+SHA1-Digest: HBc9Fp1kaY5xsR7TcgfBTeDRd4Q=
+
+Name: icons/elcl16/synced.gif
+SHA1-Digest: Ghj9SQaJ6vJj8hRCpmwiAfHF1uI=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions$1.cla
+ ss
+SHA1-Digest: REK02FTLdQERrigwgrU8het+pds=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingReconcile
+ r$1$1.class
+SHA1-Digest: V8Z8gB9E8kE+6KKRTNsME5eYEcI=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/SimpleLocalResourceAccess.c
+ lass
+SHA1-Digest: FO+qP2iM+YTsLpcbrYsgQ7sLtGs=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AbstractContentA
+ ssistParser$1.class
+SHA1-Digest: twsb070VbysF7fGwuj1Skijrgf4=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/ShowQuickOutlin
+ eActionHandler.class
+SHA1-Digest: ynTHnxMv0gVTpY+x1dU7HbGG/uM=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$1.class
+SHA1-Digest: uayQea3SKjKjLP4JQb+FwzTEoEc=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringPreferencePage.cl
+ ass
+SHA1-Digest: h7ZuCp8vPp/+0op4LkvE4XeOohI=
+
+Name: org/eclipse/xtext/ui/IImageHelper$NullImageHelper.class
+SHA1-Digest: +S059jla+xgWpUpfYMhzenZXvQU=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocumentProvider$URIInfo.
+ class
+SHA1-Digest: 1QVKuBMJWX0jlSevrLBMT83yauE=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringWizardOpenOperati
+ on_NonForking$1.class
+SHA1-Digest: +glMZkjSjIS+j3G6ejAS+btJqrA=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextElementLinks$XtextLi
+ nkAdapter.class
+SHA1-Digest: rRAepvdl/WXLdYHi1ph/5+PwD6U=
+
+Name: org/eclipse/xtext/ui/search/OpenXtextElementHandler.class
+SHA1-Digest: louG+f0VHnLRkxgPSHfPhfV2bvg=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringExecuter$Ch
+ eckConditionsAndCreateChangeRunnable$1.class
+SHA1-Digest: KfVhteJ68NimkCfsMMVO1GeP3OQ=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/CommonPreferenceConst
+ ants.class
+SHA1-Digest: HdTxHrg4ENDtR6EGdfYaMsQV+jA=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/BackgroundOutlineTreePr
+ ovider.class
+SHA1-Digest: uPFX4SyZKKFafzeXHQBG1FEjtp8=
+
+Name: org/eclipse/xtext/ui/util/PixelConverter.class
+SHA1-Digest: JOXeGqJPnle/eSw3XuFH3bf3wzg=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/DefaultOutlineTreeProvi
+ der.class
+SHA1-Digest: CHDHYyAT94vpMFhap9O/10MKMxs=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock$3.cla
+ ss
+SHA1-Digest: kC79UFiORH3udaWYsTgryMP+0Oo=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/IOutlineContribution
+ $Composite.class
+SHA1-Digest: delhv2FUGGPJoJ+2uYP78PqP89A=
+
+Name: org/eclipse/xtext/ui/editor/Messages.class
+SHA1-Digest: GmACAgZ/CimAmuiLBpq1vP34EmY=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconcilerDebugger$2
+ .class
+SHA1-Digest: WbiXPGVGyXepB9PK4DZNiyt8rdo=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperJavaImpl$PackageF
+ ragmentRootData.class
+SHA1-Digest: FobSlIjfuNPktNznTDBH1OSjUEo=
+
+Name: org/eclipse/xtext/ui/editor/XtextReadonlyEditorInput.class
+SHA1-Digest: EL1y+SUReHoBJ3Wo+jP0QgQ6S4k=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/AbstractIssueResolutionProv
+ iderAdapter.class
+SHA1-Digest: GEuMy4UcpraDnG6KtDmarNSSAKE=
+
+Name: icons/obj16/quickfix_info_obj.gif
+SHA1-Digest: 75duPs8GDNQFVyeMf+q7U6reUhM=
+
+Name: org/eclipse/xtext/ui/util/FileOpener.class
+SHA1-Digest: X5pZ6iKkonwPWBqu0uT6ZXP3f5E=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionProvider.class
+SHA1-Digest: ONa/ZDm5KRGxXDermTVVMyCh6MQ=
+
+Name: org/eclipse/xtext/ui/editor/utils/EditorUtils.class
+SHA1-Digest: d1FhZRQncNj40WNodL5V8A5Ubu0=
+
+Name: org/eclipse/xtext/ui/editor/copyqualifiedname/DefaultCopyQualifi
+ edNameService.class
+SHA1-Digest: 9Fb5Nuop3suR6DhEtHgq6UtWhI8=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractHover.class
+SHA1-Digest: jdoJ5v4YwY2dQ8CpNaUtEfIKOlQ=
+
+Name: org/eclipse/xtext/ui/views/IWorkbenchPartSelection.class
+SHA1-Digest: RMkvus3TBlIFrSY7jRXCwl0Ubbw=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/FindReferencesHandler$1.cla
+ ss
+SHA1-Digest: iRQ+Unn4WJU/LolOZZqxXOJa1S0=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInfo.class
+SHA1-Digest: oSgCDDyPhOSNFzUhl9jrzanVgpU=
+
+Name: org/eclipse/xtext/ui/label/DefaultEditorImageUtil.class
+SHA1-Digest: CEOCadiKaj1zr9fdlQi0YNMQp6g=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewPageActi
+ ons$ExpandAll.class
+SHA1-Digest: efDL9Ojkac2CM0I2l83+Ipkyy20=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/SmartInformationAwareC
+ ontextInformationValidator.class
+SHA1-Digest: djrYJaZnZ6bXYGXG23Nea8rxEYA=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$2.class
+SHA1-Digest: sViHfZHLVE36s1xGe26VVVyDoQg=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractCompositeHover.class
+SHA1-Digest: VWP319S5GX/0yCva6f1uKJIF5Sw=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/Messages.class
+SHA1-Digest: bzt1j+FPUDn3RnGAQlT7B/T4+dU=
+
+Name: org/eclipse/xtext/ui/preferences/ProjectSelectionDialog.class
+SHA1-Digest: YC8KLu9Pr1EROnsblWnn7p1hr+4=
+
+Name: org/eclipse/xtext/ui/label/StylerFactory.class
+SHA1-Digest: FbhY/rmYwDsX4X9CpQvxFM5DBK0=
+
+Name: org/eclipse/xtext/ui/editor/embedded/IEditedResourceProvider.cla
+ ss
+SHA1-Digest: yKPlLQSLyKFe/J87PTzUk3YSgQ4=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$PresenterControlCreator.class
+SHA1-Digest: qVjOJ7xS4mDYo3HXTC9bk/sOcrg=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionProvider$4.cla
+ ss
+SHA1-Digest: Bm7OJ8467b5yWj8Isd2iQJPu/fg=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/ShortCutEditStrategy.class
+SHA1-Digest: C7qXovzzTnYUQF/EvryvR2Oqdpo=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper$Gener
+ ic.class
+SHA1-Digest: wx3DtAJtwL9TVzUP7RTHnmPhtqc=
+
+Name: org/eclipse/xtext/ui/editor/GlobalURIEditorOpener$1.class
+SHA1-Digest: pYQHAnupTek3mrnCflMmEbx0bwQ=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringController$
+ 1.class
+SHA1-Digest: hCNrMFigwZPgLqeCCErIM1B68ZQ=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringExecuter$1.
+ class
+SHA1-Digest: lU7AfJQHuBNR0QE20vyFFz4W7t4=
+
+Name: org/eclipse/xtext/ui/label/LabelProviderQualifier.class
+SHA1-Digest: BrjnsXivCbp1lCp8vpa/UXPGAI0=
+
+Name: org/eclipse/xtext/ui/util/DisplayRunnableWithResult$1.class
+SHA1-Digest: MQfA1wrJt9m5zK7Znqn3eHUXkSw=
+
+Name: org/eclipse/xtext/ui/resource/IResourceUIServiceProviderExtensio
+ n.class
+SHA1-Digest: L4s8UyDk+CrUlrSFvbDvIavAA2g=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/WorkbenchRunnableAdapter.cla
+ ss
+SHA1-Digest: jrj9JvTjmYRLXChmBLSrJzuj5Yk=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage$2.class
+SHA1-Digest: wVsIORph7moT+QSGD5cWnQji4Qo=
+
+Name: org/eclipse/xtext/ui/label/DeclarativeLabelProvider$2.class
+SHA1-Digest: 8JEoqVWAgFQCYhqVCzwvJ+0YLA8=
+
+Name: org/eclipse/xtext/ui/editor/preferences/AbstractPreferencePage.c
+ lass
+SHA1-Digest: pzu8cqrV+z8MQt5SLEXHCkRw7+0=
+
+Name: org/eclipse/xtext/ui/editor/folding/IFoldingRegionAcceptor.class
+SHA1-Digest: dNZNbx+0iZbLy8do3GJdJ7kvy9I=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er.class
+SHA1-Digest: vwgSpVhL7wQ0m+pcuEeE2pl8hek=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContextInformationComp
+ uter.class
+SHA1-Digest: F0f4C/td1rQdf3Gh927hFOk+M4U=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$TokenAdapt
+ er.class
+SHA1-Digest: dmaOWyEn3cCcRPOiC0YMV6X0IY4=
+
+Name: org/eclipse/xtext/ui/messages.properties
+SHA1-Digest: FxXsz9d6lvWNRBF67irPVk8holo=
+
+Name: org/eclipse/xtext/ui/editor/utils/TextStyleConstants.class
+SHA1-Digest: MmTuRnMHUUxETaYDTQV3dE2TTkQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceQuery.class
+SHA1-Digest: BDO0bgairVKI9KfIqc/gLSgnUVY=
+
+Name: org/eclipse/xtext/ui/editor/LanguageSpecificURIEditorOpener$1.cl
+ ass
+SHA1-Digest: AsLcs8cF/Y4lRJ+y8L4LdLqLqWo=
+
+Name: org/eclipse/xtext/ui/wizard/Messages.class
+SHA1-Digest: 5V/J5+Jwg8ZeahzQucVGEQtkxmg=
+
+Name: org/eclipse/xtext/ui/editor/model/JarFileMarkerAnnotationModel.c
+ lass
+SHA1-Digest: Ht30WpL3ZKvWXYNUr/Xaq1engDU=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/CheckBoxGroupFiel
+ dEditor$2.class
+SHA1-Digest: y7a27+Vn7UuV2LITU/i7CmeesF8=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl$1.class
+SHA1-Digest: P25+zigCVVXELg4TIN7bWkf7vA8=
+
+Name: org/eclipse/xtext/ui/refactoring/IRenameStrategy$Provider$NoSuch
+ StrategyException.class
+SHA1-Digest: N+0wCI2CPSw4ShLTbSThcUx1kW0=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocumentUtil.class
+SHA1-Digest: 8RLitvDTuBEObkfl46Q5FciAFrg=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/OutlineWithEditorLin
+ ker.class
+SHA1-Digest: VAKuxHMkd9bLhJvd434LmcFTIjI=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter$
+ IComparator.class
+SHA1-Digest: s6x0bC2Iw3RntNvcatOwn2GNtnQ=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock$Contr
+ olData.class
+SHA1-Digest: nrWHN+jIr0VP3OE4LWamKvmdgSw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AntlrProposalCon
+ flictHelper.class
+SHA1-Digest: +tKVPF7FTC4JM/NGbRBsCE2bl88=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$TokenInfo.
+ class
+SHA1-Digest: c4pnt5Vqa0AKsrLd9+ZdQh97U/A=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/PartitionInsertEditStrategy
+ $Factory.class
+SHA1-Digest: 8jJMWzxqWcPEV0AtLGNB/S9rH60=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/Messages.class
+SHA1-Digest: 7c1O9wzCWcyar6ThsJkQZtvA39w=
+
+Name: org/eclipse/xtext/ui/editor/SchedulingRuleFactory.class
+SHA1-Digest: ejx6SxoFiIlOxOMP5Dx/YxNz2yg=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/DefaultHyperlinkDetecto
+ r.class
+SHA1-Digest: OiQgyx0lsTov1F19IoHdVD1qVNA=
+
+Name: org/eclipse/xtext/ui/editor/bracketmatching/messages.properties
+SHA1-Digest: GxY6x9/yLzQi8e4JzOJ+2Pk1oCY=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$3.class
+SHA1-Digest: yke85Rt0KL8YAkYRNHq3316/U9w=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractJavaBasedConte
+ ntProposalProvider.class
+SHA1-Digest: QGQSA6haFMO1A6Yzc+S1RuO4ivQ=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/TokenScanner$RangedRe
+ entrantIterator.class
+SHA1-Digest: D4f+xQuCZCSIezgQizQuC0sxRZg=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/OpenBrowserUtil$1.class
+SHA1-Digest: Ue47ahzo0p6NRR/L1SP7WyvkNuo=
+
+Name: icons/elcl16/mark_occurrences.gif
+SHA1-Digest: sbwSYFv55QQkp6B1B/tka8FhwRg=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$IConcurrentE
+ ditingCallback.class
+SHA1-Digest: I9mAQo+3uCkgES4Y/Rmnn3tMQVI=
+
+Name: org/eclipse/xtext/ui/preferences/PropertyAndPreferencePage$1.cla
+ ss
+SHA1-Digest: NSc4PlrxeeI6CKQPkM06Z6oZ+aY=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameLinkedMode.class
+SHA1-Digest: rU6txlpGNBFvQY5/3z8q1SrUXWg=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper$TextE
+ ditBased$1.class
+SHA1-Digest: 8GpVgeWBo7sQRjIT17va+YFHpMI=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorErrorTickUpdater$UpdateEd
+ itorImageJob.class
+SHA1-Digest: eVWgLd1tOtJIRXd2gQa0DTdHJ4A=
+
+Name: org/eclipse/xtext/ui/refactoring/IChangeRedirector.class
+SHA1-Digest: NKFigNVMzqRMhFcIOWUosk5AYK8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentProposalLabelPr
+ ovider.class
+SHA1-Digest: HKkuUJ6qBEjPu31TZ+IHZSfpZdY=
+
+Name: icons/elcl16/alphab_sort_co_mini.gif
+SHA1-Digest: VsHFva+hUY9joFlRSgKVDVcyBTs=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ HoverControlCreator$1.class
+SHA1-Digest: hsOQccnUhILEOBaS3R6GKayexCQ=
+
+Name: org/eclipse/xtext/ui/label/DefaultDescriptionLabelProvider.class
+SHA1-Digest: FC8+DuR5uGmSPj0JKD3vyGKf6OA=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/PrefixMatcher$CamelCas
+ e.class
+SHA1-Digest: 9BxLNyT/vBKx8t064tqBdeepZ4o=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameElementWizard$UserInpu
+ tPage$1.class
+SHA1-Digest: 69GAxzZ+CM6ufpcfKFEVqHI67hY=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultLinkedPositionGroupCa
+ lculator$LocalResourceRefactoringUpdateAcceptor.class
+SHA1-Digest: bjW1NAjJG8jB90RmQpS2cKMsUeY=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ReferenceUpdaterDispatcher
+ $OptionalReferenceUpdaterProxy.class
+SHA1-Digest: tSBoefpRtE79axyNVuMCeZFyeqI=
+
+Name: icons/obj16/correction_change.gif
+SHA1-Digest: ZcpDjYDeEJOJmkORmgqZmjSTWlw=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/AbstractHyperlink.class
+SHA1-Digest: AZyMgdIktu+4e6JaeZgLoqvZuaw=
+
+Name: org/eclipse/xtext/ui/refactoring/IChangeRedirector$1.class
+SHA1-Digest: Tz+1v2QERC5lKGbQQW4K7iR5J7Q=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SaveHelper.class
+SHA1-Digest: BPkWQ12jauWsxmqtkcXAtNFlS2Y=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$Popup
+ VisibilityManager.class
+SHA1-Digest: wdU22yivITDNMHpqCbCnIALyoz8=
+
+Name: org/eclipse/xtext/ui/validation/IResourceUIValidatorExtension.cl
+ ass
+SHA1-Digest: KCblXq/n/qE0QsUfVFmmxVUMLao=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperJavaImpl$2.class
+SHA1-Digest: yRZXVHkufcdE7miqknlktEAoFq4=
+
+Name: org/eclipse/xtext/ui/editor/validation/MarkerIssueProcessor.clas
+ s
+SHA1-Digest: cDMMSCL0nAtXjLZjLqUY9iPCttg=
+
+Name: org/eclipse/xtext/ui/editor/templates/Messages.class
+SHA1-Digest: ARgs6ZtwskGI4nPf6S/C4s+WjqE=
+
+Name: org/eclipse/xtext/ui/search/IXtextEObjectSearch.class
+SHA1-Digest: n6F9UcdVnfopPlFxAm1xZgQdtXc=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$LineDelimi
+ ter.class
+SHA1-Digest: /zqcpKUD0miC1sEdUUHepEbd5wg=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/IHighlightedPositionA
+ cceptor.class
+SHA1-Digest: xkot6tj4GaczcYeGurF2CmvSiLA=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/LookAheadTermina
+ l.class
+SHA1-Digest: sLx6z7JTygIaMkQIBPCPItfIw1s=
+
+Name: org/eclipse/xtext/ui/resource/PackageFragmentRootWalker$Traversa
+ lState.class
+SHA1-Digest: Kox8Iie/ymJD6vMS7nQ8c42TPGs=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchViewSorter.c
+ lass
+SHA1-Digest: hgRgXEL0rlEmUbhrYbOqj78v1hk=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory.class
+SHA1-Digest: OYHUEPD/Zik2PrYr5CcLOmtjUUA=
+
+Name: org/eclipse/xtext/ui/search/IteratorJob$1.class
+SHA1-Digest: Vmaahf2Z4ckyUteYjSW/od9cSlI=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/DefaultSingleLineComm
+ entHelper.class
+SHA1-Digest: xGpY8lkwtXWmDdGVM+nHefhBwY4=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocument.class
+SHA1-Digest: MyQjsoJYcrYQnuS6gMr5o6nN2H4=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/DefaultQuickfixProvider.cla
+ ss
+SHA1-Digest: BwMkv7Rf/Vqv0s6YPo8yZTyTqOo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ReplacementTextApplier
+ .class
+SHA1-Digest: tc471UedMqHrI8z6aN5TQfvxRlw=
+
+Name: org/eclipse/xtext/ui/MarkerTypes.class
+SHA1-Digest: H5nHMhZbe9l8I8aR6oK59+0Em5w=
+
+Name: org/eclipse/xtext/ui/editor/formatting/ContentFormatterFactory$F
+ ormattingUnitOfWork.class
+SHA1-Digest: qWSSz3NsCLLKi/JtsUYkewXhFVI=
+
+Name: icons/defaultoutlinenode.gif
+SHA1-Digest: jkeoxd4LG1CVIVd0IMFuw9bF7YA=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/IRenameElementHandler.class
+SHA1-Digest: ww+PCTUj5+KYa/lgUrGVAXnGQkE=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/DefaultHyperlinkDetecto
+ r$1.class
+SHA1-Digest: s4LjCRGq15oTznsjDikMvQTw420=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$4.class
+SHA1-Digest: Uy130hwW8f4UaKntz3Vtu7z8zEQ=
+
+Name: icons/elcl16/prev_nav.gif
+SHA1-Digest: nUGy85EowQLrI5hDomzojsZItS4=
+
+Name: org/eclipse/xtext/ui/label/AbstractLabelProvider.class
+SHA1-Digest: zGoQUuEDdOdMdf8CmE6L4eLcTCo=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateContext.class
+SHA1-Digest: /uJm0JNByIwxnTWLLNsQJVL2Kyc=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/OutlineWithEditorLin
+ ker$TextListener.class
+SHA1-Digest: SBEb5MoqANd2R1q1SeXmc+hKb8M=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonWordIterator.class
+SHA1-Digest: ajZJ/d5Kv+HnO6x4P+8LsTkTSv4=
+
+Name: org/eclipse/xtext/ui/resource/IStorage2UriMapperExtension.class
+SHA1-Digest: UcJSFHs+/vGU70+lhlOFj1L1m6M=
+
+Name: org/eclipse/xtext/ui/editor/folding/IFoldingRegionProvider.class
+SHA1-Digest: vfYGIRxZ4wQ6rsBqzEUyElTmp8Y=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplatePreferencePag
+ e.class
+SHA1-Digest: jVim4fOBq8jDqcuUDCQMoGolM8I=
+
+Name: org/eclipse/xtext/ui/editor/toggleComments/Messages.class
+SHA1-Digest: POwU4RH5h1CdaRYKCeABAm7FvD4=
+
+Name: org/eclipse/xtext/ui/label/StylerFactory$XtextStyleAdapterStyler
+ .class
+SHA1-Digest: yf8/7VEQOrsVC7mUEDM4/rNWcOI=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/LayoutUtil.class
+SHA1-Digest: XDEoCsulNYY3LAfsFWRI46R527c=
+
+Name: org/eclipse/xtext/ui/wizard/IProjectCreator.class
+SHA1-Digest: EcRxefrgM2k6vM1z13bYX6zpfXM=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$1.class
+SHA1-Digest: MOUeLx9bltv0lfnB80/cVqP70dw=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$3.class
+SHA1-Digest: JXyUMo+cQZgnuORrPBU7TWQTV3s=
+
+Name: org/eclipse/xtext/ui/editor/utils/TextStyle.class
+SHA1-Digest: C+uPIVP3tISC3a23cef48aFUu68=
+
+Name: org/eclipse/xtext/ui/editor/messages.properties
+SHA1-Digest: +xk6bo28tbWMANXa41x3jEg7m2A=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionAction.class
+SHA1-Digest: oxLeuOLCu8DyohKNx57TlKwvtn0=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/IReferenceFinderExtension1.
+ class
+SHA1-Digest: qciIqn/yiTaJCq72mnb+qpWgnuY=
+
+Name: org/eclipse/xtext/ui/editor/preferences/IPreferenceStoreInitiali
+ zer$CompositeImpl.class
+SHA1-Digest: HEiCiEaF5G5E0ADaz6gIlzLwLw4=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/DefaultReferenceFinder$1.cl
+ ass
+SHA1-Digest: gjktH0YOrKqyc7pHmRDaWq/dPwg=
+
+Name: org/eclipse/xtext/ui/editor/SchedulingRuleFactory$SerialPerObjec
+ tRule.class
+SHA1-Digest: ej38H5HSc5/D1jiO9LTybHniL+I=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/PrefixMatcher$IgnoreCa
+ se.class
+SHA1-Digest: S/qMziFKVW5tLgYZwl5/OySveIw=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/IssueResolutionProvider$Nul
+ lImpl.class
+SHA1-Digest: lGzK/D4nXzUYyatRAPdudV9WRxg=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultDependentElementsCa
+ lculator.class
+SHA1-Digest: bVVFVWaytATIDFJbDoW82rLIQ0M=
+
+Name: org/eclipse/xtext/ui/editor/embedded/ActionDefinitionToStyledTex
+ tAction.class
+SHA1-Digest: 5ww72LUncT5WXSrN6OFqUz7Ybac=
+
+Name: org/eclipse/xtext/ui/refactoring/IDependentElementsCalculator.cl
+ ass
+SHA1-Digest: H+uxRGRiprmpve8n0f/5CADwhIk=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ICompletionProposalCom
+ parator.class
+SHA1-Digest: kGT+baxcc9lXLRTtosXXR3XTpJY=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/ReconcilingUnitOfWork.cla
+ ss
+SHA1-Digest: MiksemurP220cgJB7WtYmjlXqh4=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$5$1$1$1.class
+SHA1-Digest: mCeoZM015HL2etjFotvZKH3FEGE=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$NavigatePreviousSubWordA
+ ction.class
+SHA1-Digest: ATsY8iIEemBDebYpKCMux1yfnxg=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IContentProposalProvid
+ er.class
+SHA1-Digest: Mv3P7y8CStC8kHPLAF7fQTHAyJ4=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocumentEvent.class
+SHA1-Digest: r5wWF0WulJIlxLpfnKWE45xKmmM=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/messages.properties
+SHA1-Digest: 4BqyQZthpHK0gHOFWwC9KYAXPww=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocument$XtextDocumentLoc
+ ker.class
+SHA1-Digest: t7fA0gDY8NGyCdoeUJorYJw/Weg=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler$InputChan
+ gedDocumentEvent.class
+SHA1-Digest: XFqkzYKfqGTHulW5pdpiEjzqevU=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateEditorSupport$UpdateEditor
+ StateJob$2.class
+SHA1-Digest: uzkxvSlifVJbmmn6r4k/UliKDs4=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorFactory$Build
+ er$6.class
+SHA1-Digest: tqG2jspmWFx0N66ebZsbt+xMnZQ=
+
+Name: org/eclipse/xtext/ui/editor/IValidationJobScheduler.class
+SHA1-Digest: jSboldmsvGj1BZhuIQ1oZnsRx14=
+
+Name: org/eclipse/xtext/ui/editor/hover/DispatchingEObjectTextHover.cl
+ ass
+SHA1-Digest: x32FYzkDVq+hi1V/zlxkp1rTK/w=
+
+Name: org/eclipse/xtext/ui/validation/MarkerTypeProvider.class
+SHA1-Digest: ny8cBM1A+5Fa9jZ3BbU/9QA5ovo=
+
+Name: org/eclipse/xtext/ui/compare/StreamContentAccessorDelegate.class
+SHA1-Digest: WtLr5R3Txo788QZ1FtN+g+BudBQ=
+
+Name: org/eclipse/xtext/ui/containers/ContainerStateProvider.class
+SHA1-Digest: 0NHnH3LiPKDzbJqZom5HjMcTAhs=
+
+Name: org/eclipse/xtext/ui/editor/formatting/PreferenceStoreIndentatio
+ nInformation.class
+SHA1-Digest: jIQO0l3c2WIEqy5Tkg7cVQw4YSM=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerMoveLinesAction.c
+ lass
+SHA1-Digest: 6BT4H1m7JWkQ5YmD8OWT5Po8Xng=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/AbstractMasterDet
+ ailsFieldEditor.class
+SHA1-Digest: FBOrQMLmfdEVglNiUHmAW5/CfRU=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/PreferenceStoreAccess
+ or.class
+SHA1-Digest: HZsEWIpuKwrKNoN60sUTSIPxYpU=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultLabelP
+ rovider.class
+SHA1-Digest: dMxZhTOpBRe1aimDPl2C6D56B7s=
+
+Name: org/eclipse/xtext/ui/editor/preferences/IPreferenceStoreInitiali
+ zer.class
+SHA1-Digest: 4GRiRP7sMvgLKFWqV8PP1q/S4m8=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField.c
+ lass
+SHA1-Digest: n/yCUBCrepi+CiJpgyXXzyCtmEc=
+
+Name: org/eclipse/xtext/ui/validation/AbstractValidatorConfigurationBl
+ ock.class
+SHA1-Digest: EmGCDeuWeOb9jN8T85nKc/z8aCE=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$1
+ .class
+SHA1-Digest: uF23RUOL7jVUPcv3/96rgL+Dm3o=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$6$3.c
+ lass
+SHA1-Digest: uPFl5qi17aJZx+zJnkPxsuiSuMM=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateStore.class
+SHA1-Digest: dPvZPHu45CUsvl3XeCSNWUM5hOo=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/XtextReconciler.class
+SHA1-Digest: PYGFplB5pwQ6zzFajEOb/5jcRx4=
+
+Name: plugin.properties
+SHA1-Digest: wRNpTyT/23Gbv1ccqv59uruVDHI=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er$HoverControlCreator.class
+SHA1-Digest: my8yglupNgvXtJBBUqt3VlL2f7g=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$L
+ istViewerAdapter.class
+SHA1-Digest: ve05j9b4s9wEnrlvuYO7MzhQTMo=
+
+Name: org/eclipse/xtext/ui/editor/info/ResourceForResourceWorkingCopyE
+ ditorInputFactory.class
+SHA1-Digest: VJNbWDApjLzBuhkallIbm/Egswo=
+
+Name: org/eclipse/xtext/ui/editor/folding/FoldingActionGroup$2.class
+SHA1-Digest: 9VJyzZP8l+N+xmLRTjdjTDvcDv0=
+
+Name: org/eclipse/xtext/ui/generator/trace/JavaProjectAwareTraceContri
+ bution.class
+SHA1-Digest: j7QjAfdpkTHR8LyqV4XVXLH75uc=
+
+Name: org/eclipse/xtext/ui/editor/preferences/FixedScopedPreferenceSto
+ re$2.class
+SHA1-Digest: GQN6qAHIZQBilFTWpqZMSvbIJPo=
+
+Name: org/eclipse/xtext/ui/views/AbstractSourceView$1.class
+SHA1-Digest: dD1QYWPpwkzix1Eud3YVJeoQ7vA=
+
+Name: icons/elcl16/expandall.gif
+SHA1-Digest: s8M27dkBqoZwlsuYC/q9kXcbvTA=
+
+Name: org/eclipse/xtext/ui/util/SWTUtil$1.class
+SHA1-Digest: gIHtQoXYw2K2c/PvKdsweul9Pq4=
+
+Name: org/eclipse/xtext/ui/editor/doubleClicking/FixedCharCountPartiti
+ onDoubleClickSelector.class
+SHA1-Digest: XFRMylm6Q0kkZ8uaRqnTK6+Y0HY=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeFactory$1.cl
+ ass
+SHA1-Digest: WqePB+Sy/nFRFxJzvu/8x7eZeDI=
+
+Name: plugin.xml
+SHA1-Digest: l6oCjWiXWx1sXknQfwsPQir5iLI=
+
+Name: org/eclipse/xtext/ui/util/PluginProjectFactory.class
+SHA1-Digest: Hc8fOS1TFSgyXxrKdRHe3og38NY=
+
+Name: org/eclipse/xtext/ui/editor/preferences/AbstractPreferencePage$1
+ .class
+SHA1-Digest: VdNjnbRszmwNH1nujSNst59yDo8=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IModification$1.class
+SHA1-Digest: AoW+Ik+dkhLbbUnbInLCWYBdz/o=
+
+Name: org/eclipse/xtext/ui/PluginImageHelper.class
+SHA1-Digest: JcpoG7iAsTRQhEnnpOyLJROTeLM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ReferenceUpdaterDispatcher
+ $ReferenceDescriptionAcceptor.class
+SHA1-Digest: 7/UitkK4JHx8MxYkrik/DBbx4kU=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/AbstractToggleOutlin
+ eContribution.class
+SHA1-Digest: mKLai9OW3REzTUeOjRPiLgo04xA=
+
+Name: org/eclipse/xtext/ui/wizard/AbstractProjectCreator.class
+SHA1-Digest: NTtS+0hoF8AzyeJizwU8eB5aHKA=
+
+Name: org/eclipse/xtext/ui/internal/XtextPluginImages.class
+SHA1-Digest: +AKl1SXA8uWC3zq+ANwL83Et7RU=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ITemplateAcceptor.clas
+ s
+SHA1-Digest: Jsp0B5JDQZ169JH/Z2GZqljXjhM=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/DefaultEObjectHoverProvid
+ er.class
+SHA1-Digest: Nl8k91U2gFqP2qvn1NctJUZZ0VY=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditorErrorTickUpdater$1.class
+SHA1-Digest: NZbl2QEtLP/IRRuh21JDxJAOYbc=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingPresenter
+ $2.class
+SHA1-Digest: JrO36ls2H5njc7W3+lkQC9g6rjQ=
+
+Name: org/eclipse/xtext/ui/DefaultUiModule.class
+SHA1-Digest: r5Gc/GgxD/y+dXEOuuSR4nORsKc=
+
+Name: org/eclipse/xtext/ui/refactoring/IChangeRedirector$Aware.class
+SHA1-Digest: MKG313ombKelkWO4M5OS9IRL7Gg=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringPopup$2.cla
+ ss
+SHA1-Digest: ZXvRDpMW3bkrXszOlTw/vewXdvc=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultConten
+ tProvider.class
+SHA1-Digest: p+3a2fjGG184nbwwi/Tfz3P02xE=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperImpl$2$1.class
+SHA1-Digest: COgZfnT0gRn6x0enKRUC+AAfh+0=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/HyperlinkLabelProvider.
+ class
+SHA1-Digest: mg89pQgxfSf/7PKrXdbusvT0ozM=
+
+Name: org/eclipse/xtext/ui/LexerUIBindings.class
+SHA1-Digest: yH7IkxBF198wf39LEmqkvnum7vI=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/internal/Abstrac
+ tInternalContentAssistParser$4.class
+SHA1-Digest: 4nmRG2hEqaqCH0PlMGVxPDd6hYM=
+
+Name: org/eclipse/xtext/ui/notification/IStateChangeEventBroker.class
+SHA1-Digest: AKCBwB5AXioiIo7BKxVNg+Wn12I=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/IEObjectHoverDocumentatio
+ nProvider.class
+SHA1-Digest: lpTeuGUhlZMLBfYNuWyOgR11JWs=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/CompletionProposalComp
+ uter.class
+SHA1-Digest: HHmDe4jo1b+PM8YlCGlrQ8alIts=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/DocumentRootNode.class
+SHA1-Digest: vlc/qd4aBEqxiRr76w8xsZ/X/QI=
+
+Name: org/eclipse/xtext/ui/preferences/ProjectSelectionDialog$3.class
+SHA1-Digest: tseo0CMtgOJjuGZCpIXYlR1/y7w=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DisplayChangeWrapper$Gener
+ ic$1.class
+SHA1-Digest: sgv2HdYeC2EPQ+uPw34IthJW1Ng=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$Other.clas
+ s
+SHA1-Digest: iSieLAWUrV8EhKXuW6tPiwunj6o=
+
+Name: icons/elcl16/next_nav.gif
+SHA1-Digest: RQXpLCwGwO2SKbD5h5J894Eotis=
+
+Name: org/eclipse/xtext/ui/preferences/OptionsConfigurationBlock$1.cla
+ ss
+SHA1-Digest: rrcOlSENFcVo4jWPaTrLyxGVgrs=
+
+Name: org/eclipse/xtext/ui/editor/formatting/PreferenceStoreWhitespace
+ InformationProvider$1.class
+SHA1-Digest: giQFBsuMhZmbFe/ze00i3YSoysw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/FQNPrefixMatcher.class
+SHA1-Digest: 2PumtNrrwnHicEg1ar5vuaNPscs=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/DefaultHighlightingCo
+ nfiguration.class
+SHA1-Digest: MMEKT2J+iwbdzwRlY2MveZP21Tg=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/BackgroundOutlineTreePr
+ ovider$1.class
+SHA1-Digest: rlvOLcwR5/eSIESOOKt5kENmc+Y=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRenameRefactoringPr
+ ovider.class
+SHA1-Digest: t0eddq+sDagsuyLZLdr8Fd3UJUA=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultConten
+ tProvider$UIUpdater.class
+SHA1-Digest: 44drT6kE0iHgDS3w5bQn982GL9I=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/HighlightingPresenter
+ $HighlightingPositionUpdater.class
+SHA1-Digest: 9wfP05hZPI7wCPAZe55r5WmUjws=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IContextInformationAcc
+ eptor.class
+SHA1-Digest: KhXWU+jaJacgY2dCd+R/Gm3nT7g=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineFilterAndSorter$
+ 1$1.class
+SHA1-Digest: BzSrSHZGSXHFo5VbPL5Eeu9tiiI=
+
+Name: org/eclipse/xtext/ui/search/messages.properties
+SHA1-Digest: ZrJSLJfexbtlesTTH/tAyCsih2E=
+
+Name: icons/dlcl16/alphab_sort_co.gif
+SHA1-Digest: FDMI+c41+UcMX7nR/bTNT/maK+g=
+
+Name: org/eclipse/xtext/ui/editor/model/Regions$1.class
+SHA1-Digest: nOOfS+ISPbKSHW/3GUxiKf8bKKs=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/IOutlineContribution
+ $All.class
+SHA1-Digest: J4aZ4mg8T++DNixz0G3aBPR5PNA=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionProvider$2.cla
+ ss
+SHA1-Digest: gw3ZjJm5QpTwtikBYZhnN+lugYE=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringExecuter.cl
+ ass
+SHA1-Digest: qhsoqdWkCmpsWHD2NuIc8KpugBM=
+
+Name: org/eclipse/xtext/ui/editor/embedded/EmbeddedEditorActions$4.cla
+ ss
+SHA1-Digest: c6ZxUoPHkS8E4GA65LbSBgVvIbs=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ContentAssistContext$B
+ uilder.class
+SHA1-Digest: zpFn9HWQWeUTx/oOelGrZFegg8w=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/AbstractFilterOutlin
+ eContribution.class
+SHA1-Digest: V5xrnDDNCRtrTqI4kES6ajg4Qhg=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultEvents
+ .class
+SHA1-Digest: Xu9Xb98tHQWVnhdEKWxAx/Deuvc=
+
+Name: org/eclipse/xtext/ui/editor/folding/DefaultFoldedPosition.class
+SHA1-Digest: vTK8iSFa4pl1qi1Hv4h086DfINo=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/DefaultLinkedPositionGroupCa
+ lculator$2.class
+SHA1-Digest: 9lKpv0jldAg/Ey5iKkv0kvF9GzI=
+
+Name: schema/searchFilter.exsd
+SHA1-Digest: WdHI7pRooDgLf2BAKUncUDLNcV8=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionMessages.prope
+ rties
+SHA1-Digest: VBp6g8bs0AIGXBJEg886ww6QDcw=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/AbstractContentA
+ ssistParser$4.class
+SHA1-Digest: DIg/styEh+qcliV5oyVT3jvjo2g=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/IHighlightingHelper.c
+ lass
+SHA1-Digest: WXBpMwF1/uDiahfVm5wi6fzFWtM=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResult.class
+SHA1-Digest: pMOrl9XemJoquJkhId0SNJaPaFw=
+
+Name: org/eclipse/xtext/ui/editor/XtextEditor$4.class
+SHA1-Digest: fKVB0HazM9SgZkFKlj65bgWBLzA=
+
+Name: org/eclipse/xtext/ui/editor/model/CommonBreakIterator$Run.class
+SHA1-Digest: IOIRrEb5qn88ApkjITPUHWpqTuo=
+
+Name: org/eclipse/xtext/ui/wizard/IProjectInfo.class
+SHA1-Digest: vG8qcfEnKJZ3mtcrlOSpzxJWKDQ=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringPreferences.class
+SHA1-Digest: PwOF/HaQBaig222oXhwLgOvCBEM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/ProjectUtil$1.class
+SHA1-Digest: MOPHWt5md/rQx6yndoE+7j0FM2g=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/ReferenceSearchResultConten
+ tProvider$1$1.class
+SHA1-Digest: WdUp2m4mgN0WgHPAnIoyioXrNK4=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/ISimilarityMatcher$Default.
+ class
+SHA1-Digest: URQm4zdM0wR1OzWAJi6o459PDQY=
+
+Name: org/eclipse/xtext/ui/editor/validation/IValidationIssueProcessor
+ .class
+SHA1-Digest: 4jTNrDSU3nd1KdTHAVY3dTTX1EY=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/StatusWrapper$1.class
+SHA1-Digest: 2uP25uFvabcI7i/zwfAmLm5LKn8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ObservableXtextT
+ okenStream$StreamListener.class
+SHA1-Digest: qVKK68fAMpR3WZgI7qTKgZXposM=
+
+Name: org/eclipse/xtext/ui/editor/reconciler/Messages.class
+SHA1-Digest: GRxaFuZqt4lSBONmCg7R2HBitQI=
+
+Name: org/eclipse/xtext/ui/editor/model/PartitionTokenScanner$RangedIt
+ erator.class
+SHA1-Digest: GnVbEC3864GK122XyoKhIL8Vb6E=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineRefreshJob$3.cla
+ ss
+SHA1-Digest: eciThg3bjd0kySkPiWY98n3XDmY=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory$StatefulFactory.class
+SHA1-Digest: /j7olIIbhg6kChktmZNqyHB1fZY=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/MarkOccurrenceActionCont
+ ributor.class
+SHA1-Digest: H5PD+yKcwKMecGvkcSkmrWHd+wo=
+
+Name: org/eclipse/xtext/ui/editor/embedded/MarkRegionTargetWithoutStat
+ usline.class
+SHA1-Digest: 5uwaRcewx3rtZR8vcS5ZMH6InLI=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/IssueModificationContext$
+ Factory.class
+SHA1-Digest: 7PNS5NLK1AYVHfbaurQmt+qzpv4=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/ConfigurableCompletion
+ Proposal$ExitPolicy.class
+SHA1-Digest: AR8QKSurPRf99sma31/vo0t0nsE=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultReferenceUpdater.cl
+ ass
+SHA1-Digest: xsGzpwTpGNHLFtrclgW+979cNPs=
+
+Name: org/eclipse/xtext/ui/label/StylerFactory$DefaultFontStyler.class
+SHA1-Digest: 0ygdYiw5b+yA8ZzxRK6zeEDYDME=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/PresentationRepairer.
+ class
+SHA1-Digest: 3FtZu/zqKeTOoe+Xm9QyGcvGKiU=
+
+Name: org/eclipse/xtext/ui/editor/outline/actions/LinkWithEditorOutlin
+ eContribution.class
+SHA1-Digest: MC53eIBoROHemtCVRa6J33PqeH4=
+
+Name: org/eclipse/xtext/ui/shared/contribution/ISharedStateContributio
+ nRegistry.class
+SHA1-Digest: RUEX0sfnO2ZKUPxPKoh5rf2MI8E=
+
+Name: org/eclipse/xtext/ui/wizard/messages.properties
+SHA1-Digest: mRMDrP1kpV0Gi5pyt4lJcI2tKSI=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory$FollowElementCalculator.class
+SHA1-Digest: 7RG6CFJOhoVweYNHA9oSDApdefg=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/OpenDocumentTracker$PageLis
+ tener.class
+SHA1-Digest: VpzqKy9QAMEE7d1yfKpya/ijQJQ=
+
+Name: icons/dlcl16/synced.gif
+SHA1-Digest: t1WfTj8cRQ3o/E+jiif9ijsa6sM=
+
+Name: org/eclipse/xtext/ui/resource/SourceAttachmentPackageFragmentRoo
+ tWalker.class
+SHA1-Digest: JqyL2VAIlafHX6vV5c1CVhhZo8s=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider$FileDocument.class
+SHA1-Digest: uGZ2Bmn76Vxwu5qsHAZSAgxnGzs=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/IOutlineTreeStructurePr
+ ovider.class
+SHA1-Digest: 6T7V04NiBx324GRDfyMeKEWRi/Y=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RenameRefactoringExecuter$Ch
+ eckConditionsAndCreateChangeRunnable.class
+SHA1-Digest: UrFdo9X/2m6mPOdyaL3B/zVK79k=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionAction$1.class
+SHA1-Digest: U/UNXfvoY/c+cRFh5zFmC1DDhos=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextElementLinks.class
+SHA1-Digest: tFtZ1a9ffPCOvgKg7bAzqu9TNV4=
+
+Name: org/eclipse/xtext/ui/editor/hyperlinking/IHyperlinkAcceptor.clas
+ s
+SHA1-Digest: tolMv+xWSskRRJY8s0eGm3WRztA=
+
+Name: org/eclipse/xtext/ui/editor/embedded/TextViewerShiftAction.class
+SHA1-Digest: Pm3cU6QQYEl15U31ICLag2DWcEE=
+
+Name: org/eclipse/xtext/ui/editor/outline/quickoutline/QuickOutlinePop
+ up$1.class
+SHA1-Digest: BWBaMOW/54zJ4GKbdwvcnkhAnNM=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/antlr/ParserBasedConte
+ ntAssistContextFactory.class
+SHA1-Digest: XP5LF1EEHjOhSvLXOuzlyDPIJB0=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IFollowElementAcceptor
+ .class
+SHA1-Digest: H1JwNtNzdRBliCq6s8r2+SqOjZ8=
+
+Name: org/eclipse/xtext/ui/editor/IDirtyStateManager$Event.class
+SHA1-Digest: EUKnMGuFawTks8ynB+qoqY5ibrE=
+
+Name: org/eclipse/xtext/ui/editor/validation/MarkerCreator.class
+SHA1-Digest: jsvjU76VgKo3hduHrU1FGWjIHqM=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/IRefactoringDocument$Provi
+ der.class
+SHA1-Digest: uarhDBufkyaQfajiPvyfi2690ZI=
+
+Name: org/eclipse/xtext/ui/editor/bracketmatching/BracketMatchingPrefe
+ rencesInitializer.class
+SHA1-Digest: 2BFRj6wENMGbtcoasa6rjLy2eMM=
+
+Name: org/eclipse/xtext/ui/editor/LanguageSpecificURIEditorOpener.clas
+ s
+SHA1-Digest: ZzMg00Y+NOlK/pSbWtlohtxxtvk=
+
+Name: org/eclipse/xtext/ui/editor/model/XtextDocument$1.class
+SHA1-Digest: O2mtGXvaRT5t1D7iBypX6TnAX4c=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlinePage$5.class
+SHA1-Digest: PTlfKLHuZCRg7hSkPi7Dr3tuZGM=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/IOutlineNodeComparer.cl
+ ass
+SHA1-Digest: +qdpIUzc95srtBFIGcY8EOfoybs=
+
+Name: org/eclipse/xtext/ui/editor/syntaxcoloring/AbstractAntlrTokenToA
+ ttributeIdMapper.class
+SHA1-Digest: Zm9fVZVH95XSmlpn3vk1vpWxHso=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider$RedirectedFileDocument.class
+SHA1-Digest: K/ogM8G+t0nMr5Ab0KBtaQDkHFA=
+
+Name: org/eclipse/xtext/ui/editor/model/ResourceAwareXtextDocumentProv
+ ider.class
+SHA1-Digest: 1aV2T8KVtAtlXAqaBB8lCMELSiU=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/EditorDocumentUndoChange$2
+ .class
+SHA1-Digest: UszVh+O2T8mgthRL6O+6fYxSD4o=
+
+Name: org/eclipse/xtext/ui/generator/trace/ExtensibleTraceURIConverter
+ $CompositeContribution.class
+SHA1-Digest: PHBy8RKteWaIAQrwbdnSdi9Oq8c=
+
+Name: org/eclipse/xtext/ui/editor/formatting/ContentFormatterFactory.c
+ lass
+SHA1-Digest: a/V0536/WEiszopNaTBxq2y5NGQ=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/TreeViewerNavigator.class
+SHA1-Digest: 9ZEEoBg1K+CRW+griqbNtdP2/jI=
+
+Name: org/eclipse/xtext/ui/preferences/EclipsePreferencesProvider.clas
+ s
+SHA1-Digest: QhE2uKF52Wj5gSY9jx8AzjT4pWc=
+
+Name: org/eclipse/xtext/ui/editor/findrefs/messages.properties
+SHA1-Digest: AkZEDDwa7NFbyzxDhYs3lN0sGjU=
+
+Name: org/eclipse/xtext/ui/editor/DocumentBasedDirtyResource$1.class
+SHA1-Digest: FHl439KBi0P6SMfMUqjCIxjVc5g=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ AnnotationInformationControl$4.class
+SHA1-Digest: b0NMU++7puonGqhs1vA/Ak2CUnE=
+
+Name: org/eclipse/xtext/ui/editor/model/DocumentTokenSource$RepairEntr
+ yData.class
+SHA1-Digest: QVaHYQA9x8dL59tkFBSHLKGE4iY=
+
+Name: org/eclipse/xtext/ui/editor/validation/AnnotationIssueProcessor.
+ class
+SHA1-Digest: jiwbAU7g6wWO43o3l4XNgG60ZTo=
+
+Name: org/eclipse/xtext/ui/editor/XtextPresentationReconciler.class
+SHA1-Digest: acOZybg0dly44DzkPVZlE1meo+4=
+
+Name: org/eclipse/xtext/ui/generator/trace/ExtensibleTraceURIConverter
+ $NullContribution.class
+SHA1-Digest: gs2wEgVljnOg6h+I4/sUJluMYHw=
+
+Name: org/eclipse/xtext/ui/resource/Storage2UriMapperImpl$3.class
+SHA1-Digest: xMhvh70chpL+qYe9k4tWwUnTWnY=
+
+Name: org/eclipse/xtext/ui/refactoring/ILinkedPositionGroupCalculator.
+ class
+SHA1-Digest: SG3cYTHWpQIm2cOMkEd8NUATobY=
+
+Name: org/eclipse/xtext/ui/InjectableAdapterFactory.class
+SHA1-Digest: OhwzaxaQre+bLdLMZluuHdBAiOE=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/IContextInformationPro
+ vider.class
+SHA1-Digest: fer22P4v5NNaAtCHfAu/zIsnDWM=
+
+Name: org/eclipse/xtext/ui/shared/contribution/SharedStateContribution
+ .class
+SHA1-Digest: zJeDrqsnqoyaVYwXNM9Jp/RLeSs=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/MarkerResolutionGenerator$R
+ esolutionAdapter.class
+SHA1-Digest: 7jb/1Ov26Kftfyv8S6nKCAxaPpk=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/AbstractEditStrategyProvide
+ r$IEditStrategyAcceptor.class
+SHA1-Digest: dtOui/ZguOT9yLzAILrmFNgZu28=
+
+Name: org/eclipse/xtext/ui/editor/hover/AbstractHover$1.class
+SHA1-Digest: QT5HG4m0FPdymxF6fUZJxMEnjSA=
+
+Name: org/eclipse/xtext/ui/editor/autoedit/PartitionEndSkippingEditStr
+ ategy.class
+SHA1-Digest: Hc6Y1FVUhow1woyS7FjyY+93pvA=
+
+Name: org/eclipse/xtext/ui/editor/preferences/fields/AbstractMasterDet
+ ailsFieldEditor$2.class
+SHA1-Digest: GFRLZFsO3TgzlBMSlSX7C/DV194=
+
+Name: org/eclipse/xtext/ui/util/DisplayRunnableWithResult.class
+SHA1-Digest: owRsqxD4iA7xsCcPVG0HLccZQVA=
+
+Name: org/eclipse/xtext/ui/editor/selection/AstSelectionActionContribu
+ tor.class
+SHA1-Digest: 1kFKwNnlxOymwHqhcx8exvWQweA=
+
+Name: org/eclipse/xtext/ui/editor/occurrences/OccurrenceMarker$MarkOcc
+ urrenceJob.class
+SHA1-Digest: JW3Ynl5AEHidS8ex8UvLcTrl3hk=
+
+Name: org/eclipse/xtext/ui/compare/DefaultMergeViewer$1.class
+SHA1-Digest: 95JO2OQyCOG9COg0cehMM9e62z8=
+
+Name: org/eclipse/xtext/ui/editor/quickfix/QuickAssistCompletionPropos
+ al.class
+SHA1-Digest: QotKrliFwIJSEspnEzLKQX7IOF8=
+
+Name: org/eclipse/xtext/ui/editor/templates/XtextTemplateContextTypeRe
+ gistry.class
+SHA1-Digest: 4TK6cmdy2Bh/p0F3gVr5vPwDmBA=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/AbstractReferenceUpdater.c
+ lass
+SHA1-Digest: nCLrkMOrn9237iCD+J/Rm4vWwyM=
+
+Name: org/eclipse/xtext/ui/search/XtextEObjectSearchDialog$2.class
+SHA1-Digest: zbd7AS/gEMDf/cwi049vrAR3puI=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextBrowserInformationCo
+ ntrolInput.class
+SHA1-Digest: HAAYz0egfp6Rrg4YzJkr6ddwgZA=
+
+Name: org/eclipse/xtext/ui/containers/AbstractAllContainersState$1.cla
+ ss
+SHA1-Digest: LWYuLeWNQTgMA7fY27tjob/uDU4=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/XtextBrowserInformationCo
+ ntrolAdapter.class
+SHA1-Digest: eseGNZOk/3KTghTyVCdHLEx57S4=
+
+Name: org/eclipse/xtext/ui/editor/model/IXtextDocumentContentObserver.
+ class
+SHA1-Digest: 4TWXVxtzNc6OCiieiombzMx3wWE=
+
+Name: org/eclipse/xtext/ui/editor/handler/ContentAssistHandler.class
+SHA1-Digest: oudbFUNZNIvuArry4p7xKbu9fpo=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/RepeatedContentAssistP
+ rocessor$ModeAware.class
+SHA1-Digest: Lkq4tCrbZm+4gU6EHAnkBaQy/24=
+
+Name: org/eclipse/xtext/ui/editor/XtextSourceViewer$Factory.class
+SHA1-Digest: 9p1RlF7YsH09JuVwqKLGUvDpBM8=
+
+Name: org/eclipse/xtext/ui/editor/contentassist/AbstractJavaBasedConte
+ ntProposalProvider$ReferenceProposalCreator.class
+SHA1-Digest: XZZgWasfzgB75gscf37qxQINHNo=
+
+Name: org/eclipse/xtext/ui/editor/hover/AnnotationWithQuickFixesHover$
+ CompletionProposalRunnable.class
+SHA1-Digest: 7NZyq3J1ak8VdFfOkX5+jx51FNg=
+
+Name: org/eclipse/xtext/ui/editor/tasks/dialogfields/ListDialogField$T
+ ableLayoutComposite$1.class
+SHA1-Digest: 5Rn+LmMjDX6NOLAwsCnaX4nLi1g=
+
+Name: org/eclipse/xtext/ui/editor/model/edit/SemanticModificationWrapp
+ er.class
+SHA1-Digest: RZGP1sPhLLpSiEcVOAMO1uFC8Uo=
+
+Name: org/eclipse/xtext/ui/editor/DirtyStateManager$1.class
+SHA1-Digest: sNugzGZnBwf7cVmtK/URmXVG8Ns=
+
+Name: org/eclipse/xtext/ui/editor/outline/impl/OutlineNodeElementOpene
+ r$1.class
+SHA1-Digest: i/ptjWCpL2m8cRzhRrF4+sG1nuQ=
+
+Name: org/eclipse/xtext/ui/editor/doubleClicking/DoubleClickStrategyPr
+ ovider.class
+SHA1-Digest: RG9imIwJX/C8QIoXf5lIzPPDrJg=
+
+Name: org/eclipse/xtext/ui/IImageHelper.class
+SHA1-Digest: HSCIEKkBBihCU4yUgM6eDVnbRKA=
+
+Name: org/eclipse/xtext/ui/refactoring/impl/DefaultRefactoringDocument
+ Provider$EditorDocument.class
+SHA1-Digest: bWmpcynl3CEOHwENgVSG5XZw844=
+
+Name: icons/obj16/searchm_obj.gif
+SHA1-Digest: kCLmGfhNk3E8XFQCF5umAga+HXU=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/RefactoringPreferences$Initi
+ alizer.class
+SHA1-Digest: eqmZ6qYDxv2shY3RxW9IKO+3czc=
+
+Name: org/eclipse/xtext/common/ui/contentassist/TerminalsProposalProvi
+ der$1.class
+SHA1-Digest: vOOdoCqybw/bfwF2JdGMikRdfuc=
+
+Name: org/eclipse/xtext/ui/wizard/DefaultProjectInfo.class
+SHA1-Digest: lP2MsR1SUVxmEJNuDtcO/ulDkGM=
+
+Name: org/eclipse/xtext/ui/util/IJdtHelper.class
+SHA1-Digest: pVlHFoRmKx6COCmoGXXbIUw8tDI=
+
+Name: org/eclipse/xtext/ui/editor/validation/ValidationJob.class
+SHA1-Digest: 5tFc6ydZt37b/60QPe7pmZZsBQA=
+
+Name: org/eclipse/xtext/ui/refactoring/ui/SaveHelper$1$1.class
+SHA1-Digest: phWu8Djta1w9kL/EBNgfcDLVVMY=
+
+Name: org/eclipse/xtext/ui/editor/hover/html/OpenBrowserUtil.class
+SHA1-Digest: iPKU9487Vd/hwMmC5ZCGn4GC6wU=
+

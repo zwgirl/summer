@@ -1,0 +1,104 @@
+module org.summer.ss.core.GenerateSs
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+import org.eclipse.xtext.generator.parser.antlr.*
+import org.eclipse.xtext.resource.XtextResourceSet 
+
+var grammarURI = "classpath:/org/summer/ss/core/Ss.xtext"
+var file.extensions = "ss"
+var projectName = "org.summer.ss.core"
+var projectPath = "../${projectName}"
+
+var uiProjectName = "org.summer.ss.ide"
+var uiProjectPath = "../${uiProjectName}"
+var backtrack = false
+var memoize = false
+
+Workflow {
+	bean = StandaloneSetup {
+		ignoreBrokenProjectFiles = true
+		scanClassPath = true
+		registerGenModelFile = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
+	}
+	
+	bean = StandaloneSetup {
+		resourceSet = XtextResourceSet : resourceSet {}
+		registerEcoreFile = "platform:/resource/org.summer.dsl.model/model/DslModel.ecore"
+	}
+	
+//	component = DirectoryCleaner {
+//		directory = "${projectPath}/emf-gen"
+//	}
+//
+//	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
+//		genModel = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
+//		srcPath ="platform:/resource/org.summer.dsl.model/emf-src"
+//	}
+
+	component = DirectoryCleaner {
+		directory = "${projectPath}/src-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${uiProjectPath}/src-gen"
+	}
+
+	component = Generator {
+		pathRtProject = projectPath
+		pathUiProject = uiProjectPath
+		projectNameRt = projectName
+		projectNameUi = uiProjectName
+		encoding = "ISO-8859-1"
+		naming = {
+			uiBasePackage = "org.summer.ss.ide"
+			grammarId = "org.summer.ss.core.Ss"
+		}
+		language = {
+			forcedResourceSet = resourceSet
+			uri = grammarURI
+			fileExtensions = file.extensions
+			fragment = grammarAccess.GrammarAccessFragment {}
+			fragment = serializer.SerializerFragment {
+				// generateDebugData = true
+			}
+			fragment = resourceFactory.ResourceFactoryFragment {
+				fileExtensions = file.extensions
+			}
+			fragment = XtextAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+			fragment = DebugAntlrGeneratorFragment {
+				options = auto-inject {}
+			}
+//			fragment = validation.JavaValidatorFragment {}
+//			fragment = generator.GeneratorFragment {}
+//			fragment = scoping.ImportNamespacesScopingFragment {}
+//			fragment = builder.BuilderIntegrationFragment {}
+//			fragment = quickfix.QuickfixProviderFragment {}
+//			fragment = labeling.LabelProviderFragment {
+//				generateStub = false
+//			}
+//			fragment = outline.OutlineTreeProviderFragment {}
+//			fragment = outline.QuickOutlineFragment {}
+//			fragment = compare.CompareFragment {
+//				fileExtensions = file.extensions
+//			}
+//			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = XtextAntlrUiGeneratorFragment {
+				removeBacktrackingGuards = true
+				lookaheadThreshold = '5'
+				options = auto-inject {}
+			}
+//			fragment = refactoring.RefactorElementNameFragment {
+//				useJdtRefactoring = true
+//			}
+//			fragment = types.TypesGeneratorFragment {}
+//			fragment = xbase.XbaseGeneratorFragment {
+//				generateXtendInferrer = false
+//			}
+//			fragment = templates.CodetemplatesGeneratorFragment {}
+		}
+	}
+}

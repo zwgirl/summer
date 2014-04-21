@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: org.summer.dsl.xtype.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.summer.dsl.xtype.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors,
+ org.antlr.runtime,
+ org.summer.dsl.xtype;bundle-version="1.0.0",
+ org.apache.commons.logging;bundle-version="1.1.1",
+ org.summer.dsl.ui.shared;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.summer.dsl.xtype.ui.contentassist.antlr
+Import-Package: org.apache.log4j;version="1.2.15"

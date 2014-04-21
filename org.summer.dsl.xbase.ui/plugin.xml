@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.summer.dsl.xbase.ui.XbaseExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="___xbase1">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="org.summer.dsl.xbase.ui.XbaseExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="___xbase1">
+        </resourceServiceProvider>
+    </extension>
+    <extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="%OpenTypeHierarchyCommand_description"
+			id="org.summer.dsl.xbase.ui.hierarchy.OpenTypeHierarchy"
+			name="%OpenTypeHierarchyCommand_name">
+		</command>
+		<command
+			description="%OpenCallHierarchyCommand_description"
+			id="org.summer.dsl.xbase.ui.hierarchy.OpenCallHierarchy"
+			name="%OpenCallHierarchyCommand_name">
+		</command>
+	</extension>
+	<extension
+		point="org.eclipse.ui.bindings">
+		<key
+			contextId="org.eclipse.xtext.ui.XtextEditorScope"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="F4"
+			commandId="org.summer.dsl.xbase.ui.hierarchy.OpenTypeHierarchy">
+		</key>
+		<key
+			contextId="org.eclipse.xtext.ui.XtextEditorScope"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+T"
+			commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy">
+		</key>
+		<key
+			contextId="org.eclipse.xtext.ui.XtextEditorScope"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="CTRL+ALT+H"
+			commandId="org.summer.dsl.xbase.ui.hierarchy.OpenCallHierarchy">
+		</key>
+	</extension>
+	<extension point="org.eclipse.search.searchResultViewPages">
+    	<viewPage
+          class="org.eclipse.jdt.internal.ui.search.JavaSearchResultPage"
+          icon="icons/searchpage.gif"
+          id="org.eclipse.jdt.ui.java_search_result"
+          searchResultClass="org.summer.dsl.xbase.ui.jvmmodel.findrefs.CompositeSearchResult">
+    	</viewPage>
+ 	</extension>
+ 	
+   <!-- extract local variable refactoring -->
+   <extension point="org.eclipse.ui.commands">
+      <command
+              id="org.summer.dsl.xbase.ui.refactoring.ExtractLocalVariable"
+              name="%ExtractLocalVariableRefactoring_name"
+              description="%ExtractLocalVariableRefactoring_description">
+      </command>
+      <command
+            id="org.summer.dsl.xbase.ui.organizeImports"
+            name="Organize Imports">
+            description="Organize Imports"
+      </command>
+   </extension>
+    
+   <extension point="org.eclipse.ui.bindings">
+        <key
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+O"
+            commandId="org.summer.dsl.xbase.ui.organizeImports"/>
+        <key 
+            sequence="M2+M3+L"
+            commandId="org.summer.dsl.xbase.ui.refactoring.ExtractLocalVariable"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"/>
+        <key
+            sequence="COMMAND+ALT+L"
+            commandId="org.summer.dsl.xbase.ui.refactoring.ExtractLocalVariable"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            platform="carbon"/>
+        <key
+      	    sequence="M2+M3+L"
+      	    commandId=""
+      	    schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+      	    contextId="org.eclipse.xtext.ui.XtextEditorScope"
+      	    platform="carbon"/>
+      	<key 
+      		sequence="SHIFT+ALT+L"
+      		commandId="org.summer.dsl.xbase.ui.refactoring.ExtractLocalVariable"
+      		schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+      		contextId="org.eclipse.xtext.ui.XtextEditorScope"
+      		platform="win32"/>
+        <key
+            sequence="M2+M3+L"
+            commandId=""
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            platform="win32"/>
+        <key
+            sequence="SHIFT+ALT+L"
+            commandId="org.summer.dsl.xbase.ui.refactoring.ExtractLocalVariable"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            platform="gtk"/>
+        <key
+            sequence="M2+M3+L"
+            commandId=""
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            platform="gtk"/>
+    </extension>
+	
+</plugin>

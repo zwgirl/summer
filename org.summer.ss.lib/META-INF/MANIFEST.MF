@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Lib
+Bundle-SymbolicName: org.summer.ss.lib
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: com.google.guava;bundle-version="[10.0.1,16.0.0)";visibility:=reexport,
+ org.summer.dsl.xbase.lib;bundle-version="1.0.0"
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Bundle-ActivationPolicy: lazy
+Export-Package: org.summer.ss.lib,
+ org.summer.ss.lib.macro,
+ org.summer.ss.lib.macro.declaration,
+ org.summer.ss.lib.macro.expression,
+ org.summer.ss.lib.macro.file,
+ org.summer.ss.lib.macro.services

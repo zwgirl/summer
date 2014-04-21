@@ -1,0 +1,908 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Version: 1.0.0.qualifier
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.summer.dsl.ui.codetemplates;singleton:=true
+Require-Bundle: org.eclipse.xtext;bundle-version="[2.5.0,3.0.0)",org.e
+ clipse.xtext.generator;resolution:="optional";x-installation:="greedy
+ ";bundle-version="[2.5.0,3.0.0)",de.itemis.xtext.antlr;resolution:="o
+ ptional";x-installation:="greedy",org.eclipse.emf.codegen.ecore;resol
+ ution:="optional";x-installation:="greedy";bundle-version="[2.9.0,3.0
+ .0)",org.eclipse.emf.mwe.utils;bundle-version="1.0.0";resolution:="op
+ tional";x-installation:="greedy",org.eclipse.emf.mwe2.launch;bundle-v
+ ersion="2.2.0";resolution:="optional";x-installation:="greedy",org.ec
+ lipse.xtext.util;bundle-version="[2.5.0,3.0.0)",org.eclipse.emf.ecore
+ ;bundle-version="[2.9.0,3.0.0)",org.eclipse.emf.common;bundle-version
+ ="[2.9.0,3.0.0)",org.antlr.runtime;bundle-version="[3.2.0,4.0.0)"
+Export-Package: org.summer.dsl.ui.codetemplates;x-friends:="org.summer.dsl.ui.codetemplates.ui",
+ org.summer.dsl.ui.codetemplates.conversion;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.formatting;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.generator;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.lexer;x-friends:="org.summer.dsl.ui.codetemplates.ui",
+ org.summer.dsl.ui.codetemplates.parseTreeConstruction;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.parser;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.parser.antlr;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.parser.antlr.internal;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.parser.antlr.lexer;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.scoping;x-friends:="org.summer.dsl.ui.codetemplates.ui",
+ org.summer.dsl.ui.codetemplates.services;x-friends:="org.summer.dsl.ui.codetemplates.ui",
+ org.summer.dsl.ui.codetemplates.templates;x-friends:="org.summer.dsl.ui.codetemplates.ui",
+ org.summer.dsl.ui.codetemplates.templates.impl;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.templates.util;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.validation;x-friends:="org.summer.dsl.ui.codetemplates.ui"
+y: lazy
+Bundle-Name: %pluginName
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Import-Package: com.ibm.icu.text;version="4.0.0";resolution:=optional,
+ org.apache.commons.logging,org.apache.log4j;version="1.2.15"
+
+Name: org/eclipse/xtext/ui/codetemplates/SingleCodetemplate.xtextbin
+SHA1-Digest: bKPpCnSNuPrQbEyjmOWh/StWJlY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/CodetemplatesPar
+ ser.class
+SHA1-Digest: C/4BXmFvWtQ4s6sueRSUmlGJ0E4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser.g
+SHA1-Digest: P01WI0kZKLRJSOGlsNF1iefSvyM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_NameAssignment_2_1_0_0.class
+SHA1-Digest: W81snApuCgy6pvpc12Y4Sv4rGVc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_TypeAssignment_2_1_3.class
+SHA1-Digest: JWkDvjzGCtJTwQe8Wn6gv9bG4vc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser$DFA21.class
+SHA1-Digest: unYoFglQHgOqpThoPFIRQUWwN6I=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/util/TemplatesAdapt
+ erFactory$1.class
+SHA1-Digest: t9B5biO+O2cSn0yI1YhSlyp/rBw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_CommaKeyword_2_1_4_3_1_1.cla
+ ss
+SHA1-Digest: roW1ezB3tZe2Eo4bPsKoU0usvts=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser.class
+SHA1-Digest: QyTtSIFZwYCt03iShuOxRNb3UFc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_PartsAssignment_2_1.clas
+ s
+SHA1-Digest: o0U3aYkuc/0vhb0gN/Ne+uBjCcc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBodyWithQuotes_GreaterThanSignGrea
+ terThanSignKeyword_1.class
+SHA1-Digest: x6z+XC4lPLIqBaZJSVb45RN7sWI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_Alternatives_2.class
+SHA1-Digest: SmCg+OY0MqRTfeY4it0gsTajaT8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBodyWithQuotes_Group.class
+SHA1-Digest: LTQiwqADmQr312A+2P1Fay86vic=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/Literal.class
+SHA1-Digest: yX3o7zdYCbMcLVHHd6I9mAnPBUw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_RightParenthesisKeyword_2_1_
+ 4_4.class
+SHA1-Digest: OhwVygCyNYQN9sQNnQecNRrS9D8=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$TemplatePartElements.class
+SHA1-Digest: IFYxPJwX5XEqummIBhncKOnu8Pk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Dollar_Group.class
+SHA1-Digest: SnW934KWAwdyGs5L+KUKgfM8C3o=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_Group.class
+SHA1-Digest: 1cF+8ovDEXEJIugsQj9ECJ01v1E=
+
+Name: org/eclipse/xtext/ui/codetemplates/Codetemplates.xtextbin
+SHA1-Digest: yvpS5BijDM6MpIzkguz67iJnQXI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Dollar_Alternatives_1.class
+SHA1-Digest: GmmKrEjfcqelWqj6BU/ROydeJxk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Dollar_Alternatives_1.class
+SHA1-Digest: 9olqySwxRGUAV7jkWFWr/Gi+QIM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$ThisRootNode.class
+SHA1-Digest: EbAwMvSpH+M0w+30S/BXqBL8JUs=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_NameAssignment_2_0.class
+SHA1-Digest: fqgyvvnWjLqYvQHaiK+jMX+RdMk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_LanguageAssignment_2.class
+SHA1-Digest: MNjvPDrGd3SFLXkzu7AfHPcNkew=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group_2_1_4_3.class
+SHA1-Digest: baZ+OBvzH2QV7e2TnyUzD0bSXiY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_PartsAssignment_2_0.class
+SHA1-Digest: i+mJeHW2DTuzVKZ02sYlSGfE4bw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Literal_ValueAssignment.class
+SHA1-Digest: RqBlTiLf9ivjAahQrJNVGatYo5w=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/CodetemplatesLexer.g
+SHA1-Digest: piCp2xgKF3hpv9VNfDMp1wtxcIA=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/CodetemplatesI
+ mpl.class
+SHA1-Digest: 5vGpXgPnux8wmAmCyiLXmuxvpDk=
+
+Name: org/eclipse/xtext/ui/codetemplates/scoping/CodetemplatesScopePro
+ vider.class
+SHA1-Digest: EWmvwYv+ngpLiJRCrIFQCqPQgpY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplatePart_Alternatives.class
+SHA1-Digest: sU+0JIitMTl+y134ViMqlubjF1w=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group_2_1.class
+SHA1-Digest: om/bO//4LJWWP+qaTwkK7LOo6qQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/CodetemplatesLexer.clas
+ s
+SHA1-Digest: YSs/USnsKY10qyhQhJcD6FQLI7E=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group_2_1_4_3.class
+SHA1-Digest: AUrccC5H/cDwPUGrZdsHUn4DE9A=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/TemplatesFactory.cl
+ ass
+SHA1-Digest: JVnDU9RkWOJcn7d3HvDVthlfhas=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/SingleCodetemplateGr
+ ammarAccess.class
+SHA1-Digest: QsQnGhHI7hMv1qgaKXF7UA6wXzo=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$VariableOrDollar_VariableParserRuleCall_0.
+ class
+SHA1-Digest: irNoD3L5JUK1EL0hErElKyXGvnE=
+
+Name: org/eclipse/xtext/ui/codetemplates/CodetemplatesStandaloneSetup.
+ class
+SHA1-Digest: zcA3WxsoBrlBVghW4Brxsr4lztU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalCo
+ detemplatesLexer.class
+SHA1-Digest: xFmgFi0aau13zdGHllw/oPVVujY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group_2_1_4.class
+SHA1-Digest: 63uu3RcipU4dpxFO6auotyqWLnE=
+
+Name: org/eclipse/xtext/ui/codetemplates/generator/CodetemplatesGenera
+ torFragment.class
+SHA1-Digest: Rxxqtwj+l73T8vhCqL3I7zJyvPQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/CodetemplatesAnt
+ lrTokenFileProvider.class
+SHA1-Digest: B/XdqVrChLxSEsRLzrjHSpfnp64=
+
+Name: org/eclipse/xtext/ui/codetemplates/validation/CodetemplatesJavaV
+ alidator.class
+SHA1-Digest: LKX8VkkO7bxMP/Frw/ionuFWyAs=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group.class
+SHA1-Digest: 6+CRTP5u6HGlw8AHsA4TxyeRzFk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group_2_1_4_3_1.class
+SHA1-Digest: sfFicGkl33KHMroCqYjdsjcU7es=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_NameAssignment_0.class
+SHA1-Digest: pQRo7/waD2ijQhggrma9GyngANw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_ExpectingParametersAssignment_2_1
+ _4_1.class
+SHA1-Digest: EL5Fveg/RAHKAnJxw7mKGgod8QM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser$DFA21.class
+SHA1-Digest: X/IfLWB8E1IYM9yY+D1U1oR5DhU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_ColonKeyword_2_1_1.class
+SHA1-Digest: ZYPndRP1lArrpFnOQfw1Wp2ejxw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$VariableOrDollar_Alternatives.class
+SHA1-Digest: G3+SK7l5CqBvxqhxAaWB8cLkLhU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser.class
+SHA1-Digest: mUlLxQhLwIstyMEfsYGwM/4Hvkg=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBodyWithQuotes_TemplateBodyPa
+ rserRuleCall_1.class
+SHA1-Digest: 08dFZV8Rh4VwYU3HgSxn5Dw0Hn8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser.tokens
+SHA1-Digest: dpHnWkwYiZT+LQoLl5xnxVEW4UA=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$CodetemplateElements.class
+SHA1-Digest: tQTm4IOV/0OKQLTgHPmYp6zj76M=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/TemplateBodyIm
+ pl.class
+SHA1-Digest: nbVRuZRO/YMjVA5PluAaNkXUpu8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group_2_1_4.class
+SHA1-Digest: Gqbs/WhRhH6Imbm+d9m7fnbkdFY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_RightParenthesisKeyword_2_1_4_4.c
+ lass
+SHA1-Digest: sVh16a7vkxeYDcNL/nh4dHvcb1Q=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_PartsAssignment_1.class
+SHA1-Digest: qyWLcG/tQ9E5tkqBPM6ZMpdAchE=
+
+Name: org/eclipse/xtext/ui/codetemplates/CodetemplatesStandaloneSetupG
+ enerated.class
+SHA1-Digest: hcsLRGpZt1PBiZJbSd2dbbzbpgg=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_ForKeyword_1.class
+SHA1-Digest: mhJzBHkSjjAmgFceFp10YdQ8Cng=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/TemplatesPackage.cl
+ ass
+SHA1-Digest: EXWPkPgUrKpDh0dmXo2SHUzRMTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$FQNElements.class
+SHA1-Digest: mjQXDlqV1TOAHmAT/1Ikt2TIx8c=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Dollar_DollarAction_0.class
+SHA1-Digest: 4pFlOEQDdjUUHYH0/wEf/9O3pHA=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/TemplatesFacto
+ ryImpl.class
+SHA1-Digest: wA6bxGTbbt6gOCrzfCQ2ChdYSqU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Dollar_DollarAction_0.class
+SHA1-Digest: QuocQllC20cLfyRolDAQ2RkmaiE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplates_LanguageAssignment_2.cl
+ ass
+SHA1-Digest: 4gTtMYJzc7DS/EW2HDNbXPlgE0I=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_CommaKeyword_2_1_4_3_1_1.class
+SHA1-Digest: ZO8kQER9nJEtyj890z9erwSdeJs=
+
+Name: org/eclipse/xtext/ui/codetemplates/scoping/SingleCodetemplateSco
+ peProvider.class
+SHA1-Digest: tTn6XVw4XM4Ioeo8HfKEG4W+SzY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_DollarSignLeftCurlyBracketKeyword
+ _0.class
+SHA1-Digest: lIdxijFBXk3lKZSTrnSshy45Eb4=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_ParametersAssignment_2_1_4_3_0.cl
+ ass
+SHA1-Digest: VxNzomTheIFeh7WPkvLMAWPjKqU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/SingleCodetempla
+ teParser.class
+SHA1-Digest: /A6/yVs7itoyQcQytQROZnBbQPM=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$VariableOrDollarElements.class
+SHA1-Digest: 2p9I0xg7trzEfNuwRB6fS8kqkuw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Dollar_DollarSignKeyword_1_1.class
+SHA1-Digest: uz03YdpZH0s84m53Swl3OBQRmxA=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Dollar_EscapedAssignment_1_0.class
+SHA1-Digest: a3cp9zxmMMT2QzWzRO2LslkDfyM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalSi
+ ngleCodetemplateLexer$DFA5.class
+SHA1-Digest: tqqZ2o7592NZlHT7hfhh8rw4Twk=
+
+Name: org/eclipse/xtext/ui/codetemplates/Codetemplates.genmodel
+SHA1-Digest: G0+xaFZWwznsKXkyBzJ1D4PBzj4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser.tokens
+SHA1-Digest: 57LXF9RgeF/kTZhXkV5zo4Qb/Ws=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group_2_1_4_3_1.class
+SHA1-Digest: scDOztnwemghlhYOyOYdU1DqyzA=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplatePart_Alternatives.class
+SHA1-Digest: CEqU2VORFGKXZkovP6olNou+8IU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplatePart_VariableOrDollarParserRuleCal
+ l_1.class
+SHA1-Digest: eMNCJ1MzFaLJLgycEFfWl6XN8zo=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/util/TemplatesAdapt
+ erFactory.class
+SHA1-Digest: zmRYvpx18XZehQnMClxdbtUczT8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalCo
+ detemplatesLexer.g
+SHA1-Digest: 22TBabkneTOjGlLgv1HDbTt+FtY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_BodyAssignment_8.class
+SHA1-Digest: fDi0u72/WAf566QyX7B+p2ZYV5k=
+
+Name: plugin.properties
+SHA1-Digest: 6LVSq2w8tDOS8aUGw9yb1REat84=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplatePart_LiteralParserRuleCall_0.class
+SHA1-Digest: iMxXy9nM4y4nZZ3wJ7+1I5GE+8Y=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/TemplatePart.class
+SHA1-Digest: 6zzmxWapyhCmk9KzdZRMOXQwwRQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/TemplatesPacka
+ geImpl.class
+SHA1-Digest: Qdc++eP14hDjQSVdVfvPdO79dAI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_NameAssignment_2_1_0_0.class
+SHA1-Digest: 5ARTWnQ64v+0rHBvdrk+POkhLDs=
+
+Name: org/eclipse/xtext/ui/codetemplates/conversion/SingleQuotedString
+ Converter.class
+SHA1-Digest: 2xbGC59r/Cq0DnqvnZtcwQgU2Dk=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$DollarElements.class
+SHA1-Digest: tAZJfMzCuAcOhywcRLbggsswOko=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/SingleCodetemplateGr
+ ammarAccess$TemplateBodyWithQuotesElements.class
+SHA1-Digest: m8Q1Szd/yZuVVDO8xvERbbK7dnI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_PartsAssignment_2_0.clas
+ s
+SHA1-Digest: hg+MFbx6eZuXB17Lf5ChXT7Ax7U=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$VariableOrDollar_VariableParserRuleCa
+ ll_0.class
+SHA1-Digest: EvpdNzwp2HFYKFgIRXHOQRd2+/M=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_TemplatesKeyword_0.class
+SHA1-Digest: NrHzrA6lNmx3eYPyGxtZMwfduts=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/SingleCodetemplateGr
+ ammarAccess$LiteralValueElements.class
+SHA1-Digest: OzMc/j6eVVLIxZ0z198XDxc/yws=
+
+Name: plugin.xml
+SHA1-Digest: B0blZ0UxkxAsaV700LFo8b5DaBM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_KeywordContextAssignment
+ _2_1.class
+SHA1-Digest: A0HP57wdqsRQGJ2P6i1c1oM9RWk=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/Codetemplates.class
+SHA1-Digest: iGmtaUnNRmp+NmmX7+myHi8qkXQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_ParametersAssignment_2_1_4_3
+ _0.class
+SHA1-Digest: 88GyeG6Pq6vN9ri2tOrMCDhtJ/o=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser.g
+SHA1-Digest: i763+/Z3/+Wo29jdK0Otd+lCxbA=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/CodetemplateIm
+ pl.class
+SHA1-Digest: Nk2R8xT+2t1lWBSzKOeK/1ZlB98=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Alternatives_2.class
+SHA1-Digest: DmZYjKAprDw6ukmZZdIOr4Sb5Fc=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/SingleCodetemplateLexer
+ $DFA5.class
+SHA1-Digest: OWuCFXLYsBZzusJ1RCXjbZ95ak4=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/SingleCodetemplateLexer
+ .tokens
+SHA1-Digest: 6DNLOm5YRUg8Q1+HEeE7NDhqVTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplatePart_LiteralParserRuleCall_0.
+ class
+SHA1-Digest: RM/JG4sXm1bp7gEtQmJ3imhAGTs=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_Group_2.class
+SHA1-Digest: X0d6naJ294MgnpGWY/VUaI5bBJk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBodyWithQuotes_Group.class
+SHA1-Digest: B4ZfRax3z823SI3G+YgY1oJbX7U=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/CodetemplatesLexer$DFA5
+ .class
+SHA1-Digest: KJ9GM4aMG2XNqYvOBDbjoMgfnfQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Dollar_Group.class
+SHA1-Digest: FPR1Atp/n5EEXeDIykdJs6sopU4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/SingleCodetempla
+ teAntlrTokenFileProvider.class
+SHA1-Digest: 4ZwjPSdxONoiT5zmlQO8n9ym6g0=
+
+Name: org/eclipse/xtext/ui/codetemplates/formatting/TemplatesFormatter
+ .class
+SHA1-Digest: KCc0VmUdIW1hB7aK1dHR0a4WCCc=
+
+Name: org/eclipse/xtext/ui/codetemplates/AbstractCodetemplatesRuntimeM
+ odule.class
+SHA1-Digest: RJWaw59xj10DxucpqsS3YV8Nwb0=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_TypeAssignment_2_1_3.class
+SHA1-Digest: 7AcpfX7WvcED88H0ZlnLEOnxrsI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_ContextAssignment_2_0.cl
+ ass
+SHA1-Digest: oXNCAaszMzR6nAaNTFe1X8TbdqM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor.class
+SHA1-Digest: Vn8Yjp9LLBHxfPYyOXrQgVeZnYw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_LeftParenthesisKeyword_1.clas
+ s
+SHA1-Digest: YOxwjR3QVvstcDEUORY0pGpv5vw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalCo
+ detemplatesLexer$DFA5.class
+SHA1-Digest: 1r9aGK6UdEdaxO9ICZfaALhIdHE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_Group_2.class
+SHA1-Digest: wzWOgNTgeQMYHVxjoJ2SFo9K9eE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser$DFA17.class
+SHA1-Digest: iXXIJFen/EW78l014hs8Up8+flk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalCo
+ detemplatesLexer.tokens
+SHA1-Digest: xHOFCsikvuLAixyccEGmMlU6RG4=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$ValidIDElements.class
+SHA1-Digest: D1tV0fC0gQc48y2+/xN8EfFTDqk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Alternatives_2.class
+SHA1-Digest: kGS02EmuyZYaOUiA6azZs+0gK4I=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/Codetemplate.class
+SHA1-Digest: pkO615yiNzyntYh1EX+9iH8l79g=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lSingleCodetemplateParser$DFA20.class
+SHA1-Digest: II7J1QD9nNil2oNIl8ClX5Sc+WM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_ColonKeyword_2_1_1.class
+SHA1-Digest: A9KdIWnGJYTrJtFhHlAeaY+7zTs=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access.class
+SHA1-Digest: YFYFEXiwYdZyCFS1/Rv8HfVa0wY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalSi
+ ngleCodetemplateLexer.tokens
+SHA1-Digest: 6DNLOm5YRUg8Q1+HEeE7NDhqVTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/TemplateBody.class
+SHA1-Digest: xN9a3kaWl+a8Cul8a2Zvt4dMcFY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_IdAssignment_2.class
+SHA1-Digest: wTin79xWarSgM9ClXi1Pni/whL8=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/LiteralImpl.cl
+ ass
+SHA1-Digest: 651HjQyGSpJqbQRFjFnGahNUUHs=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$ThisRootNode.class
+SHA1-Digest: ZWZVXKZW5KmrUPQiOiOJd87O5e4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_ExpectingParametersAssignmen
+ t_2_1_4_1.class
+SHA1-Digest: H2weAR3FJQJf+32k9a5hsNNWpJE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_TemplateBodyAction_0.cla
+ ss
+SHA1-Digest: MO53wdXwonSUBwzA03bgk0uol9k=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser$DFA22.class
+SHA1-Digest: oF92dA+8lgKgPt/usLWSItQ4m/o=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$VariableElements.class
+SHA1-Digest: 1r9hChQncZdx1ZmLnEH9C3nBhqg=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/SingleCodetemplateGr
+ ammarAccess$CodetemplatesElements.class
+SHA1-Digest: EhK6adf+A94FOAOC6ibyAnmQndA=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_RightCurlyBracketKeyword_4.c
+ lass
+SHA1-Digest: mk3/isMuwItJcxg7aCrsk8kZQpk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group_2_1_0.class
+SHA1-Digest: jfAfsgJIx6NGBa4XpVPGNUmMQ2Y=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_ParametersAssignment_2_1_4_3_1_3.
+ class
+SHA1-Digest: 7iYtXUSxe0LBG8ZAr8Kv2/UIbWQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_KeywordContextAssignment_7_1.
+ class
+SHA1-Digest: 7wGVetOidWQY1uKRhP2w57hl58g=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBody_PartsAssignment_1.class
+SHA1-Digest: 1zioErEvlJdYsNwuZ+FjcJTqEDo=
+
+Name: about.html
+SHA1-Digest: m//+sZd+LYcO5OY/bjEiZVm0dk0=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_NameAssignment_2_0.class
+SHA1-Digest: EOFl+H0cthnFNUtaoZTHGnBvvgE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_Group.class
+SHA1-Digest: 78XXHqgTVt0Da8rNyPtU+GvyJrQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_NameAssignment_0.class
+SHA1-Digest: pHDp0STDb1nLKSfXNE0bT910XmI=
+
+Name: org/eclipse/xtext/ui/codetemplates/formatting/CodetemplatesForma
+ tter.class
+SHA1-Digest: zlEiKS8Tis9ZR6TVvMi3AuJWTTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_TemplatesAssignment_4.class
+SHA1-Digest: AzfBeEAvwoLuJ5+Jg7s6Dq7+uqg=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_PartsAssignment_2_1.class
+SHA1-Digest: 85d62kYj0gAbbEXxjN/J3UYwY7A=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$VariableOrDollar_Alternatives.class
+SHA1-Digest: mDRTo++DmE7OyQHVHHD/vHdUWwY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_Group_2_1_0.class
+SHA1-Digest: Rxrg/jb3kznUZaLpBatI/48ILpE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplates_TemplatesKeyword_0.clas
+ s
+SHA1-Digest: +vixl0+munpcKD6p7Gew83TT5zA=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/SingleCodetemplateGr
+ ammarAccess$CodetemplateElements.class
+SHA1-Digest: Z5yu5hepVfRQ867OzgYZbX4OvtA=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/util/TemplatesSwitc
+ h.class
+SHA1-Digest: 7yZpc38of6gB84tXAksEnLskJ44=
+
+Name: org/eclipse/xtext/ui/codetemplates/Codetemplates.ecore
+SHA1-Digest: uYkHj3QSS574xy3Urfoz6sqRTsc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group.class
+SHA1-Digest: JijWWuNZ32HboMZPVvJgh/b3My0=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/SingleCodetemplateLexer
+ .class
+SHA1-Digest: 4/zCPDJO6WqyGLpP6NNk8n+DHi4=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/CodetemplatesLexer.toke
+ ns
+SHA1-Digest: xHOFCsikvuLAixyccEGmMlU6RG4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalSi
+ ngleCodetemplateLexer.g
+SHA1-Digest: eYSpyXCnWQYMd3nCI0CYmQvTCww=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_BodyAssignment_3.class
+SHA1-Digest: YPFcAtAZHz0K7z+ZcBcFImIb5v4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_CommaKeyword_3.class
+SHA1-Digest: 19yZ+Qu5i1oTT3j2oEMFj378mIo=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/TemplatePartIm
+ pl.class
+SHA1-Digest: A1edoIH4VNF6Hhk0GAOHTksW6oY=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$TemplateBodyWithQuotesElements.class
+SHA1-Digest: wQzcDPe6wG57X5qkrHFUnuXhN/c=
+
+Name: org/eclipse/xtext/ui/codetemplates/SingleCodetemplateStandaloneS
+ etupGenerated.class
+SHA1-Digest: 7vY7BlVelSVr7LszruLSmw1Ee5E=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$TemplateBodyElements.class
+SHA1-Digest: DwTbkzGaR3gMCWskIv15CjF/XcY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/lexer/InternalSi
+ ngleCodetemplateLexer.class
+SHA1-Digest: iB/pMOh/U5fQMOaFkSBt06mpcMM=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_RightCurlyBracketKeyword_4.class
+SHA1-Digest: BJ3OenFVfifQ0Xxu8d1v6N5kkhE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Dollar_EscapedAssignment_1_0.class
+SHA1-Digest: xXa9EWd4mRE19+X0bRRu8+hXjNY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$VariableOrDollar_DollarParserRuleCall_1.cl
+ ass
+SHA1-Digest: 6JtB066k0pXsx/rIz6Qq7qErId0=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplates_Group.class
+SHA1-Digest: /uiVSVWtO1ADPXZs+s8zj5ob498=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_ForKeyword_6.class
+SHA1-Digest: tMQ95UWuvfJH2r3ZkO2P22f9MUQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/Codetemplates.xtext
+SHA1-Digest: fS8o4+muhnDHwBk8q3ziAsm1F14=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_Alternatives_7.class
+SHA1-Digest: aYA9lpzAVXYRIO1UPX9S7btGZKU=
+
+Name: org/eclipse/xtext/ui/codetemplates/validation/AbstractCodetempla
+ tesJavaValidator.class
+SHA1-Digest: yQnblacb4+/yr0yc2kK07EMnCA4=
+
+Name: org/eclipse/xtext/ui/codetemplates/SingleCodetemplate.xtext
+SHA1-Digest: Fs6+v8vHeBX9GmIAHl5awT8JdyM=
+
+Name: org/eclipse/xtext/ui/codetemplates/SingleCodetemplateStandaloneS
+ etup.class
+SHA1-Digest: 7YgFdSgInBill1bcIM6REPDQQIg=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_ContextAssignment_7_0.class
+SHA1-Digest: M82pR3eKPsOS4QaUTZbDd6hL/9s=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_ColonKeyword_3.class
+SHA1-Digest: JGdYLMEcU7tMbA42Ui/BDTWGqf4=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$LiteralElements.class
+SHA1-Digest: OAo3noYhbkWpee/at6R0Fv9SgHw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplateBodyWithQuotes_GreaterThanSig
+ nGreaterThanSignKeyword_0.class
+SHA1-Digest: Vy7fAdhYoPPCtVrI/reY41DzMrY=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/VariableImpl.c
+ lass
+SHA1-Digest: hqz7zCSsj12AotS+uzy2+3hTJds=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_Group.class
+SHA1-Digest: nhbkjrIT8IhywW+0fy7Pw+T+Xbs=
+
+Name: org/eclipse/xtext/ui/codetemplates/CodetemplatesRuntimeModule.cl
+ ass
+SHA1-Digest: hQsmJAjJpKpTJ1vu08Apy02wPGQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$TemplatePart_VariableOrDollarParserRu
+ leCall_1.class
+SHA1-Digest: ZvqWBmyxyYbKMPEopNKEO0CSCe4=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_DollarSignLeftCurlyBracketKe
+ yword_0.class
+SHA1-Digest: iJaxcXF9IpKDy+C4vQIiKcvpaJ8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/CodetemplatesPartialPa
+ rsingHelper.class
+SHA1-Digest: tuQaCvTLCgm007BT1hfBqyLrfA4=
+
+Name: org/eclipse/xtext/ui/codetemplates/GenerateCodetemplateLanguages
+ .mwe2
+SHA1-Digest: UguBT9unR6ovqdWqWbt8a16m3KE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_DescriptionAssignment_4.class
+SHA1-Digest: UFZKBQ9aCQyJ2mZX8qOaCUIOuoc=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_Group.class
+SHA1-Digest: 08PHJIwzT/Lf3yV4cGrYU83xzRU=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor.class
+SHA1-Digest: aylGzHsFYL3osl7ag74ZQBdcwwE=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBody_TemplateBodyAction_0.class
+SHA1-Digest: H5iiEQck/Y9TtuRX40+iZJxyyPk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplate_RightParenthesisKeyword_5.cla
+ ss
+SHA1-Digest: OAog8goHMLrlquqZWoyxdEDnbnk=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplate_ForKeyword_1.class
+SHA1-Digest: hieHl1x8lGNdmIj7InLVMgCO03w=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$VariableOrDollar_DollarParserRuleCall
+ _1.class
+SHA1-Digest: Cj1Jays+kt6F/8KNxgivSAA439g=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$LiteralValueElements.class
+SHA1-Digest: Iw0umv4slYwDgbOhWTm7pt1p02o=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Codetemplates_Group.class
+SHA1-Digest: /azo+YTjhTG/XGcBraL86iaH+PA=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Dollar_DollarSignKeyword_1_1.class
+SHA1-Digest: Z+XspS+yE6H8izloKrUHUTbzXVg=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Variable_ParametersAssignment_2_1_4_3
+ _1_3.class
+SHA1-Digest: ISezSkYbiXFx00TuYjMNRYxm5Hs=
+
+Name: org/eclipse/xtext/ui/codetemplates/AbstractSingleCodetemplateRun
+ timeModule.class
+SHA1-Digest: YH4pYwWLt9hHNSWqSmJ0TZ1j5Ac=
+
+Name: org/eclipse/xtext/ui/codetemplates/SingleCodetemplateRuntimeModu
+ le.class
+SHA1-Digest: /3fV7Iq5MHTlvHKNmy9M94CAYbI=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Variable_Group_2_1.class
+SHA1-Digest: orejM3K0CbjEtE2BNqn/sRXtazw=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplates_ForKeyword_1.class
+SHA1-Digest: rhtbRgXDMLetPsY9/QUCm2IQwl4=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/TemplatesPackage$Li
+ terals.class
+SHA1-Digest: WrhZ2iiabBBecB08fbxypaGq/V8=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBodyWithQuotes_LessThanSignLessTha
+ nSignKeyword_3.class
+SHA1-Digest: mJDDqYrNBtbFmp/4OlVsaJG9Erg=
+
+Name: org/eclipse/xtext/ui/codetemplates/lexer/SingleCodetemplateLexer
+ .g
+SHA1-Digest: Xcs0mZ8V1l38mAalXD6TwOVJQJY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/SingleC
+ odetemplateParsetreeConstructor$Codetemplates_TemplatesAssignment_3.c
+ lass
+SHA1-Digest: GWNSYwop4w0Z2JuUDVihkWwIH8Q=
+
+Name: org/eclipse/xtext/ui/codetemplates/services/CodetemplatesGrammar
+ Access$CodetemplatesElements.class
+SHA1-Digest: 5BhWmRhN049yBuUFuQ2sxr6jQhA=
+
+Name: org/eclipse/xtext/ui/codetemplates/parser/antlr/internal/Interna
+ lCodetemplatesParser$DFA18.class
+SHA1-Digest: ls+L5IHgQc0hsWAuzZkhgKZ9BtY=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$TemplateBodyWithQuotes_TemplateBodyParserR
+ uleCall_2.class
+SHA1-Digest: NNt7jJXU5Kow/jS2rQ6AZflhf30=
+
+Name: org/eclipse/xtext/ui/codetemplates/parseTreeConstruction/Codetem
+ platesParsetreeConstructor$Literal_ValueAssignment.class
+SHA1-Digest: mVoKl0wzmPTRRp7005fwKrXtDTA=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/Variable.class
+SHA1-Digest: Iq8mWMNBwhbQtp94dFtW/Ey4Oio=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/Dollar.class
+SHA1-Digest: ZYQb90Y9Cw+HWtPdBg54OU9uXrw=
+
+Name: org/eclipse/xtext/ui/codetemplates/templates/impl/DollarImpl.cla
+ ss
+SHA1-Digest: 6Qz87+WdbsPMsn5+u6U11TXZKjg=
+

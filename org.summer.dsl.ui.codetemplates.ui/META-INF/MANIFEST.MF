@@ -1,0 +1,532 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.summer.dsl.ui.codetemplates.ui;singleton:=true
+Bundle-Activator: org.summer.dsl.ui.codetemplates.ui.AccessibleCodetemplatesActivator
+Require-Bundle: org.summer.dsl.ui.codetemplates;visibility:=reexport,
+ org.eclipse.xtext.ui;bundle-version="[2.5.0,3.0.0)",
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui;bundle-version="3.5.0",
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.5.0",
+ org.eclipse.core.expressions;bundle-version="3.4.100",
+ org.eclipse.ui.navigator;bundle-version="3.4.1",
+ org.antlr.runtime;bundle-version="[3.2.0,4.0.0)",
+ org.summer.dsl.builder;bundle-version="1.0.0",
+ org.summer.dsl.model.shared;bundle-version="1.0.0",
+ org.summer.dsl.ui.shared;bundle-version="1.0.0"
+Export-Package: org.summer.dsl.ui.codetemplates.ui;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.contentassist;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.contentassist.antlr;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.contentassist.antlr.internal;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.contentassist.antlr.lexer;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.evaluator;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.highlighting;x-friends:="org.eclipse.xtext.xtext.ui.tests,org.eclipse.xtext.ui.codetemplates.tests",
+ org.summer.dsl.ui.codetemplates.ui.internal;x-friends:="org.eclipse.xtext.xtext.ui.tests,org.eclipse.xtext.ui.codetemplates.tests",
+ org.summer.dsl.ui.codetemplates.ui.labeling;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.outline;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.partialEditing;x-internal:=true,
+ org.summer.dsl.ui.codetemplates.ui.preferences;x-friends:="org.eclipse.xtext.xtext.ui.tests,org.eclipse.xtext.ui.codetemplates.tests",
+ org.summer.dsl.ui.codetemplates.ui.projectedEditing;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.quickfix;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.registry;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.resolvers;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.scoping;x-friends:="org.eclipse.xtext.xtext.ui.tests",
+ org.summer.dsl.ui.codetemplates.ui.validation;x-friends:="org.eclipse.xtext.xtext.ui.tests"
+Bundle-Version: 2.5.0.v201312110906
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Created-By: 1.6.0_45-b06 (Sun Microsystems Inc.)
+Import-Package: org.apache.log4j;version="1.2.15"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser.tokens
+SHA1-Digest: xHOFCsikvuLAixyccEGmMlU6RG4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/AccessibleCodetemplatesAct
+ ivator.class
+SHA1-Digest: IFzzwzMEfCNosGXHm0ECerc2U4w=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alog$3$1.class
+SHA1-Digest: xGCJUaB7MuQBVXgE8yDbsxntq1k=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleCodete
+ mplateContentAssistLexer.tokens
+SHA1-Digest: 6DNLOm5YRUg8Q1+HEeE7NDhqVTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/InspectableCross
+ ReferenceVariableResolver.class
+SHA1-Digest: jhg7HhJCjMQ40Km+ge7tpHQctfs=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalSingleCodetemplateLexer.g
+SHA1-Digest: N0rEoKLbvnWykzZzKzUOZj1C08A=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/Codetemplates
+ HighlightingLexer.tokens
+SHA1-Digest: IZbI4/MVIkWcN2esJMQBSZiX40M=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/projectedEditing/PartialPa
+ rser.class
+SHA1-Digest: sNsmAKVZfY3YeN6aIrDX9r6Xs3s=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/registry/LanguageRegistry$
+ Language.class
+SHA1-Digest: lRdhkeJ6C8BAzM6EY6ffPj6r0IM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/CodetemplatesUiModule.clas
+ s
+SHA1-Digest: FKXJ4bFl1d5zsRuIC710GKw1ZdU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleTemplatesDe
+ scriptionLabelProvider.class
+SHA1-Digest: is2bS9QbcPtZe+zk7kcTuSnaHBM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalSingleCodetemplateLexer.class
+SHA1-Digest: ovi+lR0dRjzC3/9zZKjHuMWQKDQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/InspectableEnumV
+ ariableResolver.class
+SHA1-Digest: mUQwG/ascV3tGPJr4vVzeqj3uQk=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/Single
+ CodetemplateParser.class
+SHA1-Digest: ot4MM5wFoxEHTByGdMhMfwLMXj0=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleCodete
+ mplateProposalProvider.class
+SHA1-Digest: SBZCC0Qh62vz76L9q47kZVE5WJ8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/projectedEditing/Temporary
+ ResourceProvider.class
+SHA1-Digest: bQcsetz+bejR2NmivlXl0jBDWqc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleTempla
+ teProposalConflictHelper.class
+SHA1-Digest: skWEiOYYpXyNpZUqltH+716cScA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleTemplatesLa
+ belProvider.class
+SHA1-Digest: feMZZJZj4G6TjxeVMiCHh6JbFC4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alog.class
+SHA1-Digest: sUOg3a71wbf/jV4k//PVjY+gNBk=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/Single
+ CodetemplateParser$1.class
+SHA1-Digest: dzd0qMvk73jPLHP5mYuCeY1PD90=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalSingleCodetemplateLexer$DFA5.class
+SHA1-Digest: mkQCVM79V06zLDxSnNvz5x7ltbE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser.tokens
+SHA1-Digest: 6DNLOm5YRUg8Q1+HEeE7NDhqVTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alog$3.class
+SHA1-Digest: MWRpC6u+2MFgsP603OQTplz/5Y4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/registry/LanguageRegistry.
+ class
+SHA1-Digest: RdoYcpIxFBoPUbL/H21KAFDC4yw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/CodetemplatesDesc
+ riptionLabelProvider.class
+SHA1-Digest: 7Jky2xWHJG7sBG6pTNDANv2i0mM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/scoping/SyntheticResourceA
+ wareScopeProvider$1.class
+SHA1-Digest: ZRUFS3Xd8OTkUkGao8D2Dft+oas=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser$DFA22.class
+SHA1-Digest: W7pmGMIae4wWfRwDVfVDBGROZxk=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleCodete
+ mplateContentAssistLexer.g
+SHA1-Digest: pjB0K9fMaAbacRSVKoMCauyFrP0=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sContentAssistLexer.class
+SHA1-Digest: com7xv+apfn59i/eUGifwiregUc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleCodetemplat
+ eLabelProvider.class
+SHA1-Digest: Sy267sLIOl1L2IDHgfHAJaMpF/M=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/AbstractTemp
+ lateProposalConflictHelper.class
+SHA1-Digest: nxMDPYHCQRtjNSPYIhkT/LEXbGc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalCodetemplatesLexer.g
+SHA1-Digest: cMaFIPdGibzHeQ6LCFwgCyQdjoM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/TemplatesDescript
+ ionLabelProvider.class
+SHA1-Digest: hMmwRZTwQcEz32tr/DZZvnUzvuw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/TemplateBodyH
+ ighlighter.class
+SHA1-Digest: JyC+Qb8VjyFCuYwn9/gTc2RFBmw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleCodete
+ mplateContentAssistLexer.class
+SHA1-Digest: zYadXr23qpn8LC4RZmmF5eNdkak=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SemanticHighl
+ ighter$1.class
+SHA1-Digest: aAVmAgCcym00h1VMgUFtfZ1DZ7Q=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser$DFA24.class
+SHA1-Digest: DRMrKlu4aSBJb9fydsPWi/VOg14=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider$VariableData.class
+SHA1-Digest: g7aqBuIUGeyIiTuawJ3+/RSfGWo=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/AbstractCode
+ templatesProposalProvider.class
+SHA1-Digest: uMiH3F9FKiO2g0/pQ3MFXLUYt/M=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/TemplateResour
+ ceProvider.class
+SHA1-Digest: mex4tFbDWn3XGFYDMUu9gwFo5EE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/evaluator/EvaluatedTemplat
+ e.class
+SHA1-Digest: wwbE3BHdhEmJV8fH5JNnaveWen4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SingleCodetem
+ plateHighlightingLexer$DFA6.class
+SHA1-Digest: y9Flw8TH2rGBjnKq5a/4u2dTqXc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser.g
+SHA1-Digest: +OgWyGQ1oi4AKcHI3NahIiX+MCI=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/TemplatesHigh
+ lightingConfiguration.class
+SHA1-Digest: ai9Btu8xYszeFTeqfa+6WdC+NUA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/TemplateDialog
+ Messages.properties
+SHA1-Digest: 9B1urfsiRt70gNrJBLpwd+DIYBo=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/Codetemplates
+ HighlightingLexer.class
+SHA1-Digest: Ogrh9Bnqc/WauiL8S3FJHBLV8j0=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/partialEditing/PartialCont
+ entAssistContextFactory.class
+SHA1-Digest: RZiCa133wrYGDQXUNJUOPoIxCFc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/registry/LanguageAcceptor.
+ class
+SHA1-Digest: RDe8djkL84rkSzu+JvY/li4d2Ak=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/CodetemplatesUiModule$1.cl
+ ass
+SHA1-Digest: jDzZ1p+t7Ht4A2H5/GP0rvt5Y00=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/outline/TemplatesOutlineTr
+ eeProvider.class
+SHA1-Digest: AzY1P8kNXsTsnrJiQee7a1mMMNk=
+
+Name: about.html
+SHA1-Digest: m//+sZd+LYcO5OY/bjEiZVm0dk0=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/InspectableTempl
+ ateVariableResolverRegistry.class
+SHA1-Digest: pZOHCKdFgFdUeUeMwqmnfkR3zro=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/TemplatesToke
+ nDefProvider.class
+SHA1-Digest: lQmL3eULO01U3yqfNVSwiB0kXAI=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SemanticHighl
+ ighter.class
+SHA1-Digest: r3ceW9ML80N9ybSII2RuGDUBSKU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/projectedEditing/IProjecte
+ dContent.class
+SHA1-Digest: hhkQnEsSKzPk7PESDK5K8HRk7qU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalConflictHelper.class
+SHA1-Digest: ZWUTGPy85cFr6SuCk5x+yJu+ajA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/quickfix/CodetemplatesQuic
+ kfixProvider.class
+SHA1-Digest: fcbs9pJZRT9NViiNmPalsXaFeh8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/SingleCodete
+ mplateContentAssistLexer$DFA5.class
+SHA1-Digest: /JnNd1LPOST+OiDrPV5g5+w9lu4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/validation/TemplateValidat
+ or.class
+SHA1-Digest: +Wvwx7w7saQA0uw2UeNt+xkMCXE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/registry/LanguageRegistrar
+ .class
+SHA1-Digest: EvuTE/2fg+nCqqO9A2DahCTKV0E=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleCodetemplat
+ eDescriptionLabelProvider.class
+SHA1-Digest: K7vgCW2xiavl4Uo5JlkewjmGxyQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/internal/CodetemplatesActi
+ vator.class
+SHA1-Digest: nWoQV04sL8phYpsq2Ze+GznAlyA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/Codete
+ mplatesParser.class
+SHA1-Digest: c/DYxzk6lzFXmu1BNGg122i/69Y=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser.g
+SHA1-Digest: o5HH7hAO0D36a2A5L7uEF12G5v8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/Codetemplates
+ HighlightingLexer$DFA7.class
+SHA1-Digest: iTJS8TCWVjU+PF/Dg+hD1C2AewU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/quickfix/TemplatesQuickfix
+ Provider.class
+SHA1-Digest: jL4HC6a96KAL99wRhvXB2+47OWg=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/AccessibleCodetemplatesAct
+ ivator$1.class
+SHA1-Digest: XvEuotB4loEhU7LuMcRr36h+ZL8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SingleTemplat
+ eTokenDefProvider.class
+SHA1-Digest: IGkftAa/kj+ivNgS+t9RbqWSVnM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/outline/CodetemplatesOutli
+ neTreeProvider.class
+SHA1-Digest: 0BLDZACwjcXzOpy5Q88qND6FCsY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/AbstractCodetemplatesUiMod
+ ule.class
+SHA1-Digest: AHTazxrhHU8Qgo6TVJKhfHylvwg=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalCodetemplatesLexer$DFA5.class
+SHA1-Digest: t9sKb2K1CCGl+LaQmK8FnOSfB8M=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser.class
+SHA1-Digest: 78Lt4MS/iyYzcw/s4DMg7nlcJmA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser$DFA17.class
+SHA1-Digest: f5eXJucll0UbWRAtsz+Viiv3Qow=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider$1.class
+SHA1-Digest: LFV+wwh/eZpPZznvUK7768lypeA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalCodetemplatesLexer.tokens
+SHA1-Digest: xHOFCsikvuLAixyccEGmMlU6RG4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/TemplatesLangu
+ ageConfiguration.class
+SHA1-Digest: mWK/pwLdaAZGhvmNxudLMB3xt8c=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SingleCodetem
+ plateHighlightingLexer.tokens
+SHA1-Digest: ce7hiofyvXUMSsbOy+9GEqoMpms=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider$NestedContentAssistProcessorSwitch.class
+SHA1-Digest: pUxeGBGIiS3K7aWdV0xyljEH2Gs=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SingleCodetem
+ plateHighlightingLexer.g
+SHA1-Digest: T4cCHoQ13WXQIq0CWi2wt8u13m4=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/DummyDocumen
+ t.class
+SHA1-Digest: t10u1pWZrRlXYmNAJhcajhs2Ic4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sContentAssistLexer.g
+SHA1-Digest: p27pwN+oGuPGbRVKTUK4gUnCjXM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/InspectableSimpl
+ eTemplateVariableResolver.class
+SHA1-Digest: 4bpJ7a7tmyUvnEkkGtjJ2GZYl7I=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/IEditTemplateD
+ ialog.class
+SHA1-Digest: kFjC/6iLnavNRcfejrOAUuy2uFE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalSingleCodetemplateParser$DFA5.class
+SHA1-Digest: +DdRliq38G0P4WFRVqhIQCbWpOI=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/partialEditing/PartialCont
+ entAssistContextFactory$1.class
+SHA1-Digest: mP7MNMxcpC67Txo3CfCapY1uIiY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser$DFA19.class
+SHA1-Digest: zYxsO/pyFIdgFHxiqb8n1DB88XA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/SingleCodetem
+ plateHighlightingLexer.class
+SHA1-Digest: wIh58ze0UbpP+VubHgYfp1dKzwM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/SingleCodetemplateUiModule
+ .class
+SHA1-Digest: DHn5ekzILHSLtFTN6brourvr+8g=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalSingleCodetemplateLexer.tokens
+SHA1-Digest: 6DNLOm5YRUg8Q1+HEeE7NDhqVTY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alog$1.class
+SHA1-Digest: xPZjGB7+i8SHoRCd6D3dNT+A05Q=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/partialEditing/IPartialCon
+ tentAssistParser.class
+SHA1-Digest: y0hUxFz0ut/o/NICTZLrVLzvGOU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/Partia
+ lCodetemplatesContentAssistParser.class
+SHA1-Digest: Q+m5dIWW3J89/vGg+PU9U6L7u8U=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alogFactory.class
+SHA1-Digest: M6pW94e3FcW0mqGkLbvvlCUPnV0=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/TokenToAttrib
+ uteMapper.class
+SHA1-Digest: eUoqu2m9wz4PugfPZtMyQIthLYE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser$DFA4.class
+SHA1-Digest: nPdBdmvu1U76dhpnZXp5VPPkhh4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/projectedEditing/Projectio
+ nAwareProposalAcceptor.class
+SHA1-Digest: 4Kemsa7ksd4OdEyuuC8DgAWgrlA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleTemplateLab
+ elProvider.class
+SHA1-Digest: RfU5DPeLejGmuMJpj6O1gnP4JHw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/SingleCodetemplateExecutab
+ leExtensionFactory.class
+SHA1-Digest: wiz/N49V5lhYlfdBZPHSA5uk3Ao=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider$TemplateData.class
+SHA1-Digest: sAuJDx0eazG5RKT5P5RCEyHvTvw=
+
+Name: plugin.properties
+SHA1-Digest: 6LVSq2w8tDOS8aUGw9yb1REat84=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/AccessibleCodetemplatesAct
+ ivator$2.class
+SHA1-Digest: 8+f0sRr0l7+l9c4ary8ERVYG2gw=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider.class
+SHA1-Digest: 8HIsTQy1h53AYVWvS6YXA9U99z4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/highlighting/Codetemplates
+ HighlightingLexer.g
+SHA1-Digest: HsWIweWkB2Kdrl8yec/n9DsC/jc=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/lexer/
+ InternalCodetemplatesLexer.class
+SHA1-Digest: zyMeWGr4/8velo7iOp6+ibUVpLU=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/InspectableTempl
+ ateVariableResolverDecorator.class
+SHA1-Digest: DawqxwmUre5wNrSODRxTg0275Sk=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/Codete
+ mplatesParser$1.class
+SHA1-Digest: AWv4vm9x39Q4FBaLNS7Ll88fkDQ=
+
+Name: plugin.xml
+SHA1-Digest: tlpDz6YGnC00zYMr1K/qvMCmFm8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/SingleTemplateDes
+ criptionLabelProvider.class
+SHA1-Digest: QizbaZIcUsSYzRKWKHgfbPccRC8=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sProposalProvider$2.class
+SHA1-Digest: TAUwdxz+Wnt7YfbcAKgamiS8OdA=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/resolvers/IInspectableTemp
+ lateVariableResolver.class
+SHA1-Digest: dCpCeUuwHFQabLydpqG0CVNJ29k=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/TemplateDialog
+ Messages.class
+SHA1-Digest: XPZqdR2wv9iNMGCkXcCB9k6e4/s=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/DummyTextVie
+ wer.class
+SHA1-Digest: L6xcXSZHPFIv8BEJ2M1zlkEcIq4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/CodetemplatesLabe
+ lProvider.class
+SHA1-Digest: JioczKnfaa/5RCMaOtaPr9aSjNk=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/scoping/SyntheticResourceA
+ wareScopeProvider.class
+SHA1-Digest: DfxwA/1INglsXvXqHZKjC5aScUo=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/antlr/intern
+ al/InternalCodetemplatesParser.class
+SHA1-Digest: GBeso+8vWzHUcW+qTlShjK7yRMI=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/CodetemplatesExecutableExt
+ ensionFactory.class
+SHA1-Digest: 8aofdKxGADJACq1cW/J5R6IEqcM=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/AbstractSingleCodetemplate
+ UiModule.class
+SHA1-Digest: vYDOwkyuyh/X5IR3rYqXMdc+UZQ=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sContentAssistLexer$DFA5.class
+SHA1-Digest: dsVkg9ijVnnvSQ9hp9msVEsxGsY=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/EditTemplateDi
+ alog$2.class
+SHA1-Digest: ufZNJKRQgU58M2vcZ5v/BmPQATE=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/contentassist/Codetemplate
+ sContentAssistLexer.tokens
+SHA1-Digest: xHOFCsikvuLAixyccEGmMlU6RG4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/preferences/AdvancedTempla
+ tesPreferencePage.class
+SHA1-Digest: TySSYu6WyFjKmGie368rREo9SY4=
+
+Name: org/eclipse/xtext/ui/codetemplates/ui/labeling/TemplatesLabelPro
+ vider.class
+SHA1-Digest: bybxbwgFfCFcXhnvu0c2Ui9RLXc=
+

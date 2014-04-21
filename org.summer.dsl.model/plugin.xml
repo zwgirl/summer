@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/types"
+            class="org.summer.dsl.model.types.TypesPackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/xbase"
+            class="org.summer.dsl.model.xbase.XbasePackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/ss"
+            class="org.summer.dsl.model.ss.SsPackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/xannotation"
+            class="org.summer.dsl.model.xannotation.XannotationPackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/xtype"
+            class="org.summer.dsl.model.xtype.XtypePackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="richstring"
+            class="org.summer.dsl.model.richstring.RichstringPackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
+</plugin>
