@@ -515,28 +515,30 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		}
 	}
 
+	
+	//cym comment
 	protected Object castToPrimitiveType(Object castMe, Primitives.Primitive kind) {
 		if (com.google.common.primitives.Primitives.isWrapperType(castMe.getClass())) {
 			if (kind == Primitives.Primitive.Boolean) {
 				if (castMe instanceof Boolean) {
 					return castMe;
 				}
-			} else if (kind == Primitives.Primitive.Char) {
-				if (castMe instanceof Character) {
-					return ((Character) castMe).charValue();
-				} else if (castMe instanceof Byte) {
-					return (char) ((Byte) castMe).byteValue();
-				} else if (castMe instanceof Short) {
-					return (char) ((Short) castMe).shortValue();
-				} else if (castMe instanceof Long) {
-					return (char) ((Long) castMe).longValue();
-				} else if (castMe instanceof Integer) {
-					return (char) ((Integer) castMe).intValue();
-				} else if (castMe instanceof Float) {
-					return (char) ((Float) castMe).floatValue();
-				} else if (castMe instanceof Double) {
-					return (char) ((Double) castMe).doubleValue();
-				}
+//			} else if (kind == Primitives.Primitive.Char) {
+//				if (castMe instanceof Character) {
+//					return ((Character) castMe).charValue();
+//				} else if (castMe instanceof Byte) {
+//					return (char) ((Byte) castMe).byteValue();
+//				} else if (castMe instanceof Short) {
+//					return (char) ((Short) castMe).shortValue();
+//				} else if (castMe instanceof Long) {
+//					return (char) ((Long) castMe).longValue();
+//				} else if (castMe instanceof Integer) {
+//					return (char) ((Integer) castMe).intValue();
+//				} else if (castMe instanceof Float) {
+//					return (char) ((Float) castMe).floatValue();
+//				} else if (castMe instanceof Double) {
+//					return (char) ((Double) castMe).doubleValue();
+//				}
 			} else if (castMe instanceof Number) {
 				Number number = (Number) castMe;
 				switch(kind) {
@@ -544,8 +546,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 						return number.byteValue();
 					case Short:
 						return number.shortValue();
-					case Long: 
-						return number.longValue();
+//					case Long: 
+//						return number.longValue();
 					case Int:
 						return number.intValue();
 					case Float:
@@ -562,8 +564,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 						return (byte) c;
 					case Short:
 						return (short) c;
-					case Long: 
-						return (long) c;
+//					case Long: 
+//						return (long) c;
 					case Int:
 						return (int) c;
 					case Float:
@@ -741,6 +743,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		}
 	}
 
+	
+	//cym comment
 	protected Object getDefaultObjectValue(LightweightTypeReference type) {
 		if(!type.isPrimitive())
 			return null;
@@ -751,20 +755,20 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 					return Byte.valueOf((byte)0);
 				case Short :
 					return Short.valueOf((short)0);
-				case Char :
-					return Character.valueOf((char)0);
+//				case Char :
+//					return Character.valueOf((char)0);
 				case Int :
 					return Integer.valueOf(0);
-				case Long :
-					return Long.valueOf(0l);
+//				case Long :
+//					return Long.valueOf(0l);
 				case Float :
 					return Float.valueOf(0f);
 				case Double :
 					return Double.valueOf("0.");
 				case Boolean :
 					return Boolean.FALSE;
-				case Void :
-					return null;
+//				case Void :
+//					return null;
 				default :
 					throw new IllegalArgumentException("Not a primitive : "+primitive);
 			}
@@ -786,6 +790,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return expectedType.isInstance(instance);
 	}
 
+	//cym comment
 	protected Object _doEvaluate(XVariableDeclaration variableDecl, IEvaluationContext context, CancelIndicator indicator) {
 		Object initialValue = null;
 		if (variableDecl.getRight()!=null) {
@@ -796,8 +801,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 				switch(primitiveKind) {
 					case Boolean:
 						initialValue = Boolean.FALSE; break;
-					case Char:
-						initialValue = Character.valueOf((char) 0); break;
+//					case Char:
+//						initialValue = Character.valueOf((char) 0); break;
 					case Double:
 						initialValue = Double.valueOf(0d); break;
 					case Byte:
@@ -806,12 +811,12 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 						initialValue = Float.valueOf(0f); break;
 					case Int:
 						initialValue = Integer.valueOf(0); break;
-					case Long:
-						initialValue = Long.valueOf(0L); break;
+//					case Long:
+//						initialValue = Long.valueOf(0L); break;
 					case Short:
 						initialValue = Short.valueOf((short) 0); break;
-					case Void:
-						throw new IllegalStateException("Void is not a valid variable type.");
+//					case Void:
+//						throw new IllegalStateException("Void is not a valid variable type.");
 					default:
 						throw new IllegalStateException("Unknown primitive type " + primitiveKind);
 				}

@@ -214,6 +214,8 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return result;
 	}
 	
+	
+	//cym comment
 	@Override
 	public LightweightTypeReference getPrimitiveIfWrapperType() {
 		Primitive primitive = getPrimitiveKindIfWrapperType();
@@ -223,20 +225,20 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 					return findPrimitive("boolean");
 				case Byte:
 					return findPrimitive("byte");
-				case Char:
-					return findPrimitive("char");
+//				case Char:
+//					return findPrimitive("char");
 				case Double:
 					return findPrimitive("double");
 				case Float:
 					return findPrimitive("float");
 				case Int:
 					return findPrimitive("int");
-				case Long:
-					return findPrimitive("long");
+//				case Long:
+//					return findPrimitive("long");
 				case Short:
 					return findPrimitive("short");
-				case Void:
-					return findPrimitive("void");
+//				case Void:
+//					return findPrimitive("void");
 				default:
 					throw new IllegalStateException("Unknown primitive kind " + primitive);
 			}
@@ -268,12 +270,12 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 				return Primitive.Boolean;
 			} else if ("int".equals(name)) {
 				return Primitive.Int;
-			} else if ("long".equals(name)) {
-				return Primitive.Long;
+//			} else if ("long".equals(name)) {
+//				return Primitive.Long;
 			} else if ("double".equals(name)) {
 				return Primitive.Double;
-			} else if ("char".equals(name)) {
-				return Primitive.Char;
+//			} else if ("char".equals(name)) {
+//				return Primitive.Char;
 			} else if ("byte".equals(name)) {
 				return Primitive.Byte;
 			} else if ("short".equals(name)) {
@@ -281,8 +283,8 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 			} else if ("float".equals(name)) {
 				return Primitive.Float;
 			}
-		} else if (type.eClass() == TypesPackage.Literals.JVM_VOID) {
-			return Primitive.Void;
+//		} else if (type.eClass() == TypesPackage.Literals.JVM_VOID) {
+//			return Primitive.Void;
 		}
 		return null;
 	}
@@ -333,6 +335,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return null;
 	}
 	
+	//cym comment
 	@Nullable
 	private Primitive getPrimitiveKind(JvmGenericType type) {
 		if (type.eIsProxy())
@@ -342,20 +345,20 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 			return Primitive.Boolean;
 		} else if ("java.lang.Integer".equals(name)) {
 			return Primitive.Int;
-		} else if ("java.lang.Long".equals(name)) {
-			return Primitive.Long;
+//		} else if ("java.lang.Long".equals(name)) {
+//			return Primitive.Long;
 		} else if ("java.lang.Double".equals(name)) {
 			return Primitive.Double;
-		} else if ("java.lang.Character".equals(name)) {
-			return Primitive.Char;
+//		} else if ("java.lang.Character".equals(name)) {
+//			return Primitive.Char;
 		} else if ("java.lang.Byte".equals(name)) {
 			return Primitive.Byte;
 		} else if ("java.lang.Short".equals(name)) {
 			return Primitive.Short;
 		} else if ("java.lang.Float".equals(name)) {
 			return Primitive.Float;
-		} else if ("java.lang.Void".equals(name)) {
-			return Primitive.Void;
+//		} else if ("java.lang.Void".equals(name)) {
+//			return Primitive.Void;
 		}
 		return null;
 	}

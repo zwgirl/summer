@@ -108,6 +108,16 @@ public final class BuildInTypes {
 		
 	}
 	
+	public JvmType getBooleanType(ResourceSet rs){
+		if(booleanType!=null){
+			return booleanType;
+		}
+		booleanType = getJvmType(rs, "Boolean");
+
+		return booleanType;
+		
+	}
+	
 	public JvmType getObjectType(ResourceSet rs){
 		if(objectType!=null){
 			return objectType;
@@ -154,6 +164,17 @@ public final class BuildInTypes {
 
 		return integerType;
 	}
+	
+	public JvmType getIntegerType(ResourceSet rs){
+		if(integerType!=null){
+			return integerType;
+		}
+		integerType = getJvmType(rs, "Boolean");
+
+		return integerType;
+	}
+	
+	
 	public JvmType getByteType(Resource resource) {
 		if(byteType!=null){
 			return byteType;
@@ -162,6 +183,16 @@ public final class BuildInTypes {
 
 		return byteType;
 	}
+	
+	public JvmType getByteType(ResourceSet rs){
+		if(byteType!=null){
+			return integerType;
+		}
+		byteType = getJvmType(rs, "Byte");
+
+		return byteType;
+	}
+	
 	public JvmType getShortType(Resource resource) {
 		if(shortType!=null){
 			return shortType;
@@ -170,6 +201,16 @@ public final class BuildInTypes {
 
 		return shortType;
 	}
+	
+	public JvmType getShortType(ResourceSet rs){
+		if(shortType!=null){
+			return integerType;
+		}
+		shortType = getJvmType(rs, "Short");
+
+		return shortType;
+	}
+	
 	public JvmType getFloatType(Resource resource) {
 		if(floatType!=null){
 			return floatType;
@@ -178,11 +219,30 @@ public final class BuildInTypes {
 
 		return floatType;
 	}
+	
+	public JvmType getFloatType(ResourceSet rs){
+		if(floatType!=null){
+			return floatType;
+		}
+		floatType = getJvmType(rs, "Float");
+
+		return floatType;
+	}
+	
 	public JvmType getDoubleType(Resource resource) {
 		if(doubleType!=null){
 			return doubleType;
 		}
 		doubleType = getJvmType(resource, "Double");
+
+		return doubleType;
+	}
+	
+	public JvmType getDoubleType(ResourceSet rs){
+		if(doubleType!=null){
+			return doubleType;
+		}
+		doubleType = getJvmType(rs, "Double");
 
 		return doubleType;
 	}

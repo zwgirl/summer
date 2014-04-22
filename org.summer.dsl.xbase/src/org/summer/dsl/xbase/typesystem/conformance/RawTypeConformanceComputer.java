@@ -793,44 +793,45 @@ public class RawTypeConformanceComputer {
 		return flags;
 	}
 	
+	// cym modified
 	private boolean isWideningConversion(Primitive leftPrimitiveKind, Primitive rightPrimitiveKind) {
 		switch (rightPrimitiveKind) {
 			case Byte :
 				switch (leftPrimitiveKind) { 
-					case Void:
+//					case Void:
 					case Byte:
 						return false;
 					default:
 						return true;
 				}
 			case Short :
-			case Char :
-				switch (leftPrimitiveKind) { 
-					case Void:
-					case Byte:
-					case Short:
-					case Char:
-						return false;
-					default:
-						return true;
-				}
+//			case Char :
+//				switch (leftPrimitiveKind) { 
+//					case Void:
+//					case Byte:
+//					case Short:
+//					case Char:
+//						return false;
+//					default:
+//						return true;
+//				}
 			case Int :
 				switch (leftPrimitiveKind) { 
-					case Long:
+//					case Long:
 					case Float:
 					case Double:
 						return true;
 					default:
 						return false;
 				}
-			case Long :
-				switch (leftPrimitiveKind) { 
-					case Float:
-					case Double:
-						return true;
-					default:
-						return false;
-				}
+//			case Long :
+//				switch (leftPrimitiveKind) { 
+//					case Float:
+//					case Double:
+//						return true;
+//					default:
+//						return false;
+//				}
 			case Float :
 				return leftPrimitiveKind == Primitive.Double;
 			default :
