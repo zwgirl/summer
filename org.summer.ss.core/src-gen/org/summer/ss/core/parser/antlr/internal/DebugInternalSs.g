@@ -886,7 +886,7 @@
 ;
 
 RULE_ID :
-	(
+	'^'? (
 		RULE_IDENTIFIER_START |
 		RULE_UNICODE_ESCAPE
 	) (

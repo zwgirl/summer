@@ -2313,8 +2313,7 @@ public class SsGrammarAccess extends AbstractGrammarElementFinder {
 	// //;
 	//
 	//terminal ID:
-	//	(IDENTIFIER_START //	'^'? 
-	// | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*;
+	//	"^"? (IDENTIFIER_START | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*;
 	public TerminalRule getIDRule() {
 		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
 	} 

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-SymbolicName: org.eclipse.xtext.ui;singleton:=true
 Bundle-Activator: org.eclipse.xtext.ui.internal.Activator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0";visibi

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 
-public class AbstractXAMLValidator extends org.summer.ss.core.validation.SsValidator {
+public class AbstractXAMLValidator extends org.summer.ss.core.validation.AbstractXtendJavaValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {
