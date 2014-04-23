@@ -158,15 +158,16 @@ public class FunctionTypes {
 //		return false;
 //	}
 	
+	
+	//cym add
 	public boolean isFunctionAndProcedureAvailable(ITypeReferenceOwner owner) {
 		JvmType type = BuildInTypes.getInstance().getFunctionType(owner.getContextResourceSet());
 		if (type == null) {
 			return false;
 		}
-		if (type instanceof JvmTypeParameterDeclarator) {
-			return !((JvmTypeParameterDeclarator) type).getTypeParameters().isEmpty();
-		}
-		return false;
+		
+		return true;
+
 	}
 
 	//cym comment

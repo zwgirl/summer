@@ -324,6 +324,21 @@ public class TypeReferences {
 		}
 		return false;
 	}
+	
+	//cym add
+	public boolean isInstanceOf(JvmTypeReference reference, JvmType type) {
+		if (isNullOrProxy(reference))
+			return false;
+		if (is(reference, type)) {
+			return true;
+		}
+		Set<JvmTypeReference> types = superTypeCollector.collectSuperTypes(reference);
+		for (JvmTypeReference jvmTypeReference : types) {
+			if (is(jvmTypeReference, type))
+				return true;
+		}
+		return false;
+	}
 
 	public boolean isArray(JvmTypeReference type) {
 		if (isNullOrProxy(type))

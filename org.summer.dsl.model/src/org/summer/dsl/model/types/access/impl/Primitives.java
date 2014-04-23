@@ -8,8 +8,10 @@
 package org.summer.dsl.model.types.access.impl;
 
 import java.util.Collection;
+import java.util.Map;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -35,5 +37,14 @@ public class Primitives {
 		Long.TYPE,
 		Void.TYPE
 	);
+	
+	public static final Map<String, String> ALL_PRIMITIVE_TYPES1 = ImmutableMap.<String, String>builder()
+		    .put("boolean", "Boolean") 
+		    .put("int", "Integer") 
+		    .put("float", "Float") 
+		    .put("byte", "Byte") 
+		    .put("double", "Double") 
+		    .put("short", "Short") 
+		    .build();
 	
 }

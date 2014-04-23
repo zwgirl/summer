@@ -19,6 +19,7 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypes;
@@ -109,7 +110,8 @@ public class ClosureWithoutExpectationHelper extends AbstractClosureTypeHelper {
 			LightweightTypeReference substituted = substitutor.substitute(parameterType);
 			result.addTypeArgument(substituted);
 		}
-		if (!isProcedure) {
+//		if (!isProcedure) { //cym comment
+		if (!isProcedure && max>0) {
 			JvmTypeParameter parameter = parameters.get(max);
 			LightweightTypeReference parameterType = new ParameterizedTypeReference(owner, parameter);
 			LightweightTypeReference substituted = substitutor.substitute(parameterType);
@@ -166,12 +168,14 @@ public class ClosureWithoutExpectationHelper extends AbstractClosureTypeHelper {
 		LightweightTypeReference expressionResultType = expressionResult.getReturnType();
 		if (expressionResultType == null || !expressionResultType.isPrimitiveVoid()) {
 			FunctionTypeReference result = getFunctionTypeReference(false);
-			LightweightTypeReference expectedReturnType = result.getTypeArguments().get(result.getTypeArguments().size() - 1);
+//			LightweightTypeReference expectedReturnType = result.getTypeArguments().get(result.getTypeArguments().size() - 1);  // cym comment
+			LightweightTypeReference expectedReturnType = !result.getTypeArguments().isEmpty() ? result.getTypeArguments().get(result.getTypeArguments().size() - 1) : null;
 			if (expressionResultType != null && !expressionResultType.isAny()) {
 				result.setReturnType(expressionResultType);
 				deferredBindTypeArgument(expectedReturnType, expressionResultType, BoundTypeArgumentSource.INFERRED);
 			} else {
-				JvmType objectType = getServices().getTypeReferences().findDeclaredType(Object.class, incompleteClosureType.getType());
+//				JvmType objectType = getServices().getTypeReferences().findDeclaredType(Object.class, incompleteClosureType.getType()); // cym comment
+				JvmType objectType = BuildInTypes.getInstance().getObjectType(incompleteClosureType.getType().eResource());
 				ParameterizedTypeReference objectTypeReference = new ParameterizedTypeReference(incompleteClosureType.getOwner(), objectType);
 				result.setReturnType(objectTypeReference);
 				deferredBindTypeArgument(expectedReturnType, objectTypeReference, BoundTypeArgumentSource.INFERRED);

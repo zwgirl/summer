@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.0",
  org.summer.dsl.xtype;bundle-version="1.0.0",
  org.summer.dsl.xbase.lib;bundle-version="1.0.0",
  org.summer.ss.lib;bundle-version="1.0.0",
- org.eclipse.xtend2.lib;bundle-version="2.5.0"
+ org.eclipse.xtend.lib;bundle-version="2.5.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j;version="1.2.15"
 Export-Package: org.summer.dsl.xbase,

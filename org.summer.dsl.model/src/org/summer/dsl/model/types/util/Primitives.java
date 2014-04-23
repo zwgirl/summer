@@ -7,12 +7,13 @@
  *******************************************************************************/
 package org.summer.dsl.model.types.util;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.filter;
 
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmMultiTypeReference;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
@@ -258,36 +259,37 @@ public class Primitives {
 //			}
 			
 			@Override
-			public JvmTypeReference doVisitParameterizedTypeReference(JvmParameterizedTypeReference type) {
-				if(type.getType() instanceof JvmTypeParameter && visiting.add(type.getType())) {
-					EList<JvmTypeConstraint> constraints = ((JvmTypeParameter)type.getType()).getConstraints();
+			public JvmTypeReference doVisitParameterizedTypeReference(JvmParameterizedTypeReference typeRef) {
+				Resource resource = typeRef.getType().eResource();
+				if(typeRef.getType() instanceof JvmTypeParameter && visiting.add(typeRef.getType())) {
+					EList<JvmTypeConstraint> constraints = ((JvmTypeParameter)typeRef.getType()).getConstraints();
 					for(JvmUpperBound upperBound: filter(constraints, JvmUpperBound.class)) {
 						JvmTypeReference upperBoundType = upperBound.getTypeReference();
 						JvmTypeReference asPrimitive = visit(upperBoundType);
 						if(asPrimitive != upperBoundType) 
 							return asPrimitive;
 					}
-					return type;
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getByteType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getByteType(type.eResource()), type.getType());
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getShortType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getShortType(type.eResource()), type.getType());
+					return typeRef;
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getByteType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getByteType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getShortType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getShortType(resource), typeRef.getType());
 //				} else if (typeReferences.is(type, Character.class)) {
 //					return typeReferences.getTypeForName(Character.TYPE, type.getType());
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getIntegerType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getIntegerType(type.eResource()), type.getType());
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getIntegerType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getIntegerType(resource), typeRef.getType());
 //				} else if (typeReferences.is(type, Long.class)) {
 //					return typeReferences.getTypeForName(Long.TYPE, type.getType());
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getFloatType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getFloatType(type.eResource()), type.getType());
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getDoubleType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getDoubleType(type.eResource()), type.getType());
-				} else if (typeReferences.is(type, BuildInTypes.getInstance().getBooleanType(type.eResource()))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getBooleanType(type.eResource()), type.getType());
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getFloatType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getFloatType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getDoubleType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getDoubleType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getBooleanType(resource))) {
+					return typeReferences.getTypeForName(BuildInTypes.getInstance().getBooleanType(resource), typeRef.getType());
 //				} else if (typeReferences.is(type, Void.class)) {
 //					return typeReferences.getTypeForName(Void.TYPE, type.getType());
 				}
-				return type;
+				return typeRef;
 			}
 			
 			@Override

@@ -249,12 +249,12 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 		
 	}
 	
-	@Override
-	public void completeXImportDeclaration_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, true,
-				getQualifiedNameValueConverter(), createVisibilityFilter(context, IJavaSearchConstants.TYPE), acceptor);
-	}
+//	@Override
+//	public void completeXImportDeclaration_ImportedType(EObject model, Assignment assignment, ContentAssistContext context,
+//			ICompletionProposalAcceptor acceptor) {
+//		completeJavaTypes(context, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, true,
+//				getQualifiedNameValueConverter(), createVisibilityFilter(context, IJavaSearchConstants.TYPE), acceptor);
+//	}
 
 	@Override
 	public void completeJvmParameterizedTypeReference_Type(EObject model, Assignment assignment,
@@ -358,13 +358,13 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 		lookupCrossReference(crossReference, contentAssistContext, acceptor, getFeatureDescriptionPredicate(contentAssistContext));
 	}
 	
-	@Override
-	public void completeXAssignment_Feature(EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		//cym comment
-//		if (assignment == getXAssignmentFeatureAssignment())
-//			super.completeXAssignment_Feature(model, assignment, context, acceptor);
-	}
+//	@Override
+//	public void completeXAssignment_Feature(EObject model, Assignment assignment, ContentAssistContext context,
+//			ICompletionProposalAcceptor acceptor) {
+//		//cym comment
+////		if (assignment == getXAssignmentFeatureAssignment())
+////			super.completeXAssignment_Feature(model, assignment, context, acceptor);
+//	}
 	//cym comment
 //	protected Assignment getXAssignmentFeatureAssignment() {
 //		return grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_0_0_1();
@@ -428,12 +428,12 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 		completeWithinBlock(model, context, acceptor);
 	}
 	
-	@Override
-	public void completeXExpressionInClosure_Expressions(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXExpressionInClosure_Expressions(model, assignment, context, acceptor);
-		completeWithinBlock(model, context, acceptor);
-	}
+//	@Override
+//	public void completeXExpressionInClosure_Expressions(EObject model, Assignment assignment,
+//			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//		super.completeXExpressionInClosure_Expressions(model, assignment, context, acceptor);
+//		completeWithinBlock(model, context, acceptor);
+//	}
 
 	protected void completeWithinBlock(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (!(model instanceof XBlockExpression)) {

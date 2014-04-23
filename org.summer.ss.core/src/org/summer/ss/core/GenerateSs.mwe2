@@ -85,7 +85,7 @@ Workflow {
 //			fragment = compare.CompareFragment {
 //				fileExtensions = file.extensions
 //			}
-//			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
 			fragment = XtextAntlrUiGeneratorFragment {
 				removeBacktrackingGuards = true
 				lookaheadThreshold = '5'

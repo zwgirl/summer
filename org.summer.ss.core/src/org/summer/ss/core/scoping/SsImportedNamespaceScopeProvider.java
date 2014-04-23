@@ -22,6 +22,7 @@ import org.eclipse.xtext.linking.impl.ImportedNamesAdapter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.CompilerPhases;
+import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
@@ -38,6 +39,7 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.IJvmTypeProvider;
+import org.summer.dsl.model.types.access.impl.Primitives;
 import org.summer.dsl.model.types.xtext.AbstractTypeScope;
 import org.summer.dsl.model.types.xtext.AbstractTypeScopeProvider;
 import org.summer.dsl.model.xbase.XClosure;
@@ -50,6 +52,7 @@ import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.summer.dsl.xbase.scoping.batch.ConstructorTypeScopeWrapper;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
 import org.summer.ss.core.resource.ImportScope;
+import org.summer.ss.core.resource.PrimitivesScope;
 import org.summer.ss.core.resource.RootScope;
 
 import com.google.common.collect.Lists;
@@ -106,19 +109,17 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 //			final Resource resource = xtendFile.eResource();
 //			IScope result = resourceScopeCache.get("type.scope", xtendFile.eResource(), new Provider<IScope>() {
 //				public IScope get() {
-////					IJvmTypeProvider typeProvider = typeScopeProvider.getTypeProvider(resource.getResourceSet());
-////					AbstractTypeScope typeScope = typeScopeProvider.createTypeScope(typeProvider, null);
-////					RecordingTypeScope recordingTypeScope = new RecordingTypeScope(typeScope, getImportedNamesSet(resource));
-////					AbstractScope rootTypeScope = getRootTypeScope(xtendFile, recordingTypeScope);
-//					
-//					IScope rootTypeScope = new RootScope(resource);
-//					return rootTypeScope;
-////					AbstractScope importScope = getImportScope(xtendFile.getImportSection(), rootTypeScope, recordingTypeScope);
-////					AbstractScope localTypes = getLocalTypeScope(xtendFile.eResource(), xtendFile.getPackage(), importScope);
-////					AbstractScope primitiveAware = new PrimitiveAwareScope(localTypes, typeScope);
-////					AbstractScope caching = new CachingTypeScope(primitiveAware);
-////					return caching;
+//					IJvmTypeProvider typeProvider = typeScopeProvider.getTypeProvider(resource.getResourceSet());
+//					AbstractTypeScope typeScope = typeScopeProvider.createTypeScope(typeProvider, null);
+//					RecordingTypeScope recordingTypeScope = new RecordingTypeScope(typeScope, getImportedNamesSet(resource));
+//					AbstractScope rootTypeScope = getRootTypeScope(xtendFile, recordingTypeScope);
+//					AbstractScope importScope = getImportScope(xtendFile.getImportSection(), rootTypeScope, recordingTypeScope);
+//					AbstractScope localTypes = getLocalTypeScope(xtendFile.eResource(), xtendFile.getPackage(), importScope);
+//					AbstractScope primitiveAware = new PrimitiveAwareScope(localTypes, typeScope);
+//					AbstractScope caching = new CachingTypeScope(primitiveAware);
+//					return caching;
 //				}
+//				
 //			});
 //			XtendMember syntacticContainer = EcoreUtil2.getContainerOfType(context, XtendMember.class);
 //			if (syntacticContainer != null) {
@@ -134,18 +135,24 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			IScope importScope = null;
 			//如果当前的文件是BuildIns.ss的话，就不需要再隐含导入本身了。
 			if(fileResource.getURI().toString().indexOf("src/summer/lang/BuildIns.ss")<0){
+				
 				IScope implicitScope = new ImportResourceScope(resourceSet.getResource(URI.createFileURI(path.toOSString()), true));
 				importScope = new ImportScope(fileResource, implicitScope);
 			}else{
 				importScope = new ImportScope(fileResource, IScope.NULLSCOPE);
 			}
-			AbstractScope result = new RootScope(fileResource, importScope);
 			
+			AbstractScope primitivesScope = new PrimitivesScope(importScope, fileResource);
+			
+			//处理原始类型
+			AbstractScope result = new RootScope(fileResource, primitivesScope);
 			//处理泛型参数，添加到当前的Scope上。
 			JvmMember syntacticContainer = EcoreUtil2.getContainerOfType(context, JvmMember.class);
 			if (syntacticContainer != null) {
 				result = getContainerScope(syntacticContainer, result);
 			}
+			
+			
 			return result;
 			
 		} else if (TypesPackage.Literals.JVM_CONSTRUCTOR.isSuperTypeOf(referenceType)) {

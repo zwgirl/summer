@@ -345,9 +345,17 @@ public class SsScopeProvider extends XbaseWithAnnotationsScopeProvider {
 	protected JvmDeclaredType getContextType(EObject call) {
 		if (call == null)
 			return null;
-		XtendClass containerClass = EcoreUtil2.getContainerOfType(call, XtendClass.class);
-		if (containerClass != null && containerClass.getName() != null)
-			return xtendjvmAssociations.getInferredType(containerClass);
+		
+		//cym comment
+//		XtendClass containerClass = EcoreUtil2.getContainerOfType(call, XtendClass.class);
+//		if (containerClass != null && containerClass.getName() != null)
+//			return xtendjvmAssociations.getInferredType(containerClass);
+//		else
+//			return super.getContextType(call);
+		
+		JvmDeclaredType containerClass = EcoreUtil2.getContainerOfType(call, JvmDeclaredType.class);
+		if (containerClass != null && containerClass.getSimpleName() != null)
+			return containerClass;
 		else
 			return super.getContextType(call);
 	}

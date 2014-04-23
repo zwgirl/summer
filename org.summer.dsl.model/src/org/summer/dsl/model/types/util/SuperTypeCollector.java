@@ -192,11 +192,11 @@ public class SuperTypeCollector {
 							}
 							
 //							if (references.is(superType, Object.class)) {  //cym comment
-							if (references.is(superType, BuildInTypes.getInstance().getObjectType(object.eResource()))) {
+							if (references.is(superType, BuildInTypes.getInstance().getObjectType(object.getType().eResource()))) {
 								outerCollecting[0] = true;
 								result = original.accept(superType, distance + 1) || result;
-								result = original.accept(references.getTypeForName(Serializable.class, superType.getType()), distance + 1) || result;
-								result = original.accept(references.getTypeForName(Cloneable.class, superType.getType()), distance + 1) || result;
+//								result = original.accept(references.getTypeForName(Serializable.class, superType.getType()), distance + 1) || result;  // cym comment
+//								result = original.accept(references.getTypeForName(Cloneable.class, superType.getType()), distance + 1) || result; // cym comment
 							}
 							return result;
 						}

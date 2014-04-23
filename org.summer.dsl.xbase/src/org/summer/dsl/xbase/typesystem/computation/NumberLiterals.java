@@ -12,7 +12,9 @@ import static org.eclipse.xtext.util.Strings.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XNumberLiteral;
+import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -98,6 +100,7 @@ public class NumberLiterals {
 		}
 	}
 
+	//cym comment
 	protected Class<? extends Number> getExplicitJavaType(XNumberLiteral literal) {
 		String typeQualifier = getTypeQualifier(literal);
 		if (equal("", typeQualifier))
@@ -115,10 +118,35 @@ public class NumberLiterals {
 		else
 			throw new IllegalArgumentException("Invalid type qualifier " + typeQualifier);
 	}
+	
+	//cym add
+	protected JvmType getExplicitType(XNumberLiteral literal) {
+		String typeQualifier = getTypeQualifier(literal);
+		if (equal("", typeQualifier))
+			return null;
+		else if (equal("f", typeQualifier))
+			return BuildInTypes.getInstance().getFloatType(literal.eResource());
+//		else if (equal("l", typeQualifier))
+//			return Long.TYPE;
+		else if (equal("d", typeQualifier))
+			return BuildInTypes.getInstance().getDoubleType(literal.eResource());
+//		else if (equal("bi", typeQualifier))
+//			return BigInteger.class;
+//		else if (equal("bd", typeQualifier))
+//			return BigDecimal.class;
+		else
+			throw new IllegalArgumentException("Invalid type qualifier " + typeQualifier);
+	}
 
 	public Class<? extends Number> getJavaType(XNumberLiteral literal) {
 		Class<? extends Number> explicitType = getExplicitJavaType(literal);
 		return (explicitType == null) ? (isFloatingPoint(literal)) ? Double.TYPE : Integer.TYPE : explicitType;
+	}
+	
+	public JvmType getType(XNumberLiteral literal) {
+		JvmType explicitType = getExplicitType(literal);
+		return (explicitType == null) ? (isFloatingPoint(literal)) ? BuildInTypes.getInstance().getDoubleType(literal.eResource()) 
+				: BuildInTypes.getInstance().getIntegerType(literal.eResource()) : explicitType;
 	}
 
 	public Number numberValue(XNumberLiteral literal, Class<?> numberType) {

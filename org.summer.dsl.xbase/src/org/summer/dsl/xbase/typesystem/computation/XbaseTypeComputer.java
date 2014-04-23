@@ -635,8 +635,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 	protected void _computeTypes(XNumberLiteral object, ITypeComputationState state) {
 		// TODO evaluate expectation if no specific suffix is given
 		// cym comment
-//		LightweightTypeReference result = getTypeForName(numberLiterals.getJavaType(object), state);
-		LightweightTypeReference result = getTypeForName(BuildInTypes.getInstance().getNumberType(object.eResource()), state);
+		LightweightTypeReference result = getTypeForName(numberLiterals.getType(object), state);
+//		LightweightTypeReference result = getTypeForName(BuildInTypes.getInstance().getNumberType(object.eResource()), state);
 		state.acceptActualType(result);
 	}
 

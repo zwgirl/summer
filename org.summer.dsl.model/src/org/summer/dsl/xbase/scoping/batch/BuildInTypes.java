@@ -63,11 +63,11 @@ public final class BuildInTypes {
 		
 	}
 
-	private JvmType getJvmType(Resource resource, String name) {
+	public JvmType getJvmType(Resource resource, String name) {
 		return getJvmType(resource.getResourceSet(), name);
 	}
 	
-	private JvmType getJvmType(ResourceSet rs, String name) {
+	public JvmType getJvmType(ResourceSet rs, String name) {
 		synchronized(this){
 			if(rs ==null || !(rs instanceof XtextResourceSet)){
 				return null;
@@ -133,6 +133,15 @@ public final class BuildInTypes {
 			return arrayType;
 		}
 		arrayType = getJvmType(resource, "Array");
+
+		return arrayType;
+	}
+	
+	public JvmType getArrayType(ResourceSet rs) {
+		if(arrayType!=null){
+			return arrayType;
+		}
+		arrayType = getJvmType(rs, "Array");
 
 		return arrayType;
 	}

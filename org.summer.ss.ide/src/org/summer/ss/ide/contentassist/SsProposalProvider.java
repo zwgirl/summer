@@ -44,7 +44,7 @@ import com.google.inject.Inject;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
-public class SsProposalProvider extends AbstractXtendProposalProvider {
+public class SsProposalProvider extends AbstractSsProposalProvider {
 
 	@Inject
 	private JdtVariableCompletions completions;
@@ -55,28 +55,6 @@ public class SsProposalProvider extends AbstractXtendProposalProvider {
 	@Inject
 	private ImplementMemberFromSuperAssist overrideAssist;
 
-	@Override
-	public void completeMember_Name(final EObject model, Assignment assignment, final ContentAssistContext context,
-			final ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XtendField) {
-			//TODO go up type hierarchy and collect all local fields
-			final List<XtendField> siblings = EcoreUtil2.getSiblingsOfType(model, XtendField.class);
-			Set<String> alreadyTaken = Sets.newHashSet();
-			for(XtendField sibling: siblings) {
-				alreadyTaken.add(sibling.getName());
-			}
-			alreadyTaken.addAll(getAllKeywords());
-			completions.getVariableProposals(model, SsPackage.Literals.XTEND_FIELD__TYPE,
-					VariableType.INSTANCE_FIELD, alreadyTaken, new JdtVariableCompletions.CompletionDataAcceptor() {
-						public void accept(String replaceText, StyledString label, Image img) {
-							acceptor.accept(createCompletionProposal(replaceText, label, img, context));
-						}
-					});
-		} else {
-			super.completeMember_Name(model, assignment, context, acceptor);
-		}
-	}
-	
 	@Override
 	protected ITypesProposalProvider.Filter createVisibilityFilter(ContentAssistContext context, int searchFor) {
 		XtendFile file = (XtendFile) context.getRootModel();
@@ -109,13 +87,6 @@ public class SsProposalProvider extends AbstractXtendProposalProvider {
 			completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true,
 					getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
 		}
-	}
-	
-	@Override
-	public void completeMember_ReturnType(EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true,
-				getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
 	}
 
 	protected Set<String> getAllKeywords() {
@@ -231,39 +202,4 @@ public class SsProposalProvider extends AbstractXtendProposalProvider {
 		}
 	}
 
-	@Override
-	public void complete_RICH_TEXT(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
-
-	@Override
-	public void complete_RICH_TEXT_START(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
-
-	@Override
-	public void complete_RICH_TEXT_END(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
-
-	@Override
-	public void complete_RICH_TEXT_INBETWEEN(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
-
-	@Override
-	public void complete_COMMENT_RICH_TEXT_END(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
-
-	@Override
-	public void complete_COMMENT_RICH_TEXT_INBETWEEN(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		completeInRichString(model, ruleCall, context, acceptor);
-	}
 }

@@ -14,6 +14,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.typesystem.util.RecursionGuard;
 
 /**
@@ -104,7 +105,8 @@ public class ArrayTypes {
 	public ParameterizedTypeReference convertToList(ArrayTypeReference type) {
 		LightweightTypeReference componentType = type.getComponentType();
 		LightweightTypeReference wrapper = componentType.getWrapperTypeIfPrimitive();
-		JvmType listType = type.getServices().getTypeReferences().findDeclaredType(List.class, type.getOwner().getContextResourceSet());
+//		JvmType listType = type.getServices().getTypeReferences().findDeclaredType(List.class, type.getOwner().getContextResourceSet());  //cym comment
+		JvmType listType = BuildInTypes.getInstance().getArrayType(type.getOwner().getContextResourceSet());
 		ParameterizedTypeReference result = new ParameterizedTypeReference(type.getOwner(), listType);
 		result.addTypeArgument(wrapper);
 		return result;

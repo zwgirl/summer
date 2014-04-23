@@ -806,15 +806,15 @@ public class RawTypeConformanceComputer {
 				}
 			case Short :
 //			case Char :
-//				switch (leftPrimitiveKind) { 
+				switch (leftPrimitiveKind) { 
 //					case Void:
-//					case Byte:
-//					case Short:
+					case Byte:
+					case Short:
 //					case Char:
-//						return false;
-//					default:
-//						return true;
-//				}
+						return false;
+					default:
+						return true;
+				}
 			case Int :
 				switch (leftPrimitiveKind) { 
 //					case Long:

@@ -92,8 +92,8 @@ Workflow {
 //			fragment = labeling.LabelProviderFragment {
 //				generateStub = false
 //			}
-//			fragment = outline.OutlineTreeProviderFragment {}
-//			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = outline.OutlineTreeProviderFragment {}
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
 			fragment = XtextAntlrUiGeneratorFragment {
 				options = auto-inject {}
 				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
