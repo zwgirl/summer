@@ -31,6 +31,7 @@ import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.access.impl.ClassURIHelper;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -144,7 +145,7 @@ public class RawTypeHelper implements IRawTypeHelper {
 //				JvmType objectType = factory.createJvmGenericType();
 //				((InternalEObject)objectType).eSetProxyURI(objectURI);
 //				objectType = (JvmType) EcoreUtil.resolve(objectType, resource);
-				JvmType objectType = BuildInTypes.getInstance().getObjectType(resource);
+				JvmType objectType = Buildin.Object.Type;
 				return Collections.singletonList(objectType);
 			}
 			return Collections.emptyList();
@@ -288,7 +289,7 @@ public class RawTypeHelper implements IRawTypeHelper {
 //			JvmType objectType = factory.createJvmGenericType();
 //			((InternalEObject)objectType).eSetProxyURI(objectURI);
 			
-			JvmType objectType= BuildInTypes.getInstance().getObjectType(resource);
+			JvmType objectType= Buildin.Object.Type;
 //			if (resource != null) {
 //				objectType = (JvmType) EcoreUtil.resolve(objectType, resource);
 //			}

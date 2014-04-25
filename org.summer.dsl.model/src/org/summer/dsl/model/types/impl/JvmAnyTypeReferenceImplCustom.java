@@ -15,6 +15,7 @@ import org.summer.dsl.model.types.access.impl.ClassURIHelper;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitor;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitorWithParameter;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -34,7 +35,7 @@ public class JvmAnyTypeReferenceImplCustom extends JvmAnyTypeReferenceImpl {
 //			JvmGenericType objectType = TypesFactory.eINSTANCE.createJvmGenericType();
 //			((InternalEObject) objectType).eSetProxyURI(new ClassURIHelper().getFullURI(Object.class));
 //			setType(objectType);
-			setType(BuildInTypes.getInstance().getObjectType(eResource()));
+			setType(Buildin.Object.Type); //Types.getInstance().getObjectType(eResource()));
 		}
 		return super.getType();
 	}

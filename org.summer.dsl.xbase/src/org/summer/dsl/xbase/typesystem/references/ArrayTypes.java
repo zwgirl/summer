@@ -15,6 +15,7 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.util.RecursionGuard;
 
 /**
@@ -106,7 +107,7 @@ public class ArrayTypes {
 		LightweightTypeReference componentType = type.getComponentType();
 		LightweightTypeReference wrapper = componentType.getWrapperTypeIfPrimitive();
 //		JvmType listType = type.getServices().getTypeReferences().findDeclaredType(List.class, type.getOwner().getContextResourceSet());  //cym comment
-		JvmType listType = BuildInTypes.getInstance().getArrayType(type.getOwner().getContextResourceSet());
+		JvmType listType = Buildin.List.Type;
 		ParameterizedTypeReference result = new ParameterizedTypeReference(type.getOwner(), listType);
 		result.addTypeArgument(wrapper);
 		return result;

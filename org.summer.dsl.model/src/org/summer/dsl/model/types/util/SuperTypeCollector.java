@@ -28,6 +28,7 @@ import org.summer.dsl.model.types.JvmTypeConstraint;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
@@ -192,7 +193,7 @@ public class SuperTypeCollector {
 							}
 							
 //							if (references.is(superType, Object.class)) {  //cym comment
-							if (references.is(superType, BuildInTypes.getInstance().getObjectType(object.getType().eResource()))) {
+							if (references.is(superType, Buildin.Object.Type)) {
 								outerCollecting[0] = true;
 								result = original.accept(superType, distance + 1) || result;
 //								result = original.accept(references.getTypeForName(Serializable.class, superType.getType()), distance + 1) || result;  // cym comment
@@ -305,7 +306,7 @@ public class SuperTypeCollector {
 				}
 				if (!boundProcessed) {
 //					JvmType objectType = references.findDeclaredType(Object.class, object);
-					JvmType objectType = BuildInTypes.getInstance().getObjectType(object.eResource());
+					JvmType objectType = Buildin.Object.Type;
 					if (objectType != null)
 						doSwitch(references.createTypeRef(objectType));
 				}

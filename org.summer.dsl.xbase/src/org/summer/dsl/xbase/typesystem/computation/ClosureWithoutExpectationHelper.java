@@ -20,6 +20,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypes;
@@ -175,7 +176,7 @@ public class ClosureWithoutExpectationHelper extends AbstractClosureTypeHelper {
 				deferredBindTypeArgument(expectedReturnType, expressionResultType, BoundTypeArgumentSource.INFERRED);
 			} else {
 //				JvmType objectType = getServices().getTypeReferences().findDeclaredType(Object.class, incompleteClosureType.getType()); // cym comment
-				JvmType objectType = BuildInTypes.getInstance().getObjectType(incompleteClosureType.getType().eResource());
+				JvmType objectType = Buildin.Object.Type;
 				ParameterizedTypeReference objectTypeReference = new ParameterizedTypeReference(incompleteClosureType.getOwner(), objectType);
 				result.setReturnType(objectTypeReference);
 				deferredBindTypeArgument(expectedReturnType, objectTypeReference, BoundTypeArgumentSource.INFERRED);

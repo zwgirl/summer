@@ -29,6 +29,7 @@ import org.summer.dsl.model.xtype.util.XFunctionTypeRefs;
 import org.summer.dsl.model.xtype.util.XtypeReferenceVisitor;
 import org.summer.dsl.model.xtype.util.XtypeReferenceVisitorWithParameter;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Lists;
 
@@ -82,7 +83,7 @@ public class XFunctionTypeRefImplCustom extends XFunctionTypeRefImpl {
 //			JvmType newType = TypesFactory.eINSTANCE.createJvmVoid();
 //			((InternalEObject)newType).eSetProxyURI(computeTypeUri(isProcedure()));
 //			type = (JvmType) eResolveProxy((InternalEObject) newType);
-			type = BuildInTypes.getInstance().getFunctionType(eResource());
+			type = Buildin.Function.Type;
 		}
 		return super.getType();
 	}

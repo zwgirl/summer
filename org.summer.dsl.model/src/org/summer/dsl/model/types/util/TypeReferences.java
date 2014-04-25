@@ -35,6 +35,7 @@ import org.summer.dsl.model.types.access.IJvmTypeProvider;
 import org.summer.dsl.model.types.access.TypeResource;
 import org.summer.dsl.model.types.access.impl.ClassURIHelper;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -72,7 +73,7 @@ public class TypeReferences {
 //		final JvmType objectType = findDeclaredType(Object.class, context);
 //		if (objectType == null)
 //			return null;
-		final JvmType objectType = BuildInTypes.getInstance().getObjectType(EcoreUtil2.getResourceSet(context));
+		final JvmType objectType = Buildin.Object.Type;
 		
 		result.setType(objectType);
 		return result;
@@ -93,7 +94,7 @@ public class TypeReferences {
 		}
 		//cym comment
 //		final JvmType findDeclaredType = findDeclaredType(Object.class, context);
-		final JvmType findDeclaredType = BuildInTypes.getInstance().getObjectType(EcoreUtil2.getResourceSet(context));
+		final JvmType findDeclaredType = Buildin.Object.Type;
 		if (findDeclaredType == null)
 			return null;
 		result.setType(findDeclaredType);
@@ -182,7 +183,7 @@ public class TypeReferences {
 		JvmUpperBound upperBound = factory.createJvmUpperBound();
 		//cym comment
 //		upperBound.setTypeReference(getTypeForName(Object.class, clone.getType()));
-		final JvmType findDeclaredType = BuildInTypes.getInstance().getObjectType(clone.eResource());
+		final JvmType findDeclaredType = Buildin.Object.Type;
 		upperBound.setTypeReference(getTypeForName(findDeclaredType, clone.getType()));
 		result.getConstraints().add(lowerBound);
 		result.getConstraints().add(upperBound);

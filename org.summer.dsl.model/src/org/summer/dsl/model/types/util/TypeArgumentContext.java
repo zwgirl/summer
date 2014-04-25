@@ -31,6 +31,7 @@ import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
@@ -116,7 +117,7 @@ public class TypeArgumentContext implements ITypeArgumentContext {
 					JvmTypeReference copy = visit(argument, replaceWildcards);
 					if (copy == null) {
 //						copy = typeReferences.getTypeForName(Object.class, type);
-						copy = typeReferences.getTypeForName(BuildInTypes.getInstance().getObjectType(reference.eResource()), type);
+						copy = typeReferences.getTypeForName(Buildin.Object.Type, type);
 						
 					}
 					result.getArguments().add(copy);

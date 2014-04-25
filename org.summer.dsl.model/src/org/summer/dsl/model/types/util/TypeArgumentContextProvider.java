@@ -34,6 +34,7 @@ import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicates;
@@ -268,7 +269,7 @@ public class TypeArgumentContextProvider {
 						}
 						if (!upperBoundSeen) {
 //							if (visit(typeReferences.getTypeForName(Object.class, type))) {  // cym comment
-							if (visit(typeReferences.getTypeForName(BuildInTypes.getInstance().getObjectType(type.eResource()), type))) {
+							if (visit(typeReferences.getTypeForName(Buildin.Object.Type, type))) {
 								return Boolean.TRUE;
 							}
 						}
@@ -668,7 +669,7 @@ public class TypeArgumentContextProvider {
 				}
 				if (allUppers.isEmpty()) {
 //					result.put(typeParameter, typeReferences.getTypeForName(Object.class, declarator));
-					result.put(typeParameter, typeReferences.getTypeForName(BuildInTypes.getInstance().getObjectType(declarator.eResource()), declarator));
+					result.put(typeParameter, typeReferences.getTypeForName(Buildin.Object.Type, declarator));
 					
 				} else if (allUppers.size() == 1) {
 					result.put(typeParameter, allUppers.get(0));

@@ -259,33 +259,63 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return type.eClass() == TypesPackage.Literals.JVM_PRIMITIVE_TYPE;
 	}
 	
+//	@Override
+//	@Nullable
+//	public Primitive getPrimitiveKind() {
+//		if (type.eIsProxy())
+//			return null;
+//		if (type.eClass() == TypesPackage.Literals.JVM_PRIMITIVE_TYPE) {
+//			String name = type.getSimpleName();
+//			if ("boolean".equals(name)) {
+//				return Primitive.Boolean;
+//			} else if ("int".equals(name)) {
+//				return Primitive.Int;
+////			} else if ("long".equals(name)) {
+////				return Primitive.Long;
+//			} else if ("double".equals(name)) {
+//				return Primitive.Double;
+////			} else if ("char".equals(name)) {
+////				return Primitive.Char;
+//			} else if ("byte".equals(name)) {
+//				return Primitive.Byte;
+//			} else if ("short".equals(name)) {
+//				return Primitive.Short;
+//			} else if ("float".equals(name)) {
+//				return Primitive.Float;
+//			}
+////		} else if (type.eClass() == TypesPackage.Literals.JVM_VOID) {
+////			return Primitive.Void;
+//		}
+//		return null;
+//	}
+	
 	@Override
 	@Nullable
 	public Primitive getPrimitiveKind() {
 		if (type.eIsProxy())
 			return null;
-		if (type.eClass() == TypesPackage.Literals.JVM_PRIMITIVE_TYPE) {
+//		if (type.eClass() == TypesPackage.Literals.JVM_PRIMITIVE_TYPE) {
 			String name = type.getSimpleName();
-			if ("boolean".equals(name)) {
+			if ("Boolean".equals(name)) {
 				return Primitive.Boolean;
-			} else if ("int".equals(name)) {
+			} else if ("Integer".equals(name)) {
 				return Primitive.Int;
 //			} else if ("long".equals(name)) {
 //				return Primitive.Long;
-			} else if ("double".equals(name)) {
+			} else if ("Dloble".equals(name)) {
 				return Primitive.Double;
 //			} else if ("char".equals(name)) {
 //				return Primitive.Char;
-			} else if ("byte".equals(name)) {
+			} else if ("Byte".equals(name)) {
 				return Primitive.Byte;
-			} else if ("short".equals(name)) {
+			} else if ("Short".equals(name)) {
 				return Primitive.Short;
-			} else if ("float".equals(name)) {
+			} else if ("Float".equals(name)) {
 				return Primitive.Float;
 			}
 //		} else if (type.eClass() == TypesPackage.Literals.JVM_VOID) {
 //			return Primitive.Void;
-		}
+//		}
 		return null;
 	}
 	

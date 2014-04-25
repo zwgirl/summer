@@ -14,6 +14,7 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.access.impl.URIHelperConstants;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
@@ -78,21 +79,21 @@ public class WrapperTypeLookup {
 	public static LightweightTypeReference getWrapperType(LightweightTypeReference context, Primitive primitiveKind) {
 		switch(primitiveKind) {
 			case Boolean:
-				return findTopLevelType(context, BuildInTypes.getInstance().getBooleanType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Boolean.Type);
 			case Byte:
-				return findTopLevelType(context, BuildInTypes.getInstance().getByteType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Byte.Type);
 //			case Char:
 //				return findTopLevelType(context, "java.lang.Character");
 			case Double:
-				return findTopLevelType(context, BuildInTypes.getInstance().getDoubleType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Double.Type);
 			case Float:
-				return findTopLevelType(context, BuildInTypes.getInstance().getFloatType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Float.Type);
 			case Int:
-				return findTopLevelType(context, BuildInTypes.getInstance().getIntegerType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Integer.Type);
 //			case Long:
 //				return findTopLevelType(context, "java.lang.Long");
 			case Short:
-				return findTopLevelType(context, BuildInTypes.getInstance().getShortType(context.getOwner().getContextResourceSet()));
+				return findTopLevelType(context, Buildin.Short.Type);
 //			case Void:
 //				return findTopLevelType(context, "java.lang.Void");
 			default:

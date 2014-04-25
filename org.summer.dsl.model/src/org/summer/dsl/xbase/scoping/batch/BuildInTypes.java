@@ -1,5 +1,6 @@
 package org.summer.dsl.xbase.scoping.batch;
 
+import java.net.URL;
 import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
@@ -9,19 +10,23 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmType;
 
 public final class BuildInTypes {
 	private static final BuildInTypes _INSTANCE  = new BuildInTypes();
 	private JvmType objectType, stringType, numberType, functionType, arrayType, iterableType,booleanType,
 		byteType, shortType,integerType,floatType,doubleType;
+	
 	private BuildInTypes(){
-		
+
 	}
 	
-	public static BuildInTypes getInstance() {
-		return _INSTANCE;
-	}
+
+	
+//	public static BuildInTypes getInstance() {
+//		return _INSTANCE;
+//	}
 	
 	public JvmType getObjectType(Resource resource){
 		if(objectType!=null){
@@ -33,11 +38,30 @@ public final class BuildInTypes {
 		
 	}
 	
+	public JvmType getObjectType(ResourceSet rs){
+		if(objectType!=null){
+			return objectType;
+		}
+		objectType = getJvmType(rs, "Object");
+
+		return objectType;
+		
+	}
+	
 	public JvmType getBooleanType(Resource resource){
 		if(booleanType!=null){
 			return objectType;
 		}
 		booleanType = getJvmType(resource, "Boolean");
+
+		return booleanType;
+		
+	}
+	public JvmType getBooleanType(ResourceSet rs){
+		if(booleanType!=null){
+			return booleanType;
+		}
+		booleanType = getJvmType(rs, "Boolean");
 
 		return booleanType;
 		
@@ -80,6 +104,7 @@ public final class BuildInTypes {
 				if(obj instanceof JvmType){
 					JvmType type = (JvmType) obj;
 					if(type.getSimpleName().equals(name)){
+						System.out.println(name + " type build! " + type);
 						return type;
 					}
 				}
@@ -108,26 +133,6 @@ public final class BuildInTypes {
 		
 	}
 	
-	public JvmType getBooleanType(ResourceSet rs){
-		if(booleanType!=null){
-			return booleanType;
-		}
-		booleanType = getJvmType(rs, "Boolean");
-
-		return booleanType;
-		
-	}
-	
-	public JvmType getObjectType(ResourceSet rs){
-		if(objectType!=null){
-			return objectType;
-		}
-		objectType = getJvmType(rs, "Object");
-
-		return objectType;
-		
-	}
-
 	public JvmType getArrayType(Resource resource) {
 		if(arrayType!=null){
 			return arrayType;
@@ -178,7 +183,7 @@ public final class BuildInTypes {
 		if(integerType!=null){
 			return integerType;
 		}
-		integerType = getJvmType(rs, "Boolean");
+		integerType = getJvmType(rs, "Integer");
 
 		return integerType;
 	}

@@ -31,6 +31,7 @@ import org.summer.dsl.model.types.util.TypeReferences;
 import org.summer.dsl.xbase.lib.Functions;
 import org.summer.dsl.xbase.lib.Procedures;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.util.ActualTypeArgumentCollector;
 import org.summer.dsl.xbase.typesystem.util.BoundTypeArgumentSource;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterByConstraintSubstitutor;
@@ -161,7 +162,7 @@ public class FunctionTypes {
 	
 	//cym add
 	public boolean isFunctionAndProcedureAvailable(ITypeReferenceOwner owner) {
-		JvmType type = BuildInTypes.getInstance().getFunctionType(owner.getContextResourceSet());
+		JvmType type = Buildin.Function.Type;
 		if (type == null) {
 			return false;
 		}
@@ -184,7 +185,7 @@ public class FunctionTypes {
 	public FunctionTypeReference createRawFunctionTypeRef(ITypeReferenceOwner owner, EObject context, int parameterCount, boolean procedure) {
 		String simpleClassName = (procedure ? "Procedure" : "Function") + Math.min(6, parameterCount);
 //		final Class<?> loadFunctionClass = loadFunctionClass(simpleClassName, procedure);
-		JvmType declaredType = BuildInTypes.getInstance().getFunctionType(context.eResource());
+		JvmType declaredType = Buildin.Function.Type;
 		if (declaredType == null || !(declaredType instanceof JvmTypeParameterDeclarator))
 			throw new IllegalStateException("Cannot load raw function type ref");
 		FunctionTypeReference result = new FunctionTypeReference(owner, declaredType);

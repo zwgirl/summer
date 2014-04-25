@@ -24,6 +24,7 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Sets;
 import com.google.inject.Inject;
@@ -120,21 +121,21 @@ public class Primitives {
 	public JvmType getWrapperType(JvmPrimitiveType primitive) {
 		switch (primitiveKind(primitive)) {
 			case Byte :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Byte.Type;
 			case Short :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Short.Type;
 //			case Char :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			case Int :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Integer.Type;
 //			case Long :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			case Float :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Float.Type;
 			case Double :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Double.Type;
 			case Boolean :
-				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+				return Buildin.Boolean.Type;
 //			case Void :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			default :
@@ -179,21 +180,21 @@ public class Primitives {
 	}
 
 	public boolean isWrapperType(JvmType type) {
-		if (typeReferences.is(type, BuildInTypes.getInstance().getByteType(type.eResource()))) { 
+		if (typeReferences.is(type, Buildin.Byte.Type)) { 
 			return true;
-		} else if (typeReferences.is(type, BuildInTypes.getInstance().getShortType(type.eResource()))) {
+		} else if (typeReferences.is(type, Buildin.Short.Type)) {
 			return true;
 //		} else if (typeReferences.is(type, Character.class)) {
 //			return true;
-		} else if (typeReferences.is(type, BuildInTypes.getInstance().getIntegerType(type.eResource()))) {
+		} else if (typeReferences.is(type, Buildin.Integer.Type)) {
 			return true;
 //		} else if (typeReferences.is(type, Long.class)) {
 //			return true;
-		} else if (typeReferences.is(type, BuildInTypes.getInstance().getFloatType(type.eResource()))) {
+		} else if (typeReferences.is(type, Buildin.Float.Type)) {
 			return true;
-		} else if (typeReferences.is(type, BuildInTypes.getInstance().getDoubleType(type.eResource()))) {
+		} else if (typeReferences.is(type, Buildin.Double.Type)) {
 			return true;
-		} else if (typeReferences.is(type, BuildInTypes.getInstance().getBooleanType(type.eResource()))) {
+		} else if (typeReferences.is(type, Buildin.Boolean.Type)) {
 			return true;
 //		} else if (typeReferences.is(type, Void.class)) {
 //			return true;
@@ -270,22 +271,22 @@ public class Primitives {
 							return asPrimitive;
 					}
 					return typeRef;
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getByteType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getByteType(resource), typeRef.getType());
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getShortType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getShortType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Byte.Type)) {
+					return typeReferences.getTypeForName(Buildin.Byte.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Short.Type)) {
+					return typeReferences.getTypeForName(Buildin.Short.Type, typeRef.getType());
 //				} else if (typeReferences.is(type, Character.class)) {
 //					return typeReferences.getTypeForName(Character.TYPE, type.getType());
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getIntegerType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getIntegerType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Integer.Type)) {
+					return typeReferences.getTypeForName(Buildin.Integer.Type, typeRef.getType());
 //				} else if (typeReferences.is(type, Long.class)) {
 //					return typeReferences.getTypeForName(Long.TYPE, type.getType());
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getFloatType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getFloatType(resource), typeRef.getType());
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getDoubleType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getDoubleType(resource), typeRef.getType());
-				} else if (typeReferences.is(typeRef, BuildInTypes.getInstance().getBooleanType(resource))) {
-					return typeReferences.getTypeForName(BuildInTypes.getInstance().getBooleanType(resource), typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Float.Type)) {
+					return typeReferences.getTypeForName(Buildin.Float.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Double.Type)) {
+					return typeReferences.getTypeForName(Buildin.Double.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Boolean.Type)) {
+					return typeReferences.getTypeForName(Buildin.Boolean.Type, typeRef.getType());
 //				} else if (typeReferences.is(type, Void.class)) {
 //					return typeReferences.getTypeForName(Void.TYPE, type.getType());
 				}

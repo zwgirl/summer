@@ -34,6 +34,7 @@ import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -596,7 +597,7 @@ public class TypeConformanceComputer {
 			if (initiallyRequestedNames.equals(allNames)) {
 				// recursion - return object wildcard
 //				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(Object.class, types.get(0).getType());
-				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(BuildInTypes.getInstance().getObjectType(types.get(0).getType().eResource()), types.get(0).getType());
+				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(Buildin.Object.Type, types.get(0).getType());
 				return typeReferences.wildCardExtends(objectTypeReference);
 			}
 		}

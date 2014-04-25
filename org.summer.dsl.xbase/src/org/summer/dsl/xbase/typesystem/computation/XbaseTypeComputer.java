@@ -72,6 +72,7 @@ import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XWhileExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceResult;
@@ -203,7 +204,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	//cym add
-	protected LightweightTypeReference getTypeForName(JvmType clazz, ITypeComputationState state) {
+	protected LightweightTypeReference getTypeForName(JvmType type, ITypeComputationState state) {
 
 		ResourceSet resourceSet = state.getReferenceOwner().getContextResourceSet();
 		//cym comment
@@ -212,9 +213,9 @@ public class XbaseTypeComputer implements ITypeComputer {
 //			return new UnknownTypeReference(state.getReferenceOwner(), clazz.getName());
 //		}
 		
-		JvmTypeReference typeReference = services.getTypeReferences().getTypeForName(clazz, resourceSet);
+		JvmTypeReference typeReference = services.getTypeReferences().getTypeForName(type, resourceSet);
 		if (typeReference == null) {
-			return new UnknownTypeReference(state.getReferenceOwner(), clazz.getSimpleName());
+			return new UnknownTypeReference(state.getReferenceOwner(), type.getSimpleName());
 		}
 		return state.getConverter().toLightweightReference(typeReference);
 	}
@@ -621,7 +622,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	 */
 	protected void _computeTypes(XBooleanLiteral object, ITypeComputationState state) {
 //		LightweightTypeReference bool = getTypeForName(Boolean.TYPE, state);  //cym comment
-		LightweightTypeReference bool = getTypeForName(BuildInTypes.getInstance().getNumberType(object.eResource()), state);
+		LightweightTypeReference bool = getTypeForName(Buildin.Boolean.Type, state);
 		state.acceptActualType(bool);
 	}
 
@@ -646,7 +647,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	protected void _computeTypes(XStringLiteral object, ITypeComputationState state) {
 		if (object.getValue().length() != 1) {
 			//LightweightTypeReference result = getTypeForName(String.class, state);
-			LightweightTypeReference result = getTypeForName(BuildInTypes.getInstance().getStringType(object.eResource()), state);
+			LightweightTypeReference result = getTypeForName(Buildin.String.Type, state);
 			
 			state.acceptActualType(result);
 		} else {
@@ -661,7 +662,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 					}
 				} else {
 //					LightweightTypeReference type = getTypeForName(String.class, state);
-					LightweightTypeReference type = getTypeForName(BuildInTypes.getInstance().getStringType(object.eResource()), state);
+					LightweightTypeReference type = getTypeForName(Buildin.String.Type, state);
 					expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
 				}
 			}
@@ -699,7 +700,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	protected void _computeTypes(XArrayLiteral literal, ITypeComputationState state) {
-		JvmGenericType listType = (JvmGenericType) BuildInTypes.getInstance().getArrayType(literal.eResource());
+		JvmGenericType listType = (JvmGenericType) Buildin.Array.Type;
 		
 		for(ITypeExpectation expectation: state.getExpectations()) {
 			LightweightTypeReference elementTypeExpectation = null;
@@ -740,7 +741,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 					expectation.acceptActualType(commonListType, ConformanceHint.UNCHECKED);
 				} else {
 //					expectation.acceptActualType(getTypeForName(Object.class, state), ConformanceHint.UNCHECKED);  //cym comment
-					expectation.acceptActualType(getTypeForName(BuildInTypes.getInstance().getObjectType(literal.eResource()), state), ConformanceHint.UNCHECKED);
+					expectation.acceptActualType(getTypeForName(Buildin.Object.Type, state), ConformanceHint.UNCHECKED);
 				}
 			} else {
 				ParameterizedTypeReference unboundCollectionType = new ParameterizedTypeReference(state.getReferenceOwner(), listType);
@@ -960,7 +961,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 		JvmFormalParameter declaredParam = object.getDeclaredParam();
 		LightweightTypeReference parameterType = getDeclaredParameterType(declaredParam, state);
 //		final JvmGenericType iterableType = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, object); //cym comment
-		final JvmGenericType iterableType = (JvmGenericType) BuildInTypes.getInstance().getIterableType(object.eResource());
+		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.Type;
 		
 		if (parameterType != null && !parameterType.isPrimitiveVoid()) {
 			final CompoundTypeReference withSynonyms = new CompoundTypeReference(state.getReferenceOwner(), true);
@@ -1069,7 +1070,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 				Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> typeParameterMapping = typeArgumentCollector.getTypeParameterMapping(reference);
 				TypeParameterSubstitutor<?> substitutor = new UnboundTypeParameterPreservingSubstitutor(typeParameterMapping, state.getReferenceOwner());
 //				JvmGenericType iterable = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, iterableOrArray.getOwner().getContextResourceSet());  //cym comment
-				JvmGenericType iterable = (JvmGenericType) BuildInTypes.getInstance().getIterableType(iterableOrArray.getOwner().getContextResourceSet());;
+				JvmGenericType iterable = (JvmGenericType) Buildin.Iterable.Type;
 				
 				ParameterizedTypeReference substituteMe = new ParameterizedTypeReference(state.getReferenceOwner(), iterable.getTypeParameters().get(0));
 				LightweightTypeReference substitutedArgument = substitutor.substitute(substituteMe).getUpperBoundSubstitute();

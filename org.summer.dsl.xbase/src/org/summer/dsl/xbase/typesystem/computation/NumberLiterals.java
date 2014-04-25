@@ -15,6 +15,7 @@ import java.math.BigInteger;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -121,21 +122,67 @@ public class NumberLiterals {
 	
 	//cym add
 	protected JvmType getExplicitType(XNumberLiteral literal) {
-		String typeQualifier = getTypeQualifier(literal);
-		if (equal("", typeQualifier))
-			return null;
-		else if (equal("f", typeQualifier))
-			return BuildInTypes.getInstance().getFloatType(literal.eResource());
-//		else if (equal("l", typeQualifier))
-//			return Long.TYPE;
-		else if (equal("d", typeQualifier))
-			return BuildInTypes.getInstance().getDoubleType(literal.eResource());
-//		else if (equal("bi", typeQualifier))
-//			return BigInteger.class;
-//		else if (equal("bd", typeQualifier))
-//			return BigDecimal.class;
-		else
-			throw new IllegalArgumentException("Invalid type qualifier " + typeQualifier);
+		
+		if(isFloatingPoint(literal)){
+			BigDecimal bd = toBigDecimal(literal);
+			double value = bd.doubleValue();
+			if(value<Float.MAX_VALUE && value>Float.MIN_VALUE){
+				return Buildin.Float.Type;
+			}else{
+				return Buildin.Float.Type;
+			}
+		}else{
+			BigInteger bi = toBigInteger(literal);
+			Long value = bi.longValue();
+			if(value <Byte.MAX_VALUE  && value >Byte.MIN_VALUE){
+				return Buildin.Byte.Type;
+			} else if(value <Short.MAX_VALUE  && value >Short.MIN_VALUE){
+				return Buildin.Short.Type;
+			} else if(value <Integer.MAX_VALUE  && value >Integer.MIN_VALUE){
+				return Buildin.Integer.Type;
+			} 
+			
+			throw new IllegalArgumentException("Invalid type qualifier ");
+		}
+		
+		
+		
+//		String typeQualifier = getTypeQualifier(literal);
+//		if (equal("", typeQualifier))
+//			return null;
+//		else if (equal("f", typeQualifier))
+//			return BuildInTypes.getInstance().getFloatType(literal.eResource());
+////		else if (equal("l", typeQualifier))
+////			return Long.TYPE;
+//		else if (equal("d", typeQualifier))
+//			return BuildInTypes.getInstance().getDoubleType(literal.eResource());
+////		else if (equal("bi", typeQualifier))
+////			return BigInteger.class;
+////		else if (equal("bd", typeQualifier))
+////			return BigDecimal.class;
+//		else{
+//			if(isFloatingPoint(literal)){
+//				BigDecimal bd = toBigDecimal(literal);
+//				double value = bd.doubleValue();
+//				if(value>Float.MAX_VALUE || value<Float.MIN_VALUE){
+//					return BuildInTypes.getInstance().getDoubleType(literal.eResource());
+//				}else{
+//					return BuildInTypes.getInstance().getFloatType(literal.eResource());
+//				}
+//			}else{
+//				BigInteger bi = toBigInteger(literal);
+//				Long value = bi.longValue();
+//				if(value <Byte.MAX_VALUE  && value >Byte.MIN_VALUE){
+//					return BuildInTypes.getInstance().getByteType(literal.eResource());
+//				} else if(value <Short.MAX_VALUE  && value >Short.MIN_VALUE){
+//					return BuildInTypes.getInstance().getShortType(literal.eResource());
+//				} else if(value <Integer.MAX_VALUE  && value >Integer.MIN_VALUE){
+//					return BuildInTypes.getInstance().getIntegerType(literal.eResource());
+//				} 
+//			}
+//			throw new IllegalArgumentException("Invalid type qualifier " + typeQualifier);
+//		}
+			
 	}
 
 	public Class<? extends Number> getJavaType(XNumberLiteral literal) {
@@ -145,8 +192,8 @@ public class NumberLiterals {
 	
 	public JvmType getType(XNumberLiteral literal) {
 		JvmType explicitType = getExplicitType(literal);
-		return (explicitType == null) ? (isFloatingPoint(literal)) ? BuildInTypes.getInstance().getDoubleType(literal.eResource()) 
-				: BuildInTypes.getInstance().getIntegerType(literal.eResource()) : explicitType;
+		return (explicitType == null) ? (isFloatingPoint(literal)) ? Buildin.Double.Type
+				: Buildin.Integer.Type : explicitType;
 	}
 
 	public Number numberValue(XNumberLiteral literal, Class<?> numberType) {

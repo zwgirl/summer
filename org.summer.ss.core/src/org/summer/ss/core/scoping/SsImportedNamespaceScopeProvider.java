@@ -49,6 +49,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
 import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.scoping.AbstractNestedTypeAwareImportNormalizer;
 import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.ConstructorTypeScopeWrapper;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
 import org.summer.ss.core.resource.ImportScope;
@@ -128,15 +129,15 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 //			return result;
 			
 			Resource fileResource = xtendFile.eResource();
-			XtextResourceSet resourceSet = (XtextResourceSet) fileResource.getResourceSet();
-			IPath path = resourceSet.getProject().getLocation().append("src/summer/lang/BuildIns.ss");
+//			XtextResourceSet resourceSet = (XtextResourceSet) fileResource.getResourceSet();
+//			IPath path = resourceSet.getProject().getLocation().append("src/summer/lang/BuildIns.ss");
 			
 			
 			IScope importScope = null;
 			//如果当前的文件是BuildIns.ss的话，就不需要再隐含导入本身了。
-			if(fileResource.getURI().toString().indexOf("src/summer/lang/BuildIns.ss")<0){
+			if(fileResource.getURI().toString().indexOf("BuildIns.ss")<0){
 				
-				IScope implicitScope = new ImportResourceScope(resourceSet.getResource(URI.createFileURI(path.toOSString()), true));
+				IScope implicitScope = new ImportResourceScope(Buildin.Resource);
 				importScope = new ImportScope(fileResource, implicitScope);
 			}else{
 				importScope = new ImportScope(fileResource, IScope.NULLSCOPE);
