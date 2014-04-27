@@ -30,6 +30,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.ui.shared.contribution.ISharedStateContributionRegistry;
+import org.eclipse.xtext.util.BundleResourceFile;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
 
@@ -200,6 +201,9 @@ public class Storage2UriMapperImpl implements IStorage2UriMapperExtension {
 					IFile file = getWorkspaceRoot().getFileForLocation(path);
 					return getStorages(uri, file);
 				}
+			}
+			else if(uri.toString().startsWith("bundle")){  //cym add
+				return Lists.newArrayList(new Pair<IStorage, IProject>(new BundleResourceFile(uri),null));
 			}
 			return contribution.getStorages(uri);
 		}
