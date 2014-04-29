@@ -450,6 +450,7 @@ public class AbstractXbaseProposalProvider extends org.summer.dsl.xtype.ui.conte
 		// subclasses may override
 	}
 	public void complete_XConstructorCall(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("PPPPPPP", context));
 		// subclasses may override
 	}
 	public void complete_XObjectLiteral(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

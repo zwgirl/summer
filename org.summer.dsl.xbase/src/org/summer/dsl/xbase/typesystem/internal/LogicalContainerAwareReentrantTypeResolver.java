@@ -639,15 +639,7 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			preparedResolvedTypes.put(constructor, null);
 		}
 		ConstructorBodyComputationState state = new ConstructorBodyComputationState(childResolvedTypes, featureScopeSession.toInstanceContext(), constructor);
-		
-		IFeatureScopeSession session = /*function.isStatic() ? featureScopeSession : */featureScopeSession.toInstanceContext();
-		//cym add
-		XExpression expression = constructor.getExpression();
-		if (expression != null ) {
-			computeTypes(resolvedTypes, session, expression);
-		}
-		// cym end
-		
+
 		addExtensionProviders(state, constructor.getParameters());
 		state.computeTypes();
 		computeAnnotationTypes(childResolvedTypes, featureScopeSession, constructor);
@@ -683,15 +675,15 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		OperationBodyComputationState state = new OperationBodyComputationState(childResolvedTypes, operation.isStatic() ? featureScopeSession : featureScopeSession.toInstanceContext(), operation);
 		
 		
-		IFeatureScopeSession session = /*function.isStatic() ? featureScopeSession : */featureScopeSession.toInstanceContext();
-//		computeTypes(resolvedTypes, session, createInfo.getCreateExpression());
-		//cym add
-		XClosure closure = (XClosure) operation.getFunction();
-		XExpression expression = closure.getExpression();
-		if (expression != null ) {
-			computeTypes(resolvedTypes, session, expression);
-		}
-		// cym end
+//		IFeatureScopeSession session = /*function.isStatic() ? featureScopeSession : */featureScopeSession.toInstanceContext();
+////		computeTypes(resolvedTypes, session, createInfo.getCreateExpression());
+//		//cym add
+//		XClosure closure = (XClosure) operation.getFunction();
+//		XExpression expression = closure.getExpression();
+//		if (expression != null ) {
+//			computeTypes(resolvedTypes, session, expression);
+//		}
+//		// cym end
 
 		addExtensionProviders(state, operation.getParameters());
 		// no need to unmark the computing state since we replace the equivalent in #resolveTo

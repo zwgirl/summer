@@ -4,9 +4,12 @@
 package org.summer.dsl.xtype.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.*;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
 /**
  * Represents a generated, default implementation of superclass {@link org.eclipse.xtext.ui.editor.contentassist.AbstractJavaBasedContentProposalProvider}.
@@ -25,6 +28,19 @@ public class AbstractXtypeProposalProvider extends org.eclipse.xtext.ui.editor.c
 	public void completeJvmParameterizedTypeReference_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	
+//    public void completeJvmParameterizedTypeReference_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//        if (EcoreUtil2.getContainerOfType(model, CustomBehavior.class) != null) {
+//            final IJvmTypeProvider jvmTypeProvider = jvmTypeProviderFactory.createTypeProvider(model.eResource().getResourceSet());
+//            // Graphiti specific
+//            final JvmType interfaceToImplement = jvmTypeProvider.findTypeByName(ICustomFeature.class.getName());
+//            typeProposalProvider.createSubTypeProposals(interfaceToImplement, this, context, SprayPackage.Literals.BEHAVIOR__REALIZED_BY, TypeMatchFilters.canInstantiate(), acceptor);
+//        } else {
+//            super.completeJvmParameterizedTypeReference_Type(model, assignment, context, acceptor);
+//        }
+//    }
+	
+	
 	public void completeJvmParameterizedTypeReference_Arguments(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}

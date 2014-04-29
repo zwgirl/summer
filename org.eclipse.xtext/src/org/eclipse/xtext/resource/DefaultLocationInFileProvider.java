@@ -243,7 +243,7 @@ public class DefaultLocationInFileProvider implements ILocationInFileProvider, I
 	protected EStructuralFeature getIdentifierFeature(EObject obj) {
 		final EClass eClass = obj.eClass();
 		final EStructuralFeature result = eClass.getEStructuralFeature("name");
-		return result != null ? result : eClass.getEStructuralFeature("id");
+		return result != null ? result : (eClass.getEStructuralFeature("id") ==null) ? eClass.getEStructuralFeature("simpleName") : eClass.getEStructuralFeature("id");
 	}
 
 	protected ITextRegion createRegion(final List<INode> nodes) {
