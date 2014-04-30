@@ -319,6 +319,7 @@ ruleXExpression :
 // Rule XLiteral
  ruleXLiteral :
 	ruleXObjectLiteral |
+	ruleXStructLiteral |
 	ruleXArrayLiteral |
 	ruleXClosure |
 	ruleXBooleanLiteral |
@@ -528,6 +529,18 @@ ruleXExpression :
 // Rule XObjectLiteralPart
  ruleXObjectLiteralPart :
 	RULE_ID ':' ruleXExpression
+;
+
+// Rule XStructLiteral
+ ruleXStructLiteral :
+	'new' ruleQualifiedName '{' ruleXFieldLiteralPart (
+		',' ruleXFieldLiteralPart
+	)* '}'
+;
+
+// Rule XFieldLiteralPart
+ ruleXFieldLiteralPart :
+	ruleQualifiedName ':' ruleXExpression
 ;
 
 // Rule XArrayLiteral

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jdt.annotation.NonNullByDefault;
@@ -28,6 +29,7 @@ import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmCustomAnnotationValue;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
@@ -55,6 +57,7 @@ import org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImplCustom;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
 import org.summer.dsl.xbase.lib.Extension;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
@@ -472,7 +475,9 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 					_computeTypes( resolvedTypes, featureScopeSession, (XExpression) obj);
 				}
 			}
-		} else if (element instanceof JvmDeclaredType) {
+		} else if (element instanceof JvmEnumerationType) { //cym added
+			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmEnumerationType) element);
+		} else if (element instanceof JvmDeclaredType) {  
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmDeclaredType) element);
 		} else if (element instanceof JvmConstructor) {
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmConstructor) element);
@@ -749,6 +754,30 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			throw new IllegalStateException("No resolved type found. Type was: " + type.getIdentifier());
 		IFeatureScopeSession childSession = addThisAndSuper(featureScopeSession, childResolvedTypes.getReferenceOwner(), type);
 		computeMemberTypes(preparedResolvedTypes, childResolvedTypes, childSession, type);
+		computeAnnotationTypes(childResolvedTypes, featureScopeSession, type);
+		
+		mergeChildTypes(childResolvedTypes);
+	}
+	
+	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmEnumerationType type) {
+		ResolvedTypes childResolvedTypes = preparedResolvedTypes.get(type);
+		if (childResolvedTypes == null)
+			throw new IllegalStateException("No resolved type found. Type was: " + type.getIdentifier());
+//		IFeatureScopeSession childSession = addThisAndSuper(featureScopeSession, childResolvedTypes.getReferenceOwner(), type);
+
+		EList<JvmMember> members = type.getMembers();
+		for(int i = 0; i < members.size(); i++) {
+			JvmMember member = members.get(i);
+			JvmField field = (JvmField) member;
+			JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+			typeRef.setType(Buildin.Integer.Type);
+			field.setType(typeRef);
+			field.setStatic(true);
+//			computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, members.get(i));
+		}
+		
+//		computeMemberTypes(preparedResolvedTypes, childResolvedTypes, childSession, type);
+		
 		computeAnnotationTypes(childResolvedTypes, featureScopeSession, type);
 		
 		mergeChildTypes(childResolvedTypes);

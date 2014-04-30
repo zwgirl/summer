@@ -76,6 +76,15 @@ public interface TypesFactory extends EFactory {
 	JvmDeclaredType createJvmDeclaredType();
 
 	/**
+	 * Returns a new object of class '<em>Jvm Struct Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Struct Type</em>'.
+	 * @generated
+	 */
+	JvmStructType createJvmStructType();
+
+	/**
 	 * Returns a new object of class '<em>Jvm Type Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

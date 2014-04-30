@@ -5,7 +5,14 @@ package org.summer.dsl.model.xbase.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
+import org.summer.dsl.model.types.JvmComponentType;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmFeature;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.*;
 
 /**
@@ -382,13 +389,24 @@ public class XbaseSwitch<T> extends Switch<T> {
 			case XbasePackage.XOBJECT_LITERAL: {
 				XObjectLiteral xObjectLiteral = (XObjectLiteral)theEObject;
 				T result = caseXObjectLiteral(xObjectLiteral);
+				if (result == null) result = caseJvmDeclaredType(xObjectLiteral);
 				if (result == null) result = caseXExpression(xObjectLiteral);
+				if (result == null) result = caseJvmMember(xObjectLiteral);
+				if (result == null) result = caseJvmComponentType(xObjectLiteral);
+				if (result == null) result = caseJvmAnnotationTarget(xObjectLiteral);
+				if (result == null) result = caseJvmType(xObjectLiteral);
+				if (result == null) result = caseJvmIdentifiableElement(xObjectLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case XbasePackage.XOBJECT_LITERAL_PART: {
 				XObjectLiteralPart xObjectLiteralPart = (XObjectLiteralPart)theEObject;
 				T result = caseXObjectLiteralPart(xObjectLiteralPart);
+				if (result == null) result = caseJvmField(xObjectLiteralPart);
+				if (result == null) result = caseJvmFeature(xObjectLiteralPart);
+				if (result == null) result = caseJvmMember(xObjectLiteralPart);
+				if (result == null) result = caseJvmAnnotationTarget(xObjectLiteralPart);
+				if (result == null) result = caseJvmIdentifiableElement(xObjectLiteralPart);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -396,6 +414,19 @@ public class XbaseSwitch<T> extends Switch<T> {
 				XArrayLiteral xArrayLiteral = (XArrayLiteral)theEObject;
 				T result = caseXArrayLiteral(xArrayLiteral);
 				if (result == null) result = caseXExpression(xArrayLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XSTRUCT_LITERAL: {
+				XStructLiteral xStructLiteral = (XStructLiteral)theEObject;
+				T result = caseXStructLiteral(xStructLiteral);
+				if (result == null) result = caseXExpression(xStructLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XFIELD_LITERAL_PART: {
+				XFieldLiteralPart xFieldLiteralPart = (XFieldLiteralPart)theEObject;
+				T result = caseXFieldLiteralPart(xFieldLiteralPart);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1094,6 +1125,36 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XStruct Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XStruct Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXStructLiteral(XStructLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XField Literal Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XField Literal Part</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXFieldLiteralPart(XFieldLiteralPart object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1105,6 +1166,111 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmIdentifiableElement(JvmIdentifiableElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Annotation Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Annotation Target</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmAnnotationTarget(JvmAnnotationTarget object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmMember(JvmMember object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmType(JvmType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Component Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Component Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmComponentType(JvmComponentType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Declared Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Declared Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmDeclaredType(JvmDeclaredType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmFeature(JvmFeature object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Field</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Field</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmField(JvmField object) {
 		return null;
 	}
 

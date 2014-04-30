@@ -820,8 +820,8 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	////	|
 	// //	XKeyValuePair
 	// XLiteral returns XExpression: //	XCollectionLiteral |
-	// XObjectLiteral | XArrayLiteral | XClosure
-	//	| XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
+	// XObjectLiteral | XStructLiteral |
+	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
 		return gaXbase.getXLiteralAccess();
 	}
@@ -1287,8 +1287,22 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXConstructorCallAccess().getRule();
 	}
 
+	////XObjectLiteral returns XExpression:
+	// //	{XObjectLiteral}
+	// //	'new' '{'
+	//
+	////		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
+	// //	'}'
+	// //;
+	// //
+	//
+	////XObjectLiteralPart returns types::JvmMember:
+	// //	{XObjectLiteralPart}
+	// //	simpleName=ID ':' value=XExpression
+	// //;
+	//
 	//XObjectLiteral returns XExpression:
-	//	{XObjectLiteral} "new" "{" properties+=XObjectLiteralPart ("," properties+=XObjectLiteralPart)* "}";
+	//	{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}";
 	public XbaseGrammarAccess.XObjectLiteralElements getXObjectLiteralAccess() {
 		return gaXbase.getXObjectLiteralAccess();
 	}
@@ -1297,14 +1311,35 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXObjectLiteralAccess().getRule();
 	}
 
-	//XObjectLiteralPart:
-	//	name=ID ":" value=XExpression;
+	//XObjectLiteralPart returns types::JvmMember:
+	//	{XObjectLiteralPart} simpleName=ID ":" defaultValue=XExpression;
 	public XbaseGrammarAccess.XObjectLiteralPartElements getXObjectLiteralPartAccess() {
 		return gaXbase.getXObjectLiteralPartAccess();
 	}
 	
 	public ParserRule getXObjectLiteralPartRule() {
 		return getXObjectLiteralPartAccess().getRule();
+	}
+
+	//XStructLiteral returns XExpression:
+	//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName] "{" properties+=XFieldLiteralPart (","
+	//	properties+=XFieldLiteralPart)* "}";
+	public XbaseGrammarAccess.XStructLiteralElements getXStructLiteralAccess() {
+		return gaXbase.getXStructLiteralAccess();
+	}
+	
+	public ParserRule getXStructLiteralRule() {
+		return getXStructLiteralAccess().getRule();
+	}
+
+	//XFieldLiteralPart:
+	//	{XFieldLiteralPart} field=[types::JvmField|QualifiedName] ":" value=XExpression;
+	public XbaseGrammarAccess.XFieldLiteralPartElements getXFieldLiteralPartAccess() {
+		return gaXbase.getXFieldLiteralPartAccess();
+	}
+	
+	public ParserRule getXFieldLiteralPartRule() {
+		return getXFieldLiteralPartAccess().getRule();
 	}
 
 	//XArrayLiteral returns XExpression:

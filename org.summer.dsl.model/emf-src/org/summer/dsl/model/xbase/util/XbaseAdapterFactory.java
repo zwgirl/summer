@@ -6,7 +6,14 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
+import org.summer.dsl.model.types.JvmComponentType;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmFeature;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.*;
 
 /**
@@ -250,8 +257,44 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXArrayLiteralAdapter();
 			}
 			@Override
+			public Adapter caseXStructLiteral(XStructLiteral object) {
+				return createXStructLiteralAdapter();
+			}
+			@Override
+			public Adapter caseXFieldLiteralPart(XFieldLiteralPart object) {
+				return createXFieldLiteralPartAdapter();
+			}
+			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
 				return createJvmIdentifiableElementAdapter();
+			}
+			@Override
+			public Adapter caseJvmAnnotationTarget(JvmAnnotationTarget object) {
+				return createJvmAnnotationTargetAdapter();
+			}
+			@Override
+			public Adapter caseJvmMember(JvmMember object) {
+				return createJvmMemberAdapter();
+			}
+			@Override
+			public Adapter caseJvmType(JvmType object) {
+				return createJvmTypeAdapter();
+			}
+			@Override
+			public Adapter caseJvmComponentType(JvmComponentType object) {
+				return createJvmComponentTypeAdapter();
+			}
+			@Override
+			public Adapter caseJvmDeclaredType(JvmDeclaredType object) {
+				return createJvmDeclaredTypeAdapter();
+			}
+			@Override
+			public Adapter caseJvmFeature(JvmFeature object) {
+				return createJvmFeatureAdapter();
+			}
+			@Override
+			public Adapter caseJvmField(JvmField object) {
+				return createJvmFieldAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -918,6 +961,34 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XStructLiteral <em>XStruct Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XStructLiteral
+	 * @generated
+	 */
+	public Adapter createXStructLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XFieldLiteralPart <em>XField Literal Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XFieldLiteralPart
+	 * @generated
+	 */
+	public Adapter createXFieldLiteralPartAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmIdentifiableElement <em>Jvm Identifiable Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -928,6 +999,104 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmIdentifiableElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmAnnotationTarget <em>Jvm Annotation Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmAnnotationTarget
+	 * @generated
+	 */
+	public Adapter createJvmAnnotationTargetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmMember <em>Jvm Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmMember
+	 * @generated
+	 */
+	public Adapter createJvmMemberAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmType <em>Jvm Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmType
+	 * @generated
+	 */
+	public Adapter createJvmTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmComponentType <em>Jvm Component Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmComponentType
+	 * @generated
+	 */
+	public Adapter createJvmComponentTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmDeclaredType <em>Jvm Declared Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmDeclaredType
+	 * @generated
+	 */
+	public Adapter createJvmDeclaredTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmFeature <em>Jvm Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmFeature
+	 * @generated
+	 */
+	public Adapter createJvmFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmField <em>Jvm Field</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmField
+	 * @generated
+	 */
+	public Adapter createJvmFieldAdapter() {
 		return null;
 	}
 

@@ -137,6 +137,18 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TypesPackage.JVM_STRUCT_TYPE: {
+				JvmStructType jvmStructType = (JvmStructType)theEObject;
+				T result = caseJvmStructType(jvmStructType);
+				if (result == null) result = caseJvmDeclaredType(jvmStructType);
+				if (result == null) result = caseJvmMember(jvmStructType);
+				if (result == null) result = caseJvmComponentType(jvmStructType);
+				if (result == null) result = caseJvmAnnotationTarget(jvmStructType);
+				if (result == null) result = caseJvmType(jvmStructType);
+				if (result == null) result = caseJvmIdentifiableElement(jvmStructType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TypesPackage.JVM_TYPE_PARAMETER: {
 				JvmTypeParameter jvmTypeParameter = (JvmTypeParameter)theEObject;
 				T result = caseJvmTypeParameter(jvmTypeParameter);
@@ -622,6 +634,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmDeclaredType(JvmDeclaredType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Struct Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Struct Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmStructType(JvmStructType object) {
 		return null;
 	}
 

@@ -13,6 +13,10 @@ export class Object{
 	function  isExtensible():Boolean{}   
 	function  isFrozen():Boolean{} 
 	function  isSealed():Boolean{}  
+	
+	const static Type Type;
+	
+	function getType():Type{}
 //	function Collection<String> keys(){return null} 
 //	function preventExtensions(){}
 //	function seal(){}
@@ -20,7 +24,33 @@ export class Object{
 }  
 
 export class Type extends Object{
+	constructor(String name,Function ctos,Type[] baseTypes, boolean isInterface){
+	}
 	
+	function IsValueType():Boolean{}
+	function IsInstanceOfType(Object o):Boolean {  }
+        
+    function IsSubclassOf(Type c):boolean{}
+    
+     function 		IsAssignableFrom(Type c):boolean{} 
+     
+     function  ImplementInterface(Type ifaceType) :boolean{}
+ 
+ 
+   function GetInterfaces():Type[]{ }
+ 
+	function GetType():Type{}
+		
+	function	toString():String{}
+	function GetProperty(String name, int flag):Object{}
+	 private static int GlobalIndex = 0;
+		int Id;
+		Function Constructor;
+		String Name;
+		Type[] Interfaces;
+		
+		Type BaseType;
+		Boolean IsInterface;
 }
  
 export class String extends Object{ 
@@ -210,7 +240,7 @@ export class Short extends Number{
 	
 }
 
-export class Iterger extends Number{
+export class Integer extends Number{
 	
 }
 
@@ -377,3 +407,6 @@ export class Function extends Object{
 		
 	}
 }
+
+
+

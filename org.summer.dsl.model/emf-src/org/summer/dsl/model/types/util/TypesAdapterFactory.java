@@ -104,6 +104,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 				return createJvmDeclaredTypeAdapter();
 			}
 			@Override
+			public Adapter caseJvmStructType(JvmStructType object) {
+				return createJvmStructTypeAdapter();
+			}
+			@Override
 			public Adapter caseJvmTypeParameter(JvmTypeParameter object) {
 				return createJvmTypeParameterAdapter();
 			}
@@ -422,6 +426,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmDeclaredTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmStructType <em>Jvm Struct Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmStructType
+	 * @generated
+	 */
+	public Adapter createJvmStructTypeAdapter() {
 		return null;
 	}
 

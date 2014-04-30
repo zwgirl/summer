@@ -21,6 +21,7 @@ import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XContinueExpression;
 import org.summer.dsl.model.xbase.XDoWhileExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XForEachExpression;
 import org.summer.dsl.model.xbase.XForLoopExpression;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
@@ -40,6 +41,7 @@ import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
+import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
 import org.summer.dsl.model.xbase.XTernaryOperation;
 import org.summer.dsl.model.xbase.XThrowExpression;
@@ -137,6 +139,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XARRAY_LITERAL: return createXArrayLiteral();
 			case XbasePackage.XOBJECT_LITERAL_PART: return createXObjectLiteralPart();
 			case XbasePackage.XVARIABLE_DECLARATION_LIST: return createXVariableDeclarationList();
+			case XbasePackage.XSTRUCT_LITERAL: return createXStructLiteral();
+			case XbasePackage.XFIELD_LITERAL_PART: return createXFieldLiteralPart();
 			
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -545,6 +549,16 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 
 	public XForEachExpression createXForEachExpression() {
 		return new XForEachExpressionImpl();
+	}
+
+	@Override
+	public XStructLiteral createXStructLiteral() {
+		return new XStructLiteralImpl();
+	}
+
+	@Override
+	public XFieldLiteralPart createXFieldLiteralPart() {
+		return new XFieldLiteralPartImpl();
 	}
 
 

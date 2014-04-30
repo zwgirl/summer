@@ -400,6 +400,24 @@ public interface XbaseFactory extends EFactory {
 	XArrayLiteral createXArrayLiteral();
 
 	/**
+	 * Returns a new object of class '<em>XStruct Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XStruct Literal</em>'.
+	 * @generated
+	 */
+	XStructLiteral createXStructLiteral();
+
+	/**
+	 * Returns a new object of class '<em>XField Literal Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XField Literal Part</em>'.
+	 * @generated
+	 */
+	XFieldLiteralPart createXFieldLiteralPart();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

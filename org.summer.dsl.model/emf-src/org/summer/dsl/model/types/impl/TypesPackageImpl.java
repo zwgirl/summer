@@ -59,6 +59,7 @@ import org.summer.dsl.model.types.JvmPrimitiveType;
 import org.summer.dsl.model.types.JvmShortAnnotationValue;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmStringAnnotationValue;
+import org.summer.dsl.model.types.JvmStructType;
 import org.summer.dsl.model.types.JvmSynonymTypeReference;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeAnnotationValue;
@@ -151,6 +152,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	private EClass jvmDeclaredTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jvmStructTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -789,6 +797,24 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EAttribute getJvmDeclaredType_Exported() {
 		return (EAttribute)jvmDeclaredTypeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJvmStructType() {
+		return jvmStructTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmStructType_Implements() {
+		return (EReference)jvmStructTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1933,6 +1959,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEAttribute(jvmDeclaredTypeEClass, JVM_DECLARED_TYPE__PACKAGE_NAME);
 		createEAttribute(jvmDeclaredTypeEClass, JVM_DECLARED_TYPE__EXPORTED);
 
+		jvmStructTypeEClass = createEClass(JVM_STRUCT_TYPE);
+		createEReference(jvmStructTypeEClass, JVM_STRUCT_TYPE__IMPLEMENTS);
+
 		jvmTypeParameterEClass = createEClass(JVM_TYPE_PARAMETER);
 		createEAttribute(jvmTypeParameterEClass, JVM_TYPE_PARAMETER__NAME);
 		createEReference(jvmTypeParameterEClass, JVM_TYPE_PARAMETER__DECLARATOR);
@@ -2146,6 +2175,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmArrayTypeEClass.getESuperTypes().add(this.getJvmComponentType());
 		jvmDeclaredTypeEClass.getESuperTypes().add(this.getJvmMember());
 		jvmDeclaredTypeEClass.getESuperTypes().add(this.getJvmComponentType());
+		jvmStructTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
 		jvmTypeParameterEClass.getESuperTypes().add(this.getJvmComponentType());
 		jvmTypeParameterEClass.getESuperTypes().add(this.getJvmConstraintOwner());
 		jvmUpperBoundEClass.getESuperTypes().add(this.getJvmTypeConstraint());
@@ -2261,6 +2291,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		g2 = createEGenericType(this.getJvmFeature());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		initEClass(jvmStructTypeEClass, JvmStructType.class, "JvmStructType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJvmStructType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmStructType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeParameterEClass, JvmTypeParameter.class, "JvmTypeParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmTypeParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, JvmTypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

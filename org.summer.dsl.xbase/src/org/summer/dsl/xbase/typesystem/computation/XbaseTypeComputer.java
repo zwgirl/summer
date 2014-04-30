@@ -28,6 +28,7 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
@@ -62,6 +63,7 @@ import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XStringLiteral;
+import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
 import org.summer.dsl.model.xbase.XTernaryOperation;
 import org.summer.dsl.model.xbase.XThrowExpression;
@@ -185,6 +187,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XTernaryOperation)expression, state);
 		} else if (expression instanceof XObjectLiteral) {
 			_computeTypes((XObjectLiteral)expression, state);
+		} else if (expression instanceof XStructLiteral) {
+			_computeTypes((XStructLiteral)expression, state);
 		} else if (expression instanceof XArrayLiteral) {
 			_computeTypes((XArrayLiteral)expression, state);
 		} else { 
@@ -669,26 +673,46 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 	
+	protected void _computeTypes(XStructLiteral object, ITypeComputationState state) {
+
+//		for(JvmMember part : object.getMembers()){
+//			JvmField field = (JvmField) part;
+//			ITypeComputationResult partResult = state.withNonVoidExpectation().computeTypes(field.getDefaultValue());
+//			
+//			JvmTypeReference typeRef = services.getTypeReferences().createTypeRef(partResult.getActualExpressionType().getType());
+//			field.setType(typeRef);
+//		}
+		
+		JvmTypeReference typeRef = services.getTypeReferences().createTypeRef(object.getType());
+		
+		
+		OwnedConverter converter = state.getConverter();
+		LightweightTypeReference lType = converter.toLightweightReference(typeRef);
+		
+		for(ITypeExpectation expectation: state.getExpectations()) {
+			expectation.acceptActualType(lType, ConformanceHint.UNCHECKED);
+		}
+	}
+	
 	protected void _computeTypes(XObjectLiteral object, ITypeComputationState state) {
 
-		List<XObjectLiteralPart> parts = object.getProperties();
+//		List<JvmMember> parts = object.getProperties();
 		
 		//创建一个匿名类型，让这个对象拥有这个匿名类型
-		JvmDeclaredType jvmType = TypesFactory.eINSTANCE.createJvmGenericType();
-		object.setType(jvmType);
-		jvmType.setSimpleName("_sasas");
-		for(XObjectLiteralPart part : parts){
-			JvmField field = TypesFactory.eINSTANCE.createJvmField();
-			field.setSimpleName(part.getName());
-			field.setVisibility(JvmVisibility.PUBLIC);
-			ITypeComputationResult partResult = state.withNonVoidExpectation().computeTypes(part.getValue());
+//		JvmDeclaredType jvmType = TypesFactory.eINSTANCE.createJvmGenericType();
+//		object.setType(jvmType);
+//		jvmType.setSimpleName("_sasas");
+		for(JvmMember part : object.getMembers()){
+			JvmField field = (JvmField) part;
+			ITypeComputationResult partResult = state.withNonVoidExpectation().computeTypes(field.getDefaultValue());
 			
 			JvmTypeReference typeRef = services.getTypeReferences().createTypeRef(partResult.getActualExpressionType().getType());
 			field.setType(typeRef);
-			jvmType.getMembers().add(field);
 		}
+//		
+//		object.setType(jvmType);
 		
-		JvmTypeReference typeRef = services.getTypeReferences().createTypeRef(jvmType);
+		JvmTypeReference typeRef = services.getTypeReferences().createTypeRef(object);
 		
 		
 		OwnedConverter converter = state.getConverter();

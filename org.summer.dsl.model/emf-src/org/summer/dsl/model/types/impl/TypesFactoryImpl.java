@@ -42,6 +42,7 @@ import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
 import org.summer.dsl.model.types.JvmShortAnnotationValue;
 import org.summer.dsl.model.types.JvmStringAnnotationValue;
+import org.summer.dsl.model.types.JvmStructType;
 import org.summer.dsl.model.types.JvmSynonymTypeReference;
 import org.summer.dsl.model.types.JvmTypeAnnotationValue;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -137,6 +138,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 			case TypesPackage.JVM_SYNONYM_TYPE_REFERENCE: return createJvmSynonymTypeReference();
 			case TypesPackage.JVM_UNKNOWN_TYPE_REFERENCE: return createJvmUnknownTypeReference();
 			case TypesPackage.JVM_CUSTOM_ANNOTATION_VALUE: return createJvmCustomAnnotationValue();
+			case TypesPackage.JVM_STRUCT_TYPE: return createJvmStructType();
 
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -657,6 +659,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 
 	public JvmAnnotationValue createJvmAnnotationValue() {
 		return new JvmAnnotationValueImplCustom();
+	}
+
+	@Override
+	public JvmStructType createJvmStructType() {
+		return new JvmStructTypeImpl();
 	}
 
 } //TypesFactoryImpl

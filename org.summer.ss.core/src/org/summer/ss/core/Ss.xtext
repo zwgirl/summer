@@ -22,7 +22,7 @@ File returns XtendFile :
 	importSection=XImportSection1? 
 //	(xtendTypes+=Type)*
 	(contents+=Type 
-	| contents+= XExpressionInsideBlock ';'?)*
+	| (contents+= XExpressionInsideBlock ';'?)  )*
 	
 	exportSection=XExportSection? 
 	
@@ -115,12 +115,20 @@ Type returns types::JvmDeclaredType :
 	   	('extends' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?'{'
 		   (members+=Member)*
 	   	'}'
-//	 |
-//		{XtendEnum.annotationInfo = current}
-//		modifiers+=CommonModifier*
-//	  	'enum' name=ValidID '{'   
-//		   (members+=XtendEnumLiteral (',' members+=XtendEnumLiteral)*)? ';'?
-//	   	'}'
+	 |
+ 		{types::JvmStructType.annotationInfo = current}
+		(exported?='export')? //modifiers+=CommonModifier*
+	  	'struct' simpleName=ValidID //('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
+	   	('implements' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?
+	   	'{'
+		   (members+=Member)*
+	   	'}'
+	 |
+		{types::JvmEnumerationType.annotationInfo = current}
+		(exported?='export')? modifiers+=CommonModifier*
+	  	'enum' simpleName=ValidID '{'   
+		   (members+=JvmEnumerationLiteral (',' members+=JvmEnumerationLiteral)*)? ';'?
+	   	'}'
 	 |
 	 	{types::JvmAnnotationType.annotationInfo = current}
 	 	(exported?='export')? modifiers+=CommonModifier*
@@ -273,8 +281,8 @@ Operators:
 //	| OpPostfix
 ;
 
-XtendEnumLiteral: 
-	name=ValidID
+JvmEnumerationLiteral returns types::JvmEnumerationLiteral: 
+	simpleName=ValidID ('=' defaultValue = XNumberLiteral)?
 ;
 
 
@@ -289,6 +297,7 @@ CommonModifier:
 //		| 'export'
 //		| 'dispatch' 
 		| 'const'
+		| 'native'
 		| 'override'
 ;
 

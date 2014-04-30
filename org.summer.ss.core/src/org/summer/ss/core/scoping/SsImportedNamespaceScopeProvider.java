@@ -43,6 +43,8 @@ import org.summer.dsl.model.types.access.impl.Primitives;
 import org.summer.dsl.model.types.xtext.AbstractTypeScope;
 import org.summer.dsl.model.types.xtext.AbstractTypeScopeProvider;
 import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xbase.XFieldLiteralPart;
+import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection1;
@@ -162,7 +164,18 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			// in order to improve the error message, therefore we use a strict wrapper here
 			IScope result = new ConstructorTypeScopeWrapper(context, IVisibilityHelper.ALL, typeScope, true /* strict scope */);
 			return result;
-		} else {
+		} else if (TypesPackage.Literals.JVM_FIELD.isSuperTypeOf(referenceType) && context instanceof XFieldLiteralPart) {   //cym added
+			XFieldLiteralPart fieldPart = (XFieldLiteralPart) context;
+			XStructLiteral structLiteral = (XStructLiteral) fieldPart.eContainer();
+			IScope scope = new StructTypeScope(structLiteral.getType());
+			return scope;
+		} else if (TypesPackage.Literals.JVM_FIELD.isSuperTypeOf(referenceType) && context instanceof XStructLiteral) {   //cym added
+			XStructLiteral structLiteral = (XStructLiteral) context;
+			IScope scope = new StructTypeScope(structLiteral.getType());
+			return scope;
+		}
+		
+		else {
 //			return super.getScope(context, reference);
 			throw new IllegalArgumentException("Unexpected global request for " + reference);  
 		}

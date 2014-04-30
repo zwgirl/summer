@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.summer.dsl.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -2407,22 +2408,139 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL = 43;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL__PROPERTIES = XEXPRESSION_FEATURE_COUNT + 0;
+	int XOBJECT_LITERAL__ANNOTATIONS = TypesPackage.JVM_DECLARED_TYPE__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL__TYPE = XEXPRESSION_FEATURE_COUNT + 1;
+	int XOBJECT_LITERAL__DECLARING_TYPE = TypesPackage.JVM_DECLARED_TYPE__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__VISIBILITY = TypesPackage.JVM_DECLARED_TYPE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__SIMPLE_NAME = TypesPackage.JVM_DECLARED_TYPE__SIMPLE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__IDENTIFIER = TypesPackage.JVM_DECLARED_TYPE__IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__ANNOTATION_INFO = TypesPackage.JVM_DECLARED_TYPE__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__MODIFIERS = TypesPackage.JVM_DECLARED_TYPE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Array Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__ARRAY_TYPE = TypesPackage.JVM_DECLARED_TYPE__ARRAY_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Super Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__SUPER_TYPES = TypesPackage.JVM_DECLARED_TYPE__SUPER_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__MEMBERS = TypesPackage.JVM_DECLARED_TYPE__MEMBERS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__ABSTRACT = TypesPackage.JVM_DECLARED_TYPE__ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__STATIC = TypesPackage.JVM_DECLARED_TYPE__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__FINAL = TypesPackage.JVM_DECLARED_TYPE__FINAL;
+
+	/**
+	 * The feature id for the '<em><b>Package Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__PACKAGE_NAME = TypesPackage.JVM_DECLARED_TYPE__PACKAGE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Exported</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL__EXPORTED = TypesPackage.JVM_DECLARED_TYPE__EXPORTED;
 
 	/**
 	 * The number of structural features of the '<em>XObject Literal</em>' class.
@@ -2431,7 +2549,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 2;
+	int XOBJECT_LITERAL_FEATURE_COUNT = TypesPackage.JVM_DECLARED_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralPartImpl <em>XObject Literal Part</em>}' class.
@@ -2444,22 +2562,139 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL_PART = 44;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL_PART__VALUE = 0;
+	int XOBJECT_LITERAL_PART__ANNOTATIONS = TypesPackage.JVM_FIELD__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL_PART__NAME = 1;
+	int XOBJECT_LITERAL_PART__DECLARING_TYPE = TypesPackage.JVM_FIELD__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__VISIBILITY = TypesPackage.JVM_FIELD__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__SIMPLE_NAME = TypesPackage.JVM_FIELD__SIMPLE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__IDENTIFIER = TypesPackage.JVM_FIELD__IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__ANNOTATION_INFO = TypesPackage.JVM_FIELD__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__MODIFIERS = TypesPackage.JVM_FIELD__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__STATIC = TypesPackage.JVM_FIELD__STATIC;
+
+	/**
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__FINAL = TypesPackage.JVM_FIELD__FINAL;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__TYPE = TypesPackage.JVM_FIELD__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Volatile</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__VOLATILE = TypesPackage.JVM_FIELD__VOLATILE;
+
+	/**
+	 * The feature id for the '<em><b>Transient</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__TRANSIENT = TypesPackage.JVM_FIELD__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__DEFAULT_VALUE = TypesPackage.JVM_FIELD__DEFAULT_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Set</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__SET = TypesPackage.JVM_FIELD__SET;
+
+	/**
+	 * The feature id for the '<em><b>Get</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__GET = TypesPackage.JVM_FIELD__GET;
 
 	/**
 	 * The number of structural features of the '<em>XObject Literal Part</em>' class.
@@ -2468,7 +2703,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL_PART_FEATURE_COUNT = 2;
+	int XOBJECT_LITERAL_PART_FEATURE_COUNT = TypesPackage.JVM_FIELD_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XArrayLiteralImpl <em>XArray Literal</em>}' class.
@@ -2497,6 +2732,80 @@ public interface XbasePackage extends EPackage {
 	 * @ordered
 	 */
 	int XARRAY_LITERAL_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XStructLiteralImpl <em>XStruct Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XStructLiteralImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStructLiteral()
+	 * @generated
+	 */
+	int XSTRUCT_LITERAL = 46;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XSTRUCT_LITERAL__PROPERTIES = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XSTRUCT_LITERAL__TYPE = XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>XStruct Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XSTRUCT_LITERAL_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl <em>XField Literal Part</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFieldLiteralPart()
+	 * @generated
+	 */
+	int XFIELD_LITERAL_PART = 47;
+
+	/**
+	 * The feature id for the '<em><b>Field</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XFIELD_LITERAL_PART__FIELD = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XFIELD_LITERAL_PART__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>XField Literal Part</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XFIELD_LITERAL_PART_FEATURE_COUNT = 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
@@ -4138,28 +4447,6 @@ public interface XbasePackage extends EPackage {
 	EClass getXObjectLiteral();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XObjectLiteral#getProperties <em>Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see org.summer.dsl.model.xbase.XObjectLiteral#getProperties()
-	 * @see #getXObjectLiteral()
-	 * @generated
-	 */
-	EReference getXObjectLiteral_Properties();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XObjectLiteral#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see org.summer.dsl.model.xbase.XObjectLiteral#getType()
-	 * @see #getXObjectLiteral()
-	 * @generated
-	 */
-	EReference getXObjectLiteral_Type();
-
-	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XObjectLiteralPart <em>XObject Literal Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4168,28 +4455,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getXObjectLiteralPart();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XObjectLiteralPart#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see org.summer.dsl.model.xbase.XObjectLiteralPart#getValue()
-	 * @see #getXObjectLiteralPart()
-	 * @generated
-	 */
-	EReference getXObjectLiteralPart_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XObjectLiteralPart#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.xbase.XObjectLiteralPart#getName()
-	 * @see #getXObjectLiteralPart()
-	 * @generated
-	 */
-	EAttribute getXObjectLiteralPart_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XArrayLiteral <em>XArray Literal</em>}'.
@@ -4211,6 +4476,70 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXArrayLiteral_Elements();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XStructLiteral <em>XStruct Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XStruct Literal</em>'.
+	 * @see org.summer.dsl.model.xbase.XStructLiteral
+	 * @generated
+	 */
+	EClass getXStructLiteral();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XStructLiteral#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.summer.dsl.model.xbase.XStructLiteral#getProperties()
+	 * @see #getXStructLiteral()
+	 * @generated
+	 */
+	EReference getXStructLiteral_Properties();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xbase.XStructLiteral#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see org.summer.dsl.model.xbase.XStructLiteral#getType()
+	 * @see #getXStructLiteral()
+	 * @generated
+	 */
+	EReference getXStructLiteral_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XFieldLiteralPart <em>XField Literal Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XField Literal Part</em>'.
+	 * @see org.summer.dsl.model.xbase.XFieldLiteralPart
+	 * @generated
+	 */
+	EClass getXFieldLiteralPart();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xbase.XFieldLiteralPart#getField <em>Field</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Field</em>'.
+	 * @see org.summer.dsl.model.xbase.XFieldLiteralPart#getField()
+	 * @see #getXFieldLiteralPart()
+	 * @generated
+	 */
+	EReference getXFieldLiteralPart_Field();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XFieldLiteralPart#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see org.summer.dsl.model.xbase.XFieldLiteralPart#getValue()
+	 * @see #getXFieldLiteralPart()
+	 * @generated
+	 */
+	EReference getXFieldLiteralPart_Value();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5547,22 +5876,6 @@ public interface XbasePackage extends EPackage {
 		EClass XOBJECT_LITERAL = eINSTANCE.getXObjectLiteral();
 
 		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XOBJECT_LITERAL__PROPERTIES = eINSTANCE.getXObjectLiteral_Properties();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XOBJECT_LITERAL__TYPE = eINSTANCE.getXObjectLiteral_Type();
-
-		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralPartImpl <em>XObject Literal Part</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5571,22 +5884,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass XOBJECT_LITERAL_PART = eINSTANCE.getXObjectLiteralPart();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XOBJECT_LITERAL_PART__VALUE = eINSTANCE.getXObjectLiteralPart_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XOBJECT_LITERAL_PART__NAME = eINSTANCE.getXObjectLiteralPart_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XArrayLiteralImpl <em>XArray Literal</em>}' class.
@@ -5605,6 +5902,58 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XARRAY_LITERAL__ELEMENTS = eINSTANCE.getXArrayLiteral_Elements();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XStructLiteralImpl <em>XStruct Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XStructLiteralImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStructLiteral()
+		 * @generated
+		 */
+		EClass XSTRUCT_LITERAL = eINSTANCE.getXStructLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XSTRUCT_LITERAL__PROPERTIES = eINSTANCE.getXStructLiteral_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XSTRUCT_LITERAL__TYPE = eINSTANCE.getXStructLiteral_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl <em>XField Literal Part</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFieldLiteralPart()
+		 * @generated
+		 */
+		EClass XFIELD_LITERAL_PART = eINSTANCE.getXFieldLiteralPart();
+
+		/**
+		 * The meta object literal for the '<em><b>Field</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XFIELD_LITERAL_PART__FIELD = eINSTANCE.getXFieldLiteralPart_Field();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XFIELD_LITERAL_PART__VALUE = eINSTANCE.getXFieldLiteralPart_Value();
 
 	}
 

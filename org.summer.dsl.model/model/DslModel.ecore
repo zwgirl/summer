@@ -95,6 +95,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="exported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
           defaultValueLiteral="false"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JvmStructType" eSuperTypes="#//types/JvmDeclaredType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="implements" upperBound="-1"
+          eType="#//types/JvmParameterizedTypeReference" containment="true"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmTypeParameter" eSuperTypes="#//types/JvmComponentType #//types/JvmConstraintOwner">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="declarator" eType="#//types/JvmTypeParameterDeclarator"
@@ -739,20 +743,21 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
           eType="#//types/JvmFormalParameter" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="XObjectLiteral" eSuperTypes="#//xbase/XExpression">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-          eType="#//xbase/XObjectLiteralPart" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//types/JvmType"
-          containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="XObjectLiteralPart">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
-          containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XObjectLiteral" eSuperTypes="#//types/JvmDeclaredType #//xbase/XExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="XObjectLiteralPart" eSuperTypes="#//types/JvmField"/>
     <eClassifiers xsi:type="ecore:EClass" name="XArrayLiteral" eSuperTypes="#//xbase/XExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
           eType="#//xbase/XExpression" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XStructLiteral" eSuperTypes="#//xbase/XExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+          eType="#//xbase/XFieldLiteralPart" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//types/JvmDeclaredType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XFieldLiteralPart">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//types/JvmField"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
+          containment="true"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="ss" nsURI="http://www.summer.org/dsl/model/ss" nsPrefix="ss">

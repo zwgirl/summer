@@ -1710,10 +1710,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:12: ( '0x' | '0X' )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1741,7 +1741,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:13: '0x'
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:13: '0x'
                     {
                     match("0x"); 
 
@@ -1749,7 +1749,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:18: '0X'
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:18: '0X'
                     {
                     match("0X"); 
 
@@ -1759,7 +1759,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
             }
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1797,7 +1797,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1806,10 +1806,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1827,7 +1827,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1851,7 +1851,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20771:84: ( 'l' | 'L' )
+                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21363:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1890,11 +1890,11 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20773:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20773:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21365:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21365:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20773:21: ( '0' .. '9' | '_' )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21365:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1943,11 +1943,11 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1956,7 +1956,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1967,7 +1967,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:36: ( '+' | '-' )?
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -2000,7 +2000,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
             }
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -2012,7 +2012,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -2036,7 +2036,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20775:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21367:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2069,10 +2069,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20777:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20777:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21369:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21369:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20777:11: ( '^' )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21369:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2081,7 +2081,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20777:11: '^'
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21369:11: '^'
                     {
                     match('^'); 
 
@@ -2099,7 +2099,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20777:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21369:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2148,10 +2148,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2169,10 +2169,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2188,7 +2188,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2204,7 +2204,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2229,10 +2229,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2248,7 +2248,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2264,7 +2264,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20779:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21371:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2307,12 +2307,12 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20781:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20781:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21373:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21373:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20781:24: ( options {greedy=false; } : . )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21373:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2337,7 +2337,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20781:52: .
+            	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21373:52: .
             	    {
             	    matchAny(); 
 
@@ -2367,12 +2367,12 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2385,7 +2385,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2405,7 +2405,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:40: ( ( '\\r' )? '\\n' )?
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2414,9 +2414,9 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:41: ( '\\r' )? '\\n'
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:41: ( '\\r' )?
+                    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2425,7 +2425,7 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20783:41: '\\r'
+                            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21375:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2457,10 +2457,10 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20785:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20785:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21377:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21377:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20785:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21377:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2514,8 +2514,8 @@ public class InternalXbaseWithAnnotationsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20787:16: ( . )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:20787:18: .
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21379:16: ( . )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:21379:18: .
             {
             matchAny(); 
 

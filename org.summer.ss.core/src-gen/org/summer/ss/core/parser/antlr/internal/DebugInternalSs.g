@@ -33,6 +33,16 @@
 				',' ruleJvmParameterizedTypeReference
 			)*
 		)? '{' ruleMember* '}' |
+		'export'? 'struct' ruleValidID (
+			'implements' ruleJvmParameterizedTypeReference (
+				',' ruleJvmParameterizedTypeReference
+			)*
+		)? '{' ruleMember* '}' |
+		'export'? ruleCommonModifier* 'enum' ruleValidID '{' (
+			ruleJvmEnumerationLiteral (
+				',' ruleJvmEnumerationLiteral
+			)*
+		)? ';'? '}' |
 		'export'? ruleCommonModifier* 'annotation' ruleValidID '{'
 		ruleAnnotationField* '}'
 	)
@@ -109,6 +119,13 @@
 	ruleOpMulti |
 	ruleOpUnary |
 	ruleIndexOp
+;
+
+// Rule JvmEnumerationLiteral
+ ruleJvmEnumerationLiteral :
+	ruleValidID (
+		'=' ruleXNumberLiteral
+	)?
 ;
 
 // Rule CommonModifier
@@ -501,6 +518,7 @@
 // Rule XLiteral
  ruleXLiteral :
 	ruleXObjectLiteral |
+	ruleXStructLiteral |
 	ruleXArrayLiteral |
 	ruleXClosure |
 	ruleXBooleanLiteral |
@@ -665,6 +683,18 @@
 // Rule XObjectLiteralPart
  ruleXObjectLiteralPart :
 	RULE_ID ':' ruleXExpression
+;
+
+// Rule XStructLiteral
+ ruleXStructLiteral :
+	'new' ruleQualifiedName '{' ruleXFieldLiteralPart (
+		',' ruleXFieldLiteralPart
+	)* '}'
+;
+
+// Rule XFieldLiteralPart
+ ruleXFieldLiteralPart :
+	ruleQualifiedName ':' ruleXExpression
 ;
 
 // Rule XArrayLiteral

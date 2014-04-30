@@ -361,6 +361,7 @@ XPrimaryExpression returns XExpression:
 XLiteral returns XExpression:
 //	XCollectionLiteral |
 	XObjectLiteral|
+	XStructLiteral|
 	XArrayLiteral|
 	XClosure |
 	XBooleanLiteral |
@@ -711,15 +712,40 @@ XConstructorCall returns XExpression:
 	')')?
 	;
 	
+//XObjectLiteral returns XExpression:
+//	{XObjectLiteral}
+//	'new' '{'
+//		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
+//	'}'
+//;
+//
+//XObjectLiteralPart returns types::JvmMember:
+//	{XObjectLiteralPart}
+//	simpleName=ID ':' value=XExpression
+//;
+
 XObjectLiteral returns XExpression:
 	{XObjectLiteral}
 	'new' '{'
-	properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
+		members +=XObjectLiteralPart (',' members +=XObjectLiteralPart)*
 	'}'
 ;
 
-XObjectLiteralPart :
-	name=ID ':' value=XExpression
+XObjectLiteralPart returns types::JvmMember:
+	{XObjectLiteralPart}
+	simpleName=ID ':' defaultValue=XExpression
+;
+
+XStructLiteral returns XExpression:
+	{XStructLiteral}
+	'new' (type= [types::JvmStructType|QualifiedName]) '{'
+	properties +=XFieldLiteralPart (',' properties +=XFieldLiteralPart)*
+	'}'
+;
+
+XFieldLiteralPart :
+	{XFieldLiteralPart}
+	field=[types::JvmField|QualifiedName] ':' value=XExpression
 ;
 
 XArrayLiteral returns XExpression:
