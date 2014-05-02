@@ -83,7 +83,7 @@ public class XFunctionTypeRefImplCustom extends XFunctionTypeRefImpl {
 //			JvmType newType = TypesFactory.eINSTANCE.createJvmVoid();
 //			((InternalEObject)newType).eSetProxyURI(computeTypeUri(isProcedure()));
 //			type = (JvmType) eResolveProxy((InternalEObject) newType);
-			type = Buildin.Function.Type;
+			type = Buildin.Function.JvmType;
 		}
 		return super.getType();
 	}

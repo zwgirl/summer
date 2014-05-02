@@ -16,14 +16,14 @@ import org.summer.dsl.model.types.JvmType;
 public enum Buildin {
 	Object("object"), Boolean("boolean"), Function("function"), String("string"), Number("number"), Array(
 			"array"), Date("date"), Integer("int"), Byte("byte"), Short("short"), Float("float"), Double("double"),
-			Iterable("iterable"), List("list");
+			Iterable("iterable"), List("list"), Type("Type");
 
 	private Buildin(String name) {
-		this.Type = getType(this);
+		this.JvmType = getType(this);
 		this.PrimitiveName = name;
 	}
 
-	public final JvmGenericType Type;
+	public final JvmGenericType JvmType;
 	public final String PrimitiveName;
 
 	private JvmGenericType getType(Buildin bi) {
@@ -64,7 +64,7 @@ public enum Buildin {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(Buildin.Array.Type);
+		System.out.println(Buildin.Array.JvmType);
 	}
 
 }

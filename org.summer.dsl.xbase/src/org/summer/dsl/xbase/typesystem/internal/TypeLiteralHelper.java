@@ -14,6 +14,7 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
@@ -41,25 +42,50 @@ public class TypeLiteralHelper {
 		return result;
 	}
 	
+	//cym comment
+//	protected LightweightTypeReference getAsClassLiteral(JvmIdentifiableElement feature) {
+//		if (feature instanceof JvmType) {
+//			ITypeReferenceOwner owner = state.getReferenceOwner();
+//			ParameterizedTypeReference result = getRawTypeForName(Class.class, owner);
+//			if (result == null) {
+//				return new UnknownTypeReference(owner, "Class");
+//			}
+//			LightweightTypeReference argumentType = new ParameterizedTypeReference(owner, (JvmType) feature);
+//			if (argumentType.isPrimitiveVoid()) {
+//				ParameterizedTypeReference voidType = getRawTypeForName(Void.class, owner);
+//				if (voidType == null) {
+//					argumentType = new UnknownTypeReference(owner, Void.class.getName());
+//				} else {
+//					argumentType = voidType;
+//				}
+//			} else {
+//				argumentType = argumentType.getWrapperTypeIfPrimitive();
+//			}
+//			result.addTypeArgument(argumentType);
+//			return result;
+//		}
+//		throw new IllegalArgumentException(String.valueOf(feature));
+//	}
+	
 	protected LightweightTypeReference getAsClassLiteral(JvmIdentifiableElement feature) {
 		if (feature instanceof JvmType) {
 			ITypeReferenceOwner owner = state.getReferenceOwner();
-			ParameterizedTypeReference result = getRawTypeForName(Class.class, owner);
-			if (result == null) {
-				return new UnknownTypeReference(owner, "Class");
-			}
-			LightweightTypeReference argumentType = new ParameterizedTypeReference(owner, (JvmType) feature);
-			if (argumentType.isPrimitiveVoid()) {
-				ParameterizedTypeReference voidType = getRawTypeForName(Void.class, owner);
-				if (voidType == null) {
-					argumentType = new UnknownTypeReference(owner, Void.class.getName());
-				} else {
-					argumentType = voidType;
-				}
-			} else {
-				argumentType = argumentType.getWrapperTypeIfPrimitive();
-			}
-			result.addTypeArgument(argumentType);
+			ParameterizedTypeReference result = new ParameterizedTypeReference(owner, Buildin.Type.JvmType);
+//			if (result == null) {
+//				return new UnknownTypeReference(owner, "Type");
+//			}
+//			LightweightTypeReference argumentType = new ParameterizedTypeReference(owner, (JvmType) feature);
+//			if (argumentType.isPrimitiveVoid()) {
+//				ParameterizedTypeReference voidType = getRawTypeForName(Void.class, owner);
+//				if (voidType == null) {
+//					argumentType = new UnknownTypeReference(owner, Void.class.getName());
+//				} else {
+//					argumentType = voidType;
+//				}
+//			} else {
+//				argumentType = argumentType.getWrapperTypeIfPrimitive();
+//			}
+//			result.addTypeArgument(argumentType);
 			return result;
 		}
 		throw new IllegalArgumentException(String.valueOf(feature));

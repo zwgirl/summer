@@ -72,7 +72,7 @@ public class PrimitivesScope extends AbstractScope{
 	public Iterable<IEObjectDescription> getAllElements() {
 		List<IEObjectDescription> result = Lists.newLinkedList();
 		for(Entry<String, String> entry: Primitives.ALL_PRIMITIVE_TYPES1.entrySet()) {
-			JvmType object = Buildin.valueOf(entry.getValue()).Type;
+			JvmType object = Buildin.valueOf(entry.getValue()).JvmType;
 			IEObjectDescription primitive = EObjectDescription.create(QualifiedName.create(entry.getKey()), object);
 			if (primitive != null)
 				result.add(primitive);

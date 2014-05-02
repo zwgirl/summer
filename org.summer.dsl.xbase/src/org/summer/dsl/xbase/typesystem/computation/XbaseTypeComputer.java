@@ -626,7 +626,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	 */
 	protected void _computeTypes(XBooleanLiteral object, ITypeComputationState state) {
 //		LightweightTypeReference bool = getTypeForName(Boolean.TYPE, state);  //cym comment
-		LightweightTypeReference bool = getTypeForName(Buildin.Boolean.Type, state);
+		LightweightTypeReference bool = getTypeForName(Buildin.Boolean.JvmType, state);
 		state.acceptActualType(bool);
 	}
 
@@ -651,7 +651,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	protected void _computeTypes(XStringLiteral object, ITypeComputationState state) {
 		if (object.getValue().length() != 1) {
 			//LightweightTypeReference result = getTypeForName(String.class, state);
-			LightweightTypeReference result = getTypeForName(Buildin.String.Type, state);
+			LightweightTypeReference result = getTypeForName(Buildin.String.JvmType, state);
 			
 			state.acceptActualType(result);
 		} else {
@@ -666,7 +666,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 					}
 				} else {
 //					LightweightTypeReference type = getTypeForName(String.class, state);
-					LightweightTypeReference type = getTypeForName(Buildin.String.Type, state);
+					LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
 					expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
 				}
 			}
@@ -724,7 +724,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	protected void _computeTypes(XArrayLiteral literal, ITypeComputationState state) {
-		JvmGenericType listType = (JvmGenericType) Buildin.Array.Type;
+		JvmGenericType listType = (JvmGenericType) Buildin.Array.JvmType;
 		
 		for(ITypeExpectation expectation: state.getExpectations()) {
 			LightweightTypeReference elementTypeExpectation = null;
@@ -765,7 +765,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 					expectation.acceptActualType(commonListType, ConformanceHint.UNCHECKED);
 				} else {
 //					expectation.acceptActualType(getTypeForName(Object.class, state), ConformanceHint.UNCHECKED);  //cym comment
-					expectation.acceptActualType(getTypeForName(Buildin.Object.Type, state), ConformanceHint.UNCHECKED);
+					expectation.acceptActualType(getTypeForName(Buildin.Object.JvmType, state), ConformanceHint.UNCHECKED);
 				}
 			} else {
 				ParameterizedTypeReference unboundCollectionType = new ParameterizedTypeReference(state.getReferenceOwner(), listType);
@@ -985,7 +985,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 		JvmFormalParameter declaredParam = object.getDeclaredParam();
 		LightweightTypeReference parameterType = getDeclaredParameterType(declaredParam, state);
 //		final JvmGenericType iterableType = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, object); //cym comment
-		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.Type;
+		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.JvmType;
 		
 		if (parameterType != null && !parameterType.isPrimitiveVoid()) {
 			final CompoundTypeReference withSynonyms = new CompoundTypeReference(state.getReferenceOwner(), true);
@@ -1094,7 +1094,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 				Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> typeParameterMapping = typeArgumentCollector.getTypeParameterMapping(reference);
 				TypeParameterSubstitutor<?> substitutor = new UnboundTypeParameterPreservingSubstitutor(typeParameterMapping, state.getReferenceOwner());
 //				JvmGenericType iterable = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, iterableOrArray.getOwner().getContextResourceSet());  //cym comment
-				JvmGenericType iterable = (JvmGenericType) Buildin.Iterable.Type;
+				JvmGenericType iterable = (JvmGenericType) Buildin.Iterable.JvmType;
 				
 				ParameterizedTypeReference substituteMe = new ParameterizedTypeReference(state.getReferenceOwner(), iterable.getTypeParameters().get(0));
 				LightweightTypeReference substitutedArgument = substitutor.substitute(substituteMe).getUpperBoundSubstitute();

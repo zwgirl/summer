@@ -117,7 +117,7 @@ public class TypeArgumentContext implements ITypeArgumentContext {
 					JvmTypeReference copy = visit(argument, replaceWildcards);
 					if (copy == null) {
 //						copy = typeReferences.getTypeForName(Object.class, type);
-						copy = typeReferences.getTypeForName(Buildin.Object.Type, type);
+						copy = typeReferences.getTypeForName(Buildin.Object.JvmType, type);
 						
 					}
 					result.getArguments().add(copy);

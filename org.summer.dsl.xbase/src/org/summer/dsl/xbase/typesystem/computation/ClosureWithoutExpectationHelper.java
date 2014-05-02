@@ -176,7 +176,7 @@ public class ClosureWithoutExpectationHelper extends AbstractClosureTypeHelper {
 				deferredBindTypeArgument(expectedReturnType, expressionResultType, BoundTypeArgumentSource.INFERRED);
 			} else {
 //				JvmType objectType = getServices().getTypeReferences().findDeclaredType(Object.class, incompleteClosureType.getType()); // cym comment
-				JvmType objectType = Buildin.Object.Type;
+				JvmType objectType = Buildin.Object.JvmType;
 				ParameterizedTypeReference objectTypeReference = new ParameterizedTypeReference(incompleteClosureType.getOwner(), objectType);
 				result.setReturnType(objectTypeReference);
 				deferredBindTypeArgument(expectedReturnType, objectTypeReference, BoundTypeArgumentSource.INFERRED);

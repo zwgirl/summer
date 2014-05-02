@@ -121,21 +121,21 @@ public class Primitives {
 	public JvmType getWrapperType(JvmPrimitiveType primitive) {
 		switch (primitiveKind(primitive)) {
 			case Byte :
-				return Buildin.Byte.Type;
+				return Buildin.Byte.JvmType;
 			case Short :
-				return Buildin.Short.Type;
+				return Buildin.Short.JvmType;
 //			case Char :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			case Int :
-				return Buildin.Integer.Type;
+				return Buildin.Integer.JvmType;
 //			case Long :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			case Float :
-				return Buildin.Float.Type;
+				return Buildin.Float.JvmType;
 			case Double :
-				return Buildin.Double.Type;
+				return Buildin.Double.JvmType;
 			case Boolean :
-				return Buildin.Boolean.Type;
+				return Buildin.Boolean.JvmType;
 //			case Void :
 //				return BuildInTypes.getInstance().getByteType(primitive.eResource());
 			default :
@@ -180,21 +180,21 @@ public class Primitives {
 	}
 
 	public boolean isWrapperType(JvmType type) {
-		if (typeReferences.is(type, Buildin.Byte.Type)) { 
+		if (typeReferences.is(type, Buildin.Byte.JvmType)) { 
 			return true;
-		} else if (typeReferences.is(type, Buildin.Short.Type)) {
+		} else if (typeReferences.is(type, Buildin.Short.JvmType)) {
 			return true;
 //		} else if (typeReferences.is(type, Character.class)) {
 //			return true;
-		} else if (typeReferences.is(type, Buildin.Integer.Type)) {
+		} else if (typeReferences.is(type, Buildin.Integer.JvmType)) {
 			return true;
 //		} else if (typeReferences.is(type, Long.class)) {
 //			return true;
-		} else if (typeReferences.is(type, Buildin.Float.Type)) {
+		} else if (typeReferences.is(type, Buildin.Float.JvmType)) {
 			return true;
-		} else if (typeReferences.is(type, Buildin.Double.Type)) {
+		} else if (typeReferences.is(type, Buildin.Double.JvmType)) {
 			return true;
-		} else if (typeReferences.is(type, Buildin.Boolean.Type)) {
+		} else if (typeReferences.is(type, Buildin.Boolean.JvmType)) {
 			return true;
 //		} else if (typeReferences.is(type, Void.class)) {
 //			return true;
@@ -271,22 +271,22 @@ public class Primitives {
 							return asPrimitive;
 					}
 					return typeRef;
-				} else if (typeReferences.is(typeRef, Buildin.Byte.Type)) {
-					return typeReferences.getTypeForName(Buildin.Byte.Type, typeRef.getType());
-				} else if (typeReferences.is(typeRef, Buildin.Short.Type)) {
-					return typeReferences.getTypeForName(Buildin.Short.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Byte.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Byte.JvmType, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Short.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Short.JvmType, typeRef.getType());
 //				} else if (typeReferences.is(type, Character.class)) {
 //					return typeReferences.getTypeForName(Character.TYPE, type.getType());
-				} else if (typeReferences.is(typeRef, Buildin.Integer.Type)) {
-					return typeReferences.getTypeForName(Buildin.Integer.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Integer.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Integer.JvmType, typeRef.getType());
 //				} else if (typeReferences.is(type, Long.class)) {
 //					return typeReferences.getTypeForName(Long.TYPE, type.getType());
-				} else if (typeReferences.is(typeRef, Buildin.Float.Type)) {
-					return typeReferences.getTypeForName(Buildin.Float.Type, typeRef.getType());
-				} else if (typeReferences.is(typeRef, Buildin.Double.Type)) {
-					return typeReferences.getTypeForName(Buildin.Double.Type, typeRef.getType());
-				} else if (typeReferences.is(typeRef, Buildin.Boolean.Type)) {
-					return typeReferences.getTypeForName(Buildin.Boolean.Type, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Float.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Float.JvmType, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Double.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Double.JvmType, typeRef.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Boolean.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Boolean.JvmType, typeRef.getType());
 //				} else if (typeReferences.is(type, Void.class)) {
 //					return typeReferences.getTypeForName(Void.TYPE, type.getType());
 				}

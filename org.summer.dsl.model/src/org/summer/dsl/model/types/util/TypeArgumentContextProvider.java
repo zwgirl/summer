@@ -269,7 +269,7 @@ public class TypeArgumentContextProvider {
 						}
 						if (!upperBoundSeen) {
 //							if (visit(typeReferences.getTypeForName(Object.class, type))) {  // cym comment
-							if (visit(typeReferences.getTypeForName(Buildin.Object.Type, type))) {
+							if (visit(typeReferences.getTypeForName(Buildin.Object.JvmType, type))) {
 								return Boolean.TRUE;
 							}
 						}
@@ -669,7 +669,7 @@ public class TypeArgumentContextProvider {
 				}
 				if (allUppers.isEmpty()) {
 //					result.put(typeParameter, typeReferences.getTypeForName(Object.class, declarator));
-					result.put(typeParameter, typeReferences.getTypeForName(Buildin.Object.Type, declarator));
+					result.put(typeParameter, typeReferences.getTypeForName(Buildin.Object.JvmType, declarator));
 					
 				} else if (allUppers.size() == 1) {
 					result.put(typeParameter, allUppers.get(0));

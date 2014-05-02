@@ -73,7 +73,7 @@ public class TypeReferences {
 //		final JvmType objectType = findDeclaredType(Object.class, context);
 //		if (objectType == null)
 //			return null;
-		final JvmType objectType = Buildin.Object.Type;
+		final JvmType objectType = Buildin.Object.JvmType;
 		
 		result.setType(objectType);
 		return result;
@@ -94,7 +94,7 @@ public class TypeReferences {
 		}
 		//cym comment
 //		final JvmType findDeclaredType = findDeclaredType(Object.class, context);
-		final JvmType findDeclaredType = Buildin.Object.Type;
+		final JvmType findDeclaredType = Buildin.Object.JvmType;
 		if (findDeclaredType == null)
 			return null;
 		result.setType(findDeclaredType);
@@ -183,7 +183,7 @@ public class TypeReferences {
 		JvmUpperBound upperBound = factory.createJvmUpperBound();
 		//cym comment
 //		upperBound.setTypeReference(getTypeForName(Object.class, clone.getType()));
-		final JvmType findDeclaredType = Buildin.Object.Type;
+		final JvmType findDeclaredType = Buildin.Object.JvmType;
 		upperBound.setTypeReference(getTypeForName(findDeclaredType, clone.getType()));
 		result.getConstraints().add(lowerBound);
 		result.getConstraints().add(upperBound);

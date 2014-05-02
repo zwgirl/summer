@@ -50,7 +50,7 @@ import com.google.inject.Provider;
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-public abstract class JvmDeclaredTypeImplCustom extends JvmDeclaredTypeImpl {
+public class JvmDeclaredTypeImplCustom extends JvmDeclaredTypeImpl {
 	
 	@Override
 	public JvmArrayType getArrayType() {

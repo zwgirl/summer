@@ -35,7 +35,7 @@ public class JvmAnyTypeReferenceImplCustom extends JvmAnyTypeReferenceImpl {
 //			JvmGenericType objectType = TypesFactory.eINSTANCE.createJvmGenericType();
 //			((InternalEObject) objectType).eSetProxyURI(new ClassURIHelper().getFullURI(Object.class));
 //			setType(objectType);
-			setType(Buildin.Object.Type); //Types.getInstance().getObjectType(eResource()));
+			setType(Buildin.Object.JvmType); //Types.getInstance().getObjectType(eResource()));
 		}
 		return super.getType();
 	}

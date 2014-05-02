@@ -145,7 +145,7 @@ public class RawTypeHelper implements IRawTypeHelper {
 //				JvmType objectType = factory.createJvmGenericType();
 //				((InternalEObject)objectType).eSetProxyURI(objectURI);
 //				objectType = (JvmType) EcoreUtil.resolve(objectType, resource);
-				JvmType objectType = Buildin.Object.Type;
+				JvmType objectType = Buildin.Object.JvmType;
 				return Collections.singletonList(objectType);
 			}
 			return Collections.emptyList();
@@ -289,7 +289,7 @@ public class RawTypeHelper implements IRawTypeHelper {
 //			JvmType objectType = factory.createJvmGenericType();
 //			((InternalEObject)objectType).eSetProxyURI(objectURI);
 			
-			JvmType objectType= Buildin.Object.Type;
+			JvmType objectType= Buildin.Object.JvmType;
 //			if (resource != null) {
 //				objectType = (JvmType) EcoreUtil.resolve(objectType, resource);
 //			}

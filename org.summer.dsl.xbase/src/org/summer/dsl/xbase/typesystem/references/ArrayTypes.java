@@ -107,7 +107,7 @@ public class ArrayTypes {
 		LightweightTypeReference componentType = type.getComponentType();
 		LightweightTypeReference wrapper = componentType.getWrapperTypeIfPrimitive();
 //		JvmType listType = type.getServices().getTypeReferences().findDeclaredType(List.class, type.getOwner().getContextResourceSet());  //cym comment
-		JvmType listType = Buildin.List.Type;
+		JvmType listType = Buildin.List.JvmType;
 		ParameterizedTypeReference result = new ParameterizedTypeReference(type.getOwner(), listType);
 		result.addTypeArgument(wrapper);
 		return result;

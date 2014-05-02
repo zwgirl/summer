@@ -79,21 +79,21 @@ public class WrapperTypeLookup {
 	public static LightweightTypeReference getWrapperType(LightweightTypeReference context, Primitive primitiveKind) {
 		switch(primitiveKind) {
 			case Boolean:
-				return findTopLevelType(context, Buildin.Boolean.Type);
+				return findTopLevelType(context, Buildin.Boolean.JvmType);
 			case Byte:
-				return findTopLevelType(context, Buildin.Byte.Type);
+				return findTopLevelType(context, Buildin.Byte.JvmType);
 //			case Char:
 //				return findTopLevelType(context, "java.lang.Character");
 			case Double:
-				return findTopLevelType(context, Buildin.Double.Type);
+				return findTopLevelType(context, Buildin.Double.JvmType);
 			case Float:
-				return findTopLevelType(context, Buildin.Float.Type);
+				return findTopLevelType(context, Buildin.Float.JvmType);
 			case Int:
-				return findTopLevelType(context, Buildin.Integer.Type);
+				return findTopLevelType(context, Buildin.Integer.JvmType);
 //			case Long:
 //				return findTopLevelType(context, "java.lang.Long");
 			case Short:
-				return findTopLevelType(context, Buildin.Short.Type);
+				return findTopLevelType(context, Buildin.Short.JvmType);
 //			case Void:
 //				return findTopLevelType(context, "java.lang.Void");
 			default:

@@ -289,20 +289,21 @@ JvmEnumerationLiteral returns types::JvmEnumerationLiteral:
 CommonModifier:
 //		'public' 
 //		|
-		 'private' 
+//		 'private' |
 //		| 'protected' 
 //		| 'package' 
 //		| 'abstract' 
-		| 'static' 
+		 'static' 
 //		| 'export'
 //		| 'dispatch' 
 		| 'const'
 		| 'native'
 		| 'override'
+		| 'virtaul'
 ;
 
 //FieldModifier:
-//////		'val' | 
+//		'val' | 
 //		'const'
 //;
 
@@ -311,7 +312,7 @@ CommonModifier:
 //; 
 
 //MethodModifier:
-////		'def' | 
+//		'def' | 
 //		'override' 
 //; 
 

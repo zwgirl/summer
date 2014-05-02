@@ -127,19 +127,19 @@ public class NumberLiterals {
 			BigDecimal bd = toBigDecimal(literal);
 			double value = bd.doubleValue();
 			if(value<Float.MAX_VALUE && value>Float.MIN_VALUE){
-				return Buildin.Float.Type;
+				return Buildin.Float.JvmType;
 			}else{
-				return Buildin.Float.Type;
+				return Buildin.Float.JvmType;
 			}
 		}else{
 			BigInteger bi = toBigInteger(literal);
 			Long value = bi.longValue();
 			if(value <Byte.MAX_VALUE  && value >Byte.MIN_VALUE){
-				return Buildin.Byte.Type;
+				return Buildin.Byte.JvmType;
 			} else if(value <Short.MAX_VALUE  && value >Short.MIN_VALUE){
-				return Buildin.Short.Type;
+				return Buildin.Short.JvmType;
 			} else if(value <Integer.MAX_VALUE  && value >Integer.MIN_VALUE){
-				return Buildin.Integer.Type;
+				return Buildin.Integer.JvmType;
 			} 
 			
 			throw new IllegalArgumentException("Invalid type qualifier ");
@@ -192,8 +192,8 @@ public class NumberLiterals {
 	
 	public JvmType getType(XNumberLiteral literal) {
 		JvmType explicitType = getExplicitType(literal);
-		return (explicitType == null) ? (isFloatingPoint(literal)) ? Buildin.Double.Type
-				: Buildin.Integer.Type : explicitType;
+		return (explicitType == null) ? (isFloatingPoint(literal)) ? Buildin.Double.JvmType
+				: Buildin.Integer.JvmType : explicitType;
 	}
 
 	public Number numberValue(XNumberLiteral literal, Class<?> numberType) {

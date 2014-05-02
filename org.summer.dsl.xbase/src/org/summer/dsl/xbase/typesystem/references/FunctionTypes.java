@@ -162,7 +162,7 @@ public class FunctionTypes {
 	
 	//cym add
 	public boolean isFunctionAndProcedureAvailable(ITypeReferenceOwner owner) {
-		JvmType type = Buildin.Function.Type;
+		JvmType type = Buildin.Function.JvmType;
 		if (type == null) {
 			return false;
 		}
@@ -185,7 +185,7 @@ public class FunctionTypes {
 	public FunctionTypeReference createRawFunctionTypeRef(ITypeReferenceOwner owner, EObject context, int parameterCount, boolean procedure) {
 		String simpleClassName = (procedure ? "Procedure" : "Function") + Math.min(6, parameterCount);
 //		final Class<?> loadFunctionClass = loadFunctionClass(simpleClassName, procedure);
-		JvmType declaredType = Buildin.Function.Type;
+		JvmType declaredType = Buildin.Function.JvmType;
 		if (declaredType == null || !(declaredType instanceof JvmTypeParameterDeclarator))
 			throw new IllegalStateException("Cannot load raw function type ref");
 		FunctionTypeReference result = new FunctionTypeReference(owner, declaredType);

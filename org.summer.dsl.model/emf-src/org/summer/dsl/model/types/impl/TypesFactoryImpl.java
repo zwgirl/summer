@@ -642,7 +642,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	}
 
 	public JvmDeclaredType createJvmDeclaredType() {
-		return new JvmDeclaredTypeImpl();
+		return new JvmDeclaredTypeImplCustom(); 
 	}
 
 	public JvmMember createJvmMember() {

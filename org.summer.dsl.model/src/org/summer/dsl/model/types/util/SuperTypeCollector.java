@@ -193,7 +193,7 @@ public class SuperTypeCollector {
 							}
 							
 //							if (references.is(superType, Object.class)) {  //cym comment
-							if (references.is(superType, Buildin.Object.Type)) {
+							if (references.is(superType, Buildin.Object.JvmType)) {
 								outerCollecting[0] = true;
 								result = original.accept(superType, distance + 1) || result;
 //								result = original.accept(references.getTypeForName(Serializable.class, superType.getType()), distance + 1) || result;  // cym comment
@@ -306,7 +306,7 @@ public class SuperTypeCollector {
 				}
 				if (!boundProcessed) {
 //					JvmType objectType = references.findDeclaredType(Object.class, object);
-					JvmType objectType = Buildin.Object.Type;
+					JvmType objectType = Buildin.Object.JvmType;
 					if (objectType != null)
 						doSwitch(references.createTypeRef(objectType));
 				}

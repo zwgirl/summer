@@ -56,13 +56,13 @@ public class SynonymTypesProvider {
 				JvmTypeReference componentType = ((JvmGenericArrayTypeReference) type).getComponentType();
 				JvmTypeReference typeArg = primitives.asWrapperTypeIfPrimitive(componentType);
 //				JvmTypeReference iterable = typeRefs.getTypeForName(List.class, findContext(type.getType()), typeArg);  //cym comment
-				JvmTypeReference iterable = typeRefs.getTypeForName(Buildin.List.Type, findContext(type.getType()), typeArg);
+				JvmTypeReference iterable = typeRefs.getTypeForName(Buildin.List.JvmType, findContext(type.getType()), typeArg);
 				return singletonOrEmpty(iterable);
 			} else {
 				JvmArrayType array = (JvmArrayType) type.getType();
 				JvmTypeReference typeArg = primitives.asWrapperTypeIfPrimitive(typeRefs.createTypeRef(array.getComponentType()));
 //				JvmTypeReference iterable = typeRefs.getTypeForName(List.class, findContext(array), typeArg);  //cym comment
-				JvmTypeReference iterable = typeRefs.getTypeForName(Buildin.List.Type, findContext(type.getType()), typeArg);
+				JvmTypeReference iterable = typeRefs.getTypeForName(Buildin.List.JvmType, findContext(type.getType()), typeArg);
 				return singletonOrEmpty(iterable);
 			}
 		} else if (isList(type)) {
@@ -75,7 +75,7 @@ public class SynonymTypesProvider {
 					if (componentType instanceof JvmWildcardTypeReference) {
 						EList<JvmTypeConstraint> list = ((JvmWildcardTypeReference) componentType).getConstraints();
 //						componentType = typeRefs.getTypeForName(Object.class, findContext(type.getType()));  // cym comment
-						componentType = typeRefs.getTypeForName(Buildin.Object.Type, 
+						componentType = typeRefs.getTypeForName(Buildin.Object.JvmType, 
 								findContext(type.getType()));
 						for (JvmTypeConstraint constraint : list) {
 							if (constraint instanceof JvmUpperBound) {
@@ -87,7 +87,7 @@ public class SynonymTypesProvider {
 			}
 			if (componentType == null)
 //				componentType = typeRefs.getTypeForName(Object.class, type.getType());  //cym comment
-				componentType = typeRefs.getTypeForName(Buildin.Object.Type, type.getType());
+				componentType = typeRefs.getTypeForName(Buildin.Object.JvmType, type.getType());
 			if (componentType != null) {
 				if (primitives.isPrimitive(componentType)) {
 					JvmTypeReference primitive = typeRefs.createArrayType(componentType);
@@ -119,7 +119,7 @@ public class SynonymTypesProvider {
 //	}
 	
 	protected boolean isList(JvmTypeReference type) {
-		return typeRefs.isInstanceOf(type, Buildin.Iterable.Type);
+		return typeRefs.isInstanceOf(type, Buildin.Iterable.JvmType);
 	}
 
 	protected EObject findContext(JvmType type) {

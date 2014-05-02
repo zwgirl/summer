@@ -750,6 +750,17 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 	
 	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmDeclaredType type) {
 		ResolvedTypes childResolvedTypes = preparedResolvedTypes.get(type);
+		//检查有无extends，如果没有，就添加一个
+		if(type instanceof JvmGenericType){
+			JvmGenericType gType = (JvmGenericType) type;
+			JvmParameterizedTypeReference baseTypeRef = (JvmParameterizedTypeReference) gType.getExtendedClass();
+			if(baseTypeRef == null && !"Object".equals(gType.getSimpleName())){
+				baseTypeRef =TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+				baseTypeRef.setType(Buildin.Object.JvmType);
+				gType.setExtends(baseTypeRef);
+			}
+		}
+		
 		if (childResolvedTypes == null)
 			throw new IllegalStateException("No resolved type found. Type was: " + type.getIdentifier());
 		IFeatureScopeSession childSession = addThisAndSuper(featureScopeSession, childResolvedTypes.getReferenceOwner(), type);
@@ -770,7 +781,7 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			JvmMember member = members.get(i);
 			JvmField field = (JvmField) member;
 			JvmParameterizedTypeReference typeRef = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-			typeRef.setType(Buildin.Integer.Type);
+			typeRef.setType(Buildin.Integer.JvmType);
 			field.setType(typeRef);
 			field.setStatic(true);
 //			computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, members.get(i));

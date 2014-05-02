@@ -597,7 +597,7 @@ public class TypeConformanceComputer {
 			if (initiallyRequestedNames.equals(allNames)) {
 				// recursion - return object wildcard
 //				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(Object.class, types.get(0).getType());
-				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(Buildin.Object.Type, types.get(0).getType());
+				JvmTypeReference objectTypeReference = typeReferences.getTypeForName(Buildin.Object.JvmType, types.get(0).getType());
 				return typeReferences.wildCardExtends(objectTypeReference);
 			}
 		}
