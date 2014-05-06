@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
 import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.xbase.XbasePackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -31,16 +33,27 @@ import org.eclipse.xtext.util.ITextRegion;
  */
 public class SsFoldingRegionProvider extends DefaultFoldingRegionProvider {
 
+//	@Override
+//	protected boolean isHandled(EObject object) {
+//		EClass clazz = object.eClass();
+//		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XTEND_FUNCTION || clazz == SsPackage.Literals.XTEND_CONSTRUCTOR;
+//	}
 	@Override
 	protected boolean isHandled(EObject object) {
 		EClass clazz = object.eClass();
-		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XTEND_FUNCTION || clazz == SsPackage.Literals.XTEND_CONSTRUCTOR;
+		return clazz == TypesPackage.Literals.JVM_GENERIC_TYPE || clazz == XbasePackage.Literals.XCLOSURE || clazz == TypesPackage.Literals.JVM_CONSTRUCTOR;
 	}
+	
+//	@Override
+//	protected boolean shouldProcessContent(EObject object) {
+//		EClass clazz = object.eClass();
+//		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XMODULE;
+//	}
 	
 	@Override
 	protected boolean shouldProcessContent(EObject object) {
 		EClass clazz = object.eClass();
-		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XMODULE;
+		return clazz == TypesPackage.Literals.JVM_DECLARED_TYPE || clazz == SsPackage.Literals.XMODULE;
 	}
 	
 	@Override

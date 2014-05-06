@@ -17,13 +17,8 @@ import org.eclipse.jdt.ui.JavaElementImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StyledString;
 import org.summer.ss.core.jvmmodel.DispatchHelper;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendClass;
 import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.XtendMember;
 import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.ss.ide.labeling.SsImages;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
@@ -62,8 +57,8 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 	@Inject
 	private XbaseImageAdornments adornments;
 
-	@Inject
-	private IXtendJvmAssociations associations;
+//	@Inject
+//	private IXtendJvmAssociations associations;
 
 	@Inject
 	private DispatchHelper dispatchHelper;
@@ -94,20 +89,109 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 //		}
 //	}
 	
-	protected void createFeatureNodes(IOutlineNode parentNode, XtendTypeDeclaration xtendType) {
-		final JvmDeclaredType inferredType = associations.getInferredType(xtendType);
-		if (inferredType != null) {
-			Set<JvmFeature> processedFeatures = newHashSet();
-			createFeatureNodesForType(parentNode, xtendType, inferredType, inferredType, processedFeatures, 0);
-		} else {
-			for (XtendMember member : xtendType.getMembers())
-				createNode(parentNode, member);
+	@Override
+	protected void internalCreateChildren(DocumentRootNode parentNode, EObject modelElement) {
+		if(modelElement instanceof XModule) {
+			XModule xModule = (XModule) modelElement;
+			if (xModule.getPackage() != null)
+				factory.createEStructuralFeatureNode(parentNode, xModule, SsPackage.Literals.XMODULE__PACKAGE,
+						images.forPackage(), xModule.getPackage(), true);
+			if (xModule.getImportSection() != null && !xModule.getImportSection().getImportDeclarations().isEmpty())
+				factory.createEStructuralFeatureNode(parentNode, xModule.getImportSection(),
+						XtypePackage.Literals.XIMPORT_SECTION__IMPORT_DECLARATIONS, images.forImportContainer(),
+						"import declarations", false);
+			
+			for (EObject obj : xModule.getContents()) {
+				if(obj instanceof JvmDeclaredType){
+					EObjectNode classNode = createNode(parentNode, obj);
+					createFeatureNodes(classNode, (JvmDeclaredType) obj);
+				}
+			}
 		}
 	}
-
-	protected void createFeatureNodesForType(IOutlineNode parentNode, XtendTypeDeclaration xtendType,
+	//cym modified
+//	protected void createFeatureNodes(IOutlineNode parentNode, XtendTypeDeclaration xtendType) {
+//		final JvmDeclaredType inferredType = associations.getInferredType(xtendType);
+//		if (inferredType != null) {
+//			Set<JvmFeature> processedFeatures = newHashSet();
+//			createFeatureNodesForType(parentNode, xtendType, inferredType, inferredType, processedFeatures, 0);
+//		} else {
+//			for (XtendMember member : xtendType.getMembers())
+//				createNode(parentNode, member);
+//		}
+//	}
+	
+	protected void createFeatureNodes(IOutlineNode parentNode, JvmDeclaredType inferredType) {
+			Set<JvmFeature> processedFeatures = newHashSet();
+			createFeatureNodesForType(parentNode, inferredType, inferredType, processedFeatures, 0);
+	}
+	//cym modified
+//	protected void createFeatureNodesForType(IOutlineNode parentNode, XtendTypeDeclaration xtendType,
+//			JvmDeclaredType inferredType, final JvmDeclaredType baseType, Set<JvmFeature> processedFeatures, int inheritanceDepth) {
+//		if (xtendType instanceof XtendClass) {
+//			for(JvmOperation operation: inferredType.getDeclaredOperations()) {
+//				if(dispatchHelper.isDispatcherFunction(operation)) {
+//					JvmOperation dispatcher = operation;
+//					SsFeatureNode dispatcherNode = createNodeForFeature(parentNode, baseType, dispatcher,
+//							dispatcher, inheritanceDepth);
+//					if (dispatcherNode != null) {
+//						dispatcherNode.setDispatch(true);
+//						processedFeatures.add(dispatcher);
+//						boolean inheritsDispatchCases = false;
+//						Iterable<JvmOperation> dispatchCases;
+//						if (getCurrentMode() == SHOW_INHERITED_MODE)
+//							dispatchCases = dispatchHelper.getAllDispatchCases(dispatcher);
+//						else {
+//							dispatchCases = newArrayList(dispatchHelper.getLocalDispatchCases(dispatcher));
+//							sort((List<JvmOperation>) dispatchCases, new Comparator<JvmOperation>() {
+//								public int compare(JvmOperation o1, JvmOperation o2) {
+//									return baseType.getMembers().indexOf(o1) - baseType.getMembers().indexOf(o2);
+//								}
+//							});
+//						}
+//						for (JvmOperation dispatchCase : dispatchCases) {
+//							inheritsDispatchCases |= dispatchCase.getDeclaringType() != baseType;
+//							XtendFunction xtendFunction = associations.getXtendFunction(dispatchCase);
+//							if (xtendFunction == null) {
+//								createNodeForFeature(dispatcherNode, baseType, dispatchCase, dispatchCase,
+//										inheritanceDepth);
+//							} else {
+//								createNodeForFeature(dispatcherNode, baseType, dispatchCase, xtendFunction,
+//										inheritanceDepth);
+//							}
+//							processedFeatures.add(dispatchCase);
+//						}
+//						if(inheritsDispatchCases) 
+//							dispatcherNode.setImageDescriptor(images.forDispatcherFunction(dispatcher.getVisibility(), 
+//									adornments.get(dispatcher) | JavaElementImageDescriptor.OVERRIDES));
+//					}
+//				}
+//			}
+//		}
+//		for (JvmFeature feature : filter(inferredType.getMembers(), JvmFeature.class)) {
+//			if (!processedFeatures.contains(feature)) {
+//				EObject primarySourceElement = associations.getPrimarySourceElement(feature);
+//				createNodeForFeature(parentNode, baseType, feature,
+//						primarySourceElement != null ? primarySourceElement : feature, inheritanceDepth);
+//			}
+//		}
+//		if (getCurrentMode() == SHOW_INHERITED_MODE) {
+//			if (inferredType instanceof JvmGenericType) {
+//				JvmTypeReference extendedClass = ((JvmGenericType) inferredType).getExtendedClass();
+//				if (extendedClass != null) 
+//					createInheritedFeatureNodes(parentNode, baseType, processedFeatures, inheritanceDepth,
+//							extendedClass);
+//				for(JvmTypeReference extendedInterface: ((JvmGenericType) inferredType).getExtendedInterfaces()) {
+//					createInheritedFeatureNodes(parentNode, baseType, processedFeatures, inheritanceDepth,
+//							extendedInterface);
+//				}
+//			}
+//		}
+//	}
+	
+	protected void createFeatureNodesForType(IOutlineNode parentNode, /*XtendTypeDeclaration xtendType,*/
 			JvmDeclaredType inferredType, final JvmDeclaredType baseType, Set<JvmFeature> processedFeatures, int inheritanceDepth) {
-		if (xtendType instanceof XtendClass) {
+//		if (xtendType instanceof XtendClass) {
 			for(JvmOperation operation: inferredType.getDeclaredOperations()) {
 				if(dispatchHelper.isDispatcherFunction(operation)) {
 					JvmOperation dispatcher = operation;
@@ -130,14 +214,14 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 						}
 						for (JvmOperation dispatchCase : dispatchCases) {
 							inheritsDispatchCases |= dispatchCase.getDeclaringType() != baseType;
-							XtendFunction xtendFunction = associations.getXtendFunction(dispatchCase);
-							if (xtendFunction == null) {
+//							XtendFunction xtendFunction = associations.getXtendFunction(dispatchCase);
+//							if (xtendFunction == null) {
+//								createNodeForFeature(dispatcherNode, baseType, dispatchCase, dispatchCase,
+//										inheritanceDepth);
+//							} else {
 								createNodeForFeature(dispatcherNode, baseType, dispatchCase, dispatchCase,
 										inheritanceDepth);
-							} else {
-								createNodeForFeature(dispatcherNode, baseType, dispatchCase, xtendFunction,
-										inheritanceDepth);
-							}
+//							}
 							processedFeatures.add(dispatchCase);
 						}
 						if(inheritsDispatchCases) 
@@ -146,12 +230,12 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 					}
 				}
 			}
-		}
+//		}
 		for (JvmFeature feature : filter(inferredType.getMembers(), JvmFeature.class)) {
 			if (!processedFeatures.contains(feature)) {
-				EObject primarySourceElement = associations.getPrimarySourceElement(feature);
+//				EObject primarySourceElement = associations.getPrimarySourceElement(feature);
 				createNodeForFeature(parentNode, baseType, feature,
-						primarySourceElement != null ? primarySourceElement : feature, inheritanceDepth);
+						feature, inheritanceDepth);
 			}
 		}
 		if (getCurrentMode() == SHOW_INHERITED_MODE) {
@@ -168,12 +252,22 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 		}
 	}
 
+//	protected void createInheritedFeatureNodes(IOutlineNode parentNode, JvmDeclaredType baseType,
+//			Set<JvmFeature> processedFeatures, int inheritanceDepth, JvmTypeReference superType) {
+//		if(superType.getType() instanceof JvmDeclaredType) {
+//			JvmDeclaredType superClass = ((JvmGenericType) superType.getType());
+//			EObject xtendSuperClass = associations.getPrimarySourceElement(superType.getType());
+//			createFeatureNodesForType(parentNode, (XtendTypeDeclaration) xtendSuperClass,
+//					superClass, baseType, processedFeatures, inheritanceDepth + 1);
+//		}
+//	}
+	
 	protected void createInheritedFeatureNodes(IOutlineNode parentNode, JvmDeclaredType baseType,
 			Set<JvmFeature> processedFeatures, int inheritanceDepth, JvmTypeReference superType) {
 		if(superType.getType() instanceof JvmDeclaredType) {
 			JvmDeclaredType superClass = ((JvmGenericType) superType.getType());
-			EObject xtendSuperClass = associations.getPrimarySourceElement(superType.getType());
-			createFeatureNodesForType(parentNode, (XtendTypeDeclaration) xtendSuperClass,
+//			EObject xtendSuperClass = associations.getPrimarySourceElement(superType.getType());
+			createFeatureNodesForType(parentNode, /*(XtendTypeDeclaration) xtendSuperClass,*/
 					superClass, baseType, processedFeatures, inheritanceDepth + 1);
 		}
 	}

@@ -10,6 +10,7 @@ package org.summer.ss.core.scoping;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -89,7 +90,8 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			XImportDeclaration1 importDecl = (XImportDeclaration1) context.eContainer();
 			String uriStr = importDecl.getImportURI();
 			XtextResourceSet resourceSet = (XtextResourceSet) context.eResource().getResourceSet();
-			IPath path = resourceSet.getProject().getLocation().append(uriStr);
+//			IPath path = resourceSet.getProject().getLocation().append(uriStr);
+			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
 			URI uri = URI.createFileURI(path.toOSString());
 			if(resourceSet!=null){
 				final Resource resource = resourceSet.getResource(uri, true);
@@ -137,7 +139,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			//如果当前的文件是BuildIns.ss的话，就不需要再隐含导入本身了。
 			if(fileResource.getURI().toString().indexOf("BuildIns.ss")<0){
 				
-				IScope implicitScope = new ImportResourceScope(Buildin.Resource);
+				IScope implicitScope = new ImportResourceScope(Buildin.getResource());
 				importScope = new ImportScope(fileResource, implicitScope);
 			}else{
 				importScope = new ImportScope(fileResource, IScope.NULLSCOPE);

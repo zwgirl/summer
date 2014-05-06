@@ -9,6 +9,7 @@ package org.summer.ss.core.resource;
 
 import java.util.List;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -92,7 +93,9 @@ public class ImportScope implements IScope {
 		for(XImportDeclaration1 importDecl : importDecls){
 			String uriStr = importDecl.getImportURI();
 			XtextResourceSet resourceSet = (XtextResourceSet) resource.getResourceSet();
-			IPath path = resourceSet.getProject().getLocation().append(uriStr);
+//			IPath path = resourceSet.getProject().getLocation().append(uriStr);
+//			URI uri = URI.createFileURI(path.toOSString());
+			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
 			URI uri = URI.createFileURI(path.toOSString());
 			Resource resource = resourceSet.getResource(uri, true);
 			result.add(EObjectDescription.create(importDecl.getName(), resource.getContents().get(0)));

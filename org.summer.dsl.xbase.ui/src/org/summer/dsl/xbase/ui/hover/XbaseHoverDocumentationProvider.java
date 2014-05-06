@@ -99,8 +99,8 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 	protected IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
 	protected IWorkspace workspace;
-	@Inject
-	protected IJvmModelAssociations associations;
+//	@Inject
+//	protected IJvmModelAssociations associations;
 	@Inject
 	protected IEObjectDocumentationProvider documentationProvider;
 	@Inject
@@ -255,10 +255,39 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		return result;
 	}
 
-	protected void addAnnotations(EObject object) {
-		Set<EObject> jvmElements = associations.getJvmElements(object);
-		if (jvmElements.size() > 0) {
-			EObject associatedElement = Lists.newArrayList(jvmElements).get(0);
+	//cym comment
+//	protected void addAnnotations(EObject object) {
+//		Set<EObject> jvmElements = associations.getJvmElements(object);
+//		if (jvmElements.size() > 0) {
+//			EObject associatedElement = Lists.newArrayList(jvmElements).get(0);
+//			if (associatedElement instanceof JvmAnnotationTarget) {
+//				EList<JvmAnnotationReference> annotations = ((JvmAnnotationTarget) associatedElement).getAnnotations();
+//				for (JvmAnnotationReference annotationReference : annotations) {
+//					buffer.append("@");
+//					buffer.append(createLinkWithLabel(XtextElementLinks.XTEXTDOC_SCHEME, EcoreUtil
+//							.getURI(annotationReference.getAnnotation()), annotationReference.getAnnotation()
+//							.getSimpleName()));
+//					if (annotationReference.getValues().size() > 0) {
+//						buffer.append("(");
+//						for (JvmAnnotationValue value : annotationReference.getValues()) {
+//							ITreeAppendable appendable = new FakeTreeAppendable();
+//							jvmModelGenerator.toJava(value, appendable, generatorConfigProvider.get(object));
+//							String java = appendable.getContent();
+//							buffer.append(java);
+//						}
+//						buffer.append(")");
+//					}
+//					buffer.append("<br>");
+//
+//				}
+//			}
+//		}
+//
+//	}
+	
+	protected void addAnnotations(EObject associatedElement) {
+//		Set<EObject> jvmElements = associations.getJvmElements(object);
+//		if (jvmElements.size() > 0) {
 			if (associatedElement instanceof JvmAnnotationTarget) {
 				EList<JvmAnnotationReference> annotations = ((JvmAnnotationTarget) associatedElement).getAnnotations();
 				for (JvmAnnotationReference annotationReference : annotations) {
@@ -270,18 +299,18 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 						buffer.append("(");
 						for (JvmAnnotationValue value : annotationReference.getValues()) {
 							ITreeAppendable appendable = new FakeTreeAppendable();
-							jvmModelGenerator.toJava(value, appendable, generatorConfigProvider.get(object));
+							jvmModelGenerator.toJava(value, appendable, generatorConfigProvider.get(associatedElement));
 							String java = appendable.getContent();
 							buffer.append(java);
 						}
 						buffer.append(")");
 					}
 					buffer.append("<br>");
-
+	
 				}
-			}
+//			}
 		}
-
+	
 	}
 
 	protected void getDocumentationWithPrefix(EObject object) {
@@ -308,6 +337,25 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		}
 	}
 
+//	protected String resolveDocumentation(EObject object) {
+//		String documentation = documentationProvider.getDocumentation(object);
+//		if (documentation != null) {
+//			return documentation;
+//		}
+//		DocumentationAdapter adapter = getDocumentationAdapter(object);
+//		if (adapter != null) {
+//			documentation = adapter.getDocumentation();
+//		}
+//		if (documentation != null) {
+//			return documentation;
+//		}
+//		EObject primarySourceElement = associations.getPrimarySourceElement(object);
+//		if (primarySourceElement == null) {
+//			return null;
+//		}
+//		return documentationProvider.getDocumentation(primarySourceElement);
+//	}
+	
 	protected String resolveDocumentation(EObject object) {
 		String documentation = documentationProvider.getDocumentation(object);
 		if (documentation != null) {
@@ -320,11 +368,7 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		if (documentation != null) {
 			return documentation;
 		}
-		EObject primarySourceElement = associations.getPrimarySourceElement(object);
-		if (primarySourceElement == null) {
-			return null;
-		}
-		return documentationProvider.getDocumentation(primarySourceElement);
+		return null;
 	}
 
 	protected DocumentationAdapter getDocumentationAdapter(EObject object) {
@@ -827,8 +871,23 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		return buf.toString();
 	}
 
+//cym comment	
+//	protected List<EObject> getFilteredDerivedElements(EObject o, final EClass type) {
+//		List<EObject> jvmElements = Lists.newArrayList(Iterables.filter(associations.getJvmElements(o),
+//				new Predicate<EObject>() {
+//					public boolean apply(EObject input) {
+//						if (input instanceof JvmConstructor && ((JvmConstructor) input).getParameters().size() == 0)
+//							return false;
+//						if (type == null)
+//							return true;
+//						return EcoreUtil2.isAssignableFrom(type, input.eClass());
+//					}
+//				}));
+//		return jvmElements;
+//	}
+	
 	protected List<EObject> getFilteredDerivedElements(EObject o, final EClass type) {
-		List<EObject> jvmElements = Lists.newArrayList(Iterables.filter(associations.getJvmElements(o),
+		List<EObject> jvmElements = Lists.newArrayList(Iterables.filter(Lists.newArrayList(o),
 				new Predicate<EObject>() {
 					public boolean apply(EObject input) {
 						if (input instanceof JvmConstructor && ((JvmConstructor) input).getParameters().size() == 0)
@@ -841,8 +900,21 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		return jvmElements;
 	}
 
+	//cym comment
+//	protected List<EObject> getFilteredSourceElements(EObject o, final EClass type) {
+//		List<EObject> sourceElements = Lists.newArrayList(Iterables.filter(associations.getSourceElements(o),
+//				new Predicate<EObject>() {
+//					public boolean apply(EObject input) {
+//						if (type == null)
+//							return true;
+//						return EcoreUtil2.isAssignableFrom(type, input.eClass());
+//					}
+//				}));
+//		return sourceElements;
+//	}
+	
 	protected List<EObject> getFilteredSourceElements(EObject o, final EClass type) {
-		List<EObject> sourceElements = Lists.newArrayList(Iterables.filter(associations.getSourceElements(o),
+		List<EObject> sourceElements = Lists.newArrayList(Iterables.filter(Lists.newArrayList(o),
 				new Predicate<EObject>() {
 					public boolean apply(EObject input) {
 						if (type == null)

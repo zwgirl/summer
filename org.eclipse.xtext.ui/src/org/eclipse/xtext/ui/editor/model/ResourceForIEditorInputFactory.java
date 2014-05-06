@@ -25,8 +25,11 @@ import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.xtext.resource.IExternalContentSupport;
 import org.eclipse.xtext.resource.IExternalContentSupport.IExternalContentProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
+import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.eclipse.xtext.util.BundleResourceFile;
 
 import com.google.inject.Inject;
 
@@ -92,7 +95,7 @@ public class ResourceForIEditorInputFactory implements IResourceForEditorInputFa
 	//cym modifie
 //	protected Resource createResourceFor(IStorage storage) throws CoreException {
 //		ResourceSet resourceSet = getResourceSet(storage);
-//		URI uri = URI.createPlatformResourceURI(storage.getFullPath().toString(), true);  //cym comment
+//		URI uri = URI.createPlatformResourceURI(storage.getFullPath().toString(), true);
 //		configureResourceSet(resourceSet, uri);
 //		URI uriForResource = uri; 
 //		if (!uri.isPlatform()) {
@@ -112,6 +115,11 @@ public class ResourceForIEditorInputFactory implements IResourceForEditorInputFa
 			URI uri = URI.createFileURI(path.toOSString());  //cym modified
 			configureResourceSet(resourceSet, uri);
 			
+			Resource resource = resourceSet.getResource(uri, true);
+			return resource;
+		}else if(storage instanceof BundleResourceFile){
+			BundleResourceFile brf = (BundleResourceFile) storage;
+			URI uri = URI.createURI(brf.getUrl().toString());
 			Resource resource = resourceSet.getResource(uri, true);
 			return resource;
 		}

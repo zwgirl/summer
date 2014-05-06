@@ -295,16 +295,31 @@ IndexOp:
 //		)
 //		)*;
 
+//XMemberFeatureCall returns XExpression:
+//	XPrimaryExpression
+//	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
+//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+//		 ')'
+//	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
+//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+//		feature=[types::JvmIdentifiableElement|FeatureCallID] 
+//		(
+//			(
+//			=>explicitOperationCall?='(' 
+//				(
+//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+//				)? 
+//			')')?
+//		)
+//		)*;
+
 XMemberFeatureCall returns XExpression:
 	XPrimaryExpression
 	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
 		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
 		 ')'
-//	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
-//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-//		 ']'
 	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XAssignment.assignable=current} 't=') value=XAssignment
 	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
 		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
 		feature=[types::JvmIdentifiableElement|FeatureCallID] 
@@ -315,14 +330,6 @@ XMemberFeatureCall returns XExpression:
 				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
 				)? 
 			')')?
-			
-//			(
-//			=>indexedOperation?='[' 
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			']')?
-			
 		)
 		)*;
 		

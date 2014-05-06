@@ -1,18 +1,20 @@
 package org.summer.dsl.xbase.scoping.batch;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.osgi.framework.Bundle;
+import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmType;
+
 
 public enum Buildin {
 	Object("object"), Boolean("boolean"), Function("function"), String("string"), Number("number"), Array(
@@ -42,29 +44,36 @@ public enum Buildin {
 
 	}
 	
-	public static final Resource Resource = Dual.getResource();
+	public static Resource getResource(){
+		return Dual.getResource();
+	}
 
-	static class Dual {
-		
+	private static class Dual {
+		public static Resource Resource; // = Dual.getResource();
 		private static Resource getResource() {
-
-			URL url = Dual.class.getResource("BuildIns.ss");
+			if(Resource != null){
+				return Resource;
+			}
+			URL url = Buildin.class.getResource("BuildIns.ss");
+//			URL fileUrl = null;
+//			try {
+//				fileUrl = FileLocator.toFileURL(url);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			URI uri = URI.createURI(url.toString());
-			XtextResourceSet rs = new XtextResourceSet();
-			return rs.getResource(uri, true);
-		}
-		
-		static Resource getResource1(){
-			Bundle bundle = Platform.getBundle("org.summer.dsl.model");
-			URL fileURL = bundle.getEntry("src/org/summer/dsl/xbase/scoping/batch/BuildIns.ss");
-			URI uri = URI.createURI(fileURL.toString());
-			XtextResourceSet rs = new XtextResourceSet();
-			return rs.getResource(uri, true);
-
+//			XtextResourceSet rs = new XtextResourceSet();
+//			XtextResourceSet rs = (XtextResourceSet) XtextResourceSetProvider.getInstance().get(null);
+			XtextResourceSet rs = ResourceSetFactory.getInstanceof().getResourceSet();
+			Resource =  rs.getResource(uri, true);
+			
+			return Resource;
 		}
 	}
 
 	public static void main(String[] args) {
+		XtextResourceSet rs = (XtextResourceSet) XtextResourceSetProvider.getInstance().get(null);
 		System.out.println(Buildin.Array.JvmType);
 	}
 

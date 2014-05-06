@@ -7,6 +7,7 @@ import java.net.URL;
 
 import org.eclipse.core.resources.IEncodedStorage;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.PlatformObject;
@@ -15,6 +16,10 @@ import org.eclipse.emf.common.util.URI;
 public class BundleResourceFile extends PlatformObject implements IEncodedStorage {
 
 	private URL url;
+	
+	public URL getUrl() {
+		return url;
+	}
 
 	public BundleResourceFile(URI uri) {
 		try {

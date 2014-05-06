@@ -9,9 +9,9 @@ package org.summer.ss.ide.hover;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
-import org.summer.dsl.model.ss.XtendParameter;
 import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput;
 import org.eclipse.xtext.util.Pair;
+import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.xbase.ui.hover.XbaseHoverProvider;
 import org.summer.dsl.xbase.ui.hover.XbaseInformationControlInput;
 
@@ -39,8 +39,14 @@ public class SsHoverProvider extends XbaseHoverProvider {
 		return hoverInfo;
 	}
 	
+	//cym comment
+//	@Override
+//	protected boolean hasHover(EObject o) {
+//		return super.hasHover(o) || o instanceof XtendParameter;
+//	}
+	
 	@Override
 	protected boolean hasHover(EObject o) {
-		return super.hasHover(o) || o instanceof XtendParameter;
+		return super.hasHover(o) || o instanceof JvmFormalParameter;
 	}
 }

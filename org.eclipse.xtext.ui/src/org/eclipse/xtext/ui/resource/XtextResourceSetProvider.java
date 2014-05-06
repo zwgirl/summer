@@ -34,6 +34,10 @@ public class XtextResourceSetProvider implements IResourceSetProvider {
 	@Inject
 	private Provider<XtextResourceSet> resourceSetProvider;
 	
+	private XtextResourceSet xrs;
+	
+	private static final XtextResourceSetProvider _INSTANCE = new XtextResourceSetProvider();
+	
 	private static final Map<IProject, XtextResourceSet> cache = new ConcurrentHashMap<IProject, XtextResourceSet>();
 
 	private ImmutableList<? extends IResourceSetInitializer> initializers = ImmutableList.of();
@@ -41,6 +45,10 @@ public class XtextResourceSetProvider implements IResourceSetProvider {
 	@Inject
 	private void setContributions(ISharedStateContributionRegistry contributionRegistry) {
 		initializers = contributionRegistry.getContributedInstances(IResourceSetInitializer.class);
+	}
+	
+	public static XtextResourceSetProvider getInstance() {
+		return _INSTANCE;
 	}
 
 //	public ResourceSet get(IProject project) {
@@ -51,18 +59,27 @@ public class XtextResourceSetProvider implements IResourceSetProvider {
 //		return set;
 //	}
 	
+//	public ResourceSet get(IProject project) {
+//		
+//		XtextResourceSet set = cache.get(project);
+//		if(set == null){
+//			set = resourceSetProvider.get();
+//			set.setProject(project);
+//			for(int i = 0; i < initializers.size(); i++) {
+//				initializers.get(i).initialize(set, project);
+//			}
+//			cache.put(project, set);
+//		}
+//		return set;
+//	}
+	
 	public ResourceSet get(IProject project) {
 		
-		XtextResourceSet set = cache.get(project);
-		if(set == null){
-			set = resourceSetProvider.get();
-			set.setProject(project);
-			for(int i = 0; i < initializers.size(); i++) {
-				initializers.get(i).initialize(set, project);
-			}
-			cache.put(project, set);
+		if(xrs !=null){
+			return xrs;
 		}
-		return set;
+		xrs = new XtextResourceSet();
+		return xrs;
 	}
 
 }
