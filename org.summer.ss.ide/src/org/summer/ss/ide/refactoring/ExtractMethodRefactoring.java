@@ -7,13 +7,13 @@
  *******************************************************************************/
 package org.summer.ss.ide.refactoring;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Maps.*;
-import static com.google.common.collect.Sets.*;
-import static java.util.Collections.*;
-import static org.eclipse.ltk.core.refactoring.RefactoringStatus.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Iterables.find;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newHashSet;
+import static java.util.Collections.sort;
+import static org.eclipse.ltk.core.refactoring.RefactoringStatus.FATAL;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.Comparator;
 import java.util.List;
@@ -34,16 +34,7 @@ import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.Refactoring;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.text.edits.TextEdit;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeParameter;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.JvmVisibility;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -53,6 +44,14 @@ import org.eclipse.xtext.ui.refactoring.impl.StatusWrapper;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.util.TextRegion;
+import org.summer.dsl.model.ss.XtendClass;
+import org.summer.dsl.model.ss.XtendFunction;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmTypeParameter;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.JvmVisibility;
 import org.summer.dsl.model.xbase.XBlockExpression;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
@@ -60,6 +59,7 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.compiler.ISourceAppender;
 import org.summer.dsl.xbase.compiler.StringBuilderBasedAppendable;
@@ -73,6 +73,7 @@ import org.summer.dsl.xbase.ui.document.DocumentRewriter.Section;
 import org.summer.dsl.xbase.ui.imports.ReplaceConverter;
 import org.summer.dsl.xbase.ui.refactoring.ExpressionUtil;
 import org.summer.dsl.xbase.ui.refactoring.NewFeatureNameUtil;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
@@ -516,7 +517,7 @@ public class ExtractMethodRefactoring extends Refactoring {
 
 	protected boolean isFinalFeature(JvmIdentifiableElement returnFeature) {
 		return returnFeature instanceof JvmFormalParameter
-				|| (returnFeature instanceof XVariableDeclaration && !((XVariableDeclaration) returnFeature)
-						.isWriteable());
+				|| (returnFeature instanceof XVariableDeclaration && !((XVariableDeclarationList)((XVariableDeclaration) returnFeature)
+						.eContainer()).isWriteable());
 	}
 }

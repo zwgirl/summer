@@ -44,7 +44,7 @@ import org.summer.dsl.model.ss.XtendClass;
 import org.summer.dsl.model.ss.XtendConstructor;
 import org.summer.dsl.model.ss.XtendEnum;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFormalParameter;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendInterface;
@@ -374,7 +374,7 @@ public class SsJavaValidator extends XbaseWithAnnotationsJavaValidator {
 	}
 	
 	@Check  
-	public void checkClassPath(XtendFile xtendFile) {
+	public void checkClassPath(XModule xtendFile) {
 		//cym comment
 //		TypeReferences typeReferences = getServices().getTypeReferences();
 //		final JvmGenericType listType = (JvmGenericType) typeReferences.findDeclaredType(List.class, xtendFile);
@@ -1212,7 +1212,7 @@ public class SsJavaValidator extends XbaseWithAnnotationsJavaValidator {
 	}
 
 	@Check
-	public void checkClasses(XtendFile file) {
+	public void checkClasses(XModule file) {
 		//TODO this check should not be file local, but instead check for any other sources which might declare a
 		// java type with the same name. Also this then belongs to Xbase and should be defined on JvmDeclaredType
 		Set<String> names = newLinkedHashSet();

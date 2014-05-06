@@ -14,7 +14,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendEnumLiteral;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmAnnotationValue;
@@ -103,7 +103,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case SsPackage.XTEND_FILE:
 				if(context == grammarAccess.getFileRule()) {
-					sequence_File(context, (XtendFile) semanticObject); 
+					sequence_File(context, (XModule) semanticObject); 
 					return; 
 				}
 				else break;

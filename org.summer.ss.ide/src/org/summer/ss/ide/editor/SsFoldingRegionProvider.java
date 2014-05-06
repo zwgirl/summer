@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -40,7 +40,7 @@ public class SsFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	@Override
 	protected boolean shouldProcessContent(EObject object) {
 		EClass clazz = object.eClass();
-		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XTEND_FILE;
+		return clazz == SsPackage.Literals.XTEND_CLASS || clazz == SsPackage.Literals.XMODULE;
 	}
 	
 	@Override
@@ -54,7 +54,7 @@ public class SsFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	protected void computeImportFolding(XtextResource xtextResource, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		EList<EObject> contents = xtextResource.getContents();
 		if(!contents.isEmpty()) {
-			XtendFile xtendFile = (XtendFile) contents.get(0);
+			XModule xtendFile = (XModule) contents.get(0);
 			// Only if we have at least 2 imports
 			if(xtendFile.getImportSection() != null 
 				&& xtendFile.getImportSection().getImportDeclarations().size() >1) {

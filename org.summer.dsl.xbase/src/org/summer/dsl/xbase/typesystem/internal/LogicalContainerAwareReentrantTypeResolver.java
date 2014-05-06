@@ -21,7 +21,7 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
@@ -49,10 +49,11 @@ import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.typing.IJvmTypeReferenceProvider;
 import org.summer.dsl.model.xtype.XComputedTypeReference;
+import org.summer.dsl.model.xtype.XImportDeclaration1;
+import org.summer.dsl.model.xtype.XImportSection1;
 import org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImplCustom;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
@@ -250,8 +251,8 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext = Maps.newHashMapWithExpectedSize(3); 
 		
 		EObject result = getRoot();
-		if (result instanceof XtendFile){
-			XtendFile file = (XtendFile) result;
+		if (result instanceof XModule){
+			XModule file = (XModule) result;
 			List<EObject> contents = file.getContents();
 			for(EObject obj: contents){
 				if(!(obj instanceof JvmDeclaredType)){
@@ -457,17 +458,20 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 //	}
 	
 	protected void computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, EObject element) {
-		if (element instanceof XtendFile) {
-			XtendFile file = (XtendFile) element;
-			List<EObject> contents = file.getContents();
+		if (element instanceof XModule) {
+			XModule module = (XModule) element;
+			List<EObject> contents = module.getContents();
+			XImportSection1 importSection = module.getImportSection();
+			if(importSection!=null){
+				for(XImportDeclaration1 importDesc : importSection.getImportDeclarations()){
+					
+				}
+			}
+			
 			for(EObject obj: contents){
 				if(obj instanceof JvmDeclaredType){
 					computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession,  obj);
 				}else if(obj instanceof XVariableDeclarationList){
-//					XVariableDeclarationList declList = (XVariableDeclarationList) obj;
-//					for(XExpression exp: declList.getDeclarations()){
-//						_computeTypes( resolvedTypes, featureScopeSession, (XVariableDeclaration) exp);
-//					}
 					_computeTypes( resolvedTypes, featureScopeSession, (XVariableDeclarationList) obj);
 				} else if(obj instanceof XClosure){
 					_computeTypes( resolvedTypes, featureScopeSession, (XClosure) obj);

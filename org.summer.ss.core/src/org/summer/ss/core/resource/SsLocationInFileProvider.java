@@ -32,7 +32,7 @@ public class SsLocationInFileProvider extends JvmLocationInFileProvider {
 	 */
 	@Override
 	protected boolean useKeyword(Keyword keyword, EObject context) {
-		if (keyword == grammarAccess.getMemberAccess().getConstructorKeyword_2_2_2())
+		if (keyword == grammarAccess.getMemberAccess().getConstructorKeyword_2_2_1())
 			return true;
 		return super.useKeyword(keyword, context);
 	}

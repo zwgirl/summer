@@ -3,22 +3,16 @@
 package org.summer.dsl.model.xbase.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.summer.dsl.model.types.JvmDeclaredType;
-
+import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -32,6 +26,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XStructLiteralImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XStructLiteralImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XStructLiteralImpl#getTypeArguments <em>Type Arguments</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,6 +52,16 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 	 * @ordered
 	 */
 	protected JvmDeclaredType type;
+
+	/**
+	 * The cached value of the '{@link #getTypeArguments() <em>Type Arguments</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<JvmTypeReference> typeArguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,11 +137,25 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<JvmTypeReference> getTypeArguments() {
+		if (typeArguments == null) {
+			typeArguments = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS);
+		}
+		return typeArguments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case XbasePackage.XSTRUCT_LITERAL__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS:
+				return ((InternalEList<?>)getTypeArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -154,6 +173,8 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 			case XbasePackage.XSTRUCT_LITERAL__TYPE:
 				if (resolve) return getType();
 				return basicGetType();
+			case XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS:
+				return getTypeArguments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,6 +195,10 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 			case XbasePackage.XSTRUCT_LITERAL__TYPE:
 				setType((JvmDeclaredType)newValue);
 				return;
+			case XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS:
+				getTypeArguments().clear();
+				getTypeArguments().addAll((Collection<? extends JvmTypeReference>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -192,6 +217,9 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 			case XbasePackage.XSTRUCT_LITERAL__TYPE:
 				setType((JvmDeclaredType)null);
 				return;
+			case XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS:
+				getTypeArguments().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,6 +236,8 @@ public class XStructLiteralImpl extends XExpressionImpl implements XStructLitera
 				return properties != null && !properties.isEmpty();
 			case XbasePackage.XSTRUCT_LITERAL__TYPE:
 				return type != null;
+			case XbasePackage.XSTRUCT_LITERAL__TYPE_ARGUMENTS:
+				return typeArguments != null && !typeArguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

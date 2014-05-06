@@ -30,7 +30,7 @@ import org.summer.dsl.model.ss.XtendEnum;
 import org.summer.dsl.model.ss.XtendEnumLiteral;
 import org.summer.dsl.model.ss.XtendEvent;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFormalParameter;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendInterface;
@@ -67,7 +67,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass xtendFileEClass = null;
+	private EClass xModuleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -306,8 +306,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getXtendFile() {
-		return xtendFileEClass;
+	public EClass getXModule() {
+		return xModuleEClass;
 	}
 
 	/**
@@ -315,8 +315,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXtendFile_ImportSection() {
-		return (EReference)xtendFileEClass.getEStructuralFeatures().get(0);
+	public EReference getXModule_ImportSection() {
+		return (EReference)xModuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -324,8 +324,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXtendFile_XtendTypes() {
-		return (EReference)xtendFileEClass.getEStructuralFeatures().get(1);
+	public EReference getXModule_XtendTypes() {
+		return (EReference)xModuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -333,8 +333,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXtendFile_Package() {
-		return (EAttribute)xtendFileEClass.getEStructuralFeatures().get(2);
+	public EAttribute getXModule_Package() {
+		return (EAttribute)xModuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -342,8 +342,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXtendFile_Contents() {
-		return (EReference)xtendFileEClass.getEStructuralFeatures().get(3);
+	public EReference getXModule_Contents() {
+		return (EReference)xModuleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -351,8 +351,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXtendFile_ExportSection() {
-		return (EReference)xtendFileEClass.getEStructuralFeatures().get(4);
+	public EReference getXModule_ExportSection() {
+		return (EReference)xModuleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1031,12 +1031,12 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		xtendFileEClass = createEClass(XTEND_FILE);
-		createEReference(xtendFileEClass, XTEND_FILE__IMPORT_SECTION);
-		createEReference(xtendFileEClass, XTEND_FILE__XTEND_TYPES);
-		createEAttribute(xtendFileEClass, XTEND_FILE__PACKAGE);
-		createEReference(xtendFileEClass, XTEND_FILE__CONTENTS);
-		createEReference(xtendFileEClass, XTEND_FILE__EXPORT_SECTION);
+		xModuleEClass = createEClass(XMODULE);
+		createEReference(xModuleEClass, XMODULE__IMPORT_SECTION);
+		createEReference(xModuleEClass, XMODULE__XTEND_TYPES);
+		createEAttribute(xModuleEClass, XMODULE__PACKAGE);
+		createEReference(xModuleEClass, XMODULE__CONTENTS);
+		createEReference(xModuleEClass, XMODULE__EXPORT_SECTION);
 
 		xtendClassEClass = createEClass(XTEND_CLASS);
 		createEReference(xtendClassEClass, XTEND_CLASS__EXTENDS);
@@ -1157,8 +1157,8 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
 		XannotationPackage theXannotationPackage = (XannotationPackage)EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -1167,6 +1167,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		xModuleEClass.getESuperTypes().add(theTypesPackage.getJvmType());
 		xtendClassEClass.getESuperTypes().add(this.getXtendTypeDeclaration());
 		xtendMemberEClass.getESuperTypes().add(this.getXtendAnnotationTarget());
 		xtendFunctionEClass.getESuperTypes().add(this.getXtendMember());
@@ -1188,12 +1189,12 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		xtendEventEClass.getESuperTypes().add(this.getXtendMember());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(xtendFileEClass, XtendFile.class, "XtendFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXtendFile_ImportSection(), theXtypePackage.getXImportSection1(), null, "importSection", null, 0, 1, XtendFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXtendFile_XtendTypes(), this.getXtendTypeDeclaration(), null, "xtendTypes", null, 0, -1, XtendFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXtendFile_Package(), ecorePackage.getEString(), "package", null, 0, 1, XtendFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXtendFile_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, XtendFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXtendFile_ExportSection(), theXtypePackage.getXExportSection(), null, "exportSection", null, 0, 1, XtendFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(xModuleEClass, XModule.class, "XModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXModule_ImportSection(), theXtypePackage.getXImportSection1(), null, "importSection", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXModule_XtendTypes(), this.getXtendTypeDeclaration(), null, "xtendTypes", null, 0, -1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXModule_Package(), ecorePackage.getEString(), "package", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXModule_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXModule_ExportSection(), theXtypePackage.getXExportSection(), null, "exportSection", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xtendClassEClass, XtendClass.class, "XtendClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXtendClass_Extends(), theTypesPackage.getJvmTypeReference(), null, "extends", null, 0, 1, XtendClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

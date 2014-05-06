@@ -14,12 +14,12 @@ public class RichTextValueConverter extends AbstractRichTextValueConverter {
 
 	@Override
 	protected String getLeadingTerminal() {
-		return "'''";
+		return "`";
 	}
 
 	@Override
 	protected String getTrailingTerminal() {
-		return "'''";
+		return "`";
 	}
 
 }

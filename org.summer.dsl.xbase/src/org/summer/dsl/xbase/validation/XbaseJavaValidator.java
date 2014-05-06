@@ -115,6 +115,7 @@ import org.summer.dsl.model.xbase.XThrowExpression;
 import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xbase.XbasePackage.Literals;
 import org.summer.dsl.model.xbase.util.XbaseUsageCrossReferencer;
@@ -504,7 +505,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	public void checkAssignment(XAssignment assignment) {
 		JvmIdentifiableElement assignmentFeature = assignment.getFeature();
 		if (assignmentFeature instanceof XVariableDeclaration
-				&& !((XVariableDeclaration) assignmentFeature).isWriteable())
+				&& !((XVariableDeclarationList)((XVariableDeclaration) assignmentFeature).eContainer()).isWriteable())  //cym modified
 			error("Assignment to final variable", Literals.XASSIGNMENT__ASSIGNABLE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, ASSIGNMENT_TO_FINAL);
 		else if (assignmentFeature instanceof JvmFormalParameter)
@@ -682,8 +683,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	@Check
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {
 		if (declaration.getRight() == null) {
-			if (!declaration.isWriteable())
-				error("Value must be initialized", Literals.XVARIABLE_DECLARATION__WRITEABLE,
+			if (!((XVariableDeclarationList)declaration.eContainer()).isWriteable())  // cym modified
+				error("Value must be initialized", Literals.XVARIABLE_DECLARATION_LIST__WRITEABLE,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, MISSING_INITIALIZATION);
 			if (declaration.getType() == null)
 				error("Type cannot be derived", Literals.XVARIABLE_DECLARATION__NAME,

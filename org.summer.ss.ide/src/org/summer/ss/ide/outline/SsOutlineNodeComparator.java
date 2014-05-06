@@ -24,7 +24,7 @@ public class SsOutlineNodeComparator extends SortOutlineContribution.DefaultComp
 	protected int internalGetCategory(IOutlineNode node) {
 		if (node instanceof EStructuralFeatureNode) {
 			EStructuralFeature feature = ((EStructuralFeatureNode) node).getEStructuralFeature();
-			if (feature == SsPackage.Literals.XTEND_FILE__PACKAGE)
+			if (feature == SsPackage.Literals.XMODULE__PACKAGE)
 				return 0;
 			else
 				return 10;

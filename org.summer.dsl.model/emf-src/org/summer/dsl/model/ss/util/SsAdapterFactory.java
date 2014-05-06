@@ -10,6 +10,7 @@ import org.summer.dsl.model.ss.*;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XBlockExpression;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XForEachExpression;
@@ -73,8 +74,8 @@ public class SsAdapterFactory extends AdapterFactoryImpl {
 	protected SsSwitch<Adapter> modelSwitch =
 		new SsSwitch<Adapter>() {
 			@Override
-			public Adapter caseXtendFile(XtendFile object) {
-				return createXtendFileAdapter();
+			public Adapter caseXModule(XModule object) {
+				return createXModuleAdapter();
 			}
 			@Override
 			public Adapter caseXtendClass(XtendClass object) {
@@ -165,6 +166,14 @@ public class SsAdapterFactory extends AdapterFactoryImpl {
 				return createXtendEventAdapter();
 			}
 			@Override
+			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
+				return createJvmIdentifiableElementAdapter();
+			}
+			@Override
+			public Adapter caseJvmType(JvmType object) {
+				return createJvmTypeAdapter();
+			}
+			@Override
 			public Adapter caseXExpression(XExpression object) {
 				return createXExpressionAdapter();
 			}
@@ -179,10 +188,6 @@ public class SsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXForEachExpression(XForEachExpression object) {
 				return createXForEachExpressionAdapter();
-			}
-			@Override
-			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
-				return createJvmIdentifiableElementAdapter();
 			}
 			@Override
 			public Adapter caseXVariableDeclaration(XVariableDeclaration object) {
@@ -217,16 +222,16 @@ public class SsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.ss.XtendFile <em>Xtend File</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.ss.XModule <em>XModule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.ss.XtendFile
+	 * @see org.summer.dsl.model.ss.XModule
 	 * @generated
 	 */
-	public Adapter createXtendFileAdapter() {
+	public Adapter createXModuleAdapter() {
 		return null;
 	}
 
@@ -605,6 +610,20 @@ public class SsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmIdentifiableElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmType <em>Jvm Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmType
+	 * @generated
+	 */
+	public Adapter createJvmTypeAdapter() {
 		return null;
 	}
 

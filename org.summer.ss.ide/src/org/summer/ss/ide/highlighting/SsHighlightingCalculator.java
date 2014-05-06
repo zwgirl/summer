@@ -31,7 +31,7 @@ import org.summer.dsl.model.ss.RichString;
 import org.summer.dsl.model.ss.RichStringLiteral;
 import org.summer.dsl.model.ss.XtendAnnotationTarget;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendMember;
 import org.summer.dsl.model.ss.SsPackage;
@@ -110,7 +110,7 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 
 	@Override
 	protected void doProvideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
-		XtendFile file = (XtendFile) resource.getContents().get(0);
+		XModule file = (XModule) resource.getContents().get(0);
 		for (XtendAnnotationTarget xtendType : file.getXtendTypes()) {
 			highlightDeprecatedXtendAnnotationTarget(acceptor, xtendType);
 			highlightRichStringsInAnnotations(acceptor, xtendType);

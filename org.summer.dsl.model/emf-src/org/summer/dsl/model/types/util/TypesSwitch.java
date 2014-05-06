@@ -75,6 +75,7 @@ public class TypesSwitch<T> extends Switch<T> {
 			case TypesPackage.JVM_MODULE: {
 				JvmModule jvmModule = (JvmModule)theEObject;
 				T result = caseJvmModule(jvmModule);
+				if (result == null) result = caseJvmType(jvmModule);
 				if (result == null) result = caseJvmIdentifiableElement(jvmModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

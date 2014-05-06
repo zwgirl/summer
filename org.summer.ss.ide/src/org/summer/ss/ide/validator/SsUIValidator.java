@@ -28,7 +28,7 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.summer.ss.core.macro.XAnnotationExtensions;
 import org.summer.ss.core.validation.IssueCodes;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
@@ -110,7 +110,7 @@ public class SsUIValidator extends XbaseUIValidator {
 	}
 
 	@Check
-	public void checkFileNamingConventions(XtendFile xtendFile) {
+	public void checkFileNamingConventions(XModule xtendFile) {
 		//cym modified
 //		String expectedPackage = getExpectedPackageName(xtendFile);
 //		String declaredPackage = xtendFile.getPackage();
@@ -120,7 +120,7 @@ public class SsUIValidator extends XbaseUIValidator {
 //		}
 	}
 	
-	protected String getExpectedPackageName(XtendFile xtendFile) {
+	protected String getExpectedPackageName(XModule xtendFile) {
 		URI fileURI = xtendFile.eResource().getURI();
 		for(Pair<IStorage, IProject> storage: storage2UriMapper.getStorages(fileURI)) {
 			if(storage.getFirst() instanceof IFile) {

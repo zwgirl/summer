@@ -29,7 +29,7 @@ import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.eclipse.xtext.util.IResourceScopeCache;
 import org.eclipse.xtext.util.Strings;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmMember;
@@ -96,6 +96,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				return new ImportResourceScope(resource);
 			}
 		}
+		
 		EClass referenceType = reference.getEReferenceType();
 		if (TypesPackage.Literals.JVM_TYPE.isSuperTypeOf(referenceType)) {
 			if (context instanceof XImportDeclaration1) {
@@ -108,7 +109,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				IScope scope = SelectableBasedScope.createScope(recordingTypeScope, getAllDescriptions(resource), reference.getEReferenceType(), false);
 				return scope;
 			}
-			final XtendFile xtendFile = getXtendFile(context);
+			final XModule module = getModule(context);
 //			final Resource resource = xtendFile.eResource();
 //			IScope result = resourceScopeCache.get("type.scope", xtendFile.eResource(), new Provider<IScope>() {
 //				public IScope get() {
@@ -130,10 +131,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 //			}
 //			return result;
 			
-			Resource fileResource = xtendFile.eResource();
-//			XtextResourceSet resourceSet = (XtextResourceSet) fileResource.getResourceSet();
-//			IPath path = resourceSet.getProject().getLocation().append("src/summer/lang/BuildIns.ss");
-			
+			Resource fileResource = module.eResource();
 			
 			IScope importScope = null;
 			//如果当前的文件是BuildIns.ss的话，就不需要再隐含导入本身了。
@@ -196,9 +194,9 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return importedNamesAdapter;
 	}
 
-	protected XtendFile getXtendFile(final EObject context) {
+	protected XModule getModule(final EObject context) {
 		Resource resource = context.eResource();
-		XtendFile result = (XtendFile) resource.getContents().get(0);
+		XModule result = (XModule) resource.getContents().get(0);
 		return result;
 	}
 	
@@ -355,7 +353,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return result;
 	}
 	
-	protected AbstractScope getRootTypeScope(XtendFile rootContainer, RecordingTypeScope typeScope) {
+	protected AbstractScope getRootTypeScope(XModule rootContainer, RecordingTypeScope typeScope) {
 		String packageName = rootContainer.getPackage();
 		final ImportNormalizer[][] implicitImports;
 		if (packageName != null && packageName.length() > 0) {

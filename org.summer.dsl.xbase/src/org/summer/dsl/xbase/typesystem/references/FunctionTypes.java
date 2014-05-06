@@ -30,7 +30,6 @@ import org.summer.dsl.model.types.access.impl.URIHelperConstants;
 import org.summer.dsl.model.types.util.TypeReferences;
 import org.summer.dsl.xbase.lib.Functions;
 import org.summer.dsl.xbase.lib.Procedures;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.util.ActualTypeArgumentCollector;
 import org.summer.dsl.xbase.typesystem.util.BoundTypeArgumentSource;

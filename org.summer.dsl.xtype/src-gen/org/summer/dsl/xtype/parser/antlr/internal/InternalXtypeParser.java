@@ -22,9 +22,10 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalXtypeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'['", "']'", "'('", "','", "')'", "'=>'", "'<'", "'>'", "'?'", "'extends'", "'&'", "'super'", "'.'", "'import'", "'{'", "'}'", "'from'", "'as'", "'export'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'['", "']'", "'('", "','", "')'", "'=>'", "'<'", "'>'", "'?'", "'extends'", "'&'", "'super'", "'.'", "'import'", "'{'", "'*'", "'}'", "'as'", "'from'", "'export'"
     };
     public static final int RULE_ID=4;
+    public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
     public static final int T__26=26;
@@ -1889,280 +1890,110 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXImportDeclaration1"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:660:1: ruleXImportDeclaration1 returns [EObject current=null] : (otherlv_0= 'import' ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) ) ) ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:660:1: ruleXImportDeclaration1 returns [EObject current=null] : ( () otherlv_1= 'import' otherlv_2= '{' ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) ) otherlv_7= '}' otherlv_8= 'as' ( (lv_name_9_0= ruleValidID ) ) otherlv_10= 'from' ( (lv_importURI_11_0= RULE_STRING ) ) ) ;
     public final EObject ruleXImportDeclaration1() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
         Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        Token lv_wildcard_6_0=null;
         Token otherlv_7=null;
-        Token lv_importURI_8_0=null;
-        Token otherlv_9=null;
-        Token lv_importURI_10_0=null;
-        Token otherlv_11=null;
-        Token lv_alias_12_0=null;
-        EObject lv_importItems_2_0 = null;
+        Token otherlv_8=null;
+        Token otherlv_10=null;
+        Token lv_importURI_11_0=null;
+        EObject lv_importItems_3_0 = null;
 
-        EObject lv_importItems_4_0 = null;
+        EObject lv_importItems_5_0 = null;
 
-        EObject lv_importItems_6_0 = null;
+        AntlrDatatypeRuleToken lv_name_9_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:663:28: ( (otherlv_0= 'import' ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) ) ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:1: (otherlv_0= 'import' ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:663:28: ( ( () otherlv_1= 'import' otherlv_2= '{' ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) ) otherlv_7= '}' otherlv_8= 'as' ( (lv_name_9_0= ruleValidID ) ) otherlv_10= 'from' ( (lv_importURI_11_0= RULE_STRING ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:1: ( () otherlv_1= 'import' otherlv_2= '{' ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) ) otherlv_7= '}' otherlv_8= 'as' ( (lv_name_9_0= ruleValidID ) ) otherlv_10= 'from' ( (lv_importURI_11_0= RULE_STRING ) ) )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:1: (otherlv_0= 'import' ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:3: otherlv_0= 'import' ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:1: ( () otherlv_1= 'import' otherlv_2= '{' ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) ) otherlv_7= '}' otherlv_8= 'as' ( (lv_name_9_0= ruleValidID ) ) otherlv_10= 'from' ( (lv_importURI_11_0= RULE_STRING ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:2: () otherlv_1= 'import' otherlv_2= '{' ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) ) otherlv_7= '}' otherlv_8= 'as' ( (lv_name_9_0= ruleValidID ) ) otherlv_10= 'from' ( (lv_importURI_11_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleXImportDeclaration11585); if (state.failed) return current;
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:664:2: ()
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:665:5: 
+            {
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getXImportDeclaration1Access().getImportKeyword_0());
+                      current = forceCreateModelElement(
+                          grammarAccess.getXImportDeclaration1Access().getXImportDeclaration1Action_0(),
+                          current);
                   
             }
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:1: ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) )
-            int alt13=2;
-            int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==RULE_ID||LA13_0==24) ) {
-                alt13=1;
             }
-            else if ( (LA13_0==26) ) {
-                alt13=2;
+
+            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleXImportDeclaration11594); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getXImportDeclaration1Access().getImportKeyword_1());
+                  
+            }
+            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleXImportDeclaration11606); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getXImportDeclaration1Access().getLeftCurlyBracketKeyword_2());
+                  
+            }
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:678:1: ( ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* ) | ( (lv_wildcard_6_0= '*' ) ) )
+            int alt12=2;
+            int LA12_0 = input.LA(1);
+
+            if ( (LA12_0==RULE_ID) ) {
+                alt12=1;
+            }
+            else if ( (LA12_0==25) ) {
+                alt12=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 12, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt12) {
                 case 1 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:2: ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:678:2: ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:2: ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:3: ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:678:2: ( ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )* )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:678:3: ( (lv_importItems_3_0= ruleXImportItem ) ) (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )*
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:3: ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) )
-                    int alt12=2;
-                    int LA12_0 = input.LA(1);
-
-                    if ( (LA12_0==24) ) {
-                        alt12=1;
-                    }
-                    else if ( (LA12_0==RULE_ID) ) {
-                        alt12=2;
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 12, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt12) {
-                        case 1 :
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:4: (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' )
-                            {
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:4: (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:668:6: otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}'
-                            {
-                            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleXImportDeclaration11601); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_1, grammarAccess.getXImportDeclaration1Access().getLeftCurlyBracketKeyword_1_0_0_0_0());
-                                  
-                            }
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:672:1: ( (lv_importItems_2_0= ruleXImportItem ) )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:673:1: (lv_importItems_2_0= ruleXImportItem )
-                            {
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:673:1: (lv_importItems_2_0= ruleXImportItem )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:674:3: lv_importItems_2_0= ruleXImportItem
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_1_0_0_0_1_0()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11622);
-                            lv_importItems_2_0=ruleXImportItem();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"importItems",
-                                      		lv_importItems_2_0, 
-                                      		"XImportItem");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
-
-
-                            }
-
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:690:2: (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )*
-                            loop11:
-                            do {
-                                int alt11=2;
-                                int LA11_0 = input.LA(1);
-
-                                if ( (LA11_0==13) ) {
-                                    alt11=1;
-                                }
-
-
-                                switch (alt11) {
-                            	case 1 :
-                            	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:690:4: otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) )
-                            	    {
-                            	    otherlv_3=(Token)match(input,13,FOLLOW_13_in_ruleXImportDeclaration11635); if (state.failed) return current;
-                            	    if ( state.backtracking==0 ) {
-
-                            	          	newLeafNode(otherlv_3, grammarAccess.getXImportDeclaration1Access().getCommaKeyword_1_0_0_0_2_0());
-                            	          
-                            	    }
-                            	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:694:1: ( (lv_importItems_4_0= ruleXImportItem ) )
-                            	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:695:1: (lv_importItems_4_0= ruleXImportItem )
-                            	    {
-                            	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:695:1: (lv_importItems_4_0= ruleXImportItem )
-                            	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:696:3: lv_importItems_4_0= ruleXImportItem
-                            	    {
-                            	    if ( state.backtracking==0 ) {
-                            	       
-                            	      	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_1_0_0_0_2_1_0()); 
-                            	      	    
-                            	    }
-                            	    pushFollow(FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11656);
-                            	    lv_importItems_4_0=ruleXImportItem();
-
-                            	    state._fsp--;
-                            	    if (state.failed) return current;
-                            	    if ( state.backtracking==0 ) {
-
-                            	      	        if (current==null) {
-                            	      	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
-                            	      	        }
-                            	             		add(
-                            	             			current, 
-                            	             			"importItems",
-                            	              		lv_importItems_4_0, 
-                            	              		"XImportItem");
-                            	      	        afterParserOrEnumRuleCall();
-                            	      	    
-                            	    }
-
-                            	    }
-
-
-                            	    }
-
-
-                            	    }
-                            	    break;
-
-                            	default :
-                            	    break loop11;
-                                }
-                            } while (true);
-
-                            otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXImportDeclaration11670); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                                  	newLeafNode(otherlv_5, grammarAccess.getXImportDeclaration1Access().getRightCurlyBracketKeyword_1_0_0_0_3());
-                                  
-                            }
-
-                            }
-
-
-                            }
-                            break;
-                        case 2 :
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:717:6: ( (lv_importItems_6_0= ruleXImportItem ) )
-                            {
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:717:6: ( (lv_importItems_6_0= ruleXImportItem ) )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:718:1: (lv_importItems_6_0= ruleXImportItem )
-                            {
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:718:1: (lv_importItems_6_0= ruleXImportItem )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:719:3: lv_importItems_6_0= ruleXImportItem
-                            {
-                            if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_1_0_0_1_0()); 
-                              	    
-                            }
-                            pushFollow(FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11698);
-                            lv_importItems_6_0=ruleXImportItem();
-
-                            state._fsp--;
-                            if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"importItems",
-                                      		lv_importItems_6_0, 
-                                      		"XImportItem");
-                              	        afterParserOrEnumRuleCall();
-                              	    
-                            }
-
-                            }
-
-
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-                    otherlv_7=(Token)match(input,26,FOLLOW_26_in_ruleXImportDeclaration11711); if (state.failed) return current;
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:678:3: ( (lv_importItems_3_0= ruleXImportItem ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:679:1: (lv_importItems_3_0= ruleXImportItem )
+                    {
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:679:1: (lv_importItems_3_0= ruleXImportItem )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:680:3: lv_importItems_3_0= ruleXImportItem
+                    {
                     if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_7, grammarAccess.getXImportDeclaration1Access().getFromKeyword_1_0_1());
-                          
+                       
+                      	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
+                      	    
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:739:1: ( (lv_importURI_8_0= RULE_STRING ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:740:1: (lv_importURI_8_0= RULE_STRING )
-                    {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:740:1: (lv_importURI_8_0= RULE_STRING )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:741:3: lv_importURI_8_0= RULE_STRING
-                    {
-                    lv_importURI_8_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXImportDeclaration11728); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
+                    pushFollow(FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11629);
+                    lv_importItems_3_0=ruleXImportItem();
 
-                      			newLeafNode(lv_importURI_8_0, grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_1_0_2_0()); 
-                      		
-                    }
+                    state._fsp--;
+                    if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
+                      	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
                       	        }
-                             		setWithLastConsumed(
+                             		add(
                              			current, 
-                             			"importURI",
-                              		lv_importURI_8_0, 
-                              		"STRING");
+                             			"importItems",
+                              		lv_importItems_3_0, 
+                              		"XImportItem");
+                      	        afterParserOrEnumRuleCall();
                       	    
                     }
 
@@ -2170,6 +2001,71 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
                     }
+
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:696:2: (otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) ) )*
+                    loop11:
+                    do {
+                        int alt11=2;
+                        int LA11_0 = input.LA(1);
+
+                        if ( (LA11_0==13) ) {
+                            alt11=1;
+                        }
+
+
+                        switch (alt11) {
+                    	case 1 :
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:696:4: otherlv_4= ',' ( (lv_importItems_5_0= ruleXImportItem ) )
+                    	    {
+                    	    otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleXImportDeclaration11642); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	          	newLeafNode(otherlv_4, grammarAccess.getXImportDeclaration1Access().getCommaKeyword_3_0_1_0());
+                    	          
+                    	    }
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:700:1: ( (lv_importItems_5_0= ruleXImportItem ) )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:701:1: (lv_importItems_5_0= ruleXImportItem )
+                    	    {
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:701:1: (lv_importItems_5_0= ruleXImportItem )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:702:3: lv_importItems_5_0= ruleXImportItem
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11663);
+                    	    lv_importItems_5_0=ruleXImportItem();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"importItems",
+                    	              		lv_importItems_5_0, 
+                    	              		"XImportItem");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop11;
+                        }
+                    } while (true);
 
 
                     }
@@ -2178,80 +2074,28 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:758:6: (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:719:6: ( (lv_wildcard_6_0= '*' ) )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:758:6: (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:758:8: otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:719:6: ( (lv_wildcard_6_0= '*' ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:720:1: (lv_wildcard_6_0= '*' )
                     {
-                    otherlv_9=(Token)match(input,26,FOLLOW_26_in_ruleXImportDeclaration11753); if (state.failed) return current;
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:720:1: (lv_wildcard_6_0= '*' )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:721:3: lv_wildcard_6_0= '*'
+                    {
+                    lv_wildcard_6_0=(Token)match(input,25,FOLLOW_25_in_ruleXImportDeclaration11690); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_9, grammarAccess.getXImportDeclaration1Access().getFromKeyword_1_1_0());
+                              newLeafNode(lv_wildcard_6_0, grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0());
                           
-                    }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:762:1: ( (lv_importURI_10_0= RULE_STRING ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:763:1: (lv_importURI_10_0= RULE_STRING )
-                    {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:763:1: (lv_importURI_10_0= RULE_STRING )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:764:3: lv_importURI_10_0= RULE_STRING
-                    {
-                    lv_importURI_10_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXImportDeclaration11770); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_importURI_10_0, grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_1_1_1_0()); 
-                      		
                     }
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
                       	            current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
                       	        }
-                             		setWithLastConsumed(
-                             			current, 
-                             			"importURI",
-                              		lv_importURI_10_0, 
-                              		"STRING");
+                             		setWithLastConsumed(current, "wildcard", true, "*");
                       	    
                     }
-
-                    }
-
-
-                    }
-
-                    otherlv_11=(Token)match(input,27,FOLLOW_27_in_ruleXImportDeclaration11787); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                          	newLeafNode(otherlv_11, grammarAccess.getXImportDeclaration1Access().getAsKeyword_1_1_2());
-                          
-                    }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:784:1: ( (lv_alias_12_0= RULE_ID ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:785:1: (lv_alias_12_0= RULE_ID )
-                    {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:785:1: (lv_alias_12_0= RULE_ID )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:786:3: lv_alias_12_0= RULE_ID
-                    {
-                    lv_alias_12_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXImportDeclaration11804); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_alias_12_0, grammarAccess.getXImportDeclaration1Access().getAliasIDTerminalRuleCall_1_1_3_0()); 
-                      		
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
-                      	        }
-                             		setWithLastConsumed(
-                             			current, 
-                             			"alias",
-                              		lv_alias_12_0, 
-                              		"ID");
-                      	    
-                    }
-
-                    }
-
 
                     }
 
@@ -2261,6 +2105,89 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+
+            }
+
+            otherlv_7=(Token)match(input,26,FOLLOW_26_in_ruleXImportDeclaration11716); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_7, grammarAccess.getXImportDeclaration1Access().getRightCurlyBracketKeyword_4());
+                  
+            }
+            otherlv_8=(Token)match(input,27,FOLLOW_27_in_ruleXImportDeclaration11728); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_8, grammarAccess.getXImportDeclaration1Access().getAsKeyword_5());
+                  
+            }
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:742:1: ( (lv_name_9_0= ruleValidID ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:743:1: (lv_name_9_0= ruleValidID )
+            {
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:743:1: (lv_name_9_0= ruleValidID )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:744:3: lv_name_9_0= ruleValidID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getNameValidIDParserRuleCall_6_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleValidID_in_ruleXImportDeclaration11749);
+            lv_name_9_0=ruleValidID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_9_0, 
+                      		"ValidID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_10=(Token)match(input,28,FOLLOW_28_in_ruleXImportDeclaration11761); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_10, grammarAccess.getXImportDeclaration1Access().getFromKeyword_7());
+                  
+            }
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:764:1: ( (lv_importURI_11_0= RULE_STRING ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:765:1: (lv_importURI_11_0= RULE_STRING )
+            {
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:765:1: (lv_importURI_11_0= RULE_STRING )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:766:3: lv_importURI_11_0= RULE_STRING
+            {
+            lv_importURI_11_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXImportDeclaration11778); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_importURI_11_0, grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_8_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"importURI",
+                      		lv_importURI_11_0, 
+                      		"STRING");
+              	    
+            }
+
+            }
+
 
             }
 
@@ -2287,7 +2214,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXImportItem"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:810:1: entryRuleXImportItem returns [EObject current=null] : iv_ruleXImportItem= ruleXImportItem EOF ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:790:1: entryRuleXImportItem returns [EObject current=null] : iv_ruleXImportItem= ruleXImportItem EOF ;
     public final EObject entryRuleXImportItem() throws RecognitionException {
         EObject current = null;
 
@@ -2295,13 +2222,13 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:811:2: (iv_ruleXImportItem= ruleXImportItem EOF )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:812:2: iv_ruleXImportItem= ruleXImportItem EOF
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:791:2: (iv_ruleXImportItem= ruleXImportItem EOF )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:792:2: iv_ruleXImportItem= ruleXImportItem EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXImportItemRule()); 
             }
-            pushFollow(FOLLOW_ruleXImportItem_in_entryRuleXImportItem1847);
+            pushFollow(FOLLOW_ruleXImportItem_in_entryRuleXImportItem1819);
             iv_ruleXImportItem=ruleXImportItem();
 
             state._fsp--;
@@ -2309,7 +2236,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXImportItem; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportItem1857); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportItem1829); if (state.failed) return current;
 
             }
 
@@ -2327,7 +2254,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXImportItem"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:819:1: ruleXImportItem returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? ) ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:799:1: ruleXImportItem returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? ) ;
     public final EObject ruleXImportItem() throws RecognitionException {
         EObject current = null;
 
@@ -2338,14 +2265,14 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:822:28: ( ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:823:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:802:28: ( ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:803:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:823:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:823:2: () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )?
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:803:1: ( () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )? )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:803:2: () ( (otherlv_1= RULE_ID ) ) (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )?
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:823:2: ()
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:824:5: 
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:803:2: ()
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:804:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -2357,11 +2284,11 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:829:2: ( (otherlv_1= RULE_ID ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:830:1: (otherlv_1= RULE_ID )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:809:2: ( (otherlv_1= RULE_ID ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:810:1: (otherlv_1= RULE_ID )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:830:1: (otherlv_1= RULE_ID )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:831:3: otherlv_1= RULE_ID
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:810:1: (otherlv_1= RULE_ID )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:811:3: otherlv_1= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -2370,7 +2297,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXImportItem1911); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXImportItem1883); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_1, grammarAccess.getXImportItemAccess().getImportedIdJvmIdentifiableElementCrossReference_1_0()); 
@@ -2382,30 +2309,30 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:842:2: (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:822:2: (otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) ) )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA14_0==27) ) {
-                alt14=1;
+            if ( (LA13_0==27) ) {
+                alt13=1;
             }
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:842:4: otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:822:4: otherlv_2= 'as' ( (lv_alias_3_0= RULE_ID ) )
                     {
-                    otherlv_2=(Token)match(input,27,FOLLOW_27_in_ruleXImportItem1924); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,27,FOLLOW_27_in_ruleXImportItem1896); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getXImportItemAccess().getAsKeyword_2_0());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:846:1: ( (lv_alias_3_0= RULE_ID ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:847:1: (lv_alias_3_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:826:1: ( (lv_alias_3_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:827:1: (lv_alias_3_0= RULE_ID )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:847:1: (lv_alias_3_0= RULE_ID )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:848:3: lv_alias_3_0= RULE_ID
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:827:1: (lv_alias_3_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:828:3: lv_alias_3_0= RULE_ID
                     {
-                    lv_alias_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXImportItem1941); if (state.failed) return current;
+                    lv_alias_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXImportItem1913); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_alias_3_0, grammarAccess.getXImportItemAccess().getAliasIDTerminalRuleCall_2_1_0()); 
@@ -2458,7 +2385,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXExportDeclaration"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:874:1: entryRuleXExportDeclaration returns [EObject current=null] : iv_ruleXExportDeclaration= ruleXExportDeclaration EOF ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:854:1: entryRuleXExportDeclaration returns [EObject current=null] : iv_ruleXExportDeclaration= ruleXExportDeclaration EOF ;
     public final EObject entryRuleXExportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -2466,13 +2393,13 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:875:2: (iv_ruleXExportDeclaration= ruleXExportDeclaration EOF )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:876:2: iv_ruleXExportDeclaration= ruleXExportDeclaration EOF
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:855:2: (iv_ruleXExportDeclaration= ruleXExportDeclaration EOF )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:856:2: iv_ruleXExportDeclaration= ruleXExportDeclaration EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXExportDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleXExportDeclaration_in_entryRuleXExportDeclaration1986);
+            pushFollow(FOLLOW_ruleXExportDeclaration_in_entryRuleXExportDeclaration1958);
             iv_ruleXExportDeclaration=ruleXExportDeclaration();
 
             state._fsp--;
@@ -2480,7 +2407,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXExportDeclaration; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXExportDeclaration1996); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXExportDeclaration1968); if (state.failed) return current;
 
             }
 
@@ -2498,7 +2425,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXExportDeclaration"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:883:1: ruleXExportDeclaration returns [EObject current=null] : (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) ) ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:863:1: ruleXExportDeclaration returns [EObject current=null] : (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) ) ;
     public final EObject ruleXExportDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -2520,60 +2447,60 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:886:28: ( (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:887:1: (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:866:28: ( (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:867:1: (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:887:1: (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:887:3: otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:867:1: (otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:867:3: otherlv_0= 'export' ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) )
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleXExportDeclaration2033); if (state.failed) return current;
+            otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleXExportDeclaration2005); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXExportDeclarationAccess().getExportKeyword_0());
                   
             }
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:891:1: ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:871:1: ( (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? ) | (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) ) )
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA17_0==24) ) {
-                alt17=1;
+            if ( (LA16_0==24) ) {
+                alt16=1;
             }
-            else if ( (LA17_0==26) ) {
-                alt17=2;
+            else if ( (LA16_0==28) ) {
+                alt16=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:891:2: (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:871:2: (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:891:2: (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:891:4: otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )?
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:871:2: (otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )? )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:871:4: otherlv_1= '{' ( (lv_exportItems_2_0= ruleXExportItem ) ) (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )* otherlv_5= '}' (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )?
                     {
-                    otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleXExportDeclaration2047); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleXExportDeclaration2019); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXExportDeclarationAccess().getLeftCurlyBracketKeyword_1_0_0());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:895:1: ( (lv_exportItems_2_0= ruleXExportItem ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:896:1: (lv_exportItems_2_0= ruleXExportItem )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:875:1: ( (lv_exportItems_2_0= ruleXExportItem ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:876:1: (lv_exportItems_2_0= ruleXExportItem )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:896:1: (lv_exportItems_2_0= ruleXExportItem )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:897:3: lv_exportItems_2_0= ruleXExportItem
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:876:1: (lv_exportItems_2_0= ruleXExportItem )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:877:3: lv_exportItems_2_0= ruleXExportItem
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXExportDeclarationAccess().getExportItemsXExportItemParserRuleCall_1_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2068);
+                    pushFollow(FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2040);
                     lv_exportItems_2_0=ruleXExportItem();
 
                     state._fsp--;
@@ -2597,39 +2524,39 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:913:2: (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )*
-                    loop15:
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:893:2: (otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) ) )*
+                    loop14:
                     do {
-                        int alt15=2;
-                        int LA15_0 = input.LA(1);
+                        int alt14=2;
+                        int LA14_0 = input.LA(1);
 
-                        if ( (LA15_0==13) ) {
-                            alt15=1;
+                        if ( (LA14_0==13) ) {
+                            alt14=1;
                         }
 
 
-                        switch (alt15) {
+                        switch (alt14) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:913:4: otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:893:4: otherlv_3= ',' ( (lv_exportItems_4_0= ruleXExportItem ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,13,FOLLOW_13_in_ruleXExportDeclaration2081); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,13,FOLLOW_13_in_ruleXExportDeclaration2053); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getXExportDeclarationAccess().getCommaKeyword_1_0_2_0());
                     	          
                     	    }
-                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:917:1: ( (lv_exportItems_4_0= ruleXExportItem ) )
-                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:918:1: (lv_exportItems_4_0= ruleXExportItem )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:897:1: ( (lv_exportItems_4_0= ruleXExportItem ) )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:898:1: (lv_exportItems_4_0= ruleXExportItem )
                     	    {
-                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:918:1: (lv_exportItems_4_0= ruleXExportItem )
-                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:919:3: lv_exportItems_4_0= ruleXExportItem
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:898:1: (lv_exportItems_4_0= ruleXExportItem )
+                    	    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:899:3: lv_exportItems_4_0= ruleXExportItem
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXExportDeclarationAccess().getExportItemsXExportItemParserRuleCall_1_0_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2102);
+                    	    pushFollow(FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2074);
                     	    lv_exportItems_4_0=ruleXExportItem();
 
                     	    state._fsp--;
@@ -2658,40 +2585,40 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop15;
+                    	    break loop14;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleXExportDeclaration2116); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,26,FOLLOW_26_in_ruleXExportDeclaration2088); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getXExportDeclarationAccess().getRightCurlyBracketKeyword_1_0_3());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:939:1: (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )?
-                    int alt16=2;
-                    int LA16_0 = input.LA(1);
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:919:1: (otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) ) )?
+                    int alt15=2;
+                    int LA15_0 = input.LA(1);
 
-                    if ( (LA16_0==26) ) {
-                        alt16=1;
+                    if ( (LA15_0==28) ) {
+                        alt15=1;
                     }
-                    switch (alt16) {
+                    switch (alt15) {
                         case 1 :
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:939:3: otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) )
+                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:919:3: otherlv_6= 'from' ( (lv_importURI_7_0= RULE_STRING ) )
                             {
-                            otherlv_6=(Token)match(input,26,FOLLOW_26_in_ruleXExportDeclaration2129); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,28,FOLLOW_28_in_ruleXExportDeclaration2101); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_6, grammarAccess.getXExportDeclarationAccess().getFromKeyword_1_0_4_0());
                                   
                             }
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:943:1: ( (lv_importURI_7_0= RULE_STRING ) )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:944:1: (lv_importURI_7_0= RULE_STRING )
+                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:923:1: ( (lv_importURI_7_0= RULE_STRING ) )
+                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:924:1: (lv_importURI_7_0= RULE_STRING )
                             {
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:944:1: (lv_importURI_7_0= RULE_STRING )
-                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:945:3: lv_importURI_7_0= RULE_STRING
+                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:924:1: (lv_importURI_7_0= RULE_STRING )
+                            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:925:3: lv_importURI_7_0= RULE_STRING
                             {
-                            lv_importURI_7_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXExportDeclaration2146); if (state.failed) return current;
+                            lv_importURI_7_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXExportDeclaration2118); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               			newLeafNode(lv_importURI_7_0, grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_0_4_1_0()); 
@@ -2728,24 +2655,24 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:962:6: (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:942:6: (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:962:6: (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:962:8: otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:942:6: (otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:942:8: otherlv_8= 'from' ( (lv_importURI_9_0= RULE_STRING ) ) otherlv_10= 'as' ( (lv_alias_11_0= RULE_ID ) )
                     {
-                    otherlv_8=(Token)match(input,26,FOLLOW_26_in_ruleXExportDeclaration2173); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,28,FOLLOW_28_in_ruleXExportDeclaration2145); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getXExportDeclarationAccess().getFromKeyword_1_1_0());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:966:1: ( (lv_importURI_9_0= RULE_STRING ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:967:1: (lv_importURI_9_0= RULE_STRING )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:946:1: ( (lv_importURI_9_0= RULE_STRING ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:947:1: (lv_importURI_9_0= RULE_STRING )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:967:1: (lv_importURI_9_0= RULE_STRING )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:968:3: lv_importURI_9_0= RULE_STRING
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:947:1: (lv_importURI_9_0= RULE_STRING )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:948:3: lv_importURI_9_0= RULE_STRING
                     {
-                    lv_importURI_9_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXExportDeclaration2190); if (state.failed) return current;
+                    lv_importURI_9_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXExportDeclaration2162); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_importURI_9_0, grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_1_1_0()); 
@@ -2769,19 +2696,19 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,27,FOLLOW_27_in_ruleXExportDeclaration2207); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,27,FOLLOW_27_in_ruleXExportDeclaration2179); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_10, grammarAccess.getXExportDeclarationAccess().getAsKeyword_1_1_2());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:988:1: ( (lv_alias_11_0= RULE_ID ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:989:1: (lv_alias_11_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:968:1: ( (lv_alias_11_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:969:1: (lv_alias_11_0= RULE_ID )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:989:1: (lv_alias_11_0= RULE_ID )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:990:3: lv_alias_11_0= RULE_ID
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:969:1: (lv_alias_11_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:970:3: lv_alias_11_0= RULE_ID
                     {
-                    lv_alias_11_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportDeclaration2224); if (state.failed) return current;
+                    lv_alias_11_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportDeclaration2196); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_alias_11_0, grammarAccess.getXExportDeclarationAccess().getAliasIDTerminalRuleCall_1_1_3_0()); 
@@ -2837,7 +2764,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXExportItem"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1014:1: entryRuleXExportItem returns [EObject current=null] : iv_ruleXExportItem= ruleXExportItem EOF ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:994:1: entryRuleXExportItem returns [EObject current=null] : iv_ruleXExportItem= ruleXExportItem EOF ;
     public final EObject entryRuleXExportItem() throws RecognitionException {
         EObject current = null;
 
@@ -2845,13 +2772,13 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1015:2: (iv_ruleXExportItem= ruleXExportItem EOF )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1016:2: iv_ruleXExportItem= ruleXExportItem EOF
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:995:2: (iv_ruleXExportItem= ruleXExportItem EOF )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:996:2: iv_ruleXExportItem= ruleXExportItem EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXExportItemRule()); 
             }
-            pushFollow(FOLLOW_ruleXExportItem_in_entryRuleXExportItem2267);
+            pushFollow(FOLLOW_ruleXExportItem_in_entryRuleXExportItem2239);
             iv_ruleXExportItem=ruleXExportItem();
 
             state._fsp--;
@@ -2859,7 +2786,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXExportItem; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXExportItem2277); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXExportItem2249); if (state.failed) return current;
 
             }
 
@@ -2877,7 +2804,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXExportItem"
-    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1023:1: ruleXExportItem returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? ) ;
+    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1003:1: ruleXExportItem returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? ) ;
     public final EObject ruleXExportItem() throws RecognitionException {
         EObject current = null;
 
@@ -2888,17 +2815,17 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1026:28: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1027:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1006:28: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1007:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1027:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1027:2: ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )?
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1007:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )? )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1007:2: ( (otherlv_0= RULE_ID ) ) (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )?
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1027:2: ( (otherlv_0= RULE_ID ) )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1028:1: (otherlv_0= RULE_ID )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1007:2: ( (otherlv_0= RULE_ID ) )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1008:1: (otherlv_0= RULE_ID )
             {
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1028:1: (otherlv_0= RULE_ID )
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1029:3: otherlv_0= RULE_ID
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1008:1: (otherlv_0= RULE_ID )
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1009:3: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -2907,7 +2834,7 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportItem2322); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportItem2294); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_0, grammarAccess.getXExportItemAccess().getExportedIdJvmIdentifiableElementCrossReference_0_0()); 
@@ -2919,30 +2846,30 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1040:2: (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1020:2: (otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA18_0==27) ) {
-                alt18=1;
+            if ( (LA17_0==27) ) {
+                alt17=1;
             }
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1040:4: otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1020:4: otherlv_1= 'as' ( (lv_alias_2_0= RULE_ID ) )
                     {
-                    otherlv_1=(Token)match(input,27,FOLLOW_27_in_ruleXExportItem2335); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,27,FOLLOW_27_in_ruleXExportItem2307); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXExportItemAccess().getAsKeyword_1_0());
                           
                     }
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1044:1: ( (lv_alias_2_0= RULE_ID ) )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1045:1: (lv_alias_2_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1024:1: ( (lv_alias_2_0= RULE_ID ) )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1025:1: (lv_alias_2_0= RULE_ID )
                     {
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1045:1: (lv_alias_2_0= RULE_ID )
-                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1046:3: lv_alias_2_0= RULE_ID
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1025:1: (lv_alias_2_0= RULE_ID )
+                    // ../org.summer.dsl.xtype/src-gen/org/summer/dsl/xtype/parser/antlr/internal/InternalXtype.g:1026:3: lv_alias_2_0= RULE_ID
                     {
-                    lv_alias_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportItem2352); if (state.failed) return current;
+                    lv_alias_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXExportItem2324); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_alias_2_0, grammarAccess.getXExportItemAccess().getAliasIDTerminalRuleCall_1_1_0()); 
@@ -3121,43 +3048,41 @@ public class InternalXtypeParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleValidID1492 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXImportDeclaration1_in_entryRuleXImportDeclaration11538 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXImportDeclaration11548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleXImportDeclaration11585 = new BitSet(new long[]{0x0000000005000010L});
-    public static final BitSet FOLLOW_24_in_ruleXImportDeclaration11601 = new BitSet(new long[]{0x0000000001000010L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11622 = new BitSet(new long[]{0x0000000002002000L});
-    public static final BitSet FOLLOW_13_in_ruleXImportDeclaration11635 = new BitSet(new long[]{0x0000000001000010L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11656 = new BitSet(new long[]{0x0000000002002000L});
-    public static final BitSet FOLLOW_25_in_ruleXImportDeclaration11670 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11698 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleXImportDeclaration11711 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXImportDeclaration11728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleXImportDeclaration11753 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXImportDeclaration11770 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleXImportDeclaration11787 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXImportDeclaration11804 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_entryRuleXImportItem1847 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXImportItem1857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXImportItem1911 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_ruleXImportItem1924 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXImportItem1941 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExportDeclaration_in_entryRuleXExportDeclaration1986 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXExportDeclaration1996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleXExportDeclaration2033 = new BitSet(new long[]{0x0000000005000000L});
-    public static final BitSet FOLLOW_24_in_ruleXExportDeclaration2047 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2068 = new BitSet(new long[]{0x0000000002002000L});
-    public static final BitSet FOLLOW_13_in_ruleXExportDeclaration2081 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2102 = new BitSet(new long[]{0x0000000002002000L});
-    public static final BitSet FOLLOW_25_in_ruleXExportDeclaration2116 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_26_in_ruleXExportDeclaration2129 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXExportDeclaration2146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleXExportDeclaration2173 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXExportDeclaration2190 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleXExportDeclaration2207 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportDeclaration2224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExportItem_in_entryRuleXExportItem2267 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXExportItem2277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportItem2322 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_ruleXExportItem2335 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportItem2352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleXImportDeclaration11594 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleXImportDeclaration11606 = new BitSet(new long[]{0x0000000002000010L});
+    public static final BitSet FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11629 = new BitSet(new long[]{0x0000000004002000L});
+    public static final BitSet FOLLOW_13_in_ruleXImportDeclaration11642 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXImportItem_in_ruleXImportDeclaration11663 = new BitSet(new long[]{0x0000000004002000L});
+    public static final BitSet FOLLOW_25_in_ruleXImportDeclaration11690 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleXImportDeclaration11716 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleXImportDeclaration11728 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleXImportDeclaration11749 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleXImportDeclaration11761 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleXImportDeclaration11778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportItem_in_entryRuleXImportItem1819 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXImportItem1829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXImportItem1883 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_27_in_ruleXImportItem1896 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXImportItem1913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExportDeclaration_in_entryRuleXExportDeclaration1958 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXExportDeclaration1968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleXExportDeclaration2005 = new BitSet(new long[]{0x0000000011000000L});
+    public static final BitSet FOLLOW_24_in_ruleXExportDeclaration2019 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2040 = new BitSet(new long[]{0x0000000004002000L});
+    public static final BitSet FOLLOW_13_in_ruleXExportDeclaration2053 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXExportItem_in_ruleXExportDeclaration2074 = new BitSet(new long[]{0x0000000004002000L});
+    public static final BitSet FOLLOW_26_in_ruleXExportDeclaration2088 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_28_in_ruleXExportDeclaration2101 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleXExportDeclaration2118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleXExportDeclaration2145 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleXExportDeclaration2162 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleXExportDeclaration2179 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportDeclaration2196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExportItem_in_entryRuleXExportItem2239 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXExportItem2249 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportItem2294 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_27_in_ruleXExportItem2307 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXExportItem2324 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleArrayBrackets_in_synpred1_InternalXtype148 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_16_in_synpred2_InternalXtype600 = new BitSet(new long[]{0x0000000000000002L});
 

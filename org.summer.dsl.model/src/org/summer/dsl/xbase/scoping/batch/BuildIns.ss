@@ -1,5 +1,5 @@
 export class Object{   
-	private constructor (){}       
+	constructor (){}       
 	 
 	function  create():Object{         
 	}
@@ -43,7 +43,7 @@ export class Type extends Object{
 		
 	function	toString():String{}
 	function GetProperty(String name, int flag):Object{}
-	 private static int GlobalIndex = 0;
+	 	static int GlobalIndex = 0;
 		int Id;
 		Function Constructor;
 		String Name;
@@ -262,12 +262,17 @@ export class Array<T> extends Object{
 //	function Array<T> slice( Number begin ,Number end ){}
 //	function  pop():T{}
 //	function Void push(T... objs){}
+
+	function [(Integer index):T{
+		
+	}
+	 Integer length;
+	
 }
 
-export interface IteratorResult<T>{
-	Boolean done;
-	
-	T value;
+export struct IteratorResult/*<T> */{
+//	Boolean done; 
+//	T value;
 }
 
 export interface Iterator<T> {
@@ -311,61 +316,65 @@ export class Entry<K, V>{
 
 export class Map<K, V> extends Collection<Entry<K, V>> {  
 	
-}
-
-//  import {Name} from '@name';
-//  const keysName = new Name;  // These should be non global.
-//  const valsName = new Name;
- 
-  class Map<K, V> {
-    constructor(Iterable<Entry<K, V> >iterable /* = []*/) {
-//      this[keysName] = [];
-//      this[valsName] = [];
-//      for (let [k, v] of iterable) {
-//        this.set(k, v);
-//      } 
-    }
-//    function ^get(K key) :V{
-////      const keys = this[keysName];
-////      const i = indexOfIdentical(keys, key);
-////      return i < 0 ? undefined : this[valsName][i];
+//	Integer size;//返回成员总数。
+////	function ^set(K key, V value) {}//设置一个键值对。
+////	function ^get(key):V{} //读取一个键。
+////	function has(key):Boolean{} //返回一个布尔值，表示某个键是否在Map数据结构中。
+////	function clear(){} //清除所有成员。
+//	
+//
+////  import {Name} from '@name';
+////  const keysName = new Name;  // These should be non global.
+////  const valsName = new Name;
+//
+//    constructor(Iterable<Entry<K, V> >iterable /* = []*/) {
+////      this[keysName] = [];
+////      this[valsName] = [];
+////      for (let [k, v] of iterable) {
+////        this.set(k, v);
+////      } 
 //    }
-    function has(K key):Boolean {
-//      const keys = this[keysName];
-//      return indexOfIdentical(keys, key) >= 0;
-    }
-//    function ^set(K key, V val) { 
+////    function ^get(K key) :V{
+//////      const keys = this[keysName];
+//////      const i = indexOfIdentical(keys, key);
+//////      return i < 0 ? undefined : this[valsName][i];
+////    }
+//    function has(K key):Boolean {
+////      const keys = this[keysName];
+////      return indexOfIdentical(keys, key) >= 0;
+//    }
+////    function ^set(K key, V val) { 
+//////      const keys = this[keysName];
+//////      const vals = this[valsName];
+//////      let i = indexOfIdentical(keys, key);
+//////      if (i < 0) { i = keys.length; }
+//////      keys[i] = key;
+//////      vals[i] = val;
+////    }
+//    function delete(K key):Boolean {
 ////      const keys = this[keysName];
 ////      const vals = this[valsName];
-////      let i = indexOfIdentical(keys, key);
-////      if (i < 0) { i = keys.length; }
-////      keys[i] = key;
-////      vals[i] = val;
+////      const i = indexOfIdentical(keys, key);
+////      if (i < 0) { return false; }
+////      keys.splice(i, 1);
+////      vals.splice(i, 1);
+////      return true;          
 //    }
-    function delete(K key):Boolean {
-//      const keys = this[keysName];
-//      const vals = this[valsName];
-//      const i = indexOfIdentical(keys, key);
-//      if (i < 0) { return false; }
-//      keys.splice(i, 1);
-//      vals.splice(i, 1);
-//      return true;          
-    }
-    function  items():Iterator<Entry<K,V> > {
-//      for (var i = 0; i < this[keysName].length; i++) {
-//        yield [this[keysName][i], this[valsName][i]];
-//      }
-    }
-    function  keys():Iterator<K> {
-//      for (var i = 0; i < this[keysName].length; i++) {
-//        yield this[keysName][i];
-//      }
-    }
-    function values() :Iterator<V>{
-//      for (var i = 0; i < this[keysName].length; i++) {
-//        yield this[valsName][i];
-//      }
-    }
+//    function  items():Iterator<Entry<K,V> > {
+////      for (var i = 0; i < this[keysName].length; i++) {
+////        yield [this[keysName][i], this[valsName][i]];
+////      }
+//    }
+//    function  keys():Iterator<K> {
+////      for (var i = 0; i < this[keysName].length; i++) {
+////        yield this[keysName][i];
+////      }
+//    }
+//    function values() :Iterator<V>{
+////      for (var i = 0; i < this[keysName].length; i++) {
+////        yield this[valsName][i];
+////      }
+//    }
   }
 
 export class RegExp extends Object{
@@ -380,18 +389,12 @@ export class Set<T extends Object> extends Object{
 	constructor(){
 		
 	}
-	
-	function  add(T element){ 
-		
-	}
-	
-	function remove(T element){
-		
-	}
-	
-	function <G, H> contains(G g,  H h):T{  
-		
-	}
+
+//	Integer size; //返回成员总数。
+//	function add(T value){} //添加某个值。
+//	function delete(T value){} //：删除某个值。
+//	function has(T value):Boolean{} //：返回一个布尔值，表示该值是否为set的成员。
+//	function clear(){}//：清除所有成员。
 }
  
 export class Function extends Object{ 
@@ -406,6 +409,10 @@ export class Function extends Object{
 	function call(){
 		
 	}
+}
+
+export class Void extends Object{
+	
 }
 
 

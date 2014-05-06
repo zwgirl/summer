@@ -13,7 +13,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.access.impl.URIHelperConstants;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;

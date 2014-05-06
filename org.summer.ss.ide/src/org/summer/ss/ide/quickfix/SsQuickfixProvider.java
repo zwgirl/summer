@@ -26,7 +26,7 @@ import org.eclipse.jface.text.BadLocationException;
 import org.summer.ss.core.services.SsGrammarAccess;
 import org.summer.ss.core.validation.IssueCodes;
 import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.ss.ide.buildpath.SsLibClasspathAdder;
 import org.summer.ss.ide.codebuilder.InsertionOffsets;
@@ -368,7 +368,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 			acceptor.accept(issue, "Change package declaration to '" + expectedPackage + "'", "Change package declaration to '" + expectedPackage + "'", "package_obj.gif",
 					new ISemanticModification() {
 						public void apply(EObject element, IModificationContext context) throws Exception {
-							((XtendFile) element).setPackage(isEmpty(expectedPackage) ? null : expectedPackage);
+							((XModule) element).setPackage(isEmpty(expectedPackage) ? null : expectedPackage);
 						}
 			});
 		}

@@ -296,7 +296,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__IMPORT_ITEMS = 0;
+	int XIMPORT_DECLARATION1__IMPORT_ITEMS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Alias</b></em>' attribute.
@@ -305,7 +305,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__ALIAS = 1;
+	int XIMPORT_DECLARATION1__ALIAS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -314,7 +314,25 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__IMPORT_URI = 2;
+	int XIMPORT_DECLARATION1__IMPORT_URI = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XIMPORT_DECLARATION1__NAME = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Wildcard</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XIMPORT_DECLARATION1__WILDCARD = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>XImport Declaration1</em>' class.
@@ -323,7 +341,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1_FEATURE_COUNT = 3;
+	int XIMPORT_DECLARATION1_FEATURE_COUNT = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XImportItemImpl <em>XImport Item</em>}' class.
@@ -719,6 +737,28 @@ public interface XtypePackage extends EPackage {
 	EAttribute getXImportDeclaration1_ImportURI();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#getName()
+	 * @see #getXImportDeclaration1()
+	 * @generated
+	 */
+	EAttribute getXImportDeclaration1_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#isWildcard <em>Wildcard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wildcard</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#isWildcard()
+	 * @see #getXImportDeclaration1()
+	 * @generated
+	 */
+	EAttribute getXImportDeclaration1_Wildcard();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xtype.XImportItem <em>XImport Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1069,6 +1109,22 @@ public interface XtypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute XIMPORT_DECLARATION1__IMPORT_URI = eINSTANCE.getXImportDeclaration1_ImportURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XIMPORT_DECLARATION1__NAME = eINSTANCE.getXImportDeclaration1_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Wildcard</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XIMPORT_DECLARATION1__WILDCARD = eINSTANCE.getXImportDeclaration1_Wildcard();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xtype.impl.XImportItemImpl <em>XImport Item</em>}' class.

@@ -821,7 +821,8 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	// //	XKeyValuePair
 	// XLiteral returns XExpression: //	XCollectionLiteral |
 	// XObjectLiteral | XStructLiteral |
-	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
+	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral |
+	//	XTemplateLiteral;
 	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
 		return gaXbase.getXLiteralAccess();
 	}
@@ -1144,7 +1145,8 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	// //;
 	//
 	//XVariableDeclarationList returns XExpression:
-	//	{XVariableDeclarationList} "var" declarations+=XVariableDeclaration ("," declarations+=XVariableDeclaration)*;
+	//	{XVariableDeclarationList} exported?="export"? ("var" | writeable?="const") declarations+=XVariableDeclaration (","
+	//	declarations+=XVariableDeclaration)*;
 	public XbaseGrammarAccess.XVariableDeclarationListElements getXVariableDeclarationListAccess() {
 		return gaXbase.getXVariableDeclarationListAccess();
 	}
@@ -1275,18 +1277,6 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getIdOrSuperAccess().getRule();
 	}
 
-	//XConstructorCall returns XExpression:
-	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
-	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
-	//	(arguments+=XExpression ("," arguments+=XExpression)*)? ")")?;
-	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
-		return gaXbase.getXConstructorCallAccess();
-	}
-	
-	public ParserRule getXConstructorCallRule() {
-		return getXConstructorCallAccess().getRule();
-	}
-
 	////XObjectLiteral returns XExpression:
 	// //	{XObjectLiteral}
 	// //	'new' '{'
@@ -1321,9 +1311,23 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXObjectLiteralPartAccess().getRule();
 	}
 
+	//XConstructorCall returns XExpression:
+	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
+	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
+	//	(arguments+=XExpression ("," arguments+=XExpression)*)? ")")?;
+	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
+		return gaXbase.getXConstructorCallAccess();
+	}
+	
+	public ParserRule getXConstructorCallRule() {
+		return getXConstructorCallAccess().getRule();
+	}
+
 	//XStructLiteral returns XExpression:
-	//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName] "{" properties+=XFieldLiteralPart (","
-	//	properties+=XFieldLiteralPart)* "}";
+	//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName]
+	//	//	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+	// "{"
+	//	properties+=XFieldLiteralPart ("," properties+=XFieldLiteralPart)* "}";
 	public XbaseGrammarAccess.XStructLiteralElements getXStructLiteralAccess() {
 		return gaXbase.getXStructLiteralAccess();
 	}
@@ -1392,7 +1396,47 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXStringLiteralAccess().getRule();
 	}
 
-	//XTypeLiteral returns XExpression:
+	////XTemplateLiteral returns XExpression:
+	// //	{XTemplate} ( 
+	// //	  expressions+=RichStringLiteral |
+	//
+	////	  expressions+=RichStringLiteralStart expressions+=XExpression? 
+	//
+	////	  	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* 
+	// //	  expressions+=RichStringLiteralEnd
+	//
+	////	)
+	// //;
+	// //
+	// //RichStringLiteral returns XExpression :
+	// //	{RichStringLiteral} value=RICH_TEXT
+	// //;
+	// //
+	//
+	////RichStringLiteralStart returns XExpression :
+	// //	{RichStringLiteral} value=RICH_TEXT_START
+	// //; 
+	// //
+	//
+	////RichStringLiteralInbetween returns XExpression :
+	// //	{RichStringLiteral} 
+	// //	( value=RICH_TEXT_INBETWEEN  )
+	// //; 
+	//
+	////
+	// //RichStringLiteralEnd returns XExpression :
+	// //	{RichStringLiteral} 
+	// //	( value=RICH_TEXT_END  )
+	// //; 
+	//
+	////InternalRichString returns XExpression:
+	// //	{RichString} (
+	//
+	////		expressions+=RichStringLiteralInbetween (expressions+=XExpression? expressions+=RichStringLiteralInbetween)*
+	//
+	////	)
+	// //;
+	// XTypeLiteral returns XExpression:
 	//	{XTypeLiteral} "typeof" "(" type=[types::JvmType|QualifiedName] arrayDimensions+=ArrayBrackets* ")";
 	public XbaseGrammarAccess.XTypeLiteralElements getXTypeLiteralAccess() {
 		return gaXbase.getXTypeLiteralAccess();
@@ -1513,6 +1557,268 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	//	INT (("e" | "E") ("+" | "-")? INT)? (("b" | "B") ("i" | "I" | "d" | "D") | ("l" | "L" | "d" | "D" | "f" | "F"))?;
 	public TerminalRule getDECIMALRule() {
 		return gaXbase.getDECIMALRule();
+	} 
+
+	//terminal ID:
+	//	"^"? (IDENTIFIER_START | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*;
+	public TerminalRule getIDRule() {
+		return gaXbase.getIDRule();
+	} 
+
+	//terminal fragment HEX_DIGIT:
+	//	"0".."9" | "a".."f" | "A".."F";
+	public TerminalRule getHEX_DIGITRule() {
+		return gaXbase.getHEX_DIGITRule();
+	} 
+
+	//terminal fragment UNICODE_ESCAPE:
+	//	"\\" "u" (HEX_DIGIT (HEX_DIGIT (HEX_DIGIT HEX_DIGIT?)?)?)?;
+	public TerminalRule getUNICODE_ESCAPERule() {
+		return gaXbase.getUNICODE_ESCAPERule();
+	} 
+
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	public TerminalRule getSTRINGRule() {
+		return gaXbase.getSTRINGRule();
+	} 
+
+	//XTemplateLiteral returns XExpression:
+	//	{XTemplate} (expressions+=RichStringLiteral | expressions+=RichStringLiteralStart expressions+=XExpression?
+	//	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* expressions+=RichStringLiteralEnd);
+	public XbaseGrammarAccess.XTemplateLiteralElements getXTemplateLiteralAccess() {
+		return gaXbase.getXTemplateLiteralAccess();
+	}
+	
+	public ParserRule getXTemplateLiteralRule() {
+		return getXTemplateLiteralAccess().getRule();
+	}
+
+	//RichStringLiteral returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT;
+	public XbaseGrammarAccess.RichStringLiteralElements getRichStringLiteralAccess() {
+		return gaXbase.getRichStringLiteralAccess();
+	}
+	
+	public ParserRule getRichStringLiteralRule() {
+		return getRichStringLiteralAccess().getRule();
+	}
+
+	//RichStringLiteralStart returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_START;
+	public XbaseGrammarAccess.RichStringLiteralStartElements getRichStringLiteralStartAccess() {
+		return gaXbase.getRichStringLiteralStartAccess();
+	}
+	
+	public ParserRule getRichStringLiteralStartRule() {
+		return getRichStringLiteralStartAccess().getRule();
+	}
+
+	//RichStringLiteralInbetween returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_INBETWEEN;
+	public XbaseGrammarAccess.RichStringLiteralInbetweenElements getRichStringLiteralInbetweenAccess() {
+		return gaXbase.getRichStringLiteralInbetweenAccess();
+	}
+	
+	public ParserRule getRichStringLiteralInbetweenRule() {
+		return getRichStringLiteralInbetweenAccess().getRule();
+	}
+
+	//RichStringLiteralEnd returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_END;
+	public XbaseGrammarAccess.RichStringLiteralEndElements getRichStringLiteralEndAccess() {
+		return gaXbase.getRichStringLiteralEndAccess();
+	}
+	
+	public ParserRule getRichStringLiteralEndRule() {
+		return getRichStringLiteralEndAccess().getRule();
+	}
+
+	//terminal RICH_TEXT:
+	//	"`" IN_RICH_STRING* ("`" | EOF);
+	public TerminalRule getRICH_TEXTRule() {
+		return gaXbase.getRICH_TEXTRule();
+	} 
+
+	//terminal RICH_TEXT_START:
+	//	"`" IN_RICH_STRING* "<%";
+	public TerminalRule getRICH_TEXT_STARTRule() {
+		return gaXbase.getRICH_TEXT_STARTRule();
+	} 
+
+	//terminal RICH_TEXT_END:
+	//	"%>" IN_RICH_STRING* ("`" | EOF);
+	public TerminalRule getRICH_TEXT_ENDRule() {
+		return gaXbase.getRICH_TEXT_ENDRule();
+	} 
+
+	//terminal RICH_TEXT_INBETWEEN:
+	//	"%>" IN_RICH_STRING* "<%";
+	public TerminalRule getRICH_TEXT_INBETWEENRule() {
+		return gaXbase.getRICH_TEXT_INBETWEENRule();
+	} 
+
+	//terminal fragment IN_RICH_STRING:
+	//	!("`" | "\\" | "<") | "<" !"%";
+	public TerminalRule getIN_RICH_STRINGRule() {
+		return gaXbase.getIN_RICH_STRINGRule();
+	} 
+
+	////terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
+	//
+	////terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? '«';
+	//
+	////terminal RICH_TEXT_END : '»' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
+	//
+	////terminal RICH_TEXT_INBETWEEN : '»' IN_RICH_STRING* ("'" "'"?)? '«';
+	//
+	//////terminal COMMENT_RICH_TEXT_INBETWEEN: "««" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? '«')?; 
+	//
+	//////terminal COMMENT_RICH_TEXT_END: "««" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
+	//
+	//////
+	// //terminal fragment IN_RICH_STRING : 
+	// //	  "''" !('«'|"'") 
+	// //	| "'" !('«'|"'")
+	// //	| !('«'|"'");
+	//
+	////Template ::
+	// //NoSubstitutionTemplate
+	// //TemplateHead
+	// //
+	// //NoSubstitutionTemplate ::
+	// //` TemplateCharacters `
+	//
+	////
+	// //TemplateHead ::
+	// //` TemplateCharacters ${
+	// //	
+	// //TemplateSubstitutionTail ::
+	// //TemplateMiddle
+	//
+	////TemplateTail
+	// //
+	// //TemplateMiddle ::
+	// //} TemplateCharacters ${
+	// //	
+	// //TemplateTail ::
+	//
+	////} TemplateCharactersopt `
+	// //
+	// //TemplateCharacters ::
+	// //TemplateCharacter TemplateCharactersopt
+	// //
+	//
+	////TemplateCharacter ::
+	// //SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
+	// //$ [lookahead ≠ { ]
+	//
+	////\ EscapeSequence
+	// //LineContinuation
+	// //LineTerminatorSequence
+	// //XTemplate returns XExpression:
+	// //	{XTemplate}
+	//
+	////	expressions+=RichStringLiteral
+	// //	|TemplateHead
+	// //;
+	// //
+	// //RichStringLiteral:
+	//
+	////	'`' value=TemplateCharacters '`'
+	// //;
+	// //
+	// //TemplateHead:
+	// //'`' TemplateCharacters '${'
+	// //;
+	// //
+	//
+	////TemplateSubstitutionTail:
+	// //	TemplateMiddle
+	// //	|TemplateTail
+	// //;
+	// //
+	// //TemplateMiddle:
+	//
+	////	 TemplateCharacters '${'
+	// //;
+	// //
+	// //	
+	// //TemplateTail:
+	// //	 TemplateCharacters '`'
+	// //;
+	// //
+	//
+	////terminal TemplateCharacters:
+	// //	TemplateCharacter*
+	// ////	|TemplateCharacters
+	// //;
+	// //
+	//
+	////terminal fragment TemplateCharacter:
+	// ////	SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
+	//
+	////	!('`' |'\\'|'$') 
+	// ////	$ [lookahead ≠ { ]
+	// ////	\ EscapeSequence
+	// ////	LineContinuation
+	//
+	//////	LineTerminatorSequence
+	// //;
+	// terminal fragment IDENTIFIER_START:
+	//	"$" | "A".."Z" | "_" | "a".."z" | "¢".."¥" | "ª" | "µ" | "º" | "À".."Ö" | "Ø".."ö" | "ø".."ȶ" | "ɐ".."ˁ" | "ˆ".."ˑ" |
+	//	"ˠ".."ˤ" | "ˮ" | "ͺ" | "Ά" | "Έ".."Ί" | "Ό" | "Ύ".."Ρ" | "Σ".."ώ" | "ϐ".."ϵ" | "Ϸ".."ϻ" | "Ѐ".."ҁ" | "Ҋ".."ӎ" |
+	//	"Ӑ".."ӵ" | "Ӹ".."ӹ" | "Ԁ".."ԏ" | "Ա".."Ֆ" | "ՙ" | "ա".."և" | "א".."ת" | "װ".."ײ" | "ء".."غ" | "ـ".."ي" | "ٮ".."ٯ" |
+	//	"ٱ".."ۓ" | "ە" | "ۥ".."ۦ" | "ۮ".."ۯ" | "ۺ".."ۼ" | "ۿ" | "ܐ" | "ܒ".."ܯ" | "ݍ".."ݏ" | "ހ".."ޥ" | "ޱ" | "ऄ".."ह" | "ऽ" |
+	//	"ॐ" | "क़".."ॡ" | "অ".."ঌ" | "এ".."ঐ" | "ও".."ন" | "প".."র" | "ল" | "শ".."হ" | "ঽ" | "ড়".."ঢ়" | "য়".."ৡ" | "ৰ".."৳" |
+	//	"ਅ".."ਊ" | "ਏ".."ਐ" | "ਓ".."ਨ" | "ਪ".."ਰ" | "ਲ".."ਲ਼" | "ਵ".."ਸ਼" | "ਸ".."ਹ" | "ਖ਼".."ੜ" | "ਫ਼" | "ੲ".."ੴ" | "અ".."ઍ" |
+	//	"એ".."ઑ" | "ઓ".."ન" | "પ".."ર" | "લ".."ળ" | "વ".."હ" | "ઽ" | "ૐ" | "ૠ".."ૡ" | "૱" | "ଅ".."ଌ" | "ଏ".."ଐ" | "ଓ".."ନ" |
+	//	"ପ".."ର" | "ଲ".."ଳ" | "ଵ".."ହ" | "ଽ" | "ଡ଼".."ଢ଼" | "ୟ".."ୡ" | "ୱ" | "ஃ" | "அ".."ஊ" | "எ".."ஐ" | "ஒ".."க" | "ங".."ச" |
+	//	"ஜ" | "ஞ".."ட" | "ண".."த" | "ந".."ப" | "ம".."வ" | "ஷ".."ஹ" | "௹" | "అ".."ఌ" | "ఎ".."ఐ" | "ఒ".."న" | "ప".."ళ" |
+	//	"వ".."హ" | "ౠ".."ౡ" | "ಅ".."ಌ" | "ಎ".."ಐ" | "ಒ".."ನ" | "ಪ".."ಳ" | "ವ".."ಹ" | "ಽ" | "ೞ" | "ೠ".."ೡ" | "അ".."ഌ" |
+	//	"എ".."ഐ" | "ഒ".."ന" | "പ".."ഹ" | "ൠ".."ൡ" | "අ".."ඖ" | "ක".."න" | "ඳ".."ර" | "ල" | "ව".."ෆ" | "ก".."ะ" | "า".."ำ" |
+	//	"฿".."ๆ" | "ກ".."ຂ" | "ຄ" | "ງ".."ຈ" | "ຊ" | "ຍ" | "ດ".."ທ" | "ນ".."ຟ" | "ມ".."ຣ" | "ລ" | "ວ" | "ສ".."ຫ" | "ອ".."ະ" |
+	//	"າ".."ຳ" | "ຽ" | "ເ".."ໄ" | "ໆ" | "ໜ".."ໝ" | "ༀ" | "ཀ".."ཇ" | "ཉ".."ཪ" | "ྈ".."ྋ" | "က".."အ" | "ဣ".."ဧ" | "ဩ".."ဪ" |
+	//	"ၐ".."ၕ" | "Ⴀ".."Ⴥ" | "ა".."ჸ" | "ᄀ".."ᅙ" | "ᅟ".."ᆢ" | "ᆨ".."ᇹ" | "ሀ".."ሆ" | "ለ".."ቆ" | "ቈ" | "ቊ".."ቍ" | "ቐ".."ቖ" |
+	//	"ቘ" | "ቚ".."ቝ" | "በ".."ኆ" | "ኈ" | "ኊ".."ኍ" | "ነ".."ኮ" | "ኰ" | "ኲ".."ኵ" | "ኸ".."ኾ" | "ዀ" | "ዂ".."ዅ" | "ወ".."ዎ" |
+	//	"ዐ".."ዖ" | "ዘ".."ዮ" | "ደ".."ጎ" | "ጐ" | "ጒ".."ጕ" | "ጘ".."ጞ" | "ጠ".."ፆ" | "ፈ".."ፚ" | "Ꭰ".."Ᏼ" | "ᐁ".."ᙬ" | "ᙯ".."ᙶ" |
+	//	"ᚁ".."ᚚ" | "ᚠ".."ᛪ" | "ᛮ".."ᛰ" | "ᜀ".."ᜌ" | "ᜎ".."ᜑ" | "ᜠ".."ᜱ" | "ᝀ".."ᝑ" | "ᝠ".."ᝬ" | "ᝮ".."ᝰ" | "ក".."ឳ" | "ៗ" |
+	//	"៛".."ៜ" | "ᠠ".."ᡷ" | "ᢀ".."ᢨ" | "ᤀ".."ᤜ" | "ᥐ".."ᥭ" | "ᥰ".."ᥴ" | "ᴀ".."ᵫ" | "Ḁ".."ẛ" | "Ạ".."ỹ" | "ἀ".."ἕ" |
+	//	"Ἐ".."Ἕ" | "ἠ".."ὅ" | "Ὀ".."Ὅ" | "ὐ".."ὗ" | "Ὑ" | "Ὓ" | "Ὕ" | "Ὗ".."ώ" | "ᾀ".."ᾴ" | "ᾶ".."ᾼ" | "ι" | "ῂ".."ῄ" |
+	//	"ῆ".."ῌ" | "ῐ".."ΐ" | "ῖ".."Ί" | "ῠ".."Ῥ" | "ῲ".."ῴ" | "ῶ".."ῼ" | "‿".."⁀" | "⁔" | "ⁱ" | "ⁿ" | "₠".."₱" | "ℂ" | "ℇ" |
+	//	"ℊ".."ℓ" | "ℕ" | "ℙ".."ℝ" | "ℤ" | "Ω" | "ℨ" | "K".."ℭ" | "ℯ".."ℱ" | "ℳ".."ℹ" | "ℽ".."ℿ" | "ⅅ".."ⅉ" | "Ⅰ".."Ↄ" |
+	//	"々".."〇" | "〡".."〩" | "〱".."〵" | "〸".."〼" | "ぁ".."ゖ" | "ゝ".."ゟ" | "ァ".."ヿ" | "ㄅ".."ㄬ" | "ㄱ".."ㆎ" | "ㆠ".."ㆷ" |
+	//	"ㇰ".."ㇿ" | "㐀".."䶵" | "一".."龥" | "ꀀ".."ꒌ" | "가".."힣" | "豈".."鶴" | "侮".."頻" | "ﬀ".."ﬆ" | "ﬓ".."ﬗ" | "יִ" | "ײַ".."ﬨ" |
+	//	"שׁ".."זּ" | "טּ".."לּ" | "מּ" | "נּ".."סּ" | "ףּ".."פּ" | "צּ".."ﮱ" | "ﯓ".."ﴽ" | "ﵐ".."ﶏ" | "ﶒ".."ﷇ" | "ﷰ".."﷼" | "︳".."︴" |
+	//	"﹍".."﹏" | "﹩" | "ﹰ".."ﹴ" | "ﹶ".."ﻼ" | "＄" | "Ａ".."Ｚ" | "＿" | "ａ".."ｚ" | "･".."ﾾ" | "ￂ".."ￇ" | "ￊ".."ￏ" | "ￒ".."ￗ" |
+	//	"ￚ".."ￜ" | "￠".."￡" | "￥".."￦";
+	public TerminalRule getIDENTIFIER_STARTRule() {
+		return gaXbase.getIDENTIFIER_STARTRule();
+	} 
+
+	//terminal fragment IDENTIFIER_PART:
+	//	IDENTIFIER_START | IDENTIFIER_PART_IMPL;
+	public TerminalRule getIDENTIFIER_PARTRule() {
+		return gaXbase.getIDENTIFIER_PARTRule();
+	} 
+
+	//terminal fragment IDENTIFIER_PART_IMPL:
+	//	" ".."\b" | "".."" | "0".."9" | "".."" | "­" | "̀".."͗" | "͝".."ͯ" | "҃".."҆" | "֑".."֡" | "֣".."ֹ" | "ֻ".."ֽ" |
+	//	"ֿ" | "ׁ".."ׂ" | "ׄ" | "؀".."؃" | "ؐ".."ؕ" | "ً".."٘" | "٠".."٩" | "ٰ" | "ۖ".."۝" | "۟".."ۤ" | "ۧ".."ۨ" | "۪".."ۭ" |
+	//	"۰".."۹" | "܏" | "ܑ" | "ܰ".."݊" | "ަ".."ް" | "ँ".."ः" | "़" | "ा".."्" | "॑".."॔" | "ॢ".."ॣ" | "०".."९" | "ঁ".."ঃ" |
+	//	"়" | "া".."ৄ" | "ে".."ৈ" | "ো".."্" | "ৗ" | "ৢ".."ৣ" | "০".."৯" | "ਁ".."ਃ" | "਼" | "ਾ".."ੂ" | "ੇ".."ੈ" | "ੋ".."੍" |
+	//	"੦".."ੱ" | "ઁ".."ઃ" | "઼" | "ા".."ૅ" | "ે".."ૉ" | "ો".."્" | "ૢ".."ૣ" | "૦".."૯" | "ଁ".."ଃ" | "଼" | "ା".."ୃ" |
+	//	"େ".."ୈ" | "ୋ".."୍" | "ୖ".."ୗ" | "୦".."୯" | "ஂ" | "ா".."ூ" | "ெ".."ை" | "ொ".."்" | "ௗ" | "௧".."௯" | "ఁ".."ః" |
+	//	"ా".."ౄ" | "ె".."ై" | "ొ".."్" | "ౕ".."ౖ" | "౦".."౯" | "ಂ".."ಃ" | "಼" | "ಾ".."ೄ" | "ೆ".."ೈ" | "ೊ".."್" | "ೕ".."ೖ" |
+	//	"೦".."೯" | "ം".."ഃ" | "ാ".."ൃ" | "െ".."ൈ" | "ൊ".."്" | "ൗ" | "൦".."൯" | "ං".."ඃ" | "්" | "ා".."ු" | "ූ" | "ෘ".."ෟ" |
+	//	"ෲ".."ෳ" | "ั" | "ิ".."ฺ" | "็".."๎" | "๐".."๙" | "ັ" | "ິ".."ູ" | "ົ".."ຼ" | "່".."ໍ" | "໐".."໙" | "༘".."༙" |
+	//	"༠".."༩" | "༵" | "༷" | "༹" | "༾".."༿" | "ཱ".."྄" | "྆".."྇" | "ྐ".."ྗ" | "ྙ".."ྼ" | "࿆" | "ာ".."ဲ" | "ံ".."္" |
+	//	"၀".."၉" | "ၖ".."ၙ" | "፩".."፱" | "ᜒ".."᜔" | "ᜲ".."᜴" | "ᝒ".."ᝓ" | "ᝲ".."ᝳ" | "឴".."៓" | "៝" | "០".."៩" | "᠋".."᠍" |
+	//	"᠐".."᠙" | "ᢩ" | "ᤠ".."ᤫ" | "ᤰ".."᤻" | "᥆".."᥏" | "‌".."‏" | "‪".."‮" | "⁠".."⁣" | "⁪".."⁯" | "⃐".."⃜" | "⃡" |
+	//	"⃥".."⃪" | "〪".."〯" | "゙".."゚" | "ﬞ" | "︀".."️" | "︠".."︣" | "﻿" | "０".."９" | "￹".."￻";
+	public TerminalRule getIDENTIFIER_PART_IMPLRule() {
+		return gaXbase.getIDENTIFIER_PART_IMPLRule();
 	} 
 
 	//JvmTypeReference:
@@ -1660,9 +1966,25 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXImportSection1Access().getRule();
 	}
 
-	//XImportDeclaration1:
-	//	"import" (("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from"
-	//	importURI=STRING | "from" importURI=STRING "as" alias=ID);
+	////XImportDeclaration1 returns XImportDeclaration1: 
+	// //	'import' (( 
+	// //		(('{'
+	//
+	////		importItems += XImportItem (',' importItems += XImportItem)*  
+	// //		'}')
+	// //		|
+	//
+	////		(importItems += XImportItem ))
+	// //		
+	// //		'from' importURI=STRING )
+	// //	 |
+	//
+	////	('from' importURI=STRING 'as' alias = ID))
+	// //		
+	// //;
+	// XImportDeclaration1:
+	//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
+	//	"as" name=ValidID "from" importURI=STRING;
 	public XtypeGrammarAccess.XImportDeclaration1Elements getXImportDeclaration1Access() {
 		return gaXbase.getXImportDeclaration1Access();
 	}
@@ -1718,19 +2040,6 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	public ParserRule getXExportItemRule() {
 		return getXExportItemAccess().getRule();
 	}
-
-	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "$" | "_") ("a".."z" | "A".."Z" | "$" | "_" | "0".."9")*;
-	public TerminalRule getIDRule() {
-		return gaXbase.getIDRule();
-	} 
-
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return gaXbase.getSTRINGRule();
-	} 
 
 	//terminal ML_COMMENT:
 	//	"/ *"->"* /";

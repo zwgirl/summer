@@ -34,9 +34,6 @@ public class XVariableDeclarationImplCustom extends XVariableDeclarationImpl {
 	
 	@Override
 	public String toString() {
-		if (isWriteable()) {
-			return "var " + getSimpleName(); 
-		}
-		return "val " + getSimpleName();
+		return getSimpleName();
 	}
 }

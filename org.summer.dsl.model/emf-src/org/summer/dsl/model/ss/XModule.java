@@ -4,6 +4,7 @@ package org.summer.dsl.model.ss;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xtype.XExportSection;
 import org.summer.dsl.model.xtype.XImportSection1;
 
@@ -15,19 +16,19 @@ import org.summer.dsl.model.xtype.XImportSection1;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.ss.XtendFile#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.XtendFile#getXtendTypes <em>Xtend Types</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.XtendFile#getPackage <em>Package</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.XtendFile#getContents <em>Contents</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.XtendFile#getExportSection <em>Export Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.XModule#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.XModule#getXtendTypes <em>Xtend Types</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.XModule#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.XModule#getContents <em>Contents</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.XModule#getExportSection <em>Export Section</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.summer.dsl.model.ss.SsPackage#getXtendFile()
+ * @see org.summer.dsl.model.ss.SsPackage#getXModule()
  * @model
  * @generated
  */
-public interface XtendFile extends EObject {
+public interface XModule extends JvmType {
 	/**
 	 * Returns the value of the '<em><b>Import Section</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -38,14 +39,14 @@ public interface XtendFile extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Import Section</em>' containment reference.
 	 * @see #setImportSection(XImportSection1)
-	 * @see org.summer.dsl.model.ss.SsPackage#getXtendFile_ImportSection()
+	 * @see org.summer.dsl.model.ss.SsPackage#getXModule_ImportSection()
 	 * @model containment="true"
 	 * @generated
 	 */
 	XImportSection1 getImportSection();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.ss.XtendFile#getImportSection <em>Import Section</em>}' containment reference.
+	 * Sets the value of the '{@link org.summer.dsl.model.ss.XModule#getImportSection <em>Import Section</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Import Section</em>' containment reference.
@@ -64,7 +65,7 @@ public interface XtendFile extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Xtend Types</em>' containment reference list.
-	 * @see org.summer.dsl.model.ss.SsPackage#getXtendFile_XtendTypes()
+	 * @see org.summer.dsl.model.ss.SsPackage#getXModule_XtendTypes()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -80,14 +81,14 @@ public interface XtendFile extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Package</em>' attribute.
 	 * @see #setPackage(String)
-	 * @see org.summer.dsl.model.ss.SsPackage#getXtendFile_Package()
+	 * @see org.summer.dsl.model.ss.SsPackage#getXModule_Package()
 	 * @model
 	 * @generated
 	 */
 	String getPackage();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.ss.XtendFile#getPackage <em>Package</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.ss.XModule#getPackage <em>Package</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Package</em>' attribute.
@@ -106,7 +107,7 @@ public interface XtendFile extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contents</em>' containment reference list.
-	 * @see org.summer.dsl.model.ss.SsPackage#getXtendFile_Contents()
+	 * @see org.summer.dsl.model.ss.SsPackage#getXModule_Contents()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -122,14 +123,14 @@ public interface XtendFile extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Export Section</em>' containment reference.
 	 * @see #setExportSection(XExportSection)
-	 * @see org.summer.dsl.model.ss.SsPackage#getXtendFile_ExportSection()
+	 * @see org.summer.dsl.model.ss.SsPackage#getXModule_ExportSection()
 	 * @model containment="true"
 	 * @generated
 	 */
 	XExportSection getExportSection();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.ss.XtendFile#getExportSection <em>Export Section</em>}' containment reference.
+	 * Sets the value of the '{@link org.summer.dsl.model.ss.XModule#getExportSection <em>Export Section</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Export Section</em>' containment reference.

@@ -33,7 +33,7 @@ import org.summer.dsl.model.ss.XtendEnum;
 import org.summer.dsl.model.ss.XtendEnumLiteral;
 import org.summer.dsl.model.ss.XtendEvent;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendInterface;
 import org.summer.dsl.model.ss.XtendMember;
@@ -145,9 +145,9 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	private CompilerPhases compilerPhases;
 
 	public void infer(@Nullable EObject object, final @NonNull IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		if (!(object instanceof XtendFile))
+		if (!(object instanceof XModule))
 			return;
-		XtendFile xtendFile = (XtendFile) object;
+		XModule xtendFile = (XModule) object;
 		List<Runnable> doLater = newArrayList();
 		//cym modified
 //		for (final XtendTypeDeclaration declaration: xtendFile.getXtendTypes()) {
@@ -260,7 +260,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		}
 	}
 	
-	protected void setNameAndAssociate(XtendFile file, XtendTypeDeclaration xtendType, JvmDeclaredType javaType) {
+	protected void setNameAndAssociate(XModule file, XtendTypeDeclaration xtendType, JvmDeclaredType javaType) {
 		javaType.setPackageName(file.getPackage());
 		javaType.setSimpleName(xtendType.getName());
 		javaType.setVisibility(JvmVisibility.PUBLIC);
@@ -268,7 +268,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		associator.associatePrimary(xtendType, javaType);
 	}
 
-	protected void setFileHeader(final XtendFile xtendFile, final JvmDeclaredType jvmDeclaredType) {
+	protected void setFileHeader(final XModule xtendFile, final JvmDeclaredType jvmDeclaredType) {
 		String headerText = fileHeaderProvider.getFileHeader(xtendFile.eResource());
 		jvmTypesBuilder.setFileHeader(jvmDeclaredType, headerText);
 	}

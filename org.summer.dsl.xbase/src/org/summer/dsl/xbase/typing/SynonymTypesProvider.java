@@ -24,7 +24,6 @@ import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.util.Primitives;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.ImmutableSet;
@@ -45,7 +44,10 @@ public class SynonymTypesProvider {
 	private TypeReferences typeRefs;
 	
 	public Set<JvmTypeReference> getSynonymTypes(JvmTypeReference type, boolean ignoreBoxing) {
-		if (type == null || typeRefs.is(type, Void.class) || typeRefs.is(type,Void.TYPE)) {
+//		if (type == null || typeRefs.is(type, Void.class) || typeRefs.is(type,Void.TYPE)) {
+//			return emptySet();
+//		}  //cym comment
+		if (type == null || typeRefs.is(type, Buildin.Void.JvmType) ) {
 			return emptySet();
 		} else if (!ignoreBoxing && primitives.isPrimitive(type)) {
 			return singletonOrEmpty(primitives.asWrapperTypeIfPrimitive(type));

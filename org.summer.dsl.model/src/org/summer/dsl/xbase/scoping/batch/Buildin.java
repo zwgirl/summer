@@ -9,29 +9,30 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.osgi.framework.Bundle;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
+import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmType;
 
 public enum Buildin {
 	Object("object"), Boolean("boolean"), Function("function"), String("string"), Number("number"), Array(
 			"array"), Date("date"), Integer("int"), Byte("byte"), Short("short"), Float("float"), Double("double"),
-			Iterable("iterable"), List("list"), Type("Type");
+			Iterable("iterable"), List("list"), Type("Type"), Void("Void");
 
 	private Buildin(String name) {
 		this.JvmType = getType(this);
 		this.PrimitiveName = name;
 	}
 
-	public final JvmGenericType JvmType;
+	public final JvmDeclaredType JvmType;
 	public final String PrimitiveName;
 
-	private JvmGenericType getType(Buildin bi) {
-		List<EObject> contents = ((XtendFile) Dual.getResource().getContents()
+	private JvmDeclaredType getType(Buildin bi) {
+		List<EObject> contents = ((XModule) Dual.getResource().getContents()
 				.get(0)).getContents();
 		for (EObject obj : contents) {
 			if (obj instanceof JvmType) {
-				JvmGenericType type = (JvmGenericType) obj;
+				JvmDeclaredType type = (JvmDeclaredType) obj;
 				if (type.getSimpleName().equals(bi.name())) {
 					return type;
 				}

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmTypeReference;
 
@@ -117,6 +118,10 @@ public class XtypeAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseJvmSpecializedTypeReference(JvmSpecializedTypeReference object) {
 				return createJvmSpecializedTypeReferenceAdapter();
+			}
+			@Override
+			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
+				return createJvmIdentifiableElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -303,6 +308,20 @@ public class XtypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmSpecializedTypeReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmIdentifiableElement <em>Jvm Identifiable Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmIdentifiableElement
+	 * @generated
+	 */
+	public Adapter createJvmIdentifiableElementAdapter() {
 		return null;
 	}
 

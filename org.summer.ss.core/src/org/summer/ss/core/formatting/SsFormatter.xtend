@@ -17,7 +17,6 @@ import org.summer.dsl.model.ss.XtendClass
 import org.summer.dsl.model.ss.XtendConstructor
 import org.summer.dsl.model.ss.XtendEnum
 import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.XtendFile
 import org.summer.dsl.model.ss.XtendFunction
 import org.summer.dsl.model.ss.XtendInterface
 import org.summer.dsl.model.ss.XtendMember
@@ -36,6 +35,7 @@ import org.summer.dsl.model.xtype.XImportSection
 import static org.summer.ss.core.formatting.SsFormatterPreferenceKeys.*
 import static org.summer.dsl.model.ss.SsPackage.Literals.*
 import static org.summer.dsl.model.xtype.XtypePackage.Literals.*
+import org.summer.dsl.model.ss.XModule
 
 @SuppressWarnings("restriction")
 public class SsFormatter extends XbaseFormatter2 {
@@ -46,9 +46,9 @@ public class SsFormatter extends XbaseFormatter2 {
 
 	@Inject RichStringFormatter richStringFormatter
 
-	def protected dispatch void format(XtendFile xtendFile, FormattableDocument format) {
+	def protected dispatch void format(XModule xtendFile, FormattableDocument format) {
 		format += xtendFile.nodeForEObject.prepend[noSpace]
-		val pkg = xtendFile.nodeForFeature(XTEND_FILE__PACKAGE)
+		val pkg = xtendFile.nodeForFeature(XMODULE__PACKAGE)
 		format += pkg.prepend[oneSpace]
 		val pkgSemicolon = pkg.immediatelyFollowingKeyword(";")
 		if (pkgSemicolon != null) {

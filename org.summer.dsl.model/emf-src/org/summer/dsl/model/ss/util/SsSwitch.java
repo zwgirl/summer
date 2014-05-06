@@ -9,6 +9,7 @@ import org.summer.dsl.model.ss.*;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XBlockExpression;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XForEachExpression;
@@ -72,9 +73,11 @@ public class SsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case SsPackage.XTEND_FILE: {
-				XtendFile xtendFile = (XtendFile)theEObject;
-				T result = caseXtendFile(xtendFile);
+			case SsPackage.XMODULE: {
+				XModule xModule = (XModule)theEObject;
+				T result = caseXModule(xModule);
+				if (result == null) result = caseJvmType(xModule);
+				if (result == null) result = caseJvmIdentifiableElement(xModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -257,17 +260,17 @@ public class SsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XModule</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Xtend File</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XModule</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXtendFile(XtendFile object) {
+	public T caseXModule(XModule object) {
 		return null;
 	}
 
@@ -673,6 +676,21 @@ public class SsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmIdentifiableElement(JvmIdentifiableElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmType(JvmType object) {
 		return null;
 	}
 

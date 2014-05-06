@@ -44,7 +44,7 @@ public class TypeLiteralScope extends AbstractSessionBasedScope {
 		IEObjectDescription typeDescription = typeScope.getSingleElement(fqn);
 		if (typeDescription != null) {
 			EObject type = typeDescription.getEObjectOrProxy();
-			if (type instanceof JvmType)
+			if (type instanceof JvmType)  
 				return Collections.<IEObjectDescription>singletonList(new TypeLiteralDescription(typeDescription, isVisible((JvmType) type)));
 		}
 		return Collections.emptyList();

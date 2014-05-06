@@ -16,6 +16,10 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
+import org.eclipse.xtext.diagnostics.Severity;
+import org.eclipse.xtext.util.IAcceptor;
+import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmExecutable;
@@ -24,10 +28,6 @@ import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
-import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
-import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.util.IAcceptor;
-import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -35,6 +35,7 @@ import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
@@ -187,7 +188,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 				}
 			}
 			JvmIdentifiableElement feature = getFeature();
-			if (feature instanceof XVariableDeclaration && ((XVariableDeclaration) feature).isWriteable()) {
+			if (feature instanceof XVariableDeclaration && ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isWriteable()) {
 				XClosure containingClosure = EcoreUtil2.getContainerOfType(getExpression(), XClosure.class);
 				if (containingClosure != null && !EcoreUtil.isAncestor(containingClosure, feature)) {
 					String message = String.format("Cannot refer to the non-final variable %s inside a lambda expression", feature.getSimpleName());

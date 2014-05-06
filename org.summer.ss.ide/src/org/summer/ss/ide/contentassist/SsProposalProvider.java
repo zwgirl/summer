@@ -16,7 +16,7 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.summer.dsl.model.ss.XtendClass;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendParameter;
 import org.eclipse.xtext.Assignment;
@@ -57,7 +57,7 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 
 	@Override
 	protected ITypesProposalProvider.Filter createVisibilityFilter(ContentAssistContext context, int searchFor) {
-		XtendFile file = (XtendFile) context.getRootModel();
+		XModule file = (XModule) context.getRootModel();
 		final char[] contextPackageName = Strings.emptyIfNull(file.getPackage()).toCharArray(); 
 		return new TypeMatchFilters.All(searchFor) {
 			@Override

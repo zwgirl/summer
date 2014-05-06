@@ -14,7 +14,6 @@ import java.math.BigInteger;
 
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XNumberLiteral;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 /**

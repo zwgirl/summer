@@ -20,6 +20,15 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.generator.trace.ILocationData;
+import org.eclipse.xtext.generator.trace.LocationData;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.util.ITextRegionWithLineInformation;
+import org.eclipse.xtext.util.TextRegionWithLineInformation;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmBooleanAnnotationValue;
@@ -44,15 +53,6 @@ import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.util.ITypeArgumentContext;
 import org.summer.dsl.model.types.util.Primitives;
-import org.eclipse.xtext.generator.trace.ILocationData;
-import org.eclipse.xtext.generator.trace.LocationData;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.ILeafNode;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.resource.ILocationInFileProvider;
-import org.eclipse.xtext.util.ITextRegionWithLineInformation;
-import org.eclipse.xtext.util.TextRegionWithLineInformation;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -62,6 +62,7 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.summer.dsl.xbase.featurecalls.IdentifiableSimpleNameProvider;
@@ -385,7 +386,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			// check for final modifier
 			if (featureCall.getFeature() instanceof XVariableDeclaration) {
 				XVariableDeclaration variableDeclaration = (XVariableDeclaration) featureCall.getFeature();
-				if (!variableDeclaration.isWriteable()) {
+				if (!((XVariableDeclarationList)variableDeclaration.eContainer()).isWriteable()) {
 					internalToJavaStatement(arg, b, true);
 					return;
 				}

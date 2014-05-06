@@ -28,7 +28,7 @@ import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.eclipse.xtext.util.IResourceScopeCache;
 import org.eclipse.xtext.util.Strings;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmMember;
@@ -175,9 +175,9 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return importedNamesAdapter;
 	}
 
-	protected XtendFile getXtendFile(final EObject context) {
+	protected XModule getXtendFile(final EObject context) {
 		Resource resource = context.eResource();
-		XtendFile result = (XtendFile) resource.getContents().get(0);
+		XModule result = (XModule) resource.getContents().get(0);
 		return result;
 	}
 	

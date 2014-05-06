@@ -11,7 +11,6 @@ import org.summer.dsl.model.ss.XtendConstructor
 import org.summer.dsl.model.ss.XtendEnum
 import org.summer.dsl.model.ss.XtendEnumLiteral
 import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.XtendFile
 import org.summer.dsl.model.ss.XtendFunction
 import org.summer.dsl.model.ss.XtendInterface
 import org.summer.dsl.model.types.JvmOperation
@@ -20,6 +19,7 @@ import org.summer.dsl.xbase.ui.labeling.XbaseImageAdornments
 import org.summer.dsl.xbase.ui.labeling.XbaseLabelProvider
 import org.summer.dsl.xbase.validation.UIStrings
 import org.summer.dsl.model.ss.XtendTypeDeclaration
+import org.summer.dsl.model.ss.XModule
 
 /**
  * Provides labels for Xtend elements.
@@ -43,7 +43,7 @@ public class SsLabelProvider extends XbaseLabelProvider {
 		super(delegate)
 	}
 
-	protected def dispatch imageDescriptor(XtendFile element) {
+	protected def dispatch imageDescriptor(XModule element) {
 		images.forFile
 	}
 
@@ -86,7 +86,7 @@ public class SsLabelProvider extends XbaseLabelProvider {
 		images.forField(element.visibility, adornments.get(element.jvmField))
 	}
 	
-	protected def text(XtendFile element) {
+	protected def text(XModule element) {
 		element.eResource.URI.trimFileExtension.lastSegment
 	}
 

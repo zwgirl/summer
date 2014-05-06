@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.summer.dsl.model.ss.XtendConstructor;
 import org.summer.dsl.model.ss.XtendEnumLiteral;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
@@ -38,7 +38,7 @@ public class SsQualifiedNameProvider extends XbaseQualifiedNameProvider {
 			String typeName = typeDecl.getName();
 			if (typeName == null)
 				return null;
-			XtendFile file = (XtendFile) typeDecl.eContainer();
+			XModule file = (XModule) typeDecl.eContainer();
 			String packageName = file.getPackage();
 			if (packageName != null) {
 				return qualifiedNameConverter.toQualifiedName(packageName).append(typeName);

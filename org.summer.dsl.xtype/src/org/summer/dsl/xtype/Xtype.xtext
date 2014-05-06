@@ -68,18 +68,31 @@ ValidID:
 XImportSection1 returns XImportSection1:
 	(importDeclarations+=XImportDeclaration1 ';'?)+;
 
+//XImportDeclaration1 returns XImportDeclaration1: 
+//	'import' (( 
+//		(('{'
+//		importItems += XImportItem (',' importItems += XImportItem)*  
+//		'}')
+//		|
+//		(importItems += XImportItem ))
+//		
+//		'from' importURI=STRING )
+//	 |
+//	('from' importURI=STRING 'as' alias = ID))
+//		
+//;
+
 XImportDeclaration1 returns XImportDeclaration1: 
-	'import' (( 
-		(('{'
-		importItems += XImportItem (',' importItems += XImportItem)*  
-		'}')
-		|
-		(importItems += XImportItem ))
+	{XImportDeclaration1}
+	'import' 
+		'{'
+			((importItems += XImportItem (',' importItems += XImportItem)*)
+			| wildcard ?= '*'
+			)
+		'}'
 		
-		'from' importURI=STRING )
-	 |
-	('from' importURI=STRING 'as' alias = ID))
-		
+		'as' name=ValidID
+		'from' importURI=STRING 
 ;
 
 XImportItem returns XImportItem:

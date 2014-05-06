@@ -87,51 +87,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_MODULE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_MODULE__SIMPLE_NAME = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_MODULE__IMPORT_SECTION = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_MODULE__CONTENTS = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Export Section</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_MODULE__EXPORT_SECTION = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Jvm Module</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_MODULE_FEATURE_COUNT = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmNoModuleImpl <em>Jvm No Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,6 +95,70 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	int JVM_NO_MODULE = 2;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeImpl <em>Jvm Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmType()
+	 * @generated
+	 */
+	int JVM_TYPE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_TYPE_FEATURE_COUNT = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__SIMPLE_NAME = JVM_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__IMPORT_SECTION = JVM_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__CONTENTS = JVM_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Export Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__EXPORT_SECTION = JVM_TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
@@ -167,25 +186,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_NO_MODULE_FEATURE_COUNT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeImpl <em>Jvm Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmTypeImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmType()
-	 * @generated
-	 */
-	int JVM_TYPE = 3;
-
-	/**
-	 * The number of structural features of the '<em>Jvm Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_TYPE_FEATURE_COUNT = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmVoidImpl <em>Jvm Void</em>}' class.

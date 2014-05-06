@@ -430,6 +430,22 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case XbasePackage.XTEMPLATE: {
+				XTemplate xTemplate = (XTemplate)theEObject;
+				T result = caseXTemplate(xTemplate);
+				if (result == null) result = caseXBlockExpression(xTemplate);
+				if (result == null) result = caseXExpression(xTemplate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.RICH_STRING_LITERAL: {
+				RichStringLiteral richStringLiteral = (RichStringLiteral)theEObject;
+				T result = caseRichStringLiteral(richStringLiteral);
+				if (result == null) result = caseXStringLiteral(richStringLiteral);
+				if (result == null) result = caseXExpression(richStringLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1151,6 +1167,36 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXFieldLiteralPart(XFieldLiteralPart object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XTemplate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XTemplate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXTemplate(XTemplate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rich String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rich String Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRichStringLiteral(RichStringLiteral object) {
 		return null;
 	}
 

@@ -21,7 +21,7 @@ import org.summer.dsl.model.ss.XtendEnum;
 import org.summer.dsl.model.ss.XtendEnumLiteral;
 import org.summer.dsl.model.ss.XtendEvent;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFormalParameter;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendInterface;
@@ -41,7 +41,7 @@ import org.summer.dsl.model.ss.impl.XtendConstructorImpl;
 import org.summer.dsl.model.ss.impl.XtendEnumImplCustom;
 import org.summer.dsl.model.ss.impl.XtendEnumLiteralImplCustom;
 import org.summer.dsl.model.ss.impl.XtendFieldImplCustom;
-import org.summer.dsl.model.ss.impl.XtendFileImpl;
+import org.summer.dsl.model.ss.impl.XModuleImpl;
 import org.summer.dsl.model.ss.impl.XtendFormalParameterImpl;
 import org.summer.dsl.model.ss.impl.XtendFunctionImplCustom;
 import org.summer.dsl.model.ss.impl.XtendInterfaceImplCustom;
@@ -95,7 +95,7 @@ public class SsFactoryImpl extends EFactoryImpl implements SsFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case SsPackage.XTEND_FILE: return createXtendFile();
+			case SsPackage.XMODULE: return createXModule();
 			case SsPackage.XTEND_CLASS: return createXtendClass();
 			case SsPackage.XTEND_MEMBER: return createXtendMember();
 			case SsPackage.XTEND_FUNCTION: return createXtendFunction();
@@ -120,17 +120,6 @@ public class SsFactoryImpl extends EFactoryImpl implements SsFactory {
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XtendFile createXtendFile()
-	{
-		XtendFileImpl xtendFile = new XtendFileImpl();
-		return xtendFile;
 	}
 
 	/**
@@ -368,6 +357,11 @@ public class SsFactoryImpl extends EFactoryImpl implements SsFactory {
 	@Deprecated
 	public static SsPackage getPackage() {
 		return SsPackage.eINSTANCE;
+	}
+
+	@Override
+	public XModule createXModule() {
+		return new XModuleImpl();
 	}
 
 } //SsFactoryImpl

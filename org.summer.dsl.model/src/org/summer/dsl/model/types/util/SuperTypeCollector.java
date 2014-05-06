@@ -27,7 +27,6 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeConstraint;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Sets;

@@ -33,7 +33,7 @@ public class SsDescriptionLabelProvider extends DefaultDescriptionLabelProvider 
 	public Object image(IEObjectDescription element) {
 		EClass eClass = element.getEClass();
 		int adornments = (descriptionFlags.isStatic(element)) ? JavaElementImageDescriptor.STATIC : 0;
-		if (eClass == XTEND_FILE)
+		if (eClass == XMODULE)
 			return images.forFile();
 		else if (eClass == XIMPORT_DECLARATION)
 			return images.forImport();

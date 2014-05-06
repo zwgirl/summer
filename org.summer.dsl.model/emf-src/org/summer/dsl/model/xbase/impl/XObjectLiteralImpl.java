@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl;
 import org.summer.dsl.model.types.impl.JvmDeclaredTypeImplCustom;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XbasePackage;

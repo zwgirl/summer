@@ -34,7 +34,6 @@ import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.access.IJvmTypeProvider;
 import org.summer.dsl.model.types.access.TypeResource;
 import org.summer.dsl.model.types.access.impl.ClassURIHelper;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Lists;

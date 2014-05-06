@@ -12,8 +12,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable <em>Writeable</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#getDeclarations <em>Declarations</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable <em>Writeable</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>

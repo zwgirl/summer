@@ -33,7 +33,6 @@ import org.summer.dsl.model.ss.XtendConstructor
 import org.summer.dsl.model.ss.XtendEnum
 import org.summer.dsl.model.ss.XtendEnumLiteral
 import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.XtendFile
 import org.summer.dsl.model.ss.XtendFunction
 import org.summer.dsl.model.ss.XtendInterface
 import org.summer.dsl.model.ss.XtendMember
@@ -111,6 +110,7 @@ import org.summer.dsl.xbase.typesystem.references.IndexingOwnedConverter
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference
 import org.summer.dsl.xbase.typesystem.references.OwnedConverter
 import org.summer.dsl.xbase.typesystem.util.CommonTypeComputationServices
+import org.summer.dsl.model.ss.XModule
 
 class CompilationUnitImpl implements CompilationUnit {
 	
@@ -155,7 +155,7 @@ class CompilationUnitImpl implements CompilationUnit {
 	
 	@Inject CompilerPhases compilerPhases;
 
-	@Property XtendFile xtendFile
+	@Property XModule xtendFile
 	@Inject CommonTypeComputationServices services;
 	@Inject TypeReferences typeReferences
 	@Inject JvmTypesBuilder typesBuilder
@@ -214,7 +214,7 @@ class CompilationUnitImpl implements CompilationUnit {
 		return fileSystemSupport.getPath(xtendFile.eResource)
 	}
 	
-	def void setXtendFile(XtendFile xtendFile) {
+	def void setXtendFile(XModule xtendFile) {
 		this._xtendFile = xtendFile
 		val standardTypeReferenceOwner = new StandardTypeReferenceOwner(services, xtendFile.eResource.resourceSet)
 		if (indexing) {

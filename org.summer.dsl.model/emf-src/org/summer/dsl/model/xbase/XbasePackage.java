@@ -288,31 +288,13 @@ public interface XbasePackage extends EPackage {
 	int XVARIABLE_DECLARATION__RIGHT = XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Writeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XVARIABLE_DECLARATION__WRITEABLE = XEXPRESSION_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Exported</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XVARIABLE_DECLARATION__EXPORTED = XEXPRESSION_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>XVariable Declaration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XVARIABLE_DECLARATION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 5;
+	int XVARIABLE_DECLARATION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl <em>XVariable Declaration List</em>}' class.
@@ -325,22 +307,22 @@ public interface XbasePackage extends EPackage {
 	int XVARIABLE_DECLARATION_LIST = 6;
 
 	/**
-	 * The feature id for the '<em><b>Writeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XVARIABLE_DECLARATION_LIST__WRITEABLE = XEXPRESSION_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XVARIABLE_DECLARATION_LIST__DECLARATIONS = XEXPRESSION_FEATURE_COUNT + 1;
+	int XVARIABLE_DECLARATION_LIST__DECLARATIONS = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Writeable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XVARIABLE_DECLARATION_LIST__WRITEABLE = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Exported</b></em>' attribute.
@@ -2762,13 +2744,22 @@ public interface XbasePackage extends EPackage {
 	int XSTRUCT_LITERAL__TYPE = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XSTRUCT_LITERAL__TYPE_ARGUMENTS = XEXPRESSION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>XStruct Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XSTRUCT_LITERAL_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 2;
+	int XSTRUCT_LITERAL_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl <em>XField Literal Part</em>}' class.
@@ -2806,6 +2797,62 @@ public interface XbasePackage extends EPackage {
 	 * @ordered
 	 */
 	int XFIELD_LITERAL_PART_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XTemplateImpl <em>XTemplate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XTemplateImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTemplate()
+	 * @generated
+	 */
+	int XTEMPLATE = 48;
+
+	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEMPLATE__EXPRESSIONS = XBLOCK_EXPRESSION__EXPRESSIONS;
+
+	/**
+	 * The number of structural features of the '<em>XTemplate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XTEMPLATE_FEATURE_COUNT = XBLOCK_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.RichStringLiteralImpl <em>Rich String Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.RichStringLiteralImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getRichStringLiteral()
+	 * @generated
+	 */
+	int RICH_STRING_LITERAL = 49;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RICH_STRING_LITERAL__VALUE = XSTRING_LITERAL__VALUE;
+
+	/**
+	 * The number of structural features of the '<em>Rich String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RICH_STRING_LITERAL_FEATURE_COUNT = XSTRING_LITERAL_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
@@ -3020,28 +3067,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXVariableDeclaration_Right();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclaration#isWriteable <em>Writeable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Writeable</em>'.
-	 * @see org.summer.dsl.model.xbase.XVariableDeclaration#isWriteable()
-	 * @see #getXVariableDeclaration()
-	 * @generated
-	 */
-	EAttribute getXVariableDeclaration_Writeable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclaration#isExported <em>Exported</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Exported</em>'.
-	 * @see org.summer.dsl.model.xbase.XVariableDeclaration#isExported()
-	 * @see #getXVariableDeclaration()
-	 * @generated
-	 */
-	EAttribute getXVariableDeclaration_Exported();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XVariableDeclarationList <em>XVariable Declaration List</em>}'.
@@ -4510,6 +4535,17 @@ public interface XbasePackage extends EPackage {
 	EReference getXStructLiteral_Type();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XStructLiteral#getTypeArguments <em>Type Arguments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Type Arguments</em>'.
+	 * @see org.summer.dsl.model.xbase.XStructLiteral#getTypeArguments()
+	 * @see #getXStructLiteral()
+	 * @generated
+	 */
+	EReference getXStructLiteral_TypeArguments();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XFieldLiteralPart <em>XField Literal Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4540,6 +4576,26 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXFieldLiteralPart_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XTemplate <em>XTemplate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XTemplate</em>'.
+	 * @see org.summer.dsl.model.xbase.XTemplate
+	 * @generated
+	 */
+	EClass getXTemplate();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.RichStringLiteral <em>Rich String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rich String Literal</em>'.
+	 * @see org.summer.dsl.model.xbase.RichStringLiteral
+	 * @generated
+	 */
+	EClass getRichStringLiteral();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4734,22 +4790,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XVARIABLE_DECLARATION__RIGHT = eINSTANCE.getXVariableDeclaration_Right();
-
-		/**
-		 * The meta object literal for the '<em><b>Writeable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XVARIABLE_DECLARATION__WRITEABLE = eINSTANCE.getXVariableDeclaration_Writeable();
-
-		/**
-		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XVARIABLE_DECLARATION__EXPORTED = eINSTANCE.getXVariableDeclaration_Exported();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl <em>XVariable Declaration List</em>}' class.
@@ -5930,6 +5970,14 @@ public interface XbasePackage extends EPackage {
 		EReference XSTRUCT_LITERAL__TYPE = eINSTANCE.getXStructLiteral_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Type Arguments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XSTRUCT_LITERAL__TYPE_ARGUMENTS = eINSTANCE.getXStructLiteral_TypeArguments();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XFieldLiteralPartImpl <em>XField Literal Part</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5954,6 +6002,26 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XFIELD_LITERAL_PART__VALUE = eINSTANCE.getXFieldLiteralPart_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XTemplateImpl <em>XTemplate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XTemplateImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTemplate()
+		 * @generated
+		 */
+		EClass XTEMPLATE = eINSTANCE.getXTemplate();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.RichStringLiteralImpl <em>Rich String Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.RichStringLiteralImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getRichStringLiteral()
+		 * @generated
+		 */
+		EClass RICH_STRING_LITERAL = eINSTANCE.getRichStringLiteral();
 
 	}
 

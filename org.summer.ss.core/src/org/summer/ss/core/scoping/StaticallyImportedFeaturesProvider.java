@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
@@ -104,9 +104,9 @@ public class StaticallyImportedFeaturesProvider extends AbstractStaticMethodsFea
 
 	protected List<XImportDeclaration1> getImports() {
 		Resource resource = getContext();
-		if (resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XtendFile))
+		if (resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XModule))
 			return Collections.emptyList();
-		XtendFile file = (XtendFile) resource.getContents().get(0);
+		XModule file = (XModule) resource.getContents().get(0);
 		if(file.getImportSection() == null) 
 			return emptyList();
 		else

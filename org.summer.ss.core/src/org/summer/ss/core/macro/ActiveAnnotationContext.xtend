@@ -22,7 +22,6 @@ import org.summer.dsl.model.ss.XtendAnnotationTarget
 import org.summer.dsl.model.ss.XtendClass
 import org.summer.dsl.model.ss.XtendConstructor
 import org.summer.dsl.model.ss.XtendEnum
-import org.summer.dsl.model.ss.XtendFile
 import org.summer.dsl.model.ss.XtendFunction
 import org.summer.dsl.model.ss.XtendInterface
 import org.summer.dsl.model.types.JvmAnnotationType
@@ -32,6 +31,7 @@ import org.eclipse.xtext.util.internal.Stopwatches
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl
 import org.summer.dsl.model.xannotation.XAnnotation
 import org.summer.dsl.model.xannotation.XannotationPackage
+import org.summer.dsl.model.ss.XModule
 
 /**
  * @author Sven Efftinge
@@ -122,7 +122,7 @@ class ActiveAnnotationContextProvider {
 	@Inject extension ProcessorInstanceForJvmTypeProvider
 	@Inject Provider<CompilationUnitImpl> compilationUnitProvider
 	
-	def ActiveAnnotationContexts computeContext(XtendFile file) {
+	def ActiveAnnotationContexts computeContext(XModule file) {
 		//TODO measure and improve (is called twice for each xtendfile)
 		val task = Stopwatches.forTask('[macros] findActiveAnnotations (ActiveAnnotationContextProvider.computeContext)')
 		task.start
@@ -173,7 +173,7 @@ class ActiveAnnotationContextProvider {
 	 */
 	def private void searchAnnotatedElements(EObject element, IAcceptor<Pair<JvmAnnotationType, XAnnotation>> acceptor) {
 		switch element {
-			XtendFile : {
+			XModule : {
 				element.xtendTypes.forEach [
 					searchAnnotatedElements(acceptor)
 				]

@@ -30,7 +30,6 @@ import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.base.Function;

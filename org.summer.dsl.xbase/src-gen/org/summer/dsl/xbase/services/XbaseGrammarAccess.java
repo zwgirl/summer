@@ -1888,17 +1888,19 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXNullLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		private final RuleCall cXStringLiteralParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		private final RuleCall cXTypeLiteralParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cXTemplateLiteralParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		////	|
 		// //	XKeyValuePair
 		// XLiteral returns XExpression: //	XCollectionLiteral |
 		// XObjectLiteral | XStructLiteral |
-		//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
+		//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral |
+		//	XTemplateLiteral;
 		public ParserRule getRule() { return rule; }
 
 		////	XCollectionLiteral |
 		// XObjectLiteral | XStructLiteral | XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral |
-		//XNullLiteral | XStringLiteral | XTypeLiteral
+		//XNullLiteral | XStringLiteral | XTypeLiteral | XTemplateLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		////	XCollectionLiteral |
@@ -1928,6 +1930,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 
 		//XTypeLiteral
 		public RuleCall getXTypeLiteralParserRuleCall_8() { return cXTypeLiteralParserRuleCall_8; }
+
+		//XTemplateLiteral
+		public RuleCall getXTemplateLiteralParserRuleCall_9() { return cXTemplateLiteralParserRuleCall_9; }
 	}
 
 	public class XClosureElements extends AbstractParserRuleElementFinder {
@@ -2780,13 +2785,18 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XVariableDeclarationList");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cXVariableDeclarationListAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cVarKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cDeclarationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDeclarationsXVariableDeclarationParserRuleCall_2_0 = (RuleCall)cDeclarationsAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cDeclarationsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cDeclarationsXVariableDeclarationParserRuleCall_3_1_0 = (RuleCall)cDeclarationsAssignment_3_1.eContents().get(0);
+		private final Assignment cExportedAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cExportedExportKeyword_1_0 = (Keyword)cExportedAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cVarKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Assignment cWriteableAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final Keyword cWriteableConstKeyword_2_1_0 = (Keyword)cWriteableAssignment_2_1.eContents().get(0);
+		private final Assignment cDeclarationsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDeclarationsXVariableDeclarationParserRuleCall_3_0 = (RuleCall)cDeclarationsAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDeclarationsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDeclarationsXVariableDeclarationParserRuleCall_4_1_0 = (RuleCall)cDeclarationsAssignment_4_1.eContents().get(0);
 		
 		////XVariableDeclaration returns XExpression:
 		// //	{XVariableDeclaration}
@@ -2819,35 +2829,52 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		// //;
 		//
 		//XVariableDeclarationList returns XExpression:
-		//	{XVariableDeclarationList} "var" declarations+=XVariableDeclaration ("," declarations+=XVariableDeclaration)*;
+		//	{XVariableDeclarationList} exported?="export"? ("var" | writeable?="const") declarations+=XVariableDeclaration (","
+		//	declarations+=XVariableDeclaration)*;
 		public ParserRule getRule() { return rule; }
 
-		//{XVariableDeclarationList} "var" declarations+=XVariableDeclaration ("," declarations+=XVariableDeclaration)*
+		//{XVariableDeclarationList} exported?="export"? ("var" | writeable?="const") declarations+=XVariableDeclaration (","
+		//declarations+=XVariableDeclaration)*
 		public Group getGroup() { return cGroup; }
 
 		//{XVariableDeclarationList}
 		public Action getXVariableDeclarationListAction_0() { return cXVariableDeclarationListAction_0; }
 
+		//exported?="export"?
+		public Assignment getExportedAssignment_1() { return cExportedAssignment_1; }
+
+		//"export"
+		public Keyword getExportedExportKeyword_1_0() { return cExportedExportKeyword_1_0; }
+
+		//"var" | writeable?="const"
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
 		//"var"
-		public Keyword getVarKeyword_1() { return cVarKeyword_1; }
+		public Keyword getVarKeyword_2_0() { return cVarKeyword_2_0; }
+
+		//writeable?="const"
+		public Assignment getWriteableAssignment_2_1() { return cWriteableAssignment_2_1; }
+
+		//"const"
+		public Keyword getWriteableConstKeyword_2_1_0() { return cWriteableConstKeyword_2_1_0; }
 
 		//declarations+=XVariableDeclaration
-		public Assignment getDeclarationsAssignment_2() { return cDeclarationsAssignment_2; }
+		public Assignment getDeclarationsAssignment_3() { return cDeclarationsAssignment_3; }
 
 		//XVariableDeclaration
-		public RuleCall getDeclarationsXVariableDeclarationParserRuleCall_2_0() { return cDeclarationsXVariableDeclarationParserRuleCall_2_0; }
+		public RuleCall getDeclarationsXVariableDeclarationParserRuleCall_3_0() { return cDeclarationsXVariableDeclarationParserRuleCall_3_0; }
 
 		//("," declarations+=XVariableDeclaration)*
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//","
-		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
 		//declarations+=XVariableDeclaration
-		public Assignment getDeclarationsAssignment_3_1() { return cDeclarationsAssignment_3_1; }
+		public Assignment getDeclarationsAssignment_4_1() { return cDeclarationsAssignment_4_1; }
 
 		//XVariableDeclaration
-		public RuleCall getDeclarationsXVariableDeclarationParserRuleCall_3_1_0() { return cDeclarationsXVariableDeclarationParserRuleCall_3_1_0; }
+		public RuleCall getDeclarationsXVariableDeclarationParserRuleCall_4_1_0() { return cDeclarationsXVariableDeclarationParserRuleCall_4_1_0; }
 	}
 
 	public class XVariableDeclarationElements extends AbstractParserRuleElementFinder {
@@ -3220,6 +3247,108 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getSuperKeyword_1() { return cSuperKeyword_1; }
 	}
 
+	public class XObjectLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XObjectLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXObjectLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cNewKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMembersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMembersXObjectLiteralPartParserRuleCall_3_0 = (RuleCall)cMembersAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cMembersAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cMembersXObjectLiteralPartParserRuleCall_4_1_0 = (RuleCall)cMembersAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		////XObjectLiteral returns XExpression:
+		// //	{XObjectLiteral}
+		// //	'new' '{'
+		//
+		////		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
+		// //	'}'
+		// //;
+		// //
+		//
+		////XObjectLiteralPart returns types::JvmMember:
+		// //	{XObjectLiteralPart}
+		// //	simpleName=ID ':' value=XExpression
+		// //;
+		//
+		//XObjectLiteral returns XExpression:
+		//	{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}";
+		public ParserRule getRule() { return rule; }
+
+		//{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}"
+		public Group getGroup() { return cGroup; }
+
+		//{XObjectLiteral}
+		public Action getXObjectLiteralAction_0() { return cXObjectLiteralAction_0; }
+
+		//"new"
+		public Keyword getNewKeyword_1() { return cNewKeyword_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//members+=XObjectLiteralPart
+		public Assignment getMembersAssignment_3() { return cMembersAssignment_3; }
+
+		//XObjectLiteralPart
+		public RuleCall getMembersXObjectLiteralPartParserRuleCall_3_0() { return cMembersXObjectLiteralPartParserRuleCall_3_0; }
+
+		//("," members+=XObjectLiteralPart)*
+		public Group getGroup_4() { return cGroup_4; }
+
+		//","
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
+
+		//members+=XObjectLiteralPart
+		public Assignment getMembersAssignment_4_1() { return cMembersAssignment_4_1; }
+
+		//XObjectLiteralPart
+		public RuleCall getMembersXObjectLiteralPartParserRuleCall_4_1_0() { return cMembersXObjectLiteralPartParserRuleCall_4_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class XObjectLiteralPartElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XObjectLiteralPart");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXObjectLiteralPartAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cSimpleNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cSimpleNameIDTerminalRuleCall_1_0 = (RuleCall)cSimpleNameAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDefaultValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDefaultValueXExpressionParserRuleCall_3_0 = (RuleCall)cDefaultValueAssignment_3.eContents().get(0);
+		
+		//XObjectLiteralPart returns types::JvmMember:
+		//	{XObjectLiteralPart} simpleName=ID ":" defaultValue=XExpression;
+		public ParserRule getRule() { return rule; }
+
+		//{XObjectLiteralPart} simpleName=ID ":" defaultValue=XExpression
+		public Group getGroup() { return cGroup; }
+
+		//{XObjectLiteralPart}
+		public Action getXObjectLiteralPartAction_0() { return cXObjectLiteralPartAction_0; }
+
+		//simpleName=ID
+		public Assignment getSimpleNameAssignment_1() { return cSimpleNameAssignment_1; }
+
+		//ID
+		public RuleCall getSimpleNameIDTerminalRuleCall_1_0() { return cSimpleNameIDTerminalRuleCall_1_0; }
+
+		//":"
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+
+		//defaultValue=XExpression
+		public Assignment getDefaultValueAssignment_3() { return cDefaultValueAssignment_3; }
+
+		//XExpression
+		public RuleCall getDefaultValueXExpressionParserRuleCall_3_0() { return cDefaultValueXExpressionParserRuleCall_3_0; }
+	}
+
 	public class XConstructorCallElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XConstructorCall");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -3332,108 +3461,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisKeyword_4_2() { return cRightParenthesisKeyword_4_2; }
 	}
 
-	public class XObjectLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XObjectLiteral");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cXObjectLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cNewKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cMembersAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cMembersXObjectLiteralPartParserRuleCall_3_0 = (RuleCall)cMembersAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cMembersAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cMembersXObjectLiteralPartParserRuleCall_4_1_0 = (RuleCall)cMembersAssignment_4_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		////XObjectLiteral returns XExpression:
-		// //	{XObjectLiteral}
-		// //	'new' '{'
-		//
-		////		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
-		// //	'}'
-		// //;
-		// //
-		//
-		////XObjectLiteralPart returns types::JvmMember:
-		// //	{XObjectLiteralPart}
-		// //	simpleName=ID ':' value=XExpression
-		// //;
-		//
-		//XObjectLiteral returns XExpression:
-		//	{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}";
-		public ParserRule getRule() { return rule; }
-
-		//{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}"
-		public Group getGroup() { return cGroup; }
-
-		//{XObjectLiteral}
-		public Action getXObjectLiteralAction_0() { return cXObjectLiteralAction_0; }
-
-		//"new"
-		public Keyword getNewKeyword_1() { return cNewKeyword_1; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//members+=XObjectLiteralPart
-		public Assignment getMembersAssignment_3() { return cMembersAssignment_3; }
-
-		//XObjectLiteralPart
-		public RuleCall getMembersXObjectLiteralPartParserRuleCall_3_0() { return cMembersXObjectLiteralPartParserRuleCall_3_0; }
-
-		//("," members+=XObjectLiteralPart)*
-		public Group getGroup_4() { return cGroup_4; }
-
-		//","
-		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
-
-		//members+=XObjectLiteralPart
-		public Assignment getMembersAssignment_4_1() { return cMembersAssignment_4_1; }
-
-		//XObjectLiteralPart
-		public RuleCall getMembersXObjectLiteralPartParserRuleCall_4_1_0() { return cMembersXObjectLiteralPartParserRuleCall_4_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-
-	public class XObjectLiteralPartElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XObjectLiteralPart");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cXObjectLiteralPartAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cSimpleNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSimpleNameIDTerminalRuleCall_1_0 = (RuleCall)cSimpleNameAssignment_1.eContents().get(0);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cDefaultValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDefaultValueXExpressionParserRuleCall_3_0 = (RuleCall)cDefaultValueAssignment_3.eContents().get(0);
-		
-		//XObjectLiteralPart returns types::JvmMember:
-		//	{XObjectLiteralPart} simpleName=ID ":" defaultValue=XExpression;
-		public ParserRule getRule() { return rule; }
-
-		//{XObjectLiteralPart} simpleName=ID ":" defaultValue=XExpression
-		public Group getGroup() { return cGroup; }
-
-		//{XObjectLiteralPart}
-		public Action getXObjectLiteralPartAction_0() { return cXObjectLiteralPartAction_0; }
-
-		//simpleName=ID
-		public Assignment getSimpleNameAssignment_1() { return cSimpleNameAssignment_1; }
-
-		//ID
-		public RuleCall getSimpleNameIDTerminalRuleCall_1_0() { return cSimpleNameIDTerminalRuleCall_1_0; }
-
-		//":"
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
-
-		//defaultValue=XExpression
-		public Assignment getDefaultValueAssignment_3() { return cDefaultValueAssignment_3; }
-
-		//XExpression
-		public RuleCall getDefaultValueXExpressionParserRuleCall_3_0() { return cDefaultValueXExpressionParserRuleCall_3_0; }
-	}
-
 	public class XStructLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XStructLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -3452,12 +3479,16 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//XStructLiteral returns XExpression:
-		//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName] "{" properties+=XFieldLiteralPart (","
-		//	properties+=XFieldLiteralPart)* "}";
+		//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName]
+		//	//	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+		// "{"
+		//	properties+=XFieldLiteralPart ("," properties+=XFieldLiteralPart)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName] "{" properties+=XFieldLiteralPart (","
-		//properties+=XFieldLiteralPart)* "}"
+		//{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName]
+		////	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+		// "{"
+		//properties+=XFieldLiteralPart ("," properties+=XFieldLiteralPart)* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{XStructLiteral}
@@ -3475,7 +3506,8 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getTypeJvmStructTypeQualifiedNameParserRuleCall_2_0_1() { return cTypeJvmStructTypeQualifiedNameParserRuleCall_2_0_1; }
 
-		//"{"
+		////	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+		// "{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//properties+=XFieldLiteralPart
@@ -3705,7 +3737,47 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cArrayDimensionsArrayBracketsParserRuleCall_4_0 = (RuleCall)cArrayDimensionsAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//XTypeLiteral returns XExpression:
+		////XTemplateLiteral returns XExpression:
+		// //	{XTemplate} ( 
+		// //	  expressions+=RichStringLiteral |
+		//
+		////	  expressions+=RichStringLiteralStart expressions+=XExpression? 
+		//
+		////	  	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* 
+		// //	  expressions+=RichStringLiteralEnd
+		//
+		////	)
+		// //;
+		// //
+		// //RichStringLiteral returns XExpression :
+		// //	{RichStringLiteral} value=RICH_TEXT
+		// //;
+		// //
+		//
+		////RichStringLiteralStart returns XExpression :
+		// //	{RichStringLiteral} value=RICH_TEXT_START
+		// //; 
+		// //
+		//
+		////RichStringLiteralInbetween returns XExpression :
+		// //	{RichStringLiteral} 
+		// //	( value=RICH_TEXT_INBETWEEN  )
+		// //; 
+		//
+		////
+		// //RichStringLiteralEnd returns XExpression :
+		// //	{RichStringLiteral} 
+		// //	( value=RICH_TEXT_END  )
+		// //; 
+		//
+		////InternalRichString returns XExpression:
+		// //	{RichString} (
+		//
+		////		expressions+=RichStringLiteralInbetween (expressions+=XExpression? expressions+=RichStringLiteralInbetween)*
+		//
+		////	)
+		// //;
+		// XTypeLiteral returns XExpression:
 		//	{XTypeLiteral} "typeof" "(" type=[types::JvmType|QualifiedName] arrayDimensions+=ArrayBrackets* ")";
 		public ParserRule getRule() { return rule; }
 
@@ -4057,6 +4129,182 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//"::"
 		public Keyword getColonColonKeyword_1() { return cColonColonKeyword_1; }
 	}
+
+	public class XTemplateLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XTemplateLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXTemplateAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cExpressionsAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cExpressionsRichStringLiteralParserRuleCall_1_0_0 = (RuleCall)cExpressionsAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Assignment cExpressionsAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final RuleCall cExpressionsRichStringLiteralStartParserRuleCall_1_1_0_0 = (RuleCall)cExpressionsAssignment_1_1_0.eContents().get(0);
+		private final Assignment cExpressionsAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cExpressionsXExpressionParserRuleCall_1_1_1_0 = (RuleCall)cExpressionsAssignment_1_1_1.eContents().get(0);
+		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
+		private final Assignment cExpressionsAssignment_1_1_2_0 = (Assignment)cGroup_1_1_2.eContents().get(0);
+		private final RuleCall cExpressionsRichStringLiteralInbetweenParserRuleCall_1_1_2_0_0 = (RuleCall)cExpressionsAssignment_1_1_2_0.eContents().get(0);
+		private final Assignment cExpressionsAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
+		private final RuleCall cExpressionsXExpressionParserRuleCall_1_1_2_1_0 = (RuleCall)cExpressionsAssignment_1_1_2_1.eContents().get(0);
+		private final Assignment cExpressionsAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
+		private final RuleCall cExpressionsRichStringLiteralEndParserRuleCall_1_1_3_0 = (RuleCall)cExpressionsAssignment_1_1_3.eContents().get(0);
+		
+		//XTemplateLiteral returns XExpression:
+		//	{XTemplate} (expressions+=RichStringLiteral | expressions+=RichStringLiteralStart expressions+=XExpression?
+		//	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* expressions+=RichStringLiteralEnd);
+		public ParserRule getRule() { return rule; }
+
+		//{XTemplate} (expressions+=RichStringLiteral | expressions+=RichStringLiteralStart expressions+=XExpression?
+		//(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* expressions+=RichStringLiteralEnd)
+		public Group getGroup() { return cGroup; }
+
+		//{XTemplate}
+		public Action getXTemplateAction_0() { return cXTemplateAction_0; }
+
+		//expressions+=RichStringLiteral | expressions+=RichStringLiteralStart expressions+=XExpression?
+		//(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* expressions+=RichStringLiteralEnd
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//expressions+=RichStringLiteral
+		public Assignment getExpressionsAssignment_1_0() { return cExpressionsAssignment_1_0; }
+
+		//RichStringLiteral
+		public RuleCall getExpressionsRichStringLiteralParserRuleCall_1_0_0() { return cExpressionsRichStringLiteralParserRuleCall_1_0_0; }
+
+		//expressions+=RichStringLiteralStart expressions+=XExpression? (expressions+=RichStringLiteralInbetween
+		//expressions+=XExpression?)* expressions+=RichStringLiteralEnd
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//expressions+=RichStringLiteralStart
+		public Assignment getExpressionsAssignment_1_1_0() { return cExpressionsAssignment_1_1_0; }
+
+		//RichStringLiteralStart
+		public RuleCall getExpressionsRichStringLiteralStartParserRuleCall_1_1_0_0() { return cExpressionsRichStringLiteralStartParserRuleCall_1_1_0_0; }
+
+		//expressions+=XExpression?
+		public Assignment getExpressionsAssignment_1_1_1() { return cExpressionsAssignment_1_1_1; }
+
+		//XExpression
+		public RuleCall getExpressionsXExpressionParserRuleCall_1_1_1_0() { return cExpressionsXExpressionParserRuleCall_1_1_1_0; }
+
+		//(expressions+=RichStringLiteralInbetween expressions+=XExpression?)*
+		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
+
+		//expressions+=RichStringLiteralInbetween
+		public Assignment getExpressionsAssignment_1_1_2_0() { return cExpressionsAssignment_1_1_2_0; }
+
+		//RichStringLiteralInbetween
+		public RuleCall getExpressionsRichStringLiteralInbetweenParserRuleCall_1_1_2_0_0() { return cExpressionsRichStringLiteralInbetweenParserRuleCall_1_1_2_0_0; }
+
+		//expressions+=XExpression?
+		public Assignment getExpressionsAssignment_1_1_2_1() { return cExpressionsAssignment_1_1_2_1; }
+
+		//XExpression
+		public RuleCall getExpressionsXExpressionParserRuleCall_1_1_2_1_0() { return cExpressionsXExpressionParserRuleCall_1_1_2_1_0; }
+
+		//expressions+=RichStringLiteralEnd
+		public Assignment getExpressionsAssignment_1_1_3() { return cExpressionsAssignment_1_1_3; }
+
+		//RichStringLiteralEnd
+		public RuleCall getExpressionsRichStringLiteralEndParserRuleCall_1_1_3_0() { return cExpressionsRichStringLiteralEndParserRuleCall_1_1_3_0; }
+	}
+
+	public class RichStringLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RichStringLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cRichStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueRICH_TEXTTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//RichStringLiteral returns XExpression:
+		//	{RichStringLiteral} value=RICH_TEXT;
+		public ParserRule getRule() { return rule; }
+
+		//{RichStringLiteral} value=RICH_TEXT
+		public Group getGroup() { return cGroup; }
+
+		//{RichStringLiteral}
+		public Action getRichStringLiteralAction_0() { return cRichStringLiteralAction_0; }
+
+		//value=RICH_TEXT
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//RICH_TEXT
+		public RuleCall getValueRICH_TEXTTerminalRuleCall_1_0() { return cValueRICH_TEXTTerminalRuleCall_1_0; }
+	}
+
+	public class RichStringLiteralStartElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RichStringLiteralStart");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cRichStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueRICH_TEXT_STARTTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//RichStringLiteralStart returns XExpression:
+		//	{RichStringLiteral} value=RICH_TEXT_START;
+		public ParserRule getRule() { return rule; }
+
+		//{RichStringLiteral} value=RICH_TEXT_START
+		public Group getGroup() { return cGroup; }
+
+		//{RichStringLiteral}
+		public Action getRichStringLiteralAction_0() { return cRichStringLiteralAction_0; }
+
+		//value=RICH_TEXT_START
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//RICH_TEXT_START
+		public RuleCall getValueRICH_TEXT_STARTTerminalRuleCall_1_0() { return cValueRICH_TEXT_STARTTerminalRuleCall_1_0; }
+	}
+
+	public class RichStringLiteralInbetweenElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RichStringLiteralInbetween");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cRichStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueRICH_TEXT_INBETWEENTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//RichStringLiteralInbetween returns XExpression:
+		//	{RichStringLiteral} value=RICH_TEXT_INBETWEEN;
+		public ParserRule getRule() { return rule; }
+
+		//{RichStringLiteral} value=RICH_TEXT_INBETWEEN
+		public Group getGroup() { return cGroup; }
+
+		//{RichStringLiteral}
+		public Action getRichStringLiteralAction_0() { return cRichStringLiteralAction_0; }
+
+		//value=RICH_TEXT_INBETWEEN
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//RICH_TEXT_INBETWEEN
+		public RuleCall getValueRICH_TEXT_INBETWEENTerminalRuleCall_1_0() { return cValueRICH_TEXT_INBETWEENTerminalRuleCall_1_0; }
+	}
+
+	public class RichStringLiteralEndElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RichStringLiteralEnd");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cRichStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueRICH_TEXT_ENDTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//RichStringLiteralEnd returns XExpression:
+		//	{RichStringLiteral} value=RICH_TEXT_END;
+		public ParserRule getRule() { return rule; }
+
+		//{RichStringLiteral} value=RICH_TEXT_END
+		public Group getGroup() { return cGroup; }
+
+		//{RichStringLiteral}
+		public Action getRichStringLiteralAction_0() { return cRichStringLiteralAction_0; }
+
+		//value=RICH_TEXT_END
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//RICH_TEXT_END
+		public RuleCall getValueRICH_TEXT_ENDTerminalRuleCall_1_0() { return cValueRICH_TEXT_ENDTerminalRuleCall_1_0; }
+	}
 	
 	
 	private XExpressionElements pXExpression;
@@ -4109,9 +4357,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	private XFeatureCallElements pXFeatureCall;
 	private FeatureCallIDElements pFeatureCallID;
 	private IdOrSuperElements pIdOrSuper;
-	private XConstructorCallElements pXConstructorCall;
 	private XObjectLiteralElements pXObjectLiteral;
 	private XObjectLiteralPartElements pXObjectLiteralPart;
+	private XConstructorCallElements pXConstructorCall;
 	private XStructLiteralElements pXStructLiteral;
 	private XFieldLiteralPartElements pXFieldLiteralPart;
 	private XArrayLiteralElements pXArrayLiteral;
@@ -4132,6 +4380,23 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tHEX;
 	private TerminalRule tINT;
 	private TerminalRule tDECIMAL;
+	private TerminalRule tID;
+	private TerminalRule tHEX_DIGIT;
+	private TerminalRule tUNICODE_ESCAPE;
+	private TerminalRule tSTRING;
+	private XTemplateLiteralElements pXTemplateLiteral;
+	private RichStringLiteralElements pRichStringLiteral;
+	private RichStringLiteralStartElements pRichStringLiteralStart;
+	private RichStringLiteralInbetweenElements pRichStringLiteralInbetween;
+	private RichStringLiteralEndElements pRichStringLiteralEnd;
+	private TerminalRule tRICH_TEXT;
+	private TerminalRule tRICH_TEXT_START;
+	private TerminalRule tRICH_TEXT_END;
+	private TerminalRule tRICH_TEXT_INBETWEEN;
+	private TerminalRule tIN_RICH_STRING;
+	private TerminalRule tIDENTIFIER_START;
+	private TerminalRule tIDENTIFIER_PART;
+	private TerminalRule tIDENTIFIER_PART_IMPL;
 	
 	private final Grammar grammar;
 
@@ -4730,7 +4995,8 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	// //	XKeyValuePair
 	// XLiteral returns XExpression: //	XCollectionLiteral |
 	// XObjectLiteral | XStructLiteral |
-	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
+	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral |
+	//	XTemplateLiteral;
 	public XLiteralElements getXLiteralAccess() {
 		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
 	}
@@ -5053,7 +5319,8 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	// //;
 	//
 	//XVariableDeclarationList returns XExpression:
-	//	{XVariableDeclarationList} "var" declarations+=XVariableDeclaration ("," declarations+=XVariableDeclaration)*;
+	//	{XVariableDeclarationList} exported?="export"? ("var" | writeable?="const") declarations+=XVariableDeclaration (","
+	//	declarations+=XVariableDeclaration)*;
 	public XVariableDeclarationListElements getXVariableDeclarationListAccess() {
 		return (pXVariableDeclarationList != null) ? pXVariableDeclarationList : (pXVariableDeclarationList = new XVariableDeclarationListElements());
 	}
@@ -5184,18 +5451,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getIdOrSuperAccess().getRule();
 	}
 
-	//XConstructorCall returns XExpression:
-	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
-	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
-	//	(arguments+=XExpression ("," arguments+=XExpression)*)? ")")?;
-	public XConstructorCallElements getXConstructorCallAccess() {
-		return (pXConstructorCall != null) ? pXConstructorCall : (pXConstructorCall = new XConstructorCallElements());
-	}
-	
-	public ParserRule getXConstructorCallRule() {
-		return getXConstructorCallAccess().getRule();
-	}
-
 	////XObjectLiteral returns XExpression:
 	// //	{XObjectLiteral}
 	// //	'new' '{'
@@ -5230,9 +5485,23 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXObjectLiteralPartAccess().getRule();
 	}
 
+	//XConstructorCall returns XExpression:
+	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
+	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
+	//	(arguments+=XExpression ("," arguments+=XExpression)*)? ")")?;
+	public XConstructorCallElements getXConstructorCallAccess() {
+		return (pXConstructorCall != null) ? pXConstructorCall : (pXConstructorCall = new XConstructorCallElements());
+	}
+	
+	public ParserRule getXConstructorCallRule() {
+		return getXConstructorCallAccess().getRule();
+	}
+
 	//XStructLiteral returns XExpression:
-	//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName] "{" properties+=XFieldLiteralPart (","
-	//	properties+=XFieldLiteralPart)* "}";
+	//	{XStructLiteral} "new" type=[types::JvmStructType|QualifiedName]
+	//	//	(=>'<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?
+	// "{"
+	//	properties+=XFieldLiteralPart ("," properties+=XFieldLiteralPart)* "}";
 	public XStructLiteralElements getXStructLiteralAccess() {
 		return (pXStructLiteral != null) ? pXStructLiteral : (pXStructLiteral = new XStructLiteralElements());
 	}
@@ -5301,7 +5570,47 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXStringLiteralAccess().getRule();
 	}
 
-	//XTypeLiteral returns XExpression:
+	////XTemplateLiteral returns XExpression:
+	// //	{XTemplate} ( 
+	// //	  expressions+=RichStringLiteral |
+	//
+	////	  expressions+=RichStringLiteralStart expressions+=XExpression? 
+	//
+	////	  	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* 
+	// //	  expressions+=RichStringLiteralEnd
+	//
+	////	)
+	// //;
+	// //
+	// //RichStringLiteral returns XExpression :
+	// //	{RichStringLiteral} value=RICH_TEXT
+	// //;
+	// //
+	//
+	////RichStringLiteralStart returns XExpression :
+	// //	{RichStringLiteral} value=RICH_TEXT_START
+	// //; 
+	// //
+	//
+	////RichStringLiteralInbetween returns XExpression :
+	// //	{RichStringLiteral} 
+	// //	( value=RICH_TEXT_INBETWEEN  )
+	// //; 
+	//
+	////
+	// //RichStringLiteralEnd returns XExpression :
+	// //	{RichStringLiteral} 
+	// //	( value=RICH_TEXT_END  )
+	// //; 
+	//
+	////InternalRichString returns XExpression:
+	// //	{RichString} (
+	//
+	////		expressions+=RichStringLiteralInbetween (expressions+=XExpression? expressions+=RichStringLiteralInbetween)*
+	//
+	////	)
+	// //;
+	// XTypeLiteral returns XExpression:
 	//	{XTypeLiteral} "typeof" "(" type=[types::JvmType|QualifiedName] arrayDimensions+=ArrayBrackets* ")";
 	public XTypeLiteralElements getXTypeLiteralAccess() {
 		return (pXTypeLiteral != null) ? pXTypeLiteral : (pXTypeLiteral = new XTypeLiteralElements());
@@ -5422,6 +5731,268 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	//	INT (("e" | "E") ("+" | "-")? INT)? (("b" | "B") ("i" | "I" | "d" | "D") | ("l" | "L" | "d" | "D" | "f" | "F"))?;
 	public TerminalRule getDECIMALRule() {
 		return (tDECIMAL != null) ? tDECIMAL : (tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DECIMAL"));
+	} 
+
+	//terminal ID:
+	//	"^"? (IDENTIFIER_START | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*;
+	public TerminalRule getIDRule() {
+		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
+	} 
+
+	//terminal fragment HEX_DIGIT:
+	//	"0".."9" | "a".."f" | "A".."F";
+	public TerminalRule getHEX_DIGITRule() {
+		return (tHEX_DIGIT != null) ? tHEX_DIGIT : (tHEX_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEX_DIGIT"));
+	} 
+
+	//terminal fragment UNICODE_ESCAPE:
+	//	"\\" "u" (HEX_DIGIT (HEX_DIGIT (HEX_DIGIT HEX_DIGIT?)?)?)?;
+	public TerminalRule getUNICODE_ESCAPERule() {
+		return (tUNICODE_ESCAPE != null) ? tUNICODE_ESCAPE : (tUNICODE_ESCAPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "UNICODE_ESCAPE"));
+	} 
+
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	public TerminalRule getSTRINGRule() {
+		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
+	} 
+
+	//XTemplateLiteral returns XExpression:
+	//	{XTemplate} (expressions+=RichStringLiteral | expressions+=RichStringLiteralStart expressions+=XExpression?
+	//	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* expressions+=RichStringLiteralEnd);
+	public XTemplateLiteralElements getXTemplateLiteralAccess() {
+		return (pXTemplateLiteral != null) ? pXTemplateLiteral : (pXTemplateLiteral = new XTemplateLiteralElements());
+	}
+	
+	public ParserRule getXTemplateLiteralRule() {
+		return getXTemplateLiteralAccess().getRule();
+	}
+
+	//RichStringLiteral returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT;
+	public RichStringLiteralElements getRichStringLiteralAccess() {
+		return (pRichStringLiteral != null) ? pRichStringLiteral : (pRichStringLiteral = new RichStringLiteralElements());
+	}
+	
+	public ParserRule getRichStringLiteralRule() {
+		return getRichStringLiteralAccess().getRule();
+	}
+
+	//RichStringLiteralStart returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_START;
+	public RichStringLiteralStartElements getRichStringLiteralStartAccess() {
+		return (pRichStringLiteralStart != null) ? pRichStringLiteralStart : (pRichStringLiteralStart = new RichStringLiteralStartElements());
+	}
+	
+	public ParserRule getRichStringLiteralStartRule() {
+		return getRichStringLiteralStartAccess().getRule();
+	}
+
+	//RichStringLiteralInbetween returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_INBETWEEN;
+	public RichStringLiteralInbetweenElements getRichStringLiteralInbetweenAccess() {
+		return (pRichStringLiteralInbetween != null) ? pRichStringLiteralInbetween : (pRichStringLiteralInbetween = new RichStringLiteralInbetweenElements());
+	}
+	
+	public ParserRule getRichStringLiteralInbetweenRule() {
+		return getRichStringLiteralInbetweenAccess().getRule();
+	}
+
+	//RichStringLiteralEnd returns XExpression:
+	//	{RichStringLiteral} value=RICH_TEXT_END;
+	public RichStringLiteralEndElements getRichStringLiteralEndAccess() {
+		return (pRichStringLiteralEnd != null) ? pRichStringLiteralEnd : (pRichStringLiteralEnd = new RichStringLiteralEndElements());
+	}
+	
+	public ParserRule getRichStringLiteralEndRule() {
+		return getRichStringLiteralEndAccess().getRule();
+	}
+
+	//terminal RICH_TEXT:
+	//	"`" IN_RICH_STRING* ("`" | EOF);
+	public TerminalRule getRICH_TEXTRule() {
+		return (tRICH_TEXT != null) ? tRICH_TEXT : (tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT"));
+	} 
+
+	//terminal RICH_TEXT_START:
+	//	"`" IN_RICH_STRING* "<%";
+	public TerminalRule getRICH_TEXT_STARTRule() {
+		return (tRICH_TEXT_START != null) ? tRICH_TEXT_START : (tRICH_TEXT_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_START"));
+	} 
+
+	//terminal RICH_TEXT_END:
+	//	"%>" IN_RICH_STRING* ("`" | EOF);
+	public TerminalRule getRICH_TEXT_ENDRule() {
+		return (tRICH_TEXT_END != null) ? tRICH_TEXT_END : (tRICH_TEXT_END = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_END"));
+	} 
+
+	//terminal RICH_TEXT_INBETWEEN:
+	//	"%>" IN_RICH_STRING* "<%";
+	public TerminalRule getRICH_TEXT_INBETWEENRule() {
+		return (tRICH_TEXT_INBETWEEN != null) ? tRICH_TEXT_INBETWEEN : (tRICH_TEXT_INBETWEEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "RICH_TEXT_INBETWEEN"));
+	} 
+
+	//terminal fragment IN_RICH_STRING:
+	//	!("`" | "\\" | "<") | "<" !"%";
+	public TerminalRule getIN_RICH_STRINGRule() {
+		return (tIN_RICH_STRING != null) ? tIN_RICH_STRING : (tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IN_RICH_STRING"));
+	} 
+
+	////terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
+	//
+	////terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? '«';
+	//
+	////terminal RICH_TEXT_END : '»' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
+	//
+	////terminal RICH_TEXT_INBETWEEN : '»' IN_RICH_STRING* ("'" "'"?)? '«';
+	//
+	//////terminal COMMENT_RICH_TEXT_INBETWEEN: "««" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? '«')?; 
+	//
+	//////terminal COMMENT_RICH_TEXT_END: "««" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
+	//
+	//////
+	// //terminal fragment IN_RICH_STRING : 
+	// //	  "''" !('«'|"'") 
+	// //	| "'" !('«'|"'")
+	// //	| !('«'|"'");
+	//
+	////Template ::
+	// //NoSubstitutionTemplate
+	// //TemplateHead
+	// //
+	// //NoSubstitutionTemplate ::
+	// //` TemplateCharacters `
+	//
+	////
+	// //TemplateHead ::
+	// //` TemplateCharacters ${
+	// //	
+	// //TemplateSubstitutionTail ::
+	// //TemplateMiddle
+	//
+	////TemplateTail
+	// //
+	// //TemplateMiddle ::
+	// //} TemplateCharacters ${
+	// //	
+	// //TemplateTail ::
+	//
+	////} TemplateCharactersopt `
+	// //
+	// //TemplateCharacters ::
+	// //TemplateCharacter TemplateCharactersopt
+	// //
+	//
+	////TemplateCharacter ::
+	// //SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
+	// //$ [lookahead ≠ { ]
+	//
+	////\ EscapeSequence
+	// //LineContinuation
+	// //LineTerminatorSequence
+	// //XTemplate returns XExpression:
+	// //	{XTemplate}
+	//
+	////	expressions+=RichStringLiteral
+	// //	|TemplateHead
+	// //;
+	// //
+	// //RichStringLiteral:
+	//
+	////	'`' value=TemplateCharacters '`'
+	// //;
+	// //
+	// //TemplateHead:
+	// //'`' TemplateCharacters '${'
+	// //;
+	// //
+	//
+	////TemplateSubstitutionTail:
+	// //	TemplateMiddle
+	// //	|TemplateTail
+	// //;
+	// //
+	// //TemplateMiddle:
+	//
+	////	 TemplateCharacters '${'
+	// //;
+	// //
+	// //	
+	// //TemplateTail:
+	// //	 TemplateCharacters '`'
+	// //;
+	// //
+	//
+	////terminal TemplateCharacters:
+	// //	TemplateCharacter*
+	// ////	|TemplateCharacters
+	// //;
+	// //
+	//
+	////terminal fragment TemplateCharacter:
+	// ////	SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
+	//
+	////	!('`' |'\\'|'$') 
+	// ////	$ [lookahead ≠ { ]
+	// ////	\ EscapeSequence
+	// ////	LineContinuation
+	//
+	//////	LineTerminatorSequence
+	// //;
+	// terminal fragment IDENTIFIER_START:
+	//	"$" | "A".."Z" | "_" | "a".."z" | "¢".."¥" | "ª" | "µ" | "º" | "À".."Ö" | "Ø".."ö" | "ø".."ȶ" | "ɐ".."ˁ" | "ˆ".."ˑ" |
+	//	"ˠ".."ˤ" | "ˮ" | "ͺ" | "Ά" | "Έ".."Ί" | "Ό" | "Ύ".."Ρ" | "Σ".."ώ" | "ϐ".."ϵ" | "Ϸ".."ϻ" | "Ѐ".."ҁ" | "Ҋ".."ӎ" |
+	//	"Ӑ".."ӵ" | "Ӹ".."ӹ" | "Ԁ".."ԏ" | "Ա".."Ֆ" | "ՙ" | "ա".."և" | "א".."ת" | "װ".."ײ" | "ء".."غ" | "ـ".."ي" | "ٮ".."ٯ" |
+	//	"ٱ".."ۓ" | "ە" | "ۥ".."ۦ" | "ۮ".."ۯ" | "ۺ".."ۼ" | "ۿ" | "ܐ" | "ܒ".."ܯ" | "ݍ".."ݏ" | "ހ".."ޥ" | "ޱ" | "ऄ".."ह" | "ऽ" |
+	//	"ॐ" | "क़".."ॡ" | "অ".."ঌ" | "এ".."ঐ" | "ও".."ন" | "প".."র" | "ল" | "শ".."হ" | "ঽ" | "ড়".."ঢ়" | "য়".."ৡ" | "ৰ".."৳" |
+	//	"ਅ".."ਊ" | "ਏ".."ਐ" | "ਓ".."ਨ" | "ਪ".."ਰ" | "ਲ".."ਲ਼" | "ਵ".."ਸ਼" | "ਸ".."ਹ" | "ਖ਼".."ੜ" | "ਫ਼" | "ੲ".."ੴ" | "અ".."ઍ" |
+	//	"એ".."ઑ" | "ઓ".."ન" | "પ".."ર" | "લ".."ળ" | "વ".."હ" | "ઽ" | "ૐ" | "ૠ".."ૡ" | "૱" | "ଅ".."ଌ" | "ଏ".."ଐ" | "ଓ".."ନ" |
+	//	"ପ".."ର" | "ଲ".."ଳ" | "ଵ".."ହ" | "ଽ" | "ଡ଼".."ଢ଼" | "ୟ".."ୡ" | "ୱ" | "ஃ" | "அ".."ஊ" | "எ".."ஐ" | "ஒ".."க" | "ங".."ச" |
+	//	"ஜ" | "ஞ".."ட" | "ண".."த" | "ந".."ப" | "ம".."வ" | "ஷ".."ஹ" | "௹" | "అ".."ఌ" | "ఎ".."ఐ" | "ఒ".."న" | "ప".."ళ" |
+	//	"వ".."హ" | "ౠ".."ౡ" | "ಅ".."ಌ" | "ಎ".."ಐ" | "ಒ".."ನ" | "ಪ".."ಳ" | "ವ".."ಹ" | "ಽ" | "ೞ" | "ೠ".."ೡ" | "അ".."ഌ" |
+	//	"എ".."ഐ" | "ഒ".."ന" | "പ".."ഹ" | "ൠ".."ൡ" | "අ".."ඖ" | "ක".."න" | "ඳ".."ර" | "ල" | "ව".."ෆ" | "ก".."ะ" | "า".."ำ" |
+	//	"฿".."ๆ" | "ກ".."ຂ" | "ຄ" | "ງ".."ຈ" | "ຊ" | "ຍ" | "ດ".."ທ" | "ນ".."ຟ" | "ມ".."ຣ" | "ລ" | "ວ" | "ສ".."ຫ" | "ອ".."ະ" |
+	//	"າ".."ຳ" | "ຽ" | "ເ".."ໄ" | "ໆ" | "ໜ".."ໝ" | "ༀ" | "ཀ".."ཇ" | "ཉ".."ཪ" | "ྈ".."ྋ" | "က".."အ" | "ဣ".."ဧ" | "ဩ".."ဪ" |
+	//	"ၐ".."ၕ" | "Ⴀ".."Ⴥ" | "ა".."ჸ" | "ᄀ".."ᅙ" | "ᅟ".."ᆢ" | "ᆨ".."ᇹ" | "ሀ".."ሆ" | "ለ".."ቆ" | "ቈ" | "ቊ".."ቍ" | "ቐ".."ቖ" |
+	//	"ቘ" | "ቚ".."ቝ" | "በ".."ኆ" | "ኈ" | "ኊ".."ኍ" | "ነ".."ኮ" | "ኰ" | "ኲ".."ኵ" | "ኸ".."ኾ" | "ዀ" | "ዂ".."ዅ" | "ወ".."ዎ" |
+	//	"ዐ".."ዖ" | "ዘ".."ዮ" | "ደ".."ጎ" | "ጐ" | "ጒ".."ጕ" | "ጘ".."ጞ" | "ጠ".."ፆ" | "ፈ".."ፚ" | "Ꭰ".."Ᏼ" | "ᐁ".."ᙬ" | "ᙯ".."ᙶ" |
+	//	"ᚁ".."ᚚ" | "ᚠ".."ᛪ" | "ᛮ".."ᛰ" | "ᜀ".."ᜌ" | "ᜎ".."ᜑ" | "ᜠ".."ᜱ" | "ᝀ".."ᝑ" | "ᝠ".."ᝬ" | "ᝮ".."ᝰ" | "ក".."ឳ" | "ៗ" |
+	//	"៛".."ៜ" | "ᠠ".."ᡷ" | "ᢀ".."ᢨ" | "ᤀ".."ᤜ" | "ᥐ".."ᥭ" | "ᥰ".."ᥴ" | "ᴀ".."ᵫ" | "Ḁ".."ẛ" | "Ạ".."ỹ" | "ἀ".."ἕ" |
+	//	"Ἐ".."Ἕ" | "ἠ".."ὅ" | "Ὀ".."Ὅ" | "ὐ".."ὗ" | "Ὑ" | "Ὓ" | "Ὕ" | "Ὗ".."ώ" | "ᾀ".."ᾴ" | "ᾶ".."ᾼ" | "ι" | "ῂ".."ῄ" |
+	//	"ῆ".."ῌ" | "ῐ".."ΐ" | "ῖ".."Ί" | "ῠ".."Ῥ" | "ῲ".."ῴ" | "ῶ".."ῼ" | "‿".."⁀" | "⁔" | "ⁱ" | "ⁿ" | "₠".."₱" | "ℂ" | "ℇ" |
+	//	"ℊ".."ℓ" | "ℕ" | "ℙ".."ℝ" | "ℤ" | "Ω" | "ℨ" | "K".."ℭ" | "ℯ".."ℱ" | "ℳ".."ℹ" | "ℽ".."ℿ" | "ⅅ".."ⅉ" | "Ⅰ".."Ↄ" |
+	//	"々".."〇" | "〡".."〩" | "〱".."〵" | "〸".."〼" | "ぁ".."ゖ" | "ゝ".."ゟ" | "ァ".."ヿ" | "ㄅ".."ㄬ" | "ㄱ".."ㆎ" | "ㆠ".."ㆷ" |
+	//	"ㇰ".."ㇿ" | "㐀".."䶵" | "一".."龥" | "ꀀ".."ꒌ" | "가".."힣" | "豈".."鶴" | "侮".."頻" | "ﬀ".."ﬆ" | "ﬓ".."ﬗ" | "יִ" | "ײַ".."ﬨ" |
+	//	"שׁ".."זּ" | "טּ".."לּ" | "מּ" | "נּ".."סּ" | "ףּ".."פּ" | "צּ".."ﮱ" | "ﯓ".."ﴽ" | "ﵐ".."ﶏ" | "ﶒ".."ﷇ" | "ﷰ".."﷼" | "︳".."︴" |
+	//	"﹍".."﹏" | "﹩" | "ﹰ".."ﹴ" | "ﹶ".."ﻼ" | "＄" | "Ａ".."Ｚ" | "＿" | "ａ".."ｚ" | "･".."ﾾ" | "ￂ".."ￇ" | "ￊ".."ￏ" | "ￒ".."ￗ" |
+	//	"ￚ".."ￜ" | "￠".."￡" | "￥".."￦";
+	public TerminalRule getIDENTIFIER_STARTRule() {
+		return (tIDENTIFIER_START != null) ? tIDENTIFIER_START : (tIDENTIFIER_START = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER_START"));
+	} 
+
+	//terminal fragment IDENTIFIER_PART:
+	//	IDENTIFIER_START | IDENTIFIER_PART_IMPL;
+	public TerminalRule getIDENTIFIER_PARTRule() {
+		return (tIDENTIFIER_PART != null) ? tIDENTIFIER_PART : (tIDENTIFIER_PART = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER_PART"));
+	} 
+
+	//terminal fragment IDENTIFIER_PART_IMPL:
+	//	" ".."\b" | "".."" | "0".."9" | "".."" | "­" | "̀".."͗" | "͝".."ͯ" | "҃".."҆" | "֑".."֡" | "֣".."ֹ" | "ֻ".."ֽ" |
+	//	"ֿ" | "ׁ".."ׂ" | "ׄ" | "؀".."؃" | "ؐ".."ؕ" | "ً".."٘" | "٠".."٩" | "ٰ" | "ۖ".."۝" | "۟".."ۤ" | "ۧ".."ۨ" | "۪".."ۭ" |
+	//	"۰".."۹" | "܏" | "ܑ" | "ܰ".."݊" | "ަ".."ް" | "ँ".."ः" | "़" | "ा".."्" | "॑".."॔" | "ॢ".."ॣ" | "०".."९" | "ঁ".."ঃ" |
+	//	"়" | "া".."ৄ" | "ে".."ৈ" | "ো".."্" | "ৗ" | "ৢ".."ৣ" | "০".."৯" | "ਁ".."ਃ" | "਼" | "ਾ".."ੂ" | "ੇ".."ੈ" | "ੋ".."੍" |
+	//	"੦".."ੱ" | "ઁ".."ઃ" | "઼" | "ા".."ૅ" | "ે".."ૉ" | "ો".."્" | "ૢ".."ૣ" | "૦".."૯" | "ଁ".."ଃ" | "଼" | "ା".."ୃ" |
+	//	"େ".."ୈ" | "ୋ".."୍" | "ୖ".."ୗ" | "୦".."୯" | "ஂ" | "ா".."ூ" | "ெ".."ை" | "ொ".."்" | "ௗ" | "௧".."௯" | "ఁ".."ః" |
+	//	"ా".."ౄ" | "ె".."ై" | "ొ".."్" | "ౕ".."ౖ" | "౦".."౯" | "ಂ".."ಃ" | "಼" | "ಾ".."ೄ" | "ೆ".."ೈ" | "ೊ".."್" | "ೕ".."ೖ" |
+	//	"೦".."೯" | "ം".."ഃ" | "ാ".."ൃ" | "െ".."ൈ" | "ൊ".."്" | "ൗ" | "൦".."൯" | "ං".."ඃ" | "්" | "ා".."ු" | "ූ" | "ෘ".."ෟ" |
+	//	"ෲ".."ෳ" | "ั" | "ิ".."ฺ" | "็".."๎" | "๐".."๙" | "ັ" | "ິ".."ູ" | "ົ".."ຼ" | "່".."ໍ" | "໐".."໙" | "༘".."༙" |
+	//	"༠".."༩" | "༵" | "༷" | "༹" | "༾".."༿" | "ཱ".."྄" | "྆".."྇" | "ྐ".."ྗ" | "ྙ".."ྼ" | "࿆" | "ာ".."ဲ" | "ံ".."္" |
+	//	"၀".."၉" | "ၖ".."ၙ" | "፩".."፱" | "ᜒ".."᜔" | "ᜲ".."᜴" | "ᝒ".."ᝓ" | "ᝲ".."ᝳ" | "឴".."៓" | "៝" | "០".."៩" | "᠋".."᠍" |
+	//	"᠐".."᠙" | "ᢩ" | "ᤠ".."ᤫ" | "ᤰ".."᤻" | "᥆".."᥏" | "‌".."‏" | "‪".."‮" | "⁠".."⁣" | "⁪".."⁯" | "⃐".."⃜" | "⃡" |
+	//	"⃥".."⃪" | "〪".."〯" | "゙".."゚" | "ﬞ" | "︀".."️" | "︠".."︣" | "﻿" | "０".."９" | "￹".."￻";
+	public TerminalRule getIDENTIFIER_PART_IMPLRule() {
+		return (tIDENTIFIER_PART_IMPL != null) ? tIDENTIFIER_PART_IMPL : (tIDENTIFIER_PART_IMPL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER_PART_IMPL"));
 	} 
 
 	//JvmTypeReference:
@@ -5569,9 +6140,25 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXImportSection1Access().getRule();
 	}
 
-	//XImportDeclaration1:
-	//	"import" (("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from"
-	//	importURI=STRING | "from" importURI=STRING "as" alias=ID);
+	////XImportDeclaration1 returns XImportDeclaration1: 
+	// //	'import' (( 
+	// //		(('{'
+	//
+	////		importItems += XImportItem (',' importItems += XImportItem)*  
+	// //		'}')
+	// //		|
+	//
+	////		(importItems += XImportItem ))
+	// //		
+	// //		'from' importURI=STRING )
+	// //	 |
+	//
+	////	('from' importURI=STRING 'as' alias = ID))
+	// //		
+	// //;
+	// XImportDeclaration1:
+	//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
+	//	"as" name=ValidID "from" importURI=STRING;
 	public XtypeGrammarAccess.XImportDeclaration1Elements getXImportDeclaration1Access() {
 		return gaXtype.getXImportDeclaration1Access();
 	}
@@ -5627,19 +6214,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getXExportItemRule() {
 		return getXExportItemAccess().getRule();
 	}
-
-	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "$" | "_") ("a".."z" | "A".."Z" | "$" | "_" | "0".."9")*;
-	public TerminalRule getIDRule() {
-		return gaXtype.getIDRule();
-	} 
-
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return gaXtype.getSTRINGRule();
-	} 
 
 	//terminal ML_COMMENT:
 	//	"/ *"->"* /";

@@ -16,8 +16,6 @@ import org.summer.dsl.model.types.JvmTypeReference;
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getRight <em>Right</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#isWriteable <em>Writeable</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,58 +101,5 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * @generated
 	 */
 	void setRight(XExpression value);
-
-	/**
-	 * Returns the value of the '<em><b>Writeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Writeable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Writeable</em>' attribute.
-	 * @see #setWriteable(boolean)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclaration_Writeable()
-	 * @model
-	 * @generated
-	 */
-	boolean isWriteable();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclaration#isWriteable <em>Writeable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Writeable</em>' attribute.
-	 * @see #isWriteable()
-	 * @generated
-	 */
-	void setWriteable(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Exported</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exported</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exported</em>' attribute.
-	 * @see #setExported(boolean)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclaration_Exported()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isExported();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclaration#isExported <em>Exported</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exported</em>' attribute.
-	 * @see #isExported()
-	 * @generated
-	 */
-	void setExported(boolean value);
 
 } // XVariableDeclaration

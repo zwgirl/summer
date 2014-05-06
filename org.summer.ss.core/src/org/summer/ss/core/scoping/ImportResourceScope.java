@@ -8,7 +8,7 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
@@ -56,7 +56,7 @@ public class ImportResourceScope implements IScope{
 
 	public Iterable<IEObjectDescription> getAllElements() {
 		List<IEObjectDescription> result = Lists.newLinkedList();
-		XtendFile file = (XtendFile) resource.getContents().get(0);
+		XModule file = (XModule) resource.getContents().get(0);
 		
 		List<EObject> contents = file.getContents();
 		for(EObject obj: contents){

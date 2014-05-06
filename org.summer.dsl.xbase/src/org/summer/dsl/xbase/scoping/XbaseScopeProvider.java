@@ -697,7 +697,7 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 					XVariableDeclaration varDecl = (XVariableDeclaration) exp;
 					if (varDecl.getName() != null) {
 						IValidatedEObjectDescription desc = createLocalVarDescription(varDecl);
-						if (referredFromClosure && varDecl.isWriteable())
+						if (referredFromClosure && declList.isWriteable())
 							desc.setIssueCode(IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS);
 						descriptions.add(desc);
 					}

@@ -480,116 +480,111 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 	public class XImportDeclaration1Elements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XImportDeclaration1");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_0_0 = (Alternatives)cGroup_1_0.eContents().get(0);
-		private final Group cGroup_1_0_0_0 = (Group)cAlternatives_1_0_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1_0_0_0_0 = (Keyword)cGroup_1_0_0_0.eContents().get(0);
-		private final Assignment cImportItemsAssignment_1_0_0_0_1 = (Assignment)cGroup_1_0_0_0.eContents().get(1);
-		private final RuleCall cImportItemsXImportItemParserRuleCall_1_0_0_0_1_0 = (RuleCall)cImportItemsAssignment_1_0_0_0_1.eContents().get(0);
-		private final Group cGroup_1_0_0_0_2 = (Group)cGroup_1_0_0_0.eContents().get(2);
-		private final Keyword cCommaKeyword_1_0_0_0_2_0 = (Keyword)cGroup_1_0_0_0_2.eContents().get(0);
-		private final Assignment cImportItemsAssignment_1_0_0_0_2_1 = (Assignment)cGroup_1_0_0_0_2.eContents().get(1);
-		private final RuleCall cImportItemsXImportItemParserRuleCall_1_0_0_0_2_1_0 = (RuleCall)cImportItemsAssignment_1_0_0_0_2_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_1_0_0_0_3 = (Keyword)cGroup_1_0_0_0.eContents().get(3);
-		private final Assignment cImportItemsAssignment_1_0_0_1 = (Assignment)cAlternatives_1_0_0.eContents().get(1);
-		private final RuleCall cImportItemsXImportItemParserRuleCall_1_0_0_1_0 = (RuleCall)cImportItemsAssignment_1_0_0_1.eContents().get(0);
-		private final Keyword cFromKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
-		private final Assignment cImportURIAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0_2_0 = (RuleCall)cImportURIAssignment_1_0_2.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final Keyword cFromKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cImportURIAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_1_1_1_0 = (RuleCall)cImportURIAssignment_1_1_1.eContents().get(0);
-		private final Keyword cAsKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
-		private final Assignment cAliasAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
-		private final RuleCall cAliasIDTerminalRuleCall_1_1_3_0 = (RuleCall)cAliasAssignment_1_1_3.eContents().get(0);
+		private final Action cXImportDeclaration1Action_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cImportKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cAlternatives_3.eContents().get(0);
+		private final Assignment cImportItemsAssignment_3_0_0 = (Assignment)cGroup_3_0.eContents().get(0);
+		private final RuleCall cImportItemsXImportItemParserRuleCall_3_0_0_0 = (RuleCall)cImportItemsAssignment_3_0_0.eContents().get(0);
+		private final Group cGroup_3_0_1 = (Group)cGroup_3_0.eContents().get(1);
+		private final Keyword cCommaKeyword_3_0_1_0 = (Keyword)cGroup_3_0_1.eContents().get(0);
+		private final Assignment cImportItemsAssignment_3_0_1_1 = (Assignment)cGroup_3_0_1.eContents().get(1);
+		private final RuleCall cImportItemsXImportItemParserRuleCall_3_0_1_1_0 = (RuleCall)cImportItemsAssignment_3_0_1_1.eContents().get(0);
+		private final Assignment cWildcardAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final Keyword cWildcardAsteriskKeyword_3_1_0 = (Keyword)cWildcardAssignment_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cAsKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameValidIDParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cFromKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cImportURIAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_8_0 = (RuleCall)cImportURIAssignment_8.eContents().get(0);
 		
-		//XImportDeclaration1:
-		//	"import" (("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from"
-		//	importURI=STRING | "from" importURI=STRING "as" alias=ID);
+		////XImportDeclaration1 returns XImportDeclaration1: 
+		// //	'import' (( 
+		// //		(('{'
+		//
+		////		importItems += XImportItem (',' importItems += XImportItem)*  
+		// //		'}')
+		// //		|
+		//
+		////		(importItems += XImportItem ))
+		// //		
+		// //		'from' importURI=STRING )
+		// //	 |
+		//
+		////	('from' importURI=STRING 'as' alias = ID))
+		// //		
+		// //;
+		// XImportDeclaration1:
+		//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
+		//	"as" name=ValidID "from" importURI=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"import" (("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from"
-		//importURI=STRING | "from" importURI=STRING "as" alias=ID)
+		//{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}" "as"
+		//name=ValidID "from" importURI=STRING
 		public Group getGroup() { return cGroup; }
 
+		//{XImportDeclaration1}
+		public Action getXImportDeclaration1Action_0() { return cXImportDeclaration1Action_0; }
+
 		//"import"
-		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
-
-		//("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from" importURI=STRING |
-		//"from" importURI=STRING "as" alias=ID
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-
-		//("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from" importURI=STRING
-		public Group getGroup_1_0() { return cGroup_1_0; }
-
-		//"{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem
-		public Alternatives getAlternatives_1_0_0() { return cAlternatives_1_0_0; }
-
-		//"{" importItems+=XImportItem ("," importItems+=XImportItem)* "}"
-		public Group getGroup_1_0_0_0() { return cGroup_1_0_0_0; }
+		public Keyword getImportKeyword_1() { return cImportKeyword_1; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1_0_0_0_0() { return cLeftCurlyBracketKeyword_1_0_0_0_0; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*"
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+
+		//importItems+=XImportItem ("," importItems+=XImportItem)*
+		public Group getGroup_3_0() { return cGroup_3_0; }
 
 		//importItems+=XImportItem
-		public Assignment getImportItemsAssignment_1_0_0_0_1() { return cImportItemsAssignment_1_0_0_0_1; }
+		public Assignment getImportItemsAssignment_3_0_0() { return cImportItemsAssignment_3_0_0; }
 
 		//XImportItem
-		public RuleCall getImportItemsXImportItemParserRuleCall_1_0_0_0_1_0() { return cImportItemsXImportItemParserRuleCall_1_0_0_0_1_0; }
+		public RuleCall getImportItemsXImportItemParserRuleCall_3_0_0_0() { return cImportItemsXImportItemParserRuleCall_3_0_0_0; }
 
 		//("," importItems+=XImportItem)*
-		public Group getGroup_1_0_0_0_2() { return cGroup_1_0_0_0_2; }
+		public Group getGroup_3_0_1() { return cGroup_3_0_1; }
 
 		//","
-		public Keyword getCommaKeyword_1_0_0_0_2_0() { return cCommaKeyword_1_0_0_0_2_0; }
+		public Keyword getCommaKeyword_3_0_1_0() { return cCommaKeyword_3_0_1_0; }
 
 		//importItems+=XImportItem
-		public Assignment getImportItemsAssignment_1_0_0_0_2_1() { return cImportItemsAssignment_1_0_0_0_2_1; }
+		public Assignment getImportItemsAssignment_3_0_1_1() { return cImportItemsAssignment_3_0_1_1; }
 
 		//XImportItem
-		public RuleCall getImportItemsXImportItemParserRuleCall_1_0_0_0_2_1_0() { return cImportItemsXImportItemParserRuleCall_1_0_0_0_2_1_0; }
+		public RuleCall getImportItemsXImportItemParserRuleCall_3_0_1_1_0() { return cImportItemsXImportItemParserRuleCall_3_0_1_1_0; }
+
+		//wildcard?="*"
+		public Assignment getWildcardAssignment_3_1() { return cWildcardAssignment_3_1; }
+
+		//"*"
+		public Keyword getWildcardAsteriskKeyword_3_1_0() { return cWildcardAsteriskKeyword_3_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_1_0_0_0_3() { return cRightCurlyBracketKeyword_1_0_0_0_3; }
-
-		//importItems+=XImportItem
-		public Assignment getImportItemsAssignment_1_0_0_1() { return cImportItemsAssignment_1_0_0_1; }
-
-		//XImportItem
-		public RuleCall getImportItemsXImportItemParserRuleCall_1_0_0_1_0() { return cImportItemsXImportItemParserRuleCall_1_0_0_1_0; }
-
-		//"from"
-		public Keyword getFromKeyword_1_0_1() { return cFromKeyword_1_0_1; }
-
-		//importURI=STRING
-		public Assignment getImportURIAssignment_1_0_2() { return cImportURIAssignment_1_0_2; }
-
-		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_1_0_2_0() { return cImportURISTRINGTerminalRuleCall_1_0_2_0; }
-
-		//"from" importURI=STRING "as" alias=ID
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//"from"
-		public Keyword getFromKeyword_1_1_0() { return cFromKeyword_1_1_0; }
-
-		//importURI=STRING
-		public Assignment getImportURIAssignment_1_1_1() { return cImportURIAssignment_1_1_1; }
-
-		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_1_1_1_0() { return cImportURISTRINGTerminalRuleCall_1_1_1_0; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
 		//"as"
-		public Keyword getAsKeyword_1_1_2() { return cAsKeyword_1_1_2; }
+		public Keyword getAsKeyword_5() { return cAsKeyword_5; }
 
-		//alias=ID
-		public Assignment getAliasAssignment_1_1_3() { return cAliasAssignment_1_1_3; }
+		//name=ValidID
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
 
-		//ID
-		public RuleCall getAliasIDTerminalRuleCall_1_1_3_0() { return cAliasIDTerminalRuleCall_1_1_3_0; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_6_0() { return cNameValidIDParserRuleCall_6_0; }
+
+		//"from"
+		public Keyword getFromKeyword_7() { return cFromKeyword_7; }
+
+		//importURI=STRING
+		public Assignment getImportURIAssignment_8() { return cImportURIAssignment_8; }
+
+		//STRING
+		public RuleCall getImportURISTRINGTerminalRuleCall_8_0() { return cImportURISTRINGTerminalRuleCall_8_0; }
 	}
 
 	public class XImportItemElements extends AbstractParserRuleElementFinder {
@@ -1030,9 +1025,25 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		return getXImportSection1Access().getRule();
 	}
 
-	//XImportDeclaration1:
-	//	"import" (("{" importItems+=XImportItem ("," importItems+=XImportItem)* "}" | importItems+=XImportItem) "from"
-	//	importURI=STRING | "from" importURI=STRING "as" alias=ID);
+	////XImportDeclaration1 returns XImportDeclaration1: 
+	// //	'import' (( 
+	// //		(('{'
+	//
+	////		importItems += XImportItem (',' importItems += XImportItem)*  
+	// //		'}')
+	// //		|
+	//
+	////		(importItems += XImportItem ))
+	// //		
+	// //		'from' importURI=STRING )
+	// //	 |
+	//
+	////	('from' importURI=STRING 'as' alias = ID))
+	// //		
+	// //;
+	// XImportDeclaration1:
+	//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
+	//	"as" name=ValidID "from" importURI=STRING;
 	public XImportDeclaration1Elements getXImportDeclaration1Access() {
 		return (pXImportDeclaration1 != null) ? pXImportDeclaration1 : (pXImportDeclaration1 = new XImportDeclaration1Elements());
 	}

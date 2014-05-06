@@ -2167,7 +2167,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		jvmModuleEClass.getESuperTypes().add(this.getJvmIdentifiableElement());
+		jvmModuleEClass.getESuperTypes().add(this.getJvmType());
 		jvmTypeEClass.getESuperTypes().add(this.getJvmIdentifiableElement());
 		jvmVoidEClass.getESuperTypes().add(this.getJvmType());
 		jvmComponentTypeEClass.getESuperTypes().add(this.getJvmType());

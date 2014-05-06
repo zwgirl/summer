@@ -265,6 +265,14 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXFieldLiteralPartAdapter();
 			}
 			@Override
+			public Adapter caseXTemplate(XTemplate object) {
+				return createXTemplateAdapter();
+			}
+			@Override
+			public Adapter caseRichStringLiteral(RichStringLiteral object) {
+				return createRichStringLiteralAdapter();
+			}
+			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
 				return createJvmIdentifiableElementAdapter();
 			}
@@ -985,6 +993,34 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXFieldLiteralPartAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XTemplate <em>XTemplate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XTemplate
+	 * @generated
+	 */
+	public Adapter createXTemplateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.RichStringLiteral <em>Rich String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.RichStringLiteral
+	 * @generated
+	 */
+	public Adapter createRichStringLiteralAdapter() {
 		return null;
 	}
 

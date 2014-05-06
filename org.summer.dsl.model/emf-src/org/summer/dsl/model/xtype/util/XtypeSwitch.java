@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmTypeReference;
 
@@ -106,6 +107,7 @@ public class XtypeSwitch<T> extends Switch<T> {
 			case XtypePackage.XIMPORT_DECLARATION1: {
 				XImportDeclaration1 xImportDeclaration1 = (XImportDeclaration1)theEObject;
 				T result = caseXImportDeclaration1(xImportDeclaration1);
+				if (result == null) result = caseJvmIdentifiableElement(xImportDeclaration1);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -314,6 +316,21 @@ public class XtypeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmSpecializedTypeReference(JvmSpecializedTypeReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Identifiable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmIdentifiableElement(JvmIdentifiableElement object) {
 		return null;
 	}
 

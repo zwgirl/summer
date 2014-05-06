@@ -54,19 +54,19 @@ public class SsValueConverterService extends XbaseValueConverterService {
 		return richTextValueConverter;
 	}
 	
-	@Inject
-	private CommentRichTextInBetweenValueConverter commentRichTextInBetweenValueConverter;
-
-	@ValueConverter(rule = "COMMENT_RICH_TEXT_INBETWEEN")
-	public IValueConverter<String> getCommentRichTextInBetweenValueConverter() {
-		return commentRichTextInBetweenValueConverter;
-	}
+//	@Inject
+//	private CommentRichTextInBetweenValueConverter commentRichTextInBetweenValueConverter;
+//
+//	@ValueConverter(rule = "COMMENT_RICH_TEXT_INBETWEEN")
+//	public IValueConverter<String> getCommentRichTextInBetweenValueConverter() {
+//		return commentRichTextInBetweenValueConverter;
+//	}
 	
-	@Inject
-	private CommentRichTextEndValueConverter commentRichTextEndValueConverter;
-
-	@ValueConverter(rule = "COMMENT_RICH_TEXT_END")
-	public IValueConverter<String> getCommentRichTextEndValueConverter() {
-		return commentRichTextEndValueConverter;
-	}
+//	@Inject
+//	private CommentRichTextEndValueConverter commentRichTextEndValueConverter;
+//
+//	@ValueConverter(rule = "COMMENT_RICH_TEXT_END")
+//	public IValueConverter<String> getCommentRichTextEndValueConverter() {
+//		return commentRichTextEndValueConverter;
+//	}
 }

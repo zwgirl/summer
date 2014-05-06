@@ -18,7 +18,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.ss.ide.codebuilder.AbstractAnnotationBuilder;
@@ -277,8 +277,8 @@ public class CreateXtendTypeQuickfixes extends CreateJavaTypeQuickfixes {
 	protected String getPackage(XtextResource resource) {
 		if(!resource.getContents().isEmpty()) {
 			final EObject root = resource.getContents().get(0);
-			if(root instanceof XtendFile) {
-				return ((XtendFile) root).getPackage();
+			if(root instanceof XModule) {
+				return ((XModule) root).getPackage();
 			}
 		}
 		return null;

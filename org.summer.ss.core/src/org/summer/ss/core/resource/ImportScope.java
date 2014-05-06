@@ -9,13 +9,16 @@ package org.summer.ss.core.resource;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.xbase.XClosure;
@@ -23,6 +26,7 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.ss.core.scoping.ImportResourceScope;
 
 import com.google.common.collect.Lists;
 
@@ -79,17 +83,25 @@ public class ImportScope implements IScope {
 
 	public Iterable<IEObjectDescription> getAllElements() {
 		List<IEObjectDescription> result = Lists.newLinkedList();
-		XtendFile file = (XtendFile) resource.getContents().get(0);
+		XModule file = (XModule) resource.getContents().get(0);
 		XImportSection1 importSection = file.getImportSection();
 		if(importSection == null){
 			return result;
 		}
 		List<XImportDeclaration1> importDecls = importSection.getImportDeclarations();
-		for(XImportDeclaration1 importDesc : importDecls){
-			List<XImportItem> items = importDesc.getImportItems();
+		for(XImportDeclaration1 importDecl : importDecls){
+			String uriStr = importDecl.getImportURI();
+			XtextResourceSet resourceSet = (XtextResourceSet) resource.getResourceSet();
+			IPath path = resourceSet.getProject().getLocation().append(uriStr);
+			URI uri = URI.createFileURI(path.toOSString());
+			Resource resource = resourceSet.getResource(uri, true);
+			result.add(EObjectDescription.create(importDecl.getName(), resource.getContents().get(0)));
+			
+			List<XImportItem> items = importDecl.getImportItems();
 			for(XImportItem item : items){
 				if(item.getAlias()!=null && !item.getAlias().isEmpty()){
 					result.add(EObjectDescription.create(item.getAlias(), item.getImportedId()));
+					result.add(EObjectDescription.create(QualifiedName.create(importDecl.getName(),item.getAlias()) , item.getImportedId()));
 				}else {
 					EObject obj = item.getImportedId();
 					if(obj == null || obj.eIsProxy()){
@@ -99,15 +111,18 @@ public class ImportScope implements IScope {
 					if(idEle instanceof JvmDeclaredType){
 						JvmDeclaredType declType = (JvmDeclaredType) idEle;
 						result.add(EObjectDescription.create(declType.getSimpleName(), item.getImportedId()));
+						result.add(EObjectDescription.create(QualifiedName.create(importDecl.getName(),declType.getSimpleName()) , item.getImportedId()));
 					} else if(idEle instanceof XVariableDeclaration){
 						XVariableDeclaration var  = (XVariableDeclaration) idEle;
 						result.add(EObjectDescription.create(var.getSimpleName(), item.getImportedId()));
+						result.add(EObjectDescription.create(QualifiedName.create(importDecl.getName(),var.getSimpleName()) , item.getImportedId()));
 					} else if(idEle instanceof XClosure){
 						XClosure closure  = (XClosure) idEle;
 						if(closure.getName() == null || closure.getName().isEmpty()){
 							continue;
 						}
 						result.add(EObjectDescription.create(closure.getName(), item.getImportedId()));
+						result.add(EObjectDescription.create(QualifiedName.create(importDecl.getName(),closure.getName()) , item.getImportedId()));
 					}
 					
 				}

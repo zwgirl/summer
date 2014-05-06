@@ -22,6 +22,12 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
+import org.summer.dsl.model.xbase.XTemplate;
+import org.summer.dsl.model.xbase.RichStringLiteral;
+import org.summer.dsl.model.ss.RichString;
+import org.summer.dsl.model.ss.RichStringElseIf;
+import org.summer.dsl.model.ss.RichStringForLoop;
+import org.summer.dsl.model.ss.RichStringIf;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.JvmField;
@@ -65,6 +71,7 @@ import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XTemplate;
 import org.summer.dsl.model.xbase.XTernaryOperation;
 import org.summer.dsl.model.xbase.XThrowExpression;
 import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
@@ -73,7 +80,6 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XWhileExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
@@ -98,6 +104,8 @@ import org.summer.dsl.xbase.typesystem.util.ExtendedEarlyExitComputer;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.UnboundTypeParameterPreservingSubstitutor;
 import org.summer.dsl.xbase.validation.IssueCodes;
+import org.summer.ss2.lib.StringConcatenation;
+import org.summer.ss2.lib.StringConcatenationClient;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -129,6 +137,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XDoWhileExpression)expression, state);
 		} else if (expression instanceof XWhileExpression) {
 			_computeTypes((XWhileExpression)expression, state);
+		} else if (expression instanceof XTemplate) {
+			_computeTypes((XTemplate)expression, state);
 		} else if (expression instanceof XBlockExpression) {
 			_computeTypes((XBlockExpression)expression, state);
 		} else if (expression instanceof XBooleanLiteral) {
@@ -153,6 +163,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XNullLiteral)expression, state);
 		} else if (expression instanceof XReturnExpression) {
 			_computeTypes((XReturnExpression)expression, state);
+		} else if (expression instanceof RichStringLiteral) {
+			_computeTypes((RichStringLiteral)expression, state);
 		} else if (expression instanceof XStringLiteral) {
 			_computeTypes((XStringLiteral)expression, state);
 		} else if (expression instanceof XSwitchExpression) {
@@ -196,7 +208,80 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 
-
+	protected void _computeTypes(XTemplate object, ITypeComputationState state) {
+		List<XExpression> expressions = object.getExpressions();
+		if (!expressions.isEmpty()) {
+			for(XExpression expression: expressions) {
+				ITypeComputationState expressionState = state.withoutExpectation();
+				expressionState.computeTypes(expression);
+				if (expression instanceof XVariableDeclaration) {
+					addLocalToCurrentScope((XVariableDeclaration)expression, state);
+				}
+			}
+		}
+		for(ITypeExpectation expectation: state.getExpectations()) {
+			LightweightTypeReference expectedType = expectation.getExpectedType();
+			if (expectedType != null && expectedType.isType(StringConcatenation.class)) {
+				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+			} else if (expectedType != null && expectedType.isType(StringConcatenationClient.class)) {
+				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+			} else if (expectedType != null && expectedType.isType(String.class)) {
+				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+				// TODO this special treatment here should become obsolete as soon as the expectations are properly propagated
+			} else if (!(object.eContainer() instanceof XCastedExpression) && 
+					object.eContainingFeature() != XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET && 
+					(expectedType != null && !expectedType.isResolved() || expectedType == null && !expectation.isVoidTypeAllowed())) {
+				LightweightTypeReference type = getTypeForName(String.class, state);
+				expectation.acceptActualType(type, ConformanceHint.UNCHECKED, ConformanceHint.DEMAND_CONVERSION);
+			} else {
+				LightweightTypeReference type = getTypeForName(CharSequence.class, state);
+				expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
+			}
+		}
+	}
+	
+//	protected void _computeTypes(RichStringForLoop object, ITypeComputationState state) {
+//		LightweightTypeReference charSequence = getTypeForName(CharSequence.class, state);
+//		ITypeComputationState eachState = state.withExpectation(charSequence);
+//		JvmFormalParameter parameter = object.getDeclaredParam();
+//		if (parameter != null) {
+//			LightweightTypeReference parameterType = computeForLoopParameterType(object, state);
+//			eachState = eachState.assignType(parameter, parameterType);
+//		}
+//		eachState.computeTypes(object.getEachExpression());
+//		
+//		state.withNonVoidExpectation().computeTypes(object.getBefore());
+//		state.withNonVoidExpectation().computeTypes(object.getSeparator());
+//		state.withNonVoidExpectation().computeTypes(object.getAfter());
+//		
+//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+//		state.acceptActualType(primitiveVoid);
+//		
+//		state.acceptActualType(charSequence);
+//	}
+//	
+//	protected void _computeTypes(RichStringIf object, ITypeComputationState state) {
+//		LightweightTypeReference charSequence = getTypeForName(CharSequence.class, state);
+//		LightweightTypeReference booleanType = getTypeForName(Boolean.TYPE, state);
+//		
+//		ITypeComputationState conditionExpectation = state.withExpectation(booleanType);
+//		XExpression condition = object.getIf();
+//		conditionExpectation.computeTypes(condition);
+//		XExpression thenExpression = object.getThen();
+//		ITypeComputationState thenState = reassignCheckedType(condition, thenExpression, state);
+//		thenState.withExpectation(charSequence).computeTypes(thenExpression);
+//		for(RichStringElseIf elseIf: object.getElseIfs()) {
+//			state.withExpectation(booleanType).computeTypes(elseIf.getIf());
+//			state.withExpectation(charSequence).computeTypes(elseIf.getThen());
+//		}
+//		state.withExpectation(charSequence).computeTypes(object.getElse());
+//		state.acceptActualType(charSequence);
+//	}
+	
+	protected void _computeTypes(RichStringLiteral object, ITypeComputationState state) {
+		LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
+		state.acceptActualType(type);
+	}
 
 	protected LightweightTypeReference getTypeForName(Class<?> clazz, ITypeComputationState state) {
 		ResourceSet resourceSet = state.getReferenceOwner().getContextResourceSet();
@@ -1397,7 +1482,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	
 	protected boolean mustDiscardRefinement(JvmIdentifiableElement feature) {
 		if (feature instanceof XVariableDeclaration) {
-			return ((XVariableDeclaration) feature).isWriteable();
+			return ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isWriteable();  //cym modified
 		}
 		if (feature instanceof JvmField) {
 			return !((JvmField) feature).isFinal();

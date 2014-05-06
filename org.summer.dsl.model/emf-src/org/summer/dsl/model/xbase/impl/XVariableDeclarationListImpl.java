@@ -22,8 +22,8 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isWriteable <em>Writeable</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#getDeclarations <em>Declarations</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isWriteable <em>Writeable</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
@@ -31,6 +31,16 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * @generated
  */
 public class XVariableDeclarationListImpl extends XExpressionImpl implements XVariableDeclarationList {
+	/**
+	 * The cached value of the '{@link #getDeclarations() <em>Declarations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeclarations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<XExpression> declarations;
+
 	/**
 	 * The default value of the '{@link #isWriteable() <em>Writeable</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,16 +60,6 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	 * @ordered
 	 */
 	protected boolean writeable = WRITEABLE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getDeclarations() <em>Declarations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeclarations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<XExpression> declarations;
 
 	/**
 	 * The default value of the '{@link #isExported() <em>Exported</em>}' attribute.
@@ -176,10 +176,10 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				return isWriteable();
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				return getDeclarations();
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
+				return isWriteable();
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				return isExported();
 		}
@@ -195,12 +195,12 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				setWriteable((Boolean)newValue);
-				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				getDeclarations().clear();
 				getDeclarations().addAll((Collection<? extends XExpression>)newValue);
+				return;
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
+				setWriteable((Boolean)newValue);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				setExported((Boolean)newValue);
@@ -217,11 +217,11 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				setWriteable(WRITEABLE_EDEFAULT);
-				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				getDeclarations().clear();
+				return;
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
+				setWriteable(WRITEABLE_EDEFAULT);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				setExported(EXPORTED_EDEFAULT);
@@ -238,10 +238,10 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				return writeable != WRITEABLE_EDEFAULT;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				return declarations != null && !declarations.isEmpty();
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
+				return writeable != WRITEABLE_EDEFAULT;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				return exported != EXPORTED_EDEFAULT;
 		}

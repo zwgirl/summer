@@ -418,6 +418,24 @@ public interface XbaseFactory extends EFactory {
 	XFieldLiteralPart createXFieldLiteralPart();
 
 	/**
+	 * Returns a new object of class '<em>XTemplate</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XTemplate</em>'.
+	 * @generated
+	 */
+	XTemplate createXTemplate();
+
+	/**
+	 * Returns a new object of class '<em>Rich String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rich String Literal</em>'.
+	 * @generated
+	 */
+	RichStringLiteral createRichStringLiteral();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

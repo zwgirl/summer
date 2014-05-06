@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.scoping.batch;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.filter;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.EObjectDescription;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
@@ -24,9 +30,6 @@ import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
-import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
@@ -120,8 +123,8 @@ public class ReceiverFeatureScope extends AbstractSessionBasedScope implements I
 	
 	@Override
 	protected void processFeatureNames(QualifiedName name, NameAcceptor acceptor) {
-		QualifiedName methodName = operatorMapping.getMethodName(name); // cym comment
-//		QualifiedName methodName = null; 
+//		QualifiedName methodName = operatorMapping.getMethodName(name); // cym comment
+		QualifiedName methodName = null; 
 		if (methodName != null) {
 			acceptor.accept(methodName.toString(), 2);
 		} else {
@@ -132,6 +135,21 @@ public class ReceiverFeatureScope extends AbstractSessionBasedScope implements I
 
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
+		if(receiver instanceof XModule){
+			 XModule module = (XModule) receiver;
+			 List<IEObjectDescription> allDescriptions = Lists.newArrayListWithCapacity(module.getContents().size());
+			 for(EObject obj: module.getContents()){
+				 if(obj instanceof JvmIdentifiableElement){
+					 JvmIdentifiableElement jvmID = (JvmIdentifiableElement) obj;
+					 QualifiedName featureName = QualifiedName.create(jvmID.getSimpleName());
+						// TODO property names?
+						allDescriptions.add(EObjectDescription.create(featureName,  jvmID));
+				 }
+			 }
+			 
+			 return allDescriptions;
+		}
+		 
 		Set<JvmFeature> allFeatures = Sets.newLinkedHashSet();
 		for(JvmType type: bucket.getTypes()) {
 			if (type instanceof JvmDeclaredType) {

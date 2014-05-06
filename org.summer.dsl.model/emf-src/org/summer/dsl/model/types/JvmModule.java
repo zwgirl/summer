@@ -28,7 +28,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
  * @model
  * @generated
  */
-public interface JvmModule extends JvmIdentifiableElement {
+public interface JvmModule extends JvmType {
 	/**
 	 * Returns the value of the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

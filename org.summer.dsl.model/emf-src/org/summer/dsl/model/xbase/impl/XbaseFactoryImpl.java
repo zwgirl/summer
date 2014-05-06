@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -43,6 +44,7 @@ import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XTemplate;
 import org.summer.dsl.model.xbase.XTernaryOperation;
 import org.summer.dsl.model.xbase.XThrowExpression;
 import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
@@ -141,6 +143,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XVARIABLE_DECLARATION_LIST: return createXVariableDeclarationList();
 			case XbasePackage.XSTRUCT_LITERAL: return createXStructLiteral();
 			case XbasePackage.XFIELD_LITERAL_PART: return createXFieldLiteralPart();
+			case XbasePackage.XTEMPLATE: return createXTemplate();
+			case XbasePackage.RICH_STRING_LITERAL: return createRichStringLiteral();
 			
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -559,6 +563,16 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	@Override
 	public XFieldLiteralPart createXFieldLiteralPart() {
 		return new XFieldLiteralPartImpl();
+	}
+
+	@Override
+	public XTemplate createXTemplate() {
+		return new XTemplateImpl();
+	}
+
+	@Override
+	public RichStringLiteral createRichStringLiteral() {
+		return new RichStringLiteralImpl();
 	}
 
 

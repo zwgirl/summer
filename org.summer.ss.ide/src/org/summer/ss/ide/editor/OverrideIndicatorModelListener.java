@@ -27,7 +27,7 @@ import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.jface.text.source.IAnnotationModelExtension;
 import org.summer.ss.core.typing.XtendOverridesService;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
@@ -154,10 +154,10 @@ public class OverrideIndicatorModelListener extends NullImpl implements IXtextMo
 		if (contents.isEmpty())
 			return Maps.newHashMap();
 		EObject eObject = contents.get(0);
-		if (!(eObject instanceof XtendFile)) {
+		if (!(eObject instanceof XModule)) {
 			return Maps.newHashMap();
 		}
-		XtendFile xtendFile = (XtendFile) eObject;
+		XModule xtendFile = (XModule) eObject;
 		Map<Annotation, Position> annotationToPosition = Maps.newHashMap();
 		for (XtendFunction xtendFunction : getXtendFunctions(xtendFile)) {
 			if (xtendFunction.isOverride()) {
@@ -177,7 +177,7 @@ public class OverrideIndicatorModelListener extends NullImpl implements IXtextMo
 		return annotationToPosition;
 	}
 
-	private Iterable<XtendFunction> getXtendFunctions(XtendFile xtendFile) {
+	private Iterable<XtendFunction> getXtendFunctions(XModule xtendFile) {
 		return concat(transform(xtendFile.getXtendTypes(), new Function<XtendTypeDeclaration, Iterable<XtendFunction>>() {
 			public Iterable<XtendFunction> apply(XtendTypeDeclaration input) {
 				return filter(input.getMembers(), XtendFunction.class);

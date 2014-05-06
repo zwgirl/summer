@@ -40,7 +40,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
  *
  * @generated
  */
-public class JvmModuleImpl extends JvmIdentifiableElementImpl implements JvmModule {
+public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	/**
 	 * The default value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

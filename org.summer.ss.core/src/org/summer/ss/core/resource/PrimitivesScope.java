@@ -10,7 +10,6 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.access.impl.Primitives;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.ss.core.scoping.AbstractScope;
 

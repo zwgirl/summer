@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.scoping.batch;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
@@ -15,10 +16,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
@@ -28,6 +31,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XIndexOperation;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbaseFactory;
@@ -46,6 +50,7 @@ import org.summer.dsl.xbase.typesystem.references.UnboundTypeReference;
 import org.summer.dsl.xbase.util.FeatureCallAsTypeLiteralHelper;
 import org.summer.dsl.xbase.resource.RootScope;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 /**
@@ -249,6 +254,7 @@ public class FeatureScopes implements IFeatureNames {
 	}
 
 	@Nullable
+	//cym modified
 	private IScope createTypeLiteralScope(XExpression featureCall, XExpression receiver, IFeatureScopeSession session,
 			IResolvedTypes resolvedTypes, LightweightTypeReference receiverType, JvmIdentifiableElement linkedReceiver) {
 		if (linkedReceiver instanceof JvmDeclaredType) {
@@ -259,6 +265,41 @@ public class FeatureScopes implements IFeatureNames {
 				result = createStaticFeatureOnTypeLiteralScope(asAbstractFeatureCall(featureCall), declaringType, receiver, receiverType, result, session);
 				return result;
 			}
+		} else if(linkedReceiver instanceof XModule){  //cym added
+			final XModule module = (XModule) linkedReceiver;
+			return new AbstractSessionBasedScope(IScope.NULLSCOPE, session, (XAbstractFeatureCall) featureCall){
+
+				@Override
+				protected Collection<IEObjectDescription> getLocalElementsByName(
+						QualifiedName name) {
+					List<IEObjectDescription> result = Lists.newLinkedList();
+					Iterable<IEObjectDescription> elements = getAllElements();
+					for(IEObjectDescription ed: elements){
+						if(ed.getQualifiedName().equals(name)){
+							result.add(ed);
+						}
+					}
+					
+					if(getParent()!=null){
+						result.addAll(Lists.newLinkedList(getParent().getElements(name)));
+					}
+					
+					return result;
+				}
+
+				@Override
+				protected Iterable<IEObjectDescription> getAllLocalElements() {
+					List<IEObjectDescription> result = Lists.newLinkedList();
+					for(EObject obj : module.getContents()){
+						if(obj instanceof JvmIdentifiableElement){
+							JvmIdentifiableElement jvmEle = (JvmIdentifiableElement) obj;
+							result.add(EObjectDescription.create(jvmEle.getSimpleName(), obj));
+						}
+					}
+					return result;
+				}
+				
+			};
 		}
 		return null;
 	}
@@ -389,6 +430,10 @@ public class FeatureScopes implements IFeatureNames {
 		}
 		if (call instanceof XAssignment) {
 			return ((XAssignment) call).getAssignable();
+		}
+		
+		if (call instanceof XIndexOperation) {
+			return ((XIndexOperation) call).getExpression();
 		}
 		return null;
 	}

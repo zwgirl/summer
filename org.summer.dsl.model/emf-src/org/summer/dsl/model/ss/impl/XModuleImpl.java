@@ -10,12 +10,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
+import org.summer.dsl.model.types.impl.JvmTypeImpl;
 import org.summer.dsl.model.xtype.XExportSection;
 import org.summer.dsl.model.xtype.XImportSection1;
 
@@ -26,17 +26,17 @@ import org.summer.dsl.model.xtype.XImportSection1;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.ss.impl.XtendFileImpl#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.impl.XtendFileImpl#getXtendTypes <em>Xtend Types</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.impl.XtendFileImpl#getPackage <em>Package</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.impl.XtendFileImpl#getContents <em>Contents</em>}</li>
- *   <li>{@link org.summer.dsl.model.ss.impl.XtendFileImpl#getExportSection <em>Export Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getXtendTypes <em>Xtend Types</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getExportSection <em>Export Section</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class XtendFileImpl extends MinimalEObjectImpl.Container implements XtendFile {
+public class XModuleImpl extends JvmTypeImpl implements XModule {
 	/**
 	 * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -102,7 +102,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XtendFileImpl() {
+	protected XModuleImpl() {
 		super();
 	}
 
@@ -113,7 +113,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SsPackage.Literals.XTEND_FILE;
+		return SsPackage.Literals.XMODULE;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 		XImportSection1 oldImportSection = importSection;
 		importSection = newImportSection;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SsPackage.XTEND_FILE__IMPORT_SECTION, oldImportSection, newImportSection);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__IMPORT_SECTION, oldImportSection, newImportSection);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -149,14 +149,14 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 		if (newImportSection != importSection) {
 			NotificationChain msgs = null;
 			if (importSection != null)
-				msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SsPackage.XTEND_FILE__IMPORT_SECTION, null, msgs);
+				msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__IMPORT_SECTION, null, msgs);
 			if (newImportSection != null)
-				msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SsPackage.XTEND_FILE__IMPORT_SECTION, null, msgs);
+				msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__IMPORT_SECTION, null, msgs);
 			msgs = basicSetImportSection(newImportSection, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XTEND_FILE__IMPORT_SECTION, newImportSection, newImportSection));
+			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__IMPORT_SECTION, newImportSection, newImportSection));
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	 */
 	public EList<XtendTypeDeclaration> getXtendTypes() {
 		if (xtendTypes == null) {
-			xtendTypes = new EObjectContainmentEList<XtendTypeDeclaration>(XtendTypeDeclaration.class, this, SsPackage.XTEND_FILE__XTEND_TYPES);
+			xtendTypes = new EObjectContainmentEList<XtendTypeDeclaration>(XtendTypeDeclaration.class, this, SsPackage.XMODULE__XTEND_TYPES);
 		}
 		return xtendTypes;
 	}
@@ -189,7 +189,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 		String oldPackage = package_;
 		package_ = newPackage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XTEND_FILE__PACKAGE, oldPackage, package_));
+			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__PACKAGE, oldPackage, package_));
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	 */
 	public EList<EObject> getContents() {
 		if (contents == null) {
-			contents = new EObjectContainmentEList<EObject>(EObject.class, this, SsPackage.XTEND_FILE__CONTENTS);
+			contents = new EObjectContainmentEList<EObject>(EObject.class, this, SsPackage.XMODULE__CONTENTS);
 		}
 		return contents;
 	}
@@ -222,7 +222,7 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 		XExportSection oldExportSection = exportSection;
 		exportSection = newExportSection;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SsPackage.XTEND_FILE__EXPORT_SECTION, oldExportSection, newExportSection);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__EXPORT_SECTION, oldExportSection, newExportSection);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -237,14 +237,14 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 		if (newExportSection != exportSection) {
 			NotificationChain msgs = null;
 			if (exportSection != null)
-				msgs = ((InternalEObject)exportSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SsPackage.XTEND_FILE__EXPORT_SECTION, null, msgs);
+				msgs = ((InternalEObject)exportSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__EXPORT_SECTION, null, msgs);
 			if (newExportSection != null)
-				msgs = ((InternalEObject)newExportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SsPackage.XTEND_FILE__EXPORT_SECTION, null, msgs);
+				msgs = ((InternalEObject)newExportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__EXPORT_SECTION, null, msgs);
 			msgs = basicSetExportSection(newExportSection, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XTEND_FILE__EXPORT_SECTION, newExportSection, newExportSection));
+			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__EXPORT_SECTION, newExportSection, newExportSection));
 	}
 
 	/**
@@ -255,13 +255,13 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SsPackage.XTEND_FILE__IMPORT_SECTION:
+			case SsPackage.XMODULE__IMPORT_SECTION:
 				return basicSetImportSection(null, msgs);
-			case SsPackage.XTEND_FILE__XTEND_TYPES:
+			case SsPackage.XMODULE__XTEND_TYPES:
 				return ((InternalEList<?>)getXtendTypes()).basicRemove(otherEnd, msgs);
-			case SsPackage.XTEND_FILE__CONTENTS:
+			case SsPackage.XMODULE__CONTENTS:
 				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
-			case SsPackage.XTEND_FILE__EXPORT_SECTION:
+			case SsPackage.XMODULE__EXPORT_SECTION:
 				return basicSetExportSection(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -275,15 +275,15 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SsPackage.XTEND_FILE__IMPORT_SECTION:
+			case SsPackage.XMODULE__IMPORT_SECTION:
 				return getImportSection();
-			case SsPackage.XTEND_FILE__XTEND_TYPES:
+			case SsPackage.XMODULE__XTEND_TYPES:
 				return getXtendTypes();
-			case SsPackage.XTEND_FILE__PACKAGE:
+			case SsPackage.XMODULE__PACKAGE:
 				return getPackage();
-			case SsPackage.XTEND_FILE__CONTENTS:
+			case SsPackage.XMODULE__CONTENTS:
 				return getContents();
-			case SsPackage.XTEND_FILE__EXPORT_SECTION:
+			case SsPackage.XMODULE__EXPORT_SECTION:
 				return getExportSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -298,21 +298,21 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SsPackage.XTEND_FILE__IMPORT_SECTION:
+			case SsPackage.XMODULE__IMPORT_SECTION:
 				setImportSection((XImportSection1)newValue);
 				return;
-			case SsPackage.XTEND_FILE__XTEND_TYPES:
+			case SsPackage.XMODULE__XTEND_TYPES:
 				getXtendTypes().clear();
 				getXtendTypes().addAll((Collection<? extends XtendTypeDeclaration>)newValue);
 				return;
-			case SsPackage.XTEND_FILE__PACKAGE:
+			case SsPackage.XMODULE__PACKAGE:
 				setPackage((String)newValue);
 				return;
-			case SsPackage.XTEND_FILE__CONTENTS:
+			case SsPackage.XMODULE__CONTENTS:
 				getContents().clear();
 				getContents().addAll((Collection<? extends EObject>)newValue);
 				return;
-			case SsPackage.XTEND_FILE__EXPORT_SECTION:
+			case SsPackage.XMODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)newValue);
 				return;
 		}
@@ -327,19 +327,19 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SsPackage.XTEND_FILE__IMPORT_SECTION:
+			case SsPackage.XMODULE__IMPORT_SECTION:
 				setImportSection((XImportSection1)null);
 				return;
-			case SsPackage.XTEND_FILE__XTEND_TYPES:
+			case SsPackage.XMODULE__XTEND_TYPES:
 				getXtendTypes().clear();
 				return;
-			case SsPackage.XTEND_FILE__PACKAGE:
+			case SsPackage.XMODULE__PACKAGE:
 				setPackage(PACKAGE_EDEFAULT);
 				return;
-			case SsPackage.XTEND_FILE__CONTENTS:
+			case SsPackage.XMODULE__CONTENTS:
 				getContents().clear();
 				return;
-			case SsPackage.XTEND_FILE__EXPORT_SECTION:
+			case SsPackage.XMODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)null);
 				return;
 		}
@@ -354,15 +354,15 @@ public class XtendFileImpl extends MinimalEObjectImpl.Container implements Xtend
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SsPackage.XTEND_FILE__IMPORT_SECTION:
+			case SsPackage.XMODULE__IMPORT_SECTION:
 				return importSection != null;
-			case SsPackage.XTEND_FILE__XTEND_TYPES:
+			case SsPackage.XMODULE__XTEND_TYPES:
 				return xtendTypes != null && !xtendTypes.isEmpty();
-			case SsPackage.XTEND_FILE__PACKAGE:
+			case SsPackage.XMODULE__PACKAGE:
 				return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
-			case SsPackage.XTEND_FILE__CONTENTS:
+			case SsPackage.XMODULE__CONTENTS:
 				return contents != null && !contents.isEmpty();
-			case SsPackage.XTEND_FILE__EXPORT_SECTION:
+			case SsPackage.XMODULE__EXPORT_SECTION:
 				return exportSection != null;
 		}
 		return super.eIsSet(featureID);

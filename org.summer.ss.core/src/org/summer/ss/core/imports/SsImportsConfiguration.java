@@ -17,7 +17,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
 import org.summer.ss.core.scoping.SsImportedNamespaceScopeProvider;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
@@ -43,7 +43,7 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	
 	@Override
 	public XImportSection1 getImportSection(XtextResource resource) {
-		XtendFile xtendFile = getXtendFile(resource);
+		XModule xtendFile = getXtendFile(resource);
 		if(xtendFile != null)
 			return xtendFile.getImportSection();
 		else
@@ -51,13 +51,13 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	}
 
 	protected String getCommonPackageName(XtextResource resource) {
-		XtendFile xtendFile = getXtendFile(resource);
+		XModule xtendFile = getXtendFile(resource);
 		return xtendFile == null ? null : xtendFile.getPackage();
 	}
 	
 	@Override
 	public Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource) {
-		XtendFile xtendFile = getXtendFile(resource);
+		XModule xtendFile = getXtendFile(resource);
 		if(xtendFile == null)
 			return emptyList();
 		final List<JvmDeclaredType> locallyDefinedTypes = newArrayList();
@@ -77,18 +77,18 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 		return locallyDefinedTypes;
 	}
 
-	protected XtendFile getXtendFile(XtextResource resource) {
-		if(resource == null || resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XtendFile))
+	protected XModule getXtendFile(XtextResource resource) {
+		if(resource == null || resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XModule))
 			return null;
 		else 
-			return (XtendFile) resource.getContents().get(0);
+			return (XModule) resource.getContents().get(0);
 	}
 	
 	@Override
 	public Set<String> getImplicitlyImportedPackages(XtextResource resource) {
 		Set<String> implicitlyImportedPackages = super.getImplicitlyImportedPackages(resource);
 		implicitlyImportedPackages.add(SsImportedNamespaceScopeProvider.XTEND_LIB.toString("."));
-		XtendFile xtendFile = getXtendFile(resource);
+		XModule xtendFile = getXtendFile(resource);
 		String commonPackageName = xtendFile == null ? null : xtendFile.getPackage();
 		if(!isEmpty(commonPackageName))  
 			implicitlyImportedPackages.add(commonPackageName);
@@ -97,10 +97,10 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	
 	@Override
 	public int getImportSectionOffset(XtextResource resource) {
-		XtendFile xtendFile = getXtendFile(resource);
+		XModule xtendFile = getXtendFile(resource);
 		if(xtendFile != null) {
 			if(!isEmpty(xtendFile.getPackage())) {
-				List<INode> nodes = NodeModelUtils.findNodesForFeature(xtendFile, SsPackage.Literals.XTEND_FILE__PACKAGE);
+				List<INode> nodes = NodeModelUtils.findNodesForFeature(xtendFile, SsPackage.Literals.XMODULE__PACKAGE);
 				if(!nodes.isEmpty()) {
 					INode lastNode = nodes.get(nodes.size()-1);
 					INode nextSibling = lastNode.getNextSibling();

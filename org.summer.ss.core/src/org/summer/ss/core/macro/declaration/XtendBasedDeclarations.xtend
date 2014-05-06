@@ -18,7 +18,6 @@ import org.summer.dsl.model.ss.XtendConstructor
 import org.summer.dsl.model.ss.XtendEnum
 import org.summer.dsl.model.ss.XtendEnumLiteral
 import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.XtendFile
 import org.summer.dsl.model.ss.XtendFunction
 import org.summer.dsl.model.ss.XtendInterface
 import org.summer.dsl.model.ss.XtendMember
@@ -50,6 +49,7 @@ import org.summer.dsl.model.types.JvmUpperBound
 import org.summer.dsl.model.xannotation.XAnnotation
 
 import static org.summer.dsl.model.xannotation.XannotationPackage.Literals.*
+import org.summer.dsl.model.ss.XModule
 
 abstract class XtendNamedElementImpl<T extends EObject> extends AbstractNamedElementImpl<T> {
 	
@@ -89,7 +89,7 @@ abstract class XtendMemberDeclarationImpl<T extends XtendMember> extends XtendAn
 abstract class XtendTypeDeclarationImpl<T extends XtendTypeDeclaration> extends XtendMemberDeclarationImpl<T> implements TypeDeclaration {
 	
 	def getPackageName() {
-		return (delegate.eContainer as XtendFile).getPackage
+		return (delegate.eContainer as XModule).getPackage
 	}
 	
 	override getSimpleName() {

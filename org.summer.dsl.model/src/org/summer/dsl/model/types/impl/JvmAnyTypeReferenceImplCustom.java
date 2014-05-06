@@ -14,7 +14,6 @@ import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.access.impl.ClassURIHelper;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitor;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitorWithParameter;
-import org.summer.dsl.xbase.scoping.batch.BuildInTypes;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 /**

@@ -242,7 +242,7 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     ((((importItems+=XImportItem importItems+=XImportItem*) | importItems+=XImportItem) importURI=STRING) | (importURI=STRING alias=ID))
+	 *     (((importItems+=XImportItem importItems+=XImportItem*) | wildcard?='*') name=ValidID importURI=STRING)
 	 */
 	protected void sequence_XImportDeclaration1(EObject context, XImportDeclaration1 semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

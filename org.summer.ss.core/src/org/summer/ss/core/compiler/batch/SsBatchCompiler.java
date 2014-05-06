@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jdt.core.compiler.batch.BatchCompiler;
 import org.summer.ss.core.macro.ProcessorInstanceForJvmTypeProvider;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.impl.ClasspathTypeProvider;
@@ -616,13 +616,13 @@ public class SsBatchCompiler {
 		return Strings.concat("/", typeName.getSegments()) + ".js";
 	}
 
-	@Nullable protected XtendFile getXtendFile(Resource resource) {
+	@Nullable protected XModule getXtendFile(Resource resource) {
 		XtextResource xtextResource = (XtextResource) resource;
 		IParseResult parseResult = xtextResource.getParseResult();
 		if (parseResult != null) {
 			EObject model = parseResult.getRootASTElement();
-			if (model instanceof XtendFile) {
-				XtendFile xtendFile = (XtendFile) model;
+			if (model instanceof XModule) {
+				XModule xtendFile = (XModule) model;
 				return xtendFile;
 			}
 		}

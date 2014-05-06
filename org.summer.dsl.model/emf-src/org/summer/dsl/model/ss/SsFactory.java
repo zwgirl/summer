@@ -22,13 +22,13 @@ public interface SsFactory extends EFactory {
 	SsFactory eINSTANCE = org.summer.dsl.model.ss.impl.SsFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Xtend File</em>'.
+	 * Returns a new object of class '<em>XModule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Xtend File</em>'.
+	 * @return a new object of class '<em>XModule</em>'.
 	 * @generated
 	 */
-	XtendFile createXtendFile();
+	XModule createXModule();
 
 	/**
 	 * Returns a new object of class '<em>Xtend Class</em>'.

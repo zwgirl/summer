@@ -3,8 +3,8 @@
 package org.summer.dsl.model.xbase;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +16,7 @@ import org.summer.dsl.model.types.JvmDeclaredType;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XStructLiteral#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XStructLiteral#getType <em>Type</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XStructLiteral#getTypeArguments <em>Type Arguments</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,5 +66,21 @@ public interface XStructLiteral extends XExpression {
 	 * @generated
 	 */
 	void setType(JvmDeclaredType value);
+
+	/**
+	 * Returns the value of the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * The list contents are of type {@link org.summer.dsl.model.types.JvmTypeReference}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type Arguments</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Arguments</em>' containment reference list.
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXStructLiteral_TypeArguments()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<JvmTypeReference> getTypeArguments();
 
 } // XStructLiteral

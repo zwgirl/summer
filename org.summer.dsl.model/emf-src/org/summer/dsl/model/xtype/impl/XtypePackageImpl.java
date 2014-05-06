@@ -388,6 +388,24 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getXImportDeclaration1_Name() {
+		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXImportDeclaration1_Wildcard() {
+		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getXImportItem() {
 		return xImportItemEClass;
 	}
@@ -563,6 +581,8 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		createEReference(xImportDeclaration1EClass, XIMPORT_DECLARATION1__IMPORT_ITEMS);
 		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__ALIAS);
 		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__IMPORT_URI);
+		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__NAME);
+		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__WILDCARD);
 
 		xImportItemEClass = createEClass(XIMPORT_ITEM);
 		createEReference(xImportItemEClass, XIMPORT_ITEM__IMPORTED_ID);
@@ -618,6 +638,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		// Add supertypes to classes
 		xFunctionTypeRefEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
 		xComputedTypeReferenceEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
+		xImportDeclaration1EClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xFunctionTypeRefEClass, XFunctionTypeRef.class, "XFunctionTypeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -648,8 +669,8 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		initEReference(getXImportDeclaration1_ImportItems(), this.getXImportItem(), null, "importItems", null, 0, -1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration1_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration1_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(xImportDeclaration1EClass, ecorePackage.getEBoolean(), "isWildcard", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getXImportDeclaration1_Name(), ecorePackage.getEString(), "name", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXImportDeclaration1_Wildcard(), ecorePackage.getEBoolean(), "wildcard", "false", 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xImportItemEClass, XImportItem.class, "XImportItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXImportItem_ImportedId(), theTypesPackage.getJvmIdentifiableElement(), null, "importedId", null, 0, 1, XImportItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

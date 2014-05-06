@@ -60,14 +60,14 @@ public interface SsPackage extends EPackage {
 	SsPackage eINSTANCE = org.summer.dsl.model.ss.impl.SsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.ss.impl.XtendFileImpl <em>Xtend File</em>}' class.
+	 * The meta object id for the '{@link org.summer.dsl.model.ss.impl.XModuleImpl <em>XModule</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.ss.impl.XtendFileImpl
-	 * @see org.summer.dsl.model.ss.impl.SsPackageImpl#getXtendFile()
+	 * @see org.summer.dsl.model.ss.impl.XModuleImpl
+	 * @see org.summer.dsl.model.ss.impl.SsPackageImpl#getXModule()
 	 * @generated
 	 */
-	int XTEND_FILE = 0;
+	int XMODULE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Import Section</b></em>' containment reference.
@@ -76,7 +76,7 @@ public interface SsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE__IMPORT_SECTION = 0;
+	int XMODULE__IMPORT_SECTION = TypesPackage.JVM_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Xtend Types</b></em>' containment reference list.
@@ -85,7 +85,7 @@ public interface SsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE__XTEND_TYPES = 1;
+	int XMODULE__XTEND_TYPES = TypesPackage.JVM_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' attribute.
@@ -94,7 +94,7 @@ public interface SsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE__PACKAGE = 2;
+	int XMODULE__PACKAGE = TypesPackage.JVM_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -103,7 +103,7 @@ public interface SsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE__CONTENTS = 3;
+	int XMODULE__CONTENTS = TypesPackage.JVM_TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Export Section</b></em>' containment reference.
@@ -112,16 +112,16 @@ public interface SsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE__EXPORT_SECTION = 4;
+	int XMODULE__EXPORT_SECTION = TypesPackage.JVM_TYPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Xtend File</em>' class.
+	 * The number of structural features of the '<em>XModule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XTEND_FILE_FEATURE_COUNT = 5;
+	int XMODULE_FEATURE_COUNT = TypesPackage.JVM_TYPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.ss.impl.XtendAnnotationTargetImpl <em>Xtend Annotation Target</em>}' class.
@@ -1330,23 +1330,6 @@ public interface SsPackage extends EPackage {
 	 */
 	int XTEND_VARIABLE_DECLARATION__RIGHT = XbasePackage.XVARIABLE_DECLARATION__RIGHT;
 
-	/**
-	 * The feature id for the '<em><b>Writeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XTEND_VARIABLE_DECLARATION__WRITEABLE = XbasePackage.XVARIABLE_DECLARATION__WRITEABLE;
-
-	/**
-	 * The feature id for the '<em><b>Exported</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XTEND_VARIABLE_DECLARATION__EXPORTED = XbasePackage.XVARIABLE_DECLARATION__EXPORTED;
 
 	/**
 	 * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -1634,69 +1617,69 @@ public interface SsPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.ss.XtendFile <em>Xtend File</em>}'.
+	 * Returns the meta object for class '{@link org.summer.dsl.model.ss.XModule <em>XModule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Xtend File</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile
+	 * @return the meta object for class '<em>XModule</em>'.
+	 * @see org.summer.dsl.model.ss.XModule
 	 * @generated
 	 */
-	EClass getXtendFile();
+	EClass getXModule();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.ss.XtendFile#getImportSection <em>Import Section</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.ss.XModule#getImportSection <em>Import Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Import Section</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile#getImportSection()
-	 * @see #getXtendFile()
+	 * @see org.summer.dsl.model.ss.XModule#getImportSection()
+	 * @see #getXModule()
 	 * @generated
 	 */
-	EReference getXtendFile_ImportSection();
+	EReference getXModule_ImportSection();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.ss.XtendFile#getXtendTypes <em>Xtend Types</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.ss.XModule#getXtendTypes <em>Xtend Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Xtend Types</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile#getXtendTypes()
-	 * @see #getXtendFile()
+	 * @see org.summer.dsl.model.ss.XModule#getXtendTypes()
+	 * @see #getXModule()
 	 * @generated
 	 */
-	EReference getXtendFile_XtendTypes();
+	EReference getXModule_XtendTypes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.ss.XtendFile#getPackage <em>Package</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.ss.XModule#getPackage <em>Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Package</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile#getPackage()
-	 * @see #getXtendFile()
+	 * @see org.summer.dsl.model.ss.XModule#getPackage()
+	 * @see #getXModule()
 	 * @generated
 	 */
-	EAttribute getXtendFile_Package();
+	EAttribute getXModule_Package();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.ss.XtendFile#getContents <em>Contents</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.ss.XModule#getContents <em>Contents</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Contents</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile#getContents()
-	 * @see #getXtendFile()
+	 * @see org.summer.dsl.model.ss.XModule#getContents()
+	 * @see #getXModule()
 	 * @generated
 	 */
-	EReference getXtendFile_Contents();
+	EReference getXModule_Contents();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.ss.XtendFile#getExportSection <em>Export Section</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.ss.XModule#getExportSection <em>Export Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Export Section</em>'.
-	 * @see org.summer.dsl.model.ss.XtendFile#getExportSection()
-	 * @see #getXtendFile()
+	 * @see org.summer.dsl.model.ss.XModule#getExportSection()
+	 * @see #getXModule()
 	 * @generated
 	 */
-	EReference getXtendFile_ExportSection();
+	EReference getXModule_ExportSection();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.ss.XtendClass <em>Xtend Class</em>}'.
@@ -2491,14 +2474,14 @@ public interface SsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.ss.impl.XtendFileImpl <em>Xtend File</em>}' class.
+		 * The meta object literal for the '{@link org.summer.dsl.model.ss.impl.XModuleImpl <em>XModule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.ss.impl.XtendFileImpl
-		 * @see org.summer.dsl.model.ss.impl.SsPackageImpl#getXtendFile()
+		 * @see org.summer.dsl.model.ss.impl.XModuleImpl
+		 * @see org.summer.dsl.model.ss.impl.SsPackageImpl#getXModule()
 		 * @generated
 		 */
-		EClass XTEND_FILE = eINSTANCE.getXtendFile();
+		EClass XMODULE = eINSTANCE.getXModule();
 
 		/**
 		 * The meta object literal for the '<em><b>Import Section</b></em>' containment reference feature.
@@ -2506,7 +2489,7 @@ public interface SsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XTEND_FILE__IMPORT_SECTION = eINSTANCE.getXtendFile_ImportSection();
+		EReference XMODULE__IMPORT_SECTION = eINSTANCE.getXModule_ImportSection();
 
 		/**
 		 * The meta object literal for the '<em><b>Xtend Types</b></em>' containment reference list feature.
@@ -2514,7 +2497,7 @@ public interface SsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XTEND_FILE__XTEND_TYPES = eINSTANCE.getXtendFile_XtendTypes();
+		EReference XMODULE__XTEND_TYPES = eINSTANCE.getXModule_XtendTypes();
 
 		/**
 		 * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
@@ -2522,7 +2505,7 @@ public interface SsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XTEND_FILE__PACKAGE = eINSTANCE.getXtendFile_Package();
+		EAttribute XMODULE__PACKAGE = eINSTANCE.getXModule_Package();
 
 		/**
 		 * The meta object literal for the '<em><b>Contents</b></em>' containment reference list feature.
@@ -2530,7 +2513,7 @@ public interface SsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XTEND_FILE__CONTENTS = eINSTANCE.getXtendFile_Contents();
+		EReference XMODULE__CONTENTS = eINSTANCE.getXModule_Contents();
 
 		/**
 		 * The meta object literal for the '<em><b>Export Section</b></em>' containment reference feature.
@@ -2538,7 +2521,7 @@ public interface SsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XTEND_FILE__EXPORT_SECTION = eINSTANCE.getXtendFile_ExportSection();
+		EReference XMODULE__EXPORT_SECTION = eINSTANCE.getXModule_ExportSection();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.ss.impl.XtendClassImpl <em>Xtend Class</em>}' class.

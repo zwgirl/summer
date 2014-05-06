@@ -19,7 +19,7 @@ import org.eclipse.jface.viewers.StyledString;
 import org.summer.ss.core.jvmmodel.DispatchHelper;
 import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
 import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFile;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendMember;
 import org.summer.dsl.model.ss.SsPackage;

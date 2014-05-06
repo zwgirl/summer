@@ -15,6 +15,7 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
+import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAbstractWhileExpression;
 import org.summer.dsl.model.xbase.XArrayLiteral;
@@ -55,6 +56,7 @@ import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XTemplate;
 import org.summer.dsl.model.xbase.XTernaryOperation;
 import org.summer.dsl.model.xbase.XThrowExpression;
 import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
@@ -412,6 +414,20 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	private EClass xFieldLiteralPartEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass xTemplateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass richStringLiteralEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -674,24 +690,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXVariableDeclaration_Writeable() {
-		return (EAttribute)xVariableDeclarationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXVariableDeclaration_Exported() {
-		return (EAttribute)xVariableDeclarationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getXVariableDeclarationList() {
 		return xVariableDeclarationListEClass;
 	}
@@ -702,7 +700,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * @generated
 	 */
 	public EAttribute getXVariableDeclarationList_Writeable() {
-		return (EAttribute)xVariableDeclarationListEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)xVariableDeclarationListEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -711,7 +709,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * @generated
 	 */
 	public EReference getXVariableDeclarationList_Declarations() {
-		return (EReference)xVariableDeclarationListEClass.getEStructuralFeatures().get(1);
+		return (EReference)xVariableDeclarationListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1925,6 +1923,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getXStructLiteral_TypeArguments() {
+		return (EReference)xStructLiteralEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getXFieldLiteralPart() {
 		return xFieldLiteralPartEClass;
 	}
@@ -1945,6 +1952,24 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 */
 	public EReference getXFieldLiteralPart_Value() {
 		return (EReference)xFieldLiteralPartEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getXTemplate() {
+		return xTemplateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRichStringLiteral() {
+		return richStringLiteralEClass;
 	}
 
 	/**
@@ -2000,12 +2025,10 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		createEReference(xVariableDeclarationEClass, XVARIABLE_DECLARATION__TYPE);
 		createEAttribute(xVariableDeclarationEClass, XVARIABLE_DECLARATION__NAME);
 		createEReference(xVariableDeclarationEClass, XVARIABLE_DECLARATION__RIGHT);
-		createEAttribute(xVariableDeclarationEClass, XVARIABLE_DECLARATION__WRITEABLE);
-		createEAttribute(xVariableDeclarationEClass, XVARIABLE_DECLARATION__EXPORTED);
 
 		xVariableDeclarationListEClass = createEClass(XVARIABLE_DECLARATION_LIST);
-		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__WRITEABLE);
 		createEReference(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__DECLARATIONS);
+		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__WRITEABLE);
 		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__EXPORTED);
 
 		xAbstractFeatureCallEClass = createEClass(XABSTRACT_FEATURE_CALL);
@@ -2180,10 +2203,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xStructLiteralEClass = createEClass(XSTRUCT_LITERAL);
 		createEReference(xStructLiteralEClass, XSTRUCT_LITERAL__PROPERTIES);
 		createEReference(xStructLiteralEClass, XSTRUCT_LITERAL__TYPE);
+		createEReference(xStructLiteralEClass, XSTRUCT_LITERAL__TYPE_ARGUMENTS);
 
 		xFieldLiteralPartEClass = createEClass(XFIELD_LITERAL_PART);
 		createEReference(xFieldLiteralPartEClass, XFIELD_LITERAL_PART__FIELD);
 		createEReference(xFieldLiteralPartEClass, XFIELD_LITERAL_PART__VALUE);
+
+		xTemplateEClass = createEClass(XTEMPLATE);
+
+		richStringLiteralEClass = createEClass(RICH_STRING_LITERAL);
 	}
 
 	/**
@@ -2265,6 +2293,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xObjectLiteralPartEClass.getESuperTypes().add(theTypesPackage.getJvmField());
 		xArrayLiteralEClass.getESuperTypes().add(this.getXExpression());
 		xStructLiteralEClass.getESuperTypes().add(this.getXExpression());
+		xTemplateEClass.getESuperTypes().add(this.getXBlockExpression());
+		richStringLiteralEClass.getESuperTypes().add(this.getXStringLiteral());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xExpressionEClass, XExpression.class, "XExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2292,12 +2322,10 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEReference(getXVariableDeclaration_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXVariableDeclaration_Right(), this.getXExpression(), null, "right", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXVariableDeclaration_Writeable(), ecorePackage.getEBoolean(), "writeable", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXVariableDeclaration_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xVariableDeclarationListEClass, XVariableDeclarationList.class, "XVariableDeclarationList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXVariableDeclarationList_Writeable(), ecorePackage.getEBoolean(), "writeable", null, 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXVariableDeclarationList_Declarations(), this.getXExpression(), null, "declarations", null, 0, -1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXVariableDeclarationList_Writeable(), ecorePackage.getEBoolean(), "writeable", null, 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXVariableDeclarationList_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xAbstractFeatureCallEClass, XAbstractFeatureCall.class, "XAbstractFeatureCall", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2492,10 +2520,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEClass(xStructLiteralEClass, XStructLiteral.class, "XStructLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXStructLiteral_Properties(), this.getXFieldLiteralPart(), null, "properties", null, 0, -1, XStructLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXStructLiteral_Type(), theTypesPackage.getJvmDeclaredType(), null, "type", null, 0, 1, XStructLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXStructLiteral_TypeArguments(), theTypesPackage.getJvmTypeReference(), null, "typeArguments", null, 0, -1, XStructLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xFieldLiteralPartEClass, XFieldLiteralPart.class, "XFieldLiteralPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXFieldLiteralPart_Field(), theTypesPackage.getJvmField(), null, "field", null, 0, 1, XFieldLiteralPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXFieldLiteralPart_Value(), this.getXExpression(), null, "value", null, 0, 1, XFieldLiteralPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(xTemplateEClass, XTemplate.class, "XTemplate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(richStringLiteralEClass, RichStringLiteral.class, "RichStringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
