@@ -34,6 +34,7 @@ import org.summer.dsl.model.xbase.XExpression;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isStrictFloatingPoint <em>Strict Floating Point</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isOverload <em>Overload</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,6 +220,26 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 	 * @ordered
 	 */
 	protected XExpression function;
+
+	/**
+	 * The default value of the '{@link #isOverload() <em>Overload</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverload()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OVERLOAD_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOverload() <em>Overload</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverload()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean overload = OVERLOAD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -527,6 +548,12 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 	public XExpression getFunction() {
 		return function;
 	}
+	
+	@Override
+	public String getSimpleName() {
+		XClosure closure = (XClosure) function;
+		return closure.getName();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -560,6 +587,27 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_OPERATION__FUNCTION, newFunction, newFunction));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isOverload() {
+		return overload;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverload(boolean newOverload) {
+		boolean oldOverload = overload;
+		overload = newOverload;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_OPERATION__OVERLOAD, oldOverload, overload));
 	}
 
 	/**
@@ -612,6 +660,8 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return getExpression();
 			case TypesPackage.JVM_OPERATION__FUNCTION:
 				return getFunction();
+			case TypesPackage.JVM_OPERATION__OVERLOAD:
+				return isOverload();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -656,6 +706,9 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return;
 			case TypesPackage.JVM_OPERATION__FUNCTION:
 				setFunction((XExpression)newValue);
+				return;
+			case TypesPackage.JVM_OPERATION__OVERLOAD:
+				setOverload((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -702,6 +755,9 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 			case TypesPackage.JVM_OPERATION__FUNCTION:
 				setFunction((XExpression)null);
 				return;
+			case TypesPackage.JVM_OPERATION__OVERLOAD:
+				setOverload(OVERLOAD_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -736,6 +792,8 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return expression != null;
 			case TypesPackage.JVM_OPERATION__FUNCTION:
 				return function != null;
+			case TypesPackage.JVM_OPERATION__OVERLOAD:
+				return overload != OVERLOAD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -764,21 +822,10 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 		result.append(native_);
 		result.append(", strictFloatingPoint: ");
 		result.append(strictFloatingPoint);
+		result.append(", overload: ");
+		result.append(overload);
 		result.append(')');
 		return result.toString();
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimpleName() {
-		if(getFunction() != null){
-			XClosure closure = (XClosure) getFunction() ;
-			return closure.getName();
-		}
-		return super.getSimpleName();
 	}
 	
 	@Override

@@ -142,6 +142,7 @@ public class TypesSwitch<T> extends Switch<T> {
 				JvmStructType jvmStructType = (JvmStructType)theEObject;
 				T result = caseJvmStructType(jvmStructType);
 				if (result == null) result = caseJvmDeclaredType(jvmStructType);
+				if (result == null) result = caseJvmTypeParameterDeclarator(jvmStructType);
 				if (result == null) result = caseJvmMember(jvmStructType);
 				if (result == null) result = caseJvmComponentType(jvmStructType);
 				if (result == null) result = caseJvmAnnotationTarget(jvmStructType);

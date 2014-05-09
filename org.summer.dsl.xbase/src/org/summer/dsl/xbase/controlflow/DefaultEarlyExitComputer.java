@@ -162,15 +162,28 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
 		if (isNotEmpty(tryExitPoints)) {
 			Collection<ExitPoint> result = Lists.newArrayList(tryExitPoints);
 			// TODO validate tryExitPoints against catch clauses
-			for(XCatchClause catchClause: expression.getCatchClauses()) {
-				Collection<ExitPoint> catchExitPoints = getExitPoints(catchClause.getExpression());
-				if (isNotEmpty(catchExitPoints)) {
-					result.addAll(catchExitPoints);
-				} else {
-					Collection<ExitPoint> finallyExitPoints = getExitPoints(expression.getFinallyExpression());
-					return finallyExitPoints;
-				}
+			
+			//cym comment
+//			for(XCatchClause catchClause: expression.getCatchClauses()) {
+//				Collection<ExitPoint> catchExitPoints = getExitPoints(catchClause.getExpression());
+//				if (isNotEmpty(catchExitPoints)) {
+//					result.addAll(catchExitPoints);
+//				} else {
+//					Collection<ExitPoint> finallyExitPoints = getExitPoints(expression.getFinallyExpression());
+//					return finallyExitPoints;
+//				}
+//			}
+			
+			XCatchClause catchClause = expression.getCatchClause();
+			Collection<ExitPoint> catchExitPoints = getExitPoints(catchClause.getExpression());
+			if (isNotEmpty(catchExitPoints)) {
+				result.addAll(catchExitPoints);
+			} else {
+				Collection<ExitPoint> finallyExitPoints = getExitPoints(expression.getFinallyExpression());
+				return finallyExitPoints;
 			}
+			
+			
 			return result;
 		} 
 		Collection<ExitPoint> finallyExitPoints = getExitPoints(expression.getFinallyExpression());

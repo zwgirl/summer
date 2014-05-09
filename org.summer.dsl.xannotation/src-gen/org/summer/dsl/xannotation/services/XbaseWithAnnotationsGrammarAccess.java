@@ -615,7 +615,7 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	// //	'delete' 
 	// //;
 	// XCastedExpression returns XExpression:
-	//	XIndexOperation (=> ({XCastedExpression.target=current} "as") type=JvmTypeReference)*;
+	//	XMemberFeatureCall (=> ({XCastedExpression.target=current} "as") type=JvmTypeReference)*;
 	public XbaseGrammarAccess.XCastedExpressionElements getXCastedExpressionAccess() {
 		return gaXbase.getXCastedExpressionAccess();
 	}
@@ -624,29 +624,15 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXCastedExpressionAccess().getRule();
 	}
 
-	//XIndexOperation returns XExpression:
-	//	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp])
-	//	index=XExpression "]")* //(=>'=' value = XExpression)
-	//;
-	public XbaseGrammarAccess.XIndexOperationElements getXIndexOperationAccess() {
-		return gaXbase.getXIndexOperationAccess();
-	}
-	
-	public ParserRule getXIndexOperationRule() {
-		return getXIndexOperationAccess().getRule();
-	}
-
-	//IndexOp:
-	//	"[";
-	public XbaseGrammarAccess.IndexOpElements getIndexOpAccess() {
-		return gaXbase.getIndexOpAccess();
-	}
-	
-	public ParserRule getIndexOpRule() {
-		return getIndexOpAccess().getRule();
-	}
-
-	////XMemberFeatureCall returns XExpression:
+	////XIndexOperation returns XExpression:
+	//
+	//// 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
+	//
+	////;
+	// //IndexOp:
+	// //	'['
+	// //;
+	// //XMemberFeatureCall returns XExpression:
 	// //	XPrimaryExpression
 	//
 	////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
@@ -758,29 +744,44 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	// //		)
 	//
 	////		)*;
+	// //XMemberFeatureCall returns XExpression:
+	// //	XPrimaryExpression
+	//
+	////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
+	//
+	////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+	// //		 ')'
+	//
+	////	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+	//
+	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
+	//
+	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+	//
+	////		feature=[types::JvmIdentifiableElement|FeatureCallID] 
+	// //		(
+	// //			(
+	// //			=>explicitOperationCall?='(' 
+	//
+	////				(
+	// //				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+	// //				)? 
+	// //			')')?
+	//
+	////		)
+	// //		)*;
 	// XMemberFeatureCall returns XExpression:
 	//	XPrimaryExpression (=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(")
 	//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")"
-	//	//	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
+	//	//	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
 	//
-	//	//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	// //		 ']'
-	//
-	//	//	|=>({XAssignment.assignable=current} 't=') value=XAssignment
-	// | => ({XAssignment.assignable=current} ("." |
-	//	explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
-	//	({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." | explicitStatic?="::")) ("<"
+	//	| => ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
+	//	memberCallArguments+=XExpression)*)? "]" | => ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
+	//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
+	//	({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
 	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 	//	feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="("
-	//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")? //			(
-	//
-	//	//			=>indexedOperation?='[' 
-	// //				(
-	//
-	//	//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			']')?
-	//)*;
+	//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")?)*;
 	public XbaseGrammarAccess.XMemberFeatureCallElements getXMemberFeatureCallAccess() {
 		return gaXbase.getXMemberFeatureCallAccess();
 	}
@@ -1486,8 +1487,24 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXContinueExpressionAccess().getRule();
 	}
 
-	//XTryCatchFinallyExpression returns XExpression:
-	//	{XTryCatchFinallyExpression} "try" expression=XExpression (catchClauses+=XCatchClause+ ("finally"
+	////XTryCatchFinallyExpression returns XExpression:
+	// //	{XTryCatchFinallyExpression}
+	// //	'try' 
+	//
+	////		expression=XExpression
+	// //	(
+	// //		catchClauses+=XCatchClause+
+	// //		(=>'finally' finallyExpression=XExpression)?
+	//
+	////	|	'finally' finallyExpression=XExpression
+	// //	);
+	// //	
+	// //XCatchClause :
+	//
+	////	=>'catch' '(' declaredParam=FullJvmFormalParameter ')' expression=XExpression;
+	// XTryCatchFinallyExpression returns
+	//XExpression:
+	//	{XTryCatchFinallyExpression} "try" expression=XExpression (catchClause=XCatchClause ("finally"
 	//	finallyExpression=XExpression)? | "finally" finallyExpression=XExpression);
 	public XbaseGrammarAccess.XTryCatchFinallyExpressionElements getXTryCatchFinallyExpressionAccess() {
 		return gaXbase.getXTryCatchFinallyExpressionAccess();
@@ -1498,7 +1515,7 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	}
 
 	//XCatchClause:
-	//	"catch" "(" declaredParam=FullJvmFormalParameter ")" expression=XExpression;
+	//	"catch" "(" identifier=ID ")" expression=XExpression;
 	public XbaseGrammarAccess.XCatchClauseElements getXCatchClauseAccess() {
 		return gaXbase.getXCatchClauseAccess();
 	}

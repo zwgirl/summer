@@ -20,6 +20,7 @@ import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.computation.SynonymTypesProvider;
 import org.summer.dsl.xbase.typesystem.internal.util.WrapperTypeLookup;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
@@ -365,12 +366,17 @@ public class RawTypeConformanceComputer {
 	
 	
 	protected int doIsConformant(ParameterizedTypeReference left, ArrayTypeReference right, int flags) {
-		if (left.isType(Object.class) || left.isType(Serializable.class) || left.isType(Cloneable.class)) {
+//		if (left.isType(Object.class) || left.isType(Serializable.class) || left.isType(Cloneable.class)) {
+//			return flags | SUCCESS | SUBTYPE;
+//		}  // cym comment
+		
+		if (left.isType(Buildin.Object.JvmType) /*|| left.isType(Serializable.class) || left.isType(Cloneable.class)*/) {
 			return flags | SUCCESS | SUBTYPE;
 		}
 		if ((flags & ALLOW_SYNONYMS) != 0) {
 			// Arrays are generally assignable to List and its supertypes
-			if (left.isType(List.class) || left.isType(Collection.class) || left.isType(Iterable.class)) {
+//			if (left.isType(List.class) || left.isType(Collection.class) || left.isType(Iterable.class)) {  // cym comment
+			if (left.isType(Buildin.List.JvmType) || left.isType(Buildin.Collection.JvmType) || left.isType(Buildin.Iterable.JvmType)) {
 				List<LightweightTypeReference> arguments = left.getTypeArguments();
 				if (arguments.isEmpty()) { // type argument is bound to Object
 					return flags | SUCCESS | DEMAND_CONVERSION;
@@ -486,7 +492,8 @@ public class RawTypeConformanceComputer {
 	}
 
 	protected int doIsConformant(LightweightTypeReference left, UnboundTypeReference right, int flags) {
-		if (left.getType() == right.getType() || left.isType(Object.class)) {
+//		if (left.getType() == right.getType() || left.isType(Object.class)) {  //cym comment
+		if (left.getType() == right.getType() || left.isType(Buildin.Object.JvmType)) {
 			return flags | SUCCESS;
 		}
 		if ((flags & ALLOW_BOXING_UNBOXING) == 0 && left.isPrimitive()) {
@@ -711,10 +718,12 @@ public class RawTypeConformanceComputer {
 			} else if ((flags & ALLOW_BOXING_UNBOXING) != 0) {
 				Primitive rightPrimitiveKind = right.getPrimitiveKind();
 				if (rightPrimitiveKind != null) {
-					if (left.isType(Object.class)) {
+//					if (left.isType(Object.class)) {  //cym comment
+					if (left.isType(Buildin.Object.JvmType)) {
 						return flags | SUCCESS | BOXING;
 					}
-					if (left.isType(String.class)) {
+//					if (left.isType(String.class)) {  //cym comment
+					if (left.isType(Buildin.String.JvmType)) {
 						return flags;
 					}
 					LightweightTypeReference wrapper = WrapperTypeLookup.getWrapperType(right, rightPrimitiveKind);
@@ -729,7 +738,8 @@ public class RawTypeConformanceComputer {
 		}
 		if ((flags & AS_TYPE_ARGUMENT) != 0)
 			return flags;
-		if (left.isType(Object.class)) {
+//		if (left.isType(Object.class)) {  //cym comment
+		if (left.isType(Buildin.Object.JvmType)) {
 			return flags | SUCCESS | SUBTYPE;
 		}
 		JvmType leftType = left.getType();

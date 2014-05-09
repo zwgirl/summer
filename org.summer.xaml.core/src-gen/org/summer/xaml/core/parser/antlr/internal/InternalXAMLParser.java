@@ -19580,7 +19580,7 @@ public class InternalXAMLParser extends AbstractInternalAntlrParser {
             otherlv_0=(Token)match(input,92,FOLLOW_92_in_ruleXImportDeclaration115459); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getXImportDeclaration1Access().getImportKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getXImportDeclaration1Access().getImportKeyword_1());
                   
             }
             // ../org.summer.xaml.core/src-gen/org/summer/xaml/core/parser/antlr/internal/InternalXAML.g:6699:1: ( ( ( (otherlv_1= '{' ( (lv_importItems_2_0= ruleXImportItem ) ) (otherlv_3= ',' ( (lv_importItems_4_0= ruleXImportItem ) ) )* otherlv_5= '}' ) | ( (lv_importItems_6_0= ruleXImportItem ) ) ) otherlv_7= 'from' ( (lv_importURI_8_0= RULE_STRING ) ) ) | (otherlv_9= 'from' ( (lv_importURI_10_0= RULE_STRING ) ) otherlv_11= 'as' ( (lv_alias_12_0= RULE_ID ) ) ) )

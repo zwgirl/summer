@@ -130,25 +130,27 @@ public class ArrayTypeReference extends LightweightTypeReference {
 		return null;
 	}
 	
-	@Override
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		if (isType(rawType)) {
-			return this;
-		}
-		Class<?> rawComponentType = rawType.getComponentType();
-		if (rawComponentType == null) {
-			if (Object.class.equals(rawType) || Cloneable.class.equals(rawType) || Serializable.class.equals(rawType)) {
-				return internalFindTopLevelType(rawType);
-			}
-			return null;
-		}
-		LightweightTypeReference resultComponent = component.getSuperType(rawComponentType);
-		if (resultComponent == null) {
-			return null;
-		}
-		return new ArrayTypeReference(getOwner(), resultComponent);
-	}
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		if (isType(rawType)) {
+//			return this;
+//		}
+//		Class<?> rawComponentType = rawType.getComponentType();
+//		if (rawComponentType == null) {
+//			if (Object.class.equals(rawType) || Cloneable.class.equals(rawType) || Serializable.class.equals(rawType)) {
+//				return internalFindTopLevelType(rawType);
+//			}
+//			return null;
+//		}
+//		LightweightTypeReference resultComponent = component.getSuperType(rawComponentType);
+//		if (resultComponent == null) {
+//			return null;
+//		}
+//		return new ArrayTypeReference(getOwner(), resultComponent);
+//	}
+	
 
 	@Override
 	public boolean isResolved() {
@@ -217,12 +219,22 @@ public class ArrayTypeReference extends LightweightTypeReference {
 		return component.getJavaIdentifier() + "[]";
 	}
 	
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		Class<?> clazzComponentType = clazz.getComponentType();
+//		if (clazzComponentType != null) {
+//			return component.isType(clazzComponentType);
+//		}
+//		return false;
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
-		Class<?> clazzComponentType = clazz.getComponentType();
-		if (clazzComponentType != null) {
-			return component.isType(clazzComponentType);
-		}
+	public boolean isType(JvmType clazz) {
+//		Class<?> clazzComponentType = clazz.getComponentType();
+//		if (clazzComponentType != null) {
+//			return component.isType(clazzComponentType);
+//		}
 		return false;
 	}
 	

@@ -275,24 +275,24 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 		XMemberFeatureCallElements memberFeatureCallElements= grammarAccess.getXMemberFeatureCallAccess();
 
 		// memberCallTarget=XMemberFeatureCall_XMemberFeatureCall_1_1_0_0_0
-		acceptor.accept(memberFeatureCallElements.getXMemberFeatureCallMemberCallTargetAction_1_2_0_0_0(), featureCall.getMemberCallTarget());
+		acceptor.accept(memberFeatureCallElements.getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0(), featureCall.getMemberCallTarget());
 
 		// (nullSafe?='?.' | explicitStatic?='::')?
 		if (featureCall.isNullSafe())
-			acceptor.accept(memberFeatureCallElements.getNullSafeQuestionMarkFullStopKeyword_1_2_0_0_1_1_0());
-		else if (featureCall.isExplicitStatic())
-			acceptor.accept(memberFeatureCallElements.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
+			acceptor.accept(memberFeatureCallElements.getNullSafeQuestionMarkFullStopKeyword_1_3_0_0_1_1_0());
+//		else if (featureCall.isExplicitStatic())
+//			acceptor.accept(memberFeatureCallElements.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
 
 		// (typeArguments+=JvmArgumentTypeReference typeArguments+=JvmArgumentTypeReference*)?
 		List<JvmTypeReference> typeArguments = featureCall.getTypeArguments();
 		if (!typeArguments.isEmpty()) {
-			acceptor.accept(memberFeatureCallElements.getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_1_0(), typeArguments.get(0), 0);
+			acceptor.accept(memberFeatureCallElements.getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_3_1_1_0(), typeArguments.get(0), 0);
 			for (int i = 1; i < typeArguments.size(); i++)
-				acceptor.accept(memberFeatureCallElements.getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_1_0(), typeArguments.get(i), i);
+				acceptor.accept(memberFeatureCallElements.getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_3_1_1_0(), typeArguments.get(i), i);
 		}
 
 		// feature=[JvmIdentifiableElement|ID]
-		acceptor.accept(memberFeatureCallElements.getFeatureJvmIdentifiableElementFeatureCallIDParserRuleCall_1_1_0_0_2_0_1(), featureCall.getFeature());
+		acceptor.accept(memberFeatureCallElements.getFeatureJvmIdentifiableElementFeatureCallIDParserRuleCall_1_2_0_0_2_0_1(), featureCall.getFeature());
 
 		// (explicitOperationCall?='(' (memberCallArguments+=XShortClosure | (memberCallArguments+=XExpression memberCallArguments+=XExpression*))?)? memberCallArguments+=XClosure? 
 		if (featureCall.isExplicitOperationCallOrBuilderSyntax()) {

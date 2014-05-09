@@ -30,6 +30,7 @@ import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.impl.URIHelperConstants;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.internal.util.WrapperTypeLookup;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
 import org.summer.dsl.xbase.typesystem.util.RecursionGuard;
@@ -455,11 +456,12 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 					List<LightweightTypeReference> result = Lists.newArrayListWithCapacity(superTypes.size());
 					for(JvmTypeReference superType: superTypes) {
 						LightweightTypeReference lightweightSuperType = converter.toLightweightReference(superType);
-						if (!lightweightSuperType.isType(Object.class) || superTypes.size() == 1) {
+//						if (!lightweightSuperType.isType(Object.class) || superTypes.size() == 1) {  //cym comment
+						if (!lightweightSuperType.isType(Buildin.Object.JvmType) || superTypes.size() == 1) {
 							if (!lightweightSuperType.isUnknown()) {
 								result.add(substitutor.substitute(lightweightSuperType));
 							} else if (superTypes.size() == 1) {
-								result.add(internalFindTopLevelType(Object.class));
+								result.add(internalFindTopLevelType(Buildin.Object.JvmType));
 							}
 						}
 					}
@@ -469,11 +471,13 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 					List<LightweightTypeReference> result = Lists.newArrayListWithCapacity(superTypes.size());
 					for(JvmTypeReference superType: superTypes) {
 						LightweightTypeReference lightweightSuperType = converter.toLightweightReference(superType);
-						if (!lightweightSuperType.isType(Object.class) || superTypes.size() == 1) {
+//						if (!lightweightSuperType.isType(Object.class) || superTypes.size() == 1) { //cym comment
+						if (!lightweightSuperType.isType(Buildin.Object.JvmType) || superTypes.size() == 1) {
 							if (!lightweightSuperType.isUnknown()) {
 								result.add(substitutor.substitute(lightweightSuperType).getRawTypeReference());
 							} else if (superTypes.size() == 1) {
-								result.add(internalFindTopLevelType(Object.class));
+//								result.add(internalFindTopLevelType(Object.class)); //cym comment
+								result.add(internalFindTopLevelType(Buildin.Object.JvmType));
 							}
 						}
 					}
@@ -497,38 +501,39 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return Collections.emptyList();
 	}
 	
-	@Override
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		if (isType(rawType)) {
-			return this;
-		}
-		if (isPrimitive() || isPrimitiveVoid() || rawType.isPrimitive() || rawType.isArray()) {
-			return null;
-		}
-		if (type.eClass() != TypesPackage.Literals.JVM_TYPE_PARAMETER && Modifier.isFinal(rawType.getModifiers())) {
-			return null;
-		}
-		if (Object.class.equals(rawType)) {
-			// TODO: we know java.lang.Object is in the super type list
-			// if it is still a proxy or one of the super types is a proxy,
-			// it's faster to look it up in the resource set
-			// otherwise it's faster to traverse the model directly to the root
-			ResourceSet resourceSet = getOwner().getContextResourceSet();
-			Resource typeResource = resourceSet.getResource(URIHelperConstants.OBJECTS_URI.appendSegment(rawType.getName()), true);
-			JvmType type = (JvmType) typeResource.getContents().get(0);
-			if (type == null)
-				return null;
-			return new ParameterizedTypeReference(getOwner(), type);
-		}
-		boolean interfaceType = Modifier.isInterface(rawType.getModifiers());
-		if (isInterfaceType() && !interfaceType) {
-			// only Object can be a super class of an interface
-			return null;
-		}
-		String typeName = rawType.getName();
-		return getSuperTypeByName(typeName, interfaceType);
-	}
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		if (isType(rawType)) {
+//			return this;
+//		}
+//		if (isPrimitive() || isPrimitiveVoid() || rawType.isPrimitive() || rawType.isArray()) {
+//			return null;
+//		}
+//		if (type.eClass() != TypesPackage.Literals.JVM_TYPE_PARAMETER && Modifier.isFinal(rawType.getModifiers())) {
+//			return null;
+//		}
+//		if (Object.class.equals(rawType)) {
+//			// TODO: we know java.lang.Object is in the super type list
+//			// if it is still a proxy or one of the super types is a proxy,
+//			// it's faster to look it up in the resource set
+//			// otherwise it's faster to traverse the model directly to the root
+//			ResourceSet resourceSet = getOwner().getContextResourceSet();
+//			Resource typeResource = resourceSet.getResource(URIHelperConstants.OBJECTS_URI.appendSegment(rawType.getName()), true);
+//			JvmType type = (JvmType) typeResource.getContents().get(0);
+//			if (type == null)
+//				return null;
+//			return new ParameterizedTypeReference(getOwner(), type);
+//		}
+//		boolean interfaceType = Modifier.isInterface(rawType.getModifiers());
+//		if (isInterfaceType() && !interfaceType) {
+//			// only Object can be a super class of an interface
+//			return null;
+//		}
+//		String typeName = rawType.getName();
+//		return getSuperTypeByName(typeName, interfaceType);
+//	}
 	
 	@Nullable
 	private LightweightTypeReference getSuperTypeByName(String typeName, boolean interfaceType) {
@@ -790,10 +795,17 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return type;
 	}
 
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		return type.eClass() != TypesPackage.Literals.JVM_TYPE_PARAMETER && 
+//				clazz.getName().equals(type.getIdentifier());
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType that) {
 		return type.eClass() != TypesPackage.Literals.JVM_TYPE_PARAMETER && 
-				clazz.getName().equals(type.getIdentifier());
+				that.getSimpleName().equals(type.getIdentifier());
 	}
 	
 	@Override
@@ -860,10 +872,19 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 		return arrayTypes.tryConvertToArray(this);
 	}
 	
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference tryConvertToListType() {
+//		if (isAssignableFrom(List.class))
+//			return this;
+//		return super.tryConvertToListType();
+//	}
+	
 	@Override
 	@Nullable
 	public LightweightTypeReference tryConvertToListType() {
-		if (isAssignableFrom(List.class))
+		if (isAssignableFrom(Buildin.List.JvmType))
 			return this;
 		return super.tryConvertToListType();
 	}

@@ -717,7 +717,7 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 		if (reference == XbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__EXPRESSION) {
 			return getExpectedType(expr, rawType);
 		}
-		if (reference == XbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES) {
+		if (reference == XbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE) {
 			return getExpectedType(expr, rawType);
 		}
 		return null; // no other expectations
@@ -1165,11 +1165,19 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 		final JvmTypeReference getType = getType(object.getExpression(), rawType);
 		if(getType != null) 
 			returnTypes.add(getType);
-		for (XCatchClause catchClause : object.getCatchClauses()) {
-			JvmTypeReference type = getType(catchClause.getExpression(), rawType);
-			if(type != null)
-				returnTypes.add(type);
-		}
+		
+		//cym comment
+//		for (XCatchClause catchClause : object.getCatchClauses()) {
+//			JvmTypeReference type = getType(catchClause.getExpression(), rawType);
+//			if(type != null)
+//				returnTypes.add(type);
+//		}
+		
+		XCatchClause catchClause = object.getCatchClause();
+		JvmTypeReference type = getType(catchClause.getExpression(), rawType);
+		if(type != null)
+			returnTypes.add(type);
+		
 		JvmTypeReference commonSuperType = getCommonType(returnTypes);
 		return commonSuperType;
 	}
@@ -1503,16 +1511,30 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 		EarlyExitAcceptor innerAcceptor = new EarlyExitAcceptor();
 		internalCollectEarlyExits(expr.getExpression(), innerAcceptor);
 		acceptor.returns.addAll(innerAcceptor.returns);
-		for (XCatchClause catchClause : expr.getCatchClauses()) {
-			Iterator<JvmTypeReference> iterator = innerAcceptor.thrown.iterator();
-			while (iterator.hasNext()) {
-				JvmTypeReference thrown = iterator.next();
-				if (getTypeConformanceComputer().isConformant(catchClause.getDeclaredParam().getParameterType(), thrown)) {
-					iterator.remove();
-				}
+		
+		//cym comment
+//		for (XCatchClause catchClause : expr.getCatchClauses()) {
+//			Iterator<JvmTypeReference> iterator = innerAcceptor.thrown.iterator();
+//			while (iterator.hasNext()) {
+//				JvmTypeReference thrown = iterator.next();
+//				if (getTypeConformanceComputer().isConformant(catchClause.getDeclaredParam().getParameterType(), thrown)) {
+//					iterator.remove();
+//				}
+//			}
+//			internalCollectEarlyExits(catchClause.getExpression(), acceptor);
+//		}
+		
+		XCatchClause catchClause = expr.getCatchClause();
+		Iterator<JvmTypeReference> iterator = innerAcceptor.thrown.iterator();
+		while (iterator.hasNext()) {
+			JvmTypeReference thrown = iterator.next();
+			if (getTypeConformanceComputer().isConformant(catchClause.getDeclaredParam().getParameterType(), thrown)) {
+				iterator.remove();
 			}
-			internalCollectEarlyExits(catchClause.getExpression(), acceptor);
 		}
+		internalCollectEarlyExits(catchClause.getExpression(), acceptor);
+//		}
+		
 		acceptor.thrown.addAll(innerAcceptor.thrown);
 		if (expr.getFinallyExpression()!=null)
 			internalCollectEarlyExits(expr.getFinallyExpression(), acceptor);

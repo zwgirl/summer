@@ -86,7 +86,8 @@ public class ArrayTypes {
 
 	@Nullable
 	private ArrayTypeReference doTryConvertToArray(ParameterizedTypeReference typeReference) {
-		LightweightTypeReference parameterizedIterable = typeReference.getSuperType(Iterable.class);
+//		LightweightTypeReference parameterizedIterable = typeReference.getSuperType(Iterable.class);  //cym comment
+		LightweightTypeReference parameterizedIterable = typeReference.getSuperType(Buildin.Iterable.JvmType);
 		if (parameterizedIterable != null) {
 			ITypeReferenceOwner owner = typeReference.getOwner();
 			if (parameterizedIterable.isRawType()) {

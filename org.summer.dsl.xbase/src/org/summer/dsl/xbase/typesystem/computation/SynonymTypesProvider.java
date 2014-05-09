@@ -14,6 +14,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.util.TypeReferences;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypes;
@@ -66,7 +67,8 @@ public class SynonymTypesProvider {
 	}
 	
 	public void collectSynonymTypes(@Nullable LightweightTypeReference type, @NonNull Acceptor acceptor) {
-		if (type == null || type.isPrimitiveVoid() || type.isType(Void.class)) {
+//		if (type == null || type.isPrimitiveVoid() || type.isType(Void.class)) {  //cym comment
+		if (type == null || type.isPrimitiveVoid() || type.isType(Buildin.Void.JvmType)) { 
 			return;
 		}
 		if (type.isWrapper()) {

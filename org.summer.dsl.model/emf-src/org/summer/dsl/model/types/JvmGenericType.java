@@ -146,9 +146,9 @@ public interface JvmGenericType extends JvmDeclaredType, JvmTypeParameterDeclara
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.summer.dsl.model.types.Iterable<org.summer.dsl.model.types.JvmConstructor>" required="true"
+	 * @model kind="operation" dataType="org.summer.dsl.model.types.List<org.summer.dsl.model.types.JvmConstructor>" required="true" many="false"
 	 * @generated
 	 */
-	Iterable<JvmConstructor> getDeclaredConstructors();
+	List<JvmConstructor> getDeclaredConstructors();
 
 } // JvmGenericType

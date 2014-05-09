@@ -64,43 +64,43 @@ public class JavaProjectBasedBuilderParticipant implements IXtextBuilderParticip
 	private Map<URI, Set<String>> sourceTargetMap = newHashMap();
 
 	public void build(IBuildContext context, IProgressMonitor monitor) throws CoreException {
-		final IProject builtProject = context.getBuiltProject();
-		IJavaProject javaProject = JavaCore.create(builtProject);
-		if (!javaProject.exists())
-			return;
-		final IFolder srcGenFolder = getSrcGenFolder(builtProject);
-		if (!srcGenFolder.exists())
-			return;
-		if (!isValidOutputFolder(javaProject, srcGenFolder))
-			return;
-		for (IResourceDescription.Delta delta : context.getDeltas()) {
-			final Set<String> oldFiles = newHashSet();
-			if (sourceTargetMap.containsKey(delta.getUri())) {
-				oldFiles.addAll(sourceTargetMap.get(delta.getUri()));
-			}
-			final Set<String> newFiles = newHashSet();
-			IFileSystemAccess fileSystemAccess = getConfiguredFileSystemAccess(srcGenFolder, new IAcceptor<String>() {
-				public void accept(String fileName) {
-					oldFiles.remove(fileName);
-					newFiles.add(fileName);
-				}
-			});
-			if (delta.getNew() == null) {
-				handleDeletion(delta, context, fileSystemAccess);
-			} else {
-				try {
-					handleChangedContents(delta, context, fileSystemAccess);
-				} catch (Exception e) {
-					logger.error("Error during compilation of '"+delta.getUri()+"'.", e);
-				}
-			}
-			for (String removeFile : oldFiles) {
-				fileSystemAccess.deleteFile(removeFile);
-			}
-			if (!newFiles.isEmpty()) {
-				sourceTargetMap.put(delta.getUri(), newFiles);
-			}
-		}
+//		final IProject builtProject = context.getBuiltProject();
+//		IJavaProject javaProject = JavaCore.create(builtProject);
+//		if (!javaProject.exists())
+//			return;
+//		final IFolder srcGenFolder = getSrcGenFolder(builtProject);
+//		if (!srcGenFolder.exists())
+//			return;
+//		if (!isValidOutputFolder(javaProject, srcGenFolder))
+//			return;
+//		for (IResourceDescription.Delta delta : context.getDeltas()) {
+//			final Set<String> oldFiles = newHashSet();
+//			if (sourceTargetMap.containsKey(delta.getUri())) {
+//				oldFiles.addAll(sourceTargetMap.get(delta.getUri()));
+//			}
+//			final Set<String> newFiles = newHashSet();
+//			IFileSystemAccess fileSystemAccess = getConfiguredFileSystemAccess(srcGenFolder, new IAcceptor<String>() {
+//				public void accept(String fileName) {
+//					oldFiles.remove(fileName);
+//					newFiles.add(fileName);
+//				}
+//			});
+//			if (delta.getNew() == null) {
+//				handleDeletion(delta, context, fileSystemAccess);
+//			} else {
+//				try {
+//					handleChangedContents(delta, context, fileSystemAccess);
+//				} catch (Exception e) {
+//					logger.error("Error during compilation of '"+delta.getUri()+"'.", e);
+//				}
+//			}
+//			for (String removeFile : oldFiles) {
+//				fileSystemAccess.deleteFile(removeFile);
+//			}
+//			if (!newFiles.isEmpty()) {
+//				sourceTargetMap.put(delta.getUri(), newFiles);
+//			}
+//		}
 	}
 
 	/**
@@ -125,13 +125,13 @@ public class JavaProjectBasedBuilderParticipant implements IXtextBuilderParticip
 	}
 
 	protected void handleChangedContents(Delta delta, IBuildContext context, IFileSystemAccess fileSystemAccess) {
-		if (!resourceServiceProvider.canHandle(delta.getUri()))
-			return;
-		Resource resource = context.getResourceSet().getResource(delta.getUri(), true);
-		if (shouldGenerate(resource, context)) {
-			generator.doGenerate(resource, fileSystemAccess);
-			context.needRebuild();
-		}
+//		if (!resourceServiceProvider.canHandle(delta.getUri()))
+//			return;
+//		Resource resource = context.getResourceSet().getResource(delta.getUri(), true);
+//		if (shouldGenerate(resource, context)) {
+//			generator.doGenerate(resource, fileSystemAccess);
+//			context.needRebuild();
+//		}
 	}
 
 	protected boolean shouldGenerate(Resource resource, IBuildContext context) {

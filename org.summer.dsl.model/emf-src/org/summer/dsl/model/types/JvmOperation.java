@@ -24,6 +24,7 @@ import org.summer.dsl.model.xbase.XExpression;
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#isStrictFloatingPoint <em>Strict Floating Point</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#getFunction <em>Function</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}</li>
  * </ul>
  * </p>
  *
@@ -317,5 +318,32 @@ public interface JvmOperation extends JvmExecutable {
 	 * @generated
 	 */
 	void setFunction(XExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Overload</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Overload</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Overload</em>' attribute.
+	 * @see #setOverload(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Overload()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isOverload();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Overload</em>' attribute.
+	 * @see #isOverload()
+	 * @generated
+	 */
+	void setOverload(boolean value);
 
 } // JvmOperation

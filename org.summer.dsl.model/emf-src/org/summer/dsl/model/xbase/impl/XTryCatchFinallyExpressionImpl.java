@@ -2,21 +2,11 @@
  */
 package org.summer.dsl.model.xbase.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
@@ -31,7 +21,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XTryCatchFinallyExpressionImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XTryCatchFinallyExpressionImpl#getFinallyExpression <em>Finally Expression</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XTryCatchFinallyExpressionImpl#getCatchClauses <em>Catch Clauses</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XTryCatchFinallyExpressionImpl#getCatchClause <em>Catch Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,14 +49,14 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 	protected XExpression finallyExpression;
 
 	/**
-	 * The cached value of the '{@link #getCatchClauses() <em>Catch Clauses</em>}' containment reference list.
+	 * The cached value of the '{@link #getCatchClause() <em>Catch Clause</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCatchClauses()
+	 * @see #getCatchClause()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<XCatchClause> catchClauses;
+	protected XCatchClause catchClause;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,11 +168,42 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<XCatchClause> getCatchClauses() {
-		if (catchClauses == null) {
-			catchClauses = new EObjectContainmentEList<XCatchClause>(XCatchClause.class, this, XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES);
+	public XCatchClause getCatchClause() {
+		return catchClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCatchClause(XCatchClause newCatchClause, NotificationChain msgs) {
+		XCatchClause oldCatchClause = catchClause;
+		catchClause = newCatchClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE, oldCatchClause, newCatchClause);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return catchClauses;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCatchClause(XCatchClause newCatchClause) {
+		if (newCatchClause != catchClause) {
+			NotificationChain msgs = null;
+			if (catchClause != null)
+				msgs = ((InternalEObject)catchClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE, null, msgs);
+			if (newCatchClause != null)
+				msgs = ((InternalEObject)newCatchClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE, null, msgs);
+			msgs = basicSetCatchClause(newCatchClause, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE, newCatchClause, newCatchClause));
 	}
 
 	/**
@@ -197,8 +218,8 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 				return basicSetExpression(null, msgs);
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION:
 				return basicSetFinallyExpression(null, msgs);
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES:
-				return ((InternalEList<?>)getCatchClauses()).basicRemove(otherEnd, msgs);
+			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE:
+				return basicSetCatchClause(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -215,8 +236,8 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 				return getExpression();
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION:
 				return getFinallyExpression();
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES:
-				return getCatchClauses();
+			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE:
+				return getCatchClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -236,9 +257,8 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION:
 				setFinallyExpression((XExpression)newValue);
 				return;
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES:
-				getCatchClauses().clear();
-				getCatchClauses().addAll((Collection<? extends XCatchClause>)newValue);
+			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE:
+				setCatchClause((XCatchClause)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -258,8 +278,8 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION:
 				setFinallyExpression((XExpression)null);
 				return;
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES:
-				getCatchClauses().clear();
+			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE:
+				setCatchClause((XCatchClause)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -277,8 +297,8 @@ public class XTryCatchFinallyExpressionImpl extends XExpressionImpl implements X
 				return expression != null;
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION:
 				return finallyExpression != null;
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES:
-				return catchClauses != null && !catchClauses.isEmpty();
+			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE:
+				return catchClause != null;
 		}
 		return super.eIsSet(featureID);
 	}

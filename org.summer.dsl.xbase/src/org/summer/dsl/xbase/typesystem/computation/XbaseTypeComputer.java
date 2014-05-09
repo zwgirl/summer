@@ -219,24 +219,44 @@ public class XbaseTypeComputer implements ITypeComputer {
 				}
 			}
 		}
+		
+		//cym comment
+//		for(ITypeExpectation expectation: state.getExpectations()) {
+//			LightweightTypeReference expectedType = expectation.getExpectedType();
+//			if (expectedType != null && expectedType.isType(StringConcatenation.class)) {
+//				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+//			} else if (expectedType != null && expectedType.isType(StringConcatenationClient.class)) {
+//				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+//			} else if (expectedType != null && expectedType.isType(String.class)) {
+//				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
+//				// TODO this special treatment here should become obsolete as soon as the expectations are properly propagated
+//			} else if (!(object.eContainer() instanceof XCastedExpression) && 
+//					object.eContainingFeature() != XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET && 
+//					(expectedType != null && !expectedType.isResolved() || expectedType == null && !expectation.isVoidTypeAllowed())) {
+//				LightweightTypeReference type = getTypeForName(String.class, state);
+//				expectation.acceptActualType(type, ConformanceHint.UNCHECKED, ConformanceHint.DEMAND_CONVERSION);
+//			} else {
+//				LightweightTypeReference type = getTypeForName(CharSequence.class, state);
+//				expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
+//			}
+//		}
+		
 		for(ITypeExpectation expectation: state.getExpectations()) {
 			LightweightTypeReference expectedType = expectation.getExpectedType();
-			if (expectedType != null && expectedType.isType(StringConcatenation.class)) {
-				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
-			} else if (expectedType != null && expectedType.isType(StringConcatenationClient.class)) {
-				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
-			} else if (expectedType != null && expectedType.isType(String.class)) {
+			if (expectedType != null && expectedType.isType(Buildin.String.JvmType)) {
 				expectation.acceptActualType(expectedType, ConformanceHint.SUCCESS, ConformanceHint.CHECKED, ConformanceHint.DEMAND_CONVERSION);
 				// TODO this special treatment here should become obsolete as soon as the expectations are properly propagated
 			} else if (!(object.eContainer() instanceof XCastedExpression) && 
 					object.eContainingFeature() != XbasePackage.Literals.XMEMBER_FEATURE_CALL__MEMBER_CALL_TARGET && 
 					(expectedType != null && !expectedType.isResolved() || expectedType == null && !expectation.isVoidTypeAllowed())) {
-				LightweightTypeReference type = getTypeForName(String.class, state);
+//				LightweightTypeReference type = getTypeForName(String.class, state);  //cym comment
+				LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
 				expectation.acceptActualType(type, ConformanceHint.UNCHECKED, ConformanceHint.DEMAND_CONVERSION);
-			} else {
-				LightweightTypeReference type = getTypeForName(CharSequence.class, state);
-				expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
 			}
+//			else {  //cym comment
+//				LightweightTypeReference type = getTypeForName(CharSequence.class, state);
+//				expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
+//			}
 		}
 	}
 	
@@ -739,16 +759,30 @@ public class XbaseTypeComputer implements ITypeComputer {
 			LightweightTypeReference result = getTypeForName(Buildin.String.JvmType, state);
 			
 			state.acceptActualType(result);
+//		} else {
+//			for(ITypeExpectation expectation: state.getExpectations()) {
+//				LightweightTypeReference expectedType = expectation.getExpectedType();
+//				if (expectedType != null) {
+//					if (expectedType.isType(Character.TYPE) || expectedType.isType(Character.class)) {
+//						expectation.acceptActualType(expectedType, ConformanceHint.CHECKED, ConformanceHint.SUCCESS, ConformanceHint.DEMAND_CONVERSION, ConformanceHint.SEALED);
+//					} else {
+//						LightweightTypeReference type = getTypeForName(String.class, state);
+//						expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
+//					}
+//				} else {
+////					LightweightTypeReference type = getTypeForName(String.class, state);
+//					LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
+//					expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
+//				}
+//			}
+//		}
+			
 		} else {
 			for(ITypeExpectation expectation: state.getExpectations()) {
 				LightweightTypeReference expectedType = expectation.getExpectedType();
 				if (expectedType != null) {
-					if (expectedType.isType(Character.TYPE) || expectedType.isType(Character.class)) {
-						expectation.acceptActualType(expectedType, ConformanceHint.CHECKED, ConformanceHint.SUCCESS, ConformanceHint.DEMAND_CONVERSION, ConformanceHint.SEALED);
-					} else {
-						LightweightTypeReference type = getTypeForName(String.class, state);
-						expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
-					}
+					LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
+					expectation.acceptActualType(type, ConformanceHint.UNCHECKED);
 				} else {
 //					LightweightTypeReference type = getTypeForName(String.class, state);
 					LightweightTypeReference type = getTypeForName(Buildin.String.JvmType, state);
@@ -1318,29 +1352,31 @@ public class XbaseTypeComputer implements ITypeComputer {
 		LightweightTypeReference thrownException = types.getActualExpressionType();
 		state.acceptActualType(getPrimitiveVoid(state), ConformanceHint.NO_IMPLICIT_RETURN);
 		
-		if (thrownException != null && !thrownException.isUnknown()) {
-			if (!state.isIgnored(IssueCodes.UNHANDLED_EXCEPTION) && thrownException.isSubtypeOf(Throwable.class)
-					&& !thrownException.isSubtypeOf(RuntimeException.class)) {
-				boolean declarationFound = false;
-				for (LightweightTypeReference declaredException : state.getExpectedExceptions())
-					if (declaredException.isAssignableFrom(thrownException)) {
-						declarationFound = true;
-						break;
-					}
-				if (!declarationFound)
-					state.addDiagnostic(new EObjectDiagnosticImpl(
-							expressionState.getSeverity(IssueCodes.UNHANDLED_EXCEPTION),
-							IssueCodes.UNHANDLED_EXCEPTION,
-							"Unhandled exception type " + thrownException.getSimpleName(),
-							object,
-							XbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION,
-							-1,
-							new String[] { 
-								EcoreUtil.getURI(thrownException.getType()).toString(),
-								EcoreUtil.getURI(object).toString()
-							}));
-			}
-		}
+		
+		//cym comment
+//		if (thrownException != null && !thrownException.isUnknown()) {
+//			if (!state.isIgnored(IssueCodes.UNHANDLED_EXCEPTION) && thrownException.isSubtypeOf(Throwable.class)
+//					&& !thrownException.isSubtypeOf(RuntimeException.class)) {
+//				boolean declarationFound = false;
+//				for (LightweightTypeReference declaredException : state.getExpectedExceptions())
+//					if (declaredException.isAssignableFrom(thrownException)) {
+//						declarationFound = true;
+//						break;
+//					}
+//				if (!declarationFound)
+//					state.addDiagnostic(new EObjectDiagnosticImpl(
+//							expressionState.getSeverity(IssueCodes.UNHANDLED_EXCEPTION),
+//							IssueCodes.UNHANDLED_EXCEPTION,
+//							"Unhandled exception type " + thrownException.getSimpleName(),
+//							object,
+//							XbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION,
+//							-1,
+//							new String[] { 
+//								EcoreUtil.getURI(thrownException.getType()).toString(),
+//								EcoreUtil.getURI(object).toString()
+//							}));
+//			}
+//		}
 	}
 
 	protected void _computeTypes(XReturnExpression object, ITypeComputationState state) {
@@ -1407,22 +1443,45 @@ public class XbaseTypeComputer implements ITypeComputer {
 		state.acceptActualType(bool);
 	}
 	
+//	protected void _computeTypes(XTryCatchFinallyExpression object, ITypeComputationState state) {
+//		List<LightweightTypeReference> caughtExceptions = Lists.newArrayList();
+//		OwnedConverter converter = state.getConverter();
+//		for (XCatchClause catchClause : object.getCatchClauses())
+//			if (catchClause.getDeclaredParam() != null && catchClause.getDeclaredParam().getParameterType() != null)
+//				caughtExceptions.add(converter.toLightweightReference(catchClause.getDeclaredParam().getParameterType()));
+//		state.withExpectedExceptions(caughtExceptions).computeTypes(object.getExpression());
+//		for (XCatchClause catchClause : object.getCatchClauses()) {
+//			JvmFormalParameter catchClauseParam = catchClause.getDeclaredParam();
+//			JvmTypeReference parameterType = catchClauseParam.getParameterType();
+//			LightweightTypeReference lightweightReference = parameterType != null 
+//					? state.getConverter().toLightweightReference(parameterType)
+//					: new AnyTypeReference(state.getReferenceOwner());
+//			ITypeComputationState catchClauseState = assignType(catchClauseParam, lightweightReference, state);
+//			catchClauseState.computeTypes(catchClause.getExpression());
+//		}
+//		// TODO validate / handle return / throw in finally block
+//		state.withoutExpectation().computeTypes(object.getFinallyExpression());
+//	}
+	
 	protected void _computeTypes(XTryCatchFinallyExpression object, ITypeComputationState state) {
 		List<LightweightTypeReference> caughtExceptions = Lists.newArrayList();
 		OwnedConverter converter = state.getConverter();
-		for (XCatchClause catchClause : object.getCatchClauses())
-			if (catchClause.getDeclaredParam() != null && catchClause.getDeclaredParam().getParameterType() != null)
-				caughtExceptions.add(converter.toLightweightReference(catchClause.getDeclaredParam().getParameterType()));
-		state.withExpectedExceptions(caughtExceptions).computeTypes(object.getExpression());
-		for (XCatchClause catchClause : object.getCatchClauses()) {
-			JvmFormalParameter catchClauseParam = catchClause.getDeclaredParam();
-			JvmTypeReference parameterType = catchClauseParam.getParameterType();
-			LightweightTypeReference lightweightReference = parameterType != null 
-					? state.getConverter().toLightweightReference(parameterType)
-					: new AnyTypeReference(state.getReferenceOwner());
-			ITypeComputationState catchClauseState = assignType(catchClauseParam, lightweightReference, state);
-			catchClauseState.computeTypes(catchClause.getExpression());
+		XCatchClause catchClause = object.getCatchClause();
+//		if (catchClause.getDeclaredParam() != null && catchClause.getDeclaredParam().getParameterType() != null)
+//			caughtExceptions.add(converter.toLightweightReference(catchClause.getDeclaredParam().getParameterType()));
+//		state.withExpectedExceptions(caughtExceptions).computeTypes(object.getExpression());
+//		catchClause = object.getCatchClauses();
+//			JvmFormalParameter catchClauseParam = catchClause.getDeclaredParam();
+//			JvmTypeReference parameterType = catchClauseParam.getParameterType();
+//			LightweightTypeReference lightweightReference = parameterType != null 
+//					? state.getConverter().toLightweightReference(parameterType)
+//					: new AnyTypeReference(state.getReferenceOwner());
+//			ITypeComputationState catchClauseState = assignType(catchClauseParam, lightweightReference, state);
+		if(catchClause != null){
+			state.computeTypes(catchClause.getExpression());
 		}
+
+//		}
 		// TODO validate / handle return / throw in finally block
 		state.withoutExpectation().computeTypes(object.getFinallyExpression());
 	}

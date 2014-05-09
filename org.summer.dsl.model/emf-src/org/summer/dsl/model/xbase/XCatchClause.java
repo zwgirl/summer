@@ -16,6 +16,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getDeclaredParam <em>Declared Param</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getIdentifier <em>Identifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,5 +76,31 @@ public interface XCatchClause extends EObject {
 	 * @generated
 	 */
 	void setDeclaredParam(JvmFormalParameter value);
+
+	/**
+	 * Returns the value of the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Identifier</em>' attribute.
+	 * @see #setIdentifier(String)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXCatchClause_Identifier()
+	 * @model
+	 * @generated
+	 */
+	String getIdentifier();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XCatchClause#getIdentifier <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Identifier</em>' attribute.
+	 * @see #getIdentifier()
+	 * @generated
+	 */
+	void setIdentifier(String value);
 
 } // XCatchClause

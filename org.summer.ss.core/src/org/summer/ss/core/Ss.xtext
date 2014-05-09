@@ -287,7 +287,6 @@ XClosure returns xbase::XExpression:
 	;
 	
 	
-	
 FunctionID:
 	ValidID | Operators
 ;
@@ -303,7 +302,7 @@ Operators:
 	| OpMulti
 	| OpUnary
 //	| PrefixOp
-	| IndexOp
+//	| IndexOp
 //	| OpPostfix
 ;
 

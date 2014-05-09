@@ -175,21 +175,42 @@ public class CompoundTypeReference extends LightweightTypeReference {
 		return null;
 	}
 	
-	@Override
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		if (components == null || components.isEmpty())
-			return null;
-		for(LightweightTypeReference component: components) {
-			LightweightTypeReference result = component.getSuperType(rawType);
-			if (result != null)
-				return result;
-		}
-		return null;
-	}
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		if (components == null || components.isEmpty())
+//			return null;
+//		for(LightweightTypeReference component: components) {
+//			LightweightTypeReference result = component.getSuperType(rawType);
+//			if (result != null)
+//				return result;
+//		}
+//		return null;
+//	}
+	
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		if (components == null)
+//			return false;
+//		if (isSynonym()) {
+//			for(LightweightTypeReference component: components) {
+//				if (component.isType(clazz))
+//					return true;
+//			}
+//			return false;
+//		} else {
+//			for(LightweightTypeReference component: components) {
+//				if (!component.isType(clazz))
+//					return false;
+//			}
+//			return true;
+//		}
+//	}
 	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType clazz) {
 		if (components == null)
 			return false;
 		if (isSynonym()) {

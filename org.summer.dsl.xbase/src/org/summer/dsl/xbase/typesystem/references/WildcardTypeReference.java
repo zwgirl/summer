@@ -19,6 +19,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesFactory;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 
@@ -121,8 +122,14 @@ public class WildcardTypeReference extends LightweightTypeReference {
 		return result;
 	}
 	
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		return false;
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType clazz) {
 		return false;
 	}
 	
@@ -189,23 +196,25 @@ public class WildcardTypeReference extends LightweightTypeReference {
 		return null;
 	}
 	
-	@Override
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		if (isUnbounded()) {
-			if (Object.class.equals(rawType)) {
-				return internalFindTopLevelType(rawType);
-			}
-			return null;
-		}
-		List<LightweightTypeReference> nonNullUpperBounds = expose(getUpperBounds());
-		for(LightweightTypeReference upperBound: nonNullUpperBounds) {
-			LightweightTypeReference result = upperBound.getSuperType(rawType);
-			if (result != null)
-				return result;
-		}
-		return null;
-	}
+	
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		if (isUnbounded()) {
+//			if (Object.class.equals(rawType)) {
+//				return internalFindTopLevelType(rawType);
+//			}
+//			return null;
+//		}
+//		List<LightweightTypeReference> nonNullUpperBounds = expose(getUpperBounds());
+//		for(LightweightTypeReference upperBound: nonNullUpperBounds) {
+//			LightweightTypeReference result = upperBound.getSuperType(rawType);
+//			if (result != null)
+//				return result;
+//		}
+//		return null;
+//	}
 	
 	@Override
 	public JvmTypeReference toTypeReference() {
@@ -330,7 +339,8 @@ public class WildcardTypeReference extends LightweightTypeReference {
 		if (lowerBound != null) {
 			return "? super " + format.apply(lowerBound);
 		}
-		if (upperBounds != null && upperBounds.size() == 1 && upperBounds.get(0).isType(Object.class)) {
+//		if (upperBounds != null && upperBounds.size() == 1 && upperBounds.get(0).isType(Object.class)) {  //cym comment
+		if (upperBounds != null && upperBounds.size() == 1 && upperBounds.get(0).isType(Buildin.Object.JvmType)) {
 			return "?";
 		}
 		return "?" + ( upperBounds != null ? " extends " + Joiner.on(" & ").join(Iterables.transform(upperBounds, format)) : "");

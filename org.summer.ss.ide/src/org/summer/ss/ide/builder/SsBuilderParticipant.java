@@ -56,32 +56,32 @@ public class SsBuilderParticipant extends BuilderParticipant {
 	@Inject
 	private ElementIssueProvider.Factory elementIssueProviderFactory;
 
-	@Override
-	protected void handleChangedContents(Delta delta, IBuildContext context,
-			EclipseResourceFileSystemAccess2 fileSystemAccess) throws CoreException {
-		if (!getResourceServiceProvider().canHandle(delta.getUri()))
-			return;
-		final Resource resource = context.getResourceSet().getResource(delta.getUri(), true);
-		final IFile file = getFile(resource, context);
-		if (file != null) {
-			try {
-				registerCurrentSourceFolder(delta, fileSystemAccess);
-				try {
-					elementIssueProviderFactory.attachData(resource);
-					getGenerator().doGenerate(resource, fileSystemAccess);
-				} finally {
-					elementIssueProviderFactory.detachData(resource);
-				}
-			} catch (OperationCanceledException e) {
-				throw e;
-			} catch (RuntimeException e) {
-				if (e.getCause() instanceof CoreException) {
-					throw (CoreException) e.getCause();
-				}
-				throw e;
-			}
-		}
-	}
+//	@Override
+//	protected void handleChangedContents(Delta delta, IBuildContext context,
+//			EclipseResourceFileSystemAccess2 fileSystemAccess) throws CoreException {
+//		if (!getResourceServiceProvider().canHandle(delta.getUri()))
+//			return;
+//		final Resource resource = context.getResourceSet().getResource(delta.getUri(), true);
+//		final IFile file = getFile(resource, context);
+//		if (file != null) {
+//			try {
+//				registerCurrentSourceFolder(delta, fileSystemAccess);
+//				try {
+//					elementIssueProviderFactory.attachData(resource);
+//					getGenerator().doGenerate(resource, fileSystemAccess);
+//				} finally {
+//					elementIssueProviderFactory.detachData(resource);
+//				}
+//			} catch (OperationCanceledException e) {
+//				throw e;
+//			} catch (RuntimeException e) {
+//				if (e.getCause() instanceof CoreException) {
+//					throw (CoreException) e.getCause();
+//				}
+//				throw e;
+//			}
+//		}
+//	}
 
 	protected void registerCurrentSourceFolder(Delta delta, EclipseResourceFileSystemAccess2 fileSystemAccess) {
 		if (fileSystemAccess instanceof SourceRelativeFileSystemAccess) {

@@ -12,6 +12,7 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.resource.IResourceDescription;
 
@@ -69,25 +70,27 @@ public interface IXtextBuilderParticipant {
 		 * @return the currently built project. Never <code>null</code>.
 		 */
 		IProject getBuiltProject();
-		/**
-		 * Returns the list of resource deltas that was produced by this run of the incremental project builder.
-		 * This list is the only safe way to obtain resources that were processed by this build run.
-		 * These resources may be requested from the {@link #getResourceSet() resource set} by means of
-		 * {@link ResourceSet#getResource(org.eclipse.emf.common.util.URI, boolean) getResource}.
-		 * @return the list of deltas. Never <code>null</code>.
-		 */
-		List<IResourceDescription.Delta> getDeltas();
-		/**
-		 * The correctly configured resource set for this run of the incremental project builder. Clients should 
-		 * not assume that the list of resources in the resource set contains anything. However, they are free to
-		 * dynamically load and unload resources from the resource set. Other changes should be avoided.
-		 * @return the configured resource set. Never <code>null</code>.
-		 */
-		ResourceSet getResourceSet();
-		/**
-		 * The current build type.
-		 * @return the current build type.
-		 */
+//		/**
+//		 * Returns the list of resource deltas that was produced by this run of the incremental project builder.
+//		 * This list is the only safe way to obtain resources that were processed by this build run.
+//		 * These resources may be requested from the {@link #getResourceSet() resource set} by means of
+//		 * {@link ResourceSet#getResource(org.eclipse.emf.common.util.URI, boolean) getResource}.
+//		 * @return the list of deltas. Never <code>null</code>.
+//		 */
+//		List<IResourceDescription.Delta> getDeltas();
+		
+		List<URI> getURIs();
+//		/**
+//		 * The correctly configured resource set for this run of the incremental project builder. Clients should 
+//		 * not assume that the list of resources in the resource set contains anything. However, they are free to
+//		 * dynamically load and unload resources from the resource set. Other changes should be avoided.
+//		 * @return the configured resource set. Never <code>null</code>.
+//		 */
+//		ResourceSet getResourceSet();
+//		/**
+//		 * The current build type.
+//		 * @return the current build type.
+//		 */
 		BuildType getBuildType();
 		/**
 		 * Request a rebuild after the this build run. It is necessary to call {@link #needRebuild()} if this

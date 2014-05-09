@@ -204,15 +204,15 @@ OpUnary:
 //;
 
 XCastedExpression returns XExpression:
-	XIndexOperation (=>({XCastedExpression.target=current} 'as') type=JvmTypeReference)*
+	XMemberFeatureCall (=>({XCastedExpression.target=current} 'as') type=JvmTypeReference)*
 ;
 
-XIndexOperation returns XExpression:
- 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
-;
-IndexOp:
-	'['
-;
+//XIndexOperation returns XExpression:
+// 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
+//;
+//IndexOp:
+//	'['
+//;
 
 //XMemberFeatureCall returns XExpression:
 //	XPrimaryExpression
@@ -319,8 +319,12 @@ XMemberFeatureCall returns XExpression:
 	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
 		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
 		 ')'
-	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
+ 	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
+		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+		 ']'
+	|=>({XAssignment.assignable=current} ('.' /*|explicitStatic?="::" */) feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+//	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
+	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?." /*|explicitStatic?="::" */)) 
 		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
 		feature=[types::JvmIdentifiableElement|FeatureCallID] 
 		(
@@ -832,18 +836,31 @@ XContinueExpression returns XExpression:
 	{XContinueExpression}'continue'
 ;
 	
+//XTryCatchFinallyExpression returns XExpression:
+//	{XTryCatchFinallyExpression}
+//	'try' 
+//		expression=XExpression
+//	(
+//		catchClauses+=XCatchClause+
+//		(=>'finally' finallyExpression=XExpression)?
+//	|	'finally' finallyExpression=XExpression
+//	);
+//	
+//XCatchClause :
+//	=>'catch' '(' declaredParam=FullJvmFormalParameter ')' expression=XExpression;
+
 XTryCatchFinallyExpression returns XExpression:
 	{XTryCatchFinallyExpression}
 	'try' 
 		expression=XExpression
 	(
-		catchClauses+=XCatchClause+
+		catchClause=XCatchClause
 		(=>'finally' finallyExpression=XExpression)?
 	|	'finally' finallyExpression=XExpression
 	);
 	
 XCatchClause :
-	=>'catch' '(' declaredParam=FullJvmFormalParameter ')' expression=XExpression;
+	=>'catch' '(' identifier=ID ')' expression=XExpression;
 
 
 QualifiedName:

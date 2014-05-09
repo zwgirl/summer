@@ -14,6 +14,7 @@ import java.util.Map;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
@@ -90,7 +91,8 @@ public class TypeArgumentFromComputedTypeCollector extends UnboundTypeParameterA
 						JvmTypeParameter typeParameter = (JvmTypeParameter) type;
 						processTypeParameter(typeParameter, declaration);
 					}
-				} else if (reference.isSubtypeOf(Iterable.class)) {
+//				} else if (reference.isSubtypeOf(Iterable.class)) {  //cym comment
+				} else if (reference.isSubtypeOf(Buildin.Iterable.JvmType)) {
 					ArrayTypeReference array = reference.tryConvertToArray();
 					if (array != null) {
 						outerVisit(declaration, array);
@@ -122,7 +124,8 @@ public class TypeArgumentFromComputedTypeCollector extends UnboundTypeParameterA
 						JvmTypeParameter typeParameter = (JvmTypeParameter) type;
 						processTypeParameter(typeParameter, reference);
 					}
-				} else if (declaration.isSubtypeOf(Iterable.class)) {
+//				} else if (declaration.isSubtypeOf(Iterable.class)) {  //cym comment
+				} else if (declaration.isSubtypeOf(Buildin.Iterable.JvmType)) {
 					ArrayTypeReference array = declaration.tryConvertToArray();
 					if (array != null) {
 						outerVisit(array, reference);

@@ -355,10 +355,12 @@ public abstract class LightweightTypeReference {
 	 * @param rawType the raw type that should be resolved.
 	 * @return the resolved super type.
 	 */
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		return null;
-	}
+	
+	//cym comment
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		return null;
+//	}
 	
 	/**
 	 * Returns the resolved super type for the given raw type or null if the raw type
@@ -487,17 +489,18 @@ public abstract class LightweightTypeReference {
      * Determines if this type reference denotes the same type or a supertype of 
      * the given {@code clazz}.
      */
-	public boolean isAssignableFrom(Class<?> clazz) {
-		if (isType(clazz)) {
-			return true;
-		}
-		JvmType type = findType(clazz);
-		if (type == null) {
-			return false;
-		}
-		return isAssignableFrom(type);
-	}
-
+	//cym comment
+//	public boolean isAssignableFrom(Class<?> clazz) {
+//		if (isType(clazz)) {
+//			return true;
+//		}
+//		JvmType type = findType(clazz);
+//		if (type == null) {
+//			return false;
+//		}
+//		return isAssignableFrom(type);
+//	}
+	
 	/**
      * Determines if this type reference denotes the same type or a supertype of 
      * the given {@code type}.
@@ -515,18 +518,19 @@ public abstract class LightweightTypeReference {
      * Determines if this type reference denotes the same type or a subtype of 
      * the given {@code clazz}.
      */
-	public boolean isSubtypeOf(Class<?> clazz) {
-		if (isType(clazz)) {
-			return true;
-		}
-		// TODO interfaces don't inherit from non-interfaces, primitives, arrays, object
-		// A final type does not have any subtypes
-		JvmType type = findType(clazz);
-		if (type == null) {
-			return false;
-		}
-		return isSubtypeOf(type);
-	}
+	//cym comment
+//	public boolean isSubtypeOf(Class<?> clazz) {
+//		if (isType(clazz)) {
+//			return true;
+//		}
+//		// TODO interfaces don't inherit from non-interfaces, primitives, arrays, object
+//		// A final type does not have any subtypes
+//		JvmType type = findType(clazz);
+//		if (type == null) {
+//			return false;
+//		}
+//		return isSubtypeOf(type);
+//	}
 	
 	/**
      * Determines if this type reference denotes the same type or a subtype of 
@@ -595,15 +599,27 @@ public abstract class LightweightTypeReference {
 	/**
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
+	//cym comment
+//	@Nullable
+//	protected LightweightTypeReference internalFindTopLevelType(Class<?> rawType) {
+//		ResourceSet resourceSet = getOwner().getContextResourceSet();
+//		Resource typeResource = resourceSet.getResource(URIHelperConstants.OBJECTS_URI.appendSegment(rawType.getName()), true);
+//		List<EObject> resourceContents = typeResource.getContents();
+//		if (resourceContents.isEmpty())
+//			return null;
+//		JvmType type = (JvmType) resourceContents.get(0);
+//		return new ParameterizedTypeReference(getOwner(), type);
+//	}
+	
 	@Nullable
-	protected LightweightTypeReference internalFindTopLevelType(Class<?> rawType) {
-		ResourceSet resourceSet = getOwner().getContextResourceSet();
-		Resource typeResource = resourceSet.getResource(URIHelperConstants.OBJECTS_URI.appendSegment(rawType.getName()), true);
-		List<EObject> resourceContents = typeResource.getContents();
-		if (resourceContents.isEmpty())
-			return null;
-		JvmType type = (JvmType) resourceContents.get(0);
-		return new ParameterizedTypeReference(getOwner(), type);
+	protected LightweightTypeReference internalFindTopLevelType(JvmType rawType) {
+//		ResourceSet resourceSet = getOwner().getContextResourceSet();
+//		Resource typeResource = resourceSet.getResource(URIHelperConstants.OBJECTS_URI.appendSegment(rawType.getName()), true);
+//		List<EObject> resourceContents = typeResource.getContents();
+//		if (resourceContents.isEmpty())
+//			return null;
+//		JvmType type = (JvmType) resourceContents.get(0);
+		return new ParameterizedTypeReference(getOwner(), rawType);
 	}
 	
 	protected JvmType findNonNullType(Class<?> type) {
@@ -620,7 +636,8 @@ public abstract class LightweightTypeReference {
 	 * Returns false if this is not exactly the given type, but a sub type, a
 	 * super type or a completely unrelated type.
 	 */
-	public abstract boolean isType(Class<?> clazz);
+//	public abstract boolean isType(Class<?> clazz);  //cym comment
+	public abstract boolean isType(JvmType type);
 	
 	public void accept(TypeReferenceVisitor visitor) {
 		visitor.doVisitTypeReference(this);

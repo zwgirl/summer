@@ -109,8 +109,14 @@ public class UnknownTypeReference extends LightweightTypeReference {
 		return name;
 	}
 
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		return false;
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType clazz) {
 		return false;
 	}
 	

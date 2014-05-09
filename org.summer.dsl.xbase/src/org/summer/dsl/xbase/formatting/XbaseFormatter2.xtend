@@ -702,9 +702,10 @@ class XbaseFormatter2 extends AbstractFormatter {
 			format += body.append[newLine decreaseIndentation]
 		}
 		expr.expression.format(format)
-		for (cc : expr.catchClauses) {
+		if( expr.catchClause != null) {
+			val cc = expr.catchClause;
 			cc.format(format)
-			if (cc != expr.catchClauses.last || expr.finallyExpression != null) {
+			if (expr.finallyExpression != null) {
 				if (cc.expression instanceof XBlockExpression)
 					format += cc.nodeForEObject.append[cfg(bracesInNewLine)]
 				else

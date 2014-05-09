@@ -87,9 +87,9 @@ public class XtextResourceSet extends ResourceSetImpl {
 					}
 				}
 			}
-			if(map.containsKey(uri)){ //cym add
-				return;
-			}
+//			if(map.containsKey(uri)){ //cym add
+//				return;
+//			}
 			Resource previous = map.put(uri, resource);
 			if (previous != null && previous != resource) {
 				throw new IllegalStateException("A different resource with the URI '"+uri+"' was already registered.");

@@ -279,7 +279,7 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Iterable<JvmConstructor> getDeclaredConstructors() {
+	public List<JvmConstructor> getDeclaredConstructors() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

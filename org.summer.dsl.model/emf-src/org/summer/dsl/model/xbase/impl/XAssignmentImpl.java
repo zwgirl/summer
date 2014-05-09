@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.summer.dsl.model.xbase.impl.XAbstractFeatureCallImplCustom;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -22,6 +21,8 @@ import org.summer.dsl.model.xbase.XbasePackage;
  *   <li>{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl#getAssignable <em>Assignable</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl#isExplicitStatic <em>Explicit Static</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl#isIndexedOperation <em>Indexed Operation</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +68,36 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	 * @ordered
 	 */
 	protected boolean explicitStatic = EXPLICIT_STATIC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIndexedOperation() <em>Indexed Operation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexedOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INDEXED_OPERATION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIndexedOperation() <em>Indexed Operation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexedOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean indexedOperation = INDEXED_OPERATION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getIndex() <em>Index</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIndex()
+	 * @generated
+	 * @ordered
+	 */
+	protected XExpression index;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,6 +230,70 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIndexedOperation() {
+		return indexedOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndexedOperation(boolean newIndexedOperation) {
+		boolean oldIndexedOperation = indexedOperation;
+		indexedOperation = newIndexedOperation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XASSIGNMENT__INDEXED_OPERATION, oldIndexedOperation, indexedOperation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XExpression getIndex() {
+		return index;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIndex(XExpression newIndex, NotificationChain msgs) {
+		XExpression oldIndex = index;
+		index = newIndex;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XASSIGNMENT__INDEX, oldIndex, newIndex);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndex(XExpression newIndex) {
+		if (newIndex != index) {
+			NotificationChain msgs = null;
+			if (index != null)
+				msgs = ((InternalEObject)index).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XASSIGNMENT__INDEX, null, msgs);
+			if (newIndex != null)
+				msgs = ((InternalEObject)newIndex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XASSIGNMENT__INDEX, null, msgs);
+			msgs = basicSetIndex(newIndex, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XASSIGNMENT__INDEX, newIndex, newIndex));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -206,6 +301,8 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 				return basicSetAssignable(null, msgs);
 			case XbasePackage.XASSIGNMENT__VALUE:
 				return basicSetValue(null, msgs);
+			case XbasePackage.XASSIGNMENT__INDEX:
+				return basicSetIndex(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -224,6 +321,10 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 				return getValue();
 			case XbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				return isExplicitStatic();
+			case XbasePackage.XASSIGNMENT__INDEXED_OPERATION:
+				return isIndexedOperation();
+			case XbasePackage.XASSIGNMENT__INDEX:
+				return getIndex();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,6 +345,12 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 				return;
 			case XbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				setExplicitStatic((Boolean)newValue);
+				return;
+			case XbasePackage.XASSIGNMENT__INDEXED_OPERATION:
+				setIndexedOperation((Boolean)newValue);
+				return;
+			case XbasePackage.XASSIGNMENT__INDEX:
+				setIndex((XExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -266,6 +373,12 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 			case XbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				setExplicitStatic(EXPLICIT_STATIC_EDEFAULT);
 				return;
+			case XbasePackage.XASSIGNMENT__INDEXED_OPERATION:
+				setIndexedOperation(INDEXED_OPERATION_EDEFAULT);
+				return;
+			case XbasePackage.XASSIGNMENT__INDEX:
+				setIndex((XExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -284,6 +397,10 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 				return value != null;
 			case XbasePackage.XASSIGNMENT__EXPLICIT_STATIC:
 				return explicitStatic != EXPLICIT_STATIC_EDEFAULT;
+			case XbasePackage.XASSIGNMENT__INDEXED_OPERATION:
+				return indexedOperation != INDEXED_OPERATION_EDEFAULT;
+			case XbasePackage.XASSIGNMENT__INDEX:
+				return index != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -300,6 +417,8 @@ public class XAssignmentImpl extends XAbstractFeatureCallImplCustom implements X
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (explicitStatic: ");
 		result.append(explicitStatic);
+		result.append(", indexedOperation: ");
+		result.append(indexedOperation);
 		result.append(')');
 		return result.toString();
 	}

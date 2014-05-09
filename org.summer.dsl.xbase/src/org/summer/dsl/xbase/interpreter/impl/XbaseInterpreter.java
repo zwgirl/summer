@@ -87,6 +87,7 @@ import org.summer.dsl.xbase.lib.Functions;
 import org.summer.dsl.xbase.lib.ObjectExtensions;
 import org.summer.dsl.xbase.lib.Pair;
 import org.summer.dsl.xbase.lib.Procedures;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 import org.summer.dsl.xbase.typesystem.IBatchTypeResolver;
 import org.summer.dsl.xbase.typesystem.IResolvedTypes;
@@ -281,9 +282,11 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 	 */
 	protected Object _doEvaluate(XStringLiteral literal, IEvaluationContext context, CancelIndicator indicator) {
 		LightweightTypeReference type = typeResolver.resolveTypes(literal).getActualType(literal);
-		if (type != null && (type.isType(Character.TYPE) || type.isType(Character.class))) {
-			return literal.getValue().charAt(0);
-		}
+		
+		//cym comment
+//		if (type != null && (type.isType(Character.TYPE) || type.isType(Character.class))) {
+//			return literal.getValue().charAt(0);
+//		}
 		return literal.getValue();
 	}
 
@@ -296,7 +299,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		IResolvedTypes resolvedTypes = typeResolver.resolveTypes(literal);
 		LightweightTypeReference expectedType = resolvedTypes.getExpectedType(literal);
 		Class<? extends Number> type = numberLiterals.getJavaType(literal);
-		if (expectedType != null && expectedType.isSubtypeOf(Number.class)) {
+//		if (expectedType != null && expectedType.isSubtypeOf(Number.class)) {  //cym comment
+		if (expectedType != null && expectedType.isSubtypeOf(Buildin.Number.JvmType)) {
 			try {
 				Class<?> expectedClassType = getJavaType(expectedType.toJavaCompliantTypeReference().getType());
 				if (expectedClassType.isPrimitive()) {
@@ -361,36 +365,51 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 	}
 
 	protected Object _doEvaluate(XSetLiteral literal, IEvaluationContext context, CancelIndicator indicator) {
-		if(isType(literal, Map.class)) {
-			Map<Object, Object> map = newHashMap();
-			for(XExpression element: literal.getElements()) {
-				if (indicator.isCanceled())
-					throw new InterpreterCanceledException();
-				if (expressionHelper.isOperatorFromExtension(element, OperatorMapping.MAPPED_TO, ObjectExtensions.class)) {
-					map.put(internalEvaluate(((XBinaryOperation)element).getLeftOperand(), context, indicator),
-							internalEvaluate(((XBinaryOperation)element).getRightOperand(), context, indicator));
-				} else if (isType(element, Pair.class)) {
-					Pair<?, ?> pair = (Pair<?, ?>) internalEvaluate(element, context, indicator);
-					map.put(pair == null ? null : pair.getKey(), pair == null ? null : pair.getValue());
-				}
-			}
-			return Collections.unmodifiableMap(map);
-		} else {
-			Set<Object> set = newHashSet();
-			for(XExpression element: literal.getElements()) {
-				if (indicator.isCanceled())
-					throw new InterpreterCanceledException();
-				set.add(internalEvaluate(element, context, indicator));
-			}
-			return Collections.unmodifiableSet(set);
-		}
+		return null;
+		
+		//cym comment
+//		if(isType(literal, Map.class)) {
+//			Map<Object, Object> map = newHashMap();
+//			for(XExpression element: literal.getElements()) {
+//				if (indicator.isCanceled())
+//					throw new InterpreterCanceledException();
+//				if (expressionHelper.isOperatorFromExtension(element, OperatorMapping.MAPPED_TO, ObjectExtensions.class)) {
+//					map.put(internalEvaluate(((XBinaryOperation)element).getLeftOperand(), context, indicator),
+//							internalEvaluate(((XBinaryOperation)element).getRightOperand(), context, indicator));
+//				} else if (isType(element, Pair.class)) {
+//					Pair<?, ?> pair = (Pair<?, ?>) internalEvaluate(element, context, indicator);
+//					map.put(pair == null ? null : pair.getKey(), pair == null ? null : pair.getValue());
+//				}
+//			}
+//			return Collections.unmodifiableMap(map);
+//		} else {
+//			Set<Object> set = newHashSet();
+//			for(XExpression element: literal.getElements()) {
+//				if (indicator.isCanceled())
+//					throw new InterpreterCanceledException();
+//				set.add(internalEvaluate(element, context, indicator));
+//			}
+//			return Collections.unmodifiableSet(set);
+//		}
 	}
 
-	protected boolean isType(XExpression element, Class<?> clazz) {
+	
+	//cym comment
+//	protected boolean isType(XExpression element, Class<?> clazz) {
+//		return resolveType(element, clazz) != null;
+//	}
+	
+	protected boolean isType(XExpression element, JvmType clazz) {
 		return resolveType(element, clazz) != null;
 	}
 
-	protected LightweightTypeReference resolveType(XExpression element, Class<?> clazz) {
+	//cym comment
+//	protected LightweightTypeReference resolveType(XExpression element, Class<?> clazz) {
+//		LightweightTypeReference elementType = typeResolver.resolveTypes(element).getActualType(element);
+//		return elementType != null && elementType.isType(clazz) ? elementType : null;
+//	}
+	
+	protected LightweightTypeReference resolveType(XExpression element, JvmType clazz) {
 		LightweightTypeReference elementType = typeResolver.resolveTypes(element).getActualType(element);
 		return elementType != null && elementType.isType(clazz) ? elementType : null;
 	}
@@ -598,21 +617,25 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 			result = internalEvaluate(tryCatchFinally.getExpression(), context, indicator);
 		} catch (EvaluationException evaluationException) {
 			Throwable cause = evaluationException.getCause();
-			for (XCatchClause catchClause : tryCatchFinally.getCatchClauses()) {
-				JvmFormalParameter exception = catchClause.getDeclaredParam();
-				String exceptionTypeName = exception.getParameterType().getType().getQualifiedName();
-				try {
-					Class<?> exceptionType = classFinder.forName(exceptionTypeName);
-					if (!exceptionType.isInstance(cause))
-						continue;
-				} catch (ClassNotFoundException e) {
-					throw new EvaluationException(new NoClassDefFoundError(exceptionTypeName));
-				}
-				IEvaluationContext forked = context.fork();
-				forked.newValue(QualifiedName.create(exception.getName()), cause);
-				result = internalEvaluate(catchClause.getExpression(), forked, indicator);
-				break;
-			}
+			
+			//cym comment
+//			for (XCatchClause catchClause : tryCatchFinally.getCatchClauses()) {
+//				JvmFormalParameter exception = catchClause.getDeclaredParam();
+//				String exceptionTypeName = exception.getParameterType().getType().getQualifiedName();
+//				try {
+//					Class<?> exceptionType = classFinder.forName(exceptionTypeName);
+//					if (!exceptionType.isInstance(cause))
+//						continue;
+//				} catch (ClassNotFoundException e) {
+//					throw new EvaluationException(new NoClassDefFoundError(exceptionTypeName));
+//				}
+//				IEvaluationContext forked = context.fork();
+//				forked.newValue(QualifiedName.create(exception.getName()), cause);
+//				result = internalEvaluate(catchClause.getExpression(), forked, indicator);
+//				break;
+//			}
+			
+			
 		}
 
 		if (tryCatchFinally.getFinallyExpression() != null) {
@@ -653,7 +676,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 			} catch (ClassNotFoundException e) {
 				return result;
 			}
-		} else if (!expectedType.isArray() && expectedType.isSubtypeOf(Iterable.class)) {
+//		} else if (!expectedType.isArray() && expectedType.isSubtypeOf(Iterable.class)) {  //cym comment
+		} else if (!expectedType.isArray() && expectedType.isSubtypeOf(Buildin.Iterable.JvmType)) {
 			return Conversions.doWrapArray(result);
 		}
 		return result;

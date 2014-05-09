@@ -19,7 +19,7 @@ import org.summer.dsl.model.types.JvmType;
 public enum Buildin {
 	Object("object"), Boolean("boolean"), Function("function"), String("string"), Number("number"), Array(
 			"array"), Date("date"), Integer("int"), Byte("byte"), Short("short"), Float("float"), Double("double"),
-			Iterable("iterable"), List("list"), Type("Type"), Void("Void");
+			Iterable("iterable"), List("list"), Type("Type"), Void("Void"), Collection("Collection"), Map("Map");
 
 	private Buildin(String name) {
 		this.JvmType = getType(this);

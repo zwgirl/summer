@@ -2,7 +2,6 @@
  */
 package org.summer.dsl.model.xbase;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getFinallyExpression <em>Finally Expression</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClauses <em>Catch Clauses</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClause <em>Catch Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,19 +75,29 @@ public interface XTryCatchFinallyExpression extends XExpression {
 	void setFinallyExpression(XExpression value);
 
 	/**
-	 * Returns the value of the '<em><b>Catch Clauses</b></em>' containment reference list.
-	 * The list contents are of type {@link org.summer.dsl.model.xbase.XCatchClause}.
+	 * Returns the value of the '<em><b>Catch Clause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Catch Clauses</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Catch Clause</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Catch Clauses</em>' containment reference list.
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXTryCatchFinallyExpression_CatchClauses()
+	 * @return the value of the '<em>Catch Clause</em>' containment reference.
+	 * @see #setCatchClause(XCatchClause)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXTryCatchFinallyExpression_CatchClause()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<XCatchClause> getCatchClauses();
+	XCatchClause getCatchClause();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClause <em>Catch Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Catch Clause</em>' containment reference.
+	 * @see #getCatchClause()
+	 * @generated
+	 */
+	void setCatchClause(XCatchClause value);
 
 } // XTryCatchFinallyExpression

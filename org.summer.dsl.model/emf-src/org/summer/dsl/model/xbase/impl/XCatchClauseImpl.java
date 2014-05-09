@@ -26,6 +26,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getDeclaredParam <em>Declared Param</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getIdentifier <em>Identifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +52,26 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	 * @ordered
 	 */
 	protected JvmFormalParameter declaredParam;
+
+	/**
+	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IDENTIFIER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,6 +183,27 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentifier(String newIdentifier) {
+		String oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCATCH_CLAUSE__IDENTIFIER, oldIdentifier, identifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -185,6 +227,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 				return getExpression();
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return getDeclaredParam();
+			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:
+				return getIdentifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +246,9 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 				return;
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)newValue);
+				return;
+			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:
+				setIdentifier((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -221,6 +268,9 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)null);
 				return;
+			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:
+				setIdentifier(IDENTIFIER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -237,8 +287,26 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 				return expression != null;
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return declaredParam != null;
+			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:
+				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (identifier: ");
+		result.append(identifier);
+		result.append(')');
+		return result.toString();
 	}
 
 } //XCatchClauseImpl

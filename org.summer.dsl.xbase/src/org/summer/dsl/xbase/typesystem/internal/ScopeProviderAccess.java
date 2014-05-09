@@ -39,6 +39,7 @@ import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
+import org.summer.dsl.model.xbase.XMemberFeatureCall1;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.scoping.batch.IIdentifiableElementDescription;
@@ -72,12 +73,16 @@ public class ScopeProviderAccess {
 	@Nullable
 	protected IFeatureLinkingCandidate getKnownFeature(XAbstractFeatureCall featureCall, AbstractTypeComputationState state, ResolvedTypes resolvedTypes) {
 		IFeatureLinkingCandidate result = resolvedTypes.getFeature(featureCall);
-		if (result != null) {
+		if (result != null ) {
 			return new AppliedFeatureLinkingCandidate(result);
 		}
 		EObject proxyOrResolved = (EObject) featureCall.eGet(XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
-		if (proxyOrResolved == null) {
+		if (proxyOrResolved == null && !(featureCall instanceof XMemberFeatureCall1 &&((XMemberFeatureCall1)featureCall).isIndexedOperation())) {
 			return new NullFeatureLinkingCandidate(featureCall, state);
+		}
+		
+		if(proxyOrResolved == null){
+			return null;
 		}
 		if (!proxyOrResolved.eIsProxy()) {
 			return state.createResolvedLink(featureCall, (JvmIdentifiableElement) proxyOrResolved);

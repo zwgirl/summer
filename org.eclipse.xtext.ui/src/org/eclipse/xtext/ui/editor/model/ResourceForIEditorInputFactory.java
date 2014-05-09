@@ -151,23 +151,29 @@ public class ResourceForIEditorInputFactory implements IResourceForEditorInputFa
 		return (XtextResource) aResource;
 	}
 
+	//cym comment
+//	protected ResourceSet getResourceSet(@Nullable IStorage storage) {
+//		if (storage instanceof IFile) {
+//			return resourceSetProvider.get(((IFile) storage).getProject());
+//		}
+//		if (workspace != null && storage != null) {
+//			IPath path = storage.getFullPath();
+//			if (path != null && !path.isEmpty()) {
+//				String firstSegment = path.segment(0);
+//				if (firstSegment != null) {
+//					IProject project = workspace.getRoot().getProject(firstSegment);
+//					if (project.isAccessible()) {
+//						return resourceSetProvider.get(project);
+//					}
+//				}
+//			}
+//		}
+//		return resourceSetProvider.get(null);
+//	}
+	
+	//cym added
 	protected ResourceSet getResourceSet(@Nullable IStorage storage) {
-		if (storage instanceof IFile) {
-			return resourceSetProvider.get(((IFile) storage).getProject());
-		}
-		if (workspace != null && storage != null) {
-			IPath path = storage.getFullPath();
-			if (path != null && !path.isEmpty()) {
-				String firstSegment = path.segment(0);
-				if (firstSegment != null) {
-					IProject project = workspace.getRoot().getProject(firstSegment);
-					if (project.isAccessible()) {
-						return resourceSetProvider.get(project);
-					}
-				}
-			}
-		}
-		return resourceSetProvider.get(null);
+		return ResourceSetFactory.getInstanceof().getResourceSet();
 	}
 
 	protected void configureResourceSet(ResourceSet resourceSet, URI primaryURI) {

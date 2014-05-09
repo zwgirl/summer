@@ -803,6 +803,25 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		IFeatureScopeSession childSession = addExtensionsToMemberSession(resolvedTypes, featureScopeSession, type);
 		List<JvmMember> members = type.getMembers();
 		for(int i = 0; i < members.size(); i++) {
+			JvmMember member = members.get(i);
+			if(member instanceof JvmField){
+				JvmField field = (JvmField) member;
+				if(member.getModifiers().contains("static")){
+					field.setStatic(true);
+				}
+			}
+			
+			if(member instanceof JvmOperation){
+				JvmOperation operation = (JvmOperation) member;
+				if(member.getModifiers().contains("static")){
+					operation.setStatic(true);
+				}
+				
+				if(operation.getModifiers().contains("overload")){
+					operation.setOverload(true);
+				}
+			}
+
 			computeTypes(preparedResolvedTypes, resolvedTypes, childSession, members.get(i));
 		}
 	}

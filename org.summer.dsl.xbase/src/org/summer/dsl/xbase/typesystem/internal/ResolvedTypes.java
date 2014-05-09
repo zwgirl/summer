@@ -35,6 +35,7 @@ import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.IResolvedTypes;
 import org.summer.dsl.xbase.typesystem.computation.IConstructorLinkingCandidate;
 import org.summer.dsl.xbase.typesystem.computation.IFeatureLinkingCandidate;
@@ -366,7 +367,8 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 		}
 		// common type of JvmAnyType and JvmVoid may be null ... use JvmAnyType in that case
 		for (LightweightTypeReference type: types) {
-			if (!type.isType(Void.TYPE)) {
+//			if (!type.isType(Void.TYPE)) {  //cym comment
+			if (!type.isType(Buildin.Void.JvmType)) {
 				return type;
 			}
 		}

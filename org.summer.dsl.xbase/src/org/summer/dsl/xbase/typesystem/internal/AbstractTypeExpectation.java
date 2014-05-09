@@ -10,6 +10,7 @@ package org.summer.dsl.xbase.typesystem.internal;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.computation.ITypeExpectation;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
@@ -39,7 +40,8 @@ public abstract class AbstractTypeExpectation implements ITypeExpectation {
 
 	public boolean isVoidTypeAllowed() {
 		LightweightTypeReference expectedType = getExpectedType();
-		if (expectedType != null && expectedType.isType(Void.TYPE)) {
+//		if (expectedType != null && expectedType.isType(Void.TYPE)) {
+		if (expectedType != null && expectedType.isType(Buildin.Void.JvmType)) {
 			return true;
 		}
 		return false;

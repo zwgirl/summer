@@ -42,6 +42,7 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.lib.IterableExtensions;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IIdentifiableElementDescription;
 import org.summer.dsl.xbase.typesystem.computation.ILinkingCandidate;
 import org.summer.dsl.xbase.typesystem.computation.ITypeExpectation;
@@ -191,7 +192,8 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 				JvmTypeConstraint constraint = typeParameter.getConstraints().get(j);
 				LightweightTypeReference typeRef = ownedConverter.apply(constraint.getTypeReference());
 				if(constraint instanceof JvmUpperBound) {
-					if(typeRef.isType(Object.class))
+//					if(typeRef.isType(Object.class))  //cym comment
+					if(typeRef.isType(Buildin.Object.JvmType))
 						continue;
 					b.append(" extends ");
 				} else 
@@ -371,18 +373,20 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 		outer: for(JvmTypeReference typeReference: executable.getExceptions()) {
 			LightweightTypeReference exception = getState().getConverter().toLightweightReference(typeReference);
 			LightweightTypeReference resolvedException = substitutor.substitute(exception);
-			if (resolvedException.isSubtypeOf(Throwable.class) && !resolvedException.isSubtypeOf(RuntimeException.class)) {
-				for (LightweightTypeReference expectedException : expectedExceptions) {
-					if (expectedException.isAssignableFrom(resolvedException)) {
-						continue outer;
-					}
-				}
-				if (unhandledExceptions == null) {
-					unhandledExceptions = Lists.newArrayList(resolvedException);
-				} else {
-					unhandledExceptions.add(resolvedException);
-				}
-			}
+			
+			//cym comment
+//			if (resolvedException.isSubtypeOf(Throwable.class) && !resolvedException.isSubtypeOf(RuntimeException.class)) {
+//				for (LightweightTypeReference expectedException : expectedExceptions) {
+//					if (expectedException.isAssignableFrom(resolvedException)) {
+//						continue outer;
+//					}
+//				}
+//				if (unhandledExceptions == null) {
+//					unhandledExceptions = Lists.newArrayList(resolvedException);
+//				} else {
+//					unhandledExceptions.add(resolvedException);
+//				}
+//			}
 		}
 		if (unhandledExceptions != null) {
 			String message = null;

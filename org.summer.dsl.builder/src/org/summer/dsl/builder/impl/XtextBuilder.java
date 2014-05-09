@@ -28,6 +28,7 @@ import org.summer.dsl.builder.IXtextBuilderParticipant.BuildType;
 import org.summer.dsl.builder.builderState.IBuilderState;
 import org.summer.dsl.builder.nature.XtextProjectHelper;
 import org.eclipse.xtext.resource.IResourceDescription.Delta;
+import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.util.internal.Stopwatches;
@@ -179,8 +180,8 @@ public class XtextBuilder extends IncrementalProjectBuilder {
 			return;
 		
 		SubMonitor progress = SubMonitor.convert(monitor, 2);
-		ResourceSet resourceSet = getResourceSetProvider().get(getProject());
-		resourceSet.getLoadOptions().put(ResourceDescriptionsProvider.NAMED_BUILDER_SCOPE, Boolean.TRUE);
+//		ResourceSet resourceSet = getResourceSetProvider().get(getProject());
+//		resourceSet.getLoadOptions().put(ResourceDescriptionsProvider.NAMED_BUILDER_SCOPE, Boolean.TRUE);
 		//cym comment
 //		if (resourceSet instanceof ResourceSetImpl) {
 //			((ResourceSetImpl) resourceSet).setURIResourceMap(Maps.<URI, Resource> newHashMap());
@@ -195,6 +196,17 @@ public class XtextBuilder extends IncrementalProjectBuilder {
 //		} else {
 //			progress.worked(1);
 //		}
+		
+		ResourceSet resourceSet = ResourceSetFactory.getInstanceof().getResourceSet();
+		BuildData buildData = new BuildData(getProject().getName(),resourceSet , toBeBuilt, queuedBuildData);
+//		ImmutableList<Delta> deltas = builderState.update(buildData, progress.newChild(1));
+		if (participant != null ) {
+			participant.build(new BuildContext(this,  toBeBuilt.getToBeUpdated(), type),
+					progress.newChild(1));
+			getProject().getWorkspace().checkpoint(false);
+		} else {
+			progress.worked(1);
+		}
 //		resourceSet.eSetDeliver(false);
 //		resourceSet.getResources().clear();
 //		resourceSet.eAdapters().clear();
@@ -252,8 +264,8 @@ public class XtextBuilder extends IncrementalProjectBuilder {
 		ImmutableList<Delta> deltas = builderState.clean(toBeBuilt.getToBeDeleted(), progress.newChild(1));
 		if (participant != null) {
 			participant.build(new BuildContext(this, 
-					getResourceSetProvider().get(getProject()), 
-					deltas,
+					/*getResourceSetProvider().get(getProject()), */
+					toBeBuilt.getToBeUpdated(),
 					BuildType.CLEAN), 
 					progress.newChild(1));
 		} else {

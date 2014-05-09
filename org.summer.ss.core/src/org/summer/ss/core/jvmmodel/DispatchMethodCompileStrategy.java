@@ -27,6 +27,7 @@ import org.summer.dsl.xbase.compiler.Later;
 import org.summer.dsl.xbase.compiler.TreeAppendableUtil;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.Procedures;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
 import org.summer.dsl.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
@@ -91,7 +92,8 @@ public class DispatchMethodCompileStrategy implements Procedures.Procedure1<ITre
 				final JvmFormalParameter caseParam = operation.getParameters().get(i);
 				final LightweightTypeReference caseParamType = converter.toLightweightReference(caseParam.getParameterType());
 				final String name = getVarName(dispatchParam, operationAppendable);
-				if (caseParamType.isType(Void.class)) {
+//				if (caseParamType.isType(Void.class)) {  //cym comment
+				if (caseParamType.isType(Buildin.Void.JvmType)) {
 					laters.add(new Later() {
 						public void exec(ITreeAppendable appendable) {
 							appendable.append(name).append(" == null");

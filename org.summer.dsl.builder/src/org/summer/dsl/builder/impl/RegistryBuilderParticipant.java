@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.plugin.RegistryReader;
+import org.summer.dsl.builder.BuilderParticipant;
 import org.summer.dsl.builder.IXtextBuilderParticipant;
 import org.summer.dsl.builder.internal.Activator;
 
@@ -57,7 +58,10 @@ public class RegistryBuilderParticipant implements IXtextBuilderParticipant {
 		for (IXtextBuilderParticipant participant : participants) {
 			if (progress.isCanceled())
 				throw new OperationCanceledException();
-			participant.build(buildContext, progress.newChild(1));
+			if(participant instanceof BuilderParticipant){
+				participant.build(buildContext, progress.newChild(1));
+			}
+
 		}
 	}
 

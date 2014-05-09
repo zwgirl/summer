@@ -75,14 +75,14 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 	}
 
 	public void configureXMemberFeatureCall(FormattingConfig c, XMemberFeatureCallElements ele) {
-		c.setNoSpace().around(ele.getFullStopKeyword_1_1_0_0_1_0());
-		c.setNoSpace().around(ele.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
-		c.setNoSpace().around(ele.getFullStopKeyword_1_1_0_0_1_0());
-		c.setNoSpace().around(ele.getExplicitStaticAssignment_1_1_0_0_1_1());
-		c.setNoSpace().around(ele.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
-		c.setNoSpace().around(ele.getLessThanSignKeyword_1_2_1_0());
+		c.setNoSpace().around(ele.getFullStopKeyword_1_2_0_0_1());
+//		c.setNoSpace().around(ele.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
+		c.setNoSpace().around(ele.getFullStopKeyword_1_2_0_0_1());
+//		c.setNoSpace().around(ele.getExplicitStaticAssignment_1_1_0_0_1_1());
+//		c.setNoSpace().around(ele.getExplicitStaticColonColonKeyword_1_1_0_0_1_1_0());
+		c.setNoSpace().around(ele.getLessThanSignKeyword_1_3_1_0());
 		c.setNoSpace().before(ele.getCommaKeyword_1_0_1_1_0());
-		c.setNoSpace().around(ele.getGreaterThanSignKeyword_1_2_1_3());
+		c.setNoSpace().around(ele.getGreaterThanSignKeyword_1_3_1_3());
 		c.setNoSpace().around(ele.getExplicitOperationCallAssignment_1_0_0_0_1());
 		c.setNoSpace().before(ele.getCommaKeyword_1_0_1_1_0());
 		c.setNoSpace().before(ele.getRightParenthesisKeyword_1_0_2());

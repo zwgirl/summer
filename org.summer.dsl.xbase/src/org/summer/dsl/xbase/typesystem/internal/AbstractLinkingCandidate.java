@@ -23,6 +23,7 @@ import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.arguments.IFeatureCallArgumentSlot;
 import org.summer.dsl.xbase.typesystem.arguments.IFeatureCallArguments;
 import org.summer.dsl.xbase.typesystem.computation.ILinkingCandidate;
@@ -223,7 +224,8 @@ public abstract class AbstractLinkingCandidate<Expression extends XExpression> i
 				JvmTypeReference constraintReference = constraint.getTypeReference();
 				if (constraintReference != null) {
 					LightweightTypeReference substitute = substitutor.substitute(constraintReference);
-					if (!substitute.isType(Object.class) && !substitute.isPrimitiveVoid()) {
+//					if (!substitute.isType(Object.class) && !substitute.isPrimitiveVoid()) {  //cym comment
+					if (!substitute.isType(Buildin.Object.JvmType) && !substitute.isPrimitiveVoid()) {
 						typeReference.acceptHint(substitute, BoundTypeArgumentSource.CONSTRAINT, constraint, VarianceInfo.OUT, VarianceInfo.OUT);
 					}
 				}
@@ -308,7 +310,8 @@ public abstract class AbstractLinkingCandidate<Expression extends XExpression> i
 					if (result != null) {
 						LightweightTypeReference typeReference = result.getTypeReference();
 						if (result.getVariance() == VarianceInfo.INVARIANT) {
-							if (typeReference.isWildcard() && typeReference.getLowerBoundSubstitute().isAny() && typeReference.getUpperBoundSubstitute().isType(Object.class)) {
+//							if (typeReference.isWildcard() && typeReference.getLowerBoundSubstitute().isAny() && typeReference.getUpperBoundSubstitute().isType(Object.class)) {  //cym comment
+							if (typeReference.isWildcard() && typeReference.getLowerBoundSubstitute().isAny() && typeReference.getUpperBoundSubstitute().isType(Buildin.Object.JvmType)) {
 								// assume unbound wildcard - use the constraints of the respective type parameter
 								if (!typeParameter.getConstraints().isEmpty()) {
 									JvmTypeConstraint constraint = typeParameter.getConstraints().get(0);

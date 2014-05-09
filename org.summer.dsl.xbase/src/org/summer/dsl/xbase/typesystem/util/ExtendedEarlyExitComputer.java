@@ -54,11 +54,21 @@ public class ExtendedEarlyExitComputer {
 			return isIntentionalEarlyExit(((XIfExpression) expression).getThen()) && isIntentionalEarlyExit(((XIfExpression) expression).getElse());
 		} else if (expression instanceof XTryCatchFinallyExpression) {
 			XTryCatchFinallyExpression tryCatchFinally = (XTryCatchFinallyExpression) expression;
+			
+			//cym comment
+//			if (isIntentionalEarlyExit(tryCatchFinally.getExpression())) {
+//				for(XCatchClause catchClause: tryCatchFinally.getCatchClauses()) {
+//					if (!isIntentionalEarlyExit(catchClause.getExpression()))
+//						return false;
+//				}
+//				return true;
+//			}
+			
 			if (isIntentionalEarlyExit(tryCatchFinally.getExpression())) {
-				for(XCatchClause catchClause: tryCatchFinally.getCatchClauses()) {
-					if (!isIntentionalEarlyExit(catchClause.getExpression()))
-						return false;
-				}
+				XCatchClause catchClause = tryCatchFinally.getCatchClause();
+				if (!isIntentionalEarlyExit(catchClause.getExpression()))
+					return false;
+				
 				return true;
 			}
 			return false;
@@ -91,12 +101,23 @@ public class ExtendedEarlyExitComputer {
 			if (isDefiniteEarlyExit(tryExpression.getFinallyExpression())) {
 				return true;
 			}
+			
+			//cym comment
+//			if (isDefiniteEarlyExit(tryExpression.getExpression())) {
+//				for(XCatchClause catchClause: tryExpression.getCatchClauses()) {
+//					if (!isDefiniteEarlyExit(catchClause.getExpression())) {
+//						return false;
+//					}
+//				}
+//				return true;
+//			}
+			
 			if (isDefiniteEarlyExit(tryExpression.getExpression())) {
-				for(XCatchClause catchClause: tryExpression.getCatchClauses()) {
-					if (!isDefiniteEarlyExit(catchClause.getExpression())) {
-						return false;
-					}
+				XCatchClause catchClause = tryExpression.getCatchClause();
+				if (!isDefiniteEarlyExit(catchClause.getExpression())) {
+					return false;
 				}
+				
 				return true;
 			}
 			return false;

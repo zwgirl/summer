@@ -7,6 +7,8 @@
  *******************************************************************************/
 package org.summer.dsl.model.types.impl;
 
+import java.util.List;
+
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmType;
@@ -14,6 +16,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -53,8 +56,8 @@ public class JvmGenericTypeImplCustom extends JvmGenericTypeImpl {
 	}
 
 	@Override
-	public Iterable<JvmConstructor> getDeclaredConstructors() {
-		return Iterables.filter(getMembers(), JvmConstructor.class);
+	public List<JvmConstructor> getDeclaredConstructors() {
+		return Lists.newArrayList(Iterables.filter(getMembers(), JvmConstructor.class));
 	}
 
 }

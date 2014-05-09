@@ -127,6 +127,7 @@ import org.summer.dsl.xbase.imports.IImportsConfiguration;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
 import org.summer.dsl.xbase.lib.ObjectExtensions;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess;
 import org.summer.dsl.xbase.typesystem.IBatchTypeResolver;
@@ -432,12 +433,14 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	@Check
 	public void checkTypes(XCatchClause catchClause) {
 		LightweightTypeReference parameterType = getActualType(catchClause, catchClause.getDeclaredParam());
-		if (parameterType != null && !parameterType.isSubtypeOf(Throwable.class)) {
-			error("No exception of type " + parameterType.getSimpleName()
-					+ " can be thrown; an exception type must be a subclass of Throwable",
-					catchClause.getDeclaredParam(), TypesPackage.Literals.JVM_FORMAL_PARAMETER__PARAMETER_TYPE,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
-		}
+		
+		//cym comment
+//		if (parameterType != null && !parameterType.isSubtypeOf(Throwable.class)) {
+//			error("No exception of type " + parameterType.getSimpleName()
+//					+ " can be thrown; an exception type must be a subclass of Throwable",
+//					catchClause.getDeclaredParam(), TypesPackage.Literals.JVM_FORMAL_PARAMETER__PARAMETER_TYPE,
+//					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
+//		}
 	}
 
 	@Check 
@@ -790,7 +793,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 			return;
 		}
 		if (leftType.isPrimitive() 
-			|| rightType.isArray() && !(leftType.isArray() || leftType.isType(Object.class) || leftType.isType(Cloneable.class) || leftType.isType(Serializable.class))
+//			|| rightType.isArray() && !(leftType.isArray() || leftType.isType(Object.class) || leftType.isType(Cloneable.class) || leftType.isType(Serializable.class)) //cym comment
+			|| rightType.isArray() && !(leftType.isArray() || leftType.isType(Buildin.Object.JvmType) /*|| leftType.isType(Cloneable.class) || leftType.isType(Serializable.class)*/)
 			|| isFinal(rightType) && !memberOfTypeHierarchy(rightType, leftType)
 			|| isFinal(leftType) && !memberOfTypeHierarchy(leftType, rightType)) {
 			error("Incompatible conditional operand types " + this.getNameOfTypes(leftType)+" and "+this.getNameOfTypes(rightType), null, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_INSTANCEOF);

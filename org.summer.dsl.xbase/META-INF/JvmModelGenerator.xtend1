@@ -122,6 +122,25 @@ class JvmModelGenerator implements IGenerator {
 			fsa.generateFile(type.qualifiedName.replace('.', '/') + '.js', type.generateType(generatorConfigProvider.get(type)))
 	}
 	
+//	def CharSequence generateType(JvmDeclaredType type, GeneratorConfig config) {
+//		val importManager = new ImportManager(true, type)
+//		val bodyAppendable = createAppendable(type, importManager, config)
+//		generateBody(type, bodyAppendable, config)
+//		val importAppendable = createAppendable(type, importManager, config)
+//        generateFileHeader(type, importAppendable, config)
+//		if (type.packageName != null) {
+//			importAppendable.append("package ").append(type.packageName).append(";");
+//			importAppendable.newLine.newLine
+//		}
+//		for(i: importManager.imports) {
+//			importAppendable.append("import ").append(i).append(";").newLine
+//		}
+//		if (!importManager.imports.empty)
+//			importAppendable.newLine
+//		importAppendable.append(bodyAppendable)
+//		return importAppendable
+//	}
+
 	def CharSequence generateType(JvmDeclaredType type, GeneratorConfig config) {
 		val importManager = new ImportManager(true, type)
 		val bodyAppendable = createAppendable(type, importManager, config)
@@ -129,37 +148,91 @@ class JvmModelGenerator implements IGenerator {
 		val importAppendable = createAppendable(type, importManager, config)
         generateFileHeader(type, importAppendable, config)
 		if (type.packageName != null) {
-			importAppendable.append("package ").append(type.packageName).append(";");
+			importAppendable.append("define(['dojo/_base/declare', 'system/Type' ");
 			importAppendable.newLine.newLine
 		}
 		for(i: importManager.imports) {
-			importAppendable.append("import ").append(i).append(";").newLine
+			importAppendable.append(',')
+			importAppendable.append(" ").append(i).append("").newLine
 		}
+		
+		
+		importAppendable.append("], function(declare, Type");
+		
+		for(i: importManager.imports) {
+			importAppendable.append(',')
+			importAppendable.append(" ").append(i).append("").newLine
+		}
+		
+		importAppendable.append(') {')
+		
 		if (!importManager.imports.empty)
 			importAppendable.newLine
 		importAppendable.append(bodyAppendable)
 		return importAppendable
 	}
 	
+//	define(["dojo/_base/declare", "system/Type", "markup/MarkupExtension"], 
+//		function(declare, Type, MarkupExtension){
 	
+	
+//	def dispatch ITreeAppendable generateBody(JvmGenericType it, ITreeAppendable appendable, GeneratorConfig config) {
+//		generateJavaDoc(appendable, config)
+//		val childAppendable = appendable.trace(it)
+//		if(config.generateSyntheticSuppressWarnings)
+//			generateAnnotationsWithSyntheticSuppressWarnings(childAppendable, config)
+//		else
+//			annotations.generateAnnotations(childAppendable, true, config)
+//		generateModifier(childAppendable, config)
+//		if (isInterface) {
+//			childAppendable.append("interface ")
+//		} else {
+//			childAppendable.append("class ")
+//		}
+//		childAppendable.traceSignificant(it).append(simpleName)
+//		generateTypeParameterDeclaration(childAppendable, config)
+//		if (typeParameters.empty)
+//			childAppendable.append(" ")
+//		generateExtendsClause(childAppendable, config)
+//		childAppendable.append('{').increaseIndentation
+//		childAppendable.forEach(membersToBeCompiled, [
+//				separator = [ITreeAppendable it | newLine]
+//			], [
+//				val memberAppendable = childAppendable.traceWithComments(it)
+//				memberAppendable.openScope
+//				generateMember(memberAppendable, config)
+//				memberAppendable.closeScope
+//			])
+//		childAppendable.decreaseIndentation.newLine.append('}')
+//		appendable.newLine
+//	}
+
+//		var DataTrigger = declare("DataTrigger", TriggerBase,{
+//			
+//		}
+
 	def dispatch ITreeAppendable generateBody(JvmGenericType it, ITreeAppendable appendable, GeneratorConfig config) {
 		generateJavaDoc(appendable, config)
 		val childAppendable = appendable.trace(it)
-		if(config.generateSyntheticSuppressWarnings)
-			generateAnnotationsWithSyntheticSuppressWarnings(childAppendable, config)
-		else
-			annotations.generateAnnotations(childAppendable, true, config)
-		generateModifier(childAppendable, config)
-		if (isInterface) {
-			childAppendable.append("interface ")
-		} else {
-			childAppendable.append("class ")
-		}
-		childAppendable.traceSignificant(it).append(simpleName)
-		generateTypeParameterDeclaration(childAppendable, config)
-		if (typeParameters.empty)
-			childAppendable.append(" ")
-		generateExtendsClause(childAppendable, config)
+//		if(config.generateSyntheticSuppressWarnings)
+//			generateAnnotationsWithSyntheticSuppressWarnings(childAppendable, config)
+//		else
+//			annotations.generateAnnotations(childAppendable, true, config)
+//		generateModifier(childAppendable, config)
+//		if (isInterface) {
+//			childAppendable.append("interface ")
+//		} else {
+//			childAppendable.append("class ")
+//		}
+		
+		childAppendable.append('var ').append(simpleName).append(' = declare(null, )');
+		
+
+//		childAppendable.traceSignificant(it).append(simpleName)
+//		generateTypeParameterDeclaration(childAppendable, config)
+//		if (typeParameters.empty)
+//			childAppendable.append(" ")
+//		generateExtendsClause(childAppendable, config)
 		childAppendable.append('{').increaseIndentation
 		childAppendable.forEach(membersToBeCompiled, [
 				separator = [ITreeAppendable it | newLine]
@@ -169,7 +242,7 @@ class JvmModelGenerator implements IGenerator {
 				generateMember(memberAppendable, config)
 				memberAppendable.closeScope
 			])
-		childAppendable.decreaseIndentation.newLine.append('}')
+		childAppendable.newLine.append('}')
 		appendable.newLine
 	}
 	
@@ -238,7 +311,12 @@ class JvmModelGenerator implements IGenerator {
 		generateModifier(tracedAppendable, config)
 		returnType.serializeSafely("Object", tracedAppendable)
 		tracedAppendable.append(" ")
-		tracedAppendable.traceSignificant(it).append(simpleName)
+		if(it.static){
+			tracedAppendable.traceSignificant(it).append(simpleName)	
+		}else{
+			tracedAppendable.traceSignificant(it).append(simpleName).append(":function")
+		}
+
 		tracedAppendable.append("()")
 		generateDefaultExpression(tracedAppendable, config)
 		tracedAppendable.append(";")
@@ -346,48 +424,48 @@ class JvmModelGenerator implements IGenerator {
 			return switch visibility {
 					case JvmVisibility.PRIVATE : 'private '
 					case JvmVisibility.PUBLIC : 'public '
-					case JvmVisibility.PROTECTED : 'protected '
-					case JvmVisibility.DEFAULT : ''
+//					case JvmVisibility.PROTECTED : 'protected '  //cym comment
+//					case JvmVisibility.DEFAULT : '' //cym comment
 				}
 		else 
 			return ''
 	}
 		
 	def void generateExtendsClause(JvmDeclaredType it, ITreeAppendable appendable, GeneratorConfig config) {
-		val implicitSuperType = switch it {
-			JvmAnnotationType: 'java.lang.Annotation'
-			JvmEnumerationType: '''java.lang.Enum<�identifier�>'''.toString
-			default: 'java.lang.Object'
-		} 
-		if (it instanceof JvmAnnotationType || (it instanceof JvmGenericType && (it as JvmGenericType).isInterface)) {
-			val withoutObject = superTypes.filter [ typeRef | typeRef.identifier != implicitSuperType ]
-			appendable.forEachSafely(withoutObject, [
-					prefix = 'extends '	separator =  ', ' suffix =  ' '
-				], [
-					it, app | serializeSafely(app)
-				])
-		} else {
-			val withoutObject = superTypes.filter [ typeRef | typeRef.identifier != implicitSuperType ]
-			val superClazz = withoutObject.filter(typeRef | typeRef.type instanceof JvmGenericType && !(typeRef.type as JvmGenericType).isInterface).head
-			val superInterfaces = withoutObject.filter(typeRef | typeRef != superClazz)
-			if (superClazz != null) {
-				val hasErrors = superClazz.hasErrors()
-				if(hasErrors) 
-					appendable.append('/* ')
-				try {
-					appendable.append('extends ')
-					superClazz.serializeSafely(appendable)
-					appendable.append(' ')
-				} catch (Exception ignoreMe) {}
-				if(hasErrors) 
-					appendable.append(' */')
-			} 
-			appendable.forEachSafely(superInterfaces, [
-					prefix = 'implements ' separator = ', ' suffix = ' '
-				], [
-					it, app | serializeSafely(app)
-				])
-		}
+//		val implicitSuperType = switch it {
+//			JvmAnnotationType: 'java.lang.Annotation'
+//			JvmEnumerationType: '''java.lang.Enum<�identifier�>'''.toString
+//			default: 'java.lang.Object'
+//		} 
+//		if (it instanceof JvmAnnotationType || (it instanceof JvmGenericType && (it as JvmGenericType).isInterface)) {
+//			val withoutObject = superTypes.filter [ typeRef | typeRef.identifier != implicitSuperType ]
+//			appendable.forEachSafely(withoutObject, [
+//					prefix = 'extends '	separator =  ', ' suffix =  ' '
+//				], [
+//					it, app | serializeSafely(app)
+//				])
+//		} else {
+//			val withoutObject = superTypes.filter [ typeRef | typeRef.identifier != implicitSuperType ]
+//			val superClazz = withoutObject.filter(typeRef | typeRef.type instanceof JvmGenericType && !(typeRef.type as JvmGenericType).isInterface).head
+//			val superInterfaces = withoutObject.filter(typeRef | typeRef != superClazz)
+//			if (superClazz != null) {
+//				val hasErrors = superClazz.hasErrors()
+//				if(hasErrors) 
+//					appendable.append('/* ')
+//				try {
+//					appendable.append('extends ')
+//					superClazz.serializeSafely(appendable)
+//					appendable.append(' ')
+//				} catch (Exception ignoreMe) {}
+//				if(hasErrors) 
+//					appendable.append(' */')
+//			} 
+//			appendable.forEachSafely(superInterfaces, [
+//					prefix = 'implements ' separator = ', ' suffix = ' '
+//				], [
+//					it, app | serializeSafely(app)
+//				])
+//		}
 	}
 	
 	def dispatch ITreeAppendable generateMember(JvmMember it, ITreeAppendable appendable, GeneratorConfig config) {
@@ -420,15 +498,19 @@ class JvmModelGenerator implements IGenerator {
 		generateJavaDoc(appendable, config)
 		val tracedAppendable = appendable.trace(it)
 		annotations.generateAnnotations(tracedAppendable, true, config)
-		generateModifier(tracedAppendable, config)
-		generateTypeParameterDeclaration(tracedAppendable, config)
-		if (returnType == null) {
-			tracedAppendable.append("void")
-		} else {
-			returnType.serializeSafely("Object", tracedAppendable)
-		}
+//		generateModifier(tracedAppendable, config)
+//		generateTypeParameterDeclaration(tracedAppendable, config)
+//		if (returnType == null) {
+//			tracedAppendable.append("void")
+//		} else {
+//			returnType.serializeSafely("Object", tracedAppendable)
+//		}
 		tracedAppendable.append(" ")
-		tracedAppendable.traceSignificant(it).append(simpleName)
+		if(it.static){
+			tracedAppendable.traceSignificant(it).append(" function ").append(simpleName)	
+		}else{
+			tracedAppendable.traceSignificant(it).append(simpleName).append(":function")
+		}
 		tracedAppendable.append("(")
 		generateParameters(tracedAppendable, config)
 		tracedAppendable.append(")")
@@ -443,19 +525,38 @@ class JvmModelGenerator implements IGenerator {
 		appendable
 	}
 	
+//	def dispatch generateMember(JvmConstructor it, ITreeAppendable appendable, GeneratorConfig config) {
+//		appendable.newLine
+//		appendable.openScope
+//		generateJavaDoc(appendable, config)
+//		val tracedAppendable = appendable.trace(it)
+//		annotations.generateAnnotations(tracedAppendable, true, config)
+//		generateModifier(tracedAppendable, config)
+//		generateTypeParameterDeclaration(tracedAppendable, config)
+//		tracedAppendable.traceSignificant(it).append(simpleName)
+//		tracedAppendable.append("(")
+//		generateParameters(tracedAppendable, config)
+//		tracedAppendable.append(")")
+//		generateThrowsClause(tracedAppendable, config)
+//		tracedAppendable.append(" ")
+//		generateExecutableBody(tracedAppendable, config)
+//		appendable.closeScope
+//		appendable
+//	}
+
 	def dispatch generateMember(JvmConstructor it, ITreeAppendable appendable, GeneratorConfig config) {
 		appendable.newLine
 		appendable.openScope
 		generateJavaDoc(appendable, config)
 		val tracedAppendable = appendable.trace(it)
-		annotations.generateAnnotations(tracedAppendable, true, config)
-		generateModifier(tracedAppendable, config)
-		generateTypeParameterDeclaration(tracedAppendable, config)
-		tracedAppendable.traceSignificant(it).append(simpleName)
-		tracedAppendable.append("(")
+//		annotations.generateAnnotations(tracedAppendable, true, config)
+//		generateModifier(tracedAppendable, config)
+//		generateTypeParameterDeclaration(tracedAppendable, config)
+		tracedAppendable.traceSignificant(it).append("constructor")
+		tracedAppendable.append(":function(")
 		generateParameters(tracedAppendable, config)
 		tracedAppendable.append(")")
-		generateThrowsClause(tracedAppendable, config)
+//		generateThrowsClause(tracedAppendable, config)
 		tracedAppendable.append(" ")
 		generateExecutableBody(tracedAppendable, config)
 		appendable.closeScope
@@ -531,22 +632,22 @@ class JvmModelGenerator implements IGenerator {
 	}
 	
 	def void generateParameter(JvmFormalParameter it, ITreeAppendable appendable, boolean vararg, GeneratorConfig config) {
-		val tracedAppendable = appendable.trace(it)
-		annotations.generateAnnotations(tracedAppendable, false, config)
-		tracedAppendable.append("final ")
-		if (vararg) {
-			if (! (parameterType instanceof JvmGenericArrayTypeReference)) {
-				tracedAppendable.append("/* Internal Error: Parameter was vararg but not an array type. */");
-			} else {
-				(parameterType as JvmGenericArrayTypeReference).componentType.serializeSafely("Object", tracedAppendable)
-			}
-			tracedAppendable.append("...")
-		} else {
-			parameterType.serializeSafely("Object", tracedAppendable)
-		}
-		tracedAppendable.append(" ")
-		val name = tracedAppendable.declareVariable(it, makeJavaIdentifier(simpleName))
-		tracedAppendable.traceSignificant(it).append(name)
+//		val tracedAppendable = appendable.trace(it)
+//		annotations.generateAnnotations(tracedAppendable, false, config)
+//		appendable.append("final ")
+//		if (vararg) {
+//			if (! (parameterType instanceof JvmGenericArrayTypeReference)) {
+//				appendable.append("/* Internal Error: Parameter was vararg but not an array type. */");
+//			} else {
+//				(parameterType as JvmGenericArrayTypeReference).componentType.serializeSafely("Object", appendable)
+//			}
+//			appendable.append("...")
+//		} else {
+//			parameterType.serializeSafely("Object", appendable)
+//		}
+		appendable.append(" ")
+		val name = appendable.declareVariable(it, makeJavaIdentifier(simpleName))
+		appendable.traceSignificant(it).append(name)
 	}
 	
 	def hasBody(JvmExecutable it) {

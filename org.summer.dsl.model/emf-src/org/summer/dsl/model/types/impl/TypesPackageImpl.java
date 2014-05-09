@@ -3,6 +3,7 @@
 package org.summer.dsl.model.types.impl;
 
 import java.lang.Iterable;
+import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -487,6 +488,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType listEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType iTypeReferenceVisitorEDataType = null;
 
 	/**
@@ -822,6 +830,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getJvmStructType_Parameters() {
+		return (EReference)jvmStructTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJvmTypeParameter() {
 		return jvmTypeParameterEClass;
 	}
@@ -959,6 +976,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EClass getJvmEnumerationLiteral() {
 		return jvmEnumerationLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmEnumerationLiteral_Ordinal() {
+		return (EAttribute)jvmEnumerationLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1409,6 +1435,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EReference getJvmOperation_Function() {
 		return (EReference)jvmOperationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmOperation_Overload() {
+		return (EAttribute)jvmOperationEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -1884,6 +1919,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getList() {
+		return listEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getITypeReferenceVisitor() {
 		return iTypeReferenceVisitorEDataType;
 	}
@@ -1961,6 +2005,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		jvmStructTypeEClass = createEClass(JVM_STRUCT_TYPE);
 		createEReference(jvmStructTypeEClass, JVM_STRUCT_TYPE__IMPLEMENTS);
+		createEReference(jvmStructTypeEClass, JVM_STRUCT_TYPE__PARAMETERS);
 
 		jvmTypeParameterEClass = createEClass(JVM_TYPE_PARAMETER);
 		createEAttribute(jvmTypeParameterEClass, JVM_TYPE_PARAMETER__NAME);
@@ -1986,6 +2031,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmEnumerationTypeEClass, JVM_ENUMERATION_TYPE__LITERALS);
 
 		jvmEnumerationLiteralEClass = createEClass(JVM_ENUMERATION_LITERAL);
+		createEAttribute(jvmEnumerationLiteralEClass, JVM_ENUMERATION_LITERAL__ORDINAL);
 
 		jvmGenericTypeEClass = createEClass(JVM_GENERIC_TYPE);
 		createEAttribute(jvmGenericTypeEClass, JVM_GENERIC_TYPE__INTERFACE);
@@ -2049,6 +2095,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEAttribute(jvmOperationEClass, JVM_OPERATION__STRICT_FLOATING_POINT);
 		createEReference(jvmOperationEClass, JVM_OPERATION__EXPRESSION);
 		createEReference(jvmOperationEClass, JVM_OPERATION__FUNCTION);
+		createEAttribute(jvmOperationEClass, JVM_OPERATION__OVERLOAD);
 
 		jvmFormalParameterEClass = createEClass(JVM_FORMAL_PARAMETER);
 		createEAttribute(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__NAME);
@@ -2127,6 +2174,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Create data types
 		iterableEDataType = createEDataType(ITERABLE);
+		listEDataType = createEDataType(LIST);
 		iTypeReferenceVisitorEDataType = createEDataType(ITYPE_REFERENCE_VISITOR);
 		iTypeReferenceVisitorWithParameterEDataType = createEDataType(ITYPE_REFERENCE_VISITOR_WITH_PARAMETER);
 	}
@@ -2160,6 +2208,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Create type parameters
 		addETypeParameter(iterableEDataType, "E");
+		addETypeParameter(listEDataType, "E");
 		addETypeParameter(iTypeReferenceVisitorEDataType, "Result");
 		addETypeParameter(iTypeReferenceVisitorWithParameterEDataType, "Parameter");
 		addETypeParameter(iTypeReferenceVisitorWithParameterEDataType, "Result");
@@ -2176,6 +2225,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmDeclaredTypeEClass.getESuperTypes().add(this.getJvmMember());
 		jvmDeclaredTypeEClass.getESuperTypes().add(this.getJvmComponentType());
 		jvmStructTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
+		jvmStructTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
 		jvmTypeParameterEClass.getESuperTypes().add(this.getJvmComponentType());
 		jvmTypeParameterEClass.getESuperTypes().add(this.getJvmConstraintOwner());
 		jvmUpperBoundEClass.getESuperTypes().add(this.getJvmTypeConstraint());
@@ -2294,6 +2344,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		initEClass(jvmStructTypeEClass, JvmStructType.class, "JvmStructType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJvmStructType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmStructType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJvmStructType_Parameters(), this.getJvmFormalParameter(), null, "parameters", null, 0, -1, JvmStructType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeParameterEClass, JvmTypeParameter.class, "JvmTypeParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmTypeParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, JvmTypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2328,6 +2379,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEReference(getJvmEnumerationType_Literals(), this.getJvmEnumerationLiteral(), null, "literals", null, 0, -1, JvmEnumerationType.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmEnumerationLiteralEClass, JvmEnumerationLiteral.class, "JvmEnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJvmEnumerationLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", "-1", 0, 1, JvmEnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(jvmEnumerationLiteralEClass, this.getJvmEnumerationType(), "getEnumType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2348,7 +2400,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		addEOperation(jvmGenericTypeEClass, ecorePackage.getEBoolean(), "isInstantiateable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jvmGenericTypeEClass, null, "getDeclaredConstructors", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getIterable());
+		g1 = createEGenericType(this.getList());
 		g2 = createEGenericType(this.getJvmConstructor());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
@@ -2452,6 +2504,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEAttribute(getJvmOperation_StrictFloatingPoint(), ecorePackage.getEBoolean(), "strictFloatingPoint", null, 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmOperation_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmOperation_Function(), theXbasePackage.getXExpression(), null, "function", null, 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmOperation_Overload(), ecorePackage.getEBoolean(), "overload", "false", 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmFormalParameterEClass, JvmFormalParameter.class, "JvmFormalParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmFormalParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2534,6 +2587,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Initialize data types
 		initEDataType(iterableEDataType, Iterable.class, "Iterable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(listEDataType, List.class, "List", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iTypeReferenceVisitorEDataType, ITypeReferenceVisitor.class, "ITypeReferenceVisitor", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iTypeReferenceVisitorWithParameterEDataType, ITypeReferenceVisitorWithParameter.class, "ITypeReferenceVisitorWithParameter", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 

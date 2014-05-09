@@ -81,7 +81,8 @@ public class StaticExtensionImportsScope extends AbstractStaticImportsScope {
 				if (parameterTypeReference.isResolved() && !parameterTypeReference.isAssignableFrom(rawReceiverType)) {
 					return null;
 				}
-				if (parameterTypeReference.isArray() && !rawReceiverType.isArray() && !rawReceiverType.isSubtypeOf(Iterable.class)) {
+//				if (parameterTypeReference.isArray() && !rawReceiverType.isArray() && !rawReceiverType.isSubtypeOf(Iterable.class)) { //cym comment
+				if (parameterTypeReference.isArray() && !rawReceiverType.isArray() && !rawReceiverType.isSubtypeOf(Buildin.Iterable.JvmType)) {
 					return null;
 				}
 			} else if (isArrayTypeMismatch(rawReceiverType, rawParameterType)) {
@@ -97,7 +98,8 @@ public class StaticExtensionImportsScope extends AbstractStaticImportsScope {
 	private boolean isArrayTypeMismatch(LightweightTypeReference rawReceiverType, JvmType rawParameterType) {
 		if (rawReceiverType.isArray()) {
 			LightweightTypeReference parameterTypeReference = new OwnedConverter(rawReceiverType.getOwner()).toRawLightweightReference(rawParameterType);
-			if (parameterTypeReference.getSuperType(Iterable.class) == null && isArrayTypeMismatch(rawReceiverType, parameterTypeReference)) {
+//			if (parameterTypeReference.getSuperType(Iterable.class) == null && isArrayTypeMismatch(rawReceiverType, parameterTypeReference)) { //cym comment
+			if (parameterTypeReference.getSuperType(Buildin.Iterable.JvmType) == null && isArrayTypeMismatch(rawReceiverType, parameterTypeReference)) {  
 				return true;
 			}
 		}

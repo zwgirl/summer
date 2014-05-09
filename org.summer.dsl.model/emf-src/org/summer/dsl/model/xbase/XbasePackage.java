@@ -1800,13 +1800,13 @@ public interface XbasePackage extends EPackage {
 	int XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Catch Clauses</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Catch Clause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES = XEXPRESSION_FEATURE_COUNT + 2;
+	int XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE = XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>XTry Catch Finally Expression</em>' class.
@@ -1846,13 +1846,22 @@ public interface XbasePackage extends EPackage {
 	int XCATCH_CLAUSE__DECLARED_PARAM = 1;
 
 	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCATCH_CLAUSE__IDENTIFIER = 2;
+
+	/**
 	 * The number of structural features of the '<em>XCatch Clause</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCATCH_CLAUSE_FEATURE_COUNT = 2;
+	int XCATCH_CLAUSE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl <em>XAssignment</em>}' class.
@@ -1946,13 +1955,31 @@ public interface XbasePackage extends EPackage {
 	int XASSIGNMENT__EXPLICIT_STATIC = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Indexed Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XASSIGNMENT__INDEXED_OPERATION = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XASSIGNMENT__INDEX = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>XAssignment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XASSIGNMENT_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 3;
+	int XASSIGNMENT_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XReturnExpressionImpl <em>XReturn Expression</em>}' class.
@@ -4164,15 +4191,15 @@ public interface XbasePackage extends EPackage {
 	EReference getXTryCatchFinallyExpression_FinallyExpression();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClauses <em>Catch Clauses</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClause <em>Catch Clause</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Catch Clauses</em>'.
-	 * @see org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClauses()
+	 * @return the meta object for the containment reference '<em>Catch Clause</em>'.
+	 * @see org.summer.dsl.model.xbase.XTryCatchFinallyExpression#getCatchClause()
 	 * @see #getXTryCatchFinallyExpression()
 	 * @generated
 	 */
-	EReference getXTryCatchFinallyExpression_CatchClauses();
+	EReference getXTryCatchFinallyExpression_CatchClause();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XCatchClause <em>XCatch Clause</em>}'.
@@ -4205,6 +4232,17 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXCatchClause_DeclaredParam();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XCatchClause#getIdentifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Identifier</em>'.
+	 * @see org.summer.dsl.model.xbase.XCatchClause#getIdentifier()
+	 * @see #getXCatchClause()
+	 * @generated
+	 */
+	EAttribute getXCatchClause_Identifier();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XAssignment <em>XAssignment</em>}'.
@@ -4248,6 +4286,28 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getXAssignment_ExplicitStatic();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XAssignment#isIndexedOperation <em>Indexed Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Indexed Operation</em>'.
+	 * @see org.summer.dsl.model.xbase.XAssignment#isIndexedOperation()
+	 * @see #getXAssignment()
+	 * @generated
+	 */
+	EAttribute getXAssignment_IndexedOperation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XAssignment#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Index</em>'.
+	 * @see org.summer.dsl.model.xbase.XAssignment#getIndex()
+	 * @see #getXAssignment()
+	 * @generated
+	 */
+	EReference getXAssignment_Index();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XReturnExpression <em>XReturn Expression</em>}'.
@@ -5662,12 +5722,12 @@ public interface XbasePackage extends EPackage {
 		EReference XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION = eINSTANCE.getXTryCatchFinallyExpression_FinallyExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Catch Clauses</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Catch Clause</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSES = eINSTANCE.getXTryCatchFinallyExpression_CatchClauses();
+		EReference XTRY_CATCH_FINALLY_EXPRESSION__CATCH_CLAUSE = eINSTANCE.getXTryCatchFinallyExpression_CatchClause();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl <em>XCatch Clause</em>}' class.
@@ -5694,6 +5754,14 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XCATCH_CLAUSE__DECLARED_PARAM = eINSTANCE.getXCatchClause_DeclaredParam();
+
+		/**
+		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XCATCH_CLAUSE__IDENTIFIER = eINSTANCE.getXCatchClause_Identifier();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XAssignmentImpl <em>XAssignment</em>}' class.
@@ -5728,6 +5796,22 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute XASSIGNMENT__EXPLICIT_STATIC = eINSTANCE.getXAssignment_ExplicitStatic();
+
+		/**
+		 * The meta object literal for the '<em><b>Indexed Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XASSIGNMENT__INDEXED_OPERATION = eINSTANCE.getXAssignment_IndexedOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XASSIGNMENT__INDEX = eINSTANCE.getXAssignment_Index();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XReturnExpressionImpl <em>XReturn Expression</em>}' class.

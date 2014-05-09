@@ -718,13 +718,31 @@ public interface TypesPackage extends EPackage {
 	int JVM_STRUCT_TYPE__EXPORTED = JVM_DECLARED_TYPE__EXPORTED;
 
 	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_STRUCT_TYPE__TYPE_PARAMETERS = JVM_DECLARED_TYPE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Implements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_STRUCT_TYPE__IMPLEMENTS = JVM_DECLARED_TYPE_FEATURE_COUNT + 0;
+	int JVM_STRUCT_TYPE__IMPLEMENTS = JVM_DECLARED_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_STRUCT_TYPE__PARAMETERS = JVM_DECLARED_TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Struct Type</em>' class.
@@ -733,7 +751,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_STRUCT_TYPE_FEATURE_COUNT = JVM_DECLARED_TYPE_FEATURE_COUNT + 1;
+	int JVM_STRUCT_TYPE_FEATURE_COUNT = JVM_DECLARED_TYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl <em>Jvm Type Parameter</em>}' class.
@@ -1656,13 +1674,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_ENUMERATION_LITERAL__GET = JVM_FIELD__GET;
 
 	/**
+	 * The feature id for the '<em><b>Ordinal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_ENUMERATION_LITERAL__ORDINAL = JVM_FIELD_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Enumeration Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ENUMERATION_LITERAL_FEATURE_COUNT = JVM_FIELD_FEATURE_COUNT + 0;
+	int JVM_ENUMERATION_LITERAL_FEATURE_COUNT = JVM_FIELD_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl <em>Jvm Generic Type</em>}' class.
@@ -2531,13 +2558,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_OPERATION__FUNCTION = JVM_EXECUTABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Overload</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__OVERLOAD = JVM_EXECUTABLE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 11;
+	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.
@@ -3426,6 +3462,16 @@ public interface TypesPackage extends EPackage {
 	int ITERABLE = 55;
 
 	/**
+	 * The meta object id for the '<em>List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 56;
+
+	/**
 	 * The meta object id for the '<em>IType Reference Visitor</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3433,7 +3479,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getITypeReferenceVisitor()
 	 * @generated
 	 */
-	int ITYPE_REFERENCE_VISITOR = 56;
+	int ITYPE_REFERENCE_VISITOR = 57;
 
 	/**
 	 * The meta object id for the '<em>IType Reference Visitor With Parameter</em>' data type.
@@ -3443,7 +3489,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getITypeReferenceVisitorWithParameter()
 	 * @generated
 	 */
-	int ITYPE_REFERENCE_VISITOR_WITH_PARAMETER = 57;
+	int ITYPE_REFERENCE_VISITOR_WITH_PARAMETER = 58;
 
 
 	/**
@@ -3734,6 +3780,17 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmStructType_Implements();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.types.JvmStructType#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see org.summer.dsl.model.types.JvmStructType#getParameters()
+	 * @see #getJvmStructType()
+	 * @generated
+	 */
+	EReference getJvmStructType_Parameters();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmTypeParameter <em>Jvm Type Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3899,6 +3956,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJvmEnumerationLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmEnumerationLiteral#getOrdinal <em>Ordinal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ordinal</em>'.
+	 * @see org.summer.dsl.model.types.JvmEnumerationLiteral#getOrdinal()
+	 * @see #getJvmEnumerationLiteral()
+	 * @generated
+	 */
+	EAttribute getJvmEnumerationLiteral_Ordinal();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmGenericType <em>Jvm Generic Type</em>}'.
@@ -4436,6 +4504,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJvmOperation_Function();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Overload</em>'.
+	 * @see org.summer.dsl.model.types.JvmOperation#isOverload()
+	 * @see #getJvmOperation()
+	 * @generated
+	 */
+	EAttribute getJvmOperation_Overload();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmFormalParameter <em>Jvm Formal Parameter</em>}'.
@@ -4987,6 +5066,17 @@ public interface TypesPackage extends EPackage {
 	EDataType getIterable();
 
 	/**
+	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" typeParameters="E"
+	 * @generated
+	 */
+	EDataType getList();
+
+	/**
 	 * Returns the meta object for data type '{@link org.summer.dsl.model.types.util.ITypeReferenceVisitor <em>IType Reference Visitor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5267,6 +5357,14 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_STRUCT_TYPE__IMPLEMENTS = eINSTANCE.getJvmStructType_Implements();
 
 		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_STRUCT_TYPE__PARAMETERS = eINSTANCE.getJvmStructType_Parameters();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl <em>Jvm Type Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5411,6 +5509,14 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JVM_ENUMERATION_LITERAL = eINSTANCE.getJvmEnumerationLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Ordinal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_ENUMERATION_LITERAL__ORDINAL = eINSTANCE.getJvmEnumerationLiteral_Ordinal();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl <em>Jvm Generic Type</em>}' class.
@@ -5837,6 +5943,14 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JVM_OPERATION__FUNCTION = eINSTANCE.getJvmOperation_Function();
+
+		/**
+		 * The meta object literal for the '<em><b>Overload</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_OPERATION__OVERLOAD = eINSTANCE.getJvmOperation_Overload();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.
@@ -6301,6 +6415,16 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ITERABLE = eINSTANCE.getIterable();
+
+		/**
+		 * The meta object literal for the '<em>List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getList()
+		 * @generated
+		 */
+		EDataType LIST = eINSTANCE.getList();
 
 		/**
 		 * The meta object literal for the '<em>IType Reference Visitor</em>' data type.

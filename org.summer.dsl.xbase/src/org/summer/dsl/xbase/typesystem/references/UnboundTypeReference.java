@@ -549,8 +549,18 @@ public class UnboundTypeReference extends LightweightTypeReference {
 		return getTypeParameter();
 	}
 	
+	
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		if (internalIsResolved()) {
+//			return resolvedTo.isType(clazz);
+//		}
+//		return false;
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType clazz) {
 		if (internalIsResolved()) {
 			return resolvedTo.isType(clazz);
 		}
@@ -572,13 +582,15 @@ public class UnboundTypeReference extends LightweightTypeReference {
 		return null;
 	}
 	
-	@Override
-	@Nullable
-	public LightweightTypeReference getSuperType(Class<?> rawType) {
-		if (internalIsResolved())
-			return resolvedTo.getSuperType(rawType);
-		return null;
-	}
+	
+	//cym comment
+//	@Override
+//	@Nullable
+//	public LightweightTypeReference getSuperType(Class<?> rawType) {
+//		if (internalIsResolved())
+//			return resolvedTo.getSuperType(rawType);
+//		return null;
+//	}
 	
 	@Override
 	public LightweightTypeReference getWrapperTypeIfPrimitive() {

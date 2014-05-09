@@ -81,8 +81,14 @@ public class AnyTypeReference extends LightweightTypeReference {
 		return "java.lang.Object";
 	}
 	
+	//cym comment
+//	@Override
+//	public boolean isType(Class<?> clazz) {
+//		return false;
+//	}
+	
 	@Override
-	public boolean isType(Class<?> clazz) {
+	public boolean isType(JvmType clazz) {
 		return false;
 	}
 	

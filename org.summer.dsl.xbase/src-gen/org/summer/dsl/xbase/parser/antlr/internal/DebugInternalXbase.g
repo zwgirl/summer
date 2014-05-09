@@ -230,25 +230,11 @@ ruleXExpression :
 
 // Rule XCastedExpression
  ruleXCastedExpression :
-	ruleXIndexOperation (
+	ruleXMemberFeatureCall (
 		( (
 		'as'
 		) => 'as' ) ruleJvmTypeReference
 	)*
-;
-
-// Rule XIndexOperation
- ruleXIndexOperation :
-	ruleXMemberFeatureCall (
-		( (
-		ruleIndexOp
-		) => ruleIndexOp ) ruleXExpression ']'
-	)*
-;
-
-// Rule IndexOp
- ruleIndexOp :
-	'['
 ;
 
 // Rule XMemberFeatureCall
@@ -262,24 +248,23 @@ ruleXExpression :
 			)*
 		)? ')' |
 		( (
-		(
-			'.' |
-			'::'
-		) ruleFeatureCallID ruleOpSingleAssign
+		'['
+		) => '[' ) (
+			ruleXExpression (
+				',' ruleXExpression
+			)*
+		)? ']' |
+		( (
+		'.' ruleFeatureCallID ruleOpSingleAssign
 		) => (
-			(
-				'.' |
-				'::'
-			) ruleFeatureCallID ruleOpSingleAssign
+			'.' ruleFeatureCallID ruleOpSingleAssign
 		) ) ruleXAssignment |
 		( (
 		'.' |
-		'?.' |
-		'::'
+		'?.'
 		) => (
 			'.' |
-			'?.' |
-			'::'
+			'?.'
 		) ) (
 			'<' ruleJvmArgumentTypeReference (
 				',' ruleJvmArgumentTypeReference
@@ -467,15 +452,6 @@ ruleXExpression :
 	)?
 ;
 
-// Rule FullJvmFormalParameter
- ruleFullJvmFormalParameter :
-	ruleJvmTypeReference ruleValidID (
-		( (
-		'='
-		) => '=' ) ruleXExpression
-	)?
-;
-
 // Rule XFeatureCall
  ruleXFeatureCall :
 	(
@@ -607,7 +583,7 @@ ruleXExpression :
 	'try' ruleXExpression (
 		( (
 		'catch'
-		) => ruleXCatchClause )+ (
+		) => ruleXCatchClause ) (
 			( (
 			'finally'
 			) => 'finally' ) ruleXExpression
@@ -620,7 +596,7 @@ ruleXExpression :
  ruleXCatchClause :
 	( (
 	'catch'
-	) => 'catch' ) '(' ruleFullJvmFormalParameter ')' ruleXExpression
+	) => 'catch' ) '(' RULE_ID ')' ruleXExpression
 ;
 
 // Rule QualifiedName

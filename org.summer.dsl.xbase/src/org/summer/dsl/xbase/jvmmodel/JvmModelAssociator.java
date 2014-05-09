@@ -123,28 +123,48 @@ public class JvmModelAssociator implements IJvmModelAssociations, IJvmModelAssoc
 		return getLogicalContainer(context, true);
 	}
 
+	
+	//cym comment
+//	protected JvmIdentifiableElement getLogicalContainer(EObject object, boolean considerContainer) {
+//		if (object == null) {
+//			return null;
+//		}
+//		final Map<EObject, JvmIdentifiableElement> mapping = getLogicalContainerMapping(object.eResource());
+//		do {
+//			if (mapping.containsKey(object)) {
+//				return mapping.get(object);
+//			}
+//			EObject container = object.eContainer();
+//			if (container == null) {
+//				return null;
+//			}
+//			if (!mapping.containsKey(container)) {
+//				Set<EObject> elements = getJvmElements(container);
+//				if (!elements.isEmpty()) {
+//					for (EObject eObject : elements) {
+//						if (eObject instanceof JvmIdentifiableElement) {
+//							return (JvmIdentifiableElement) eObject;
+//						}
+//					}
+//				}
+//			}
+//			object = container;
+//		} while (considerContainer);
+//		return null;
+//	}
+	
 	protected JvmIdentifiableElement getLogicalContainer(EObject object, boolean considerContainer) {
 		if (object == null) {
 			return null;
 		}
-		final Map<EObject, JvmIdentifiableElement> mapping = getLogicalContainerMapping(object.eResource());
 		do {
-			if (mapping.containsKey(object)) {
-				return mapping.get(object);
-			}
 			EObject container = object.eContainer();
 			if (container == null) {
 				return null;
 			}
-			if (!mapping.containsKey(container)) {
-				Set<EObject> elements = getJvmElements(container);
-				if (!elements.isEmpty()) {
-					for (EObject eObject : elements) {
-						if (eObject instanceof JvmIdentifiableElement) {
-							return (JvmIdentifiableElement) eObject;
-						}
-					}
-				}
+			
+			if (container instanceof JvmIdentifiableElement) {
+				return (JvmIdentifiableElement) container;
 			}
 			object = container;
 		} while (considerContainer);

@@ -142,6 +142,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmEnumerationLiteral" eSuperTypes="#//types/JvmField">
       <eOperations name="getEnumType" eType="#//types/JvmEnumerationType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordinal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="-1"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmGenericType" eSuperTypes="#//types/JvmDeclaredType #//types/JvmTypeParameterDeclarator">
       <eOperations name="getExtendedInterfaces">
@@ -152,7 +154,7 @@
       <eOperations name="getExtendedClass" eType="#//types/JvmTypeReference"/>
       <eOperations name="isInstantiateable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="getDeclaredConstructors" lowerBound="1">
-        <eGenericType eClassifier="#//types/Iterable">
+        <eGenericType eClassifier="#//types/List">
           <eTypeArguments eClassifier="#//types/JvmConstructor"/>
         </eGenericType>
       </eOperations>
@@ -293,6 +295,8 @@
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//xbase/XExpression"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="overload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmFormalParameter" eSuperTypes="#//types/JvmAnnotationTarget">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -372,6 +376,9 @@
           upperBound="-1" eType="#//types/JvmEnumerationLiteral"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EDataType" name="Iterable" instanceClassName="java.lang.Iterable">
+      <eTypeParameters name="E"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List">
       <eTypeParameters name="E"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmDelegateTypeReference" eSuperTypes="#//types/JvmTypeReference">
@@ -689,14 +696,15 @@
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="finallyExpression" eType="#//xbase/XExpression"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="catchClauses" upperBound="-1"
-          eType="#//xbase/XCatchClause" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="catchClause" eType="#//xbase/XCatchClause"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XCatchClause">
       <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//xbase/XExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="declaredParam" eType="#//types/JvmFormalParameter"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XAssignment" eSuperTypes="#//xbase/XAbstractFeatureCall">
       <eStructuralFeatures xsi:type="ecore:EReference" name="assignable" eType="#//xbase/XExpression"
@@ -704,6 +712,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="explicitStatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexedOperation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//xbase/XExpression"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XReturnExpression" eSuperTypes="#//xbase/XExpression">
       <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//xbase/XExpression"
