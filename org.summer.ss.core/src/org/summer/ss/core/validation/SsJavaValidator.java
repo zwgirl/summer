@@ -7,13 +7,77 @@
  *******************************************************************************/
 package org.summer.ss.core.validation;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Sets.*;
-import static org.summer.ss.core.validation.IssueCodes.*;
-import static org.summer.dsl.model.ss.SsPackage.Literals.*;
-import static org.eclipse.xtext.util.Strings.*;
-import static org.summer.dsl.xbase.validation.IssueCodes.*;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.size;
+import static com.google.common.collect.Iterables.toArray;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Lists.transform;
+import static com.google.common.collect.Sets.newLinkedHashSet;
+import static org.eclipse.xtext.util.Strings.equal;
+import static org.eclipse.xtext.util.Strings.isEmpty;
+import static org.eclipse.xtext.util.Strings.notNull;
+import static org.summer.dsl.model.ss.SsPackage.Literals.CREATE_EXTENSION_INFO__NAME;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_CLASS__EXTENDS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_CLASS__IMPLEMENTS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_CONSTRUCTOR__PARAMETERS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FIELD__NAME;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FIELD__TYPE;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FUNCTION__EXCEPTIONS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FUNCTION__NAME;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FUNCTION__PARAMETERS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_FUNCTION__RETURN_TYPE;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_INTERFACE__EXTENDS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_MEMBER__MODIFIERS;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_PARAMETER__EXTENSION;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_PARAMETER__VAR_ARG;
+import static org.summer.dsl.model.ss.SsPackage.Literals.XTEND_TYPE_DECLARATION__NAME;
+import static org.summer.dsl.xbase.validation.IssueCodes.ASSIGNMENT_TO_FINAL;
+import static org.summer.dsl.xbase.validation.IssueCodes.INCOMPATIBLE_RETURN_TYPE;
+import static org.summer.dsl.xbase.validation.IssueCodes.INVALID_EARLY_EXIT;
+import static org.summer.dsl.xbase.validation.IssueCodes.INVALID_IDENTIFIER;
+import static org.summer.dsl.xbase.validation.IssueCodes.INVALID_USE_OF_TYPE;
+import static org.summer.dsl.xbase.validation.IssueCodes.TOO_LITTLE_TYPE_INFORMATION;
+import static org.summer.dsl.xbase.validation.IssueCodes.VARIABLE_NAME_DISCOURAGED;
+import static org.summer.ss.core.validation.IssueCodes.ABSTRACT_METHOD_MISSING_RETURN_TYPE;
+import static org.summer.ss.core.validation.IssueCodes.ABSTRACT_METHOD_WITH_BODY;
+import static org.summer.ss.core.validation.IssueCodes.ANNOTATION_WRONG_TARGET;
+import static org.summer.ss.core.validation.IssueCodes.CLASS_EXPECTED;
+import static org.summer.ss.core.validation.IssueCodes.CLASS_MUST_BE_ABSTRACT;
+import static org.summer.ss.core.validation.IssueCodes.CONSTRUCTOR_NOT_PERMITTED;
+import static org.summer.ss.core.validation.IssueCodes.CONSTRUCTOR_TYPE_PARAMS_NOT_SUPPORTED;
+import static org.summer.ss.core.validation.IssueCodes.CREATE_FUNCTIONS_MUST_NOT_BE_ABSTRACT;
+import static org.summer.ss.core.validation.IssueCodes.CYCLIC_INHERITANCE;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_FUNCTIONS_MIXED_STATIC_AND_NON_STATIC;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_FUNCTIONS_MUST_NOT_BE_ABSTRACT;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_FUNCTIONS_NON_STATIC_EXPECTED;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_FUNCTIONS_STATIC_EXPECTED;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_FUNCTIONS_WITH_DIFFERENT_VISIBILITY;
+import static org.summer.ss.core.validation.IssueCodes.DISPATCH_PLAIN_FUNCTION_NAME_CLASH;
+import static org.summer.ss.core.validation.IssueCodes.DUPLICATE_FIELD;
+import static org.summer.ss.core.validation.IssueCodes.DUPLICATE_METHOD;
+import static org.summer.ss.core.validation.IssueCodes.DUPLICATE_PARAMETER_NAME;
+import static org.summer.ss.core.validation.IssueCodes.EXCEPTION_DECLARED_TWICE;
+import static org.summer.ss.core.validation.IssueCodes.EXCEPTION_NOT_THROWABLE;
+import static org.summer.ss.core.validation.IssueCodes.FIELD_NOT_INITIALIZED;
+import static org.summer.ss.core.validation.IssueCodes.INCOMPATIBLE_THROWS_CLAUSE;
+import static org.summer.ss.core.validation.IssueCodes.INTERFACE_EXPECTED;
+import static org.summer.ss.core.validation.IssueCodes.INVALID_EXTENSION_TYPE;
+import static org.summer.ss.core.validation.IssueCodes.INVALID_MEMBER_NAME;
+import static org.summer.ss.core.validation.IssueCodes.INVALID_MODIFIER;
+import static org.summer.ss.core.validation.IssueCodes.INVALID_USE_OF_STATIC;
+import static org.summer.ss.core.validation.IssueCodes.INVALID_USE_OF_VAR_ARG;
+import static org.summer.ss.core.validation.IssueCodes.LEFT_HAND_SIDE_MUST_BE_VARIABLE;
+import static org.summer.ss.core.validation.IssueCodes.MISSING_ABSTRACT;
+import static org.summer.ss.core.validation.IssueCodes.MISSING_CONSTRUCTOR;
+import static org.summer.ss.core.validation.IssueCodes.MISSING_OVERRIDE;
+import static org.summer.ss.core.validation.IssueCodes.MUST_INVOKE_SUPER_CONSTRUCTOR;
+import static org.summer.ss.core.validation.IssueCodes.OBSOLETE_OVERRIDE;
+import static org.summer.ss.core.validation.IssueCodes.OVERRIDDEN_FINAL;
+import static org.summer.ss.core.validation.IssueCodes.OVERRIDE_REDUCES_VISIBILITY;
+import static org.summer.ss.core.validation.IssueCodes.SINGLE_DISPATCH_FUNCTION;
+import static org.summer.ss.core.validation.IssueCodes.STATIC_PROPERTY;
+import static org.summer.ss.core.validation.IssueCodes.UNUSED_PRIVATE_MEMBER;
+import static org.summer.ss.core.validation.IssueCodes.WILDCARD_IN_SUPERTYPE;
 
 import java.lang.annotation.ElementType;
 import java.util.Collection;
@@ -31,30 +95,38 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.ss.core.jvmmodel.DispatchHelper;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.ss.core.richstring.RichStringProcessor;
+import org.eclipse.xtext.diagnostics.Severity;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProviderExtension;
+import org.eclipse.xtext.documentation.IJavaDocTypeReferenceProvider;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.util.ReplaceRegion;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.summer.dsl.model.ss.RichString;
 import org.summer.dsl.model.ss.RichStringElseIf;
 import org.summer.dsl.model.ss.RichStringForLoop;
 import org.summer.dsl.model.ss.RichStringIf;
+import org.summer.dsl.model.ss.SsPackage;
+import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendAnnotationTarget;
 import org.summer.dsl.model.ss.XtendAnnotationType;
 import org.summer.dsl.model.ss.XtendClass;
 import org.summer.dsl.model.ss.XtendConstructor;
 import org.summer.dsl.model.ss.XtendEnum;
 import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendFormalParameter;
 import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.ss.XtendInterface;
 import org.summer.dsl.model.ss.XtendMember;
-import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XtendParameter;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.dsl.model.ss.XtendVariableDeclaration;
-import org.summer.ss.lib.Data;
-import org.summer.ss.lib.Property;
 import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
@@ -71,20 +143,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmVisibility;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
-import org.eclipse.xtext.documentation.IEObjectDocumentationProviderExtension;
-import org.eclipse.xtext.documentation.IJavaDocTypeReferenceProvider;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.util.ReplaceRegion;
-import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.validation.ComposedChecks;
-import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.summer.dsl.model.xannotation.XAnnotation;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBlockExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
@@ -92,15 +151,14 @@ import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xbase.XbasePackage.Literals;
-import org.summer.dsl.model.xannotation.XAnnotation;
 import org.summer.dsl.xannotation.typing.XAnnotationUtil;
 import org.summer.dsl.xannotation.validation.XbaseWithAnnotationsJavaValidator;
 import org.summer.dsl.xbase.compiler.JavaKeywords;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
 import org.summer.dsl.xbase.jvmmodel.JvmTypeExtensions;
-import org.summer.dsl.xbase.lib.Extension;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.override.IOverrideCheckResult.OverrideCheckDetails;
@@ -115,6 +173,11 @@ import org.summer.dsl.xbase.typesystem.references.OwnedConverter;
 import org.summer.dsl.xbase.typesystem.util.ContextualVisibilityHelper;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
 import org.summer.dsl.xbase.validation.UIStrings;
+import org.summer.ss.core.jvmmodel.DispatchHelper;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.core.richstring.RichStringProcessor;
+import org.summer.ss.lib.Data;
+import org.summer.ss.lib.Property;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -1211,14 +1274,36 @@ public class SsJavaValidator extends XbaseWithAnnotationsJavaValidator {
 		}
 	}
 
+	//cym comment
+//	@Check
+//	public void checkClasses(XModule file) {
+//		//TODO this check should not be file local, but instead check for any other sources which might declare a
+//		// java type with the same name. Also this then belongs to Xbase and should be defined on JvmDeclaredType
+//		Set<String> names = newLinkedHashSet();
+//		for (XtendTypeDeclaration clazz : file.getXtendTypes()) {	
+//			if (!names.add(clazz.getName()))
+//				error("The type "+clazz.getName()+" is already defined.", clazz, SsPackage.Literals.XTEND_TYPE_DECLARATION__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+//		}
+//	}
+	
 	@Check
 	public void checkClasses(XModule file) {
 		//TODO this check should not be file local, but instead check for any other sources which might declare a
 		// java type with the same name. Also this then belongs to Xbase and should be defined on JvmDeclaredType
 		Set<String> names = newLinkedHashSet();
-		for (XtendTypeDeclaration clazz : file.getXtendTypes()) {	
-			if (!names.add(clazz.getName()))
-				error("The type "+clazz.getName()+" is already defined.", clazz, SsPackage.Literals.XTEND_TYPE_DECLARATION__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+		for (EObject object : file.getContents()) {	
+			if(object instanceof JvmIdentifiableElement){
+				JvmIdentifiableElement id = (JvmIdentifiableElement) object;
+				if (!names.add(id.getSimpleName())){
+					if(id instanceof JvmDeclaredType){
+						error("The element "+id.getSimpleName()+" is already defined.", id, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+					}else if(id instanceof XVariableDeclaration){
+						error("The element "+id.getSimpleName()+" is already defined.", id, XbasePackage.Literals.XVARIABLE_DECLARATION__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+					}else if(id instanceof XClosure){
+						error("The element "+id.getSimpleName()+" is already defined.", id, XbasePackage.Literals.XCLOSURE__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+					}
+				}
+			}
 		}
 	}
 	

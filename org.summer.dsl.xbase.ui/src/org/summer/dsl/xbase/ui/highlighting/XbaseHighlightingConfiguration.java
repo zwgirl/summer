@@ -26,6 +26,8 @@ public class XbaseHighlightingConfiguration extends DefaultHighlightingConfigura
 	public static final String ANNOTATION = "xbase.annotation";
 	public static final String EXTENSION_METHOD_INVOCATION = "xbase.extension.method.invacation";
 	public static final String DEPRECATED_MEMBERS = "xbase.deprecated.members";
+	
+	public static final String TEMPLATE = "xbase.template";
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
@@ -35,10 +37,21 @@ public class XbaseHighlightingConfiguration extends DefaultHighlightingConfigura
 		acceptor.acceptDefaultHighlighting(ANNOTATION, "Annotation", annotation());
 		acceptor.acceptDefaultHighlighting(EXTENSION_METHOD_INVOCATION, "Extension method invocation", extensionMethodInvocation());
 		acceptor.acceptDefaultHighlighting(DEPRECATED_MEMBERS, "Deprecated members", deprecatedMembers());
+		
+		//cym added
+		acceptor.acceptDefaultHighlighting(TEMPLATE, "Deprecated members", template());
 	
 		super.configure(acceptor);
 	}
 	
+
+	private TextStyle template() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setStyle(SWT.ITALIC);
+		textStyle.setColor(new RGB(0, 125, 0));
+		return textStyle;
+	}
+
 
 	public TextStyle staticMethodInvocation(){
 		TextStyle textStyle = defaultTextStyle().copy();

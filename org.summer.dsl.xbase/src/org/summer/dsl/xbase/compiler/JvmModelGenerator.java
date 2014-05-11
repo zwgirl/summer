@@ -190,7 +190,7 @@ public class JvmModelGenerator implements IGenerator {
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
 	    XModule module = (XModule) input.getContents().get(0);
     GeneratorConfig config = this.generatorConfigProvider.get(module);
-    ImportManager _importManager = new ImportManager(true, module);
+//    ImportManager _importManager = new ImportManager(true, module);
     
     final TreeAppendable header = this.createAppendable(module, null);
     header.append("define([\'dojo/_base/declare\', \'system/Type\' ");
@@ -1676,10 +1676,10 @@ protected void _generateEnumeration(JvmEnumerationType enumType, TreeAppendable 
   }
   
   public void toJava(final JvmAnnotationValue it, final ITreeAppendable appendable, GeneratorConfig generatorConfig) {
-    JvmOperation _operation = it.getOperation();
+    JvmField _operation = it.getField();
     boolean _notEquals = (!Objects.equal(_operation, null));
     if (_notEquals) {
-      JvmOperation _operation_1 = it.getOperation();
+    	JvmField _operation_1 = it.getField();
       String _simpleName = _operation_1.getSimpleName();
       appendable.append(_simpleName);
       appendable.append(" = ");

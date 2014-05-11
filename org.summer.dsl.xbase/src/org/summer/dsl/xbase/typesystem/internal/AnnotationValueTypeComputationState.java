@@ -13,6 +13,7 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmAnnotationValue;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
@@ -46,8 +47,9 @@ public class AnnotationValueTypeComputationState extends AbstractRootTypeComputa
 	@Override
 	@Nullable
 	protected LightweightTypeReference getExpectedType() {
-		JvmOperation operation = annotationValue.getOperation();
-		LightweightTypeReference result = getResolvedTypes().getActualType(operation);
+//		JvmOperation operation = annotationValue.getOperation();
+		JvmField field = annotationValue.getField();
+		LightweightTypeReference result = getResolvedTypes().getActualType(field);
 		if (result != null && result.isArray()) {
 			return result.getComponentType();
 		}

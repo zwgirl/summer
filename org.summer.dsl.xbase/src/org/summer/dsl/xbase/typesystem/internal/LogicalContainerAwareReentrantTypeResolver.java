@@ -461,12 +461,6 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		if (element instanceof XModule) {
 			XModule module = (XModule) element;
 			List<EObject> contents = module.getContents();
-			XImportSection1 importSection = module.getImportSection();
-			if(importSection!=null){
-				for(XImportDeclaration1 importDesc : importSection.getImportDeclarations()){
-					
-				}
-			}
 			
 			for(EObject obj: contents){
 				if(obj instanceof JvmDeclaredType){
@@ -731,10 +725,11 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 
 	protected void computeAnnotationTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, List<JvmAnnotationReference> annotations) {
 		for(JvmAnnotationReference annotation: annotations) {
-			EObject sourceElement = getSourceElement(annotation);
-			if (sourceElement != annotation) {
-				computeTypes(resolvedTypes, featureScopeSession, sourceElement);
-			} else {
+			//没有JvmModelInfer了
+//			EObject sourceElement = getSourceElement(annotation); //cym comment
+//			if (sourceElement != annotation) {
+//				computeTypes(resolvedTypes, featureScopeSession, sourceElement);
+//			} else {
 				for(JvmAnnotationValue value: annotation.getValues()) {
 					if (value instanceof JvmCustomAnnotationValue) {
 						JvmCustomAnnotationValue custom = (JvmCustomAnnotationValue) value;
@@ -744,11 +739,12 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 								state.computeTypes();
 							}
 						}
-					} else if (value instanceof JvmAnnotationAnnotationValue) {
-						computeAnnotationTypes(resolvedTypes, featureScopeSession, ((JvmAnnotationAnnotationValue) value).getValues());
+					//已经不允许嵌套Annotation了
+//					} else if (value instanceof JvmAnnotationAnnotationValue) {  
+//						computeAnnotationTypes(resolvedTypes, featureScopeSession, ((JvmAnnotationAnnotationValue) value).getValues());
 					}
 				}
-			}
+//			}
 		}
 	}
 	

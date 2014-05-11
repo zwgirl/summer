@@ -12,6 +12,7 @@ import "http://www.summer.org/dsl/model/ss"
 import "http://www.summer.org/dsl/model/xbase" as xbase
 import "http://www.summer.org/dsl/model/xtype" as xtype
 import "http://www.summer.org/dsl/model/types" as types
+import "http://www.summer.org/dsl/model/xaml" as xaml
 import "http://www.summer.org/dsl/model/xannotation" as annotations
 
 XModule returns XModule : 
@@ -21,6 +22,7 @@ XModule returns XModule :
 //	JvmNoModule)
 	importSection=XImportSection1? 
 //	(xtendTypes+=Type)*
+	root=XObjectElement
 	(contents+=Type 
 	| (contents+= XExpressionInsideBlock ';'?)  )*
 	
@@ -408,14 +410,54 @@ Parameter returns types::JvmFormalParameter:
 //FullJvmFormalParameter returns XtendFormalParameter:
 //	extension?='extension'? parameterType=JvmTypeReference name=ValidID;
 
-XStringLiteral returns xbase::XExpression:
-	SimpleStringLiteral 
-//	| RichString
-;
 
-SimpleStringLiteral returns xbase::XExpression:
-	{xbase::XStringLiteral} value=STRING
-;
+XElement returns xaml::XElement:
+	XObjectElement
+	|XAttributeElement
+	;
+
+XObjectElement returns xaml::XObjectElement:
+	{xaml::XObjectElement}
+	"<" type=[types::JvmType|QualifiedName]  
+				properties+=XAbstractAttribute * =>  ((">" 
+		(contents+=XElement	)*
+	"</"  closeType=[types::JvmType|QualifiedName] ">") | "/>")
+	;
+XAttributeElement returns xaml::XElement:
+	{xaml::XAttributeElement}
+	"<" "(" type=[types::JvmType|QualifiedName ] ")""." field=[types::JvmField|ID]  => ((">"
+		(contents+=XElement	)*
+	"</" "(" closeType=[types::JvmType|QualifiedName ] ")""." closeField=[types::JvmField|ID] )  ">" |  "/>")
+	;
+
+XAbstractAttribute returns xaml::XAbstractAttribute:
+	XGeneralAttribute
+	|XAttachAttribute
+	;
+
+XAttachAttribute returns xaml::XAttachAttribute:
+	"("type=[types::JvmType|QualifiedName] ")" '.' field=[types::JvmField|ID]  "=" value=XPropertyExpression
+	;
+XGeneralAttribute returns xaml::XGeneralAttribute:
+	field=[types::JvmField|ID] "=" value=XPropertyExpression
+	;
+
+XMarkupExtenson returns xbase::XExpression:
+	{xaml::XMarkupExtenson}
+	"{"
+		type=[types::JvmType|QualifiedName]
+		properties+=XAbstractAttribute* 
+	"}"
+	;
+
+XPropertyExpression returns xbase::XExpression:
+	XStringLiteral 
+	|XMarkupExtenson
+	;	
+
+//XStringLiteral returns xbase::XExpression:
+//	{xbase::XStringLiteral} value=STRING
+//	;
 
 //XClosure returns xbase::XExpression:
 //	=>({xbase::XClosure} 

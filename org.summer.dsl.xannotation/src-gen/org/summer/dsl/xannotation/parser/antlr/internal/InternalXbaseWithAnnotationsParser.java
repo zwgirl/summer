@@ -581,7 +581,7 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalAntlrPar
             }
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); 
+              	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); 
               	    
             }
             pushFollow(FOLLOW_ruleValidID_in_ruleJvmAnnotationValue435);

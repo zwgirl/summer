@@ -12,7 +12,10 @@ import static com.google.common.collect.Iterables.*;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.EcoreUtil2;
+import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmAnnotationValue;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -35,15 +38,31 @@ public class XbaseWithAnnotationsBatchScopeProvider extends XbaseBatchScopeProvi
 
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
-		if (reference == XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT) {
-			XAnnotation annotation = EcoreUtil2.getContainerOfType(context, XAnnotation.class);
-			JvmType annotationType = annotation.getAnnotationType();
+//		if (reference == XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT) {
+//			XAnnotation annotation = EcoreUtil2.getContainerOfType(context, XAnnotation.class);
+//			JvmType annotationType = annotation.getAnnotationType();
+//			if (annotationType == null || annotationType.eIsProxy() || !(annotationType instanceof JvmAnnotationType)) {
+//				return IScope.NULLSCOPE;
+//			}
+//			Iterable<JvmOperation> operations = ((JvmAnnotationType) annotationType).getDeclaredOperations();
+//			Iterable<IEObjectDescription> descriptions = transform(operations, new Function<JvmOperation, IEObjectDescription>() {
+//				public IEObjectDescription apply(JvmOperation from) {
+//					return EObjectDescription.create(QualifiedName.create(from.getSimpleName()), from);
+//				}
+//			});
+//			return MapBasedScope.createScope(IScope.NULLSCOPE, descriptions);
+//		}
+		
+		if (context instanceof JvmAnnotationValue ) { //reference == XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT) {
+			JvmAnnotationValue annValue = (JvmAnnotationValue)context;
+			JvmAnnotationReference annoRef = (JvmAnnotationReference) annValue.eContainer();
+			JvmType annotationType = annoRef.getAnnotation();
 			if (annotationType == null || annotationType.eIsProxy() || !(annotationType instanceof JvmAnnotationType)) {
 				return IScope.NULLSCOPE;
 			}
-			Iterable<JvmOperation> operations = ((JvmAnnotationType) annotationType).getDeclaredOperations();
-			Iterable<IEObjectDescription> descriptions = transform(operations, new Function<JvmOperation, IEObjectDescription>() {
-				public IEObjectDescription apply(JvmOperation from) {
+			Iterable<JvmField> fields = ((JvmAnnotationType) annotationType).getDeclaredFields();
+			Iterable<IEObjectDescription> descriptions = transform(fields, new Function<JvmField, IEObjectDescription>() {
+				public IEObjectDescription apply(JvmField from) {
 					return EObjectDescription.create(QualifiedName.create(from.getSimpleName()), from);
 				}
 			});

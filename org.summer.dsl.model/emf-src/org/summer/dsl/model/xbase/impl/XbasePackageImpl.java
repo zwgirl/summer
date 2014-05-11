@@ -13,6 +13,8 @@ import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.impl.SsPackageImpl;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
+import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.RichStringLiteral;
@@ -479,6 +481,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
 		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
+		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXbasePackage.createPackageContents();
@@ -487,6 +490,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
 		theRichstringPackage.createPackageContents();
+		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXbasePackage.initializePackageContents();
@@ -495,6 +499,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
 		theRichstringPackage.initializePackageContents();
+		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theXbasePackage.freeze();

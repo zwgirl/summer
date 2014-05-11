@@ -87,14 +87,14 @@ class XAnnotationExtensions {
 		]
 		val annoVal = activeAnnotation.values.findFirst [
 			// identifier 'value' is optional
-			operation == null || operation.simpleName == 'value'
+			field == null || field.simpleName == 'value'
 		]
 		switch annoVal {
 			JvmTypeAnnotationValue : {
 				return annoVal.values.head?.type
 			}
 			JvmCustomAnnotationValue : {
-				val type = constantExpressionsInterpreter.evaluate(annoVal.values.head as XExpression, annoVal.operation?.returnType)
+				val type = constantExpressionsInterpreter.evaluate(annoVal.values.head as XExpression, annoVal.field?.type)
 				if (type instanceof JvmTypeReference) {
 					return type.type
 				}

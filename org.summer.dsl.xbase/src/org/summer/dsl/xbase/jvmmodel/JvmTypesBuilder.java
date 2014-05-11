@@ -1228,16 +1228,18 @@ public class JvmTypesBuilder {
 		} else if (annotation instanceof JvmAnnotationType){
 			reference.setAnnotation((JvmAnnotationType) annotation);
 		}
-		for (XAnnotationElementValuePair val : anno.getElementValuePairs()) {
-			XExpression valueExpression = val.getValue();
-			JvmAnnotationValue annotationValue = toJvmAnnotationValue(valueExpression);
-			if (annotationValue != null) {
-				JvmOperation op = (JvmOperation) val.eGet(
-						XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT, false);
-				annotationValue.setOperation(op);
-				reference.getValues().add(annotationValue);
-			}
-		}
+		
+		//cym comment
+//		for (XAnnotationElementValuePair val : anno.getElementValuePairs()) {
+//			XExpression valueExpression = val.getValue();
+//			JvmAnnotationValue annotationValue = toJvmAnnotationValue(valueExpression);
+//			if (annotationValue != null) {
+//				JvmOperation op = (JvmOperation) val.eGet(
+//						XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT, false);
+//				annotationValue.setOperation(op);
+//				reference.getValues().add(annotationValue);
+//			}
+//		}
 		if (anno.getValue() != null) {
 			JvmAnnotationValue value = toJvmAnnotationValue(anno.getValue());
 			if (value != null) {

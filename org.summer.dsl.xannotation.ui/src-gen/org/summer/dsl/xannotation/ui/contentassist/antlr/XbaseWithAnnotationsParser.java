@@ -286,7 +286,7 @@ public class XbaseWithAnnotationsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXAnnotationAccess().getValuesAssignment_3_1_0_0(), "rule__XAnnotation__ValuesAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getValuesAssignment_3_1_0_1_1(), "rule__XAnnotation__ValuesAssignment_3_1_0_1_1");
 					put(grammarAccess.getXAnnotationAccess().getValueAssignment_3_1_1(), "rule__XAnnotation__ValueAssignment_3_1_1");
-					put(grammarAccess.getJvmAnnotationValueAccess().getOperationAssignment_0_0_0(), "rule__JvmAnnotationValue__OperationAssignment_0_0_0");
+					put(grammarAccess.getJvmAnnotationValueAccess().getFieldAssignment_0_0_0(), "rule__JvmAnnotationValue__FieldAssignment_0_0_0");
 					put(grammarAccess.getJvmAnnotationValueAccess().getValueAssignment_1(), "rule__JvmAnnotationValue__ValueAssignment_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_1_1(), "rule__XAssignment__ValueAssignment_1_1");
 					put(grammarAccess.getXMultiAssignmentAccess().getFeatureAssignment_1_0_0_1(), "rule__XMultiAssignment__FeatureAssignment_1_0_0_1");

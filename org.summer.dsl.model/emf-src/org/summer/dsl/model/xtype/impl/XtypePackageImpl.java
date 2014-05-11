@@ -14,6 +14,8 @@ import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.impl.SsPackageImpl;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
+import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -168,6 +170,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		SsPackageImpl theSsPackage = (SsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) instanceof SsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) : SsPackage.eINSTANCE);
 		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
+		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXtypePackage.createPackageContents();
@@ -176,6 +179,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		theSsPackage.createPackageContents();
 		theXannotationPackage.createPackageContents();
 		theRichstringPackage.createPackageContents();
+		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXtypePackage.initializePackageContents();
@@ -184,6 +188,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		theSsPackage.initializePackageContents();
 		theXannotationPackage.initializePackageContents();
 		theRichstringPackage.initializePackageContents();
+		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theXtypePackage.freeze();

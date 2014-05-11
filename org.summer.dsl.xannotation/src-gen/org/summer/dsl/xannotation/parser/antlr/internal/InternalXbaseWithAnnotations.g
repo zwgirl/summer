@@ -214,7 +214,7 @@ ruleJvmAnnotationValue returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); 
+	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); 
 	    }
 		ruleValidID		{ 
 	        afterParserOrEnumRuleCall();

@@ -7,16 +7,16 @@
  *******************************************************************************/
 package org.summer.dsl.model.types.impl;
 
-import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmField;
 
 public class JvmAnnotationValueImplCustom extends JvmAnnotationValueImpl {
 	
 	@Override
 	public String getValueName() {
-		JvmOperation operation = getOperation();
-		if (operation == null || operation.eIsProxy())
+		JvmField field = getField();
+		if (field == null || field.eIsProxy())
 			return null;
-		return operation.getSimpleName();
+		return field.getSimpleName();
 	}
 
 }

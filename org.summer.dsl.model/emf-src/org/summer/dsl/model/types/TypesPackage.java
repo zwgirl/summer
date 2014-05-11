@@ -2696,13 +2696,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_ANNOTATION_VALUE = 35;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ANNOTATION_VALUE__OPERATION = 0;
+	int JVM_ANNOTATION_VALUE__FIELD = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2733,13 +2733,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_INT_ANNOTATION_VALUE = 36;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_INT_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_INT_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2779,13 +2779,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_BOOLEAN_ANNOTATION_VALUE = 37;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_BOOLEAN_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_BOOLEAN_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2825,13 +2825,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_BYTE_ANNOTATION_VALUE = 38;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_BYTE_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_BYTE_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2871,13 +2871,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_SHORT_ANNOTATION_VALUE = 39;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_SHORT_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_SHORT_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2917,13 +2917,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_LONG_ANNOTATION_VALUE = 40;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_LONG_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_LONG_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2963,13 +2963,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_DOUBLE_ANNOTATION_VALUE = 41;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_DOUBLE_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_DOUBLE_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3009,13 +3009,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_FLOAT_ANNOTATION_VALUE = 42;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FLOAT_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_FLOAT_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3055,13 +3055,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_CHAR_ANNOTATION_VALUE = 43;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_CHAR_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_CHAR_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3101,13 +3101,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_STRING_ANNOTATION_VALUE = 44;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_STRING_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_STRING_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3147,13 +3147,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_TYPE_ANNOTATION_VALUE = 45;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_TYPE_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_TYPE_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3193,13 +3193,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_ANNOTATION_ANNOTATION_VALUE = 46;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ANNOTATION_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_ANNOTATION_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3239,13 +3239,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_ENUM_ANNOTATION_VALUE = 47;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ENUM_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_ENUM_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3406,13 +3406,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_CUSTOM_ANNOTATION_VALUE = 53;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' reference.
+	 * The feature id for the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_CUSTOM_ANNOTATION_VALUE__OPERATION = JVM_ANNOTATION_VALUE__OPERATION;
+	int JVM_CUSTOM_ANNOTATION_VALUE__FIELD = JVM_ANNOTATION_VALUE__FIELD;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4645,15 +4645,15 @@ public interface TypesPackage extends EPackage {
 	EClass getJvmAnnotationValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.summer.dsl.model.types.JvmAnnotationValue#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.types.JvmAnnotationValue#getField <em>Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operation</em>'.
-	 * @see org.summer.dsl.model.types.JvmAnnotationValue#getOperation()
+	 * @return the meta object for the reference '<em>Field</em>'.
+	 * @see org.summer.dsl.model.types.JvmAnnotationValue#getField()
 	 * @see #getJvmAnnotationValue()
 	 * @generated
 	 */
-	EReference getJvmAnnotationValue_Operation();
+	EReference getJvmAnnotationValue_Field();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmAnnotationValue#getValue <em>Value</em>}'.
@@ -6057,12 +6057,12 @@ public interface TypesPackage extends EPackage {
 		EClass JVM_ANNOTATION_VALUE = eINSTANCE.getJvmAnnotationValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Field</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JVM_ANNOTATION_VALUE__OPERATION = eINSTANCE.getJvmAnnotationValue_Operation();
+		EReference JVM_ANNOTATION_VALUE__FIELD = eINSTANCE.getJvmAnnotationValue_Field();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.

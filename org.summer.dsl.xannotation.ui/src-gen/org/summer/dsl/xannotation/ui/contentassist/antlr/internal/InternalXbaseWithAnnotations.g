@@ -4040,9 +4040,9 @@ rule__JvmAnnotationValue__Group_0_0__0__Impl
     }
 :
 (
-{ before(grammarAccess.getJvmAnnotationValueAccess().getOperationAssignment_0_0_0()); }
-(rule__JvmAnnotationValue__OperationAssignment_0_0_0)
-{ after(grammarAccess.getJvmAnnotationValueAccess().getOperationAssignment_0_0_0()); }
+{ before(grammarAccess.getJvmAnnotationValueAccess().getFieldAssignment_0_0_0()); }
+(rule__JvmAnnotationValue__FieldAssignment_0_0_0)
+{ after(grammarAccess.getJvmAnnotationValueAccess().getFieldAssignment_0_0_0()); }
 )
 
 ;
@@ -19428,18 +19428,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__JvmAnnotationValue__OperationAssignment_0_0_0
+rule__JvmAnnotationValue__FieldAssignment_0_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); }
+{ before(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); }
 (
-{ before(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1()); }
-	ruleValidID{ after(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1()); }
+{ before(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1()); }
+	ruleValidID{ after(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1()); }
 )
-{ after(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); }
+{ after(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); }
 )
 
 ;

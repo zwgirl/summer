@@ -7,15 +7,17 @@
   <foreignModel>DslModel.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.summer.dsl" disposableProviderFactory="true"
       ecorePackage="DslModel.ecore#/">
-    <nestedGenPackages prefix="Types" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//types">
+    <nestedGenPackages prefix="Types" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//types">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="DslModel.ecore#//types/JvmVisibility">
-        <genEnumLiterals ecoreEnumLiteral="DslModel.ecore#//types/JvmVisibility/DEFAULT"/>
         <genEnumLiterals ecoreEnumLiteral="DslModel.ecore#//types/JvmVisibility/PRIVATE"/>
-        <genEnumLiterals ecoreEnumLiteral="DslModel.ecore#//types/JvmVisibility/PROTECTED"/>
         <genEnumLiterals ecoreEnumLiteral="DslModel.ecore#//types/JvmVisibility/PUBLIC"/>
       </genEnums>
       <genDataTypes ecoreDataType="DslModel.ecore#//types/Iterable">
         <genTypeParameters ecoreTypeParameter="DslModel.ecore#//types/Iterable/E"/>
+      </genDataTypes>
+      <genDataTypes ecoreDataType="DslModel.ecore#//types/List">
+        <genTypeParameters ecoreTypeParameter="DslModel.ecore#//types/List/E"/>
       </genDataTypes>
       <genDataTypes ecoreDataType="DslModel.ecore#//types/ITypeReferenceVisitor">
         <genTypeParameters ecoreTypeParameter="DslModel.ecore#//types/ITypeReferenceVisitor/Result"/>
@@ -31,6 +33,17 @@
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmIdentifiableElement/getQualifiedName.1">
           <genParameters ecoreParameter="DslModel.ecore#//types/JvmIdentifiableElement/getQualifiedName.1/innerClassDelimiter"/>
         </genOperations>
+        <genOperations ecoreOperation="DslModel.ecore#//types/JvmIdentifiableElement/isExported"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//types/JvmModule">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmModule/simpleName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmModule/importSection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmModule/contents"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmModule/exportSection"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//types/JvmNoModule">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmNoModule/importSection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmNoModule/contents"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//types/JvmType"/>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmVoid"/>
@@ -51,12 +64,17 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmDeclaredType/static"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmDeclaredType/final"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmDeclaredType/packageName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmDeclaredType/exported"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmDeclaredType/getDeclaredOperations"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmDeclaredType/getDeclaredFields"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmDeclaredType/findAllFeaturesByName">
           <genParameters ecoreParameter="DslModel.ecore#//types/JvmDeclaredType/findAllFeaturesByName/simpleName"/>
         </genOperations>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmDeclaredType/getAllFeatures"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//types/JvmStructType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmStructType/implements"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmStructType/parameters"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmTypeParameter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmTypeParameter/name"/>
@@ -85,11 +103,14 @@
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmEnumerationType/literals"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmEnumerationLiteral">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmEnumerationLiteral/ordinal"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmEnumerationLiteral/getEnumType"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmGenericType">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmGenericType/interface"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmGenericType/strictFloatingPoint"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmGenericType/extends"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmGenericType/implements"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmGenericType/getExtendedInterfaces"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmGenericType/getExtendedClass"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmGenericType/isInstantiateable"/>
@@ -135,6 +156,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmMember/visibility"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmMember/simpleName"/>
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmMember/identifier"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmMember/annotationInfo"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmMember/modifiers"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmMember/internalSetIdentifier">
           <genParameters ecoreParameter="DslModel.ecore#//types/JvmMember/internalSetIdentifier/identifier"/>
         </genOperations>
@@ -148,13 +171,18 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmField/type"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmField/volatile"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmField/transient"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmField/defaultValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmField/set"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmField/get"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//types/JvmExecutable">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmExecutable/parameters"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmExecutable/exceptions"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmExecutable/varArgs"/>
       </genClasses>
-      <genClasses ecoreClass="DslModel.ecore#//types/JvmConstructor"/>
+      <genClasses ecoreClass="DslModel.ecore#//types/JvmConstructor">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmConstructor/expression"/>
+      </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmOperation">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/static"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/final"/>
@@ -165,10 +193,15 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/default"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/native"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/strictFloatingPoint"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmOperation/expression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmOperation/function"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmOperation/overload"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmFormalParameter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmFormalParameter/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmFormalParameter/parameterType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmFormalParameter/varArg"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmFormalParameter/defaultValue"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//types/JvmAnnotationTarget">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationTarget/annotations"/>
@@ -177,10 +210,12 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationReference/annotation"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationReference/values"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationReference/value"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//types/JvmAnnotationValue">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationValue/operation"/>
+            ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationValue/field"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//types/JvmAnnotationValue/value"/>
         <genOperations ecoreOperation="DslModel.ecore#//types/JvmAnnotationValue/getValueName"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//types/JvmIntAnnotationValue">
@@ -240,7 +275,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//types/JvmCustomAnnotationValue/values"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Xbase" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//xbase">
+    <nestedGenPackages prefix="Xbase" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//xbase">
       <genClasses image="false" ecoreClass="DslModel.ecore#//xbase/XExpression"/>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XIfExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XIfExpression/if"/>
@@ -265,7 +301,11 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XVariableDeclaration/type"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XVariableDeclaration/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XVariableDeclaration/right"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XVariableDeclaration/writeable"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XVariableDeclarationList">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XVariableDeclarationList/declarations"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XVariableDeclarationList/writeable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XVariableDeclarationList/exported"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//xbase/XAbstractFeatureCall">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -294,12 +334,26 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall/typeLiteral"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall/staticWithDeclaringType"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall/packageFragment"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall/indexedOperation"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XMemberFeatureCall1">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XMemberFeatureCall1/memberCallTarget"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XMemberFeatureCall1/memberCallArguments"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/explicitOperationCall"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/explicitStatic"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/nullSafe"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/typeLiteral"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/staticWithDeclaringType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/packageFragment"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XMemberFeatureCall1/indexedOperation"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XFeatureCall">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFeatureCall/featureCallArguments"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XFeatureCall/explicitOperationCall"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XFeatureCall/typeLiteral"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XFeatureCall/packageFragment"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XFeatureCall/indexedOperation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFeatureCall/value"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XConstructorCall">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -323,12 +377,22 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XCollectionLiteral/elements"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XListLiteral"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XKeyValuePair">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XKeyValuePair/key1"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XKeyValuePair/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XKeyValuePair/key"/>
+      </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XSetLiteral"/>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XClosure">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XClosure/declaredFormalParameters"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XClosure/expression"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XClosure/explicitSyntax"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XClosure/implicitParameter"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XClosure/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XClosure/returnType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XClosure/operator"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XClosure/typeParameters"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XClosure/exported"/>
         <genOperations ecoreOperation="DslModel.ecore#//xbase/XClosure/getFormalParameters"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XCastedExpression">
@@ -343,9 +407,15 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XUnaryOperation/operand"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XForLoopExpression">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/forExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/loop"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/init"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/eachExpression"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForLoopExpression/declaredParam"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XForEachExpression">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForEachExpression/forExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForEachExpression/eachExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XForEachExpression/declaredParam"/>
       </genClasses>
       <genClasses image="false" ecoreClass="DslModel.ecore#//xbase/XAbstractWhileExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XAbstractWhileExpression/predicate"/>
@@ -368,26 +438,74 @@
       <genClasses ecoreClass="DslModel.ecore#//xbase/XTryCatchFinallyExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTryCatchFinallyExpression/expression"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTryCatchFinallyExpression/finallyExpression"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTryCatchFinallyExpression/catchClauses"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTryCatchFinallyExpression/catchClause"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XCatchClause">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XCatchClause/expression"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XCatchClause/declaredParam"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XCatchClause/identifier"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XAssignment">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XAssignment/assignable"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XAssignment/value"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XAssignment/explicitStatic"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XAssignment/indexedOperation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XAssignment/index"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//xbase/XReturnExpression">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XReturnExpression/expression"/>
       </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XBreakExpression"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XContinueExpression"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XPrefixOperation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XPrefixOperation/operand"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XPostfixOperation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XPostfixOperation/operand"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XTernaryOperation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTernaryOperation/trueOperand"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTernaryOperation/falseOperand"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XTernaryOperation/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XIndexOperation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XIndexOperation/expression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XIndexOperation/index"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XFunctionDeclaration">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xbase/XFunctionDeclaration/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFunctionDeclaration/body"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFunctionDeclaration/returnType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFunctionDeclaration/parameters"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XObjectLiteral"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XObjectLiteralPart"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XArrayLiteral">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XArrayLiteral/elements"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XStructLiteral">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XStructLiteral/properties"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XStructLiteral/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XStructLiteral/typeArguments"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XFieldLiteralPart">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFieldLiteralPart/field"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xbase/XFieldLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/XTemplate"/>
+      <genClasses ecoreClass="DslModel.ecore#//xbase/RichStringLiteral"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Ss" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//ss">
-      <genClasses ecoreClass="DslModel.ecore#//ss/XtendFile">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendFile/importSection"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendFile/xtendTypes"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//ss/XtendFile/package"/>
+    <nestedGenPackages prefix="Ss" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//ss">
+      <genClasses ecoreClass="DslModel.ecore#//ss/XModule">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XModule/importSection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XModule/xtendTypes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//ss/XModule/package"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XModule/contents"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XModule/exportSection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XModule/root"/>
       </genClasses>
       <genClasses ecoreClass="DslModel.ecore#//ss/XtendClass">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendClass/extends"/>
@@ -477,8 +595,21 @@
       <genClasses ecoreClass="DslModel.ecore#//ss/XtendFormalParameter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//ss/XtendFormalParameter/extension"/>
       </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//ss/XtendDelegate">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendDelegate/returnType"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendDelegate/parameters"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendDelegate/typeParameters"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendDelegate/exceptions"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//ss/XtendEvent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//ss/XtendEvent/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendEvent/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//ss/XtendEvent/initialValue"/>
+        <genOperations ecoreOperation="DslModel.ecore#//ss/XtendEvent/isExtension"/>
+      </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Xannotation" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//xannotation">
+    <nestedGenPackages prefix="Xannotation" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//xannotation">
       <genClasses ecoreClass="DslModel.ecore#//xannotation/XAnnotation">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xannotation/XAnnotation/elementValuePairs"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -491,7 +622,8 @@
             ecoreFeature="ecore:EReference DslModel.ecore#//xannotation/XAnnotationElementValuePair/element"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Xtype" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//xtype">
+    <nestedGenPackages prefix="Xtype" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//xtype">
       <genDataTypes ecoreDataType="DslModel.ecore#//xtype/IJvmTypeReferenceProvider"/>
       <genClasses ecoreClass="DslModel.ecore#//xtype/XFunctionTypeRef">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XFunctionTypeRef/paramTypes"/>
@@ -512,11 +644,41 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XImportDeclaration/importedType"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration/importedNamespace"/>
-        <genOperations ecoreOperation="DslModel.ecore#//xtype/XImportDeclaration/isWildcard"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration/wildcard"/>
         <genOperations ecoreOperation="DslModel.ecore#//xtype/XImportDeclaration/getImportedTypeName"/>
       </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XImportSection1">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XImportSection1/importDeclarations"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XImportDeclaration1">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XImportDeclaration1/importItems"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration1/alias"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration1/importURI"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration1/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportDeclaration1/wildcard"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XImportItem">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XImportItem/importedId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XImportItem/alias"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XExportSection">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XExportSection/exportDeclarations"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XExportDeclaration">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XExportDeclaration/exportItems"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XExportDeclaration/alias"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XExportDeclaration/wildcard"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XExportDeclaration/importURI"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xtype/XExportItem">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xtype/XExportItem/exportedId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DslModel.ecore#//xtype/XExportItem/alias"/>
+      </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Richstring" disposableProviderFactory="true" ecorePackage="DslModel.ecore#//richstring">
+    <nestedGenPackages prefix="Richstring" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//richstring">
       <genClasses ecoreClass="DslModel.ecore#//richstring/ProcessedRichString">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference DslModel.ecore#//richstring/ProcessedRichString/richString"/>
@@ -573,6 +735,46 @@
       <genClasses ecoreClass="DslModel.ecore#//richstring/EndIf">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference DslModel.ecore#//richstring/EndIf/ifConditionStart"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Xaml" basePackage="org.summer.dsl.model" disposableProviderFactory="true"
+        ecorePackage="DslModel.ecore#//xaml">
+      <genClasses ecoreClass="DslModel.ecore#//xaml/ElementContent">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/ElementContent/contents"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/ObjectElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/ObjectElement/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/ObjectElement/properties"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/ObjectElement/close"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/AttributeElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttributeElement/type"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttributeElement/attribute"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttributeElement/close"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttributeElement/closeAttribute"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/AbstractProperty"/>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/MarkupExtenson">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/MarkupExtenson/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/MarkupExtenson/properties"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/AttachProperty">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttachProperty/type"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttachProperty/property"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/AttachProperty/value"/>
+      </genClasses>
+      <genClasses ecoreClass="DslModel.ecore#//xaml/GeneralProperty">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/GeneralProperty/type"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference DslModel.ecore#//xaml/GeneralProperty/property"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DslModel.ecore#//xaml/GeneralProperty/value"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

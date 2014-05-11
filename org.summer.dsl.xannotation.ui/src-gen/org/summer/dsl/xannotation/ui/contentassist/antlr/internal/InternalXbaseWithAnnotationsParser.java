@@ -12853,26 +12853,26 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
 
 
     // $ANTLR start "rule__JvmAnnotationValue__Group_0_0__0__Impl"
-    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4037:1: rule__JvmAnnotationValue__Group_0_0__0__Impl : ( ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 ) ) ;
+    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4037:1: rule__JvmAnnotationValue__Group_0_0__0__Impl : ( ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 ) ) ;
     public final void rule__JvmAnnotationValue__Group_0_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4041:1: ( ( ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 ) ) )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4042:1: ( ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 ) )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4041:1: ( ( ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 ) ) )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4042:1: ( ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 ) )
             {
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4042:1: ( ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 ) )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4043:1: ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4042:1: ( ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 ) )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4043:1: ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJvmAnnotationValueAccess().getOperationAssignment_0_0_0()); 
+               before(grammarAccess.getJvmAnnotationValueAccess().getFieldAssignment_0_0_0()); 
             }
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4044:1: ( rule__JvmAnnotationValue__OperationAssignment_0_0_0 )
-            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4044:2: rule__JvmAnnotationValue__OperationAssignment_0_0_0
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4044:1: ( rule__JvmAnnotationValue__FieldAssignment_0_0_0 )
+            // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:4044:2: rule__JvmAnnotationValue__FieldAssignment_0_0_0
             {
-            pushFollow(FOLLOW_rule__JvmAnnotationValue__OperationAssignment_0_0_0_in_rule__JvmAnnotationValue__Group_0_0__0__Impl8721);
-            rule__JvmAnnotationValue__OperationAssignment_0_0_0();
+            pushFollow(FOLLOW_rule__JvmAnnotationValue__FieldAssignment_0_0_0_in_rule__JvmAnnotationValue__Group_0_0__0__Impl8721);
+            rule__JvmAnnotationValue__FieldAssignment_0_0_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12880,7 +12880,7 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJvmAnnotationValueAccess().getOperationAssignment_0_0_0()); 
+               after(grammarAccess.getJvmAnnotationValueAccess().getFieldAssignment_0_0_0()); 
             }
 
             }
@@ -54799,9 +54799,9 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
     // $ANTLR end "rule__XAnnotation__ValueAssignment_3_1_1"
 
 
-    // $ANTLR start "rule__JvmAnnotationValue__OperationAssignment_0_0_0"
-    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:19431:1: rule__JvmAnnotationValue__OperationAssignment_0_0_0 : ( ( ruleValidID ) ) ;
-    public final void rule__JvmAnnotationValue__OperationAssignment_0_0_0() throws RecognitionException {
+    // $ANTLR start "rule__JvmAnnotationValue__FieldAssignment_0_0_0"
+    // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:19431:1: rule__JvmAnnotationValue__FieldAssignment_0_0_0 : ( ( ruleValidID ) ) ;
+    public final void rule__JvmAnnotationValue__FieldAssignment_0_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -54813,27 +54813,27 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
             // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:19437:1: ( ruleValidID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); 
+               before(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); 
             }
             // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:19438:1: ( ruleValidID )
             // ../org.summer.dsl.xannotation.ui/src-gen/org/summer/dsl/xannotation/ui/contentassist/antlr/internal/InternalXbaseWithAnnotations.g:19439:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1()); 
+               before(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__JvmAnnotationValue__OperationAssignment_0_0_038938);
+            pushFollow(FOLLOW_ruleValidID_in_rule__JvmAnnotationValue__FieldAssignment_0_0_038938);
             ruleValidID();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1()); 
+               after(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationCrossReference_0_0_0_0()); 
+               after(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); 
             }
 
             }
@@ -54853,7 +54853,7 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
         }
         return ;
     }
-    // $ANTLR end "rule__JvmAnnotationValue__OperationAssignment_0_0_0"
+    // $ANTLR end "rule__JvmAnnotationValue__FieldAssignment_0_0_0"
 
 
     // $ANTLR start "rule__JvmAnnotationValue__ValueAssignment_1"
@@ -65098,7 +65098,7 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
     public static final BitSet FOLLOW_rule__JvmAnnotationValue__Group_0_0__0_in_rule__JvmAnnotationValue__Group_0__0__Impl8659 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmAnnotationValue__Group_0_0__0__Impl_in_rule__JvmAnnotationValue__Group_0_0__08691 = new BitSet(new long[]{0x0000000000800000L});
     public static final BitSet FOLLOW_rule__JvmAnnotationValue__Group_0_0__1_in_rule__JvmAnnotationValue__Group_0_0__08694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JvmAnnotationValue__OperationAssignment_0_0_0_in_rule__JvmAnnotationValue__Group_0_0__0__Impl8721 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JvmAnnotationValue__FieldAssignment_0_0_0_in_rule__JvmAnnotationValue__Group_0_0__0__Impl8721 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmAnnotationValue__Group_0_0__1__Impl_in_rule__JvmAnnotationValue__Group_0_0__18751 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_23_in_rule__JvmAnnotationValue__Group_0_0__1__Impl8779 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XAssignment__Group__0__Impl_in_rule__XAssignment__Group__08814 = new BitSet(new long[]{0x0000000000800000L});
@@ -66312,7 +66312,7 @@ public class InternalXbaseWithAnnotationsParser extends AbstractInternalContentA
     public static final BitSet FOLLOW_ruleJvmAnnotationValue_in_rule__XAnnotation__ValuesAssignment_3_1_0_038841 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmAnnotationValue_in_rule__XAnnotation__ValuesAssignment_3_1_0_1_138872 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXLiteral_in_rule__XAnnotation__ValueAssignment_3_1_138903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__JvmAnnotationValue__OperationAssignment_0_0_038938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__JvmAnnotationValue__FieldAssignment_0_0_038938 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXLiteral_in_rule__JvmAnnotationValue__ValueAssignment_138973 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXMultiAssignment_in_rule__XAssignment__ValueAssignment_1_139004 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpMultiAssign_in_rule__XMultiAssignment__FeatureAssignment_1_0_0_139039 = new BitSet(new long[]{0x0000000000000002L});

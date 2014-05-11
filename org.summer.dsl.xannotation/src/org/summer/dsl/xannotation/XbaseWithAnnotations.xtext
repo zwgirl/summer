@@ -32,6 +32,20 @@ import "http://www.summer.org/dsl/model/xannotation"
 //	XExpression
 //;
 
+//XAnnotation returns types::JvmAnnotationReference:
+//	{types::JvmAnnotationReference}
+//	'@' annotation=[types::JvmAnnotationType | QualifiedName] (=>'('
+//		(
+//			values+=JvmAnnotationValue (',' values+=JvmAnnotationValue)* 
+//		|	value=XLiteral
+//		)?
+//	')')?
+//;
+//
+//JvmAnnotationValue returns types::JvmAnnotationValue:
+//	=>(operation=[types::JvmOperation|ValidID] '=') value=XLiteral	
+//;
+
 XAnnotation returns types::JvmAnnotationReference:
 	{types::JvmAnnotationReference}
 	'@' annotation=[types::JvmAnnotationType | QualifiedName] (=>'('
@@ -43,5 +57,5 @@ XAnnotation returns types::JvmAnnotationReference:
 ;
 
 JvmAnnotationValue returns types::JvmAnnotationValue:
-	=>(operation=[types::JvmOperation|ValidID] '=') value=XLiteral	
+	=>(field=[types::JvmField|ValidID] '=') value=XLiteral	
 ;

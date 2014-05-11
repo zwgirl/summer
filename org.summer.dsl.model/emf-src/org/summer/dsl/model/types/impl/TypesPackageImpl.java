@@ -77,6 +77,8 @@ import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitor;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitorWithParameter;
+import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -556,6 +558,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
 		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
+		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTypesPackage.createPackageContents();
@@ -564,6 +567,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
 		theRichstringPackage.createPackageContents();
+		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTypesPackage.initializePackageContents();
@@ -572,6 +576,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
 		theRichstringPackage.initializePackageContents();
+		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTypesPackage.freeze();
@@ -1559,7 +1564,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmAnnotationValue_Operation() {
+	public EReference getJvmAnnotationValue_Field() {
 		return (EReference)jvmAnnotationValueEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2112,7 +2117,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmAnnotationReferenceEClass, JVM_ANNOTATION_REFERENCE__VALUE);
 
 		jvmAnnotationValueEClass = createEClass(JVM_ANNOTATION_VALUE);
-		createEReference(jvmAnnotationValueEClass, JVM_ANNOTATION_VALUE__OPERATION);
+		createEReference(jvmAnnotationValueEClass, JVM_ANNOTATION_VALUE__FIELD);
 		createEReference(jvmAnnotationValueEClass, JVM_ANNOTATION_VALUE__VALUE);
 
 		jvmIntAnnotationValueEClass = createEClass(JVM_INT_ANNOTATION_VALUE);
@@ -2521,7 +2526,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEReference(getJvmAnnotationReference_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, JvmAnnotationReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmAnnotationValueEClass, JvmAnnotationValue.class, "JvmAnnotationValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJvmAnnotationValue_Operation(), this.getJvmOperation(), null, "operation", null, 0, 1, JvmAnnotationValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJvmAnnotationValue_Field(), this.getJvmField(), null, "field", null, 0, 1, JvmAnnotationValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmAnnotationValue_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, JvmAnnotationValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(jvmAnnotationValueEClass, ecorePackage.getEString(), "getValueName", 0, 1, IS_UNIQUE, IS_ORDERED);

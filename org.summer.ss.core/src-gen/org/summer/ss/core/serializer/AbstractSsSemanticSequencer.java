@@ -34,6 +34,12 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.xaml.XAttachAttribute;
+import org.summer.dsl.model.xaml.XAttributeElement;
+import org.summer.dsl.model.xaml.XGeneralAttribute;
+import org.summer.dsl.model.xaml.XMarkupExtenson;
+import org.summer.dsl.model.xaml.XObjectElement;
+import org.summer.dsl.model.xaml.XamlPackage;
 import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
@@ -241,6 +247,43 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmWildcardTypeReferenceRule()) {
 					sequence_JvmWildcardTypeReference(context, (JvmWildcardTypeReference) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == XamlPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case XamlPackage.XATTACH_ATTRIBUTE:
+				if(context == grammarAccess.getXAbstractAttributeRule() ||
+				   context == grammarAccess.getXAttachAttributeRule()) {
+					sequence_XAttachAttribute(context, (XAttachAttribute) semanticObject); 
+					return; 
+				}
+				else break;
+			case XamlPackage.XATTRIBUTE_ELEMENT:
+				if(context == grammarAccess.getXAttributeElementRule() ||
+				   context == grammarAccess.getXElementRule()) {
+					sequence_XAttributeElement(context, (XAttributeElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case XamlPackage.XGENERAL_ATTRIBUTE:
+				if(context == grammarAccess.getXAbstractAttributeRule() ||
+				   context == grammarAccess.getXGeneralAttributeRule()) {
+					sequence_XGeneralAttribute(context, (XGeneralAttribute) semanticObject); 
+					return; 
+				}
+				else break;
+			case XamlPackage.XMARKUP_EXTENSON:
+				if(context == grammarAccess.getXMarkupExtensonRule() ||
+				   context == grammarAccess.getXPropertyExpressionRule()) {
+					sequence_XMarkupExtenson(context, (XMarkupExtenson) semanticObject); 
+					return; 
+				}
+				else break;
+			case XamlPackage.XOBJECT_ELEMENT:
+				if(context == grammarAccess.getXElementRule() ||
+				   context == grammarAccess.getXObjectElementRule()) {
+					sequence_XObjectElement(context, (XObjectElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1277,8 +1320,7 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				}
 				else break;
 			case XbasePackage.XSTRING_LITERAL:
-				if(context == grammarAccess.getSimpleStringLiteralRule() ||
-				   context == grammarAccess.getXAdditiveExpressionRule() ||
+				if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1308,6 +1350,7 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				   context == grammarAccess.getXPostfixOperationRule() ||
 				   context == grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0() ||
 				   context == grammarAccess.getXPrimaryExpressionRule() ||
+				   context == grammarAccess.getXPropertyExpressionRule() ||
 				   context == grammarAccess.getXRelationalExpressionRule() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
@@ -1317,7 +1360,7 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				   context == grammarAccess.getXTernaryOperationRule() ||
 				   context == grammarAccess.getXTernaryOperationAccess().getXTernaryOperationConditionAction_1_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_SimpleStringLiteral(context, (XStringLiteral) semanticObject); 
+					sequence_XStringLiteral(context, (XStringLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1859,22 +1902,6 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
-	 *     value=STRING
-	 */
-	protected void sequence_SimpleStringLiteral(EObject context, XStringLiteral semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, XbasePackage.Literals.XSTRING_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XbasePackage.Literals.XSTRING_LITERAL__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSimpleStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (
 	 *         (
 	 *             (annotationInfo=Type_JvmAnnotationType_2_4_0 exported?='export'? simpleName=ValidID) | 
@@ -1958,6 +1985,37 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
+	 *     (type=[JvmType|QualifiedName] field=[JvmField|ID] value=XPropertyExpression)
+	 */
+	protected void sequence_XAttachAttribute(EObject context, XAttachAttribute semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__TYPE));
+			if(transientValues.isValueTransient(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__FIELD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__FIELD));
+			if(transientValues.isValueTransient(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XamlPackage.Literals.XABSTRACT_ATTRIBUTE__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getXAttachAttributeAccess().getTypeJvmTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getType());
+		feeder.accept(grammarAccess.getXAttachAttributeAccess().getFieldJvmFieldIDTerminalRuleCall_4_0_1(), semanticObject.getField());
+		feeder.accept(grammarAccess.getXAttachAttributeAccess().getValueXPropertyExpressionParserRuleCall_6_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[JvmType|QualifiedName] field=[JvmField|ID] (contents+=XElement* closeType=[JvmType|QualifiedName] closeField=[JvmField|ID])?)
+	 */
+	protected void sequence_XAttributeElement(EObject context, XAttributeElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         exported?='export'? 
 	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
@@ -1974,9 +2032,36 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
-	 *     (importSection=XImportSection1? (contents+=Type | contents+=XExpressionInsideBlock)* exportSection=XExportSection?)
+	 *     (field=[JvmField|ID] value=XPropertyExpression)
+	 */
+	protected void sequence_XGeneralAttribute(EObject context, XGeneralAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[JvmType|QualifiedName] properties+=XAbstractAttribute*)
+	 */
+	protected void sequence_XMarkupExtenson(EObject context, XMarkupExtenson semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (importSection=XImportSection1? root=XObjectElement (contents+=Type | contents+=XExpressionInsideBlock)* exportSection=XExportSection?)
 	 */
 	protected void sequence_XModule(EObject context, XModule semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[JvmType|QualifiedName] properties+=XAbstractAttribute* (contents+=XElement* closeType=[JvmType|QualifiedName])?)
+	 */
+	protected void sequence_XObjectElement(EObject context, XObjectElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -5,7 +5,7 @@
 // Rule XModule
 
 ruleXModule :
-	ruleXImportSection1? (
+	ruleXImportSection1? ruleXObjectElement (
 		ruleType |
 		ruleXExpressionInsideBlock ';'?
 	)* ruleXExportSection?
@@ -121,8 +121,7 @@ ruleXModule :
 	ruleShiftOp |
 	ruleBinaryBitwiseOp |
 	ruleOpMulti |
-	ruleOpUnary |
-	ruleIndexOp
+	ruleOpUnary
 ;
 
 // Rule JvmEnumerationLiteral
@@ -164,14 +163,63 @@ ruleXModule :
 	ruleXAnnotation* ruleJvmTypeReference '...'? ruleValidID
 ;
 
-// Rule XStringLiteral
- ruleXStringLiteral :
-	ruleSimpleStringLiteral
+// Rule XElement
+ ruleXElement :
+	ruleXObjectElement |
+	ruleXAttributeElement
 ;
 
-// Rule SimpleStringLiteral
- ruleSimpleStringLiteral :
-	RULE_STRING
+// Rule XObjectElement
+ ruleXObjectElement :
+	'<' ruleQualifiedName ruleXAbstractAttribute* ( (
+	'>' ruleXElement* '</' ruleQualifiedName '>' |
+	'/>'
+	) => (
+		'>' ruleXElement* '</' ruleQualifiedName '>' |
+		'/>'
+	) )
+;
+
+// Rule XAttributeElement
+ ruleXAttributeElement :
+	'<' '(' ruleQualifiedName ')' '.' RULE_ID ( (
+	(
+		'>' ruleXElement* '</' '(' ruleQualifiedName ')' '.' RULE_ID
+	) '>' |
+	'/>'
+	) => (
+		(
+			'>' ruleXElement* '</' '(' ruleQualifiedName ')' '.' RULE_ID
+		) '>' |
+		'/>'
+	) )
+;
+
+// Rule XAbstractAttribute
+ ruleXAbstractAttribute :
+	ruleXGeneralAttribute |
+	ruleXAttachAttribute
+;
+
+// Rule XAttachAttribute
+ ruleXAttachAttribute :
+	'(' ruleQualifiedName ')' '.' RULE_ID '=' ruleXPropertyExpression
+;
+
+// Rule XGeneralAttribute
+ ruleXGeneralAttribute :
+	RULE_ID '=' ruleXPropertyExpression
+;
+
+// Rule XMarkupExtenson
+ ruleXMarkupExtenson :
+	'{' ruleQualifiedName ruleXAbstractAttribute* '}'
+;
+
+// Rule XPropertyExpression
+ ruleXPropertyExpression :
+	ruleXStringLiteral |
+	ruleXMarkupExtenson
 ;
 
 // Rule XAnnotation
@@ -428,25 +476,11 @@ ruleXModule :
 
 // Rule XCastedExpression
  ruleXCastedExpression :
-	ruleXIndexOperation (
+	ruleXMemberFeatureCall (
 		( (
 		'as'
 		) => 'as' ) ruleJvmTypeReference
 	)*
-;
-
-// Rule XIndexOperation
- ruleXIndexOperation :
-	ruleXMemberFeatureCall (
-		( (
-		ruleIndexOp
-		) => ruleIndexOp ) ruleXExpression ']'
-	)*
-;
-
-// Rule IndexOp
- ruleIndexOp :
-	'['
 ;
 
 // Rule XMemberFeatureCall
@@ -460,24 +494,23 @@ ruleXModule :
 			)*
 		)? ')' |
 		( (
-		(
-			'.' |
-			'::'
-		) ruleFeatureCallID ruleOpSingleAssign
+		'['
+		) => '[' ) (
+			ruleXExpression (
+				',' ruleXExpression
+			)*
+		)? ']' |
+		( (
+		'.' ruleFeatureCallID ruleOpSingleAssign
 		) => (
-			(
-				'.' |
-				'::'
-			) ruleFeatureCallID ruleOpSingleAssign
+			'.' ruleFeatureCallID ruleOpSingleAssign
 		) ) ruleXAssignment |
 		( (
 		'.' |
-		'?.' |
-		'::'
+		'?.'
 		) => (
 			'.' |
-			'?.' |
-			'::'
+			'?.'
 		) ) (
 			'<' ruleJvmArgumentTypeReference (
 				',' ruleJvmArgumentTypeReference
@@ -641,15 +674,6 @@ ruleXModule :
 	)?
 ;
 
-// Rule FullJvmFormalParameter
- ruleFullJvmFormalParameter :
-	ruleJvmTypeReference ruleValidID (
-		( (
-		'='
-		) => '=' ) ruleXExpression
-	)?
-;
-
 // Rule XFeatureCall
  ruleXFeatureCall :
 	(
@@ -739,6 +763,11 @@ ruleXModule :
 	ruleNumber
 ;
 
+// Rule XStringLiteral
+ ruleXStringLiteral :
+	RULE_STRING
+;
+
 // Rule XTypeLiteral
  ruleXTypeLiteral :
 	'typeof' '(' ruleQualifiedName ruleArrayBrackets* ')'
@@ -771,7 +800,7 @@ ruleXModule :
 	'try' ruleXExpression (
 		( (
 		'catch'
-		) => ruleXCatchClause )+ (
+		) => ruleXCatchClause ) (
 			( (
 			'finally'
 			) => 'finally' ) ruleXExpression
@@ -784,7 +813,7 @@ ruleXModule :
  ruleXCatchClause :
 	( (
 	'catch'
-	) => 'catch' ) '(' ruleFullJvmFormalParameter ')' ruleXExpression
+	) => 'catch' ) '(' RULE_ID ')' ruleXExpression
 ;
 
 // Rule QualifiedName

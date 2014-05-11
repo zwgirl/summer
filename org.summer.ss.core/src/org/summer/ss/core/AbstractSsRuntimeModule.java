@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.eclipse.ui.editors.text.templates.ContributionContextTypeRegistry;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.service.DefaultRuntimeModule;
+import org.summer.ss.core.scoping.XSsBatchScopeProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -296,9 +297,14 @@ public abstract class AbstractSsRuntimeModule extends DefaultRuntimeModule {
 		return org.summer.dsl.xannotation.scoping.XbaseWithAnnotationsScopeProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+//	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+//	public Class<? extends org.summer.dsl.xbase.scoping.batch.XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
+//		return org.summer.dsl.xannotation.typesystem.XbaseWithAnnotationsBatchScopeProvider.class;
+//	}
+	
 	public Class<? extends org.summer.dsl.xbase.scoping.batch.XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
-		return org.summer.dsl.xannotation.typesystem.XbaseWithAnnotationsBatchScopeProvider.class;
+//		return org.summer.dsl.xannotation.typesystem.XbaseWithAnnotationsBatchScopeProvider.class;
+		return XSsBatchScopeProvider.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment

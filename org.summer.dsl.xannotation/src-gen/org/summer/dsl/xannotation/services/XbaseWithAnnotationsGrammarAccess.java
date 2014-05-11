@@ -66,7 +66,25 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		// //	XExpression
 		// //;
 		//
-		//XAnnotation returns types::JvmAnnotationReference:
+		////XAnnotation returns types::JvmAnnotationReference:
+		// //	{types::JvmAnnotationReference}
+		//
+		////	'@' annotation=[types::JvmAnnotationType | QualifiedName] (=>'('
+		// //		(
+		//
+		////			values+=JvmAnnotationValue (',' values+=JvmAnnotationValue)* 
+		// //		|	value=XLiteral
+		// //		)?
+		// //	')')?
+		// //;
+		// //
+		//
+		////JvmAnnotationValue returns types::JvmAnnotationValue:
+		//
+		////	=>(operation=[types::JvmOperation|ValidID] '=') value=XLiteral	
+		// //;
+		// XAnnotation returns
+		//types::JvmAnnotationReference:
 		//	{types::JvmAnnotationReference} "@" annotation=[types::JvmAnnotationType|QualifiedName] ("("
 		//	(values+=JvmAnnotationValue ("," values+=JvmAnnotationValue)* | value=XLiteral)? ")")?;
 		public ParserRule getRule() { return rule; }
@@ -135,34 +153,34 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Group cGroup_0_0 = (Group)cGroup_0.eContents().get(0);
-		private final Assignment cOperationAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
-		private final CrossReference cOperationJvmOperationCrossReference_0_0_0_0 = (CrossReference)cOperationAssignment_0_0_0.eContents().get(0);
-		private final RuleCall cOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1 = (RuleCall)cOperationJvmOperationCrossReference_0_0_0_0.eContents().get(1);
+		private final Assignment cFieldAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
+		private final CrossReference cFieldJvmFieldCrossReference_0_0_0_0 = (CrossReference)cFieldAssignment_0_0_0.eContents().get(0);
+		private final RuleCall cFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1 = (RuleCall)cFieldJvmFieldCrossReference_0_0_0_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_0_0_1 = (Keyword)cGroup_0_0.eContents().get(1);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueXLiteralParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
 		//JvmAnnotationValue returns types::JvmAnnotationValue:
-		//	=> (operation=[types::JvmOperation|ValidID] "=") value=XLiteral;
+		//	=> (field=[types::JvmField|ValidID] "=") value=XLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//=> (operation=[types::JvmOperation|ValidID] "=") value=XLiteral
+		//=> (field=[types::JvmField|ValidID] "=") value=XLiteral
 		public Group getGroup() { return cGroup; }
 
-		//=> (operation=[types::JvmOperation|ValidID] "=")
+		//=> (field=[types::JvmField|ValidID] "=")
 		public Group getGroup_0() { return cGroup_0; }
 
-		//operation=[types::JvmOperation|ValidID] "="
+		//field=[types::JvmField|ValidID] "="
 		public Group getGroup_0_0() { return cGroup_0_0; }
 
-		//operation=[types::JvmOperation|ValidID]
-		public Assignment getOperationAssignment_0_0_0() { return cOperationAssignment_0_0_0; }
+		//field=[types::JvmField|ValidID]
+		public Assignment getFieldAssignment_0_0_0() { return cFieldAssignment_0_0_0; }
 
-		//[types::JvmOperation|ValidID]
-		public CrossReference getOperationJvmOperationCrossReference_0_0_0_0() { return cOperationJvmOperationCrossReference_0_0_0_0; }
+		//[types::JvmField|ValidID]
+		public CrossReference getFieldJvmFieldCrossReference_0_0_0_0() { return cFieldJvmFieldCrossReference_0_0_0_0; }
 
 		//ValidID
-		public RuleCall getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1() { return cOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1; }
+		public RuleCall getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1() { return cFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_0_0_1() { return cEqualsSignKeyword_0_0_1; }
@@ -241,7 +259,25 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	// //	XExpression
 	// //;
 	//
-	//XAnnotation returns types::JvmAnnotationReference:
+	////XAnnotation returns types::JvmAnnotationReference:
+	// //	{types::JvmAnnotationReference}
+	//
+	////	'@' annotation=[types::JvmAnnotationType | QualifiedName] (=>'('
+	// //		(
+	//
+	////			values+=JvmAnnotationValue (',' values+=JvmAnnotationValue)* 
+	// //		|	value=XLiteral
+	// //		)?
+	// //	')')?
+	// //;
+	// //
+	//
+	////JvmAnnotationValue returns types::JvmAnnotationValue:
+	//
+	////	=>(operation=[types::JvmOperation|ValidID] '=') value=XLiteral	
+	// //;
+	// XAnnotation returns
+	//types::JvmAnnotationReference:
 	//	{types::JvmAnnotationReference} "@" annotation=[types::JvmAnnotationType|QualifiedName] ("("
 	//	(values+=JvmAnnotationValue ("," values+=JvmAnnotationValue)* | value=XLiteral)? ")")?;
 	public XAnnotationElements getXAnnotationAccess() {
@@ -253,7 +289,7 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	}
 
 	//JvmAnnotationValue returns types::JvmAnnotationValue:
-	//	=> (operation=[types::JvmOperation|ValidID] "=") value=XLiteral;
+	//	=> (field=[types::JvmField|ValidID] "=") value=XLiteral;
 	public JvmAnnotationValueElements getJvmAnnotationValueAccess() {
 		return (pJvmAnnotationValue != null) ? pJvmAnnotationValue : (pJvmAnnotationValue = new JvmAnnotationValueElements());
 	}

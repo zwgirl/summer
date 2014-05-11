@@ -19,7 +19,7 @@ import org.summer.dsl.model.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.JvmAnnotationValue#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmAnnotationValue#getField <em>Field</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmAnnotationValue#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -30,30 +30,30 @@ import org.summer.dsl.model.xbase.XExpression;
  */
 public interface JvmAnnotationValue extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
+	 * Returns the value of the '<em><b>Field</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operation</em>' reference isn't clear,
+	 * If the meaning of the '<em>Field</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation</em>' reference.
-	 * @see #setOperation(JvmOperation)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmAnnotationValue_Operation()
+	 * @return the value of the '<em>Field</em>' reference.
+	 * @see #setField(JvmField)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmAnnotationValue_Field()
 	 * @model
 	 * @generated
 	 */
-	JvmOperation getOperation();
+	JvmField getField();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmAnnotationValue#getOperation <em>Operation</em>}' reference.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmAnnotationValue#getField <em>Field</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation</em>' reference.
-	 * @see #getOperation()
+	 * @param value the new value of the '<em>Field</em>' reference.
+	 * @see #getField()
 	 * @generated
 	 */
-	void setOperation(JvmOperation value);
+	void setField(JvmField value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference.

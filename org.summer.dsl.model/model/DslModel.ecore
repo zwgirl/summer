@@ -323,7 +323,7 @@
         <details key="documentation" value="&lt;p>Represents the value of an annotation member.&lt;/p>&#xA;&lt;p>That is, either the default value of an operation as a member of an annotation type, or the &#xA;concrete value in an annotation reference is returned.&lt;/p>"/>
       </eAnnotations>
       <eOperations name="getValueName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//types/JvmOperation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//types/JvmField"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
           containment="true"/>
     </eClassifiers>
@@ -785,6 +785,8 @@
           eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="exportSection" eType="#//xtype/XExportSection"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//xaml/XObjectElement"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XtendClass" eSuperTypes="#//ss/XtendTypeDeclaration">
       <eOperations name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -1057,5 +1059,29 @@
     <eClassifiers xsi:type="ecore:EClass" name="EndIf" eSuperTypes="#//richstring/LinePart">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ifConditionStart" eType="#//richstring/IfConditionStart"/>
     </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="xaml" nsURI="http://www.summer.org/dsl/model/xaml" nsPrefix="xaml">
+    <eClassifiers xsi:type="ecore:EClass" name="XElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
+          eType="#//xaml/XElement" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//types/JvmType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="closeType" eType="#//types/JvmType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+          eType="#//xaml/XAbstractAttribute" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XObjectElement" eSuperTypes="#//xaml/XElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="XAttributeElement" eSuperTypes="#//xaml/XElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//types/JvmField"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="closeField" eType="#//types/JvmField"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XAbstractAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//types/JvmType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//types/JvmField"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XMarkupExtenson" eSuperTypes="#//xaml/XElement #//xbase/XExpression"/>
+    <eClassifiers xsi:type="ecore:EClass" name="XAttachAttribute" eSuperTypes="#//xaml/XAbstractAttribute"/>
+    <eClassifiers xsi:type="ecore:EClass" name="XGeneralAttribute" eSuperTypes="#//xaml/XAbstractAttribute"/>
   </eSubpackages>
 </ecore:EPackage>

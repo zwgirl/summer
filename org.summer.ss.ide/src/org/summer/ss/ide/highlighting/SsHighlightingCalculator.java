@@ -41,10 +41,16 @@ import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.TerminalRule;
+import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.util.DeprecationUtil;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -56,6 +62,12 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.xaml.XAbstractAttribute;
+import org.summer.dsl.model.xaml.XAttributeElement;
+import org.summer.dsl.model.xaml.XElement;
+import org.summer.dsl.model.xaml.XMarkupExtenson;
+import org.summer.dsl.model.xaml.XObjectElement;
+import org.summer.dsl.model.xaml.XamlPackage;
 import org.summer.dsl.model.xannotation.XAnnotation;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingCalculator;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingConfiguration;
@@ -108,54 +120,134 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 		}
 	}
 
+//	@Override
+//	protected void doProvideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
+//		XModule file = (XModule) resource.getContents().get(0);
+//		for (XtendAnnotationTarget xtendType : file.getXtendTypes()) {
+//			highlightDeprecatedXtendAnnotationTarget(acceptor, xtendType);
+//			highlightRichStringsInAnnotations(acceptor, xtendType);
+//			for (XtendMember member : filter(xtendType.eContents(), XtendMember.class)) {
+//				if (member.eClass() == SsPackage.Literals.XTEND_FUNCTION) {
+//					XtendFunction function = (XtendFunction) member;
+//					XExpression rootExpression = function.getExpression();
+//					highlightRichStrings(rootExpression, acceptor);
+//					CreateExtensionInfo createExtensionInfo = function.getCreateExtensionInfo();
+//					if (createExtensionInfo != null) {
+//						highlightRichStrings(createExtensionInfo.getCreateExpression(), acceptor);
+//					}
+//				}
+//				if(member.eClass() == SsPackage.Literals.XTEND_FIELD){
+//					XtendField field = (XtendField) member;
+//					highlightXtendField(field,acceptor);
+//					XExpression initializer = field.getInitialValue();
+//					highlightRichStrings(initializer, acceptor);
+//				}
+//				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
+//				highlightRichStringsInAnnotations(acceptor, member);
+//			}
+//		}
+//		super.doProvideHighlightingFor(resource, acceptor);
+//	}
+	
 	@Override
 	protected void doProvideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
 		XModule file = (XModule) resource.getContents().get(0);
-		for (XtendAnnotationTarget xtendType : file.getXtendTypes()) {
-			highlightDeprecatedXtendAnnotationTarget(acceptor, xtendType);
-			highlightRichStringsInAnnotations(acceptor, xtendType);
-			for (XtendMember member : filter(xtendType.eContents(), XtendMember.class)) {
-				if (member.eClass() == SsPackage.Literals.XTEND_FUNCTION) {
-					XtendFunction function = (XtendFunction) member;
-					XExpression rootExpression = function.getExpression();
-					highlightRichStrings(rootExpression, acceptor);
-					CreateExtensionInfo createExtensionInfo = function.getCreateExtensionInfo();
-					if (createExtensionInfo != null) {
-						highlightRichStrings(createExtensionInfo.getCreateExpression(), acceptor);
-					}
-				}
-				if(member.eClass() == SsPackage.Literals.XTEND_FIELD){
-					XtendField field = (XtendField) member;
-					highlightXtendField(field,acceptor);
-					XExpression initializer = field.getInitialValue();
-					highlightRichStrings(initializer, acceptor);
-				}
-				highlightDeprecatedXtendAnnotationTarget(acceptor, member);
-				highlightRichStringsInAnnotations(acceptor, member);
+		if(file.getRoot()!=null){
+			XObjectElement object = file.getRoot();
+			highlightXElement(acceptor, object);
+		}
+		for (EObject object : file.getContents()) {
+			if(object instanceof JvmAnnotationTarget){
+				highlightDeprecatedXtendAnnotationTarget(acceptor, (JvmAnnotationTarget) object);
 			}
+			
+			highlightRichStringsInAnnotations(acceptor, (JvmAnnotationTarget) object);
+			if(object instanceof JvmDeclaredType){
+				JvmDeclaredType declType = (JvmDeclaredType) object;
+				for (JvmMember member : filter(declType.getMembers(), JvmMember.class)) {
+					if (member.eClass() == TypesPackage.Literals.JVM_OPERATION) {
+						JvmOperation function = (JvmOperation) member;
+						XExpression rootExpression = function.getExpression();
+						highlightRichStrings(rootExpression, acceptor);
+//						CreateExtensionInfo createExtensionInfo = function.getCreateExtensionInfo();
+//						if (createExtensionInfo != null) {
+//							highlightRichStrings(createExtensionInfo.getCreateExpression(), acceptor);
+//						}
+					}
+					if(member.eClass() == TypesPackage.Literals.JVM_FIELD){
+						JvmField field = (JvmField) member;
+						highlightXtendField(field,acceptor);
+						XExpression initializer = field.getDefaultValue();
+						highlightRichStrings(initializer, acceptor);
+					}
+					highlightDeprecatedXtendAnnotationTarget(acceptor, member);
+					highlightRichStringsInAnnotations(acceptor, member);
+				}
+			}
+
 		}
 		super.doProvideHighlightingFor(resource, acceptor);
 	}
 
-	protected void highlightRichStringsInAnnotations(IHighlightedPositionAcceptor acceptor, XtendAnnotationTarget target) {
+	private void highlightXElement(IHighlightedPositionAcceptor acceptor,
+			XElement element) {
+		JvmDeclaredType type = (JvmDeclaredType) element.getType();
+		if(type.getSimpleName() != null && type.getSimpleName().length() > 0){
+			highlightObjectAtFeature(acceptor, element, XamlPackage.eINSTANCE.getXElement_Type(), XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION);
+			highlightObjectAtFeature(acceptor, element, XamlPackage.eINSTANCE.getXElement_CloseType(), XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION);
+			
+			if(element instanceof XAttributeElement){
+				highlightObjectAtFeature(acceptor, element, XamlPackage.eINSTANCE.getXAttributeElement_Field(), XbaseHighlightingConfiguration.STATIC_FIELD);
+				highlightObjectAtFeature(acceptor, element, XamlPackage.eINSTANCE.getXAttributeElement_CloseField(), XbaseHighlightingConfiguration.STATIC_FIELD);
+			}
+		}
+		
+		for(XAbstractAttribute attribute : element.getProperties()){
+			highlightObjectAtFeature(acceptor, attribute, XamlPackage.eINSTANCE.getXAbstractAttribute_Type(), XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION);
+			highlightObjectAtFeature(acceptor, attribute, XamlPackage.eINSTANCE.getXAbstractAttribute_Field(), XbaseHighlightingConfiguration.STATIC_FIELD);
+			
+			if(attribute.getValue() instanceof XMarkupExtenson){
+				highlightXElement(acceptor, (XElement) attribute.getValue());
+			}
+		}
+		
+		for(XElement childEle : element.getContents()){
+			highlightXElement(acceptor, childEle);
+		}
+	
+	}
+
+	protected void highlightRichStringsInAnnotations(IHighlightedPositionAcceptor acceptor, JvmAnnotationTarget target) {
 		if (target != null) {
-			for(XAnnotation annotation: target.getAnnotations()) {
-				highlightRichStrings(annotation, acceptor);
+			for(JvmAnnotationReference annotation: target.getAnnotations()) {
+//				highlightRichStrings(annotation, acceptor);  //cym comment
 			}
 		}
 	}
 
-	protected void highlightDeprecatedXtendAnnotationTarget(IHighlightedPositionAcceptor acceptor, XtendAnnotationTarget target){
+	//cym comment
+//	protected void highlightDeprecatedXtendAnnotationTarget(IHighlightedPositionAcceptor acceptor, XtendAnnotationTarget target){
+//		if(target != null)
+//			for(XAnnotation annotation : target.getAnnotations()){
+//				JvmType annotationType = annotation.getAnnotationType();
+//				if(annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType && DeprecationUtil.isDeprecated((JvmAnnotationType) annotationType)){
+//					EStructuralFeature nameFeature = target.eClass().getEStructuralFeature("name");
+//					highlightObjectAtFeature(acceptor, target, nameFeature, XbaseHighlightingConfiguration.DEPRECATED_MEMBERS);
+//				}
+//			}
+//	}
+	
+	protected void highlightDeprecatedXtendAnnotationTarget(IHighlightedPositionAcceptor acceptor, JvmAnnotationTarget target){
 		if(target != null)
-			for(XAnnotation annotation : target.getAnnotations()){
-				JvmType annotationType = annotation.getAnnotationType();
+			for(JvmAnnotationReference annotation : target.getAnnotations()){
+				JvmType annotationType = annotation.getAnnotation();
 				if(annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType && DeprecationUtil.isDeprecated((JvmAnnotationType) annotationType)){
 					EStructuralFeature nameFeature = target.eClass().getEStructuralFeature("name");
 					highlightObjectAtFeature(acceptor, target, nameFeature, XbaseHighlightingConfiguration.DEPRECATED_MEMBERS);
 				}
 			}
 	}
-
+	
 	protected void highlightRichStrings(XExpression expression, IHighlightedPositionAcceptor acceptor) {
 		if (expression != null) {
 			TreeIterator<EObject> iterator = EcoreUtil2.eAll(expression);
@@ -186,9 +278,9 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 	}
 	
 
-	protected void highlightXtendField(XtendField field, IHighlightedPositionAcceptor acceptor) {
-		if(field.getName() != null && field.getName().length() > 0){
-			List<INode> nodes = NodeModelUtils.findNodesForFeature(field, SsPackage.Literals.XTEND_FIELD__NAME);
+	protected void highlightXtendField(JvmField field, IHighlightedPositionAcceptor acceptor) {
+		if(field.getSimpleName() != null && field.getSimpleName().length() > 0){
+			List<INode> nodes = NodeModelUtils.findNodesForFeature(field, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME);
 			if(nodes.size() > 0){
 				INode node = nodes.get(0);
 				if(field.isStatic())

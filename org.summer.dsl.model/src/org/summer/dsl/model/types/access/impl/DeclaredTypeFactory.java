@@ -184,31 +184,61 @@ public class DeclaredTypeFactory implements ITypeFactory<Class<?>> {
 		}
 	}
 
+	
+	//cym comment
+//	protected JvmAnnotationReference createAnnotationReference(Annotation annotation) {
+//		JvmAnnotationReference annotationReference = TypesFactory.eINSTANCE.createJvmAnnotationReference();
+//		Class<? extends Annotation> type = annotation.annotationType();
+//		annotationReference.setAnnotation(createAnnotationProxy(type));
+//		Method[] declaredMethods = type.getDeclaredMethods();
+//		if (declaredMethods.length > 0) {
+//			InternalEList<JvmAnnotationValue> values = (InternalEList<JvmAnnotationValue>)annotationReference.getValues();
+//			for (Method method : declaredMethods) {
+//				try {
+//					Object value = method.invoke(annotation, EMPTY_ARRAY);
+//					Class<?> returnType = method.getReturnType();
+//					if (returnType.isArray()) {
+//						JvmAnnotationValue annotationValue = createArrayAnnotationValue(value, returnType);
+//						values.addUnique(annotationValue);
+//						annotationValue.setOperation(createMethodProxy(method));
+//					} else {
+//						JvmAnnotationValue annotationValue = createAnnotationValue(value, returnType);
+//						values.addUnique(annotationValue);
+//						annotationValue.setOperation(createMethodProxy(method));
+//					}
+//				} catch (Exception e) {
+//					log.error(e.getMessage(), e);
+//				}
+//			}
+//		}
+//		return annotationReference;
+//	}
+	
 	protected JvmAnnotationReference createAnnotationReference(Annotation annotation) {
 		JvmAnnotationReference annotationReference = TypesFactory.eINSTANCE.createJvmAnnotationReference();
-		Class<? extends Annotation> type = annotation.annotationType();
-		annotationReference.setAnnotation(createAnnotationProxy(type));
-		Method[] declaredMethods = type.getDeclaredMethods();
-		if (declaredMethods.length > 0) {
-			InternalEList<JvmAnnotationValue> values = (InternalEList<JvmAnnotationValue>)annotationReference.getValues();
-			for (Method method : declaredMethods) {
-				try {
-					Object value = method.invoke(annotation, EMPTY_ARRAY);
-					Class<?> returnType = method.getReturnType();
-					if (returnType.isArray()) {
-						JvmAnnotationValue annotationValue = createArrayAnnotationValue(value, returnType);
-						values.addUnique(annotationValue);
-						annotationValue.setOperation(createMethodProxy(method));
-					} else {
-						JvmAnnotationValue annotationValue = createAnnotationValue(value, returnType);
-						values.addUnique(annotationValue);
-						annotationValue.setOperation(createMethodProxy(method));
-					}
-				} catch (Exception e) {
-					log.error(e.getMessage(), e);
-				}
-			}
-		}
+//		Class<? extends Annotation> type = annotation.annotationType();
+//		annotationReference.setAnnotation(createAnnotationProxy(type));
+//		Method[] declaredMethods = type.getDeclaredMethods();
+//		if (declaredMethods.length > 0) {
+//			InternalEList<JvmAnnotationValue> values = (InternalEList<JvmAnnotationValue>)annotationReference.getValues();
+//			for (Method method : declaredMethods) {
+//				try {
+//					Object value = method.invoke(annotation, EMPTY_ARRAY);
+//					Class<?> returnType = method.getReturnType();
+//					if (returnType.isArray()) {
+//						JvmAnnotationValue annotationValue = createArrayAnnotationValue(value, returnType);
+//						values.addUnique(annotationValue);
+//						annotationValue.setField(createMethodProxy(method));
+//					} else {
+//						JvmAnnotationValue annotationValue = createAnnotationValue(value, returnType);
+//						values.addUnique(annotationValue);
+//						annotationValue.setField(createMethodProxy(method));
+//					}
+//				} catch (Exception e) {
+//					log.error(e.getMessage(), e);
+//				}
+//			}
+//		}
 		return annotationReference;
 	}
 
@@ -437,41 +467,44 @@ public class DeclaredTypeFactory implements ITypeFactory<Class<?>> {
 		}
 	}
 
+	
+	//cym comment
 	protected void createMethods(Class<?> clazz, JvmDeclaredType result) {
-		try {
-			Method[] declaredMethods = clazz.getDeclaredMethods();
-			if (declaredMethods.length != 0) {
-				InternalEList<JvmMember> members = (InternalEList<JvmMember>)result.getMembers();
-				for (Method method : declaredMethods) {
-					if (!method.isSynthetic()) {
-						JvmOperation operation = createOperation(method);
-						if (clazz.isAnnotation()) {
-							setDefaultValue(operation, method);
-						}
-						members.addUnique(operation);
-					}
-				}
-			}
-		} catch (NoClassDefFoundError e) {
-			logNoClassDefFoundError(e, clazz, "methods");
-		}
+//		try {
+//			Method[] declaredMethods = clazz.getDeclaredMethods();
+//			if (declaredMethods.length != 0) {
+//				InternalEList<JvmMember> members = (InternalEList<JvmMember>)result.getMembers();
+//				for (Method method : declaredMethods) {
+//					if (!method.isSynthetic()) {
+//						JvmOperation operation = createOperation(method);
+//						if (clazz.isAnnotation()) {
+//							setDefaultValue(operation, method);
+//						}
+//						members.addUnique(operation);
+//					}
+//				}
+//			}
+//		} catch (NoClassDefFoundError e) {
+//			logNoClassDefFoundError(e, clazz, "methods");
+//		}
 	}
 
-	private void setDefaultValue(JvmOperation operation, Method method) {
-		Object defaultValue = method.getDefaultValue();
-		if (defaultValue != null) {
-			Class<?> returnType = method.getReturnType();
-			if (returnType.isArray()) {
-				JvmAnnotationValue annotationValue = createArrayAnnotationValue(defaultValue, returnType);
-				operation.setDefaultValue(annotationValue);
-				annotationValue.setOperation(operation);
-			} else {
-				JvmAnnotationValue annotationValue = createAnnotationValue(defaultValue, returnType);
-				operation.setDefaultValue(annotationValue);
-				annotationValue.setOperation(operation);
-			}
-		}
-	}
+	//cym comment
+//	private void setDefaultValue(JvmOperation operation, Method method) {
+//		Object defaultValue = method.getDefaultValue();
+//		if (defaultValue != null) {
+//			Class<?> returnType = method.getReturnType();
+//			if (returnType.isArray()) {
+//				JvmAnnotationValue annotationValue = createArrayAnnotationValue(defaultValue, returnType);
+//				operation.setDefaultValue(annotationValue);
+//				annotationValue.setOperation(operation);
+//			} else {
+//				JvmAnnotationValue annotationValue = createAnnotationValue(defaultValue, returnType);
+//				operation.setDefaultValue(annotationValue);
+//				annotationValue.setOperation(operation);
+//			}
+//		}
+//	}
 
 	protected JvmEnumerationType createEnumerationType(Class<?> clazz) {
 		JvmEnumerationType result = TypesFactory.eINSTANCE.createJvmEnumerationType();

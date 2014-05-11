@@ -16,6 +16,7 @@ import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.dsl.model.types.impl.JvmTypeImpl;
+import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xtype.XExportSection;
 import org.summer.dsl.model.xtype.XImportSection1;
 
@@ -31,6 +32,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
  *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getPackage <em>Package</em>}</li>
  *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getExportSection <em>Export Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.ss.impl.XModuleImpl#getRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,6 +98,16 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 	 * @ordered
 	 */
 	protected XExportSection exportSection;
+
+	/**
+	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected XObjectElement root;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,6 +264,49 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public XObjectElement getRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRoot(XObjectElement newRoot, NotificationChain msgs) {
+		XObjectElement oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__ROOT, oldRoot, newRoot);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoot(XObjectElement newRoot) {
+		if (newRoot != root) {
+			NotificationChain msgs = null;
+			if (root != null)
+				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__ROOT, null, msgs);
+			if (newRoot != null)
+				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SsPackage.XMODULE__ROOT, null, msgs);
+			msgs = basicSetRoot(newRoot, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SsPackage.XMODULE__ROOT, newRoot, newRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -263,6 +318,8 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
 			case SsPackage.XMODULE__EXPORT_SECTION:
 				return basicSetExportSection(null, msgs);
+			case SsPackage.XMODULE__ROOT:
+				return basicSetRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -285,6 +342,8 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 				return getContents();
 			case SsPackage.XMODULE__EXPORT_SECTION:
 				return getExportSection();
+			case SsPackage.XMODULE__ROOT:
+				return getRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,6 +374,9 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 			case SsPackage.XMODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)newValue);
 				return;
+			case SsPackage.XMODULE__ROOT:
+				setRoot((XObjectElement)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,6 +404,9 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 			case SsPackage.XMODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)null);
 				return;
+			case SsPackage.XMODULE__ROOT:
+				setRoot((XObjectElement)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -364,6 +429,8 @@ public class XModuleImpl extends JvmTypeImpl implements XModule {
 				return contents != null && !contents.isEmpty();
 			case SsPackage.XMODULE__EXPORT_SECTION:
 				return exportSection != null;
+			case SsPackage.XMODULE__ROOT:
+				return root != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -3,16 +3,13 @@
 package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.summer.dsl.model.types.JvmAnnotationValue;
-import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XExpression;
 
@@ -23,7 +20,7 @@ import org.summer.dsl.model.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmAnnotationValueImpl#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmAnnotationValueImpl#getField <em>Field</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmAnnotationValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -32,14 +29,14 @@ import org.summer.dsl.model.xbase.XExpression;
  */
 public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container implements JvmAnnotationValue {
 	/**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
+	 * The cached value of the '{@link #getField() <em>Field</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperation()
+	 * @see #getField()
 	 * @generated
 	 * @ordered
 	 */
-	protected JvmOperation operation;
+	protected JvmField field;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -75,16 +72,16 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmOperation getOperation() {
-		if (operation != null && operation.eIsProxy()) {
-			InternalEObject oldOperation = (InternalEObject)operation;
-			operation = (JvmOperation)eResolveProxy(oldOperation);
-			if (operation != oldOperation) {
+	public JvmField getField() {
+		if (field != null && field.eIsProxy()) {
+			InternalEObject oldField = (InternalEObject)field;
+			field = (JvmField)eResolveProxy(oldField);
+			if (field != oldField) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TypesPackage.JVM_ANNOTATION_VALUE__OPERATION, oldOperation, operation));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TypesPackage.JVM_ANNOTATION_VALUE__FIELD, oldField, field));
 			}
 		}
-		return operation;
+		return field;
 	}
 
 	/**
@@ -92,8 +89,8 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmOperation basicGetOperation() {
-		return operation;
+	public JvmField basicGetField() {
+		return field;
 	}
 
 	/**
@@ -101,11 +98,11 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOperation(JvmOperation newOperation) {
-		JvmOperation oldOperation = operation;
-		operation = newOperation;
+	public void setField(JvmField newField) {
+		JvmField oldField = field;
+		field = newField;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_ANNOTATION_VALUE__OPERATION, oldOperation, operation));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_ANNOTATION_VALUE__FIELD, oldField, field));
 	}
 
 	/**
@@ -184,9 +181,9 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TypesPackage.JVM_ANNOTATION_VALUE__OPERATION:
-				if (resolve) return getOperation();
-				return basicGetOperation();
+			case TypesPackage.JVM_ANNOTATION_VALUE__FIELD:
+				if (resolve) return getField();
+				return basicGetField();
 			case TypesPackage.JVM_ANNOTATION_VALUE__VALUE:
 				return getValue();
 		}
@@ -201,8 +198,8 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TypesPackage.JVM_ANNOTATION_VALUE__OPERATION:
-				setOperation((JvmOperation)newValue);
+			case TypesPackage.JVM_ANNOTATION_VALUE__FIELD:
+				setField((JvmField)newValue);
 				return;
 			case TypesPackage.JVM_ANNOTATION_VALUE__VALUE:
 				setValue((XExpression)newValue);
@@ -219,8 +216,8 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_ANNOTATION_VALUE__OPERATION:
-				setOperation((JvmOperation)null);
+			case TypesPackage.JVM_ANNOTATION_VALUE__FIELD:
+				setField((JvmField)null);
 				return;
 			case TypesPackage.JVM_ANNOTATION_VALUE__VALUE:
 				setValue((XExpression)null);
@@ -237,8 +234,8 @@ public class JvmAnnotationValueImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_ANNOTATION_VALUE__OPERATION:
-				return operation != null;
+			case TypesPackage.JVM_ANNOTATION_VALUE__FIELD:
+				return field != null;
 			case TypesPackage.JVM_ANNOTATION_VALUE__VALUE:
 				return value != null;
 		}

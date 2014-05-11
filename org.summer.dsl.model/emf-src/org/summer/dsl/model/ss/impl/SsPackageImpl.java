@@ -43,6 +43,8 @@ import org.summer.dsl.model.types.TypesPackage;
 
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
 
+import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
@@ -275,6 +277,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
 		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
+		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSsPackage.createPackageContents();
@@ -283,6 +286,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
 		theRichstringPackage.createPackageContents();
+		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSsPackage.initializePackageContents();
@@ -291,6 +295,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
 		theRichstringPackage.initializePackageContents();
+		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSsPackage.freeze();
@@ -353,6 +358,15 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 	 */
 	public EReference getXModule_ExportSection() {
 		return (EReference)xModuleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXModule_Root() {
+		return (EReference)xModuleEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1037,6 +1051,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		createEAttribute(xModuleEClass, XMODULE__PACKAGE);
 		createEReference(xModuleEClass, XMODULE__CONTENTS);
 		createEReference(xModuleEClass, XMODULE__EXPORT_SECTION);
+		createEReference(xModuleEClass, XMODULE__ROOT);
 
 		xtendClassEClass = createEClass(XTEND_CLASS);
 		createEReference(xtendClassEClass, XTEND_CLASS__EXTENDS);
@@ -1159,6 +1174,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		// Obtain other dependent packages
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
+		XamlPackage theXamlPackage = (XamlPackage)EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI);
 		XannotationPackage theXannotationPackage = (XannotationPackage)EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
@@ -1195,6 +1211,7 @@ public class SsPackageImpl extends EPackageImpl implements SsPackage {
 		initEAttribute(getXModule_Package(), ecorePackage.getEString(), "package", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXModule_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXModule_ExportSection(), theXtypePackage.getXExportSection(), null, "exportSection", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXModule_Root(), theXamlPackage.getXObjectElement(), null, "root", null, 0, 1, XModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xtendClassEClass, XtendClass.class, "XtendClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXtendClass_Extends(), theTypesPackage.getJvmTypeReference(), null, "extends", null, 0, 1, XtendClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -55,24 +55,42 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 		return xtendFile == null ? null : xtendFile.getPackage();
 	}
 	
+	//cym comment
+//	@Override
+//	public Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource) {
+//		XModule xtendFile = getXtendFile(resource);
+//		if(xtendFile == null)
+//			return emptyList();
+//		final List<JvmDeclaredType> locallyDefinedTypes = newArrayList();
+//		for(XtendTypeDeclaration xtendType: xtendFile.getXtendTypes())  {
+//			for(EObject inferredElement: associations.getJvmElements(xtendType)) {
+//				if(inferredElement instanceof JvmDeclaredType) {
+//					JvmDeclaredType declaredType = (JvmDeclaredType) inferredElement;
+//					locallyDefinedTypes.add(declaredType);
+//					addInnerTypes(declaredType, new IAcceptor<JvmDeclaredType>() {
+//						public void accept(JvmDeclaredType t) {
+//							locallyDefinedTypes.add(t);
+//						}
+//					});
+//				}
+//			}
+//		}
+//		return locallyDefinedTypes;
+//	}
+	
 	@Override
 	public Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource) {
 		XModule xtendFile = getXtendFile(resource);
 		if(xtendFile == null)
 			return emptyList();
 		final List<JvmDeclaredType> locallyDefinedTypes = newArrayList();
-		for(XtendTypeDeclaration xtendType: xtendFile.getXtendTypes())  {
-			for(EObject inferredElement: associations.getJvmElements(xtendType)) {
-				if(inferredElement instanceof JvmDeclaredType) {
-					JvmDeclaredType declaredType = (JvmDeclaredType) inferredElement;
-					locallyDefinedTypes.add(declaredType);
-					addInnerTypes(declaredType, new IAcceptor<JvmDeclaredType>() {
-						public void accept(JvmDeclaredType t) {
-							locallyDefinedTypes.add(t);
-						}
-					});
-				}
+		for(EObject object: xtendFile.getContents())  {
+			if(!(object instanceof JvmDeclaredType)){
+				continue;
+				
 			}
+			JvmDeclaredType type = (JvmDeclaredType) object;
+			locallyDefinedTypes.add(type);
 		}
 		return locallyDefinedTypes;
 	}

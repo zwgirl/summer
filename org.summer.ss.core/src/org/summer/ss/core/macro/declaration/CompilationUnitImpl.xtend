@@ -563,8 +563,12 @@ class CompilationUnitImpl implements CompilationUnit {
 	}
 	
 	protected def findExpectedType(JvmAnnotationValue value) {
-		if (value.operation != null) {
-			return value.operation.returnType
+		//cym comment
+//		if (value.operation != null) {
+//			return value.operation.returnType
+//		}
+		if (value.field != null) {
+			return value.field.type
 		}
 		return switch container : value.eContainer {
 			JvmOperation : {

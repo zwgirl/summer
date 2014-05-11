@@ -583,7 +583,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 		if (typeBinding.isParameterizedType())
 			typeBinding = typeBinding.getErasure();
 		JvmAnnotationValue annotationValue = createAnnotationValue(typeBinding, value);
-		annotationValue.setOperation(createMethodProxy(annotationType, methodBinding));
+//		annotationValue.setOperation(createMethodProxy(annotationType, methodBinding));  //cym comment
 		return annotationValue;
 	}
 
@@ -999,7 +999,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 				typeBinding = typeBinding.getErasure();
 			JvmAnnotationValue annotationValue = createAnnotationValue(typeBinding, defaultValue);
 			operation.setDefaultValue(annotationValue);
-			annotationValue.setOperation(operation);
+//			annotationValue.setOperation(operation);  //cym comment
 		}
 	}
 

@@ -54,4 +54,12 @@
             genModel="model/DslModel.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DslModel -->
+      <package
+            uri="http://www.summer.org/dsl/model/xaml"
+            class="org.summer.dsl.model.xaml.XamlPackage"
+            genModel="model/DslModel.genmodel"/>
+   </extension>
+
 </plugin>

@@ -1679,18 +1679,18 @@ public abstract class AbstractXbaseWithAnnotationsSemanticSequencer extends Xbas
 	
 	/**
 	 * Constraint:
-	 *     (operation=[JvmOperation|ValidID] value=XLiteral)
+	 *     (field=[JvmField|ValidID] value=XLiteral)
 	 */
 	protected void sequence_JvmAnnotationValue(EObject context, JvmAnnotationValue semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__OPERATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__OPERATION));
+			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD));
 			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getOperationJvmOperationValidIDParserRuleCall_0_0_0_0_1(), semanticObject.getOperation());
+		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1(), semanticObject.getField());
 		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getValueXLiteralParserRuleCall_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}

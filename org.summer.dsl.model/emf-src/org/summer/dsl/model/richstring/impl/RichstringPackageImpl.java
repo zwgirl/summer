@@ -32,6 +32,8 @@ import org.summer.dsl.model.types.TypesPackage;
 
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
 
+import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xannotation.XannotationPackage;
 
 import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
@@ -187,6 +189,7 @@ public class RichstringPackageImpl extends EPackageImpl implements RichstringPac
 		SsPackageImpl theSsPackage = (SsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) instanceof SsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) : SsPackage.eINSTANCE);
 		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
+		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRichstringPackage.createPackageContents();
@@ -195,6 +198,7 @@ public class RichstringPackageImpl extends EPackageImpl implements RichstringPac
 		theSsPackage.createPackageContents();
 		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
+		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRichstringPackage.initializePackageContents();
@@ -203,6 +207,7 @@ public class RichstringPackageImpl extends EPackageImpl implements RichstringPac
 		theSsPackage.initializePackageContents();
 		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
+		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRichstringPackage.freeze();

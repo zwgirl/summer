@@ -80,7 +80,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmStringAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -95,7 +95,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmBooleanAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -110,7 +110,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmIntAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -125,7 +125,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmShortAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -140,7 +140,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmLongAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -155,7 +155,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmDoubleAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -170,7 +170,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmFloatAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -185,7 +185,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmCharAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -200,7 +200,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmByteAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.addAll(values)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -214,7 +214,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmTypeAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		values.forEach[
 			switch it {
 				TypeReferenceImpl : {
@@ -234,7 +234,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmEnumAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		values.forEach[
 			switch it {
 				JvmEnumerationValueDeclarationImpl : {
@@ -252,7 +252,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 	def dispatch void internalSet(String name, XtendAnnotationReferenceImpl value) {
 		val newValue = TypesFactory.eINSTANCE.createJvmCustomAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.add(value.delegate)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -261,7 +261,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 	def dispatch void internalSet(String name, ExpressionImpl value) {
 		val newValue = TypesFactory.eINSTANCE.createJvmCustomAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		newValue.values.add(value.delegate)
 		remove(name);
 		delegate.getValues.add(newValue)
@@ -275,7 +275,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 		checkIterable(values, "values")
 		val newValue = TypesFactory.eINSTANCE.createJvmAnnotationAnnotationValue
 		if (name != null)
-			newValue.setOperation(findOperation(name))
+			newValue.setField(findOperation(name))
 		values.forEach[
 			switch it {
 				JvmAnnotationReferenceImpl : {
@@ -291,7 +291,7 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 	}
 	
 	override remove(String name) {
-		val found = delegate.values.findFirst[(if (operation==null) 'value' else operation.simpleName)==name]
+		val found = delegate.values.findFirst[(if (field==null) 'value' else field.simpleName)==name]
 		if (found != null) {
 			delegate.values.remove(found)
 			return true;
@@ -301,11 +301,11 @@ class JvmAnnotationReferenceImpl extends JvmElementImpl<JvmAnnotationReference> 
 	
 	private def findOperation(String name) {
 		val jvmAnnoType = (annotationTypeDeclaration as JvmAnnotationTypeDeclarationImpl).delegate
-		val jvmOperation = jvmAnnoType.declaredOperations.findFirst[it.simpleName == name]
-		if (jvmOperation == null) {
+		val jvmField = jvmAnnoType.declaredFields.findFirst[it.simpleName == name]
+		if (jvmField == null) {
 			throw new IllegalArgumentException("The annotation property '"+name+"' is not declared on the annotation type '"+jvmAnnoType.identifier+"'.")
 		}
-		return jvmOperation
+		return jvmField
 	}
 	
 	override setExpression(String name, Expression value) {

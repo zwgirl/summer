@@ -115,13 +115,22 @@ public interface SsPackage extends EPackage {
 	int XMODULE__EXPORT_SECTION = TypesPackage.JVM_TYPE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XMODULE__ROOT = TypesPackage.JVM_TYPE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>XModule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMODULE_FEATURE_COUNT = TypesPackage.JVM_TYPE_FEATURE_COUNT + 5;
+	int XMODULE_FEATURE_COUNT = TypesPackage.JVM_TYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.ss.impl.XtendAnnotationTargetImpl <em>Xtend Annotation Target</em>}' class.
@@ -1682,6 +1691,17 @@ public interface SsPackage extends EPackage {
 	EReference getXModule_ExportSection();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.ss.XModule#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root</em>'.
+	 * @see org.summer.dsl.model.ss.XModule#getRoot()
+	 * @see #getXModule()
+	 * @generated
+	 */
+	EReference getXModule_Root();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.ss.XtendClass <em>Xtend Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2522,6 +2542,14 @@ public interface SsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference XMODULE__EXPORT_SECTION = eINSTANCE.getXModule_ExportSection();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XMODULE__ROOT = eINSTANCE.getXModule_Root();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.ss.impl.XtendClassImpl <em>Xtend Class</em>}' class.
