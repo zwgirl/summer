@@ -42,6 +42,20 @@
           eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmType" abstract="true" eSuperTypes="#//types/JvmIdentifiableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JvmDelegateType" eSuperTypes="#//types/JvmTypeParameterDeclarator #//types/JvmType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//types/JvmTypeReference"
+          containment="true" resolveProxies="false"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//types/JvmFormalParameter" containment="true" resolveProxies="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="varArgs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="simpleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="exported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+          eType="#//types/JvmAnnotationReference" containment="true" resolveProxies="false"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmVoid" eSuperTypes="#//types/JvmType"/>
     <eClassifiers xsi:type="ecore:EClass" name="JvmComponentType" abstract="true"
         eSuperTypes="#//types/JvmType">
@@ -261,6 +275,16 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="set" eType="#//xbase/XExpression"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="get" eType="#//xbase/XExpression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JvmEvent" eSuperTypes="#//types/JvmFeature">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="static" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="native" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//types/JvmTypeReference"
+          containment="true" resolveProxies="false"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="add" eType="#//xbase/XExpression"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="remove" eType="#//xbase/XExpression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmExecutable" abstract="true" eSuperTypes="#//types/JvmFeature #//types/JvmTypeParameterDeclarator">

@@ -38,6 +38,7 @@ public class SsParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getXModuleAccess().getAlternatives_2(), "rule__XModule__Alternatives_2");
+					put(grammarAccess.getXModuleAccess().getContentsAlternatives_2_0_0(), "rule__XModule__ContentsAlternatives_2_0_0");
 					put(grammarAccess.getTypeAccess().getAlternatives_2(), "rule__Type__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2(), "rule__Member__Alternatives_2");
 					put(grammarAccess.getMemberAccess().getAlternatives_2_0_3(), "rule__Member__Alternatives_2_0_3");
@@ -78,7 +79,6 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNumberAccess().getAlternatives_1_0(), "rule__Number__Alternatives_1_0");
 					put(grammarAccess.getNumberAccess().getAlternatives_1_1_1(), "rule__Number__Alternatives_1_1_1");
 					put(grammarAccess.getXTemplateLiteralAccess().getAlternatives_1(), "rule__XTemplateLiteral__Alternatives_1");
-					put(grammarAccess.getJvmTypeReferenceAccess().getAlternatives(), "rule__JvmTypeReference__Alternatives");
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclaration1Access().getAlternatives_3(), "rule__XImportDeclaration1__Alternatives_3");
@@ -106,6 +106,12 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeAccess().getGroup_2_3_5(), "rule__Type__Group_2_3_5__0");
 					put(grammarAccess.getTypeAccess().getGroup_2_3_5_1(), "rule__Type__Group_2_3_5_1__0");
 					put(grammarAccess.getTypeAccess().getGroup_2_4(), "rule__Type__Group_2_4__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup(), "rule__DelegateType__Group__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup_3(), "rule__DelegateType__Group_3__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup_3_2(), "rule__DelegateType__Group_3_2__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup_5(), "rule__DelegateType__Group_5__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup_5_1(), "rule__DelegateType__Group_5_1__0");
+					put(grammarAccess.getDelegateTypeAccess().getGroup_7(), "rule__DelegateType__Group_7__0");
 					put(grammarAccess.getAnnotationFieldAccess().getGroup(), "rule__AnnotationField__Group__0");
 					put(grammarAccess.getAnnotationFieldAccess().getGroup_1(), "rule__AnnotationField__Group_1__0");
 					put(grammarAccess.getAnnotationFieldAccess().getGroup_2(), "rule__AnnotationField__Group_2__0");
@@ -122,6 +128,9 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getGroup_2_2_2_2(), "rule__Member__Group_2_2_2_2__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_2_4(), "rule__Member__Group_2_2_4__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_2_4_1(), "rule__Member__Group_2_2_4_1__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_3(), "rule__Member__Group_2_3__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_3_4(), "rule__Member__Group_2_3_4__0");
+					put(grammarAccess.getMemberAccess().getGroup_2_3_4_3(), "rule__Member__Group_2_3_4_3__0");
 					put(grammarAccess.getXClosureAccess().getGroup(), "rule__XClosure__Group__0");
 					put(grammarAccess.getXClosureAccess().getGroup_3(), "rule__XClosure__Group_3__0");
 					put(grammarAccess.getXClosureAccess().getGroup_3_2(), "rule__XClosure__Group_3_2__0");
@@ -314,14 +323,10 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringLiteralStartAccess().getGroup(), "rule__RichStringLiteralStart__Group__0");
 					put(grammarAccess.getRichStringLiteralInbetweenAccess().getGroup(), "rule__RichStringLiteralInbetween__Group__0");
 					put(grammarAccess.getRichStringLiteralEndAccess().getGroup(), "rule__RichStringLiteralEnd__Group__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0(), "rule__JvmTypeReference__Group_0__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1(), "rule__JvmTypeReference__Group_0_1__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1_0(), "rule__JvmTypeReference__Group_0_1_0__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup(), "rule__JvmTypeReference__Group__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_1(), "rule__JvmTypeReference__Group_1__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_1_0(), "rule__JvmTypeReference__Group_1_0__0");
 					put(grammarAccess.getArrayBracketsAccess().getGroup(), "rule__ArrayBrackets__Group__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup(), "rule__XFunctionTypeRef__Group__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0(), "rule__XFunctionTypeRef__Group_0__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0_1(), "rule__XFunctionTypeRef__Group_0_1__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0_1_1(), "rule__XFunctionTypeRef__Group_0_1_1__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup(), "rule__JvmParameterizedTypeReference__Group__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup_1(), "rule__JvmParameterizedTypeReference__Group_1__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup_1_2(), "rule__JvmParameterizedTypeReference__Group_1_2__0");
@@ -382,6 +387,13 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeAccess().getExportedAssignment_2_4_1(), "rule__Type__ExportedAssignment_2_4_1");
 					put(grammarAccess.getTypeAccess().getSimpleNameAssignment_2_4_3(), "rule__Type__SimpleNameAssignment_2_4_3");
 					put(grammarAccess.getTypeAccess().getMembersAssignment_2_4_5(), "rule__Type__MembersAssignment_2_4_5");
+					put(grammarAccess.getDelegateTypeAccess().getExportedAssignment_0(), "rule__DelegateType__ExportedAssignment_0");
+					put(grammarAccess.getDelegateTypeAccess().getSimpleNameAssignment_2(), "rule__DelegateType__SimpleNameAssignment_2");
+					put(grammarAccess.getDelegateTypeAccess().getTypeParametersAssignment_3_1(), "rule__DelegateType__TypeParametersAssignment_3_1");
+					put(grammarAccess.getDelegateTypeAccess().getTypeParametersAssignment_3_2_1(), "rule__DelegateType__TypeParametersAssignment_3_2_1");
+					put(grammarAccess.getDelegateTypeAccess().getParametersAssignment_5_0(), "rule__DelegateType__ParametersAssignment_5_0");
+					put(grammarAccess.getDelegateTypeAccess().getParametersAssignment_5_1_1(), "rule__DelegateType__ParametersAssignment_5_1_1");
+					put(grammarAccess.getDelegateTypeAccess().getReturnTypeAssignment_7_1(), "rule__DelegateType__ReturnTypeAssignment_7_1");
 					put(grammarAccess.getAnnotationFieldAccess().getAnnotationsAssignment_0(), "rule__AnnotationField__AnnotationsAssignment_0");
 					put(grammarAccess.getAnnotationFieldAccess().getTypeAssignment_1_0(), "rule__AnnotationField__TypeAssignment_1_0");
 					put(grammarAccess.getAnnotationFieldAccess().getSimpleNameAssignment_1_1(), "rule__AnnotationField__SimpleNameAssignment_1_1");
@@ -400,6 +412,10 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMemberAccess().getParametersAssignment_2_2_4_0(), "rule__Member__ParametersAssignment_2_2_4_0");
 					put(grammarAccess.getMemberAccess().getParametersAssignment_2_2_4_1_1(), "rule__Member__ParametersAssignment_2_2_4_1_1");
 					put(grammarAccess.getMemberAccess().getExpressionAssignment_2_2_6(), "rule__Member__ExpressionAssignment_2_2_6");
+					put(grammarAccess.getMemberAccess().getTypeAssignment_2_3_2(), "rule__Member__TypeAssignment_2_3_2");
+					put(grammarAccess.getMemberAccess().getSimpleNameAssignment_2_3_3(), "rule__Member__SimpleNameAssignment_2_3_3");
+					put(grammarAccess.getMemberAccess().getAddAssignment_2_3_4_2(), "rule__Member__AddAssignment_2_3_4_2");
+					put(grammarAccess.getMemberAccess().getRemoveAssignment_2_3_4_3_1(), "rule__Member__RemoveAssignment_2_3_4_3_1");
 					put(grammarAccess.getXClosureAccess().getExportedAssignment_1(), "rule__XClosure__ExportedAssignment_1");
 					put(grammarAccess.getXClosureAccess().getTypeParametersAssignment_3_1(), "rule__XClosure__TypeParametersAssignment_3_1");
 					put(grammarAccess.getXClosureAccess().getTypeParametersAssignment_3_2_1(), "rule__XClosure__TypeParametersAssignment_3_2_1");
@@ -559,9 +575,6 @@ public class SsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringLiteralStartAccess().getValueAssignment_1(), "rule__RichStringLiteralStart__ValueAssignment_1");
 					put(grammarAccess.getRichStringLiteralInbetweenAccess().getValueAssignment_1(), "rule__RichStringLiteralInbetween__ValueAssignment_1");
 					put(grammarAccess.getRichStringLiteralEndAccess().getValueAssignment_1(), "rule__RichStringLiteralEnd__ValueAssignment_1");
-					put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_0(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_1_1(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1");
-					put(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeAssignment_2(), "rule__XFunctionTypeRef__ReturnTypeAssignment_2");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeAssignment_0(), "rule__JvmParameterizedTypeReference__TypeAssignment_0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsAssignment_1_1(), "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsAssignment_1_2_1(), "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1");

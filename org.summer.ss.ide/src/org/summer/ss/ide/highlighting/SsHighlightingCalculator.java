@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.ss.ide.highlighting;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.filter;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,43 +16,17 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.Region;
-import org.summer.ss.core.richstring.AbstractRichStringPartAcceptor;
-import org.summer.ss.core.richstring.DefaultIndentationHandler;
-import org.summer.ss.core.richstring.RichStringProcessor;
-import org.summer.ss.core.services.SsGrammarAccess;
-import org.summer.dsl.model.ss.CreateExtensionInfo;
-import org.summer.dsl.model.ss.RichString;
-import org.summer.dsl.model.ss.RichStringLiteral;
-import org.summer.dsl.model.ss.XtendAnnotationTarget;
-import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.XtendMember;
-import org.summer.dsl.model.ss.SsPackage;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.TerminalRule;
-import org.summer.dsl.model.types.JvmAnnotationReference;
-import org.summer.dsl.model.types.JvmAnnotationTarget;
-import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.util.DeprecationUtil;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -60,17 +34,35 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
-import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.ss.RichString;
+import org.summer.dsl.model.ss.RichStringLiteral;
+import org.summer.dsl.model.ss.XModule;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmDelegateType;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.util.DeprecationUtil;
 import org.summer.dsl.model.xaml.XAbstractAttribute;
 import org.summer.dsl.model.xaml.XAttributeElement;
 import org.summer.dsl.model.xaml.XElement;
 import org.summer.dsl.model.xaml.XMarkupExtenson;
 import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xaml.XamlPackage;
-import org.summer.dsl.model.xannotation.XAnnotation;
+import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingCalculator;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingConfiguration;
+import org.summer.ss.core.richstring.AbstractRichStringPartAcceptor;
+import org.summer.ss.core.richstring.DefaultIndentationHandler;
+import org.summer.ss.core.richstring.RichStringProcessor;
+import org.summer.ss.core.services.SsGrammarAccess;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -159,6 +151,14 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 		for (EObject object : file.getContents()) {
 			if(object instanceof JvmAnnotationTarget){
 				highlightDeprecatedXtendAnnotationTarget(acceptor, (JvmAnnotationTarget) object);
+			}
+			
+			if(object instanceof JvmDelegateType){
+				continue;
+			}
+			
+			if(!(object instanceof JvmAnnotationTarget)){
+				continue;
 			}
 			
 			highlightRichStringsInAnnotations(acceptor, (JvmAnnotationTarget) object);

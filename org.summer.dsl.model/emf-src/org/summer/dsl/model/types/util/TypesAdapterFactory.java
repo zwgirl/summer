@@ -84,6 +84,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 				return createJvmTypeAdapter();
 			}
 			@Override
+			public Adapter caseJvmDelegateType(JvmDelegateType object) {
+				return createJvmDelegateTypeAdapter();
+			}
+			@Override
 			public Adapter caseJvmVoid(JvmVoid object) {
 				return createJvmVoidAdapter();
 			}
@@ -182,6 +186,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseJvmField(JvmField object) {
 				return createJvmFieldAdapter();
+			}
+			@Override
+			public Adapter caseJvmEvent(JvmEvent object) {
+				return createJvmEventAdapter();
 			}
 			@Override
 			public Adapter caseJvmExecutable(JvmExecutable object) {
@@ -356,6 +364,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmDelegateType <em>Jvm Delegate Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmDelegateType
+	 * @generated
+	 */
+	public Adapter createJvmDelegateTypeAdapter() {
 		return null;
 	}
 
@@ -706,6 +728,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmFieldAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmEvent <em>Jvm Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmEvent
+	 * @generated
+	 */
+	public Adapter createJvmEventAdapter() {
 		return null;
 	}
 

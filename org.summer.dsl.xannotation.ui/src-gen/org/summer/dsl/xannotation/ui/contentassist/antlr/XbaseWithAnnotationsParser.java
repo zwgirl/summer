@@ -65,7 +65,6 @@ public class XbaseWithAnnotationsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNumberAccess().getAlternatives_1_0(), "rule__Number__Alternatives_1_0");
 					put(grammarAccess.getNumberAccess().getAlternatives_1_1_1(), "rule__Number__Alternatives_1_1_1");
 					put(grammarAccess.getXTemplateLiteralAccess().getAlternatives_1(), "rule__XTemplateLiteral__Alternatives_1");
-					put(grammarAccess.getJvmTypeReferenceAccess().getAlternatives(), "rule__JvmTypeReference__Alternatives");
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclaration1Access().getAlternatives_3(), "rule__XImportDeclaration1__Alternatives_3");
@@ -250,14 +249,10 @@ public class XbaseWithAnnotationsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringLiteralStartAccess().getGroup(), "rule__RichStringLiteralStart__Group__0");
 					put(grammarAccess.getRichStringLiteralInbetweenAccess().getGroup(), "rule__RichStringLiteralInbetween__Group__0");
 					put(grammarAccess.getRichStringLiteralEndAccess().getGroup(), "rule__RichStringLiteralEnd__Group__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0(), "rule__JvmTypeReference__Group_0__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1(), "rule__JvmTypeReference__Group_0_1__0");
-					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_0_1_0(), "rule__JvmTypeReference__Group_0_1_0__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup(), "rule__JvmTypeReference__Group__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_1(), "rule__JvmTypeReference__Group_1__0");
+					put(grammarAccess.getJvmTypeReferenceAccess().getGroup_1_0(), "rule__JvmTypeReference__Group_1_0__0");
 					put(grammarAccess.getArrayBracketsAccess().getGroup(), "rule__ArrayBrackets__Group__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup(), "rule__XFunctionTypeRef__Group__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0(), "rule__XFunctionTypeRef__Group_0__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0_1(), "rule__XFunctionTypeRef__Group_0_1__0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getGroup_0_1_1(), "rule__XFunctionTypeRef__Group_0_1_1__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup(), "rule__JvmParameterizedTypeReference__Group__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup_1(), "rule__JvmParameterizedTypeReference__Group_1__0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getGroup_1_2(), "rule__JvmParameterizedTypeReference__Group_1_2__0");
@@ -418,9 +413,6 @@ public class XbaseWithAnnotationsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRichStringLiteralStartAccess().getValueAssignment_1(), "rule__RichStringLiteralStart__ValueAssignment_1");
 					put(grammarAccess.getRichStringLiteralInbetweenAccess().getValueAssignment_1(), "rule__RichStringLiteralInbetween__ValueAssignment_1");
 					put(grammarAccess.getRichStringLiteralEndAccess().getValueAssignment_1(), "rule__RichStringLiteralEnd__ValueAssignment_1");
-					put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_0(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0");
-					put(grammarAccess.getXFunctionTypeRefAccess().getParamTypesAssignment_0_1_1_1(), "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1");
-					put(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeAssignment_2(), "rule__XFunctionTypeRef__ReturnTypeAssignment_2");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeAssignment_0(), "rule__JvmParameterizedTypeReference__TypeAssignment_0");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsAssignment_1_1(), "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1");
 					put(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsAssignment_1_2_1(), "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1");

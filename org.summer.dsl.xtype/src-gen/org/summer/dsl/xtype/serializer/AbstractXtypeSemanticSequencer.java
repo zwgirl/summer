@@ -23,7 +23,6 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection1;
@@ -41,7 +40,7 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 			case TypesPackage.JVM_GENERIC_ARRAY_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
 					sequence_JvmTypeReference(context, (JvmGenericArrayTypeReference) semanticObject); 
 					return; 
 				}
@@ -56,7 +55,7 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
 					return; 
 				}
@@ -101,14 +100,6 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 			case XtypePackage.XEXPORT_SECTION:
 				if(context == grammarAccess.getXExportSectionRule()) {
 					sequence_XExportSection(context, (XExportSection) semanticObject); 
-					return; 
-				}
-				else break;
-			case XtypePackage.XFUNCTION_TYPE_REF:
-				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getXFunctionTypeRefRule()) {
-					sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -163,7 +154,7 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     componentType=JvmTypeReference_JvmGenericArrayTypeReference_0_1_0_0
+	 *     componentType=JvmTypeReference_JvmGenericArrayTypeReference_1_0_0
 	 */
 	protected void sequence_JvmTypeReference(EObject context, JvmGenericArrayTypeReference semanticObject) {
 		if(errorAcceptor != null) {
@@ -172,7 +163,7 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0(), semanticObject.getComponentType());
+		feeder.accept(grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0(), semanticObject.getComponentType());
 		feeder.finish();
 	}
 	
@@ -227,15 +218,6 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	 *     exportDeclarations+=XExportDeclaration+
 	 */
 	protected void sequence_XExportSection(EObject context, XExportSection semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((paramTypes+=JvmTypeReference paramTypes+=JvmTypeReference*)? returnType=JvmTypeReference)
-	 */
-	protected void sequence_XFunctionTypeRef(EObject context, XFunctionTypeRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

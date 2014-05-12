@@ -10,6 +10,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
@@ -70,7 +71,12 @@ public class RootScope implements IScope{
 				JvmDeclaredType jvmType = (JvmDeclaredType) obj;
 				result.add(EObjectDescription.create(jvmType.getSimpleName(), jvmType));
 				
-			}else if(obj instanceof XVariableDeclarationList){
+			} else if(obj instanceof JvmDelegateType){
+				JvmDelegateType delegate  = (JvmDelegateType) obj;
+				if(delegate.getSimpleName()!=null && !delegate.getSimpleName().isEmpty()){
+					result.add(EObjectDescription.create(delegate.getSimpleName(), delegate));
+				}
+			} else if(obj instanceof XVariableDeclarationList){
 				XVariableDeclarationList varDeclList  = (XVariableDeclarationList) obj;
 				for(XExpression exp : varDeclList.getDeclarations()){
 					XVariableDeclaration var = (XVariableDeclaration) exp;

@@ -452,6 +452,10 @@ XClosure returns XExpression:
 		) 
 		expression=XExpression 
 	;
+
+XParenthesizedExpression returns XExpression:
+	'(' XExpression ')' ;
+
 	
 //		(
 //			{types::JvmOperation.annotationInfo = current} modifiers+=CommonModifier*
@@ -491,9 +495,6 @@ XClosure returns XExpression:
 
 //XShortClosure returns XExpression:
 //	=>({XClosure} (declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?='|') expression=XExpression;
-
-XParenthesizedExpression returns XExpression:
-	'(' XExpression ')' ;
 
 XIfExpression returns XExpression:
 	{XIfExpression}

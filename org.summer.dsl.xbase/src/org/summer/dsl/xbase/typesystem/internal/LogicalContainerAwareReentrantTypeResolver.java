@@ -22,14 +22,15 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmCustomAnnotationValue;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.types.JvmEnumerationType;
+import org.summer.dsl.model.types.JvmEvent;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
@@ -52,8 +53,6 @@ import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.typing.IJvmTypeReferenceProvider;
 import org.summer.dsl.model.xtype.XComputedTypeReference;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
-import org.summer.dsl.model.xtype.XImportSection1;
 import org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImplCustom;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
@@ -255,11 +254,9 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			XModule file = (XModule) result;
 			List<EObject> contents = file.getContents();
 			for(EObject obj: contents){
-				if(!(obj instanceof JvmDeclaredType)){
-					continue;
+				if(obj instanceof JvmDeclaredType || obj instanceof JvmDelegateType){
+					doPrepare(resolvedTypes, featureScopeSession, (JvmIdentifiableElement)obj, resolvedTypesByContext);
 				}
-				
-				doPrepare(resolvedTypes, featureScopeSession, (JvmIdentifiableElement)obj, resolvedTypesByContext);
 			}
 		}
 
@@ -273,9 +270,21 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			_doPrepare(resolvedTypes, featureScopeSession, (JvmConstructor) element, resolvedTypesByContext);
 		} else if (element instanceof JvmField) {
 			_doPrepare(resolvedTypes, featureScopeSession, (JvmField) element, resolvedTypesByContext);
+		} else if (element instanceof JvmEvent) {
+			_doPrepare(resolvedTypes, featureScopeSession, (JvmEvent) element, resolvedTypesByContext);
 		} else if (element instanceof JvmOperation) {
 			_doPrepare(resolvedTypes, featureScopeSession, (JvmOperation) element, resolvedTypesByContext);
+		} else if (element instanceof JvmDelegateType) {
+			_doPrepare(resolvedTypes, featureScopeSession, (JvmDelegateType) element, resolvedTypesByContext);
 		}
+	}
+	
+	protected void _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmDelegateType delegate, Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByType) {
+		StackedResolvedTypes childResolvedTypes = declareTypeParameters(resolvedTypes, delegate, resolvedTypesByType);
+		
+//		JvmParameterizedTypeReference thisType = getServices().getTypeReferences().createTypeRef(delegate);
+//		LightweightTypeReference lightweightThisType = resolvedTypes.getConverter().toLightweightReference(thisType);
+//		childResolvedTypes.reassignTypeWithoutMerge(delegate, lightweightThisType);
 	}
 	
 	protected void _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmDeclaredType type, Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByType) {
@@ -352,6 +361,23 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		} else {
 			JvmTypeReference reference = createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, featureScopeSession, field, null, false);
 			field.setType(reference);
+		}
+	}
+	
+	protected void _doPrepare(ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmEvent event, Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext) {
+		StackedResolvedTypes childResolvedTypes = declareTypeParameters(resolvedTypes, event, resolvedTypesByContext);
+		
+		JvmTypeReference knownType = event.getType();
+		if (InferredTypeIndicator.isInferred(knownType)) {
+			XComputedTypeReference casted = (XComputedTypeReference) knownType;
+			JvmTypeReference reference = createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, featureScopeSession, event, (InferredTypeIndicator) casted.getTypeProvider(), false);
+			casted.setEquivalent(reference);
+		} else if (knownType != null) {
+			LightweightTypeReference lightweightReference = childResolvedTypes.getConverter().toLightweightReference(knownType);
+			childResolvedTypes.setType(event, lightweightReference);
+		} else {
+			JvmTypeReference reference = createComputedTypeReference(resolvedTypesByContext, childResolvedTypes, featureScopeSession, event, null, false);
+			event.setType(reference);
 		}
 	}
 	
@@ -469,6 +495,8 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 					_computeTypes( resolvedTypes, featureScopeSession, (XVariableDeclarationList) obj);
 				} else if(obj instanceof XClosure){
 					_computeTypes( resolvedTypes, featureScopeSession, (XClosure) obj);
+				}  else if(obj instanceof JvmDelegateType){
+					computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession,  obj);
 				} else {
 					_computeTypes( resolvedTypes, featureScopeSession, (XExpression) obj);
 				}
@@ -477,12 +505,16 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmEnumerationType) element);
 		} else if (element instanceof JvmDeclaredType) {  
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmDeclaredType) element);
+		} else if (element instanceof JvmDelegateType) {  
+			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmDelegateType) element);
 		} else if (element instanceof JvmConstructor) {
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmConstructor) element);
 		} else if (element instanceof JvmField) {
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmField) element);
 		} else if (element instanceof JvmOperation) {
 			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmOperation) element);
+		} else if (element instanceof JvmEvent) {
+			_computeTypes(preparedResolvedTypes, resolvedTypes, featureScopeSession, (JvmEvent) element);
 		} else {
 			computeTypes(resolvedTypes, featureScopeSession, element);
 		}
@@ -632,6 +664,45 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		mergeChildTypes(childResolvedTypes);
 	}
 	
+	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmEvent event) {
+		ResolvedTypes childResolvedTypes = preparedResolvedTypes.get(event);
+		if (childResolvedTypes == null) {
+			if (preparedResolvedTypes.containsKey(event))
+				return;
+			throw new IllegalStateException("No resolved type found. Field was: " + event.getIdentifier());
+		} else {
+			preparedResolvedTypes.put(event, null);
+		}
+		EventTypeComputationState state = new EventTypeComputationState(childResolvedTypes, event.isStatic() ? featureScopeSession : featureScopeSession.toInstanceContext(), event);
+		
+		IFeatureScopeSession session = /*function.isStatic() ? featureScopeSession : */featureScopeSession.toInstanceContext();
+		//cym add
+		//处理get、set有关的表达式
+		XExpression get = event.getAdd();
+		if (get != null ) {
+//			featureScopeSession.addLocalElement(IFeatureNames.THIS, (JvmIdentifiableElement) field.eContainer(), resolvedTypes.getReferenceOwner());
+			computeTypes(resolvedTypes, session, get);
+		}
+		XExpression set = event.getRemove();
+		if (set != null ) {
+			IFeatureScopeSession childScopeSession = session.addLocalElement(QualifiedName.create("value"), event.getType().getType(), resolvedTypes.getReferenceOwner());
+			computeTypes(resolvedTypes, childScopeSession, set);
+		}
+		
+		//cym add
+		// no need to unmark the computing state since we replace the equivalent in #resolveTo
+		markComputing(event.getType());
+		ITypeComputationResult result = state.computeTypes();
+		if (InferredTypeIndicator.isInferred(event.getType())) {
+			LightweightTypeReference fieldType = result.getActualExpressionType();
+			if (fieldType != null)
+				InferredTypeIndicator.resolveTo(event.getType(), toJavaCompliantTypeReference(fieldType, featureScopeSession));
+		}
+		computeAnnotationTypes(childResolvedTypes, featureScopeSession, event);
+		
+		mergeChildTypes(childResolvedTypes);
+	}
+	
 	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmConstructor constructor) {
 		ResolvedTypes childResolvedTypes = preparedResolvedTypes.get(constructor);
 		if (childResolvedTypes == null) {
@@ -696,6 +767,13 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		
 		mergeChildTypes(childResolvedTypes);
 	}
+	
+	protected void computeAnnotationTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession sessions, JvmDelegateType operation) {
+//		computeAnnotationTypes(resolvedTypes, sessions, (JvmAnnotationTarget) operation);
+		for(JvmFormalParameter parameter: operation.getParameters()) {
+			computeAnnotationTypes(resolvedTypes, sessions, parameter);
+		}
+	}
 
 	protected void computeAnnotationTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession sessions, JvmExecutable operation) {
 		computeAnnotationTypes(resolvedTypes, sessions, (JvmAnnotationTarget) operation);
@@ -707,6 +785,15 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 	protected void mergeChildTypes(ResolvedTypes childResolvedTypes) {
 		if (childResolvedTypes instanceof StackedResolvedTypes)
 			((StackedResolvedTypes) childResolvedTypes).mergeIntoParent();
+	}
+	
+	protected void setReturnType(JvmDelegateType operation, ITypeComputationResult computedType, IFeatureScopeSession session) {
+		if (InferredTypeIndicator.isInferred(operation.getReturnType())) {
+			LightweightTypeReference returnType = computedType.getReturnType();
+			if (returnType != null) {
+				InferredTypeIndicator.resolveTo(operation.getReturnType(), toJavaCompliantTypeReference(returnType, session));
+			}
+		}
 	}
 
 	protected void setReturnType(JvmOperation operation, ITypeComputationResult computedType, IFeatureScopeSession session) {
@@ -746,6 +833,26 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 				}
 //			}
 		}
+	}
+	
+	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmDelegateType type) {
+		ResolvedTypes childResolvedTypes = preparedResolvedTypes.get(type);
+		if (childResolvedTypes == null) {
+			if (preparedResolvedTypes.containsKey(type))
+				return;
+			throw new IllegalStateException("No resolved type found. Operation was: " + type.getIdentifier());
+		} else {
+			preparedResolvedTypes.put(type, null);
+		}
+		JvmDelegateComputationState state = new JvmDelegateComputationState(childResolvedTypes, /*type.isStatic() ? featureScopeSession :*/ featureScopeSession.toInstanceContext(), type);
+
+//		addExtensionProviders(state, operation.getParameters());
+		// no need to unmark the computing state since we replace the equivalent in #resolveTo
+		markComputing(type.getReturnType());
+		setReturnType(type, state.computeTypes(), featureScopeSession);
+		computeAnnotationTypes(childResolvedTypes, featureScopeSession, type);
+		
+		mergeChildTypes(childResolvedTypes);
 	}
 	
 	protected void _computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, JvmDeclaredType type) {

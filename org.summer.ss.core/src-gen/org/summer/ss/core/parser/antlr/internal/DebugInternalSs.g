@@ -6,7 +6,10 @@
 
 ruleXModule :
 	ruleXImportSection1? ruleXObjectElement (
-		ruleType |
+		(
+			ruleType |
+			ruleDelegateType
+		) |
 		ruleXExpressionInsideBlock ';'?
 	)* ruleXExportSection?
 ;
@@ -52,6 +55,21 @@ ruleXModule :
 	)
 ;
 
+// Rule DelegateType
+ ruleDelegateType :
+	'export' 'delegate' ruleValidID (
+		'<' ruleJvmTypeParameter (
+			',' ruleJvmTypeParameter
+		)* '>'
+	)? '(' (
+		ruleParameter (
+			',' ruleParameter
+		)*
+	)? ')' (
+		':' ruleJvmTypeReference
+	)? ';'
+;
+
 // Rule AnnotationField
  ruleAnnotationField :
 	ruleXAnnotation* (
@@ -83,7 +101,12 @@ ruleXModule :
 			ruleParameter (
 				',' ruleParameter
 			)*
-		)? ')' ruleXBlockExpression
+		)? ')' ruleXBlockExpression |
+		'event' ruleJvmTypeReference ruleValidID (
+			'{' 'add' ruleXBlockExpression (
+				'remove' ruleXBlockExpression
+			)? '}'
+		)? ';'
 	)
 ;
 
@@ -145,7 +168,8 @@ ruleXModule :
 	'virtaul' |
 	'static' |
 	'native' |
-	'overload'
+	'overload' |
+	'abstract'
 ;
 
 // Rule ValidID
@@ -871,24 +895,12 @@ ruleXModule :
  ruleJvmTypeReference :
 	ruleJvmParameterizedTypeReference ( (
 	ruleArrayBrackets
-	) => ruleArrayBrackets )* |
-	ruleXFunctionTypeRef
+	) => ruleArrayBrackets )*
 ;
 
 // Rule ArrayBrackets
  ruleArrayBrackets :
 	'[' ']'
-;
-
-// Rule XFunctionTypeRef
- ruleXFunctionTypeRef :
-	(
-		'(' (
-			ruleJvmTypeReference (
-				',' ruleJvmTypeReference
-			)*
-		)? ')'
-	)? '=>' ruleJvmTypeReference
 ;
 
 // Rule JvmParameterizedTypeReference

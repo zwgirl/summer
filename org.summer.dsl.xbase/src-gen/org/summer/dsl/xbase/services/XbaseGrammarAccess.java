@@ -2094,6 +2094,39 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXExpressionParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
+		//XParenthesizedExpression returns XExpression:
+		//	"(" XExpression ")";
+		public ParserRule getRule() { return rule; }
+
+		//"(" XExpression ")"
+		public Group getGroup() { return cGroup; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+
+		//XExpression
+		public RuleCall getXExpressionParserRuleCall_1() { return cXExpressionParserRuleCall_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+	}
+
+	public class XIfExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XIfExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cXIfExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cIfAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cIfXExpressionParserRuleCall_3_0 = (RuleCall)cIfAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cThenAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cThenXExpressionParserRuleCall_5_0 = (RuleCall)cThenAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cElseKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cElseAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cElseXExpressionParserRuleCall_6_1_0 = (RuleCall)cElseAssignment_6_1.eContents().get(0);
+		
 		////		(
 		// //			{types::JvmOperation.annotationInfo = current} modifiers+=CommonModifier*
 		//
@@ -2144,39 +2177,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////	=>({XClosure} (declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?='|') expression=XExpression;
 		//
-		//XParenthesizedExpression returns XExpression:
-		//	"(" XExpression ")";
-		public ParserRule getRule() { return rule; }
-
-		//"(" XExpression ")"
-		public Group getGroup() { return cGroup; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
-
-		//XExpression
-		public RuleCall getXExpressionParserRuleCall_1() { return cXExpressionParserRuleCall_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
-	}
-
-	public class XIfExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XIfExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cXIfExpressionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cIfAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cIfXExpressionParserRuleCall_3_0 = (RuleCall)cIfAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cThenAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cThenXExpressionParserRuleCall_5_0 = (RuleCall)cThenAssignment_5.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cElseKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cElseAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cElseXExpressionParserRuleCall_6_1_0 = (RuleCall)cElseAssignment_6_1.eContents().get(0);
-		
 		//XIfExpression returns XExpression:
 		//	{XIfExpression} "if" "(" if=XExpression ")" then=XExpression ("else" else=XExpression)?;
 		public ParserRule getRule() { return rule; }
@@ -5058,6 +5058,16 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXClosureAccess().getRule();
 	}
 
+	//XParenthesizedExpression returns XExpression:
+	//	"(" XExpression ")";
+	public XParenthesizedExpressionElements getXParenthesizedExpressionAccess() {
+		return (pXParenthesizedExpression != null) ? pXParenthesizedExpression : (pXParenthesizedExpression = new XParenthesizedExpressionElements());
+	}
+	
+	public ParserRule getXParenthesizedExpressionRule() {
+		return getXParenthesizedExpressionAccess().getRule();
+	}
+
 	////		(
 	// //			{types::JvmOperation.annotationInfo = current} modifiers+=CommonModifier*
 	//
@@ -5108,16 +5118,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////	=>({XClosure} (declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?='|') expression=XExpression;
 	//
-	//XParenthesizedExpression returns XExpression:
-	//	"(" XExpression ")";
-	public XParenthesizedExpressionElements getXParenthesizedExpressionAccess() {
-		return (pXParenthesizedExpression != null) ? pXParenthesizedExpression : (pXParenthesizedExpression = new XParenthesizedExpressionElements());
-	}
-	
-	public ParserRule getXParenthesizedExpressionRule() {
-		return getXParenthesizedExpressionAccess().getRule();
-	}
-
 	//XIfExpression returns XExpression:
 	//	{XIfExpression} "if" "(" if=XExpression ")" then=XExpression ("else" else=XExpression)?;
 	public XIfExpressionElements getXIfExpressionAccess() {
@@ -5990,9 +5990,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return (tIDENTIFIER_PART_IMPL != null) ? tIDENTIFIER_PART_IMPL : (tIDENTIFIER_PART_IMPL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENTIFIER_PART_IMPL"));
 	} 
 
-	//JvmTypeReference:
-	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)* |
-	//	XFunctionTypeRef;
+	////  | XFunctionTypeRef
+	// JvmTypeReference:
+	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)*;
 	public XtypeGrammarAccess.JvmTypeReferenceElements getJvmTypeReferenceAccess() {
 		return gaXtype.getJvmTypeReferenceAccess();
 	}
@@ -6011,16 +6011,10 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getArrayBracketsAccess().getRule();
 	}
 
-	//XFunctionTypeRef:
-	//	("(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>" returnType=JvmTypeReference;
-	public XtypeGrammarAccess.XFunctionTypeRefElements getXFunctionTypeRefAccess() {
-		return gaXtype.getXFunctionTypeRefAccess();
-	}
-	
-	public ParserRule getXFunctionTypeRefRule() {
-		return getXFunctionTypeRefAccess().getRule();
-	}
-
+	////XFunctionTypeRef:
+	//
+	////  ('(' (paramTypes+=JvmTypeReference (',' paramTypes+=JvmTypeReference)*)? ')')? '=>' returnType=JvmTypeReference;
+	//
 	//JvmParameterizedTypeReference:
 	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
 	//	">")?;

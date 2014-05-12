@@ -654,24 +654,12 @@ ruleXExpression :
  ruleJvmTypeReference :
 	ruleJvmParameterizedTypeReference ( (
 	ruleArrayBrackets
-	) => ruleArrayBrackets )* |
-	ruleXFunctionTypeRef
+	) => ruleArrayBrackets )*
 ;
 
 // Rule ArrayBrackets
  ruleArrayBrackets :
 	'[' ']'
-;
-
-// Rule XFunctionTypeRef
- ruleXFunctionTypeRef :
-	(
-		'(' (
-			ruleJvmTypeReference (
-				',' ruleJvmTypeReference
-			)*
-		)? ')'
-	)? '=>' ruleJvmTypeReference
 ;
 
 // Rule JvmParameterizedTypeReference

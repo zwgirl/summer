@@ -17,7 +17,6 @@ RULE_HEX=6
 T__90=90
 RULE_RICH_TEXT_END=12
 RULE_DECIMAL=8
-T__98=98
 T__97=97
 T__96=96
 T__95=95
@@ -111,16 +110,15 @@ RULE_WS=21
 'for'=74
 '?.'=64
 '+'=46
-'=>'=95
 '.'=63
 'function'=65
 '^'=45
-'import'=97
+'import'=96
 '++'=53
 'true'=85
 'catch'=94
 'else'=68
-'extends'=96
+'extends'=95
 '^='=41
 '+='=34
 'break'=90
@@ -168,4 +166,4 @@ RULE_WS=21
 '*'=50
 '['=61
 '&'=43
-'from'=98
+'from'=97

@@ -20,11 +20,13 @@ import org.summer.dsl.model.types.JvmCharAnnotationValue;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmCustomAnnotationValue;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.types.JvmDelegateTypeReference;
 import org.summer.dsl.model.types.JvmDoubleAnnotationValue;
 import org.summer.dsl.model.types.JvmEnumAnnotationValue;
 import org.summer.dsl.model.types.JvmEnumerationLiteral;
 import org.summer.dsl.model.types.JvmEnumerationType;
+import org.summer.dsl.model.types.JvmEvent;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFloatAnnotationValue;
 import org.summer.dsl.model.types.JvmFormalParameter;
@@ -139,6 +141,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 			case TypesPackage.JVM_UNKNOWN_TYPE_REFERENCE: return createJvmUnknownTypeReference();
 			case TypesPackage.JVM_CUSTOM_ANNOTATION_VALUE: return createJvmCustomAnnotationValue();
 			case TypesPackage.JVM_STRUCT_TYPE: return createJvmStructType();
+			case TypesPackage.JVM_DELEGATE_TYPE: return createJvmDelegateType();
+			case TypesPackage.JVM_EVENT: return createJvmEvent();
 
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -664,6 +668,16 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	@Override
 	public JvmStructType createJvmStructType() {
 		return new JvmStructTypeImpl();
+	}
+
+	@Override
+	public JvmDelegateType createJvmDelegateType() {
+		return new JvmDelegateTypeImpl();
+	}
+
+	@Override
+	public JvmEvent createJvmEvent() {
+		return new JvmEventImpl();
 	}
 
 } //TypesFactoryImpl

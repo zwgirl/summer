@@ -93,6 +93,15 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TypesPackage.JVM_DELEGATE_TYPE: {
+				JvmDelegateType jvmDelegateType = (JvmDelegateType)theEObject;
+				T result = caseJvmDelegateType(jvmDelegateType);
+				if (result == null) result = caseJvmTypeParameterDeclarator(jvmDelegateType);
+				if (result == null) result = caseJvmType(jvmDelegateType);
+				if (result == null) result = caseJvmIdentifiableElement(jvmDelegateType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TypesPackage.JVM_VOID: {
 				JvmVoid jvmVoid = (JvmVoid)theEObject;
 				T result = caseJvmVoid(jvmVoid);
@@ -308,6 +317,16 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJvmMember(jvmField);
 				if (result == null) result = caseJvmAnnotationTarget(jvmField);
 				if (result == null) result = caseJvmIdentifiableElement(jvmField);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.JVM_EVENT: {
+				JvmEvent jvmEvent = (JvmEvent)theEObject;
+				T result = caseJvmEvent(jvmEvent);
+				if (result == null) result = caseJvmFeature(jvmEvent);
+				if (result == null) result = caseJvmMember(jvmEvent);
+				if (result == null) result = caseJvmAnnotationTarget(jvmEvent);
+				if (result == null) result = caseJvmIdentifiableElement(jvmEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -561,6 +580,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmType(JvmType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Delegate Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Delegate Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmDelegateType(JvmDelegateType object) {
 		return null;
 	}
 
@@ -936,6 +970,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmField(JvmField object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmEvent(JvmEvent object) {
 		return null;
 	}
 

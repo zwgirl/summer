@@ -40,6 +40,15 @@ public interface TypesFactory extends EFactory {
 	JvmNoModule createJvmNoModule();
 
 	/**
+	 * Returns a new object of class '<em>Jvm Delegate Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Delegate Type</em>'.
+	 * @generated
+	 */
+	JvmDelegateType createJvmDelegateType();
+
+	/**
 	 * Returns a new object of class '<em>Jvm Void</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -209,6 +218,15 @@ public interface TypesFactory extends EFactory {
 	 * @generated
 	 */
 	JvmField createJvmField();
+
+	/**
+	 * Returns a new object of class '<em>Jvm Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Event</em>'.
+	 * @generated
+	 */
+	JvmEvent createJvmEvent();
 
 	/**
 	 * Returns a new object of class '<em>Jvm Constructor</em>'.

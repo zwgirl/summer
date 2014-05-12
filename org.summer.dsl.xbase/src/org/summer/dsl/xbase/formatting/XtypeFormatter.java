@@ -7,7 +7,7 @@ import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.summer.dsl.xtype.services.XtypeGrammarAccess;
 import org.summer.dsl.xtype.services.XtypeGrammarAccess.JvmParameterizedTypeReferenceElements;
-import org.summer.dsl.xtype.services.XtypeGrammarAccess.XFunctionTypeRefElements;
+//import org.summer.dsl.xtype.services.XtypeGrammarAccess.XFunctionTypeRefElements;
 
 /**
  * This class is deprecated since it uses Xtext's old formatter architecture.
@@ -23,15 +23,15 @@ public class XtypeFormatter extends AbstractDeclarativeFormatter {
 	}
 
 	public void configure(FormattingConfig c, XtypeGrammarAccess ga) {
-		configureXFunctionTypeRef(c, ga.getXFunctionTypeRefAccess());
+//		configureXFunctionTypeRef(c, ga.getXFunctionTypeRefAccess());
 		configureJvmParameterizedTypeReference(c, ga.getJvmParameterizedTypeReferenceAccess());
 	}
 
-	public void configureXFunctionTypeRef(FormattingConfig c, XFunctionTypeRefElements ele) {
-		c.setNoSpace().after(ele.getLeftParenthesisKeyword_0_0());
-		c.setNoSpace().before(ele.getCommaKeyword_0_1_1_0());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_0_2());
-	}
+//	public void configureXFunctionTypeRef(FormattingConfig c, XFunctionTypeRefElements ele) {
+//		c.setNoSpace().after(ele.getLeftParenthesisKeyword_0_0());
+//		c.setNoSpace().before(ele.getCommaKeyword_0_1_1_0());
+//		c.setNoSpace().before(ele.getRightParenthesisKeyword_0_2());
+//	}
 
 	public void configureJvmParameterizedTypeReference(FormattingConfig c, JvmParameterizedTypeReferenceElements ele) {
 		c.setNoSpace().after(ele.getLessThanSignKeyword_1_0());

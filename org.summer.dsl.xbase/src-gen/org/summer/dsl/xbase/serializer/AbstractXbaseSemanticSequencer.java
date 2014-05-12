@@ -64,7 +64,6 @@ import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection1;
@@ -93,7 +92,7 @@ public abstract class AbstractXbaseSemanticSequencer extends XtypeSemanticSequen
 			case TypesPackage.JVM_GENERIC_ARRAY_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
 					sequence_JvmTypeReference(context, (JvmGenericArrayTypeReference) semanticObject); 
 					return; 
 				}
@@ -108,7 +107,7 @@ public abstract class AbstractXbaseSemanticSequencer extends XtypeSemanticSequen
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
 					return; 
 				}
@@ -1630,14 +1629,6 @@ public abstract class AbstractXbaseSemanticSequencer extends XtypeSemanticSequen
 			case XtypePackage.XEXPORT_SECTION:
 				if(context == grammarAccess.getXExportSectionRule()) {
 					sequence_XExportSection(context, (XExportSection) semanticObject); 
-					return; 
-				}
-				else break;
-			case XtypePackage.XFUNCTION_TYPE_REF:
-				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getXFunctionTypeRefRule()) {
-					sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
 					return; 
 				}
 				else break;

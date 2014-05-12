@@ -195,16 +195,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmVoid()
 	 * @generated
 	 */
-	int JVM_VOID = 4;
-
-	/**
-	 * The number of structural features of the '<em>Jvm Void</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_VOID_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 0;
+	int JVM_VOID = 5;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmComponentTypeImpl <em>Jvm Component Type</em>}' class.
@@ -214,7 +205,205 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmComponentType()
 	 * @generated
 	 */
-	int JVM_COMPONENT_TYPE = 5;
+	int JVM_COMPONENT_TYPE = 6;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmPrimitiveTypeImpl <em>Jvm Primitive Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmPrimitiveTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmPrimitiveType()
+	 * @generated
+	 */
+	int JVM_PRIMITIVE_TYPE = 7;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmArrayTypeImpl <em>Jvm Array Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmArrayTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmArrayType()
+	 * @generated
+	 */
+	int JVM_ARRAY_TYPE = 8;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmAnnotationTargetImpl <em>Jvm Annotation Target</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmAnnotationTargetImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationTarget()
+	 * @generated
+	 */
+	int JVM_ANNOTATION_TARGET = 35;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmMemberImpl <em>Jvm Member</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmMemberImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmMember()
+	 * @generated
+	 */
+	int JVM_MEMBER = 27;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl <em>Jvm Declared Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDeclaredType()
+	 * @generated
+	 */
+	int JVM_DECLARED_TYPE = 9;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmStructTypeImpl <em>Jvm Struct Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmStructTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmStructType()
+	 * @generated
+	 */
+	int JVM_STRUCT_TYPE = 10;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl <em>Jvm Type Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmTypeParameterImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeParameter()
+	 * @generated
+	 */
+	int JVM_TYPE_PARAMETER = 11;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterDeclaratorImpl <em>Jvm Type Parameter Declarator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmTypeParameterDeclaratorImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeParameterDeclarator()
+	 * @generated
+	 */
+	int JVM_TYPE_PARAMETER_DECLARATOR = 12;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_TYPE_PARAMETER_DECLARATOR__TYPE_PARAMETERS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Type Parameter Declarator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmDelegateTypeImpl <em>Jvm Delegate Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmDelegateTypeImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDelegateType()
+	 * @generated
+	 */
+	int JVM_DELEGATE_TYPE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__TYPE_PARAMETERS = JVM_TYPE_PARAMETER_DECLARATOR__TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__RETURN_TYPE = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__PARAMETERS = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Var Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__VAR_ARGS = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__SIMPLE_NAME = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__IDENTIFIER = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Exported</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__EXPORTED = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE__ANNOTATIONS = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Delegate Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_DELEGATE_TYPE_FEATURE_COUNT = JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Void</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_VOID_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Array Type</b></em>' containment reference.
@@ -233,16 +422,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_COMPONENT_TYPE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmPrimitiveTypeImpl <em>Jvm Primitive Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmPrimitiveTypeImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmPrimitiveType()
-	 * @generated
-	 */
-	int JVM_PRIMITIVE_TYPE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Array Type</b></em>' containment reference.
@@ -272,16 +451,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_PRIMITIVE_TYPE_FEATURE_COUNT = JVM_COMPONENT_TYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmArrayTypeImpl <em>Jvm Array Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmArrayTypeImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmArrayType()
-	 * @generated
-	 */
-	int JVM_ARRAY_TYPE = 7;
-
-	/**
 	 * The feature id for the '<em><b>Array Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -309,16 +478,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_ARRAY_TYPE_FEATURE_COUNT = JVM_COMPONENT_TYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmAnnotationTargetImpl <em>Jvm Annotation Target</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmAnnotationTargetImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationTarget()
-	 * @generated
-	 */
-	int JVM_ANNOTATION_TARGET = 33;
-
-	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,16 +494,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_ANNOTATION_TARGET_FEATURE_COUNT = JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmMemberImpl <em>Jvm Member</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmMemberImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmMember()
-	 * @generated
-	 */
-	int JVM_MEMBER = 26;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -417,16 +566,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_MEMBER_FEATURE_COUNT = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 6;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl <em>Jvm Declared Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDeclaredType()
-	 * @generated
-	 */
-	int JVM_DECLARED_TYPE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -571,16 +710,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_DECLARED_TYPE_FEATURE_COUNT = JVM_MEMBER_FEATURE_COUNT + 8;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmStructTypeImpl <em>Jvm Struct Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmStructTypeImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmStructType()
-	 * @generated
-	 */
-	int JVM_STRUCT_TYPE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -754,16 +883,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_STRUCT_TYPE_FEATURE_COUNT = JVM_DECLARED_TYPE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl <em>Jvm Type Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmTypeParameterImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeParameter()
-	 * @generated
-	 */
-	int JVM_TYPE_PARAMETER = 10;
-
-	/**
 	 * The feature id for the '<em><b>Array Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,34 +928,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_TYPE_PARAMETER_FEATURE_COUNT = JVM_COMPONENT_TYPE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmTypeParameterDeclaratorImpl <em>Jvm Type Parameter Declarator</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.types.impl.JvmTypeParameterDeclaratorImpl
-	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeParameterDeclarator()
-	 * @generated
-	 */
-	int JVM_TYPE_PARAMETER_DECLARATOR = 11;
-
-	/**
-	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_TYPE_PARAMETER_DECLARATOR__TYPE_PARAMETERS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Jvm Type Parameter Declarator</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmConstraintOwnerImpl <em>Jvm Constraint Owner</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -844,7 +935,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmConstraintOwner()
 	 * @generated
 	 */
-	int JVM_CONSTRAINT_OWNER = 12;
+	int JVM_CONSTRAINT_OWNER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -872,7 +963,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeConstraint()
 	 * @generated
 	 */
-	int JVM_TYPE_CONSTRAINT = 13;
+	int JVM_TYPE_CONSTRAINT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Type Reference</b></em>' containment reference.
@@ -909,7 +1000,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmUpperBound()
 	 * @generated
 	 */
-	int JVM_UPPER_BOUND = 14;
+	int JVM_UPPER_BOUND = 15;
 
 	/**
 	 * The feature id for the '<em><b>Type Reference</b></em>' containment reference.
@@ -946,7 +1037,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmLowerBound()
 	 * @generated
 	 */
-	int JVM_LOWER_BOUND = 15;
+	int JVM_LOWER_BOUND = 16;
 
 	/**
 	 * The feature id for the '<em><b>Type Reference</b></em>' containment reference.
@@ -983,7 +1074,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationType()
 	 * @generated
 	 */
-	int JVM_ANNOTATION_TYPE = 16;
+	int JVM_ANNOTATION_TYPE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1137,7 +1228,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmEnumerationType()
 	 * @generated
 	 */
-	int JVM_ENUMERATION_TYPE = 17;
+	int JVM_ENUMERATION_TYPE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1300,7 +1391,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmFeature()
 	 * @generated
 	 */
-	int JVM_FEATURE = 27;
+	int JVM_FEATURE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1382,7 +1473,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmField()
 	 * @generated
 	 */
-	int JVM_FIELD = 28;
+	int JVM_FIELD = 29;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1536,7 +1627,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmEnumerationLiteral()
 	 * @generated
 	 */
-	int JVM_ENUMERATION_LITERAL = 18;
+	int JVM_ENUMERATION_LITERAL = 19;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1699,7 +1790,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmGenericType()
 	 * @generated
 	 */
-	int JVM_GENERIC_TYPE = 19;
+	int JVM_GENERIC_TYPE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1898,7 +1989,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeReference()
 	 * @generated
 	 */
-	int JVM_TYPE_REFERENCE = 20;
+	int JVM_TYPE_REFERENCE = 21;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Type Reference</em>' class.
@@ -1917,7 +2008,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmParameterizedTypeReference()
 	 * @generated
 	 */
-	int JVM_PARAMETERIZED_TYPE_REFERENCE = 21;
+	int JVM_PARAMETERIZED_TYPE_REFERENCE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -1954,7 +2045,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmGenericArrayTypeReference()
 	 * @generated
 	 */
-	int JVM_GENERIC_ARRAY_TYPE_REFERENCE = 22;
+	int JVM_GENERIC_ARRAY_TYPE_REFERENCE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Component Type</b></em>' containment reference.
@@ -1982,7 +2073,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmWildcardTypeReference()
 	 * @generated
 	 */
-	int JVM_WILDCARD_TYPE_REFERENCE = 23;
+	int JVM_WILDCARD_TYPE_REFERENCE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -2010,7 +2101,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnyTypeReference()
 	 * @generated
 	 */
-	int JVM_ANY_TYPE_REFERENCE = 24;
+	int JVM_ANY_TYPE_REFERENCE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -2038,7 +2129,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmCompoundTypeReference()
 	 * @generated
 	 */
-	int JVM_COMPOUND_TYPE_REFERENCE = 52;
+	int JVM_COMPOUND_TYPE_REFERENCE = 54;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -2075,7 +2166,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmMultiTypeReference()
 	 * @generated
 	 */
-	int JVM_MULTI_TYPE_REFERENCE = 25;
+	int JVM_MULTI_TYPE_REFERENCE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -2105,6 +2196,133 @@ public interface TypesPackage extends EPackage {
 	int JVM_MULTI_TYPE_REFERENCE_FEATURE_COUNT = JVM_COMPOUND_TYPE_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmEventImpl <em>Jvm Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.types.impl.JvmEventImpl
+	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmEvent()
+	 * @generated
+	 */
+	int JVM_EVENT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__ANNOTATIONS = JVM_FEATURE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__DECLARING_TYPE = JVM_FEATURE__DECLARING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__VISIBILITY = JVM_FEATURE__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__SIMPLE_NAME = JVM_FEATURE__SIMPLE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__IDENTIFIER = JVM_FEATURE__IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Annotation Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__ANNOTATION_INFO = JVM_FEATURE__ANNOTATION_INFO;
+
+	/**
+	 * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__MODIFIERS = JVM_FEATURE__MODIFIERS;
+
+	/**
+	 * The feature id for the '<em><b>Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__STATIC = JVM_FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Native</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__NATIVE = JVM_FEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__TYPE = JVM_FEATURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Add</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__ADD = JVM_FEATURE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Remove</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT__REMOVE = JVM_FEATURE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Jvm Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_EVENT_FEATURE_COUNT = JVM_FEATURE_FEATURE_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmExecutableImpl <em>Jvm Executable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2112,7 +2330,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmExecutable()
 	 * @generated
 	 */
-	int JVM_EXECUTABLE = 29;
+	int JVM_EXECUTABLE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2230,7 +2448,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmConstructor()
 	 * @generated
 	 */
-	int JVM_CONSTRUCTOR = 30;
+	int JVM_CONSTRUCTOR = 32;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2357,7 +2575,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmOperation()
 	 * @generated
 	 */
-	int JVM_OPERATION = 31;
+	int JVM_OPERATION = 33;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2583,7 +2801,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmFormalParameter()
 	 * @generated
 	 */
-	int JVM_FORMAL_PARAMETER = 32;
+	int JVM_FORMAL_PARAMETER = 34;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2647,7 +2865,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationReference()
 	 * @generated
 	 */
-	int JVM_ANNOTATION_REFERENCE = 34;
+	int JVM_ANNOTATION_REFERENCE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' reference.
@@ -2693,7 +2911,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationValue()
 	 * @generated
 	 */
-	int JVM_ANNOTATION_VALUE = 35;
+	int JVM_ANNOTATION_VALUE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2730,7 +2948,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmIntAnnotationValue()
 	 * @generated
 	 */
-	int JVM_INT_ANNOTATION_VALUE = 36;
+	int JVM_INT_ANNOTATION_VALUE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2776,7 +2994,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmBooleanAnnotationValue()
 	 * @generated
 	 */
-	int JVM_BOOLEAN_ANNOTATION_VALUE = 37;
+	int JVM_BOOLEAN_ANNOTATION_VALUE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2822,7 +3040,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmByteAnnotationValue()
 	 * @generated
 	 */
-	int JVM_BYTE_ANNOTATION_VALUE = 38;
+	int JVM_BYTE_ANNOTATION_VALUE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2868,7 +3086,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmShortAnnotationValue()
 	 * @generated
 	 */
-	int JVM_SHORT_ANNOTATION_VALUE = 39;
+	int JVM_SHORT_ANNOTATION_VALUE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2914,7 +3132,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmLongAnnotationValue()
 	 * @generated
 	 */
-	int JVM_LONG_ANNOTATION_VALUE = 40;
+	int JVM_LONG_ANNOTATION_VALUE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2960,7 +3178,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDoubleAnnotationValue()
 	 * @generated
 	 */
-	int JVM_DOUBLE_ANNOTATION_VALUE = 41;
+	int JVM_DOUBLE_ANNOTATION_VALUE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3006,7 +3224,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmFloatAnnotationValue()
 	 * @generated
 	 */
-	int JVM_FLOAT_ANNOTATION_VALUE = 42;
+	int JVM_FLOAT_ANNOTATION_VALUE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3052,7 +3270,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmCharAnnotationValue()
 	 * @generated
 	 */
-	int JVM_CHAR_ANNOTATION_VALUE = 43;
+	int JVM_CHAR_ANNOTATION_VALUE = 45;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3098,7 +3316,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmStringAnnotationValue()
 	 * @generated
 	 */
-	int JVM_STRING_ANNOTATION_VALUE = 44;
+	int JVM_STRING_ANNOTATION_VALUE = 46;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3144,7 +3362,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmTypeAnnotationValue()
 	 * @generated
 	 */
-	int JVM_TYPE_ANNOTATION_VALUE = 45;
+	int JVM_TYPE_ANNOTATION_VALUE = 47;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3190,7 +3408,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmAnnotationAnnotationValue()
 	 * @generated
 	 */
-	int JVM_ANNOTATION_ANNOTATION_VALUE = 46;
+	int JVM_ANNOTATION_ANNOTATION_VALUE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3236,7 +3454,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmEnumAnnotationValue()
 	 * @generated
 	 */
-	int JVM_ENUM_ANNOTATION_VALUE = 47;
+	int JVM_ENUM_ANNOTATION_VALUE = 49;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3282,7 +3500,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDelegateTypeReference()
 	 * @generated
 	 */
-	int JVM_DELEGATE_TYPE_REFERENCE = 48;
+	int JVM_DELEGATE_TYPE_REFERENCE = 50;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' reference.
@@ -3310,7 +3528,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmSpecializedTypeReference()
 	 * @generated
 	 */
-	int JVM_SPECIALIZED_TYPE_REFERENCE = 49;
+	int JVM_SPECIALIZED_TYPE_REFERENCE = 51;
 
 	/**
 	 * The feature id for the '<em><b>Equivalent</b></em>' containment reference.
@@ -3338,7 +3556,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmSynonymTypeReference()
 	 * @generated
 	 */
-	int JVM_SYNONYM_TYPE_REFERENCE = 50;
+	int JVM_SYNONYM_TYPE_REFERENCE = 52;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -3375,7 +3593,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmUnknownTypeReference()
 	 * @generated
 	 */
-	int JVM_UNKNOWN_TYPE_REFERENCE = 51;
+	int JVM_UNKNOWN_TYPE_REFERENCE = 53;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -3403,7 +3621,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmCustomAnnotationValue()
 	 * @generated
 	 */
-	int JVM_CUSTOM_ANNOTATION_VALUE = 53;
+	int JVM_CUSTOM_ANNOTATION_VALUE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -3449,7 +3667,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmVisibility()
 	 * @generated
 	 */
-	int JVM_VISIBILITY = 54;
+	int JVM_VISIBILITY = 56;
 
 	/**
 	 * The meta object id for the '<em>Iterable</em>' data type.
@@ -3459,7 +3677,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getIterable()
 	 * @generated
 	 */
-	int ITERABLE = 55;
+	int ITERABLE = 57;
 
 	/**
 	 * The meta object id for the '<em>List</em>' data type.
@@ -3469,7 +3687,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 56;
+	int LIST = 58;
 
 	/**
 	 * The meta object id for the '<em>IType Reference Visitor</em>' data type.
@@ -3479,7 +3697,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getITypeReferenceVisitor()
 	 * @generated
 	 */
-	int ITYPE_REFERENCE_VISITOR = 57;
+	int ITYPE_REFERENCE_VISITOR = 59;
 
 	/**
 	 * The meta object id for the '<em>IType Reference Visitor With Parameter</em>' data type.
@@ -3489,7 +3707,7 @@ public interface TypesPackage extends EPackage {
 	 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getITypeReferenceVisitorWithParameter()
 	 * @generated
 	 */
-	int ITYPE_REFERENCE_VISITOR_WITH_PARAMETER = 58;
+	int ITYPE_REFERENCE_VISITOR_WITH_PARAMETER = 60;
 
 
 	/**
@@ -3597,6 +3815,93 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJvmType();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmDelegateType <em>Jvm Delegate Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Jvm Delegate Type</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType
+	 * @generated
+	 */
+	EClass getJvmDelegateType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmDelegateType#getReturnType <em>Return Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Return Type</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#getReturnType()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EReference getJvmDelegateType_ReturnType();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.types.JvmDelegateType#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#getParameters()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EReference getJvmDelegateType_Parameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDelegateType#isVarArgs <em>Var Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Var Args</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#isVarArgs()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EAttribute getJvmDelegateType_VarArgs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDelegateType#getSimpleName <em>Simple Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Simple Name</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#getSimpleName()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EAttribute getJvmDelegateType_SimpleName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDelegateType#getIdentifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Identifier</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#getIdentifier()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EAttribute getJvmDelegateType_Identifier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDelegateType#isExported <em>Exported</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exported</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#isExported()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EAttribute getJvmDelegateType_Exported();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.types.JvmDelegateType#getAnnotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
+	 * @see org.summer.dsl.model.types.JvmDelegateType#getAnnotations()
+	 * @see #getJvmDelegateType()
+	 * @generated
+	 */
+	EReference getJvmDelegateType_Annotations();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmVoid <em>Jvm Void</em>}'.
@@ -4309,6 +4614,71 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJvmField_Get();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmEvent <em>Jvm Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Jvm Event</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent
+	 * @generated
+	 */
+	EClass getJvmEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmEvent#isStatic <em>Static</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Static</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent#isStatic()
+	 * @see #getJvmEvent()
+	 * @generated
+	 */
+	EAttribute getJvmEvent_Static();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmEvent#isNative <em>Native</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Native</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent#isNative()
+	 * @see #getJvmEvent()
+	 * @generated
+	 */
+	EAttribute getJvmEvent_Native();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmEvent#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent#getType()
+	 * @see #getJvmEvent()
+	 * @generated
+	 */
+	EReference getJvmEvent_Type();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmEvent#getAdd <em>Add</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Add</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent#getAdd()
+	 * @see #getJvmEvent()
+	 * @generated
+	 */
+	EReference getJvmEvent_Add();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmEvent#getRemove <em>Remove</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Remove</em>'.
+	 * @see org.summer.dsl.model.types.JvmEvent#getRemove()
+	 * @see #getJvmEvent()
+	 * @generated
+	 */
+	EReference getJvmEvent_Remove();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmExecutable <em>Jvm Executable</em>}'.
@@ -5209,6 +5579,72 @@ public interface TypesPackage extends EPackage {
 		EClass JVM_TYPE = eINSTANCE.getJvmType();
 
 		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmDelegateTypeImpl <em>Jvm Delegate Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.types.impl.JvmDelegateTypeImpl
+		 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmDelegateType()
+		 * @generated
+		 */
+		EClass JVM_DELEGATE_TYPE = eINSTANCE.getJvmDelegateType();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_DELEGATE_TYPE__RETURN_TYPE = eINSTANCE.getJvmDelegateType_ReturnType();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_DELEGATE_TYPE__PARAMETERS = eINSTANCE.getJvmDelegateType_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Var Args</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_DELEGATE_TYPE__VAR_ARGS = eINSTANCE.getJvmDelegateType_VarArgs();
+
+		/**
+		 * The meta object literal for the '<em><b>Simple Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_DELEGATE_TYPE__SIMPLE_NAME = eINSTANCE.getJvmDelegateType_SimpleName();
+
+		/**
+		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_DELEGATE_TYPE__IDENTIFIER = eINSTANCE.getJvmDelegateType_Identifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_DELEGATE_TYPE__EXPORTED = eINSTANCE.getJvmDelegateType_Exported();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_DELEGATE_TYPE__ANNOTATIONS = eINSTANCE.getJvmDelegateType_Annotations();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmVoidImpl <em>Jvm Void</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5793,6 +6229,56 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JVM_FIELD__GET = eINSTANCE.getJvmField_Get();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmEventImpl <em>Jvm Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.types.impl.JvmEventImpl
+		 * @see org.summer.dsl.model.types.impl.TypesPackageImpl#getJvmEvent()
+		 * @generated
+		 */
+		EClass JVM_EVENT = eINSTANCE.getJvmEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_EVENT__STATIC = eINSTANCE.getJvmEvent_Static();
+
+		/**
+		 * The meta object literal for the '<em><b>Native</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_EVENT__NATIVE = eINSTANCE.getJvmEvent_Native();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_EVENT__TYPE = eINSTANCE.getJvmEvent_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Add</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_EVENT__ADD = eINSTANCE.getJvmEvent_Add();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_EVENT__REMOVE = eINSTANCE.getJvmEvent_Remove();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmExecutableImpl <em>Jvm Executable</em>}' class.

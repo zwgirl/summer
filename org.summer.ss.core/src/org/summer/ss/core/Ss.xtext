@@ -23,7 +23,7 @@ XModule returns XModule :
 	importSection=XImportSection1? 
 //	(xtendTypes+=Type)*
 	root=XObjectElement
-	(contents+=Type 
+	(contents+=(Type | DelegateType) 
 	| (contents+= XExpressionInsideBlock ';'?)  )*
 	
 	exportSection=XExportSection? 
@@ -138,24 +138,20 @@ Type returns types::JvmDeclaredType :
 		   (members+=AnnotationField)*
 	   	'}'
 //   	 |
-//	 	{XtendDelegate.annotationInfo = current}
-////	 	modifiers+=CommonModifier*
-//		'delegate' 
-////		modifiers+=CommonModifier*
-////			modifiers+=MethodModifier 
-////(modifiers+=CommonModifier | modifiers+=MethodModifier)* 
-//
-//			( 
-//			   =>(returnType=JvmTypeReference name=ValidID
+//	 	{types::JvmAnnotationType.annotationInfo = current}
+//		'delegate' simpleName=ValidID
 //			   	('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//			   	'('
-//			   )
-////			  | name=ValidID '('
-//			)
-//			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-//			('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
+//			    '('(parameters+=Parameter (',' parameters+=Parameter)*)? ')' (':' returnType=JvmTypeReference)?
 //			 ';'
 	)
+;
+
+DelegateType returns types::JvmDelegateType:
+// 	{types::JvmDelegateType} annotations+=XAnnotation*  
+	exported ?= 'export' 'delegate' simpleName=ValidID
+	   	('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+	    '('(parameters+=Parameter (',' parameters+=Parameter)*)? ')' (':' returnType=JvmTypeReference)?
+	 ';'
 ;
 
 //AnnotationField returns types::JvmField :
@@ -172,10 +168,7 @@ Type returns types::JvmDeclaredType :
 AnnotationField returns types::JvmField :
 	annotations+=XAnnotation* //modifiers+=CommonModifier* 
 	( 
-//			modifiers+=FieldModifier modifiers+=CommonModifier*
-//			type=JvmTypeReference? simpleName=ValidID
-//		|
-			type=JvmTypeReference simpleName=ValidID
+		type=JvmTypeReference simpleName=ValidID
 	)
 	('=' defaultValue=XLiteral)? ';'?
 ;
@@ -186,10 +179,6 @@ Member returns types::JvmMember:
 		(	
 			{types::JvmField.annotationInfo = current} modifiers+=FieldModifier*
 			(
-//				modifiers+=FieldModifier modifiers+=CommonModifier* 
-//				type=JvmTypeReference? simpleName=ValidID 
-//			|  
-//				modifiers+=FieldModifier?
 				type=JvmTypeReference simpleName=ValidID
 			)
 			(
@@ -203,27 +192,9 @@ Member returns types::JvmMember:
 				)
 			)
 		) 
-//		|
-//	 	(
-//			(
-//			{types::JvmOperation.annotationInfo = current} modifiers+=CommonModifier*
-//			modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* 
-//			( 
-//			   (returnType=JvmTypeReference =>(simpleName=ValidID | ('operator' simpleName= OpMulti))
-//			   	('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//			   	)
-//			   	 '(')
-//			)
-//			(parameters+=Parameter (',' parameters+=Parameter)*)? ')'
-//			(expression=XBlockExpression 
-//				 | ';'
-//			)?
-//		)
-
 		|
 	 	(
 			{types::JvmOperation.annotationInfo = current} modifiers+=MethodModifier*
-//			modifiers+=MethodModifier? (modifiers+=CommonModifier /* | modifiers+=MethodModifier */)* 
 			function = XClosure
 		)
 	 	| 
@@ -234,10 +205,17 @@ Member returns types::JvmMember:
 			'(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')'
 			expression=XBlockExpression
 		)
-//		| (
-//			{XtendEvent.annotationInfo = current} modifiers+=CommonModifier*
-//			'event' type=JvmTypeReference name=ValidID ';'
-//		)
+		| (
+			{types::JvmEvent.annotationInfo = current} //modifiers+=EventModifier*
+			'event' type=JvmTypeReference simpleName=ValidID 
+			(
+				'{'
+					'add' add=XBlockExpression 
+					('remove' remove=XBlockExpression)?
+				'}'
+			)?
+			';'
+		)
 	)
 ;
 
@@ -340,8 +318,15 @@ FieldModifier:
 		'override' 
 ;
 
+//EventModifier:
+//		'static' | 
+//		'const' |
+//		'virtaul' |
+//		'override' 
+//;
+
 MethodModifier:
-		'override' | 'virtaul' |'static' | 'native' |'overload'
+		'override' | 'virtaul' |'static' | 'native' |'overload' | 'abstract'
 ; 
 
 //MethodModifier:
