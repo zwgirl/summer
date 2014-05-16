@@ -3,36 +3,6 @@
  */
 package org.summer.ss.core;
 
-import org.summer.ss.core.compiler.UnicodeAwarePostProcessor;
-import org.summer.ss.core.compiler.SsCompiler;
-import org.summer.ss.core.compiler.XtendGenerator;
-import org.summer.ss.core.compiler.SsOutputConfigurationProvider;
-import org.summer.ss.core.conversion.JavaIDValueConverter;
-import org.summer.ss.core.conversion.SsValueConverterService;
-import org.summer.ss.core.documentation.XtendDocumentationProvider;
-import org.summer.ss.core.formatting.SsFormatter;
-import org.summer.ss.core.imports.SsImportsConfiguration;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.ss.core.jvmmodel.SsJvmModelInferrer;
-import org.summer.ss.core.linking.Linker;
-import org.summer.ss.core.linking.LinkingProxyAwareResource;
-import org.summer.ss.core.linking.URIEncoder;
-import org.summer.ss.core.linking.SsLinkingDiagnosticMessageProvider;
-import org.summer.ss.core.naming.SsQualifiedNameProvider;
-import org.summer.ss.core.resource.SsLocationInFileProvider;
-import org.summer.ss.core.resource.SsResourceDescriptionManager;
-import org.summer.ss.core.resource.SsResourceDescriptionStrategy;
-import org.summer.ss.core.scoping.SsImportedNamespaceScopeProvider;
-import org.summer.ss.core.scoping.SsScopeProvider;
-import org.summer.ss.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
-import org.summer.ss.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
-import org.summer.ss.core.typesystem.XtendTypeComputer;
-import org.summer.ss.core.typing.XtendExpressionHelper;
-import org.summer.ss.core.validation.SsConfigurableIssueCodes;
-import org.summer.ss.core.validation.SsEarlyExitValidator;
-import org.summer.dsl.model.ss.SsFactory;
-import org.summer.ss.lib.macro.file.FileLocations;
-import org.summer.ss.lib.macro.file.MutableFileSystemSupport;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.impl.IDValueConverter;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
@@ -71,6 +41,35 @@ import org.summer.dsl.xbase.typesystem.internal.DefaultBatchTypeResolver;
 import org.summer.dsl.xbase.typesystem.internal.DefaultReentrantTypeResolver;
 import org.summer.dsl.xbase.util.XExpressionHelper;
 import org.summer.dsl.xbase.validation.EarlyExitValidator;
+import org.summer.ss.core.compiler.SsCompiler;
+import org.summer.ss.core.compiler.SsOutputConfigurationProvider;
+import org.summer.ss.core.compiler.UnicodeAwarePostProcessor;
+import org.summer.ss.core.compiler.XtendGenerator;
+import org.summer.ss.core.conversion.JavaIDValueConverter;
+import org.summer.ss.core.conversion.SsValueConverterService;
+import org.summer.ss.core.documentation.XtendDocumentationProvider;
+import org.summer.ss.core.formatting.SsFormatter;
+import org.summer.ss.core.imports.SsImportsConfiguration;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.core.jvmmodel.SsJvmModelInferrer;
+import org.summer.ss.core.linking.Linker;
+import org.summer.ss.core.linking.LinkingProxyAwareResource;
+import org.summer.ss.core.linking.SsLinkingDiagnosticMessageProvider;
+import org.summer.ss.core.linking.URIEncoder;
+import org.summer.ss.core.naming.SsQualifiedNameProvider;
+import org.summer.ss.core.resource.SsLocationInFileProvider;
+import org.summer.ss.core.resource.SsResourceDescriptionManager;
+import org.summer.ss.core.resource.SsResourceDescriptionStrategy;
+import org.summer.ss.core.scoping.SsImportedNamespaceScopeProvider;
+import org.summer.ss.core.scoping.SsScopeProvider;
+import org.summer.ss.core.typesystem.DispatchAndExtensionAwareReentrantTypeResolver;
+import org.summer.ss.core.typesystem.TypeDeclarationAwareBatchTypeResolver;
+import org.summer.ss.core.typesystem.XtendTypeComputer;
+import org.summer.ss.core.typing.XtendExpressionHelper;
+import org.summer.ss.core.validation.SsConfigurableIssueCodes;
+import org.summer.ss.core.validation.SsEarlyExitValidator;
+import org.summer.ss.lib.macro.file.FileLocations;
+import org.summer.ss.lib.macro.file.MutableFileSystemSupport;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -150,9 +149,9 @@ public class SsRuntimeModule extends org.summer.ss.core.AbstractSsRuntimeModule 
 		return SsConfigurableIssueCodes.class;
 	}
 	
-	public SsFactory bindXtendFactory() {
-		return SsFactory.eINSTANCE;
-	}
+//	public SsFactory bindXtendFactory() {
+//		return SsFactory.eINSTANCE;
+//	}
 
 	@Override
 	public Class<? extends DefaultBatchTypeResolver> bindDefaultBatchTypeResolver() {
@@ -177,9 +176,9 @@ public class SsRuntimeModule extends org.summer.ss.core.AbstractSsRuntimeModule 
 		return XtendTypeComputer.class;
 	}
 
-	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
-		return SsJvmModelInferrer.class;
-	}
+//	public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
+//		return SsJvmModelInferrer.class;
+//	}
 	
 	@Override
 	public Class<? extends Manager> bindIResourceDescription$Manager() {

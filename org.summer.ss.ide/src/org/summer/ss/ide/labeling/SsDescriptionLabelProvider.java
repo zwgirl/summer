@@ -3,16 +3,14 @@
 */
 package org.summer.ss.ide.labeling;
 
-import static org.summer.dsl.model.ss.SsPackage.Literals.*;
-import static org.summer.dsl.model.xtype.XtypePackage.Literals.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.jdt.ui.JavaElementImageDescriptor;
-import org.summer.ss.core.resource.DescriptionFlags;
-import org.summer.dsl.model.types.JvmVisibility;
-import org.summer.dsl.model.types.TypesPackage;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
+import org.summer.dsl.model.types.JvmVisibility;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.xtype.XtypePackage;
+import org.summer.ss.core.resource.DescriptionFlags;
 
 import com.google.inject.Inject;
 
@@ -33,15 +31,15 @@ public class SsDescriptionLabelProvider extends DefaultDescriptionLabelProvider 
 	public Object image(IEObjectDescription element) {
 		EClass eClass = element.getEClass();
 		int adornments = (descriptionFlags.isStatic(element)) ? JavaElementImageDescriptor.STATIC : 0;
-		if (eClass == XMODULE)
+		if (eClass == TypesPackage.Literals.JVM_MODULE)
 			return images.forFile();
-		else if (eClass == XIMPORT_DECLARATION)
+		else if (eClass == XtypePackage.Literals.XIMPORT_DECLARATION)
 			return images.forImport();
-		else if (eClass == XTEND_CLASS || eClass == TypesPackage.Literals.JVM_GENERIC_TYPE)
+		else if (eClass == TypesPackage.Literals.JVM_DECLARED_TYPE || eClass == TypesPackage.Literals.JVM_GENERIC_TYPE)
 			return images.forClass(JvmVisibility.PUBLIC, adornments);
-		else if (eClass == XTEND_FUNCTION)
+		else if (eClass == TypesPackage.Literals.JVM_OPERATION)
 			return images.forOperation(JvmVisibility.PUBLIC, adornments);
-		else if (eClass == XTEND_FIELD)
+		else if (eClass == TypesPackage.Literals.JVM_FIELD)
 			return images.forField(JvmVisibility.PUBLIC, adornments);
 		else if (eClass == TypesPackage.Literals.JVM_OPERATION)
 			return (descriptionFlags.isDispatcherOperation(element)) 

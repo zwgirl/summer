@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.ide.refactoring;
 
-import static com.google.common.collect.Lists.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.List;
 import java.util.Map;
@@ -19,15 +19,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.ui.refactoring.participant.JvmMemberRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.IRefactoringUpdateAcceptor;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategyProvider.IInitializable;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.ui.refactoring.participant.JvmMemberRenameStrategy;
 import org.summer.dsl.xbase.ui.jvmmodel.refactoring.DefaultJvmModelRenameStrategy;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
 
 import com.google.inject.Inject;
 
@@ -50,16 +49,16 @@ public class DispatchMethodRenameStrategy implements IInitializable {
 	private List<JvmOperation> dispatchers = newArrayList();
 	
 	public boolean initialize(EObject xtendMethod, IRenameElementContext context) {
-		Assert.isLegal(xtendMethod instanceof XtendFunction);
-		Assert.isLegal(((XtendFunction) xtendMethod).isDispatch());
+		Assert.isLegal(xtendMethod instanceof JvmOperation);
+//		Assert.isLegal(((JvmOperation) xtendMethod).isDispatch());
 		Assert.isLegal(context instanceof DispatchMethodRenameContext);
 		ResourceSet resourceSet = xtendMethod.eResource().getResourceSet();
 		Map<URI, IJavaElement> jvm2JavaElements = ((DispatchMethodRenameContext)context).getJvm2JavaElements();
 		for(URI dispatchOperationURI: jvm2JavaElements.keySet()) {
 			JvmOperation dispatchOperation = (JvmOperation) resourceSet.getEObject(dispatchOperationURI, true);
-			XtendFunction xtendDispatchMethod = associations.getXtendFunction(dispatchOperation);
+			JvmOperation xtendDispatchMethod = associations.getXtendFunction(dispatchOperation);
 			if(xtendDispatchMethod != null) {
-				if(equal(xtendDispatchMethod.getName(),dispatchOperation.getSimpleName())) {
+				if(equal(xtendDispatchMethod.getSimpleName(),dispatchOperation.getSimpleName())) {
 					// synthetic dispatcher
 					dispatchers.add(dispatchOperation);
 				} else {

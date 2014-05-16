@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmOperation;
@@ -53,12 +52,12 @@ public class XtendOverridesService {
 	@Inject
 	private SuperTypeCollector superTypeCollector;
 	
-	public JvmOperation findOverriddenOperation(XtendFunction function) {
-		JvmOperation inferredOperation = xtendjvmAssociations.getDirectlyInferredOperation(function);
-		if (inferredOperation == null)
-			return null;
-		return findOverriddenOperation(inferredOperation);
-	}
+//	public JvmOperation findOverriddenOperation(XtendFunction function) {
+//		JvmOperation inferredOperation = xtendjvmAssociations.getDirectlyInferredOperation(function);
+//		if (inferredOperation == null)
+//			return null;
+//		return findOverriddenOperation(inferredOperation);
+//	}
 
 	public JvmOperation findOverriddenOperation(JvmOperation operation) {
 		final JvmTypeReference typeRef = typeReferences.createTypeRef(operation.getDeclaringType());
@@ -90,36 +89,36 @@ public class XtendOverridesService {
 		return result;
 	}
 	
-	public JvmTypeReference getOverriddenReturnType(XtendFunction func) {
-		final JvmOperation operation = findOverriddenOperation(func);
-		if (operation==null)
-			return null;
-		final JvmTypeReference overriddenReturnType = operation.getReturnType();
-		final JvmOperation inferredOperation = xtendjvmAssociations.getDirectlyInferredOperation(func);
-		ITypeArgumentContext typeArgumentContext = typeArgumentContextProvider.getTypeArgumentContext(new TypeArgumentContextProvider.AbstractRequest() {
-			@Override
-			public JvmTypeParameterDeclarator getNearestDeclarator() {
-				return inferredOperation;
-			}
-			@Override
-			public JvmTypeReference getReceiverType() {
-				return typeReferences.createTypeRef(inferredOperation.getDeclaringType());
-			}
-			@Override
-			public JvmFeature getFeature() {
-				return operation;
-			}
-			@Override
-			public List<JvmTypeReference> getExplicitTypeArgument() {
-				List<JvmTypeParameter> parameters = inferredOperation.getTypeParameters();
-				List<JvmTypeReference> result = Lists.newArrayList();
-				for(JvmTypeParameter typeParameter: parameters) {
-					result.add(typeReferences.createTypeRef(typeParameter));
-				}
-				return result;
-			}
-		});
-		JvmTypeReference resolved = typeArgumentContext.resolve(overriddenReturnType);
-		return resolved;
-	}
+//	public JvmTypeReference getOverriddenReturnType(XtendFunction func) {
+//		final JvmOperation operation = findOverriddenOperation(func);
+//		if (operation==null)
+//			return null;
+//		final JvmTypeReference overriddenReturnType = operation.getReturnType();
+//		final JvmOperation inferredOperation = xtendjvmAssociations.getDirectlyInferredOperation(func);
+//		ITypeArgumentContext typeArgumentContext = typeArgumentContextProvider.getTypeArgumentContext(new TypeArgumentContextProvider.AbstractRequest() {
+//			@Override
+//			public JvmTypeParameterDeclarator getNearestDeclarator() {
+//				return inferredOperation;
+//			}
+//			@Override
+//			public JvmTypeReference getReceiverType() {
+//				return typeReferences.createTypeRef(inferredOperation.getDeclaringType());
+//			}
+//			@Override
+//			public JvmFeature getFeature() {
+//				return operation;
+//			}
+//			@Override
+//			public List<JvmTypeReference> getExplicitTypeArgument() {
+//				List<JvmTypeParameter> parameters = inferredOperation.getTypeParameters();
+//				List<JvmTypeReference> result = Lists.newArrayList();
+//				for(JvmTypeParameter typeParameter: parameters) {
+//					result.add(typeReferences.createTypeRef(typeParameter));
+//				}
+//				return result;
+//			}
+//		});
+//		JvmTypeReference resolved = typeArgumentContext.resolve(overriddenReturnType);
+//		return resolved;
+//	}
 }

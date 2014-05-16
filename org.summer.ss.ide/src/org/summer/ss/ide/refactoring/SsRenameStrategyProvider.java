@@ -8,10 +8,10 @@
 package org.summer.ss.ide.refactoring;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.dsl.model.ss.XtendConstructor;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategyProvider;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
+import org.summer.dsl.model.types.JvmConstructor;
 
 import com.google.inject.Inject;
 
@@ -21,7 +21,7 @@ public class SsRenameStrategyProvider extends DefaultRenameStrategyProvider {
 	
 	@Override
 	public IRenameStrategy get(EObject targetEObject, IRenameElementContext renameElementContext) throws NoSuchStrategyException {
-		if(targetEObject instanceof XtendConstructor)
+		if(targetEObject instanceof JvmConstructor)
 			// Xtend constructors can be ignored in rename refactorings
 			return null;
 		return super.get(targetEObject, renameElementContext);

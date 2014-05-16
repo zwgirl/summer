@@ -28,6 +28,7 @@ import org.eclipse.jdt.core.compiler.batch.BatchCompiler;
 import org.summer.ss.core.macro.ProcessorInstanceForJvmTypeProvider;
 import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.impl.ClasspathTypeProvider;
 import org.summer.dsl.model.types.access.impl.IndexedJvmTypeAccess;
@@ -616,13 +617,13 @@ public class SsBatchCompiler {
 		return Strings.concat("/", typeName.getSegments()) + ".js";
 	}
 
-	@Nullable protected XModule getXtendFile(Resource resource) {
+	@Nullable protected JvmModule getXtendFile(Resource resource) {
 		XtextResource xtextResource = (XtextResource) resource;
 		IParseResult parseResult = xtextResource.getParseResult();
 		if (parseResult != null) {
 			EObject model = parseResult.getRootASTElement();
-			if (model instanceof XModule) {
-				XModule xtendFile = (XModule) model;
+			if (model instanceof JvmModule) {
+				JvmModule xtendFile = (JvmModule) model;
 				return xtendFile;
 			}
 		}

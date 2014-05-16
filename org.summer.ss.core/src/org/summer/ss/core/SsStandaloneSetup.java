@@ -3,12 +3,10 @@ package org.summer.ss.core;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-import org.summer.dsl.xbase.jvmmodel.JvmModelInferrerRegistry;
 import org.summer.dsl.model.xtype.XtypePackage;
+import org.summer.dsl.xbase.jvmmodel.JvmModelInferrerRegistry;
 
 import com.google.inject.Injector;
 
@@ -35,9 +33,9 @@ public class SsStandaloneSetup extends SsStandaloneSetupGenerated{
 			EPackage.Registry.INSTANCE.put(org.eclipse.xtext.XtextPackage.eNS_URI, org.eclipse.xtext.XtextPackage.eINSTANCE);
 		
 //		// register used EPackages
-		EPackage.Registry.INSTANCE.put(SsPackage.eINSTANCE.getNsURI(),SsPackage.eINSTANCE);
+//		EPackage.Registry.INSTANCE.put(SsPackage.eINSTANCE.getNsURI(),SsPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(XbasePackage.eINSTANCE.getNsURI(),XbasePackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(XannotationPackage.eINSTANCE.getNsURI(),XannotationPackage.eINSTANCE);
+//		EPackage.Registry.INSTANCE.put(XannotationPackage.eINSTANCE.getNsURI(),XannotationPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(TypesPackage.eINSTANCE.getNsURI(), TypesPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(XtypePackage.eINSTANCE.getNsURI(), XtypePackage.eINSTANCE);
 		

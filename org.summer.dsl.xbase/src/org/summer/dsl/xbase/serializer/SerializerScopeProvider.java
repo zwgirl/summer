@@ -7,24 +7,11 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.serializer;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmExecutable;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.TypesPackage;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
@@ -34,28 +21,33 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 import org.eclipse.xtext.scoping.impl.SingletonScope;
 import org.eclipse.xtext.util.Strings;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmExecutable;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XSwitchExpression;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xtype.XImportDeclaration;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.xbase.imports.IImportsConfiguration;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
-import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.summer.dsl.xbase.scoping.batch.ConstructorTypeScopeWrapper;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.scoping.batch.XbaseBatchScopeProvider;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
-import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
-import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -211,9 +203,9 @@ public class SerializerScopeProvider extends XbaseBatchScopeProvider implements 
 			if (type instanceof JvmDeclaredType && ((JvmDeclaredType) type).getDeclaringType() != null) {
 				Resource resource = call.eResource();
 				if (resource instanceof XtextResource) {
-					XImportSection1 importSection = importsConfiguration.getImportSection((XtextResource) resource);
+					XImportSection importSection = importsConfiguration.getImportSection((XtextResource) resource);
 					if (importSection != null) {
-						List<XImportDeclaration1> importDeclarations = importSection.getImportDeclarations();
+						List<XImportDeclaration> importDeclarations = importSection.getImportDeclarations();
 						List<IEObjectDescription> descriptions = Lists.newArrayList();
 						//cym mopdified
 //						for(XImportDeclaration1 importDeclaration: importDeclarations) {

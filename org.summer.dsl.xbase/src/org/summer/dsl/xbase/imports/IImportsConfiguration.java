@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.resource.XtextResource;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 
 import com.google.inject.ImplementedBy;
 
@@ -25,7 +25,7 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(DefaultImportsConfiguration.class)
 public interface IImportsConfiguration {
 
-	XImportSection1 getImportSection(XtextResource resource);
+	XImportSection getImportSection(XtextResource resource);
 
 	int getImportSectionOffset(XtextResource resource);
 

@@ -10,18 +10,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.xtext.ui.TypeMatchFilters;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -35,21 +33,22 @@ public class XbaseWithAnnotationsProposalProvider extends AbstractXbaseWithAnnot
 	@Override
 	public void completeXAnnotation_AnnotationType(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		completeJavaTypes(context, XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE, 
+		completeJavaTypes(context, TypesPackage.Literals.JVM_ANY_TYPE_REFERENCE__TYPE, 
 				TypeMatchFilters.all(IJavaSearchConstants.ANNOTATION_TYPE), acceptor);
 	}
 	
 	@Override
 	public void completeXAnnotationElementValuePair_Element(EObject model, Assignment assignment,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		XAnnotation annotationReference = null;
-		if (model instanceof XAnnotationElementValuePair) {
-			annotationReference = (XAnnotation) model.eContainer();
-		} else if (model instanceof XAnnotation) {
-			annotationReference = (XAnnotation) model;
+		JvmAnnotationReference annotationReference = null;
+//		if (model instanceof XAnnotationElementValuePair) {
+//			annotationReference = (XAnnotation) model.eContainer();
+//		} else 
+		if (model instanceof JvmAnnotationReference) {
+			annotationReference = (JvmAnnotationReference) model;
 		}
 		if (annotationReference != null) {
-			JvmType annotationType = annotationReference.getAnnotationType();
+			JvmType annotationType = annotationReference.getAnnotation();
 			if (annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType) {
 				// do not propose features like #toString, #hashCode etc
 				JvmAnnotationType casted = (JvmAnnotationType) annotationType;
@@ -74,8 +73,8 @@ public class XbaseWithAnnotationsProposalProvider extends AbstractXbaseWithAnnot
 	@Override
 	public void completeXAnnotation_Value(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XAnnotation) {
-			JvmType annotationType = ((XAnnotation) model).getAnnotationType();
+		if (model instanceof JvmAnnotationReference) {
+			JvmType annotationType = ((JvmAnnotationReference) model).getAnnotation();
 			if (annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType) {
 				JvmAnnotationType casted = (JvmAnnotationType) annotationType;
 				List<JvmOperation> operations = Lists.newArrayList(casted.getDeclaredOperations());

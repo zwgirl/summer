@@ -8,9 +8,9 @@
 package org.summer.ss.core.documentation
 
 import org.eclipse.emf.ecore.EObject
-import org.summer.dsl.model.ss.XtendAnnotationTarget
-import org.summer.dsl.model.ss.SsPackage
 import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvider
+import org.summer.dsl.model.types.JvmAnnotationTarget
+import org.summer.dsl.model.types.TypesPackage
 
 /**
  * @author Sven Efftinge - Initial contribution and API
@@ -35,7 +35,7 @@ class XtendDocumentationProvider extends MultiLineCommentDocumentationProvider {
 	 * The Xtend parser constructs a synthetic nested AST element to hold annotations which should be ignored as a documentation provider
 	 */
 	def boolean shouldBeHandeled(EObject o) {
-		!(o instanceof XtendAnnotationTarget && o.eContainingFeature == SsPackage.Literals.XTEND_MEMBER__ANNOTATION_INFO)
+		!(o instanceof JvmAnnotationTarget && o.eContainingFeature == TypesPackage.Literals.JVM_MEMBER__ANNOTATION_INFO)
 	}
 	
 }

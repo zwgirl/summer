@@ -44,7 +44,7 @@ class RegisterGlobalsContextImpl implements RegisterGlobalsContext {
 	override registerInterface(String qualifiedName) throws IllegalArgumentException {
 		val newType = TypesFactory.eINSTANCE.createJvmGenericType
 		newType.setVisibility(JvmVisibility.PUBLIC)
-		newType.interface = true
+//		newType.interface = true
 		setNameAndAccept(newType, qualifiedName)
 	}
 	

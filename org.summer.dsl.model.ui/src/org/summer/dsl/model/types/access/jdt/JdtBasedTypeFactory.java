@@ -423,7 +423,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 			hasFields = true;
 		} else {
 			result = jvmGenericType = TypesFactory.eINSTANCE.createJvmGenericType();
-			jvmGenericType.setInterface(typeBinding.isInterface());
+//			jvmGenericType.setInterface(typeBinding.isInterface());
 			hasFields = true;
 		}
 

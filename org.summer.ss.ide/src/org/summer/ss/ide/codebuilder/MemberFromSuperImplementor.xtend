@@ -1,8 +1,6 @@
 package org.summer.ss.ide.codebuilder
 
 import com.google.inject.Inject
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations
-import org.summer.dsl.model.ss.XtendClass
 import org.summer.dsl.model.types.JvmConstructor
 import org.summer.dsl.model.types.JvmDeclaredType
 import org.summer.dsl.model.types.JvmExecutable
@@ -19,6 +17,7 @@ import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference
 import org.summer.dsl.xbase.typesystem.util.CommonTypeComputationServices
 import org.summer.dsl.xbase.typesystem.util.DeclaratorTypeArgumentCollector
 import org.summer.dsl.xbase.typesystem.util.StandardTypeParameterSubstitutor
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations
 
 class MemberFromSuperImplementor {
 	
@@ -32,7 +31,7 @@ class MemberFromSuperImplementor {
 
 	@Inject CommonTypeComputationServices services
 
-	def void appendOverrideFunction(XtendClass overrider, JvmOperation overriddenOperation, ISourceAppender appendable) {
+	def void appendOverrideFunction(JvmGenericType overrider, JvmOperation overriddenOperation, ISourceAppender appendable) {
 		val inferredType = associations.getInferredType(overrider)
 		val methodBuilder = codeBuilderFactory.createMethodBuilder(inferredType)
 		val substitutor = createSubstitutor(inferredType)
@@ -71,7 +70,7 @@ class MemberFromSuperImplementor {
 			methodBuilder.build(appendable)
 	}
 
-	def void appendConstructorFromSuper(XtendClass overrider, JvmConstructor superConstructor, ISourceAppender appendable) {
+	def void appendConstructorFromSuper(JvmGenericType overrider, JvmConstructor superConstructor, ISourceAppender appendable) {
 		val inferredType = associations.getInferredType(overrider)
 		val constructorBuilder = codeBuilderFactory.createConstructorBuilder(inferredType)
 		val substitutor = createSubstitutor(inferredType)

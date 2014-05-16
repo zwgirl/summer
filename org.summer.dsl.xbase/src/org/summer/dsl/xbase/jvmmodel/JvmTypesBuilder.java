@@ -7,7 +7,8 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.jvmmodel;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.toArray;
 
 import java.util.Iterator;
 
@@ -20,7 +21,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.ss2.lib.StringConcatenationClient;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.util.Pair;
+import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.util.Tuples;
+import org.eclipse.xtext.xbase.lib.Procedures;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
@@ -51,27 +58,18 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.impl.ClassURIHelper;
 import org.summer.dsl.model.types.util.AnnotationLookup;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
-import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.util.Pair;
-import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.util.Tuples;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
-import org.summer.dsl.model.xannotation.XannotationPackage;
+import org.summer.dsl.model.xtype.XComputedTypeReference;
+import org.summer.dsl.model.xtype.XtypeFactory;
 import org.summer.dsl.xbase.compiler.CompilationStrategyAdapter;
 import org.summer.dsl.xbase.compiler.CompilationTemplateAdapter;
 import org.summer.dsl.xbase.compiler.DocumentationAdapter;
 import org.summer.dsl.xbase.compiler.FileHeaderAdapter;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.summer.dsl.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Procedures;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.summer.dsl.xbase.lib.util.ToStringHelper;
 import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
-import org.summer.dsl.model.xtype.XComputedTypeReference;
-import org.summer.dsl.model.xtype.XtypeFactory;
+import org.summer.ss2.lib.StringConcatenationClient;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
@@ -357,7 +355,7 @@ public class JvmTypesBuilder {
 		final JvmGenericType result = createJvmGenericType(sourceElement, name);
 		if (result == null)
 			return null;
-		result.setInterface(true);
+//		result.setInterface(true);
 		associate(sourceElement, result);
 		return initializeSafely(result, initializer);
 	}
@@ -1203,10 +1201,10 @@ public class JvmTypesBuilder {
 	 * @param target the annotation target. If <code>null</code> this method does nothing. 
 	 * @param annotations the annotations. If <code>null</code> this method does nothing. 
 	 */
-	public void translateAnnotationsTo(@Nullable Iterable<? extends XAnnotation> annotations, @Nullable JvmAnnotationTarget target) {
+	public void translateAnnotationsTo(@Nullable Iterable<? extends JvmAnnotationReference> annotations, @Nullable JvmAnnotationTarget target) {
 		if(annotations == null || target == null) 
 			return;
-		for (XAnnotation anno : annotations) {
+		for (JvmAnnotationReference anno : annotations) {
 			JvmAnnotationReference annotationReference = getJvmAnnotationReference(anno);
 			if(annotationReference != null) {
 				target.getAnnotations().add(annotationReference);
@@ -1215,12 +1213,12 @@ public class JvmTypesBuilder {
 	}
 
 	@Nullable 
-	public JvmAnnotationReference getJvmAnnotationReference(@Nullable XAnnotation anno) {
+	public JvmAnnotationReference getJvmAnnotationReference(@Nullable JvmAnnotationReference anno) {
 		if(anno == null)
 			return null;
 		JvmAnnotationReference reference = typesFactory.createJvmAnnotationReference();
 		final JvmType annotation = (JvmType) anno.eGet(
-				XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE, false);
+				TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, false);
 		if (annotation.eIsProxy()) {
 			JvmAnnotationType copiedProxy = TypesFactory.eINSTANCE.createJvmAnnotationType();
 			((InternalEObject)copiedProxy).eSetProxyURI(EcoreUtil.getURI(annotation));

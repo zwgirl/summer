@@ -14,21 +14,11 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendParameter;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.xtext.ui.ITypesProposalProvider;
-import org.summer.dsl.model.types.xtext.ui.JdtVariableCompletions;
-import org.summer.dsl.model.types.xtext.ui.JdtVariableCompletions.VariableType;
-import org.summer.dsl.model.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
@@ -36,6 +26,15 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.Strings;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.xtext.ui.ITypesProposalProvider;
+import org.summer.dsl.model.types.xtext.ui.JdtVariableCompletions;
+import org.summer.dsl.model.types.xtext.ui.JdtVariableCompletions.VariableType;
+import org.summer.dsl.model.types.xtext.ui.TypeMatchFilters;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
@@ -57,8 +56,8 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 
 	@Override
 	protected ITypesProposalProvider.Filter createVisibilityFilter(ContentAssistContext context, int searchFor) {
-		XModule file = (XModule) context.getRootModel();
-		final char[] contextPackageName = Strings.emptyIfNull(file.getPackage()).toCharArray(); 
+		JvmModule file = (JvmModule) context.getRootModel();
+		final char[] contextPackageName = Strings.emptyIfNull(file.getSimpleName()).toCharArray(); 
 		return new TypeMatchFilters.All(searchFor) {
 			@Override
 			public boolean accept(int modifiers, char[] packageName, char[] simpleTypeName,
@@ -82,7 +81,7 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 	@Override
 	public void completeMember_Type(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XtendField) {
+		if (model instanceof JvmField) {
 			// don't propose types everywhere but only if there's already an indicator for fields, e.g. static, extension, var, val
 			completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true,
 					getQualifiedNameValueConverter(), new TypeMatchFilters.All(IJavaSearchConstants.TYPE), acceptor);
@@ -96,14 +95,14 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 	@Override
 	public void completeParameter_Name(final EObject model, Assignment assignment, final ContentAssistContext context,
 			final ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XtendParameter) {
-			final List<XtendParameter> siblings = EcoreUtil2.getSiblingsOfType(model, XtendParameter.class);
+		if (model instanceof JvmFormalParameter) {
+			final List<JvmFormalParameter> siblings = EcoreUtil2.getSiblingsOfType(model, JvmFormalParameter.class);
 			Set<String> alreadyTaken = Sets.newHashSet();
-			for(XtendParameter sibling: siblings) {
+			for(JvmFormalParameter sibling: siblings) {
 				alreadyTaken.add(sibling.getName());
 			}
 			alreadyTaken.addAll(getAllKeywords());
-			completions.getVariableProposals(model, SsPackage.Literals.XTEND_PARAMETER__PARAMETER_TYPE,
+			completions.getVariableProposals(model, TypesPackage.Literals.JVM_FORMAL_PARAMETER__PARAMETER_TYPE,
 					VariableType.PARAMETER, alreadyTaken, new JdtVariableCompletions.CompletionDataAcceptor() {
 						public void accept(String replaceText, StyledString label, Image img) {
 							acceptor.accept(createCompletionProposal(replaceText, label, img, context));
@@ -157,8 +156,8 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 	@Override
 	public void completeType_Members(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XtendClass)
-			overrideAssist.createOverrideProposals((XtendClass) model, context, acceptor, getConflictHelper());
+		if (model instanceof JvmDeclaredType)
+			overrideAssist.createOverrideProposals((JvmDeclaredType) model, context, acceptor, getConflictHelper());
 		super.completeType_Members(model, assignment, context, acceptor);
 	}
 
@@ -195,7 +194,7 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 	@Override
 	public void completeXFeatureCall_Feature(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XtendField) {
+		if (model instanceof JvmField) {
 			createLocalVariableAndImplicitProposals(model, context, acceptor);
 		} else {
 			super.completeXFeatureCall_Feature(model, assignment, context, acceptor);

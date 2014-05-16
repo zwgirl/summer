@@ -20,6 +20,7 @@ import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmDelegateTypeReference;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
@@ -84,7 +85,7 @@ public class Closures {
 			@Override
 			public JvmTypeReference doVisitParameterizedTypeReference(JvmParameterizedTypeReference reference) {
 				JvmType type = reference.getType();
-				if (type instanceof JvmGenericType && !type.eIsProxy() && ((JvmGenericType)type).isInterface()) {
+				if (type instanceof JvmGenericType && !type.eIsProxy() && (type instanceof JvmInterfaceType)) {
 					JvmOperation operation = findImplementingOperation(reference, type.eResource());
 					if (operation != null) {
 						JvmTypeReference result = null;

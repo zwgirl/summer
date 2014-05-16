@@ -2,13 +2,11 @@ package org.summer.ss.ide.outline;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.xbase.XbasePackage;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.actions.SortOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EStructuralFeatureNode;
+import org.summer.dsl.model.types.TypesPackage;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -53,7 +51,7 @@ public class SsOutlineNodeComparator extends SortOutlineContribution.DefaultComp
 	protected int internalGetCategory(IOutlineNode node) {
 		if (node instanceof EStructuralFeatureNode) {
 			EStructuralFeature feature = ((EStructuralFeatureNode) node).getEStructuralFeature();
-			if (feature == SsPackage.Literals.XMODULE__PACKAGE)
+			if (feature == TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME)
 				return 0;
 			else
 				return 10;

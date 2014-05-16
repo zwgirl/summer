@@ -17,28 +17,19 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.xaml.XAbstractAttribute;
 import org.summer.dsl.model.xaml.XAttachAttribute;
-import org.summer.dsl.model.xaml.XAttributeElement;
 import org.summer.dsl.model.xaml.XElement;
 import org.summer.dsl.model.xaml.XGeneralAttribute;
 import org.summer.dsl.model.xaml.XamlPackage;
-import org.summer.dsl.xannotation.typesystem.XbaseWithAnnotationsBatchScopeProvider;
+import org.summer.dsl.xbase.scoping.batch.XbaseBatchScopeProvider;
 
 import com.google.common.base.Function;
 
-public class XSsBatchScopeProvider extends XbaseWithAnnotationsBatchScopeProvider{
+public class XSsBatchScopeProvider extends XbaseBatchScopeProvider{
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
 		if(reference==XamlPackage.Literals.XABSTRACT_ATTRIBUTE__FIELD){
 			XAbstractAttribute abstarctParperty = (XAbstractAttribute) context;
 			XElement element = (XElement) abstarctParperty.eContainer();
-//			if(element instanceof XAttributeElement){
-//				XAttributeElement attrElement = (XAttributeElement) element;
-//				if(attrElement.getField().getDeclaringType() instanceof JvmGenericType){
-//					return getFieldScope((JvmGenericType) attrElement.getField().getType().getType());
-//				}else{
-//					return IScope.NULLSCOPE;
-//				}
-//			}
 			
 			if(abstarctParperty instanceof XAttachAttribute){
 				XAttachAttribute attachProperty = (XAttachAttribute) context;

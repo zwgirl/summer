@@ -7,8 +7,9 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.imports;
 
-import static com.google.common.collect.Iterables.*;
-import static org.summer.dsl.model.types.TypesPackage.Literals.*;
+import static com.google.common.collect.Iterables.contains;
+import static org.summer.dsl.model.types.TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE;
+import static org.summer.dsl.model.types.TypesPackage.Literals.JVM_SPECIALIZED_TYPE_REFERENCE__EQUIVALENT;
 
 import java.util.List;
 import java.util.Set;
@@ -17,17 +18,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmParameterizedTypeReference;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.JvmWildcardTypeReference;
-import org.summer.dsl.model.types.TypesFactory;
-import org.summer.dsl.model.types.util.TypeReferences;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProviderExtension;
 import org.eclipse.xtext.documentation.IJavaDocTypeReferenceProvider;
@@ -39,6 +29,19 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.util.TextRegion;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmParameterizedTypeReference;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.JvmWildcardTypeReference;
+import org.summer.dsl.model.types.TypesFactory;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.util.TypeReferences;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -49,13 +52,11 @@ import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.summer.dsl.xbase.typesystem.IBatchTypeResolver;
 import org.summer.dsl.xbase.util.FeatureCallAsTypeLiteralHelper;
-import org.summer.dsl.model.xtype.XFunctionTypeRef;
 
 import com.google.inject.Inject;
 
@@ -147,8 +148,8 @@ public class TypeUsageCollector {
 			EObject next = contents.next();
 			if (next instanceof JvmTypeReference) {
 				acceptType((JvmTypeReference) next);
-			} else if (next instanceof XAnnotation) {
-				acceptPreferredType(next, XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE);
+			} else if (next instanceof JvmAnnotationReference) {
+				acceptPreferredType(next, TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION);
 			} else if (next instanceof XConstructorCall) {
 				acceptPreferredType(next, XbasePackage.Literals.XCONSTRUCTOR_CALL__CONSTRUCTOR);
 			} else if (next instanceof XTypeLiteral) {

@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.ss.ide.refactoring;
 
-import static com.google.common.collect.Maps.*;
+import static com.google.common.collect.Maps.newLinkedHashMap;
 
 import java.util.Map;
 
@@ -18,15 +18,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jface.text.ITextSelection;
-import org.summer.dsl.model.ss.XtendConstructor;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmOperation;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.refactoring.impl.ProjectUtil;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.xbase.ui.jvmmodel.refactoring.jdt.CombinedJvmJdtRenameContextFactory;
 
 import com.google.inject.Inject;
@@ -49,10 +48,10 @@ public class SsRenameContextFactory extends CombinedJvmJdtRenameContextFactory {
 	public IRenameElementContext createLocalRenameElementContext(EObject targetElement, XtextEditor editor,
 			ITextSelection selection, XtextResource resource) {
 		EObject declarationTarget = getDeclarationTarget(targetElement);
-		if (declarationTarget instanceof XtendFunction && ((XtendFunction) declarationTarget).isDispatch()) {
+		if (declarationTarget instanceof JvmOperation/* && ((JvmOperation) declarationTarget).isDispatch()*/) {
 			IProject project = projectUtil.getProject(declarationTarget.eResource().getURI());
 			ResourceSet resourceSet = resourceSetProvider.get(project);
-			XtendFunction relaodedDispatchFunction = (XtendFunction) resourceSet.getEObject(
+			JvmOperation relaodedDispatchFunction = (JvmOperation) resourceSet.getEObject(
 					EcoreUtil2.getPlatformResourceOrNormalizedURI(declarationTarget), true);
 			Iterable<JvmOperation> allDispatchOperations = dispatchRenameSupport
 					.getAllDispatchOperations(relaodedDispatchFunction);
@@ -75,7 +74,7 @@ public class SsRenameContextFactory extends CombinedJvmJdtRenameContextFactory {
 	@Override
 	protected EObject getDeclarationTarget(EObject targetElement) {
 		EObject declarationTarget = super.getDeclarationTarget(targetElement);
-		if (declarationTarget instanceof XtendConstructor)
+		if (declarationTarget instanceof JvmConstructor)
 			return declarationTarget.eContainer();
 		else
 			return declarationTarget;

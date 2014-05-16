@@ -55,7 +55,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationType;
@@ -77,8 +76,10 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmIntAnnotationValue;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLongAnnotationValue;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmShortAnnotationValue;
@@ -101,8 +102,8 @@ import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportDeclaration;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.summer.dsl.xbase.compiler.output.ImportingStringConcatenation;
 import org.summer.dsl.xbase.compiler.output.SharedAppendableState;
@@ -188,7 +189,7 @@ public class JvmModelGenerator implements IGenerator {
   private IQualifiedNameConverter qualifiedNameConverter;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
-	    XModule module = (XModule) input.getContents().get(0);
+	    JvmModule module = (JvmModule) input.getContents().get(0);
     GeneratorConfig config = this.generatorConfigProvider.get(module);
 //    ImportManager _importManager = new ImportManager(true, module);
     
@@ -198,13 +199,13 @@ public class JvmModelGenerator implements IGenerator {
     TreeAppendable body  = this.createAppendable(module, null);
     body.append(", function(declare, Type");
     
-    XImportSection1 importSection = module.getImportSection();
+    XImportSection importSection = module.getImportSection();
     if(importSection != null){
-        for(XImportDeclaration1 decl : importSection.getImportDeclarations()){
+        for(XImportDeclaration decl : importSection.getImportDeclarations()){
         	header.append(",");
-        	header.append("\'").append(decl.getImportURI()).append("\'");
+        	header.append("\'").append(decl.getModule().getIdentifier()).append("\'");
         	body.append(",");
-        	body.append(decl.getName());
+        	body.append(decl.getModuleName());
         }
     }
     
@@ -365,7 +366,7 @@ protected void _generateEnumeration(JvmEnumerationType enumType, TreeAppendable 
 	  
 	  b.append("], ");
   
-	  b.append(type.isInterface() ? "true" : "false").append(");");
+	  b.append(type instanceof JvmInterfaceType ? "true" : "false").append(");");
 	  
 //	  function ClassType(构造函数签名、其他参数){
 //		　　//如果有调用父类构造函数的语句，但是不是第一条语句，给出错误
@@ -860,11 +861,11 @@ protected void _generateEnumeration(JvmEnumerationType enumType, TreeAppendable 
         appendable.append("final ");
       }
       ITreeAppendable _xifexpression = null;
-      boolean _isStrictFloatingPoint = it.isStrictFloatingPoint();
-      if (_isStrictFloatingPoint) {
-        ITreeAppendable _append = appendable.append("strictfp ");
-        _xifexpression = _append;
-      }
+//      boolean _isStrictFloatingPoint = it.isStrictFloatingPoint();
+//      if (_isStrictFloatingPoint) {
+//        ITreeAppendable _append = appendable.append("strictfp ");
+//        _xifexpression = _append;
+//      }
       _xblockexpression = (_xifexpression);
     }
     return _xblockexpression;

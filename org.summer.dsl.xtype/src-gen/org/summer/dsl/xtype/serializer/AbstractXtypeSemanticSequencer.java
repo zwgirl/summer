@@ -23,9 +23,9 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
+import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xtype.services.XtypeGrammarAccess;
 
@@ -103,9 +103,9 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
-			case XtypePackage.XIMPORT_DECLARATION1:
-				if(context == grammarAccess.getXImportDeclaration1Rule()) {
-					sequence_XImportDeclaration1(context, (XImportDeclaration1) semanticObject); 
+			case XtypePackage.XIMPORT_DECLARATION:
+				if(context == grammarAccess.getXImportDeclarationRule()) {
+					sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -115,9 +115,9 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
-			case XtypePackage.XIMPORT_SECTION1:
-				if(context == grammarAccess.getXImportSection1Rule()) {
-					sequence_XImportSection1(context, (XImportSection1) semanticObject); 
+			case XtypePackage.XIMPORT_SECTION:
+				if(context == grammarAccess.getXImportSectionRule()) {
+					sequence_XImportSection(context, (XImportSection) semanticObject); 
 					return; 
 				}
 				else break;
@@ -224,9 +224,9 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (((importItems+=XImportItem importItems+=XImportItem*) | wildcard?='*') name=ValidID importURI=STRING)
+	 *     (((importItems+=XImportItem importItems+=XImportItem*) | wildcard?='*') alias=ValidID module=[JvmModule|QualifiedName])
 	 */
-	protected void sequence_XImportDeclaration1(EObject context, XImportDeclaration1 semanticObject) {
+	protected void sequence_XImportDeclaration(EObject context, XImportDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -242,9 +242,9 @@ public abstract class AbstractXtypeSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     importDeclarations+=XImportDeclaration1+
+	 *     importDeclarations+=XImportDeclaration+
 	 */
-	protected void sequence_XImportSection1(EObject context, XImportSection1 semanticObject) {
+	protected void sequence_XImportSection(EObject context, XImportSection semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

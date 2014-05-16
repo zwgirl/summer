@@ -10,23 +10,23 @@ package org.summer.ss.ide.quickfix
 import com.google.inject.Inject
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.summer.dsl.model.ss.XtendClass
-import org.summer.ss.ide.codebuilder.JavaConstructorBuilder
-import org.summer.ss.ide.codebuilder.JavaFieldBuilder
-import org.summer.ss.ide.codebuilder.JavaMethodBuilder
-import org.summer.dsl.model.types.JvmVisibility
-import org.summer.dsl.model.types.xtext.ui.JdtHyperlink
+import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.IURIEditorOpener
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.editor.model.edit.IModification
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
+import org.summer.dsl.model.types.JvmDeclaredType
+import org.summer.dsl.model.types.JvmVisibility
+import org.summer.dsl.model.types.xtext.ui.JdtHyperlink
 import org.summer.dsl.xbase.compiler.ImportManager
 import org.summer.dsl.xbase.compiler.StringBuilderBasedAppendable
 import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable
 import org.summer.dsl.xbase.ui.document.DocumentSourceAppender.Factory.OptionalParameters
 import org.summer.ss.ide.codebuilder.ICodeBuilder
-import org.eclipse.xtext.resource.XtextResource
+import org.summer.ss.ide.codebuilder.JavaConstructorBuilder
+import org.summer.ss.ide.codebuilder.JavaFieldBuilder
+import org.summer.ss.ide.codebuilder.JavaMethodBuilder
 
 /**
  * Creates quickfixes using {@link ICodeBuilder}s.
@@ -59,7 +59,7 @@ class CodeBuilderQuickfix {
 	}
 	
 	def protected isXtendSource(ICodeBuilder builder) {
-		builder.ownerSource instanceof XtendClass
+		builder.ownerSource instanceof JvmDeclaredType
 	}
 	
 	def protected IModification getXtendModification(ICodeBuilder.Xtend builder) {

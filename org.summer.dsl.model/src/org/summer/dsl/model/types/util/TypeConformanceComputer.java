@@ -21,6 +21,7 @@ import org.summer.dsl.model.types.JvmComponentType;
 import org.summer.dsl.model.types.JvmDelegateTypeReference;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMultiTypeReference;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
@@ -294,7 +295,7 @@ public class TypeConformanceComputer {
 	protected boolean isClass(JvmType type) {
 		if (type instanceof JvmArrayType)
 			return isClass(((JvmArrayType) type).getComponentType());
-		return type instanceof JvmGenericType && !((JvmGenericType) type).isInterface();
+		return type instanceof JvmGenericType;
 	}
 
 	protected JvmType findContext(JvmTypeReference firstType) {
@@ -571,7 +572,7 @@ public class TypeConformanceComputer {
 					return compare(((JvmArrayType) element1).getComponentType(), ((JvmArrayType) element2).getComponentType());
 				}
 				if (element1 instanceof JvmGenericType && element2 instanceof JvmGenericType) {
-					int result = Booleans.compare(((JvmGenericType) element1).isInterface(), ((JvmGenericType) element2).isInterface());
+					int result = Booleans.compare(element1 instanceof JvmInterfaceType, element2 instanceof JvmInterfaceType);
 					if (result != 0) {
 						return result;
 					}

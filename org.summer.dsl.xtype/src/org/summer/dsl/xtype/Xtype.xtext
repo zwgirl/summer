@@ -55,36 +55,11 @@ QualifiedNameWithWildcard :
 ValidID:
 	ID;
 
-//XImportSection:
-//	importDeclarations+=XImportDeclaration+;
-//
-//XImportDeclaration: 
-//	'import' (
-//		(static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedName] '.' '*') 
-//		| importedType=[JvmDeclaredType|QualifiedName] 
-//		| importedNamespace=QualifiedNameWithWildcard) 
-//		';'
-//;
+XImportSection returns XImportSection:
+	(importDeclarations+=XImportDeclaration ';'?)+;
 
-XImportSection1 returns XImportSection1:
-	(importDeclarations+=XImportDeclaration1 ';'?)+;
-
-//XImportDeclaration1 returns XImportDeclaration1: 
-//	'import' (( 
-//		(('{'
-//		importItems += XImportItem (',' importItems += XImportItem)*  
-//		'}')
-//		|
-//		(importItems += XImportItem ))
-//		
-//		'from' importURI=STRING )
-//	 |
-//	('from' importURI=STRING 'as' alias = ID))
-//		
-//;
-
-XImportDeclaration1 returns XImportDeclaration1: 
-	{XImportDeclaration1}
+XImportDeclaration returns XImportDeclaration: 
+	{XImportDeclaration}
 	'import' 
 		'{'
 			((importItems += XImportItem (',' importItems += XImportItem)*)
@@ -92,17 +67,14 @@ XImportDeclaration1 returns XImportDeclaration1:
 			)
 		'}'
 		
-		'as' name=ValidID
-		'from' importURI=STRING 
+		'as' alias=ValidID
+		'from' module=[JvmModule|QualifiedName] 
 ;
 
 XImportItem returns XImportItem:
 	{XImportItem}
 	importedId = [JvmIdentifiableElement|ID] ('as' alias=ID)?
 ;
-
-//'import' {importId += [JvmIdentifiableElement|ID] (as name=ID)? (',' importId += [JvmIdentifiableElement|ID] (as name=ID)?)*  } from module1 
-//import as name=ID from module
 
 XExportSection returns XExportSection:
 	(exportDeclarations+=XExportDeclaration ';'?)+;

@@ -10,28 +10,26 @@ package org.summer.ss.core.macro
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.InternalEObject
-import org.summer.dsl.model.ss.XtendAnnotationTarget
-import org.summer.dsl.model.ss.XtendAnnotationType
-import org.summer.dsl.model.ss.XtendClass
-import org.summer.dsl.model.ss.XtendConstructor
-import org.summer.dsl.model.ss.XtendEnum
-import org.summer.dsl.model.ss.XtendEnumLiteral
-import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.XtendFunction
-import org.summer.dsl.model.ss.XtendInterface
-import org.summer.dsl.model.ss.XtendParameter
-import org.summer.ss.lib.macro.Active
+import org.eclipse.xtext.linking.ILinkingService
+import org.eclipse.xtext.linking.lazy.LazyURIEncoder
+import org.summer.dsl.model.types.JvmAnnotationReference
+import org.summer.dsl.model.types.JvmAnnotationTarget
 import org.summer.dsl.model.types.JvmAnnotationType
+import org.summer.dsl.model.types.JvmConstructor
 import org.summer.dsl.model.types.JvmCustomAnnotationValue
+import org.summer.dsl.model.types.JvmEnumerationLiteral
+import org.summer.dsl.model.types.JvmField
+import org.summer.dsl.model.types.JvmGenericType
+import org.summer.dsl.model.types.JvmInterfaceType
+import org.summer.dsl.model.types.JvmOperation
 import org.summer.dsl.model.types.JvmType
 import org.summer.dsl.model.types.JvmTypeAnnotationValue
 import org.summer.dsl.model.types.JvmTypeReference
-import org.eclipse.xtext.linking.ILinkingService
-import org.eclipse.xtext.linking.lazy.LazyURIEncoder
 import org.summer.dsl.model.xbase.XExpression
-import org.summer.dsl.model.xannotation.XAnnotation
-
-import static org.summer.dsl.model.xannotation.XannotationPackage.Literals.*
+import org.summer.ss.lib.macro.Active
+import org.summer.dsl.model.types.TypesPackage
+import org.summer.dsl.model.types.JvmEnumerationType
+import org.summer.dsl.model.types.JvmFormalParameter
 
 class XAnnotationExtensions {
 	
@@ -39,20 +37,20 @@ class XAnnotationExtensions {
 	@Inject ILinkingService linkingService
 	@Inject ConstantExpressionsInterpreter constantExpressionsInterpreter
 	
-	def XtendAnnotationTarget getAnnotatedTarget(XAnnotation annotation) {
+	def JvmAnnotationTarget getAnnotatedTarget(JvmAnnotationReference annotation) {
 		// ignore synthetic containers
 		switch container : annotation.eContainer {
-			XtendAnnotationType : container
-			XtendClass : container
-			XtendInterface : container
-			XtendEnum : container
-			XtendField : container
-			XtendFunction : container
-			XtendConstructor : container
-			XtendEnumLiteral : container
-			XtendParameter : container
-			XtendAnnotationTarget 	: container.eContainer as XtendAnnotationTarget
-			XAnnotation 			: getAnnotatedTarget(container)
+			JvmAnnotationType : container
+			JvmGenericType : container
+			JvmInterfaceType : container
+			JvmEnumerationType : container
+			JvmField : container
+			JvmOperation : container
+			JvmConstructor : container
+			JvmEnumerationLiteral : container
+			JvmFormalParameter : container
+			JvmAnnotationTarget 	: container.eContainer as JvmAnnotationTarget
+			JvmAnnotationReference 			: getAnnotatedTarget(container)
 			default 				: null
 		}
 	}
@@ -60,8 +58,8 @@ class XAnnotationExtensions {
 	/**
 	 * Checks whether this annotation is pointing to a processed annotation, without resolving the proxy
 	 */
-	def isProcessed(XAnnotation it) {
-		switch proxy : it.eGet(XANNOTATION__ANNOTATION_TYPE, false) {
+	def isProcessed(JvmAnnotationReference it) {
+		switch proxy : it.eGet(TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, false) {
 			EObject case proxy.eIsProxy: {
 				val uri = (proxy as InternalEObject).eProxyURI
 				if (encoder.isCrossLinkFragment(eResource, uri.fragment)) {
@@ -103,12 +101,12 @@ class XAnnotationExtensions {
 		return null				
 	}
 	
-	def getProcessorType(XAnnotation it) {
+	def getProcessorType(JvmAnnotationReference it) {
 		return tryFindAnnotationType.processorType
 	}
 	
-	def tryFindAnnotationType(XAnnotation it) {
-		switch proxy : it.eGet(XANNOTATION__ANNOTATION_TYPE, false) {
+	def tryFindAnnotationType(JvmAnnotationReference it) {
+		switch proxy : it.eGet(TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, false) {
 			EObject case proxy.eIsProxy: {
 				val uri = (proxy as InternalEObject).eProxyURI
 				return eResource.resourceSet.getEObject(uri, true) as JvmAnnotationType

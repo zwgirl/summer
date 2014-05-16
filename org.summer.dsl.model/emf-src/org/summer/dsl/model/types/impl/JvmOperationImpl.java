@@ -35,6 +35,7 @@ import org.summer.dsl.model.xbase.XExpression;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getFunction <em>Function</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isOverload <em>Overload</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isOverride <em>Override</em>}</li>
  * </ul>
  * </p>
  *
@@ -240,6 +241,26 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 	 * @ordered
 	 */
 	protected boolean overload = OVERLOAD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OVERRIDE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean override = OVERRIDE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -503,6 +524,10 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 	 * @generated
 	 */
 	public XExpression getExpression() {
+		if(function!=null){
+			XClosure closure = (XClosure) function;
+			return closure.getExpression();
+		}
 		return expression;
 	}
 
@@ -615,6 +640,27 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isOverride() {
+		return override;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverride(boolean newOverride) {
+		boolean oldOverride = override;
+		override = newOverride;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_OPERATION__OVERRIDE, oldOverride, override));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -662,6 +708,8 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return getFunction();
 			case TypesPackage.JVM_OPERATION__OVERLOAD:
 				return isOverload();
+			case TypesPackage.JVM_OPERATION__OVERRIDE:
+				return isOverride();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -709,6 +757,9 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return;
 			case TypesPackage.JVM_OPERATION__OVERLOAD:
 				setOverload((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_OPERATION__OVERRIDE:
+				setOverride((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -758,6 +809,9 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 			case TypesPackage.JVM_OPERATION__OVERLOAD:
 				setOverload(OVERLOAD_EDEFAULT);
 				return;
+			case TypesPackage.JVM_OPERATION__OVERRIDE:
+				setOverride(OVERRIDE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -794,6 +848,8 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 				return function != null;
 			case TypesPackage.JVM_OPERATION__OVERLOAD:
 				return overload != OVERLOAD_EDEFAULT;
+			case TypesPackage.JVM_OPERATION__OVERRIDE:
+				return override != OVERRIDE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -824,6 +880,8 @@ public class JvmOperationImpl extends JvmExecutableImplCustom implements JvmOper
 		result.append(strictFloatingPoint);
 		result.append(", overload: ");
 		result.append(overload);
+		result.append(", override: ");
+		result.append(override);
 		result.append(')');
 		return result.toString();
 	}

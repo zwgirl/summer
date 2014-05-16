@@ -25,7 +25,7 @@ public class SsParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "XModule";
+		return "JvmModule";
 	}
 	
 	public SsGrammarAccess getGrammarAccess() {

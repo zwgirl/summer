@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.imports;
 
-import static org.eclipse.xtext.util.Strings.*;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import org.apache.log4j.Logger;
 import org.eclipse.xtext.nodemodel.INode;
@@ -16,7 +16,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.TextRegion;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 
 import com.google.inject.Inject;
 
@@ -31,7 +30,7 @@ public class ImportSectionRegionUtil {
 	private IImportsConfiguration config;
 
 	public ITextRegion computeRegion(XtextResource resource) {
-		XImportSection1 xImportSection = config.getImportSection(resource);
+		XImportSection xImportSection = config.getImportSection(resource);
 		if (xImportSection != null) {
 			INode node = NodeModelUtils.findActualNodeFor(xImportSection);
 			if(node == null) 

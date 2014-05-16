@@ -214,7 +214,7 @@ class CompilationUnitImpl implements CompilationUnit {
 		return fileSystemSupport.getPath(xtendFile.eResource)
 	}
 	
-	def void setXtendFile(XModule xtendFile) {
+	def void setXtendFile(JvmModule xtendFile) {
 		this._xtendFile = xtendFile
 		val standardTypeReferenceOwner = new StandardTypeReferenceOwner(services, xtendFile.eResource.resourceSet)
 		if (indexing) {

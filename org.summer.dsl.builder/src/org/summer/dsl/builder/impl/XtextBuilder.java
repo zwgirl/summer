@@ -197,7 +197,7 @@ public class XtextBuilder extends IncrementalProjectBuilder {
 //			progress.worked(1);
 //		}
 		
-		ResourceSet resourceSet = ResourceSetFactory.getInstanceof().getResourceSet();
+		ResourceSet resourceSet = ResourceSetFactory.getInstance().getResourceSet();
 		BuildData buildData = new BuildData(getProject().getName(),resourceSet , toBeBuilt, queuedBuildData);
 //		ImmutableList<Delta> deltas = builderState.update(buildData, progress.newChild(1));
 		if (participant != null ) {

@@ -9,16 +9,14 @@ package org.summer.ss.core.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.summer.ss.core.jvmmodel.DispatchHelper;
-import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IReferenceDescription;
 import org.eclipse.xtext.util.IAcceptor;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.xbase.resource.XbaseResourceDescriptionStrategy;
+import org.summer.ss.core.jvmmodel.DispatchHelper;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;
@@ -57,10 +55,10 @@ public class SsResourceDescriptionStrategy extends XbaseResourceDescriptionStrat
 			addFlags(getFlags((JvmOperation) eObject), userData);
 		else if (eObject instanceof JvmField)
 			addFlags(getFlags((JvmField) eObject), userData);
-		else if (eObject instanceof XtendFunction) 
-			addFlags(getFlags((XtendFunction) eObject), userData);
-		else if (eObject instanceof XtendField) 
-			addFlags(getFlags((XtendField) eObject), userData);
+//		else if (eObject instanceof XtendFunction) 
+//			addFlags(getFlags((XtendFunction) eObject), userData);
+//		else if (eObject instanceof XtendField) 
+//			addFlags(getFlags((XtendField) eObject), userData);
 	}
 
 	protected void addFlags(int flags, ImmutableMap.Builder<String, String> userData) {
@@ -81,12 +79,12 @@ public class SsResourceDescriptionStrategy extends XbaseResourceDescriptionStrat
 		return (field.isStatic()) ? descriptionFlags.setStatic(0) : 0;
 	}
 
-	protected int getFlags(XtendField field) {
-		return (field.isStatic()) ? descriptionFlags.setStatic(0) : 0;
-	}
-	
-	protected int getFlags(XtendFunction function) {
-		return (function.isStatic()) ? descriptionFlags.setStatic(0) : 0;
-	}
+//	protected int getFlags(XtendField field) {
+//		return (field.isStatic()) ? descriptionFlags.setStatic(0) : 0;
+//	}
+//	
+//	protected int getFlags(XtendFunction function) {
+//		return (function.isStatic()) ? descriptionFlags.setStatic(0) : 0;
+//	}
 	
 }

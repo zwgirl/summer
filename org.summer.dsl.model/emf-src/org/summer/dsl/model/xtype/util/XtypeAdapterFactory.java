@@ -88,14 +88,6 @@ public class XtypeAdapterFactory extends AdapterFactoryImpl {
 				return createXImportDeclarationAdapter();
 			}
 			@Override
-			public Adapter caseXImportSection1(XImportSection1 object) {
-				return createXImportSection1Adapter();
-			}
-			@Override
-			public Adapter caseXImportDeclaration1(XImportDeclaration1 object) {
-				return createXImportDeclaration1Adapter();
-			}
-			@Override
 			public Adapter caseXImportItem(XImportItem object) {
 				return createXImportItemAdapter();
 			}
@@ -196,34 +188,6 @@ public class XtypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXImportDeclarationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xtype.XImportSection1 <em>XImport Section1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xtype.XImportSection1
-	 * @generated
-	 */
-	public Adapter createXImportSection1Adapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xtype.XImportDeclaration1 <em>XImport Declaration1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1
-	 * @generated
-	 */
-	public Adapter createXImportDeclaration1Adapter() {
 		return null;
 	}
 

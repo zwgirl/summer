@@ -37,16 +37,12 @@ import com.google.inject.Inject;
 @Deprecated()
 public class XbaseFormatter extends AbstractDeclarativeFormatter {
 
-	@Inject
-	private XtypeFormatter xtypeFormatter;
-	
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
 		configure(c, (XbaseGrammarAccess) getGrammarAccess());
 	}
 
 	public void configure(FormattingConfig c, XbaseGrammarAccess ga) {
-		xtypeFormatter.configure(c, ga.getXtypeGrammarAccess());
 		configureXUnaryOperation(c, ga.getXUnaryOperationAccess());
 		configureXMemberFeatureCall(c, ga.getXMemberFeatureCallAccess());
 		configureXClosure(c, ga.getXClosureAccess());

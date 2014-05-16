@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.ide.quickfix;
 
-import static org.eclipse.xtext.ui.util.DisplayRunHelper.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static org.eclipse.xtext.ui.util.DisplayRunHelper.runAsyncInDisplayThread;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -17,24 +17,7 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
-import org.summer.ss.ide.codebuilder.AbstractAnnotationBuilder;
-import org.summer.ss.ide.codebuilder.AbstractClassBuilder;
-import org.summer.ss.ide.codebuilder.AbstractInterfaceBuilder;
-import org.summer.ss.ide.codebuilder.CodeBuilderFactory;
-import org.summer.ss.ide.wizards.NewSsAnnotationWizard;
-import org.summer.ss.ide.wizards.NewSsAnnotationWizardPage;
-import org.summer.ss.ide.wizards.NewSsClassWizard;
-import org.summer.ss.ide.wizards.NewSsClassWizardPage;
-import org.summer.ss.ide.wizards.NewSsInterfaceWizard;
-import org.summer.ss.ide.wizards.NewSsInterfaceWizardPage;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmVisibility;
-import org.summer.dsl.model.types.TypesPackage;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.XtextResource;
@@ -46,11 +29,25 @@ import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmVisibility;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.xbase.ui.quickfix.CreateJavaTypeQuickfixes;
 import org.summer.dsl.xbase.ui.quickfix.TypeNameGuesser;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.ide.codebuilder.AbstractAnnotationBuilder;
+import org.summer.ss.ide.codebuilder.AbstractClassBuilder;
+import org.summer.ss.ide.codebuilder.AbstractInterfaceBuilder;
+import org.summer.ss.ide.codebuilder.CodeBuilderFactory;
+import org.summer.ss.ide.wizards.NewSsAnnotationWizard;
+import org.summer.ss.ide.wizards.NewSsAnnotationWizardPage;
+import org.summer.ss.ide.wizards.NewSsClassWizard;
+import org.summer.ss.ide.wizards.NewSsClassWizardPage;
+import org.summer.ss.ide.wizards.NewSsInterfaceWizard;
+import org.summer.ss.ide.wizards.NewSsInterfaceWizardPage;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -120,13 +117,12 @@ public class CreateXtendTypeQuickfixes extends CreateJavaTypeQuickfixes {
 		} else if(unresolvedReference == XbasePackage.Literals.XTYPE_LITERAL__TYPE
 				|| unresolvedReference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE) {
 			EStructuralFeature eContainingFeature = referenceOwner.eContainingFeature();
-			if(eContainingFeature == SsPackage.Literals.XTEND_CLASS__EXTENDS) {
+			if(eContainingFeature == TypesPackage.Literals.JVM_GENERIC_TYPE__EXTENDS) {
 				newJavaClassQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 				newXtendClassQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 				if(isLocal)
 					newLocalXtendClassQuickfix(typeName, resource, issue, issueResolutionAcceptor);
-			} else if(eContainingFeature == SsPackage.Literals.XTEND_CLASS__IMPLEMENTS
-					|| eContainingFeature == SsPackage.Literals.XTEND_INTERFACE__EXTENDS) {
+			} else if(eContainingFeature == TypesPackage.Literals.JVM_INTERFACE_TYPE__IMPLEMENTS) {
 				newJavaInterfaceQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 				newXtendInterfaceQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 				if(isLocal)
@@ -141,7 +137,7 @@ public class CreateXtendTypeQuickfixes extends CreateJavaTypeQuickfixes {
 					newLocalXtendInterfaceQuickfix(typeName, resource, issue, issueResolutionAcceptor);
 				}
 			}
-		} else if(unresolvedReference == XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE) {
+		} else if(unresolvedReference == TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION) {
 			newJavaAnnotationQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 			newXtendAnnotationQuickfix(typeName, explicitPackage, resource, issue, issueResolutionAcceptor);
 			if(isLocal) 
@@ -160,55 +156,55 @@ public class CreateXtendTypeQuickfixes extends CreateJavaTypeQuickfixes {
 	protected void newLocalXtendClassQuickfix(String typeName, XtextResource resource, Issue issue,
 			IssueResolutionAcceptor issueResolutionAcceptor) {
 		EObject eObject = resource.getEObject(issue.getUriToProblem().fragment());
-		XtendTypeDeclaration xtendType = getAnnotationTarget(eObject);
+		JvmDeclaredType xtendType = getAnnotationTarget(eObject);
 		if(xtendType != null) {
-			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
-			if(inferredType != null) {
-				AbstractClassBuilder classBuilder = codeBuilderFactory.createClassBuilder(inferredType);
+//			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
+//			if(inferredType != null) {
+				AbstractClassBuilder classBuilder = codeBuilderFactory.createClassBuilder(xtendType);
 				classBuilder.setClassName(typeName);
 				classBuilder.setVisibility(JvmVisibility.PUBLIC);
 				classBuilder.setContext(xtendType);
 				codeBuilderQuickfix.addQuickfix(classBuilder, "Create local Xtend class '" + typeName + "'", issue, issueResolutionAcceptor);
-			}
+//			}
 		}
 	}
 
 	protected void newLocalXtendInterfaceQuickfix(String typeName, XtextResource resource, Issue issue,
 			IssueResolutionAcceptor issueResolutionAcceptor) {
 		EObject eObject = resource.getEObject(issue.getUriToProblem().fragment());
-		XtendTypeDeclaration xtendType = getAnnotationTarget(eObject);
+		JvmDeclaredType xtendType = getAnnotationTarget(eObject);
 		if(xtendType != null) {
-			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
-			if(inferredType != null) {
-				AbstractInterfaceBuilder interfaceBuilder = codeBuilderFactory.createInterfaceBuilder(inferredType);
+//			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
+//			if(inferredType != null) {
+				AbstractInterfaceBuilder interfaceBuilder = codeBuilderFactory.createInterfaceBuilder(xtendType);
 				interfaceBuilder.setInterfaceName(typeName);
 				interfaceBuilder.setVisibility(JvmVisibility.PUBLIC);
 				interfaceBuilder.setContext(xtendType);
 				codeBuilderQuickfix.addQuickfix(interfaceBuilder, "Create local Xtend interface '" + typeName + "'", issue, issueResolutionAcceptor);
-			}
+//			}
 		}
 	}
 
 	protected void newLocalXtendAnnotationQuickfix(String typeName, XtextResource resource, Issue issue,
 			IssueResolutionAcceptor issueResolutionAcceptor) {
 		EObject eObject = resource.getEObject(issue.getUriToProblem().fragment());
-		XtendTypeDeclaration xtendType = getAnnotationTarget(eObject);
+		JvmDeclaredType xtendType = getAnnotationTarget(eObject);
 		if(xtendType != null) {
-			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
-			if(inferredType != null) {
-				AbstractAnnotationBuilder annotationBuilder = codeBuilderFactory.createAnnotationBuilder(inferredType);
+//			JvmDeclaredType inferredType = associations.getInferredType(xtendType);
+//			if(inferredType != null) {
+				AbstractAnnotationBuilder annotationBuilder = codeBuilderFactory.createAnnotationBuilder(xtendType);
 				annotationBuilder.setAnnotationName(typeName);
 				annotationBuilder.setVisibility(JvmVisibility.PUBLIC);
 				annotationBuilder.setContext(xtendType);
 				codeBuilderQuickfix.addQuickfix(annotationBuilder, "Create local Xtend annotation '@" + typeName + "'", issue, issueResolutionAcceptor);
-			}
+//			}
 		}
 	}
 
 	@Nullable
-	protected XtendTypeDeclaration getAnnotationTarget(EObject eObject) {
-		XtendTypeDeclaration containerType = EcoreUtil2.getContainerOfType(eObject, XtendTypeDeclaration.class);
-		if(containerType != null && containerType.eContainingFeature() == SsPackage.Literals.XTEND_MEMBER__ANNOTATION_INFO)
+	protected JvmDeclaredType getAnnotationTarget(EObject eObject) {
+		JvmDeclaredType containerType = EcoreUtil2.getContainerOfType(eObject, JvmDeclaredType.class);
+		if(containerType != null && containerType.eContainingFeature() == TypesPackage.Literals.JVM_ANNOTATION_TARGET__ANNOTATIONS)
 			return getAnnotationTarget(containerType.eContainer());
 		else 
 			return containerType;
@@ -277,8 +273,8 @@ public class CreateXtendTypeQuickfixes extends CreateJavaTypeQuickfixes {
 	protected String getPackage(XtextResource resource) {
 		if(!resource.getContents().isEmpty()) {
 			final EObject root = resource.getContents().get(0);
-			if(root instanceof XModule) {
-				return ((XModule) root).getPackage();
+			if(root instanceof JvmModule) {
+				return ((JvmModule) root).getSimpleName();
 			}
 		}
 		return null;

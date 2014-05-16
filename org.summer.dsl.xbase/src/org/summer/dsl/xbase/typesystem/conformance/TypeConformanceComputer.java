@@ -21,6 +21,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmArrayType;
 import org.summer.dsl.model.types.JvmComponentType;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
@@ -312,7 +313,7 @@ public class TypeConformanceComputer extends RawTypeConformanceComputer {
 	protected boolean isClass(JvmType type) {
 		if (type.eClass() == TypesPackage.Literals.JVM_ARRAY_TYPE)
 			return isClass(((JvmArrayType) type).getComponentType());
-		return type.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && !((JvmGenericType) type).isInterface();
+		return type.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && !(type instanceof JvmInterfaceType);
 	}
 	
 	/**
@@ -409,7 +410,7 @@ public class TypeConformanceComputer extends RawTypeConformanceComputer {
 					return compare(((JvmArrayType) element1).getComponentType(), ((JvmArrayType) element2).getComponentType());
 				}
 				if (element1.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && element2.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE) {
-					int result = Booleans.compare(((JvmGenericType) element1).isInterface(), ((JvmGenericType) element2).isInterface());
+					int result = Booleans.compare(element1 instanceof JvmInterfaceType,  element2 instanceof JvmInterfaceType);
 					if (result != 0) {
 						return result;
 					}

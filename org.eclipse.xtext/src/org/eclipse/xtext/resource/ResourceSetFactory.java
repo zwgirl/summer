@@ -6,7 +6,7 @@ public class ResourceSetFactory {
 	
 	private final XtextResourceSet rs = new XtextResourceSet();
 	
-	public static ResourceSetFactory getInstanceof() {
+	public static ResourceSetFactory getInstance() {
 		return _INSTANCEOF;
 	}
 	

@@ -203,7 +203,7 @@ public class ExtractMethodUserInputPage extends UserInputWizardPage {
 	}
 
 	protected String getPartialEditorModelPrefix() {
-		return "class " + refactoring.getXtendClass().getName() + " {";
+		return "class " + refactoring.getXtendClass().getSimpleName() + " {";
 	}
 	
 	protected String getPartialEditorModelSuffix() {

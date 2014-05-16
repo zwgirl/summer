@@ -95,19 +95,7 @@ public class XtypeSwitch<T> extends Switch<T> {
 			case XtypePackage.XIMPORT_DECLARATION: {
 				XImportDeclaration xImportDeclaration = (XImportDeclaration)theEObject;
 				T result = caseXImportDeclaration(xImportDeclaration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case XtypePackage.XIMPORT_SECTION1: {
-				XImportSection1 xImportSection1 = (XImportSection1)theEObject;
-				T result = caseXImportSection1(xImportSection1);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case XtypePackage.XIMPORT_DECLARATION1: {
-				XImportDeclaration1 xImportDeclaration1 = (XImportDeclaration1)theEObject;
-				T result = caseXImportDeclaration1(xImportDeclaration1);
-				if (result == null) result = caseJvmIdentifiableElement(xImportDeclaration1);
+				if (result == null) result = caseJvmIdentifiableElement(xImportDeclaration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -196,36 +184,6 @@ public class XtypeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXImportDeclaration(XImportDeclaration object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XImport Section1</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XImport Section1</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXImportSection1(XImportSection1 object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XImport Declaration1</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XImport Declaration1</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXImportDeclaration1(XImportDeclaration1 object) {
 		return null;
 	}
 

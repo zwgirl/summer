@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.summer.ss.core.typing;
 
-import org.summer.dsl.model.ss.RichString;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.util.XExpressionHelper;
 
@@ -18,9 +17,9 @@ public class XtendExpressionHelper extends XExpressionHelper {
 	
 	@Override
 	public boolean hasSideEffects(XExpression expr) {
-		if (expr instanceof RichString) {
-			return false;
-		}
+//		if (expr instanceof RichString) {
+//			return false;
+//		}
 		return super.hasSideEffects(expr);
 	}
 }

@@ -66,8 +66,6 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXTemplateLiteralAccess().getAlternatives_1(), "rule__XTemplateLiteral__Alternatives_1");
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
-					put(grammarAccess.getXImportDeclaration1Access().getAlternatives_3(), "rule__XImportDeclaration1__Alternatives_3");
-					put(grammarAccess.getXExportDeclarationAccess().getAlternatives_1(), "rule__XExportDeclaration__Alternatives_1");
 					put(grammarAccess.getXAssignmentAccess().getGroup(), "rule__XAssignment__Group__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_0(), "rule__XAssignment__Group_1_0__0");
@@ -255,20 +253,6 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup(), "rule__JvmTypeParameter__Group__0");
 					put(grammarAccess.getJvmTypeParameterAccess().getGroup_1(), "rule__JvmTypeParameter__Group_1__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
-					put(grammarAccess.getXImportSection1Access().getGroup(), "rule__XImportSection1__Group__0");
-					put(grammarAccess.getXImportDeclaration1Access().getGroup(), "rule__XImportDeclaration1__Group__0");
-					put(grammarAccess.getXImportDeclaration1Access().getGroup_3_0(), "rule__XImportDeclaration1__Group_3_0__0");
-					put(grammarAccess.getXImportDeclaration1Access().getGroup_3_0_1(), "rule__XImportDeclaration1__Group_3_0_1__0");
-					put(grammarAccess.getXImportItemAccess().getGroup(), "rule__XImportItem__Group__0");
-					put(grammarAccess.getXImportItemAccess().getGroup_2(), "rule__XImportItem__Group_2__0");
-					put(grammarAccess.getXExportSectionAccess().getGroup(), "rule__XExportSection__Group__0");
-					put(grammarAccess.getXExportDeclarationAccess().getGroup(), "rule__XExportDeclaration__Group__0");
-					put(grammarAccess.getXExportDeclarationAccess().getGroup_1_0(), "rule__XExportDeclaration__Group_1_0__0");
-					put(grammarAccess.getXExportDeclarationAccess().getGroup_1_0_2(), "rule__XExportDeclaration__Group_1_0_2__0");
-					put(grammarAccess.getXExportDeclarationAccess().getGroup_1_0_4(), "rule__XExportDeclaration__Group_1_0_4__0");
-					put(grammarAccess.getXExportDeclarationAccess().getGroup_1_1(), "rule__XExportDeclaration__Group_1_1__0");
-					put(grammarAccess.getXExportItemAccess().getGroup(), "rule__XExportItem__Group__0");
-					put(grammarAccess.getXExportItemAccess().getGroup_1(), "rule__XExportItem__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_1_1(), "rule__XAssignment__ValueAssignment_1_1");
 					put(grammarAccess.getXMultiAssignmentAccess().getFeatureAssignment_1_0_0_1(), "rule__XMultiAssignment__FeatureAssignment_1_0_0_1");
 					put(grammarAccess.getXMultiAssignmentAccess().getRightOperandAssignment_1_1(), "rule__XMultiAssignment__RightOperandAssignment_1_1");
@@ -410,22 +394,6 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getNameAssignment_0(), "rule__JvmTypeParameter__NameAssignment_0");
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_0(), "rule__JvmTypeParameter__ConstraintsAssignment_1_0");
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_1(), "rule__JvmTypeParameter__ConstraintsAssignment_1_1");
-					put(grammarAccess.getXImportSection1Access().getImportDeclarationsAssignment_0(), "rule__XImportSection1__ImportDeclarationsAssignment_0");
-					put(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_0(), "rule__XImportDeclaration1__ImportItemsAssignment_3_0_0");
-					put(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_1_1(), "rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1");
-					put(grammarAccess.getXImportDeclaration1Access().getWildcardAssignment_3_1(), "rule__XImportDeclaration1__WildcardAssignment_3_1");
-					put(grammarAccess.getXImportDeclaration1Access().getNameAssignment_6(), "rule__XImportDeclaration1__NameAssignment_6");
-					put(grammarAccess.getXImportDeclaration1Access().getImportURIAssignment_8(), "rule__XImportDeclaration1__ImportURIAssignment_8");
-					put(grammarAccess.getXImportItemAccess().getImportedIdAssignment_1(), "rule__XImportItem__ImportedIdAssignment_1");
-					put(grammarAccess.getXImportItemAccess().getAliasAssignment_2_1(), "rule__XImportItem__AliasAssignment_2_1");
-					put(grammarAccess.getXExportSectionAccess().getExportDeclarationsAssignment_0(), "rule__XExportSection__ExportDeclarationsAssignment_0");
-					put(grammarAccess.getXExportDeclarationAccess().getExportItemsAssignment_1_0_1(), "rule__XExportDeclaration__ExportItemsAssignment_1_0_1");
-					put(grammarAccess.getXExportDeclarationAccess().getExportItemsAssignment_1_0_2_1(), "rule__XExportDeclaration__ExportItemsAssignment_1_0_2_1");
-					put(grammarAccess.getXExportDeclarationAccess().getImportURIAssignment_1_0_4_1(), "rule__XExportDeclaration__ImportURIAssignment_1_0_4_1");
-					put(grammarAccess.getXExportDeclarationAccess().getImportURIAssignment_1_1_1(), "rule__XExportDeclaration__ImportURIAssignment_1_1_1");
-					put(grammarAccess.getXExportDeclarationAccess().getAliasAssignment_1_1_3(), "rule__XExportDeclaration__AliasAssignment_1_1_3");
-					put(grammarAccess.getXExportItemAccess().getExportedIdAssignment_0(), "rule__XExportItem__ExportedIdAssignment_0");
-					put(grammarAccess.getXExportItemAccess().getAliasAssignment_1_1(), "rule__XExportItem__AliasAssignment_1_1");
 				}
 			};
 		}

@@ -5,10 +5,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-grammar org.summer.dsl.xbase.Xbase with org.summer.dsl.xtype.Xtype
+grammar org.summer.dsl.xbase.Xbase hidden(WS, ML_COMMENT, SL_COMMENT)//with org.summer.dsl.xtype.Xtype
 
-import "http://www.summer.org/dsl/model/xbase"
+import "http://www.summer.org/dsl/model/xbase" 
 import "http://www.summer.org/dsl/model/types" as types
+import "http://www.summer.org/dsl/model/xtype" as xtype
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 XExpression returns XExpression :
@@ -782,41 +783,6 @@ XNumberLiteral returns XExpression :
 
 XStringLiteral returns XExpression:
 	{XStringLiteral} value=STRING;
-	
-
-
-//XTemplateLiteral returns XExpression:
-//	{XTemplate} ( 
-//	  expressions+=RichStringLiteral |
-//	  expressions+=RichStringLiteralStart expressions+=XExpression? 
-//	  	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* 
-//	  expressions+=RichStringLiteralEnd
-//	)
-//;
-//
-//RichStringLiteral returns XExpression :
-//	{RichStringLiteral} value=RICH_TEXT
-//;
-//
-//RichStringLiteralStart returns XExpression :
-//	{RichStringLiteral} value=RICH_TEXT_START
-//; 
-//
-//RichStringLiteralInbetween returns XExpression :
-//	{RichStringLiteral} 
-//	( value=RICH_TEXT_INBETWEEN  )
-//; 
-//
-//RichStringLiteralEnd returns XExpression :
-//	{RichStringLiteral} 
-//	( value=RICH_TEXT_END  )
-//; 
-
-//InternalRichString returns XExpression:
-//	{RichString} (
-//		expressions+=RichStringLiteralInbetween (expressions+=XExpression? expressions+=RichStringLiteralInbetween)*
-//	)
-//;
 
 
 XTypeLiteral returns XExpression :
@@ -894,6 +860,7 @@ terminal ID:
 	'^'? (IDENTIFIER_START | UNICODE_ESCAPE) (IDENTIFIER_PART | UNICODE_ESCAPE)*	
 ;
 
+
 terminal fragment HEX_DIGIT:
 	'0'..'9' | 'a'..'f' | 'A'..'F'
 ;
@@ -943,92 +910,6 @@ terminal RICH_TEXT_INBETWEEN : '%>' IN_RICH_STRING* '<%';
 terminal fragment IN_RICH_STRING : 
 	!('`' |'\\'|'<') | '<' !('%') 
 ;
-
-//terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
-//terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? '«';
-//terminal RICH_TEXT_END : '»' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
-//terminal RICH_TEXT_INBETWEEN : '»' IN_RICH_STRING* ("'" "'"?)? '«';
-////terminal COMMENT_RICH_TEXT_INBETWEEN: "««" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? '«')?; 
-////terminal COMMENT_RICH_TEXT_END: "««" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
-////
-//terminal fragment IN_RICH_STRING : 
-//	  "''" !('«'|"'") 
-//	| "'" !('«'|"'")
-//	| !('«'|"'");
-
-
-//Template ::
-//NoSubstitutionTemplate
-//TemplateHead
-//
-//NoSubstitutionTemplate ::
-//` TemplateCharacters `
-//
-//TemplateHead ::
-//` TemplateCharacters ${
-//	
-//TemplateSubstitutionTail ::
-//TemplateMiddle
-//TemplateTail
-//
-//TemplateMiddle ::
-//} TemplateCharacters ${
-//	
-//TemplateTail ::
-//} TemplateCharactersopt `
-//
-//TemplateCharacters ::
-//TemplateCharacter TemplateCharactersopt
-//
-//TemplateCharacter ::
-//SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
-//$ [lookahead ≠ { ]
-//\ EscapeSequence
-//LineContinuation
-//LineTerminatorSequence
-
-//XTemplate returns XExpression:
-//	{XTemplate}
-//	expressions+=RichStringLiteral
-//	|TemplateHead
-//;
-//
-//RichStringLiteral:
-//	'`' value=TemplateCharacters '`'
-//;
-//
-//TemplateHead:
-//'`' TemplateCharacters '${'
-//;
-//
-//TemplateSubstitutionTail:
-//	TemplateMiddle
-//	|TemplateTail
-//;
-//
-//TemplateMiddle:
-//	 TemplateCharacters '${'
-//;
-//
-//	
-//TemplateTail:
-//	 TemplateCharacters '`'
-//;
-//
-//terminal TemplateCharacters:
-//	TemplateCharacter*
-////	|TemplateCharacters
-//;
-//
-//terminal fragment TemplateCharacter:
-////	SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
-//	!('`' |'\\'|'$') 
-////	$ [lookahead ≠ { ]
-////	\ EscapeSequence
-////	LineContinuation
-////	LineTerminatorSequence
-//;
-
 
 terminal fragment IDENTIFIER_START:
 	  '\u0024'
@@ -1478,5 +1359,55 @@ terminal fragment IDENTIFIER_PART_IMPL:
 	| '\uFF10'..'\uFF19'
 	| '\uFFF9'..'\uFFFB'
 ;
+
+JvmTypeReference returns types::JvmTypeReference:
+    JvmParameterizedTypeReference =>({types::JvmGenericArrayTypeReference.componentType=current} ArrayBrackets)* 
+//  | XFunctionTypeRef
+  ;
+  
+ArrayBrackets :
+	'[' ']'
+;
+
+//XFunctionTypeRef:
+//  ('(' (paramTypes+=JvmTypeReference (',' paramTypes+=JvmTypeReference)*)? ')')? '=>' returnType=JvmTypeReference;
+
+JvmParameterizedTypeReference returns types::JvmParameterizedTypeReference:
+  type=[types::JvmType|QualifiedName] (=>'<' arguments+=JvmArgumentTypeReference (',' arguments+=JvmArgumentTypeReference)* '>')?;
+
+JvmArgumentTypeReference returns types::JvmTypeReference:
+	JvmTypeReference | JvmWildcardTypeReference;
+
+JvmWildcardTypeReference returns types::JvmWildcardTypeReference:
+  {types::JvmWildcardTypeReference} '?' (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
+  
+JvmUpperBound returns types::JvmUpperBound: 
+ 'extends' typeReference=JvmTypeReference;
+
+JvmUpperBoundAnded returns types::JvmUpperBound: 
+ '&' typeReference=JvmTypeReference;
+
+JvmLowerBound returns types::JvmLowerBound:
+ 'super' typeReference=JvmTypeReference;
+
+JvmTypeParameter returns types::JvmTypeParameter:
+  name=ValidID 
+  (constraints+=JvmUpperBound (constraints+=JvmUpperBoundAnded)*)?;
+
+QualifiedNameWithWildcard :
+	QualifiedName  '.' '*';
+
+ValidID:
+	ID;
+
+
+
+terminal ML_COMMENT: '/*' -> '*/';
+
+terminal SL_COMMENT: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;
 	
 

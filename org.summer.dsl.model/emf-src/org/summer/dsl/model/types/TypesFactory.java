@@ -31,15 +31,6 @@ public interface TypesFactory extends EFactory {
 	JvmModule createJvmModule();
 
 	/**
-	 * Returns a new object of class '<em>Jvm No Module</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Jvm No Module</em>'.
-	 * @generated
-	 */
-	JvmNoModule createJvmNoModule();
-
-	/**
 	 * Returns a new object of class '<em>Jvm Delegate Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,6 +146,15 @@ public interface TypesFactory extends EFactory {
 	 * @generated
 	 */
 	JvmGenericType createJvmGenericType();
+
+	/**
+	 * Returns a new object of class '<em>Jvm Interface Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Interface Type</em>'.
+	 * @generated
+	 */
+	JvmInterfaceType createJvmInterfaceType();
 
 	/**
 	 * Returns a new object of class '<em>Jvm Parameterized Type Reference</em>'.

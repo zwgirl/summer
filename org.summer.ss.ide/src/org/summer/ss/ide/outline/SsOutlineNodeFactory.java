@@ -9,14 +9,12 @@ package org.summer.ss.ide.outline;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.summer.dsl.model.ss.XtendMember;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmOperation;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineNodeFactory;
-import org.eclipse.xtext.util.TextRegion;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmOperation;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -42,8 +40,6 @@ public class SsOutlineNodeFactory extends OutlineNodeFactory {
 			return ((JvmField) element).isStatic();
 		else if (element instanceof JvmOperation)
 			return ((JvmOperation) element).isStatic();
-		else if (element instanceof XtendMember)
-			return ((XtendMember) element).isStatic();
 		else
 			return false;
 	}

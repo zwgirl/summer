@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -72,7 +73,7 @@ public class ConstructorTypeScopeWrapper implements IScope {
 		EObject proxy = getResolvedProxy(typeDescription);
 		if (!proxy.eIsProxy() && proxy instanceof JvmGenericType) {
 			JvmGenericType type = (JvmGenericType) proxy;
-			if (!type.isInterface()) {
+			if (!(type instanceof JvmInterfaceType)) {
 				for(JvmConstructor constructor: type.getDeclaredConstructors()) {
 					boolean visible = visibilityHelper.isVisible(constructor);
 					ConstructorDescription constructorDescription = new ConstructorDescription(

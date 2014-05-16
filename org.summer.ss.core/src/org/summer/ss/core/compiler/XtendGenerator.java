@@ -7,10 +7,10 @@
  */
 package org.summer.ss.core.compiler;
 
-import com.google.common.base.Objects;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.util.Strings;
@@ -19,9 +19,9 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.summer.dsl.model.ss.XtendAnnotationTarget;
-import org.summer.dsl.model.ss.XtendMember;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.xbase.compiler.JvmModelGenerator;
 import org.summer.ss.core.macro.ActiveAnnotationContext;
 import org.summer.ss.core.macro.ActiveAnnotationContexts;
@@ -32,6 +32,8 @@ import org.summer.ss.lib.macro.declaration.MemberDeclaration;
 import org.summer.ss.lib.macro.declaration.NamedElement;
 import org.summer.ss.lib.macro.file.FileLocations;
 import org.summer.ss.lib.macro.file.MutableFileSystemSupport;
+
+import com.google.common.base.Objects;
 
 /**  
  * @author Sven Efftinge - Initial contribution and API
@@ -71,15 +73,15 @@ public class XtendGenerator extends JvmModelGenerator {
               }
             };
             final CodeGenerationContextImpl codeGenServices = ObjectExtensions.<CodeGenerationContextImpl>operator_doubleArrow(_codeGenerationContextImpl, _function);
-            List<XtendAnnotationTarget> _annotatedSourceElements = context.getAnnotatedSourceElements();
-            final Function1<XtendAnnotationTarget,MemberDeclaration> _function_1 = new Function1<XtendAnnotationTarget,MemberDeclaration>() {
-              public MemberDeclaration apply(final XtendAnnotationTarget it) {
+            List<JvmAnnotationTarget> _annotatedSourceElements = context.getAnnotatedSourceElements();
+            final Function1<JvmAnnotationTarget,MemberDeclaration> _function_1 = new Function1<JvmAnnotationTarget,MemberDeclaration>() {
+              public MemberDeclaration apply(final JvmAnnotationTarget it) {
                 CompilationUnitImpl _compilationUnit = context.getCompilationUnit();
-                MemberDeclaration _xtendMemberDeclaration = _compilationUnit.toXtendMemberDeclaration(((XtendMember) it));
+                MemberDeclaration _xtendMemberDeclaration = _compilationUnit.toXtendMemberDeclaration(((JvmMember) it));
                 return _xtendMemberDeclaration;
               }
             };
-            final List<MemberDeclaration> elements = ListExtensions.<XtendAnnotationTarget, MemberDeclaration>map(_annotatedSourceElements, _function_1);
+            final List<MemberDeclaration> elements = ListExtensions.<JvmAnnotationTarget, MemberDeclaration>map(_annotatedSourceElements, _function_1);
             ((CodeGenerationParticipant<NamedElement>)processor).doGenerateCode(elements, codeGenServices);
           }
         }

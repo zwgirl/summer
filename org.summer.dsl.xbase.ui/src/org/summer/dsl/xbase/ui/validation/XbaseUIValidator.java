@@ -71,9 +71,9 @@ public class XbaseUIValidator extends AbstractDeclarativeValidator {
 	public void checkRestrictedType(XImportDeclaration importDeclaration){
 		if (isRestrictionCheckIgnored())
 			return;
-		JvmType importedType = importDeclaration.getImportedType();
-		if(importedType instanceof JvmDeclaredType)
-			checkRestrictedType(importDeclaration, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, (JvmDeclaredType) importedType);
+//		JvmType importedType = importDeclaration.getImportedType();
+//		if(importedType instanceof JvmDeclaredType)
+//			checkRestrictedType(importDeclaration, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, (JvmDeclaredType) importedType);
 	}
 
 	@Check

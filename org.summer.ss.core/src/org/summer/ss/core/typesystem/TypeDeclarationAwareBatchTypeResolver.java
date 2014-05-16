@@ -7,16 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.core.typesystem;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.dsl.xbase.typesystem.internal.LogicalContainerAwareBatchTypeResolver;
-
-import com.google.common.collect.Lists;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API

@@ -7,37 +7,35 @@
  *******************************************************************************/
 package org.summer.ss.ide.refactoring;
 
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Sets.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newHashSet;
+import static com.google.common.collect.Sets.newLinkedHashSet;
 
 import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaModelException;
-import org.summer.ss.core.dispatch.DispatchingSupport;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmGenericType;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.ui.refactoring.participant.JvmElementFinder;
-import org.summer.dsl.model.types.util.jdt.JavaElementFinder;
 import org.eclipse.xtext.ui.refactoring.impl.ProjectUtil;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
+import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.util.jdt.JavaElementFinder;
+import org.summer.dsl.model.ui.refactoring.participant.JvmElementFinder;
+import org.summer.ss.core.dispatch.DispatchingSupport;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
 
 import com.google.inject.Inject;
 
@@ -73,13 +71,13 @@ public class DispatchRenameSupport {
 	 * The method will likely load all subtypes into the resource set of the dispatch function, so you might want to
 	 * hand in a reloaded instance instead.
 	 */
-	public Iterable<JvmOperation> getAllDispatchOperations(XtendFunction dispatchFunction) {
-		Assert.isLegal(dispatchFunction.isDispatch());
+	public Iterable<JvmOperation> getAllDispatchOperations(JvmOperation dispatchFunction) {
+//		Assert.isLegal(dispatchFunction.isDispatch());
 		IProject project = projectUtil.getProject(dispatchFunction.eResource().getURI());
 		final ResourceSet tempResourceSet = resourceSetProvider.get(project);
 
 		JvmOperation localDispatcher = associations.getDispatchOperation(dispatchFunction);
-		XtendClass xtendClass = (XtendClass) dispatchFunction.eContainer();
+		JvmGenericType xtendClass = (JvmGenericType) dispatchFunction.eContainer();
 
 		final Set<JvmOperation> dispatchCases = newLinkedHashSet();
 		IAcceptor<JvmOperation> operationAcceptor = new IAcceptor<JvmOperation>() {
@@ -100,13 +98,13 @@ public class DispatchRenameSupport {
 			return false;
 		processedTypes.add(type);
 		boolean needProcessSubclasses = false;
-		XtendClass xtendClass = associations.getXtendClass(type);
+		JvmGenericType xtendClass = associations.getXtendClass(type);
 		if (xtendClass != null) {
-			JvmOperation dispatcher = dispatchingSupport.findSyntheticDispatchMethod(xtendClass, signature);
-			if (dispatcher != null) {
-				needProcessSubclasses = true;
-				acceptor.accept(dispatcher);
-			}
+//			JvmOperation dispatcher = dispatchingSupport.findSyntheticDispatchMethod(xtendClass, signature);
+//			if (dispatcher != null) {
+//				needProcessSubclasses = true;
+//				acceptor.accept(dispatcher);
+//			}
 		}
 		for (JvmOperation dispatchCase : dispatchingSupport.getDispatchMethods(type).get(signature)) {
 			if (dispatchCase.getDeclaringType() == type) {

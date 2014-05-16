@@ -1,18 +1,16 @@
 package org.summer.dsl.xbase.scoping.batch;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmType;
 
 
@@ -30,7 +28,7 @@ public enum Buildin {
 	public final String PrimitiveName;
 
 	private JvmDeclaredType getType(Buildin bi) {
-		List<EObject> contents = ((XModule) Dual.getResource().getContents()
+		List<EObject> contents = ((JvmModule) Dual.getResource().getContents()
 				.get(0)).getContents();
 		for (EObject obj : contents) {
 			if (obj instanceof JvmType) {
@@ -55,17 +53,8 @@ public enum Buildin {
 				return Resource;
 			}
 			URL url = Buildin.class.getResource("BuildIns.ss");
-//			URL fileUrl = null;
-//			try {
-//				fileUrl = FileLocator.toFileURL(url);
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 			URI uri = URI.createURI(url.toString());
-//			XtextResourceSet rs = new XtextResourceSet();
-//			XtextResourceSet rs = (XtextResourceSet) XtextResourceSetProvider.getInstance().get(null);
-			XtextResourceSet rs = ResourceSetFactory.getInstanceof().getResourceSet();
+			XtextResourceSet rs = ResourceSetFactory.getInstance().getResourceSet();
 			Resource =  rs.getResource(uri, true);
 			
 			return Resource;

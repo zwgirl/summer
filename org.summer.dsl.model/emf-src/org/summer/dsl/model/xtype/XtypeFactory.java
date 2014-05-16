@@ -58,24 +58,6 @@ public interface XtypeFactory extends EFactory {
 	XImportDeclaration createXImportDeclaration();
 
 	/**
-	 * Returns a new object of class '<em>XImport Section1</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XImport Section1</em>'.
-	 * @generated
-	 */
-	XImportSection1 createXImportSection1();
-
-	/**
-	 * Returns a new object of class '<em>XImport Declaration1</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XImport Declaration1</em>'.
-	 * @generated
-	 */
-	XImportDeclaration1 createXImportDeclaration1();
-
-	/**
 	 * Returns a new object of class '<em>XImport Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

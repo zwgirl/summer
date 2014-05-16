@@ -12,10 +12,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.RefactoringProcessor;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ui.refactoring.participant.JdtRenameParticipant;
 import org.eclipse.xtext.ui.refactoring.impl.RenameElementProcessor;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.ui.refactoring.participant.JdtRenameParticipant;
 import org.summer.dsl.xbase.ui.jvmmodel.refactoring.JvmModelJdtRenameParticipantContext;
 import org.summer.dsl.xbase.ui.jvmmodel.refactoring.jdt.JdtRenameRefactoringParticipantProcessor;
 
@@ -28,8 +28,8 @@ public class SsJdtRenameParticipantProcessor extends JdtRenameRefactoringPartici
 
 	@Override
 	protected RefactoringStatus preCheckInitialConditions(IProgressMonitor pm) throws CoreException {
-		if (getTargetElement() instanceof XtendFunction 
-				&& ((XtendFunction) getTargetElement()).isDispatch()
+		if (getTargetElement() instanceof JvmOperation 
+				/*&& ((JvmOperation) getTargetElement()).isDispatch()*/
 				&& isXtendRename()) {
 			return new RefactoringStatus();
 		}
@@ -45,7 +45,7 @@ public class SsJdtRenameParticipantProcessor extends JdtRenameRefactoringPartici
 		RefactoringProcessor triggeringProcessor = jdtRenameParticipant.getProcessor().getRefactoring().getProcessor();
 		if(triggeringProcessor instanceof RenameElementProcessor) {
 			EClass targetElementEClass = ((RenameElementProcessor) triggeringProcessor).getRenameElementContext().getTargetElementEClass();
-			return targetElementEClass.getEPackage() == SsPackage.eINSTANCE;
+			return targetElementEClass.getEPackage() == TypesPackage.eINSTANCE;
 		}
 		return false;
 	}

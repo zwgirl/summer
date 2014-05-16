@@ -7,65 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.core.typesystem;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.eclipse.jdt.annotation.Nullable;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
-import org.summer.dsl.model.ss.CreateExtensionInfo;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.XtendMember;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
-import org.summer.dsl.model.types.JvmAnnotationReference;
-import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.util.TypeReferences;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xbase.XClosure;
-import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xtype.XComputedTypeReference;
-import org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImplCustom;
-import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
-import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
-import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
-import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
-import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputer;
 import org.summer.dsl.xbase.typesystem.internal.LogicalContainerAwareReentrantTypeResolver;
-import org.summer.dsl.xbase.typesystem.internal.OperationBodyComputationState;
-import org.summer.dsl.xbase.typesystem.internal.ResolvedTypes;
-import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
-import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
-import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
-import org.summer.dsl.xbase.typesystem.references.OwnedConverter;
-import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
-import org.summer.dsl.xbase.typesystem.references.WildcardTypeReference;
-import org.summer.dsl.xbase.typesystem.util.AbstractReentrantTypeReferenceProvider;
-import org.summer.dsl.xbase.validation.IssueCodes;
-import org.summer.ss.core.jvmmodel.DispatchHelper;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-
-import com.google.common.collect.Lists;
-import com.google.inject.Inject;
 
 /**
  * The customized reentrant type resolver is responsible for proper typing

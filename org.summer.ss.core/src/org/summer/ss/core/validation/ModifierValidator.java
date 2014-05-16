@@ -8,14 +8,14 @@
 package org.summer.ss.core.validation;
 
 import static com.google.common.collect.Sets.*;
-import static org.summer.dsl.model.ss.SsPackage.Literals.*;
+import static org.summer.dsl.model.types.TypesPackage.Literals.*;
 import static org.eclipse.xtext.util.Strings.*;
 
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.dsl.model.ss.XtendMember;
+import org.summer.dsl.model.types.JvmMember;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 
@@ -44,7 +44,7 @@ public class ModifierValidator {
 	}
 	
 	@Check
-	protected void checkModifiers(XtendMember member, String memberName) {
+	protected void checkModifiers(JvmMember member, String memberName) {
 		Set<String> seenModifiers = newHashSet();
 		boolean visibilitySeen = false;
 		boolean abstractSeen = false;
@@ -107,7 +107,7 @@ public class ModifierValidator {
 	}
 	
 	protected void error(String message, EObject source, int index) {
-		validator.acceptError(message, source, XTEND_MEMBER__MODIFIERS, index, IssueCodes.INVALID_MODIFIER);
+		validator.acceptError(message, source, JVM_MEMBER__MODIFIERS, index, IssueCodes.INVALID_MODIFIER);
 	}
 
 

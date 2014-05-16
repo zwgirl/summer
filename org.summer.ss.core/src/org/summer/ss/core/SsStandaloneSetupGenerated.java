@@ -17,7 +17,7 @@ import com.google.inject.Injector;
 public class SsStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.summer.dsl.xannotation.XbaseWithAnnotationsStandaloneSetup.doSetup();
+		org.summer.dsl.xbase.XbaseStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);

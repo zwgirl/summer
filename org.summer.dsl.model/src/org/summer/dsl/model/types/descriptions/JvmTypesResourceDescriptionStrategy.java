@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
@@ -82,7 +83,7 @@ public class JvmTypesResourceDescriptionStrategy extends DefaultResourceDescript
 		}
 		if (eObject instanceof JvmGenericType) {
 			JvmGenericType genericType = (JvmGenericType) eObject;
-			if (genericType.isInterface())
+			if (genericType instanceof JvmInterfaceType)
 				userData.put(IS_INTERFACE, Boolean.TRUE.toString());
 			if (!genericType.getTypeParameters().isEmpty()) {
 				String result = "<";

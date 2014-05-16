@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.ss.core.scoping;
 
-import static java.util.Collections.*;
+import static java.util.Collections.emptyList;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,17 +16,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
-import org.eclipse.xtext.util.Strings;
-import org.summer.dsl.xbase.scoping.featurecalls.AbstractStaticMethodsFeatureForTypeProvider;
 import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
+import org.summer.dsl.xbase.scoping.featurecalls.AbstractStaticMethodsFeatureForTypeProvider;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -44,9 +42,9 @@ public class StaticallyImportedFeaturesProvider extends AbstractStaticMethodsFea
 		if (hierarchy == null || Iterables.isEmpty(hierarchy)) {
 			extension = false;
 		}
-		List<XImportDeclaration1> imports = getImports();
+		List<XImportDeclaration> imports = getImports();
 		Collection<String> result = Lists.newArrayList();
-		for(XImportDeclaration1 imported: imports) {
+		for(XImportDeclaration imported: imports) {
 //			if (imported.isStatic() && (!extension || imported.isExtension()) && imported.isWildcard()) {
 //				String typeName = imported.getImportedTypeName();
 //				if (!Strings.isEmpty(typeName))
@@ -102,11 +100,11 @@ public class StaticallyImportedFeaturesProvider extends AbstractStaticMethodsFea
 		}
 	}
 
-	protected List<XImportDeclaration1> getImports() {
+	protected List<XImportDeclaration> getImports() {
 		Resource resource = getContext();
-		if (resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XModule))
+		if (resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof JvmModule))
 			return Collections.emptyList();
-		XModule file = (XModule) resource.getContents().get(0);
+		JvmModule file = (JvmModule) resource.getContents().get(0);
 		if(file.getImportSection() == null) 
 			return emptyList();
 		else

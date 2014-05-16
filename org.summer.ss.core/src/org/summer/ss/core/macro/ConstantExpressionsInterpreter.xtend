@@ -8,8 +8,16 @@
 package org.summer.ss.core.macro
 
 import com.google.inject.Inject
+import java.util.LinkedHashSet
 import java.util.Map
+import java.util.Set
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.naming.IQualifiedNameConverter
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.scoping.IScopeProvider
+import org.summer.dsl.model.types.JvmAnnotationReference
+import org.summer.dsl.model.types.JvmAnnotationType
 import org.summer.dsl.model.types.JvmArrayType
 import org.summer.dsl.model.types.JvmEnumerationLiteral
 import org.summer.dsl.model.types.JvmEnumerationType
@@ -24,13 +32,10 @@ import org.summer.dsl.model.types.TypesFactory
 import org.summer.dsl.model.types.TypesPackage
 import org.summer.dsl.model.types.access.TypeResource
 import org.summer.dsl.model.types.access.impl.ClassFinder
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.xtext.resource.XtextResource
-import org.eclipse.xtext.scoping.IScopeProvider
 import org.summer.dsl.model.xbase.XAbstractFeatureCall
 import org.summer.dsl.model.xbase.XBinaryOperation
 import org.summer.dsl.model.xbase.XBooleanLiteral
+import org.summer.dsl.model.xbase.XCastedExpression
 import org.summer.dsl.model.xbase.XExpression
 import org.summer.dsl.model.xbase.XFeatureCall
 import org.summer.dsl.model.xbase.XListLiteral
@@ -39,16 +44,11 @@ import org.summer.dsl.model.xbase.XNumberLiteral
 import org.summer.dsl.model.xbase.XStringLiteral
 import org.summer.dsl.model.xbase.XTypeLiteral
 import org.summer.dsl.model.xbase.XUnaryOperation
-import org.summer.dsl.model.xannotation.XAnnotation
+import org.summer.dsl.model.xtype.XComputedTypeReference
 import org.summer.dsl.xbase.imports.IImportsConfiguration
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider
 import org.summer.dsl.xbase.lib.Conversions
 import org.summer.dsl.xbase.typesystem.computation.NumberLiterals
-import org.summer.dsl.model.xtype.XComputedTypeReference
-import java.util.Set
-import java.util.LinkedHashSet
-import org.summer.dsl.model.types.JvmAnnotationType
-import org.summer.dsl.model.xbase.XCastedExpression
 
 /**
  * An interpreter for evaluating constant expressions in annotation values.
@@ -168,7 +168,7 @@ class ConstantExpressionsInterpreter {
 		toTypeReference(type, arrayDimensions.size)
 	}
 
-	def dispatch Object internalEvaluate(XAnnotation literal, Context ctx) {
+	def dispatch Object internalEvaluate(JvmAnnotationReference literal, Context ctx) {
 		literal
 	}
 
@@ -353,7 +353,7 @@ class ConstantExpressionsInterpreter {
 			return JvmEnumerationLiteral
 		}
 		if(type instanceof JvmAnnotationType) {
-			return XAnnotation
+			return JvmAnnotationReference
 		}
 		return classFinder.forName(type.identifier)
 	}

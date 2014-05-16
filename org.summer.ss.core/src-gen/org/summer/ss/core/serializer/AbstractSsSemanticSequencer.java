@@ -12,8 +12,6 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmAnnotationValue;
@@ -27,8 +25,10 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLowerBound;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmStructType;
@@ -86,29 +86,21 @@ import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
+import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.model.xtype.XtypePackage;
-import org.summer.dsl.xannotation.serializer.XbaseWithAnnotationsSemanticSequencer;
+import org.summer.dsl.xbase.serializer.XbaseSemanticSequencer;
 import org.summer.ss.core.services.SsGrammarAccess;
 
 @SuppressWarnings("all")
-public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSemanticSequencer {
+public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer {
 
 	@Inject
 	private SsGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == SsPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SsPackage.XMODULE:
-				if(context == grammarAccess.getXModuleRule()) {
-					sequence_XModule(context, (XModule) semanticObject); 
-					return; 
-				}
-				else break;
-			}
-		else if(semanticObject.eClass().getEPackage() == TypesPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == TypesPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case TypesPackage.JVM_ANNOTATION_REFERENCE:
 				if(context == grammarAccess.getXAnnotationRule()) {
 					sequence_XAnnotation(context, (JvmAnnotationReference) semanticObject); 
@@ -137,9 +129,9 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				if(context == grammarAccess.getTypeAccess().getJvmAnnotationTypeAnnotationInfoAction_2_4_0() ||
 				   context == grammarAccess.getTypeAccess().getJvmEnumerationTypeAnnotationInfoAction_2_3_0() ||
 				   context == grammarAccess.getTypeAccess().getJvmGenericTypeAnnotationInfoAction_2_0_0() ||
-				   context == grammarAccess.getTypeAccess().getJvmGenericTypeAnnotationInfoAction_2_1_0() ||
+				   context == grammarAccess.getTypeAccess().getJvmInterfaceTypeAnnotationInfoAction_2_1_0() ||
 				   context == grammarAccess.getTypeAccess().getJvmStructTypeAnnotationInfoAction_2_2_0()) {
-					sequence_Type_JvmAnnotationType_2_4_0_JvmEnumerationType_2_3_0_JvmGenericType_2_0_0_JvmGenericType_2_1_0_JvmStructType_2_2_0(context, (JvmDeclaredType) semanticObject); 
+					sequence_Type_JvmAnnotationType_2_4_0_JvmEnumerationType_2_3_0_JvmGenericType_2_0_0_JvmInterfaceType_2_1_0_JvmStructType_2_2_0(context, (JvmDeclaredType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -205,6 +197,12 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 					return; 
 				}
 				else break;
+			case TypesPackage.JVM_INTERFACE_TYPE:
+				if(context == grammarAccess.getTypeRule()) {
+					sequence_Type(context, (JvmInterfaceType) semanticObject); 
+					return; 
+				}
+				else break;
 			case TypesPackage.JVM_LOWER_BOUND:
 				if(context == grammarAccess.getJvmLowerBoundRule()) {
 					sequence_JvmLowerBound(context, (JvmLowerBound) semanticObject); 
@@ -217,6 +215,12 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 				   context == grammarAccess.getMemberAccess().getJvmFieldAnnotationInfoAction_2_0_0() ||
 				   context == grammarAccess.getMemberAccess().getJvmOperationAnnotationInfoAction_2_1_0()) {
 					sequence_Member_JvmConstructor_2_2_0_JvmEvent_2_3_0_JvmField_2_0_0_JvmOperation_2_1_0(context, (JvmMember) semanticObject); 
+					return; 
+				}
+				else break;
+			case TypesPackage.JVM_MODULE:
+				if(context == grammarAccess.getJvmModuleRule()) {
+					sequence_JvmModule(context, (JvmModule) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1799,9 +1803,9 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 					return; 
 				}
 				else break;
-			case XtypePackage.XIMPORT_DECLARATION1:
-				if(context == grammarAccess.getXImportDeclaration1Rule()) {
-					sequence_XImportDeclaration1(context, (XImportDeclaration1) semanticObject); 
+			case XtypePackage.XIMPORT_DECLARATION:
+				if(context == grammarAccess.getXImportDeclarationRule()) {
+					sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1811,9 +1815,9 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 					return; 
 				}
 				else break;
-			case XtypePackage.XIMPORT_SECTION1:
-				if(context == grammarAccess.getXImportSection1Rule()) {
-					sequence_XImportSection1(context, (XImportSection1) semanticObject); 
+			case XtypePackage.XIMPORT_SECTION:
+				if(context == grammarAccess.getXImportSectionRule()) {
+					sequence_XImportSection(context, (XImportSection) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1847,9 +1851,43 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
+	 *     (field=[JvmField|ValidID] value=XLiteral)
+	 */
+	protected void sequence_JvmAnnotationValue(EObject context, JvmAnnotationValue semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD));
+			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1(), semanticObject.getField());
+		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getValueXLiteralParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (simpleName=ValidID defaultValue=XNumberLiteral?)
 	 */
 	protected void sequence_JvmEnumerationLiteral(EObject context, JvmEnumerationLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         simpleName=QualifiedName 
+	 *         importSection=XImportSection? 
+	 *         root=XObjectElement 
+	 *         (contents+=Type | contents+=DelegateType | contents+=XExpressionInsideBlock)* 
+	 *         exportSection=XExportSection?
+	 *     )
+	 */
+	protected void sequence_JvmModule(EObject context, JvmModule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1949,7 +1987,7 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	 * Constraint:
 	 *     annotations+=XAnnotation+
 	 */
-	protected void sequence_Type_JvmAnnotationType_2_4_0_JvmEnumerationType_2_3_0_JvmGenericType_2_0_0_JvmGenericType_2_1_0_JvmStructType_2_2_0(EObject context, JvmDeclaredType semanticObject) {
+	protected void sequence_Type_JvmAnnotationType_2_4_0_JvmEnumerationType_2_3_0_JvmGenericType_2_0_0_JvmInterfaceType_2_1_0_JvmStructType_2_2_0(EObject context, JvmDeclaredType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1973,28 +2011,33 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	 * Constraint:
 	 *     (
 	 *         (
-	 *             (
-	 *                 (annotationInfo=Type_JvmGenericType_2_0_0 exported?='export'? simpleName=ValidID) | 
-	 *                 (annotationInfo=Type_JvmGenericType_2_0_0 simpleName=ValidID)
-	 *             ) 
-	 *             (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
-	 *             extends=JvmParameterizedTypeReference? 
-	 *             (implements+=JvmParameterizedTypeReference implements+=JvmParameterizedTypeReference*)? 
-	 *             members+=Member*
-	 *         ) | 
-	 *         (
-	 *             (
-	 *                 (annotationInfo=Type_JvmGenericType_2_1_0 exported?='export'? interface?='interface') | 
-	 *                 (annotationInfo=Type_JvmGenericType_2_1_0 interface?='interface')
-	 *             ) 
-	 *             simpleName=ValidID 
-	 *             (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
-	 *             (implements+=JvmParameterizedTypeReference implements+=JvmParameterizedTypeReference*)? 
-	 *             members+=Member*
-	 *         )
+	 *             (annotationInfo=Type_JvmGenericType_2_0_0 exported?='export'? simpleName=ValidID) | 
+	 *             (annotationInfo=Type_JvmGenericType_2_0_0 simpleName=ValidID)
+	 *         ) 
+	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *         extends=JvmParameterizedTypeReference? 
+	 *         (implements+=JvmParameterizedTypeReference implements+=JvmParameterizedTypeReference*)? 
+	 *         members+=Member*
 	 *     )
 	 */
 	protected void sequence_Type(EObject context, JvmGenericType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         (
+	 *             (annotationInfo=Type_JvmInterfaceType_2_1_0 exported?='export'? simpleName=ValidID) | 
+	 *             (annotationInfo=Type_JvmInterfaceType_2_1_0 simpleName=ValidID)
+	 *         ) 
+	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
+	 *         (implements+=JvmParameterizedTypeReference implements+=JvmParameterizedTypeReference*)? 
+	 *         members+=Member*
+	 *     )
+	 */
+	protected void sequence_Type(EObject context, JvmInterfaceType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2009,6 +2052,15 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	 *     )
 	 */
 	protected void sequence_Type(EObject context, JvmStructType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotation=[JvmAnnotationType|QualifiedName] ((values+=JvmAnnotationValue values+=JvmAnnotationValue*) | value=XLiteral)?)
+	 */
+	protected void sequence_XAnnotation(EObject context, JvmAnnotationReference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2062,6 +2114,33 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
+	 *     ((exportItems+=XExportItem exportItems+=XExportItem* importURI=STRING?) | (importURI=STRING alias=ID))
+	 */
+	protected void sequence_XExportDeclaration(EObject context, XExportDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (exportedId=[JvmIdentifiableElement|ID] alias=ID?)
+	 */
+	protected void sequence_XExportItem(EObject context, XExportItem semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     exportDeclarations+=XExportDeclaration+
+	 */
+	protected void sequence_XExportSection(EObject context, XExportSection semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (field=[JvmField|ID] value=XPropertyExpression)
 	 */
 	protected void sequence_XGeneralAttribute(EObject context, XGeneralAttribute semanticObject) {
@@ -2071,23 +2150,36 @@ public abstract class AbstractSsSemanticSequencer extends XbaseWithAnnotationsSe
 	
 	/**
 	 * Constraint:
-	 *     (type=[JvmType|QualifiedName] properties+=XAbstractAttribute*)
+	 *     (((importItems+=XImportItem importItems+=XImportItem*) | wildcard?='*') alias=ValidID module=[JvmModule|QualifiedName])
 	 */
-	protected void sequence_XMarkupExtenson(EObject context, XMarkupExtenson semanticObject) {
+	protected void sequence_XImportDeclaration(EObject context, XImportDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         importSection=XImportSection1? 
-	 *         root=XObjectElement 
-	 *         (contents+=Type | contents+=DelegateType | contents+=XExpressionInsideBlock)* 
-	 *         exportSection=XExportSection?
-	 *     )
+	 *     (importedId=[JvmIdentifiableElement|ID] alias=ID?)
 	 */
-	protected void sequence_XModule(EObject context, XModule semanticObject) {
+	protected void sequence_XImportItem(EObject context, XImportItem semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     importDeclarations+=XImportDeclaration+
+	 */
+	protected void sequence_XImportSection(EObject context, XImportSection semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[JvmType|QualifiedName] properties+=XAbstractAttribute*)
+	 */
+	protected void sequence_XMarkupExtenson(EObject context, XMarkupExtenson semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

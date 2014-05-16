@@ -76,10 +76,6 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 				return createJvmModuleAdapter();
 			}
 			@Override
-			public Adapter caseJvmNoModule(JvmNoModule object) {
-				return createJvmNoModuleAdapter();
-			}
-			@Override
 			public Adapter caseJvmType(JvmType object) {
 				return createJvmTypeAdapter();
 			}
@@ -150,6 +146,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseJvmGenericType(JvmGenericType object) {
 				return createJvmGenericTypeAdapter();
+			}
+			@Override
+			public Adapter caseJvmInterfaceType(JvmInterfaceType object) {
+				return createJvmInterfaceTypeAdapter();
 			}
 			@Override
 			public Adapter caseJvmTypeReference(JvmTypeReference object) {
@@ -336,20 +336,6 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmModuleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmNoModule <em>Jvm No Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.types.JvmNoModule
-	 * @generated
-	 */
-	public Adapter createJvmNoModuleAdapter() {
 		return null;
 	}
 
@@ -602,6 +588,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmGenericTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmInterfaceType <em>Jvm Interface Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmInterfaceType
+	 * @generated
+	 */
+	public Adapter createJvmInterfaceTypeAdapter() {
 		return null;
 	}
 

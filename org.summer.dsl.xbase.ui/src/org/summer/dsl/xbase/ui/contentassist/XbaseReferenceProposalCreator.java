@@ -30,6 +30,7 @@ import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.xtext.ui.TypeAwareReferenceProposalCreator;
@@ -261,7 +262,7 @@ public class XbaseReferenceProposalCreator extends TypeAwareReferenceProposalCre
 		JvmDeclaredType declaringType = feature.getDeclaringType();
 		boolean interfaceOrAnnotation = false;
 		if (declaringType instanceof JvmGenericType) {
-			interfaceOrAnnotation = ((JvmGenericType) declaringType).isInterface();
+			interfaceOrAnnotation = declaringType instanceof JvmInterfaceType;
 		} else if (declaringType instanceof JvmAnnotationType) {
 			interfaceOrAnnotation = true;
 		}

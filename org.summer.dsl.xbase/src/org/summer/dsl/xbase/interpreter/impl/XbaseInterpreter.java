@@ -39,6 +39,7 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmPrimitiveType;
 import org.summer.dsl.model.types.JvmType;
@@ -1070,7 +1071,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 	protected Object coerceArgumentType(Object value, JvmTypeReference expectedType) {
 		if (value == null)
 			return null;
-		if (expectedType.getType() instanceof JvmGenericType && ((JvmGenericType) expectedType.getType()).isInterface()) {
+		if (expectedType.getType() instanceof JvmGenericType &&  expectedType.getType() instanceof JvmInterfaceType) {
 			try {
 				JvmType type = expectedType.getType();
 				Class<?> functionIntf = classFinder.forName(type.getIdentifier());

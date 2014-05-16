@@ -13,14 +13,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.ss.core.validation.IssueCodes;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.TypesPackage;
 import org.eclipse.xtext.diagnostics.Diagnostic;
 import org.eclipse.xtext.diagnostics.DiagnosticMessage;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.linking.impl.IllegalNodeException;
+import org.eclipse.xtext.linking.impl.LinkingDiagnosticMessageProvider;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -29,16 +29,15 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-import org.summer.dsl.xannotation.validation.UnresolvedAnnotationTypeAwareMessageProducer;
 import org.summer.dsl.xbase.util.FeatureCallAsTypeLiteralHelper;
+import org.summer.ss.core.validation.IssueCodes;
 
 import com.google.inject.Inject;
 
 /**
  * @author Holger Schill - Initial contribution and API
  */
-public class SsLinkingDiagnosticMessageProvider extends UnresolvedAnnotationTypeAwareMessageProducer {
+public class SsLinkingDiagnosticMessageProvider extends LinkingDiagnosticMessageProvider {
 
 	/**
 	 * A user data entry that indicates a broken feature link which could also be
@@ -51,8 +50,8 @@ public class SsLinkingDiagnosticMessageProvider extends UnresolvedAnnotationType
 	
 	@Override
 	public DiagnosticMessage getUnresolvedProxyMessage(ILinkingDiagnosticContext context) {
-		if (isPropertyOfUnresolvedAnnotation(context))
-			return null;
+//		if (isPropertyOfUnresolvedAnnotation(context))
+//			return null;
 		String linkText = "";
 		try {
 			linkText = context.getLinkText();
@@ -69,9 +68,9 @@ public class SsLinkingDiagnosticMessageProvider extends UnresolvedAnnotationType
 		}
 		if(contextObject instanceof XAbstractFeatureCall && !(contextObject instanceof XBinaryOperation || contextObject instanceof XUnaryOperation)){
 			XAbstractFeatureCall featureCall = (XAbstractFeatureCall)contextObject;
-			XtendTypeDeclaration xtendType = EcoreUtil2.getContainerOfType(featureCall, XtendTypeDeclaration.class);
+			JvmDeclaredType xtendType = EcoreUtil2.getContainerOfType(featureCall, JvmDeclaredType.class);
 			if(xtendType != null){
-				String clazzName = xtendType.getName();
+				String clazzName = xtendType.getSimpleName();
 				@SuppressWarnings("deprecation")
 				List<XExpression> explicitArguments = featureCall.getExplicitArguments();
 				String firstPartOfMessage = "The method ";
@@ -101,7 +100,7 @@ public class SsLinkingDiagnosticMessageProvider extends UnresolvedAnnotationType
 	
 	@Nullable
 	protected String getTypeName(EClass c, EStructuralFeature referingFeature) {
-		if (referingFeature == XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE)
+		if (referingFeature == TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION)
 			return " to an annotation type";
 		if (c == TypesPackage.Literals.JVM_ENUMERATION_TYPE)
 			return " to an enum type";

@@ -7,35 +7,28 @@
  *******************************************************************************/
 package org.summer.ss.ide.hover;
 
-import static org.summer.dsl.xbase.ui.hover.HoverLinkHelper.*;
+import static org.summer.dsl.xbase.ui.hover.HoverLinkHelper.createLinkWithLabel;
 
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.ss.core.typing.XtendOverridesService;
-import org.summer.dsl.model.ss.XtendAnnotationTarget;
-import org.summer.dsl.model.ss.XtendConstructor;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.XtendParameter;
+import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
-import org.eclipse.xtext.nodemodel.INode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.xbase.compiler.DocumentationAdapter;
 import org.summer.dsl.xbase.ui.hover.XbaseHoverDocumentationProvider;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.core.typing.XtendOverridesService;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -54,32 +47,23 @@ public class SsHoverDocumentationProvider extends XbaseHoverDocumentationProvide
 	private XtendOverridesService overridesService;
 
 	@Override
-	protected JvmDeclaredType getDeclaringType(EObject eObject) {
-		if (eObject instanceof XtendFunction) {
-			JvmOperation jvmOperation = associations.getDirectlyInferredOperation((XtendFunction) eObject);
-			return super.getDeclaringType(jvmOperation);
-		}
-		return super.getDeclaringType(eObject);
-	}
-
-	@Override
 	protected void addAnnotations(EObject object) {
-		if (object instanceof XtendAnnotationTarget) {
-			for (XAnnotation annotation : ((XtendAnnotationTarget) object).getAnnotations()) {
-				JvmType annotationType = annotation.getAnnotationType();
+		if (object instanceof JvmAnnotationTarget) {
+			for (JvmAnnotationReference annotation : ((JvmAnnotationTarget) object).getAnnotations()) {
+				JvmType annotationType = annotation.getAnnotation();
 				if (annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType) {
 					buffer.append("@");
 					buffer.append(createLinkWithLabel(XtextElementLinks.XTEXTDOC_SCHEME,
-							EcoreUtil.getURI(annotationType), annotation.getAnnotationType().getSimpleName()));
-					EList<XAnnotationElementValuePair> elementValuePairs = annotation.getElementValuePairs();
-					if (elementValuePairs.size() > 0) {
-						buffer.append("(");
-						List<INode> findNodesForFeature = NodeModelUtils.findNodesForFeature(annotation,
-								XannotationPackage.eINSTANCE.getXAnnotation_ElementValuePairs());
-						if (findNodesForFeature.size() > 0)
-							buffer.append(findNodesForFeature.get(0).getText());
-						buffer.append(")");
-					}
+							EcoreUtil.getURI(annotationType), annotation.getAnnotation().getSimpleName()));
+//					EList<XAnnotationElementValuePair> elementValuePairs = annotation.getElementValuePairs();
+//					if (elementValuePairs.size() > 0) {
+//						buffer.append("(");
+//						List<INode> findNodesForFeature = NodeModelUtils.findNodesForFeature(annotation,
+//								XannotationPackage.eINSTANCE.getXAnnotation_ElementValuePairs());
+//						if (findNodesForFeature.size() > 0)
+//							buffer.append(findNodesForFeature.get(0).getText());
+//						buffer.append(")");
+//					}
 					buffer.append("<br>");
 				}
 			}
@@ -90,8 +74,8 @@ public class SsHoverDocumentationProvider extends XbaseHoverDocumentationProvide
 
 	@Override
 	protected void handleSuperMethodReferences(EObject context) {
-		if (context instanceof XtendFunction) {
-			XtendFunction function = (XtendFunction) context;
+		if (context instanceof JvmOperation) {
+			JvmOperation function = (JvmOperation) context;
 			if (function.isOverride()) {
 				JvmOperation overwritten = overridesService.findOverriddenOperation(function);
 				buffer.append("<div>"); //$NON-NLS-1$
@@ -107,13 +91,13 @@ public class SsHoverDocumentationProvider extends XbaseHoverDocumentationProvide
 	@Override
 	protected List<String> initParameterNames() {
 		List<String> result = super.initParameterNames();
-		if (context instanceof XtendFunction) {
-			for (XtendParameter param : ((XtendFunction) context).getParameters()) {
+		if (context instanceof JvmOperation) {
+			for (JvmFormalParameter param : ((JvmOperation) context).getParameters()) {
 				result.add(param.getName());
 			}
 		}
-		if (context instanceof XtendConstructor) {
-			for (XtendParameter param : ((XtendConstructor) context).getParameters()) {
+		if (context instanceof JvmConstructor) {
+			for (JvmFormalParameter param : ((JvmConstructor) context).getParameters()) {
 				result.add(param.getName());
 			}
 		}
@@ -123,13 +107,13 @@ public class SsHoverDocumentationProvider extends XbaseHoverDocumentationProvide
 	@Override
 	protected Map<String, URI> initExceptionNamesToURI() {
 		Map<String, URI> result = super.initExceptionNamesToURI();
-		if (context instanceof XtendFunction) {
-			for (JvmTypeReference exception : ((XtendFunction) context).getExceptions()) {
+		if (context instanceof JvmOperation) {
+			for (JvmTypeReference exception : ((JvmOperation) context).getExceptions()) {
 				result.put(exception.getSimpleName(), EcoreUtil.getURI(exception.getType()));
 			}
 		}
-		if (context instanceof XtendConstructor) {
-			for (JvmTypeReference exception : ((XtendConstructor) context).getExceptions()) {
+		if (context instanceof JvmConstructor) {
+			for (JvmTypeReference exception : ((JvmConstructor) context).getExceptions()) {
 				result.put(exception.getSimpleName(), EcoreUtil.getURI(exception.getType()));
 			}
 		}

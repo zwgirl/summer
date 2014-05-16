@@ -2,7 +2,7 @@ package org.summer.ss.ide.codebuilder
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.IType
-import org.summer.dsl.model.ss.XtendTypeDeclaration
+import org.summer.dsl.model.types.JvmDeclaredType
 import org.summer.dsl.model.types.JvmVisibility
 import org.summer.dsl.xbase.compiler.ISourceAppender
 
@@ -38,7 +38,7 @@ class XtendClassBuilder extends AbstractClassBuilder implements ICodeBuilder.Xte
 	}
 	
 	override getXtendType() {
-		ownerSource as XtendTypeDeclaration
+		ownerSource as JvmDeclaredType
 	}
 }
 

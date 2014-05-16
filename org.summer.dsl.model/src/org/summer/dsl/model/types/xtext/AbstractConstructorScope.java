@@ -17,6 +17,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -72,7 +73,7 @@ public abstract class AbstractConstructorScope extends AbstractScope {
 			return emptySet();
 		}
 		final JvmGenericType castedType = (JvmGenericType) type;
-		if (castedType.isInterface()) {
+		if (castedType instanceof JvmInterfaceType) {
 			return emptySet();
 		}
 		Iterable<JvmConstructor> constructors = new Iterable<JvmConstructor>() {

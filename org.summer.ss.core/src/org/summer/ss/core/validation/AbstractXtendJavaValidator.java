@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
 
-public class AbstractXtendJavaValidator extends org.summer.dsl.xannotation.validation.XbaseWithAnnotationsJavaValidator {
+public class AbstractXtendJavaValidator extends org.summer.dsl.xbase.validation.XbaseJavaValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {

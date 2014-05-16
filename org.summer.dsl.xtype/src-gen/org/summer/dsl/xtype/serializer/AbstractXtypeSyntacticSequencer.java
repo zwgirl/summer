@@ -18,13 +18,13 @@ public abstract class AbstractXtypeSyntacticSequencer extends AbstractSyntacticS
 
 	protected XtypeGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_XExportSection_SemicolonKeyword_1_q;
-	protected AbstractElementAlias match_XImportSection1_SemicolonKeyword_1_q;
+	protected AbstractElementAlias match_XImportSection_SemicolonKeyword_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XtypeGrammarAccess) access;
 		match_XExportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXExportSectionAccess().getSemicolonKeyword_1());
-		match_XImportSection1_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXImportSection1Access().getSemicolonKeyword_1());
+		match_XImportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXImportSectionAccess().getSemicolonKeyword_1());
 	}
 	
 	@Override
@@ -53,8 +53,8 @@ public abstract class AbstractXtypeSyntacticSequencer extends AbstractSyntacticS
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_XExportSection_SemicolonKeyword_1_q.equals(syntax))
 				emit_XExportSection_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XImportSection1_SemicolonKeyword_1_q.equals(syntax))
-				emit_XImportSection1_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_XImportSection_SemicolonKeyword_1_q.equals(syntax))
+				emit_XImportSection_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -71,7 +71,7 @@ public abstract class AbstractXtypeSyntacticSequencer extends AbstractSyntacticS
 	 * Syntax:
 	 *     ';'?
 	 */
-	protected void emit_XImportSection1_SemicolonKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XImportSection_SemicolonKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

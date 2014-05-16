@@ -9,9 +9,9 @@ package org.summer.ss.ide.codebuilder;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.core.IType;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmVisibility;
+import org.summer.dsl.xbase.compiler.IAppendable;
 import org.summer.dsl.xbase.compiler.ISourceAppender;
 
 /**
@@ -39,7 +39,7 @@ public interface ICodeBuilder {
 	boolean isValid();
 	
 	interface Xtend extends ICodeBuilder {
-		XtendTypeDeclaration getXtendType();
+		JvmDeclaredType getXtendType();
 		
 		int getInsertOffset();
 		

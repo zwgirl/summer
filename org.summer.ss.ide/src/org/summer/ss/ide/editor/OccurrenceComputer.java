@@ -8,7 +8,7 @@
 package org.summer.ss.ide.editor;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.dsl.model.ss.XtendParameter;
+import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.xbase.ui.jvmmodel.occurrence.JvmModelOccurrenceComputer;
 
@@ -21,7 +21,7 @@ public class OccurrenceComputer extends JvmModelOccurrenceComputer {
 	protected boolean canBeReferencedLocally(EObject object) {
 		if (super.canBeReferencedLocally(object))
 			return true;
-		if (object instanceof XVariableDeclaration || object instanceof XtendParameter)
+		if (object instanceof XVariableDeclaration || object instanceof JvmFormalParameter)
 			return true;
 		return false;
 	}

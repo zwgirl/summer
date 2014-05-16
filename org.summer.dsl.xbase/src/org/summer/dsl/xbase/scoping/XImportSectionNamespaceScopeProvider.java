@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.scoping;
 
-import static java.util.Collections.*;
+import static java.util.Collections.singletonList;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -20,9 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmTypeParameter;
-import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -42,11 +39,13 @@ import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.eclipse.xtext.util.IResourceScopeCache;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.util.Tuples;
-import org.summer.dsl.xbase.imports.IImportsConfiguration;
-import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmTypeParameter;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.xbase.imports.IImportsConfiguration;
+import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -204,7 +203,7 @@ public class XImportSectionNamespaceScopeProvider extends AbstractGlobalScopeDel
 	protected List<ImportNormalizer> internalGetImportedNamespaceResolvers(EObject context, boolean ignoreCase) {
 		if(EcoreUtil.getRootContainer(context) != context) 
 			return Collections.emptyList();
-		XImportSection1 importSection = importsConfiguration.getImportSection((XtextResource) context.eResource());
+		XImportSection importSection = importsConfiguration.getImportSection((XtextResource) context.eResource());
 		if(importSection != null) {
 			return getImportedNamespaceResolvers(importSection, ignoreCase);
 		}
@@ -219,14 +218,14 @@ public class XImportSectionNamespaceScopeProvider extends AbstractGlobalScopeDel
 		List<XImportDeclaration> importDeclarations = importSection.getImportDeclarations();
 		List<ImportNormalizer> result = Lists.newArrayListWithExpectedSize(importDeclarations.size());
 		for (XImportDeclaration imp: importDeclarations) {
-			if (!imp.isStatic()) {
-				String value = imp.getImportedNamespace();
-				if(value == null)
-					value = imp.getImportedTypeName();
+//			if (!imp.isStatic()) {
+				String value = imp.getAlias();
+//				if(value == null)
+//					value = imp.getImportedTypeName();
 				ImportNormalizer resolver = createImportedNamespaceResolver(value, ignoreCase);
 				if (resolver != null)
 					result.add(resolver);
-			}
+//			}
 		}
 		return result;
 	}

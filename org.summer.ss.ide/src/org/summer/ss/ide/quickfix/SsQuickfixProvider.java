@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.ide.quickfix;
 
-import static com.google.common.collect.Sets.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Sets.newHashSet;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +23,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.text.BadLocationException;
-import org.summer.ss.core.services.SsGrammarAccess;
-import org.summer.ss.core.validation.IssueCodes;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.ss.ide.buildpath.SsLibClasspathAdder;
-import org.summer.ss.ide.codebuilder.InsertionOffsets;
-import org.summer.ss.ide.codebuilder.MemberFromSuperImplementor;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
-import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
 import org.eclipse.xtext.diagnostics.Diagnostic;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -54,11 +40,24 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.StopWatch;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
 import org.summer.dsl.model.xbase.XBlockExpression;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable;
 import org.summer.dsl.xbase.ui.document.DocumentSourceAppender.Factory.OptionalParameters;
 import org.summer.dsl.xbase.ui.quickfix.XbaseQuickfixProvider;
+import org.summer.ss.core.services.SsGrammarAccess;
+import org.summer.ss.core.validation.IssueCodes;
+import org.summer.ss.ide.buildpath.SsLibClasspathAdder;
+import org.summer.ss.ide.codebuilder.InsertionOffsets;
+import org.summer.ss.ide.codebuilder.MemberFromSuperImplementor;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -195,7 +194,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 				acceptor.accept(issue, "Add constructor " + xtendSignature, "Add constructor " + xtendSignature, "fix_indent.gif",
 					new ISemanticModification() {
 						public void apply(EObject element, IModificationContext context) throws Exception {
-							XtendClass clazz = (XtendClass) element;
+							JvmGenericType clazz = (JvmGenericType) element;
 							ReplacingAppendable appendable = appendableFactory.create(context.getXtextDocument(), (XtextResource) clazz.eResource(),
 									insertionOffsets.getNewConstructorInsertOffset(null, clazz), 0, new OptionalParameters() {{ 
 										ensureEmptyLinesAround = true;
@@ -219,7 +218,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 			acceptor.accept(issue, "Add unimplemented methods", "Add unimplemented methods", "fix_indent.gif",
 					new ISemanticModification() {
 						public void apply(EObject element, IModificationContext context) throws Exception {
-							XtendClass clazz = (XtendClass) element;
+							JvmGenericType clazz = (JvmGenericType) element;
 							IXtextDocument document = context.getXtextDocument();
 							ReplacingAppendable appendable = appendableFactory.create(document, (XtextResource) clazz.eResource(),
 									insertionOffsets.getNewMethodInsertOffset(null, clazz), 0, new OptionalParameters() {{ 
@@ -257,7 +256,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 					new ISemanticModification() {
 						public void apply(EObject element, IModificationContext context) throws Exception {
 							String[] issueData = issue.getData(); 
-							XtendFunction xtendFunction = EcoreUtil2.getContainerOfType(element, XtendFunction.class);
+							JvmOperation xtendFunction = EcoreUtil2.getContainerOfType(element, JvmOperation.class);
 							XtextResource xtextResource = (XtextResource) xtendFunction.eResource();
 							List<JvmType> exceptions = getExceptions(issueData, xtextResource);
 							if (exceptions.size() > 0) {
@@ -368,7 +367,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 			acceptor.accept(issue, "Change package declaration to '" + expectedPackage + "'", "Change package declaration to '" + expectedPackage + "'", "package_obj.gif",
 					new ISemanticModification() {
 						public void apply(EObject element, IModificationContext context) throws Exception {
-							((XModule) element).setPackage(isEmpty(expectedPackage) ? null : expectedPackage);
+							((JvmModule) element).setSimpleName(isEmpty(expectedPackage) ? null : expectedPackage);
 						}
 			});
 		}
@@ -407,15 +406,15 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 	
 	protected void internalDoAddAbstractKeyword(EObject element, IModificationContext context)
 			throws BadLocationException {
-		if (element instanceof XtendFunction) {
+		if (element instanceof JvmOperation) {
 			element = element.eContainer();
 		}
-		if (element instanceof XtendClass) {
-			XtendClass clazz = (XtendClass) element;
+		if (element instanceof JvmGenericType) {
+			JvmGenericType clazz = (JvmGenericType) element;
 			IXtextDocument document = context.getXtextDocument();
 			ICompositeNode clazzNode = NodeModelUtils.findActualNodeFor(clazz);
 			if (clazzNode == null)
-				throw new IllegalStateException("Cannot determine node for clazz " + clazz.getName());
+				throw new IllegalStateException("Cannot determine node for clazz " + clazz.getSimpleName());
 			int offset = -1;
 			for (ILeafNode leafNode : clazzNode.getLeafNodes()) {
 				if (leafNode.getText().equals("class")) {

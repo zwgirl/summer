@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.ss.ide.quickfix;
 
-import static com.google.common.collect.Lists.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,26 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendMember;
-import org.summer.ss.ide.codebuilder.AbstractConstructorBuilder;
-import org.summer.ss.ide.codebuilder.AbstractFieldBuilder;
-import org.summer.ss.ide.codebuilder.AbstractMethodBuilder;
-import org.summer.ss.ide.codebuilder.CodeBuilderFactory;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
-import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmExecutable;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmGenericType;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmPrimitiveType;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmVisibility;
-import org.summer.dsl.model.types.util.Primitives;
-import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
@@ -49,6 +31,19 @@ import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.model.edit.SemanticModificationWrapper;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmExecutable;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmPrimitiveType;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmVisibility;
+import org.summer.dsl.model.types.util.Primitives;
+import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -71,6 +66,10 @@ import org.summer.dsl.xbase.typesystem.util.CommonTypeComputationServices;
 import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable;
 import org.summer.dsl.xbase.ui.document.DocumentSourceAppender.Factory.OptionalParameters;
 import org.summer.dsl.xbase.ui.quickfix.ILinkingIssueQuickfixProvider;
+import org.summer.ss.ide.codebuilder.AbstractConstructorBuilder;
+import org.summer.ss.ide.codebuilder.AbstractFieldBuilder;
+import org.summer.ss.ide.codebuilder.AbstractMethodBuilder;
+import org.summer.ss.ide.codebuilder.CodeBuilderFactory;
 
 import com.google.inject.Inject;
 
@@ -258,7 +257,7 @@ public class CreateMemberQuickfixes implements ILinkingIssueQuickfixProvider {
 				new SemanticModificationWrapper(issue.getUriToProblem(), new ISemanticModification() {
 					public void apply(@Nullable final EObject element, @Nullable final IModificationContext context) throws Exception {
 						if (element != null) {
-							XtendMember xtendMember = EcoreUtil2.getContainerOfType(element, XtendMember.class);
+							JvmMember xtendMember = EcoreUtil2.getContainerOfType(element, JvmMember.class);
 							if (xtendMember != null) {
 								int offset = getFirstOffsetOfKeyword(xtendMember, "{");
 								IXtextDocument xtextDocument = context.getXtextDocument();
@@ -405,7 +404,7 @@ public class CreateMemberQuickfixes implements ILinkingIssueQuickfixProvider {
 				constructorBuilder.newParameterBuilder().setType(parameterType);
 			constructorBuilder.setVisibility(JvmVisibility.PUBLIC);
 			StringBuffer label = new StringBuffer("Create constructor '");
-			if(constructorBuilder.getOwnerSource() instanceof XtendClass)
+			if(constructorBuilder.getOwnerSource() instanceof JvmGenericType)
 				label.append("new");
 			else
 				label.append(ownerType.getSimpleName());

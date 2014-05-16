@@ -80,12 +80,6 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TypesPackage.JVM_NO_MODULE: {
-				JvmNoModule jvmNoModule = (JvmNoModule)theEObject;
-				T result = caseJvmNoModule(jvmNoModule);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case TypesPackage.JVM_TYPE: {
 				JvmType jvmType = (JvmType)theEObject;
 				T result = caseJvmType(jvmType);
@@ -247,6 +241,19 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJvmAnnotationTarget(jvmGenericType);
 				if (result == null) result = caseJvmType(jvmGenericType);
 				if (result == null) result = caseJvmIdentifiableElement(jvmGenericType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.JVM_INTERFACE_TYPE: {
+				JvmInterfaceType jvmInterfaceType = (JvmInterfaceType)theEObject;
+				T result = caseJvmInterfaceType(jvmInterfaceType);
+				if (result == null) result = caseJvmDeclaredType(jvmInterfaceType);
+				if (result == null) result = caseJvmTypeParameterDeclarator(jvmInterfaceType);
+				if (result == null) result = caseJvmMember(jvmInterfaceType);
+				if (result == null) result = caseJvmComponentType(jvmInterfaceType);
+				if (result == null) result = caseJvmAnnotationTarget(jvmInterfaceType);
+				if (result == null) result = caseJvmType(jvmInterfaceType);
+				if (result == null) result = caseJvmIdentifiableElement(jvmInterfaceType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -554,21 +561,6 @@ public class TypesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Jvm No Module</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Jvm No Module</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseJvmNoModule(JvmNoModule object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Jvm Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -835,6 +827,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmGenericType(JvmGenericType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Interface Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Interface Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmInterfaceType(JvmInterfaceType object) {
 		return null;
 	}
 

@@ -16,16 +16,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.SimpleScope;
 import org.eclipse.xtext.util.Wrapper;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -36,6 +36,7 @@ import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbaseFactory;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.xbase.resource.RootScope;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 import org.summer.dsl.xbase.typesystem.IResolvedTypes;
 import org.summer.dsl.xbase.typesystem.computation.IFeatureLinkingCandidate;
@@ -48,7 +49,6 @@ import org.summer.dsl.xbase.typesystem.references.LightweightBoundTypeArgument;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.UnboundTypeReference;
 import org.summer.dsl.xbase.util.FeatureCallAsTypeLiteralHelper;
-import org.summer.dsl.xbase.resource.RootScope;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -265,8 +265,8 @@ public class FeatureScopes implements IFeatureNames {
 				result = createStaticFeatureOnTypeLiteralScope(asAbstractFeatureCall(featureCall), declaringType, receiver, receiverType, result, session);
 				return result;
 			}
-		} else if(linkedReceiver instanceof XModule){  //cym added
-			final XModule module = (XModule) linkedReceiver;
+		} else if(linkedReceiver instanceof JvmModule){  //cym added
+			final JvmModule module = (JvmModule) linkedReceiver;
 			return new AbstractSessionBasedScope(IScope.NULLSCOPE, session, (XAbstractFeatureCall) featureCall){
 
 				@Override

@@ -1,7 +1,7 @@
 package org.summer.ss.ide.refactoring;
 
-import static java.util.Collections.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static java.util.Collections.singletonList;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.refactoring.IChangeRedirector;
@@ -19,6 +18,7 @@ import org.eclipse.xtext.ui.refactoring.impl.AbstractProcessorBasedRenamePartici
 import org.eclipse.xtext.ui.refactoring.ui.IRenameContextFactory;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.summer.dsl.model.types.JvmDeclaredType;
 
 import com.google.inject.Inject;
 
@@ -42,8 +42,8 @@ public class SsFileRenameParticipant extends AbstractProcessorBasedRenamePartici
 				URI resourceURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
 				Resource resource = resourceSet.getResource(resourceURI, true);
 				if (resource != null && !resource.getContents().isEmpty()) {
-					for (XtendTypeDeclaration type : EcoreUtil2.eAllOfType(resource.getContents().get(0), XtendTypeDeclaration.class)) {
-						if (equal(className, type.getName())) {
+					for (JvmDeclaredType type : EcoreUtil2.eAllOfType(resource.getContents().get(0), JvmDeclaredType.class)) {
+						if (equal(className, type.getSimpleName())) {
 							IRenameElementContext renameElementContext = renameContextFactory.createRenameElementContext(type, null, null,
 									(XtextResource) resource);
 							if(renameElementContext instanceof IChangeRedirector.Aware) 

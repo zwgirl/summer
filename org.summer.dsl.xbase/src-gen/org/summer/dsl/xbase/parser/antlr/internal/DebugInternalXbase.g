@@ -707,42 +707,6 @@ ruleXExpression :
 	RULE_ID
 ;
 
-// Rule XImportDeclaration1
- ruleXImportDeclaration1 :
-	'import' '{' (
-		ruleXImportItem (
-			',' ruleXImportItem
-		)* |
-		'*'
-	) '}' 'as' ruleValidID 'from' RULE_STRING
-;
-
-// Rule XImportItem
- ruleXImportItem :
-	RULE_ID (
-		'as' RULE_ID
-	)?
-;
-
-// Rule XExportDeclaration
- ruleXExportDeclaration :
-	'export' (
-		'{' ruleXExportItem (
-			',' ruleXExportItem
-		)* '}' (
-			'from' RULE_STRING
-		)? |
-		'from' RULE_STRING 'as' RULE_ID
-	)
-;
-
-// Rule XExportItem
- ruleXExportItem :
-	RULE_ID (
-		'as' RULE_ID
-	)?
-;
-
 RULE_HEX :
 	(
 		'0x' |

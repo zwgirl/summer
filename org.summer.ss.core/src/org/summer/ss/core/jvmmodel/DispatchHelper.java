@@ -7,18 +7,11 @@
  *******************************************************************************/
 package org.summer.ss.core.jvmmodel;
 
-import static com.google.common.collect.Iterables.*;
-
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmOperation;
@@ -26,7 +19,6 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.util.Primitives;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.util.Strings;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
@@ -148,40 +140,41 @@ public class DispatchHelper {
 	private CommonTypeComputationServices services;
 	
 	public boolean isDispatcherFunction(JvmOperation inferredOperation) {
-		final Iterator<XtendFunction> filter = filter(associations.getSourceElements(inferredOperation), XtendFunction.class).iterator();
-		if (!filter.hasNext())
-			return false;
-		XtendFunction xtendFunction = filter.next();
-		return xtendFunction.isDispatch() && inferredOperation.getSimpleName().equals(xtendFunction.getName());
+//		final Iterator<JvmOperation> filter = filter(associations.getSourceElements(inferredOperation), JvmOperation.class).iterator();
+//		if (!filter.hasNext())
+//			return false;
+//		JvmOperation xtendFunction = filter.next();
+//		return xtendFunction.isDispatch() && inferredOperation.getSimpleName().equals(xtendFunction.getName());
+		return false;
 	}
 	
 	public boolean isDispatchFunction(JvmOperation inferredOperation) {
-		if (inferredOperation.getSimpleName() != null && inferredOperation.getSimpleName().startsWith("_")) {
-			EObject sourceElement = associations.getPrimarySourceElement(inferredOperation);
-			if (sourceElement instanceof XtendFunction) {
-				XtendFunction function = (XtendFunction) sourceElement;
-				if (function.isDispatch() && inferredOperation.getSimpleName().equals("_" + function.getName()))
-					return true;
-				return false;
-			}
-		}
+//		if (inferredOperation.getSimpleName() != null && inferredOperation.getSimpleName().startsWith("_")) {
+//			EObject sourceElement = associations.getPrimarySourceElement(inferredOperation);
+//			if (sourceElement instanceof XtendFunction) {
+//				XtendFunction function = (XtendFunction) sourceElement;
+//				if (function.isDispatch() && inferredOperation.getSimpleName().equals("_" + function.getName()))
+//					return true;
+//				return false;
+//			}
+//		}
 		return false;
 	}
 	
 	@Nullable
 	public JvmOperation getDispatcherOperation(JvmOperation dispatchCase) {
-		EObject sourceElement = associations.getPrimarySourceElement(dispatchCase);
-		if (sourceElement instanceof XtendFunction) {
-			XtendFunction function = (XtendFunction) sourceElement;
-			if (function.isDispatch()) {
-				Iterable<JvmOperation> operations = filter(associations.getJvmElements(sourceElement), JvmOperation.class);
-				for(JvmOperation operation: operations) {
-					if (Strings.equal(operation.getSimpleName(), function.getName())) {
-						return operation;
-					}
-				}
-			}
-		}
+//		EObject sourceElement = associations.getPrimarySourceElement(dispatchCase);
+//		if (sourceElement instanceof XtendFunction) {
+//			XtendFunction function = (XtendFunction) sourceElement;
+//			if (function.isDispatch()) {
+//				Iterable<JvmOperation> operations = filter(associations.getJvmElements(sourceElement), JvmOperation.class);
+//				for(JvmOperation operation: operations) {
+//					if (Strings.equal(operation.getSimpleName(), function.getName())) {
+//						return operation;
+//					}
+//				}
+//			}
+//		}
 		return null;
 	}
 	
@@ -200,24 +193,24 @@ public class DispatchHelper {
 	 * Return the local cases that are associated with the given dispatch operation.
 	 */
 	public List<JvmOperation> getLocalDispatchCases(JvmOperation dispatcherOperation) {
-		Set<EObject> sourceElements = associations.getSourceElements(dispatcherOperation);
+//		Set<EObject> sourceElements = associations.getSourceElements(dispatcherOperation);
 		List<JvmOperation> result = Lists.newArrayList();
-		for(EObject sourceElement: sourceElements) {
-			if (sourceElement instanceof XtendFunction) {
-				XtendFunction function = (XtendFunction) sourceElement;
-				if (Strings.equal(function.getName(), dispatcherOperation.getSimpleName())) {
-					Set<EObject> jvmElements = associations.getJvmElements(function);
-					for(EObject jvmElement: jvmElements) {
-						if (jvmElement != dispatcherOperation && jvmElement instanceof JvmOperation) {
-							JvmOperation candidate = (JvmOperation) jvmElement;
-							if (candidate.getDeclaringType() == dispatcherOperation.getDeclaringType() && Strings.equal(candidate.getSimpleName(), '_' + function.getName())) {
-								result.add(candidate);
-							}
-						}
-					}
-				}
-			}
-		}
+//		for(EObject sourceElement: sourceElements) {
+//			if (sourceElement instanceof XtendFunction) {
+//				XtendFunction function = (XtendFunction) sourceElement;
+//				if (Strings.equal(function.getName(), dispatcherOperation.getSimpleName())) {
+//					Set<EObject> jvmElements = associations.getJvmElements(function);
+//					for(EObject jvmElement: jvmElements) {
+//						if (jvmElement != dispatcherOperation && jvmElement instanceof JvmOperation) {
+//							JvmOperation candidate = (JvmOperation) jvmElement;
+//							if (candidate.getDeclaringType() == dispatcherOperation.getDeclaringType() && Strings.equal(candidate.getSimpleName(), '_' + function.getName())) {
+//								result.add(candidate);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 		return result;
 	}
 	

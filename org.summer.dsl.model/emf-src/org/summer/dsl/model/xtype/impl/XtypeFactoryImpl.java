@@ -14,15 +14,10 @@ import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
-import org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImplCustom;
-import org.summer.dsl.model.xtype.impl.XFunctionTypeRefImplCustom;
-import org.summer.dsl.model.xtype.impl.XImportDeclarationImplCustom;
-import org.summer.dsl.model.xtype.impl.XImportSectionImpl;
-import org.summer.dsl.model.xtype.*;
+import org.summer.dsl.model.xtype.XtypeFactory;
+import org.summer.dsl.model.xtype.XtypePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,8 +67,6 @@ public class XtypeFactoryImpl extends EFactoryImpl implements XtypeFactory {
 			case XtypePackage.XCOMPUTED_TYPE_REFERENCE: return createXComputedTypeReference();
 			case XtypePackage.XIMPORT_SECTION: return createXImportSection();
 			case XtypePackage.XIMPORT_DECLARATION: return createXImportDeclaration();
-			case XtypePackage.XIMPORT_SECTION1: return createXImportSection1();
-			case XtypePackage.XIMPORT_DECLARATION1: return createXImportDeclaration1();
 			case XtypePackage.XIMPORT_ITEM: return createXImportItem();
 			case XtypePackage.XEXPORT_SECTION: return createXExportSection();
 			case XtypePackage.XEXPORT_DECLARATION: return createXExportDeclaration();
@@ -175,14 +168,6 @@ public class XtypeFactoryImpl extends EFactoryImpl implements XtypeFactory {
 	@Deprecated
 	public static XtypePackage getPackage() {
 		return XtypePackage.eINSTANCE;
-	}
-
-	public XImportSection1 createXImportSection1() {
-		return new XImportSection1Impl();
-	}
-
-	public XImportDeclaration1 createXImportDeclaration1() {
-		return new XImportDeclaration1Impl();
 	}
 
 	public XImportItem createXImportItem() {

@@ -34,9 +34,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.ITextRegion;
-import org.summer.dsl.model.ss.RichString;
-import org.summer.dsl.model.ss.RichStringLiteral;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
@@ -45,6 +42,7 @@ import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.TypesPackage;
@@ -55,13 +53,11 @@ import org.summer.dsl.model.xaml.XElement;
 import org.summer.dsl.model.xaml.XMarkupExtenson;
 import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xaml.XamlPackage;
+import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingCalculator;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingConfiguration;
-import org.summer.ss.core.richstring.AbstractRichStringPartAcceptor;
-import org.summer.ss.core.richstring.DefaultIndentationHandler;
-import org.summer.ss.core.richstring.RichStringProcessor;
 import org.summer.ss.core.services.SsGrammarAccess;
 
 import com.google.common.collect.ImmutableSet;
@@ -75,11 +71,11 @@ import com.google.inject.Provider;
  */
 public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 
-	@Inject
-	private RichStringProcessor processor;
+//	@Inject
+//	private RichStringProcessor processor;
 
-	@Inject
-	private Provider<DefaultIndentationHandler> indentationHandlerProvider;
+//	@Inject
+//	private Provider<DefaultIndentationHandler> indentationHandlerProvider;
 
 	private Set<Keyword> contextualKeywords;
 	
@@ -143,7 +139,7 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 	
 	@Override
 	protected void doProvideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
-		XModule file = (XModule) resource.getContents().get(0);
+		JvmModule file = (JvmModule) resource.getContents().get(0);
 		if(file.getRoot()!=null){
 			XObjectElement object = file.getRoot();
 			highlightXElement(acceptor, object);
@@ -253,18 +249,18 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 			TreeIterator<EObject> iterator = EcoreUtil2.eAll(expression);
 			while (iterator.hasNext()) {
 				EObject object = iterator.next();
-				if (object instanceof RichString) {
-					RichStringHighlighter highlighter = createRichStringHighlighter(acceptor);
-					processor.process((RichString) object, highlighter, indentationHandlerProvider.get());
-					iterator.prune();
-				}
+//				if (object instanceof RichString) {
+//					RichStringHighlighter highlighter = createRichStringHighlighter(acceptor);
+//					processor.process((RichString) object, highlighter, indentationHandlerProvider.get());
+//					iterator.prune();
+//				}
 			}
 		}
 	}
 
-	protected RichStringHighlighter createRichStringHighlighter(IHighlightedPositionAcceptor acceptor) {
-		return new RichStringHighlighter(acceptor);
-	}
+//	protected RichStringHighlighter createRichStringHighlighter(IHighlightedPositionAcceptor acceptor) {
+//		return new RichStringHighlighter(acceptor);
+//	}
 
 	@Override
 	protected void highlightSpecialIdentifiers(ILeafNode leafNode, IHighlightedPositionAcceptor acceptor,
@@ -291,163 +287,163 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 		}
 	}
 
-	@NonNullByDefault
-	protected class RichStringHighlighter extends AbstractRichStringPartAcceptor.ForLoopOnce {
-
-		private int currentOffset = -1;
-		private RichStringLiteral recent = null;
-		private final IHighlightedPositionAcceptor acceptor;
-		private Queue<IRegion> pendingRegions = Lists.newLinkedList();
-
-		public RichStringHighlighter(IHighlightedPositionAcceptor acceptor) {
-			this.acceptor = acceptor;
-		}
-
-		@Override
-		public void announceNextLiteral(RichStringLiteral object) {
-			resetCurrentOffset(object);
-		}
-
-		@Override
-		public void acceptSemanticText(CharSequence text, @Nullable RichStringLiteral origin) {
-			resetCurrentOffset(origin);
-			currentOffset += text.length();
-		}
-
-		protected void resetCurrentOffset(@Nullable RichStringLiteral origin) {
-			if (origin != null && origin != recent) {
-				INode recentNode = null;
-				if (recent != null && currentOffset != -1) {
-					List<INode> featureNodes = NodeModelUtils.findNodesForFeature(recent,
-							XbasePackage.Literals.XSTRING_LITERAL__VALUE);
-					if (featureNodes.size() == 1) {
-						recentNode = featureNodes.get(0);
-						int closingQuoteLength = 0;
-						if (recentNode.getText().endsWith("'''")) {
-							closingQuoteLength = 3;
-						} else if (recentNode.getText().endsWith("''")) {
-							closingQuoteLength = 2;
-						} else if (recentNode.getText().endsWith("'") || recentNode.getText().endsWith("\u00AB")) {
-							closingQuoteLength = 1;
-						}
-						int expectedOffset = recentNode.getTotalEndOffset() - closingQuoteLength;
-						if (expectedOffset != currentOffset) {
-							pendingRegions.add(new Region(currentOffset, expectedOffset - currentOffset));
-						}
-					}
-				}
-				List<INode> featureNodes = NodeModelUtils.findNodesForFeature(origin,
-						XbasePackage.Literals.XSTRING_LITERAL__VALUE);
-				if (featureNodes.size() == 1) {
-					INode node = featureNodes.get(0);
-					currentOffset = node.getOffset();
-					if (node.getText().charAt(0) == '\'') {
-						acceptor.addPosition(currentOffset, 3, SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
-						highlightClosingQuotes(node);
-						currentOffset += 3;
-					} else if (node.getText().startsWith("\u00AB\u00AB")) {
-						String nodeText = node.getText();
-						int lineFeed = nodeText.indexOf('\n');
-						int length = lineFeed; 
-						int carriageReturn = nodeText.indexOf('\r');
-						if (carriageReturn != -1) {
-							if (length == -1) {
-								length = carriageReturn;
-							} else {
-								length = Math.min(carriageReturn, length);
-							}
-						}
-						int start = node.getTotalOffset();
-						if (length == -1) {
-							length = node.getTotalLength();
-						}
-						if (recentNode != null && recentNode.getTotalEndOffset() == start) {
-							start = start - 1;
-							length = length + 1;
-						}
-						acceptor.addPosition(start, length, DefaultHighlightingConfiguration.COMMENT_ID);
-						highlightClosingQuotes(node);
-						currentOffset = start + length + 1;
-						if (lineFeed == carriageReturn + 1)
-							currentOffset++;
-					} else {
-						highlightClosingQuotes(node);
-						currentOffset += 1;
-					}
-				}
-				recent = origin;
-			}
-		}
-
-		protected void highlightClosingQuotes(INode node) {
-			int length = 0;
-			if (node.getText().endsWith("'''")) {
-				length = 3;
-			} else if (node.getText().endsWith("''")) {
-				length = 2;
-			} else if (node.getText().endsWith("'")) {
-				length = 1;
-			}
-			if (length != 0) {
-				acceptor.addPosition(currentOffset + node.getLength() - length, length,
-						SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
-			}
-		}
-
-		@Override
-		public void acceptTemplateText(CharSequence text, @Nullable RichStringLiteral origin) {
-			resetCurrentOffset(origin);
-			if (text.length() > 0) {
-				int length = text.length();
-				while (!pendingRegions.isEmpty()) {
-					IRegion pending = pendingRegions.poll();
-					length -= pending.getLength();
-					acceptor.addPosition(pending.getOffset(), pending.getLength(),
-							SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
-				}
-				if (length != 0) {
-					acceptor.addPosition(currentOffset, length, SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
-					currentOffset += length;
-				}
-			}
-		}
-
-		@Override
-		public void acceptSemanticLineBreak(int charCount, RichStringLiteral origin, boolean controlStructureSeen) {
-			resetCurrentOffset(origin);
-			if (controlStructureSeen)
-				acceptor.addPosition(currentOffset, charCount, SsHighlightingConfiguration.POTENTIAL_LINE_BREAK);
-			else
-				acceptor.addPosition(currentOffset, charCount, SsHighlightingConfiguration.TEMPLATE_LINE_BREAK);
-			currentOffset += charCount;
-		}
-
-		@Override
-		public void acceptTemplateLineBreak(int charCount, RichStringLiteral origin) {
-			resetCurrentOffset(origin);
-			currentOffset += charCount;
-		}
-
-		@Override
-		public void acceptIfCondition(XExpression condition) {
-			highlightRichStrings(condition, acceptor);
-		}
-
-		@Override
-		public void acceptElseIfCondition(XExpression condition) {
-			highlightRichStrings(condition, acceptor);
-		}
-
-		@Override
-		public void acceptForLoop(JvmFormalParameter parameter, @Nullable XExpression expression) {
-			highlightRichStrings(expression, acceptor);
-			super.acceptForLoop(parameter, expression);
-		}
-
-		@Override
-		public void acceptExpression(XExpression expression, CharSequence indentation) {
-			highlightRichStrings(expression, acceptor);
-		}
-	}
+//	@NonNullByDefault
+//	protected class RichStringHighlighter extends AbstractRichStringPartAcceptor.ForLoopOnce {
+//
+//		private int currentOffset = -1;
+//		private RichStringLiteral recent = null;
+//		private final IHighlightedPositionAcceptor acceptor;
+//		private Queue<IRegion> pendingRegions = Lists.newLinkedList();
+//
+//		public RichStringHighlighter(IHighlightedPositionAcceptor acceptor) {
+//			this.acceptor = acceptor;
+//		}
+//
+//		@Override
+//		public void announceNextLiteral(RichStringLiteral object) {
+//			resetCurrentOffset(object);
+//		}
+//
+//		@Override
+//		public void acceptSemanticText(CharSequence text, @Nullable RichStringLiteral origin) {
+//			resetCurrentOffset(origin);
+//			currentOffset += text.length();
+//		}
+//
+//		protected void resetCurrentOffset(@Nullable RichStringLiteral origin) {
+//			if (origin != null && origin != recent) {
+//				INode recentNode = null;
+//				if (recent != null && currentOffset != -1) {
+//					List<INode> featureNodes = NodeModelUtils.findNodesForFeature(recent,
+//							XbasePackage.Literals.XSTRING_LITERAL__VALUE);
+//					if (featureNodes.size() == 1) {
+//						recentNode = featureNodes.get(0);
+//						int closingQuoteLength = 0;
+//						if (recentNode.getText().endsWith("'''")) {
+//							closingQuoteLength = 3;
+//						} else if (recentNode.getText().endsWith("''")) {
+//							closingQuoteLength = 2;
+//						} else if (recentNode.getText().endsWith("'") || recentNode.getText().endsWith("\u00AB")) {
+//							closingQuoteLength = 1;
+//						}
+//						int expectedOffset = recentNode.getTotalEndOffset() - closingQuoteLength;
+//						if (expectedOffset != currentOffset) {
+//							pendingRegions.add(new Region(currentOffset, expectedOffset - currentOffset));
+//						}
+//					}
+//				}
+//				List<INode> featureNodes = NodeModelUtils.findNodesForFeature(origin,
+//						XbasePackage.Literals.XSTRING_LITERAL__VALUE);
+//				if (featureNodes.size() == 1) {
+//					INode node = featureNodes.get(0);
+//					currentOffset = node.getOffset();
+//					if (node.getText().charAt(0) == '\'') {
+//						acceptor.addPosition(currentOffset, 3, SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
+//						highlightClosingQuotes(node);
+//						currentOffset += 3;
+//					} else if (node.getText().startsWith("\u00AB\u00AB")) {
+//						String nodeText = node.getText();
+//						int lineFeed = nodeText.indexOf('\n');
+//						int length = lineFeed; 
+//						int carriageReturn = nodeText.indexOf('\r');
+//						if (carriageReturn != -1) {
+//							if (length == -1) {
+//								length = carriageReturn;
+//							} else {
+//								length = Math.min(carriageReturn, length);
+//							}
+//						}
+//						int start = node.getTotalOffset();
+//						if (length == -1) {
+//							length = node.getTotalLength();
+//						}
+//						if (recentNode != null && recentNode.getTotalEndOffset() == start) {
+//							start = start - 1;
+//							length = length + 1;
+//						}
+//						acceptor.addPosition(start, length, DefaultHighlightingConfiguration.COMMENT_ID);
+//						highlightClosingQuotes(node);
+//						currentOffset = start + length + 1;
+//						if (lineFeed == carriageReturn + 1)
+//							currentOffset++;
+//					} else {
+//						highlightClosingQuotes(node);
+//						currentOffset += 1;
+//					}
+//				}
+//				recent = origin;
+//			}
+//		}
+//
+//		protected void highlightClosingQuotes(INode node) {
+//			int length = 0;
+//			if (node.getText().endsWith("'''")) {
+//				length = 3;
+//			} else if (node.getText().endsWith("''")) {
+//				length = 2;
+//			} else if (node.getText().endsWith("'")) {
+//				length = 1;
+//			}
+//			if (length != 0) {
+//				acceptor.addPosition(currentOffset + node.getLength() - length, length,
+//						SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
+//			}
+//		}
+//
+//		@Override
+//		public void acceptTemplateText(CharSequence text, @Nullable RichStringLiteral origin) {
+//			resetCurrentOffset(origin);
+//			if (text.length() > 0) {
+//				int length = text.length();
+//				while (!pendingRegions.isEmpty()) {
+//					IRegion pending = pendingRegions.poll();
+//					length -= pending.getLength();
+//					acceptor.addPosition(pending.getOffset(), pending.getLength(),
+//							SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
+//				}
+//				if (length != 0) {
+//					acceptor.addPosition(currentOffset, length, SsHighlightingConfiguration.INSIGNIFICANT_TEMPLATE_TEXT);
+//					currentOffset += length;
+//				}
+//			}
+//		}
+//
+//		@Override
+//		public void acceptSemanticLineBreak(int charCount, RichStringLiteral origin, boolean controlStructureSeen) {
+//			resetCurrentOffset(origin);
+//			if (controlStructureSeen)
+//				acceptor.addPosition(currentOffset, charCount, SsHighlightingConfiguration.POTENTIAL_LINE_BREAK);
+//			else
+//				acceptor.addPosition(currentOffset, charCount, SsHighlightingConfiguration.TEMPLATE_LINE_BREAK);
+//			currentOffset += charCount;
+//		}
+//
+//		@Override
+//		public void acceptTemplateLineBreak(int charCount, RichStringLiteral origin) {
+//			resetCurrentOffset(origin);
+//			currentOffset += charCount;
+//		}
+//
+//		@Override
+//		public void acceptIfCondition(XExpression condition) {
+//			highlightRichStrings(condition, acceptor);
+//		}
+//
+//		@Override
+//		public void acceptElseIfCondition(XExpression condition) {
+//			highlightRichStrings(condition, acceptor);
+//		}
+//
+//		@Override
+//		public void acceptForLoop(JvmFormalParameter parameter, @Nullable XExpression expression) {
+//			highlightRichStrings(expression, acceptor);
+//			super.acceptForLoop(parameter, expression);
+//		}
+//
+//		@Override
+//		public void acceptExpression(XExpression expression, CharSequence indentation) {
+//			highlightRichStrings(expression, acceptor);
+//		}
+//	}
 
 }

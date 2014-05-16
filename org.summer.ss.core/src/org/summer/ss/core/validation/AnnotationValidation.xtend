@@ -8,21 +8,17 @@
 package org.summer.ss.core.validation
 
 import com.google.inject.Inject
-import org.summer.dsl.model.ss.XtendAnnotationType
-import org.summer.dsl.model.ss.XtendField
-import org.summer.dsl.model.ss.SsPackage
+import org.eclipse.xtext.validation.AbstractDeclarativeValidator
+import org.eclipse.xtext.validation.Check
 import org.summer.dsl.model.types.JvmAnnotationType
 import org.summer.dsl.model.types.JvmEnumerationType
+import org.summer.dsl.model.types.JvmField
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference
 import org.summer.dsl.model.types.JvmPrimitiveType
 import org.summer.dsl.model.types.JvmTypeReference
-import org.eclipse.xtext.validation.AbstractDeclarativeValidator
-import org.eclipse.xtext.validation.Check
 import org.summer.dsl.model.xbase.XbasePackage
-import org.summer.dsl.xannotation.validation.AnnotationValueValidator
-import org.summer.dsl.model.xannotation.XannotationPackage
 
-import static org.summer.dsl.model.ss.SsPackage.Literals.*
+import static org.summer.dsl.model.types.TypesPackage.Literals.*
 
 /**
  * @author Sven Efftinge - Initial contribution and API
@@ -33,21 +29,21 @@ class AnnotationValidation extends AbstractDeclarativeValidator {
 	AnnotationValueValidator annotationValueValidator;
 	
 	override protected getEPackages() {
-		newArrayList(SsPackage.eINSTANCE, XbasePackage.eINSTANCE, XannotationPackage.eINSTANCE)
+		newArrayList(XbasePackage.eINSTANCE)
 	}
 	
 	@Check 
-	def checkAnnotation(XtendAnnotationType it) {
-		for (it : members.filter(XtendField)) {
+	def checkAnnotation(JvmAnnotationType it) {
+		for (it : members.filter(JvmField)) {
 			if (!isValidAnnotationValueType(type)) {
-				error('''Invalid type �type.simpleName� for the annotation attribute �name�; only primitive type, String, Class, annotation, enumeration are permitted or 1-dimensional arrays thereof''',
+				error('''Invalid type «type.simpleName» for the annotation attribute «simpleName»; only primitive type, String, Class, annotation, enumeration are permitted or 1-dimensional arrays thereof''',
 					it,
-					XTEND_FIELD__TYPE,
+					JVM_FIELD__TYPE,
 					IssueCodes.INVALID_ANNOTATION_VALUE_TYPE
 				)
 			}
-			if(initialValue != null) {
-				annotationValueValidator.validateAnnotationValue(initialValue, this)
+			if(defaultValue != null) {
+				annotationValueValidator.validateAnnotationValue(defaultValue, this)
 			}
 		}
 	}
@@ -66,8 +62,8 @@ class AnnotationValidation extends AbstractDeclarativeValidator {
 			return true
 		if (toCheck.type instanceof JvmAnnotationType)
 			return true
-		if (toCheck.type.qualifiedName == 'java.lang.String' 
-			|| toCheck.type.qualifiedName == 'java.lang.Class') 
+		if (toCheck.type.qualifiedName == 'String' 
+			|| toCheck.type.qualifiedName == 'Class') 
 			return true
 		return false
 	}

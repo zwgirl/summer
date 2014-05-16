@@ -37,6 +37,7 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
@@ -622,7 +623,7 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 		Iterator<JvmTypeReference> classes = filter(type.getSuperTypes(), new Predicate<JvmTypeReference>() {
 			public boolean apply(JvmTypeReference input) {
 				if (input.getType() instanceof JvmGenericType) {
-					return !((JvmGenericType)input.getType()).isInterface();
+					return !(input.getType() instanceof JvmInterfaceType);
 				}
 				return false;
 			}

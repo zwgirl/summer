@@ -20,6 +20,7 @@ import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmPrimitiveType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -102,7 +103,7 @@ public class TypeInsteadOfConstructorLinkingCandidate extends AbstractUnresolvab
 			typeKind = "annotation type";
 		} else if (type instanceof JvmEnumerationType) {
 			typeKind = "enum type";
-		} else if (type instanceof JvmGenericType && ((JvmGenericType) type).isInterface()) {
+		} else if (type instanceof JvmGenericType && type instanceof JvmInterfaceType) {
 			typeKind = "interface type";
 		} else if (type instanceof JvmTypeParameter) {
 			typeKind = "type parameter";

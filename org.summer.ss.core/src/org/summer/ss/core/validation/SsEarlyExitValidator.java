@@ -7,12 +7,6 @@
  *******************************************************************************/
 package org.summer.ss.core.validation;
 
-import static com.google.common.collect.Maps.*;
-
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EReference;
-import org.summer.dsl.model.ss.SsPackage;
 import org.summer.dsl.xbase.validation.EarlyExitValidator;
 
 /**
@@ -20,11 +14,11 @@ import org.summer.dsl.xbase.validation.EarlyExitValidator;
  */
 public class SsEarlyExitValidator extends EarlyExitValidator {
 		
-	@Override
-	protected Map<EReference,EarlyExitKind> getDisallowedEarlyExitReferences() {
-		Map<EReference, EarlyExitKind> result = newHashMap();
-		result.put(SsPackage.Literals.CREATE_EXTENSION_INFO__CREATE_EXPRESSION, EarlyExitKind.RETURN);
-		result.putAll(super.getDisallowedEarlyExitReferences());
-		return result;
-	}
+//	@Override
+//	protected Map<EReference,EarlyExitKind> getDisallowedEarlyExitReferences() {
+//		Map<EReference, EarlyExitKind> result = newHashMap();
+//		result.put(SsPackage.Literals.CREATE_EXTENSION_INFO__CREATE_EXPRESSION, EarlyExitKind.RETURN);
+//		result.putAll(super.getDisallowedEarlyExitReferences());
+//		return result;
+//	}
 }

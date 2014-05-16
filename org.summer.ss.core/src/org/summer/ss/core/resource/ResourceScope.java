@@ -8,7 +8,6 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.util.SimpleAttributeResolver;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmModule;
 
 import com.google.common.collect.Lists;
@@ -30,7 +29,7 @@ public class ResourceScope extends AbstractScope {
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
 		
 
-		XModule file = (XModule) resource.getContents().get(0);
+		JvmModule file = (JvmModule) resource.getContents().get(0);
 		EObject module = file.getContents().get(0);
 		if(module instanceof JvmModule){
 			return Scopes.scopedElementsFor(Lists.newArrayList(module), QualifiedName.wrapper(SimpleAttributeResolver.newResolver(String.class, "simpleName")));

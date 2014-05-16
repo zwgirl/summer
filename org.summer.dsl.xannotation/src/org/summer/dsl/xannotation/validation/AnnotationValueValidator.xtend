@@ -8,12 +8,12 @@
 package org.summer.dsl.xannotation.validation
 
 import org.eclipse.xtext.validation.ValidationMessageAcceptor
+import org.summer.dsl.model.types.JvmAnnotationReference
 import org.summer.dsl.model.xbase.XAbstractFeatureCall
 import org.summer.dsl.model.xbase.XExpression
-import org.summer.dsl.model.xannotation.XAnnotation
+import org.summer.dsl.model.xbase.XListLiteral
 import org.summer.dsl.xbase.validation.ConstantExpressionValidator
 import org.summer.dsl.xbase.validation.IssueCodes
-import org.summer.dsl.model.xbase.XListLiteral
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -41,7 +41,7 @@ class AnnotationValueValidator extends ConstantExpressionValidator {
 		expression.elements.empty || expression.elements.forall[isValidAnnotationValue]
 	}
 	
-	protected def dispatch boolean isValidAnnotationValue(XAnnotation expression) {
+	protected def dispatch boolean isValidAnnotationValue(JvmAnnotationReference expression) {
 		return true
 	}
 	

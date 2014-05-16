@@ -3,11 +3,10 @@
 package org.summer.dsl.model.types;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
+import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +20,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getExportSection <em>Export Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmModule#getRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,12 +64,12 @@ public interface JvmModule extends JvmType {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Import Section</em>' containment reference.
-	 * @see #setImportSection(XImportSection1)
+	 * @see #setImportSection(XImportSection)
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_ImportSection()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XImportSection1 getImportSection();
+	XImportSection getImportSection();
 
 	/**
 	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getImportSection <em>Import Section</em>}' containment reference.
@@ -79,7 +79,7 @@ public interface JvmModule extends JvmType {
 	 * @see #getImportSection()
 	 * @generated
 	 */
-	void setImportSection(XImportSection1 value);
+	void setImportSection(XImportSection value);
 
 	/**
 	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
@@ -122,5 +122,33 @@ public interface JvmModule extends JvmType {
 	 * @generated
 	 */
 	void setExportSection(XExportSection value);
+
+	/**
+	 * Returns the value of the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Root</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Root</em>' containment reference.
+	 * @see #setRoot(XObjectElement)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_Root()
+	 * @model containment="true"
+	 * @generated
+	 */
+	XObjectElement getRoot();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getRoot <em>Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Root</em>' containment reference.
+	 * @see #getRoot()
+	 * @generated
+	 */
+	void setRoot(XObjectElement value);
+
+	Iterable<JvmDeclaredType> getJvmDeclaredTypes();
 
 } // JvmModule

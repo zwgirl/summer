@@ -14,10 +14,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.summer.dsl.model.richstring.RichstringPackage;
-import org.summer.dsl.model.richstring.impl.RichstringPackageImpl;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.impl.SsPackageImpl;
 import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
@@ -50,12 +46,12 @@ import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmIntAnnotationValue;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLongAnnotationValue;
 import org.summer.dsl.model.types.JvmLowerBound;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmMultiTypeReference;
-import org.summer.dsl.model.types.JvmNoModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
@@ -81,8 +77,6 @@ import org.summer.dsl.model.types.util.ITypeReferenceVisitor;
 import org.summer.dsl.model.types.util.ITypeReferenceVisitorWithParameter;
 import org.summer.dsl.model.xaml.XamlPackage;
 import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xbase.impl.XbasePackageImpl;
 import org.summer.dsl.model.xtype.XtypePackage;
@@ -108,13 +102,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	private EClass jvmModuleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass jvmNoModuleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,6 +228,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	private EClass jvmGenericTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jvmInterfaceTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -570,28 +564,19 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Obtain or create and register interdependencies
 		XbasePackageImpl theXbasePackage = (XbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI) instanceof XbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI) : XbasePackage.eINSTANCE);
-		SsPackageImpl theSsPackage = (SsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) instanceof SsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) : SsPackage.eINSTANCE);
-		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
-		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
 		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTypesPackage.createPackageContents();
 		theXbasePackage.createPackageContents();
-		theSsPackage.createPackageContents();
-		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
-		theRichstringPackage.createPackageContents();
 		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTypesPackage.initializePackageContents();
 		theXbasePackage.initializePackageContents();
-		theSsPackage.initializePackageContents();
-		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
-		theRichstringPackage.initializePackageContents();
 		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
@@ -662,26 +647,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getJvmNoModule() {
-		return jvmNoModuleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJvmNoModule_ImportSection() {
-		return (EReference)jvmNoModuleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getJvmNoModule_Contents() {
-		return (EReference)jvmNoModuleEClass.getEStructuralFeatures().get(1);
+	public EReference getJvmModule_Root() {
+		return (EReference)jvmModuleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1094,26 +1061,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getJvmGenericType_Interface() {
-		return (EAttribute)jvmGenericTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getJvmGenericType_StrictFloatingPoint() {
-		return (EAttribute)jvmGenericTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getJvmGenericType_Extends() {
-		return (EReference)jvmGenericTypeEClass.getEStructuralFeatures().get(2);
+		return (EReference)jvmGenericTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1122,7 +1071,25 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	public EReference getJvmGenericType_Implements() {
-		return (EReference)jvmGenericTypeEClass.getEStructuralFeatures().get(3);
+		return (EReference)jvmGenericTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJvmInterfaceType() {
+		return jvmInterfaceTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmInterfaceType_Implements() {
+		return (EReference)jvmInterfaceTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1591,6 +1558,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EAttribute getJvmOperation_Overload() {
 		return (EAttribute)jvmOperationEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmOperation_Override() {
+		return (EAttribute)jvmOperationEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2123,10 +2099,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmModuleEClass, JVM_MODULE__IMPORT_SECTION);
 		createEReference(jvmModuleEClass, JVM_MODULE__CONTENTS);
 		createEReference(jvmModuleEClass, JVM_MODULE__EXPORT_SECTION);
-
-		jvmNoModuleEClass = createEClass(JVM_NO_MODULE);
-		createEReference(jvmNoModuleEClass, JVM_NO_MODULE__IMPORT_SECTION);
-		createEReference(jvmNoModuleEClass, JVM_NO_MODULE__CONTENTS);
+		createEReference(jvmModuleEClass, JVM_MODULE__ROOT);
 
 		jvmTypeEClass = createEClass(JVM_TYPE);
 
@@ -2190,10 +2163,11 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEAttribute(jvmEnumerationLiteralEClass, JVM_ENUMERATION_LITERAL__ORDINAL);
 
 		jvmGenericTypeEClass = createEClass(JVM_GENERIC_TYPE);
-		createEAttribute(jvmGenericTypeEClass, JVM_GENERIC_TYPE__INTERFACE);
-		createEAttribute(jvmGenericTypeEClass, JVM_GENERIC_TYPE__STRICT_FLOATING_POINT);
 		createEReference(jvmGenericTypeEClass, JVM_GENERIC_TYPE__EXTENDS);
 		createEReference(jvmGenericTypeEClass, JVM_GENERIC_TYPE__IMPLEMENTS);
+
+		jvmInterfaceTypeEClass = createEClass(JVM_INTERFACE_TYPE);
+		createEReference(jvmInterfaceTypeEClass, JVM_INTERFACE_TYPE__IMPLEMENTS);
 
 		jvmTypeReferenceEClass = createEClass(JVM_TYPE_REFERENCE);
 
@@ -2259,6 +2233,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmOperationEClass, JVM_OPERATION__EXPRESSION);
 		createEReference(jvmOperationEClass, JVM_OPERATION__FUNCTION);
 		createEAttribute(jvmOperationEClass, JVM_OPERATION__OVERLOAD);
+		createEAttribute(jvmOperationEClass, JVM_OPERATION__OVERRIDE);
 
 		jvmFormalParameterEClass = createEClass(JVM_FORMAL_PARAMETER);
 		createEAttribute(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__NAME);
@@ -2367,6 +2342,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		// Obtain other dependent packages
 		XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
+		XamlPackage theXamlPackage = (XamlPackage)EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI);
 		XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
 		// Create type parameters
@@ -2400,6 +2376,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmEnumerationLiteralEClass.getESuperTypes().add(this.getJvmField());
 		jvmGenericTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
 		jvmGenericTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
+		jvmInterfaceTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
+		jvmInterfaceTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
 		jvmParameterizedTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
 		jvmGenericArrayTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
 		jvmWildcardTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
@@ -2451,13 +2429,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		initEClass(jvmModuleEClass, JvmModule.class, "JvmModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmModule_SimpleName(), ecorePackage.getEString(), "simpleName", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJvmModule_ImportSection(), theXtypePackage.getXImportSection1(), null, "importSection", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJvmModule_ImportSection(), theXtypePackage.getXImportSection(), null, "importSection", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmModule_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmModule_ExportSection(), theXtypePackage.getXExportSection(), null, "exportSection", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(jvmNoModuleEClass, JvmNoModule.class, "JvmNoModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getJvmNoModule_ImportSection(), theXtypePackage.getXImportSection1(), null, "importSection", null, 0, 1, JvmNoModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJvmNoModule_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, JvmNoModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJvmModule_Root(), theXamlPackage.getXObjectElement(), null, "root", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeEClass, JvmType.class, "JvmType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2559,8 +2534,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		addEOperation(jvmEnumerationLiteralEClass, this.getJvmEnumerationType(), "getEnumType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(jvmGenericTypeEClass, JvmGenericType.class, "JvmGenericType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJvmGenericType_Interface(), ecorePackage.getEBoolean(), "interface", null, 0, 1, JvmGenericType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJvmGenericType_StrictFloatingPoint(), ecorePackage.getEBoolean(), "strictFloatingPoint", null, 0, 1, JvmGenericType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmGenericType_Extends(), this.getJvmParameterizedTypeReference(), null, "extends", null, 0, 1, JvmGenericType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmGenericType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmGenericType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2579,6 +2552,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		g2 = createEGenericType(this.getJvmConstructor());
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		initEClass(jvmInterfaceTypeEClass, JvmInterfaceType.class, "JvmInterfaceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJvmInterfaceType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmInterfaceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeReferenceEClass, JvmTypeReference.class, "JvmTypeReference", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2687,6 +2663,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEReference(getJvmOperation_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmOperation_Function(), theXbasePackage.getXExpression(), null, "function", null, 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmOperation_Overload(), ecorePackage.getEBoolean(), "overload", "false", 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmOperation_Override(), ecorePackage.getEBoolean(), "override", "false", 0, 1, JvmOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmFormalParameterEClass, JvmFormalParameter.class, "JvmFormalParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmFormalParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

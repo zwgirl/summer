@@ -9,12 +9,11 @@ package org.summer.dsl.xbase.ui.quickfix;
 
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.search.IJavaSearchScope;
-import org.summer.dsl.model.types.JvmDeclaredType;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 
 /**
  * Quickfixes for misspelled Java types. For languages that don't use an {@link org.eclipse.xtext.xtype.XImportSection}.
@@ -30,7 +29,7 @@ public class JavaTypeQuickfixesNoImportSection extends JavaTypeQuickfixes {
 	}
 
 	@Override
-	protected void parseImportSection(XImportSection1 importSection, IAcceptor<String> visiblePackages,
+	protected void parseImportSection(XImportSection importSection, IAcceptor<String> visiblePackages,
 			IAcceptor<String> importedTypes) {
 	}
 }

@@ -7,29 +7,26 @@
  *******************************************************************************/
 package org.summer.ss.core.imports;
 
-import static com.google.common.collect.Lists.*;
-import static java.util.Collections.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.emptyList;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.ss.core.scoping.SsImportedNamespaceScopeProvider;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmDeclaredType;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.util.IAcceptor;
-import org.summer.dsl.xbase.imports.DefaultImportsConfiguration;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.xbase.imports.DefaultImportsConfiguration;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.core.scoping.SsImportedNamespaceScopeProvider;
 
 import com.google.inject.Inject;
 
@@ -42,8 +39,8 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	private IXtendJvmAssociations associations;
 	
 	@Override
-	public XImportSection1 getImportSection(XtextResource resource) {
-		XModule xtendFile = getXtendFile(resource);
+	public XImportSection getImportSection(XtextResource resource) {
+		JvmModule xtendFile = getXtendFile(resource);
 		if(xtendFile != null)
 			return xtendFile.getImportSection();
 		else
@@ -51,8 +48,8 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	}
 
 	protected String getCommonPackageName(XtextResource resource) {
-		XModule xtendFile = getXtendFile(resource);
-		return xtendFile == null ? null : xtendFile.getPackage();
+		JvmModule xtendFile = getXtendFile(resource);
+		return xtendFile == null ? null : xtendFile.getSimpleName();
 	}
 	
 	//cym comment
@@ -80,7 +77,7 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	
 	@Override
 	public Iterable<JvmDeclaredType> getLocallyDefinedTypes(XtextResource resource) {
-		XModule xtendFile = getXtendFile(resource);
+		JvmModule xtendFile = getXtendFile(resource);
 		if(xtendFile == null)
 			return emptyList();
 		final List<JvmDeclaredType> locallyDefinedTypes = newArrayList();
@@ -95,19 +92,19 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 		return locallyDefinedTypes;
 	}
 
-	protected XModule getXtendFile(XtextResource resource) {
-		if(resource == null || resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof XModule))
+	protected JvmModule getXtendFile(XtextResource resource) {
+		if(resource == null || resource.getContents().isEmpty() || !(resource.getContents().get(0) instanceof JvmModule))
 			return null;
 		else 
-			return (XModule) resource.getContents().get(0);
+			return (JvmModule) resource.getContents().get(0);
 	}
 	
 	@Override
 	public Set<String> getImplicitlyImportedPackages(XtextResource resource) {
 		Set<String> implicitlyImportedPackages = super.getImplicitlyImportedPackages(resource);
 		implicitlyImportedPackages.add(SsImportedNamespaceScopeProvider.XTEND_LIB.toString("."));
-		XModule xtendFile = getXtendFile(resource);
-		String commonPackageName = xtendFile == null ? null : xtendFile.getPackage();
+		JvmModule xtendFile = getXtendFile(resource);
+		String commonPackageName = xtendFile == null ? null : xtendFile.getSimpleName();
 		if(!isEmpty(commonPackageName))  
 			implicitlyImportedPackages.add(commonPackageName);
 		return implicitlyImportedPackages;
@@ -115,10 +112,10 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	
 	@Override
 	public int getImportSectionOffset(XtextResource resource) {
-		XModule xtendFile = getXtendFile(resource);
+		JvmModule xtendFile = getXtendFile(resource);
 		if(xtendFile != null) {
-			if(!isEmpty(xtendFile.getPackage())) {
-				List<INode> nodes = NodeModelUtils.findNodesForFeature(xtendFile, SsPackage.Literals.XMODULE__PACKAGE);
+			if(!isEmpty(xtendFile.getSimpleName())) {
+				List<INode> nodes = NodeModelUtils.findNodesForFeature(xtendFile, TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME);
 				if(!nodes.isEmpty()) {
 					INode lastNode = nodes.get(nodes.size()-1);
 					INode nextSibling = lastNode.getNextSibling();
@@ -136,9 +133,12 @@ public class SsImportsConfiguration extends DefaultImportsConfiguration {
 	
 	@Override
 	public JvmDeclaredType getContextJvmDeclaredType(EObject model) {
-		XtendTypeDeclaration xtendType = EcoreUtil2.getContainerOfType(model, XtendTypeDeclaration.class);
-		if(xtendType != null && xtendType.eContainingFeature() == SsPackage.Literals.XTEND_MEMBER__ANNOTATION_INFO) 
-			xtendType = (XtendTypeDeclaration) xtendType.eContainer();
-		return associations.getInferredType(xtendType);
+//		XtendTypeDeclaration xtendType = EcoreUtil2.getContainerOfType(model, XtendTypeDeclaration.class);
+//		if(xtendType != null && xtendType.eContainingFeature() == SsPackage.Literals.XTEND_MEMBER__ANNOTATION_INFO) 
+//			xtendType = (XtendTypeDeclaration) xtendType.eContainer();
+//		return associations.getInferredType(xtendType);
+		
+		JvmDeclaredType type = EcoreUtil2.getContainerOfType(model, JvmDeclaredType.class);
+		return type;
 	}
 }

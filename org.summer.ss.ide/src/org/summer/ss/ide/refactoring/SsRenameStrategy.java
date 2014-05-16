@@ -9,12 +9,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.ltk.core.refactoring.resource.RenameResourceChange;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.ui.refactoring.IChangeRedirector;
 import org.eclipse.xtext.ui.refactoring.IRefactoringUpdateAcceptor;
 import org.eclipse.xtext.ui.refactoring.impl.RefactoringException;
 import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
+import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.xbase.ui.jvmmodel.refactoring.DefaultJvmModelRenameStrategy;
 
 /**
@@ -42,7 +42,7 @@ public class SsRenameStrategy extends DefaultJvmModelRenameStrategy {
 
 	protected IPath getPathToRename(URI elementURI, ResourceSet resourceSet) {
 		EObject targetObject = resourceSet.getEObject(elementURI, false);
-		if (targetObject instanceof XtendTypeDeclaration) {
+		if (targetObject instanceof JvmDeclaredType) {
 			URI resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(targetObject).trimFragment();
 			if (!resourceURI.isPlatformResource())
 				throw new RefactoringException("Renamed type does not reside in the workspace");

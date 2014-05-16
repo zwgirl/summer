@@ -7,7 +7,8 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.ui.quickfix;
 
-import static org.eclipse.xtext.util.Strings.*;
+import static org.eclipse.xtext.util.Strings.equal;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import java.util.List;
 import java.util.Set;
@@ -31,11 +32,6 @@ import org.eclipse.jdt.internal.compiler.env.AccessRestriction;
 import org.eclipse.jdt.internal.core.search.BasicSearchEngine;
 import org.eclipse.jdt.internal.core.search.IRestrictedAccessTypeRequestor;
 import org.eclipse.text.edits.TextEdit;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
-import org.summer.dsl.model.types.xtext.ui.JdtTypeRelevance;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -53,6 +49,13 @@ import org.eclipse.xtext.ui.editor.quickfix.ReplaceModification;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
+import org.summer.dsl.model.types.xtext.ui.JdtTypeRelevance;
+import org.summer.dsl.model.xtype.XImportDeclaration;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.xbase.imports.IImportsConfiguration;
 import org.summer.dsl.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
@@ -63,10 +66,6 @@ import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable;
 import org.summer.dsl.xbase.ui.document.DocumentRewriter;
 import org.summer.dsl.xbase.ui.document.DocumentRewriter.Section;
 import org.summer.dsl.xbase.ui.imports.ReplaceConverter;
-import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
-import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -198,7 +197,7 @@ public class JavaTypeQuickfixes implements ILinkingIssueQuickfixProvider {
 			final Set<String> visiblePackages = importsConfiguration.getImplicitlyImportedPackages((XtextResource) model.eResource());
 			final Set<String> importedTypes = Sets.newHashSet();
 			final Set<String> seen = Sets.newHashSet();
-			XImportSection1 importSection = importsConfiguration.getImportSection((XtextResource) model.eResource());
+			XImportSection importSection = importsConfiguration.getImportSection((XtextResource) model.eResource());
 			if(importSection != null) {
 				parseImportSection(importSection, new IAcceptor<String>() {
 					public void accept(String t) {
@@ -274,9 +273,9 @@ public class JavaTypeQuickfixes implements ILinkingIssueQuickfixProvider {
 		}
 	}
 
-	protected void parseImportSection(XImportSection1 importSection, IAcceptor<String> visiblePackages,
+	protected void parseImportSection(XImportSection importSection, IAcceptor<String> visiblePackages,
 			IAcceptor<String> importedTypes) {
-		for (XImportDeclaration1 importDeclaration : importSection.getImportDeclarations()) {
+		for (XImportDeclaration importDeclaration : importSection.getImportDeclarations()) {
 			//cym modified
 //			if (!importDeclaration.isStatic()) {
 //				if (importDeclaration.getImportedNamespace() != null) {

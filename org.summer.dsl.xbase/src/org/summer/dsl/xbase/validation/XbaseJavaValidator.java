@@ -83,6 +83,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
@@ -262,7 +263,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 	
 	private boolean isClass(LightweightTypeReference typeRef) {
-		return typeRef.getType() instanceof JvmGenericType && !((JvmGenericType)typeRef.getType()).isInterface();
+		return typeRef.getType() instanceof JvmGenericType;
 	}
 	
 	@Check
@@ -1048,7 +1049,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		
 			Iterable<XImportDeclaration> obsoleteImports = concat(imports.values(), staticImports.values(), extensionImports.values());
 			for (XImportDeclaration imp : obsoleteImports) {
-				addIssue("The import '" + imp.getImportedTypeName() + "' is never used.", imp, IMPORT_UNUSED);
+				addIssue("The import '" + imp.getAlias() + "' is never used.", imp, IMPORT_UNUSED);
 			}
 		}
 	}
@@ -1167,49 +1168,49 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	protected void populateMaps(XImportSection importSection, final Map<JvmType, XImportDeclaration> imports,
 			final Map<JvmType, XImportDeclaration> staticImports, final Map<JvmType, XImportDeclaration> extensionImports,
 			final Map<String, JvmType> importedNames) {
-		for (XImportDeclaration imp : importSection.getImportDeclarations()) {
-			if (imp.getImportedNamespace() != null) { 
-				addIssue("The use of wildcard imports is deprecated.", imp, IMPORT_WILDCARD_DEPRECATED);
-			} else {
-				JvmType importedType = imp.getImportedType();
-				if (importedType != null && !importedType.eIsProxy()) {
-					Map<JvmType, XImportDeclaration> map = imp.isStatic() 
-							? (imp.isExtension() ? extensionImports : staticImports) 
-						    : imports;
-					if(imp.isStatic()) {
-						if(imp.isExtension()) {
-							XImportDeclaration staticImport = staticImports.get(importedType);
-							if(staticImport != null) {
-								addIssue("Obsolete static import of '" + importedType.getSimpleName() + "'.", staticImport, IssueCodes.IMPORT_DUPLICATE);
-							}
-						} else if(extensionImports.containsKey(importedType)) {
-							addIssue("Obsolete static import of '" + importedType.getSimpleName() + "'.", imp, IssueCodes.IMPORT_DUPLICATE);
-						}
-					}
-					if (map.containsKey(importedType)) {
-						addIssue("Duplicate import of '" + importedType.getSimpleName() + "'.", imp, IssueCodes.IMPORT_DUPLICATE);
-					} else {
-						map.put(importedType, imp);
-						if (!imp.isStatic()) {
-							JvmType currentType = importedType;
-							String currentSuffix = currentType.getSimpleName();
-							JvmType collidingImport = importedNames.put(currentSuffix, importedType);
-							if(collidingImport != null)
-								error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
-										+ collidingImport.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
-							while (currentType.eContainer() instanceof JvmType) {
-								currentType = (JvmType) currentType.eContainer();
-								currentSuffix = currentType.getSimpleName()+"$"+currentSuffix;
-								JvmType collidingImport2 = importedNames.put(currentSuffix, importedType);
-								if(collidingImport2 != null)
-									error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
-											+ collidingImport2.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
-							}
-						}
-					}
-				}
-			}
-		}
+//		for (XImportDeclaration imp : importSection.getImportDeclarations()) {
+//			if (imp.getImportedNamespace() != null) { 
+//				addIssue("The use of wildcard imports is deprecated.", imp, IMPORT_WILDCARD_DEPRECATED);
+//			} else {
+//				JvmType importedType = imp.getImportedType();
+//				if (importedType != null && !importedType.eIsProxy()) {
+//					Map<JvmType, XImportDeclaration> map = imp.isStatic() 
+//							? (imp.isExtension() ? extensionImports : staticImports) 
+//						    : imports;
+//					if(imp.isStatic()) {
+//						if(imp.isExtension()) {
+//							XImportDeclaration staticImport = staticImports.get(importedType);
+//							if(staticImport != null) {
+//								addIssue("Obsolete static import of '" + importedType.getSimpleName() + "'.", staticImport, IssueCodes.IMPORT_DUPLICATE);
+//							}
+//						} else if(extensionImports.containsKey(importedType)) {
+//							addIssue("Obsolete static import of '" + importedType.getSimpleName() + "'.", imp, IssueCodes.IMPORT_DUPLICATE);
+//						}
+//					}
+//					if (map.containsKey(importedType)) {
+//						addIssue("Duplicate import of '" + importedType.getSimpleName() + "'.", imp, IssueCodes.IMPORT_DUPLICATE);
+//					} else {
+//						map.put(importedType, imp);
+//						if (!imp.isStatic()) {
+//							JvmType currentType = importedType;
+//							String currentSuffix = currentType.getSimpleName();
+//							JvmType collidingImport = importedNames.put(currentSuffix, importedType);
+//							if(collidingImport != null)
+//								error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
+//										+ collidingImport.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
+//							while (currentType.eContainer() instanceof JvmType) {
+//								currentType = (JvmType) currentType.eContainer();
+//								currentSuffix = currentType.getSimpleName()+"$"+currentSuffix;
+//								JvmType collidingImport2 = importedNames.put(currentSuffix, importedType);
+//								if(collidingImport2 != null)
+//									error("The import '" + importedType.getIdentifier() + "' collides with the import '" 
+//											+ collidingImport2.getIdentifier() + "'.", imp, null, IssueCodes.IMPORT_COLLISION);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	@Check
@@ -1263,7 +1264,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 
 	protected boolean isInterface(JvmType type) {
-		return type instanceof JvmGenericType && ((JvmGenericType) type).isInterface();
+		return type instanceof JvmInterfaceType;
 	}
 	
 	protected XExpressionHelper getExpressionHelper() {

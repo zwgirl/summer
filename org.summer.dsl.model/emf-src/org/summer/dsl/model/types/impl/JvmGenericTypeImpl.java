@@ -24,6 +24,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 
 import com.google.common.collect.Lists;
+import java.lang.Iterable;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,8 +34,6 @@ import com.google.common.collect.Lists;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getTypeParameters <em>Type Parameters</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#isInterface <em>Interface</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#isStrictFloatingPoint <em>Strict Floating Point</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getImplements <em>Implements</em>}</li>
  * </ul>
@@ -52,46 +51,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 	 * @ordered
 	 */
 	protected EList<JvmTypeParameter> typeParameters;
-
-	/**
-	 * The default value of the '{@link #isInterface() <em>Interface</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInterface()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean INTERFACE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isInterface() <em>Interface</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInterface()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean interface_ = INTERFACE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isStrictFloatingPoint() <em>Strict Floating Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isStrictFloatingPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean STRICT_FLOATING_POINT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isStrictFloatingPoint() <em>Strict Floating Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isStrictFloatingPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean strictFloatingPoint = STRICT_FLOATING_POINT_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getExtends() <em>Extends</em>}' containment reference.
@@ -144,47 +103,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 		return typeParameters;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isInterface() {
-		return interface_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInterface(boolean newInterface) {
-		boolean oldInterface = interface_;
-		interface_ = newInterface;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_GENERIC_TYPE__INTERFACE, oldInterface, interface_));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isStrictFloatingPoint() {
-		return strictFloatingPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStrictFloatingPoint(boolean newStrictFloatingPoint) {
-		boolean oldStrictFloatingPoint = strictFloatingPoint;
-		strictFloatingPoint = newStrictFloatingPoint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_GENERIC_TYPE__STRICT_FLOATING_POINT, oldStrictFloatingPoint, strictFloatingPoint));
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -328,10 +246,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 		switch (featureID) {
 			case TypesPackage.JVM_GENERIC_TYPE__TYPE_PARAMETERS:
 				return getTypeParameters();
-			case TypesPackage.JVM_GENERIC_TYPE__INTERFACE:
-				return isInterface();
-			case TypesPackage.JVM_GENERIC_TYPE__STRICT_FLOATING_POINT:
-				return isStrictFloatingPoint();
 			case TypesPackage.JVM_GENERIC_TYPE__EXTENDS:
 				return getExtends();
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
@@ -352,12 +266,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 			case TypesPackage.JVM_GENERIC_TYPE__TYPE_PARAMETERS:
 				getTypeParameters().clear();
 				getTypeParameters().addAll((Collection<? extends JvmTypeParameter>)newValue);
-				return;
-			case TypesPackage.JVM_GENERIC_TYPE__INTERFACE:
-				setInterface((Boolean)newValue);
-				return;
-			case TypesPackage.JVM_GENERIC_TYPE__STRICT_FLOATING_POINT:
-				setStrictFloatingPoint((Boolean)newValue);
 				return;
 			case TypesPackage.JVM_GENERIC_TYPE__EXTENDS:
 				setExtends((JvmParameterizedTypeReference)newValue);
@@ -381,12 +289,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 			case TypesPackage.JVM_GENERIC_TYPE__TYPE_PARAMETERS:
 				getTypeParameters().clear();
 				return;
-			case TypesPackage.JVM_GENERIC_TYPE__INTERFACE:
-				setInterface(INTERFACE_EDEFAULT);
-				return;
-			case TypesPackage.JVM_GENERIC_TYPE__STRICT_FLOATING_POINT:
-				setStrictFloatingPoint(STRICT_FLOATING_POINT_EDEFAULT);
-				return;
 			case TypesPackage.JVM_GENERIC_TYPE__EXTENDS:
 				setExtends((JvmParameterizedTypeReference)null);
 				return;
@@ -407,10 +309,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 		switch (featureID) {
 			case TypesPackage.JVM_GENERIC_TYPE__TYPE_PARAMETERS:
 				return typeParameters != null && !typeParameters.isEmpty();
-			case TypesPackage.JVM_GENERIC_TYPE__INTERFACE:
-				return interface_ != INTERFACE_EDEFAULT;
-			case TypesPackage.JVM_GENERIC_TYPE__STRICT_FLOATING_POINT:
-				return strictFloatingPoint != STRICT_FLOATING_POINT_EDEFAULT;
 			case TypesPackage.JVM_GENERIC_TYPE__EXTENDS:
 				return extends_ != null;
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
@@ -451,27 +349,6 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		//cym comment
-//		if (eIsProxy()) return super.toString();
-//
-//		StringBuffer result = new StringBuffer(super.toString());
-//		result.append(" (interface: ");
-//		result.append(interface_);
-//		result.append(", strictFloatingPoint: ");
-//		result.append(strictFloatingPoint);
-//		result.append(')');
-//		return result.toString();
-		
-	       return getClass().getName() + "@" + Integer.toHexString(hashCode());
-	}
-	
 	@Override
 	public List<JvmTypeReference> getSuperTypes() {
 		List<JvmTypeReference> result = new ArrayList<JvmTypeReference>();

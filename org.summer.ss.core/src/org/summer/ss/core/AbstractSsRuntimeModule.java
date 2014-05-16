@@ -289,12 +289,12 @@ public abstract class AbstractSsRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.summer.dsl.xbase.typesystem.computation.ITypeComputer> bindITypeComputer() {
-		return org.summer.dsl.xannotation.typesystem.XbaseWithAnnotationsTypeComputer.class;
+		return org.summer.dsl.xbase.typesystem.computation.XbaseTypeComputer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.scoping.IScopeProvider> bindIScopeProvider() {
-		return org.summer.dsl.xannotation.scoping.XbaseWithAnnotationsScopeProvider.class;
+		return org.summer.dsl.xbase.scoping.XbaseScopeProvider.class;
 	}
 
 //	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
@@ -309,7 +309,7 @@ public abstract class AbstractSsRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
-		return org.summer.dsl.xannotation.validation.UnresolvedAnnotationTypeAwareMessageProducer.class;
+		return org.summer.ss.core.validation.UnresolvedAnnotationTypeAwareMessageProducer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
@@ -339,7 +339,7 @@ public abstract class AbstractSsRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public Class<? extends org.eclipse.xtext.validation.IResourceValidator> bindIResourceValidator() {
-		return org.summer.dsl.xannotation.validation.DerivedStateAwareResourceValidator.class;
+		return org.summer.ss.core.validation.DerivedStateAwareResourceValidator.class;
 	}
 
 }

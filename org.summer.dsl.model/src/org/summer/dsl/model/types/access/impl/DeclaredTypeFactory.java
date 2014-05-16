@@ -32,6 +32,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.util.internal.Stopwatches;
+import org.eclipse.xtext.util.internal.Stopwatches.StoppedTask;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationType;
@@ -44,7 +46,7 @@ import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
-import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLowerBound;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmOperation;
@@ -61,8 +63,6 @@ import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.access.IJvmTypeProvider;
 import org.summer.dsl.model.types.impl.JvmTypeConstraintImplCustom;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.util.internal.Stopwatches;
-import org.eclipse.xtext.util.internal.Stopwatches.StoppedTask;
 
 import com.google.inject.Inject;
 
@@ -124,9 +124,9 @@ public class DeclaredTypeFactory implements ITypeFactory<Class<?>> {
 			if (clazz.isEnum())
 				return createEnumerationType(clazz);
 
-			final JvmGenericType result = TypesFactory.eINSTANCE.createJvmGenericType();
-			result.setInterface(clazz.isInterface());
-			result.setStrictFloatingPoint(Modifier.isStrict(clazz.getModifiers()));
+			final JvmInterfaceType result = TypesFactory.eINSTANCE.createJvmInterfaceType();
+//			result.setInterface(clazz.isInterface());
+//			result.setStrictFloatingPoint(Modifier.isStrict(clazz.getModifiers()));
 			setTypeModifiers(clazz, result);
 			setVisibility(clazz, result);
 			result.internalSetIdentifier(clazz.getName());

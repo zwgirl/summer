@@ -366,7 +366,7 @@ public class BuilderParticipant implements IXtextBuilderParticipant {
 	
 	protected void handleChangedContents(URI uri, IBuildContext context, EclipseResourceFileSystemAccess2 fileSystemAccess) throws CoreException {
 		// TODO: we will run out of memory here if the number of deltas is large enough
-		Resource resource = ResourceSetFactory.getInstanceof().getResourceSet().getResource(uri, true);
+		Resource resource = ResourceSetFactory.getInstance().getResourceSet().getResource(uri, true);
 		if (shouldGenerate(resource, context)) {
 			try {
 				generator.doGenerate(resource, fileSystemAccess);

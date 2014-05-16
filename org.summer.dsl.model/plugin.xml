@@ -25,32 +25,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated DslModel -->
       <package
-            uri="http://www.summer.org/dsl/model/ss"
-            class="org.summer.dsl.model.ss.SsPackage"
-            genModel="model/DslModel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated DslModel -->
-      <package
-            uri="http://www.summer.org/dsl/model/xannotation"
-            class="org.summer.dsl.model.xannotation.XannotationPackage"
-            genModel="model/DslModel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated DslModel -->
-      <package
             uri="http://www.summer.org/dsl/model/xtype"
             class="org.summer.dsl.model.xtype.XtypePackage"
-            genModel="model/DslModel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated DslModel -->
-      <package
-            uri="richstring"
-            class="org.summer.dsl.model.richstring.RichstringPackage"
             genModel="model/DslModel.genmodel"/>
    </extension>
 

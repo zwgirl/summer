@@ -927,25 +927,25 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleValidID"
 
 
-    // $ANTLR start "entryRuleXImportDeclaration1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:347:1: entryRuleXImportDeclaration1 : ruleXImportDeclaration1 EOF ;
-    public final void entryRuleXImportDeclaration1() throws RecognitionException {
+    // $ANTLR start "entryRuleXImportDeclaration"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:347:1: entryRuleXImportDeclaration : ruleXImportDeclaration EOF ;
+    public final void entryRuleXImportDeclaration() throws RecognitionException {
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:348:1: ( ruleXImportDeclaration1 EOF )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:349:1: ruleXImportDeclaration1 EOF
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:348:1: ( ruleXImportDeclaration EOF )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:349:1: ruleXImportDeclaration EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Rule()); 
+               before(grammarAccess.getXImportDeclarationRule()); 
             }
-            pushFollow(FOLLOW_ruleXImportDeclaration1_in_entryRuleXImportDeclaration1672);
-            ruleXImportDeclaration1();
+            pushFollow(FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration672);
+            ruleXImportDeclaration();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Rule()); 
+               after(grammarAccess.getXImportDeclarationRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportDeclaration1679); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXImportDeclaration679); if (state.failed) return ;
 
             }
 
@@ -958,30 +958,30 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleXImportDeclaration1"
+    // $ANTLR end "entryRuleXImportDeclaration"
 
 
-    // $ANTLR start "ruleXImportDeclaration1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:356:1: ruleXImportDeclaration1 : ( ( rule__XImportDeclaration1__Group__0 ) ) ;
-    public final void ruleXImportDeclaration1() throws RecognitionException {
+    // $ANTLR start "ruleXImportDeclaration"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:356:1: ruleXImportDeclaration : ( ( rule__XImportDeclaration__Group__0 ) ) ;
+    public final void ruleXImportDeclaration() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:360:2: ( ( ( rule__XImportDeclaration1__Group__0 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:361:1: ( ( rule__XImportDeclaration1__Group__0 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:360:2: ( ( ( rule__XImportDeclaration__Group__0 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:361:1: ( ( rule__XImportDeclaration__Group__0 ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:361:1: ( ( rule__XImportDeclaration1__Group__0 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:362:1: ( rule__XImportDeclaration1__Group__0 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:361:1: ( ( rule__XImportDeclaration__Group__0 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:362:1: ( rule__XImportDeclaration__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getGroup()); 
+               before(grammarAccess.getXImportDeclarationAccess().getGroup()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:363:1: ( rule__XImportDeclaration1__Group__0 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:363:2: rule__XImportDeclaration1__Group__0
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:363:1: ( rule__XImportDeclaration__Group__0 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:363:2: rule__XImportDeclaration__Group__0
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__0_in_ruleXImportDeclaration1705);
-            rule__XImportDeclaration1__Group__0();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__0_in_ruleXImportDeclaration705);
+            rule__XImportDeclaration__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -989,7 +989,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getGroup()); 
+               after(grammarAccess.getXImportDeclarationAccess().getGroup()); 
             }
 
             }
@@ -1009,7 +1009,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleXImportDeclaration1"
+    // $ANTLR end "ruleXImportDeclaration"
 
 
     // $ANTLR start "entryRuleXImportItem"
@@ -1455,14 +1455,14 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmWildcardTypeReference__Alternatives_2"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Alternatives_3"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:505:1: rule__XImportDeclaration1__Alternatives_3 : ( ( ( rule__XImportDeclaration1__Group_3_0__0 ) ) | ( ( rule__XImportDeclaration1__WildcardAssignment_3_1 ) ) );
-    public final void rule__XImportDeclaration1__Alternatives_3() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Alternatives_3"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:505:1: rule__XImportDeclaration__Alternatives_3 : ( ( ( rule__XImportDeclaration__Group_3_0__0 ) ) | ( ( rule__XImportDeclaration__WildcardAssignment_3_1 ) ) );
+    public final void rule__XImportDeclaration__Alternatives_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:509:1: ( ( ( rule__XImportDeclaration1__Group_3_0__0 ) ) | ( ( rule__XImportDeclaration1__WildcardAssignment_3_1 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:509:1: ( ( ( rule__XImportDeclaration__Group_3_0__0 ) ) | ( ( rule__XImportDeclaration__WildcardAssignment_3_1 ) ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -1481,19 +1481,19 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:510:1: ( ( rule__XImportDeclaration1__Group_3_0__0 ) )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:510:1: ( ( rule__XImportDeclaration__Group_3_0__0 ) )
                     {
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:510:1: ( ( rule__XImportDeclaration1__Group_3_0__0 ) )
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:511:1: ( rule__XImportDeclaration1__Group_3_0__0 )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:510:1: ( ( rule__XImportDeclaration__Group_3_0__0 ) )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:511:1: ( rule__XImportDeclaration__Group_3_0__0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getXImportDeclaration1Access().getGroup_3_0()); 
+                       before(grammarAccess.getXImportDeclarationAccess().getGroup_3_0()); 
                     }
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:512:1: ( rule__XImportDeclaration1__Group_3_0__0 )
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:512:2: rule__XImportDeclaration1__Group_3_0__0
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:512:1: ( rule__XImportDeclaration__Group_3_0__0 )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:512:2: rule__XImportDeclaration__Group_3_0__0
                     {
-                    pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0__0_in_rule__XImportDeclaration1__Alternatives_31023);
-                    rule__XImportDeclaration1__Group_3_0__0();
+                    pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0__0_in_rule__XImportDeclaration__Alternatives_31023);
+                    rule__XImportDeclaration__Group_3_0__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -1501,7 +1501,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getXImportDeclaration1Access().getGroup_3_0()); 
+                       after(grammarAccess.getXImportDeclarationAccess().getGroup_3_0()); 
                     }
 
                     }
@@ -1510,19 +1510,19 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:516:6: ( ( rule__XImportDeclaration1__WildcardAssignment_3_1 ) )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:516:6: ( ( rule__XImportDeclaration__WildcardAssignment_3_1 ) )
                     {
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:516:6: ( ( rule__XImportDeclaration1__WildcardAssignment_3_1 ) )
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:517:1: ( rule__XImportDeclaration1__WildcardAssignment_3_1 )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:516:6: ( ( rule__XImportDeclaration__WildcardAssignment_3_1 ) )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:517:1: ( rule__XImportDeclaration__WildcardAssignment_3_1 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getXImportDeclaration1Access().getWildcardAssignment_3_1()); 
+                       before(grammarAccess.getXImportDeclarationAccess().getWildcardAssignment_3_1()); 
                     }
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:518:1: ( rule__XImportDeclaration1__WildcardAssignment_3_1 )
-                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:518:2: rule__XImportDeclaration1__WildcardAssignment_3_1
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:518:1: ( rule__XImportDeclaration__WildcardAssignment_3_1 )
+                    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:518:2: rule__XImportDeclaration__WildcardAssignment_3_1
                     {
-                    pushFollow(FOLLOW_rule__XImportDeclaration1__WildcardAssignment_3_1_in_rule__XImportDeclaration1__Alternatives_31041);
-                    rule__XImportDeclaration1__WildcardAssignment_3_1();
+                    pushFollow(FOLLOW_rule__XImportDeclaration__WildcardAssignment_3_1_in_rule__XImportDeclaration__Alternatives_31041);
+                    rule__XImportDeclaration__WildcardAssignment_3_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -1530,7 +1530,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getXImportDeclaration1Access().getWildcardAssignment_3_1()); 
+                       after(grammarAccess.getXImportDeclarationAccess().getWildcardAssignment_3_1()); 
                     }
 
                     }
@@ -1552,7 +1552,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Alternatives_3"
+    // $ANTLR end "rule__XImportDeclaration__Alternatives_3"
 
 
     // $ANTLR start "rule__XExportDeclaration__Alternatives_1"
@@ -4020,23 +4020,23 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__QualifiedName__Group_1__1__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__0"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1434:1: rule__XImportDeclaration1__Group__0 : rule__XImportDeclaration1__Group__0__Impl rule__XImportDeclaration1__Group__1 ;
-    public final void rule__XImportDeclaration1__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__0"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1434:1: rule__XImportDeclaration__Group__0 : rule__XImportDeclaration__Group__0__Impl rule__XImportDeclaration__Group__1 ;
+    public final void rule__XImportDeclaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1438:1: ( rule__XImportDeclaration1__Group__0__Impl rule__XImportDeclaration1__Group__1 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1439:2: rule__XImportDeclaration1__Group__0__Impl rule__XImportDeclaration1__Group__1
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1438:1: ( rule__XImportDeclaration__Group__0__Impl rule__XImportDeclaration__Group__1 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1439:2: rule__XImportDeclaration__Group__0__Impl rule__XImportDeclaration__Group__1
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__0__Impl_in_rule__XImportDeclaration1__Group__02849);
-            rule__XImportDeclaration1__Group__0__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__0__Impl_in_rule__XImportDeclaration__Group__02849);
+            rule__XImportDeclaration__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__1_in_rule__XImportDeclaration1__Group__02852);
-            rule__XImportDeclaration1__Group__1();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__1_in_rule__XImportDeclaration__Group__02852);
+            rule__XImportDeclaration__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4055,12 +4055,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__0"
+    // $ANTLR end "rule__XImportDeclaration__Group__0"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__0__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1446:1: rule__XImportDeclaration1__Group__0__Impl : ( () ) ;
-    public final void rule__XImportDeclaration1__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__0__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1446:1: rule__XImportDeclaration__Group__0__Impl : ( () ) ;
+    public final void rule__XImportDeclaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4072,7 +4072,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1452:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getXImportDeclaration1Action_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getXImportDeclarationAction_0()); 
             }
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1453:1: ()
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1455:1: 
@@ -4080,7 +4080,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getXImportDeclaration1Action_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getXImportDeclarationAction_0()); 
             }
 
             }
@@ -4096,26 +4096,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__0__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__0__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1465:1: rule__XImportDeclaration1__Group__1 : rule__XImportDeclaration1__Group__1__Impl rule__XImportDeclaration1__Group__2 ;
-    public final void rule__XImportDeclaration1__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__1"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1465:1: rule__XImportDeclaration__Group__1 : rule__XImportDeclaration__Group__1__Impl rule__XImportDeclaration__Group__2 ;
+    public final void rule__XImportDeclaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1469:1: ( rule__XImportDeclaration1__Group__1__Impl rule__XImportDeclaration1__Group__2 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1470:2: rule__XImportDeclaration1__Group__1__Impl rule__XImportDeclaration1__Group__2
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1469:1: ( rule__XImportDeclaration__Group__1__Impl rule__XImportDeclaration__Group__2 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1470:2: rule__XImportDeclaration__Group__1__Impl rule__XImportDeclaration__Group__2
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__1__Impl_in_rule__XImportDeclaration1__Group__12910);
-            rule__XImportDeclaration1__Group__1__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__1__Impl_in_rule__XImportDeclaration__Group__12910);
+            rule__XImportDeclaration__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__2_in_rule__XImportDeclaration1__Group__12913);
-            rule__XImportDeclaration1__Group__2();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__2_in_rule__XImportDeclaration__Group__12913);
+            rule__XImportDeclaration__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4134,12 +4134,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__1"
+    // $ANTLR end "rule__XImportDeclaration__Group__1"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__1__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1477:1: rule__XImportDeclaration1__Group__1__Impl : ( 'import' ) ;
-    public final void rule__XImportDeclaration1__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__1__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1477:1: rule__XImportDeclaration__Group__1__Impl : ( 'import' ) ;
+    public final void rule__XImportDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4151,11 +4151,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1483:1: 'import'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportKeyword_1()); 
+               before(grammarAccess.getXImportDeclarationAccess().getImportKeyword_1()); 
             }
-            match(input,20,FOLLOW_20_in_rule__XImportDeclaration1__Group__1__Impl2941); if (state.failed) return ;
+            match(input,20,FOLLOW_20_in_rule__XImportDeclaration__Group__1__Impl2941); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportKeyword_1()); 
+               after(grammarAccess.getXImportDeclarationAccess().getImportKeyword_1()); 
             }
 
             }
@@ -4175,26 +4175,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__1__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__1__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__2"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1496:1: rule__XImportDeclaration1__Group__2 : rule__XImportDeclaration1__Group__2__Impl rule__XImportDeclaration1__Group__3 ;
-    public final void rule__XImportDeclaration1__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__2"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1496:1: rule__XImportDeclaration__Group__2 : rule__XImportDeclaration__Group__2__Impl rule__XImportDeclaration__Group__3 ;
+    public final void rule__XImportDeclaration__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1500:1: ( rule__XImportDeclaration1__Group__2__Impl rule__XImportDeclaration1__Group__3 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1501:2: rule__XImportDeclaration1__Group__2__Impl rule__XImportDeclaration1__Group__3
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1500:1: ( rule__XImportDeclaration__Group__2__Impl rule__XImportDeclaration__Group__3 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1501:2: rule__XImportDeclaration__Group__2__Impl rule__XImportDeclaration__Group__3
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__2__Impl_in_rule__XImportDeclaration1__Group__22972);
-            rule__XImportDeclaration1__Group__2__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__2__Impl_in_rule__XImportDeclaration__Group__22972);
+            rule__XImportDeclaration__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__3_in_rule__XImportDeclaration1__Group__22975);
-            rule__XImportDeclaration1__Group__3();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__3_in_rule__XImportDeclaration__Group__22975);
+            rule__XImportDeclaration__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4213,12 +4213,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__2"
+    // $ANTLR end "rule__XImportDeclaration__Group__2"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__2__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1508:1: rule__XImportDeclaration1__Group__2__Impl : ( '{' ) ;
-    public final void rule__XImportDeclaration1__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__2__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1508:1: rule__XImportDeclaration__Group__2__Impl : ( '{' ) ;
+    public final void rule__XImportDeclaration__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4230,11 +4230,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1514:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getLeftCurlyBracketKeyword_2()); 
+               before(grammarAccess.getXImportDeclarationAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,21,FOLLOW_21_in_rule__XImportDeclaration1__Group__2__Impl3003); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__XImportDeclaration__Group__2__Impl3003); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getLeftCurlyBracketKeyword_2()); 
+               after(grammarAccess.getXImportDeclarationAccess().getLeftCurlyBracketKeyword_2()); 
             }
 
             }
@@ -4254,26 +4254,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__2__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__2__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__3"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1527:1: rule__XImportDeclaration1__Group__3 : rule__XImportDeclaration1__Group__3__Impl rule__XImportDeclaration1__Group__4 ;
-    public final void rule__XImportDeclaration1__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__3"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1527:1: rule__XImportDeclaration__Group__3 : rule__XImportDeclaration__Group__3__Impl rule__XImportDeclaration__Group__4 ;
+    public final void rule__XImportDeclaration__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1531:1: ( rule__XImportDeclaration1__Group__3__Impl rule__XImportDeclaration1__Group__4 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1532:2: rule__XImportDeclaration1__Group__3__Impl rule__XImportDeclaration1__Group__4
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1531:1: ( rule__XImportDeclaration__Group__3__Impl rule__XImportDeclaration__Group__4 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1532:2: rule__XImportDeclaration__Group__3__Impl rule__XImportDeclaration__Group__4
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__3__Impl_in_rule__XImportDeclaration1__Group__33034);
-            rule__XImportDeclaration1__Group__3__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__3__Impl_in_rule__XImportDeclaration__Group__33034);
+            rule__XImportDeclaration__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__4_in_rule__XImportDeclaration1__Group__33037);
-            rule__XImportDeclaration1__Group__4();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__4_in_rule__XImportDeclaration__Group__33037);
+            rule__XImportDeclaration__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4292,30 +4292,30 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__3"
+    // $ANTLR end "rule__XImportDeclaration__Group__3"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__3__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1539:1: rule__XImportDeclaration1__Group__3__Impl : ( ( rule__XImportDeclaration1__Alternatives_3 ) ) ;
-    public final void rule__XImportDeclaration1__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__3__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1539:1: rule__XImportDeclaration__Group__3__Impl : ( ( rule__XImportDeclaration__Alternatives_3 ) ) ;
+    public final void rule__XImportDeclaration__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1543:1: ( ( ( rule__XImportDeclaration1__Alternatives_3 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1544:1: ( ( rule__XImportDeclaration1__Alternatives_3 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1543:1: ( ( ( rule__XImportDeclaration__Alternatives_3 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1544:1: ( ( rule__XImportDeclaration__Alternatives_3 ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1544:1: ( ( rule__XImportDeclaration1__Alternatives_3 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1545:1: ( rule__XImportDeclaration1__Alternatives_3 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1544:1: ( ( rule__XImportDeclaration__Alternatives_3 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1545:1: ( rule__XImportDeclaration__Alternatives_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getAlternatives_3()); 
+               before(grammarAccess.getXImportDeclarationAccess().getAlternatives_3()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1546:1: ( rule__XImportDeclaration1__Alternatives_3 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1546:2: rule__XImportDeclaration1__Alternatives_3
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1546:1: ( rule__XImportDeclaration__Alternatives_3 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1546:2: rule__XImportDeclaration__Alternatives_3
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Alternatives_3_in_rule__XImportDeclaration1__Group__3__Impl3064);
-            rule__XImportDeclaration1__Alternatives_3();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Alternatives_3_in_rule__XImportDeclaration__Group__3__Impl3064);
+            rule__XImportDeclaration__Alternatives_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4323,7 +4323,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getAlternatives_3()); 
+               after(grammarAccess.getXImportDeclarationAccess().getAlternatives_3()); 
             }
 
             }
@@ -4343,26 +4343,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__3__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__3__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__4"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1556:1: rule__XImportDeclaration1__Group__4 : rule__XImportDeclaration1__Group__4__Impl rule__XImportDeclaration1__Group__5 ;
-    public final void rule__XImportDeclaration1__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__4"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1556:1: rule__XImportDeclaration__Group__4 : rule__XImportDeclaration__Group__4__Impl rule__XImportDeclaration__Group__5 ;
+    public final void rule__XImportDeclaration__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1560:1: ( rule__XImportDeclaration1__Group__4__Impl rule__XImportDeclaration1__Group__5 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1561:2: rule__XImportDeclaration1__Group__4__Impl rule__XImportDeclaration1__Group__5
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1560:1: ( rule__XImportDeclaration__Group__4__Impl rule__XImportDeclaration__Group__5 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1561:2: rule__XImportDeclaration__Group__4__Impl rule__XImportDeclaration__Group__5
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__4__Impl_in_rule__XImportDeclaration1__Group__43094);
-            rule__XImportDeclaration1__Group__4__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__4__Impl_in_rule__XImportDeclaration__Group__43094);
+            rule__XImportDeclaration__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__5_in_rule__XImportDeclaration1__Group__43097);
-            rule__XImportDeclaration1__Group__5();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__5_in_rule__XImportDeclaration__Group__43097);
+            rule__XImportDeclaration__Group__5();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4381,12 +4381,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__4"
+    // $ANTLR end "rule__XImportDeclaration__Group__4"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__4__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1568:1: rule__XImportDeclaration1__Group__4__Impl : ( '}' ) ;
-    public final void rule__XImportDeclaration1__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__4__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1568:1: rule__XImportDeclaration__Group__4__Impl : ( '}' ) ;
+    public final void rule__XImportDeclaration__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4398,11 +4398,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1574:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getRightCurlyBracketKeyword_4()); 
+               before(grammarAccess.getXImportDeclarationAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,22,FOLLOW_22_in_rule__XImportDeclaration1__Group__4__Impl3125); if (state.failed) return ;
+            match(input,22,FOLLOW_22_in_rule__XImportDeclaration__Group__4__Impl3125); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getRightCurlyBracketKeyword_4()); 
+               after(grammarAccess.getXImportDeclarationAccess().getRightCurlyBracketKeyword_4()); 
             }
 
             }
@@ -4422,26 +4422,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__4__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__4__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__5"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1587:1: rule__XImportDeclaration1__Group__5 : rule__XImportDeclaration1__Group__5__Impl rule__XImportDeclaration1__Group__6 ;
-    public final void rule__XImportDeclaration1__Group__5() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__5"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1587:1: rule__XImportDeclaration__Group__5 : rule__XImportDeclaration__Group__5__Impl rule__XImportDeclaration__Group__6 ;
+    public final void rule__XImportDeclaration__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1591:1: ( rule__XImportDeclaration1__Group__5__Impl rule__XImportDeclaration1__Group__6 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1592:2: rule__XImportDeclaration1__Group__5__Impl rule__XImportDeclaration1__Group__6
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1591:1: ( rule__XImportDeclaration__Group__5__Impl rule__XImportDeclaration__Group__6 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1592:2: rule__XImportDeclaration__Group__5__Impl rule__XImportDeclaration__Group__6
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__5__Impl_in_rule__XImportDeclaration1__Group__53156);
-            rule__XImportDeclaration1__Group__5__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__5__Impl_in_rule__XImportDeclaration__Group__53156);
+            rule__XImportDeclaration__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__6_in_rule__XImportDeclaration1__Group__53159);
-            rule__XImportDeclaration1__Group__6();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__6_in_rule__XImportDeclaration__Group__53159);
+            rule__XImportDeclaration__Group__6();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4460,12 +4460,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__5"
+    // $ANTLR end "rule__XImportDeclaration__Group__5"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__5__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1599:1: rule__XImportDeclaration1__Group__5__Impl : ( 'as' ) ;
-    public final void rule__XImportDeclaration1__Group__5__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__5__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1599:1: rule__XImportDeclaration__Group__5__Impl : ( 'as' ) ;
+    public final void rule__XImportDeclaration__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4477,11 +4477,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1605:1: 'as'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getAsKeyword_5()); 
+               before(grammarAccess.getXImportDeclarationAccess().getAsKeyword_5()); 
             }
-            match(input,23,FOLLOW_23_in_rule__XImportDeclaration1__Group__5__Impl3187); if (state.failed) return ;
+            match(input,23,FOLLOW_23_in_rule__XImportDeclaration__Group__5__Impl3187); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getAsKeyword_5()); 
+               after(grammarAccess.getXImportDeclarationAccess().getAsKeyword_5()); 
             }
 
             }
@@ -4501,26 +4501,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__5__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__5__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__6"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1618:1: rule__XImportDeclaration1__Group__6 : rule__XImportDeclaration1__Group__6__Impl rule__XImportDeclaration1__Group__7 ;
-    public final void rule__XImportDeclaration1__Group__6() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__6"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1618:1: rule__XImportDeclaration__Group__6 : rule__XImportDeclaration__Group__6__Impl rule__XImportDeclaration__Group__7 ;
+    public final void rule__XImportDeclaration__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1622:1: ( rule__XImportDeclaration1__Group__6__Impl rule__XImportDeclaration1__Group__7 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1623:2: rule__XImportDeclaration1__Group__6__Impl rule__XImportDeclaration1__Group__7
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1622:1: ( rule__XImportDeclaration__Group__6__Impl rule__XImportDeclaration__Group__7 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1623:2: rule__XImportDeclaration__Group__6__Impl rule__XImportDeclaration__Group__7
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__6__Impl_in_rule__XImportDeclaration1__Group__63218);
-            rule__XImportDeclaration1__Group__6__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__6__Impl_in_rule__XImportDeclaration__Group__63218);
+            rule__XImportDeclaration__Group__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__7_in_rule__XImportDeclaration1__Group__63221);
-            rule__XImportDeclaration1__Group__7();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__7_in_rule__XImportDeclaration__Group__63221);
+            rule__XImportDeclaration__Group__7();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4539,30 +4539,30 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__6"
+    // $ANTLR end "rule__XImportDeclaration__Group__6"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__6__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1630:1: rule__XImportDeclaration1__Group__6__Impl : ( ( rule__XImportDeclaration1__NameAssignment_6 ) ) ;
-    public final void rule__XImportDeclaration1__Group__6__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__6__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1630:1: rule__XImportDeclaration__Group__6__Impl : ( ( rule__XImportDeclaration__AliasAssignment_6 ) ) ;
+    public final void rule__XImportDeclaration__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1634:1: ( ( ( rule__XImportDeclaration1__NameAssignment_6 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1635:1: ( ( rule__XImportDeclaration1__NameAssignment_6 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1634:1: ( ( ( rule__XImportDeclaration__AliasAssignment_6 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1635:1: ( ( rule__XImportDeclaration__AliasAssignment_6 ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1635:1: ( ( rule__XImportDeclaration1__NameAssignment_6 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1636:1: ( rule__XImportDeclaration1__NameAssignment_6 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1635:1: ( ( rule__XImportDeclaration__AliasAssignment_6 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1636:1: ( rule__XImportDeclaration__AliasAssignment_6 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getNameAssignment_6()); 
+               before(grammarAccess.getXImportDeclarationAccess().getAliasAssignment_6()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1637:1: ( rule__XImportDeclaration1__NameAssignment_6 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1637:2: rule__XImportDeclaration1__NameAssignment_6
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1637:1: ( rule__XImportDeclaration__AliasAssignment_6 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1637:2: rule__XImportDeclaration__AliasAssignment_6
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__NameAssignment_6_in_rule__XImportDeclaration1__Group__6__Impl3248);
-            rule__XImportDeclaration1__NameAssignment_6();
+            pushFollow(FOLLOW_rule__XImportDeclaration__AliasAssignment_6_in_rule__XImportDeclaration__Group__6__Impl3248);
+            rule__XImportDeclaration__AliasAssignment_6();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4570,7 +4570,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getNameAssignment_6()); 
+               after(grammarAccess.getXImportDeclarationAccess().getAliasAssignment_6()); 
             }
 
             }
@@ -4590,26 +4590,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__6__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__6__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__7"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1647:1: rule__XImportDeclaration1__Group__7 : rule__XImportDeclaration1__Group__7__Impl rule__XImportDeclaration1__Group__8 ;
-    public final void rule__XImportDeclaration1__Group__7() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__7"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1647:1: rule__XImportDeclaration__Group__7 : rule__XImportDeclaration__Group__7__Impl rule__XImportDeclaration__Group__8 ;
+    public final void rule__XImportDeclaration__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1651:1: ( rule__XImportDeclaration1__Group__7__Impl rule__XImportDeclaration1__Group__8 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1652:2: rule__XImportDeclaration1__Group__7__Impl rule__XImportDeclaration1__Group__8
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1651:1: ( rule__XImportDeclaration__Group__7__Impl rule__XImportDeclaration__Group__8 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1652:2: rule__XImportDeclaration__Group__7__Impl rule__XImportDeclaration__Group__8
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__7__Impl_in_rule__XImportDeclaration1__Group__73278);
-            rule__XImportDeclaration1__Group__7__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__7__Impl_in_rule__XImportDeclaration__Group__73278);
+            rule__XImportDeclaration__Group__7__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__8_in_rule__XImportDeclaration1__Group__73281);
-            rule__XImportDeclaration1__Group__8();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__8_in_rule__XImportDeclaration__Group__73281);
+            rule__XImportDeclaration__Group__8();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4628,12 +4628,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__7"
+    // $ANTLR end "rule__XImportDeclaration__Group__7"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__7__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1659:1: rule__XImportDeclaration1__Group__7__Impl : ( 'from' ) ;
-    public final void rule__XImportDeclaration1__Group__7__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__7__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1659:1: rule__XImportDeclaration__Group__7__Impl : ( 'from' ) ;
+    public final void rule__XImportDeclaration__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4645,11 +4645,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1665:1: 'from'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getFromKeyword_7()); 
+               before(grammarAccess.getXImportDeclarationAccess().getFromKeyword_7()); 
             }
-            match(input,24,FOLLOW_24_in_rule__XImportDeclaration1__Group__7__Impl3309); if (state.failed) return ;
+            match(input,24,FOLLOW_24_in_rule__XImportDeclaration__Group__7__Impl3309); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getFromKeyword_7()); 
+               after(grammarAccess.getXImportDeclarationAccess().getFromKeyword_7()); 
             }
 
             }
@@ -4669,21 +4669,21 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__7__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__7__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__8"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1678:1: rule__XImportDeclaration1__Group__8 : rule__XImportDeclaration1__Group__8__Impl ;
-    public final void rule__XImportDeclaration1__Group__8() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__8"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1678:1: rule__XImportDeclaration__Group__8 : rule__XImportDeclaration__Group__8__Impl ;
+    public final void rule__XImportDeclaration__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1682:1: ( rule__XImportDeclaration1__Group__8__Impl )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1683:2: rule__XImportDeclaration1__Group__8__Impl
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1682:1: ( rule__XImportDeclaration__Group__8__Impl )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1683:2: rule__XImportDeclaration__Group__8__Impl
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group__8__Impl_in_rule__XImportDeclaration1__Group__83340);
-            rule__XImportDeclaration1__Group__8__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group__8__Impl_in_rule__XImportDeclaration__Group__83340);
+            rule__XImportDeclaration__Group__8__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4702,119 +4702,30 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group__8"
+    // $ANTLR end "rule__XImportDeclaration__Group__8"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group__8__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1689:1: rule__XImportDeclaration1__Group__8__Impl : ( ( rule__XImportDeclaration1__ImportURIAssignment_8 ) ) ;
-    public final void rule__XImportDeclaration1__Group__8__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1693:1: ( ( ( rule__XImportDeclaration1__ImportURIAssignment_8 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1694:1: ( ( rule__XImportDeclaration1__ImportURIAssignment_8 ) )
-            {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1694:1: ( ( rule__XImportDeclaration1__ImportURIAssignment_8 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1695:1: ( rule__XImportDeclaration1__ImportURIAssignment_8 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportURIAssignment_8()); 
-            }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1696:1: ( rule__XImportDeclaration1__ImportURIAssignment_8 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1696:2: rule__XImportDeclaration1__ImportURIAssignment_8
-            {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__ImportURIAssignment_8_in_rule__XImportDeclaration1__Group__8__Impl3367);
-            rule__XImportDeclaration1__ImportURIAssignment_8();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportURIAssignment_8()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__XImportDeclaration1__Group__8__Impl"
-
-
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0__0"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1724:1: rule__XImportDeclaration1__Group_3_0__0 : rule__XImportDeclaration1__Group_3_0__0__Impl rule__XImportDeclaration1__Group_3_0__1 ;
-    public final void rule__XImportDeclaration1__Group_3_0__0() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group__8__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1689:1: rule__XImportDeclaration__Group__8__Impl : ( ( rule__XImportDeclaration__ModuleAssignment_8 ) ) ;
+    public final void rule__XImportDeclaration__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1728:1: ( rule__XImportDeclaration1__Group_3_0__0__Impl rule__XImportDeclaration1__Group_3_0__1 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1729:2: rule__XImportDeclaration1__Group_3_0__0__Impl rule__XImportDeclaration1__Group_3_0__1
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1693:1: ( ( ( rule__XImportDeclaration__ModuleAssignment_8 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1694:1: ( ( rule__XImportDeclaration__ModuleAssignment_8 ) )
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0__0__Impl_in_rule__XImportDeclaration1__Group_3_0__03415);
-            rule__XImportDeclaration1__Group_3_0__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0__1_in_rule__XImportDeclaration1__Group_3_0__03418);
-            rule__XImportDeclaration1__Group_3_0__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0__0"
-
-
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0__0__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1736:1: rule__XImportDeclaration1__Group_3_0__0__Impl : ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 ) ) ;
-    public final void rule__XImportDeclaration1__Group_3_0__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1740:1: ( ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1741:1: ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 ) )
-            {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1741:1: ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1742:1: ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1694:1: ( ( rule__XImportDeclaration__ModuleAssignment_8 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1695:1: ( rule__XImportDeclaration__ModuleAssignment_8 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getModuleAssignment_8()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1743:1: ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1743:2: rule__XImportDeclaration1__ImportItemsAssignment_3_0_0
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1696:1: ( rule__XImportDeclaration__ModuleAssignment_8 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1696:2: rule__XImportDeclaration__ModuleAssignment_8
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__ImportItemsAssignment_3_0_0_in_rule__XImportDeclaration1__Group_3_0__0__Impl3445);
-            rule__XImportDeclaration1__ImportItemsAssignment_3_0_0();
+            pushFollow(FOLLOW_rule__XImportDeclaration__ModuleAssignment_8_in_rule__XImportDeclaration__Group__8__Impl3367);
+            rule__XImportDeclaration__ModuleAssignment_8();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4822,7 +4733,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getModuleAssignment_8()); 
             }
 
             }
@@ -4842,21 +4753,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0__0__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group__8__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0__1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1753:1: rule__XImportDeclaration1__Group_3_0__1 : rule__XImportDeclaration1__Group_3_0__1__Impl ;
-    public final void rule__XImportDeclaration1__Group_3_0__1() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0__0"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1724:1: rule__XImportDeclaration__Group_3_0__0 : rule__XImportDeclaration__Group_3_0__0__Impl rule__XImportDeclaration__Group_3_0__1 ;
+    public final void rule__XImportDeclaration__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1757:1: ( rule__XImportDeclaration1__Group_3_0__1__Impl )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1758:2: rule__XImportDeclaration1__Group_3_0__1__Impl
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1728:1: ( rule__XImportDeclaration__Group_3_0__0__Impl rule__XImportDeclaration__Group_3_0__1 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1729:2: rule__XImportDeclaration__Group_3_0__0__Impl rule__XImportDeclaration__Group_3_0__1
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0__1__Impl_in_rule__XImportDeclaration1__Group_3_0__13475);
-            rule__XImportDeclaration1__Group_3_0__1__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0__0__Impl_in_rule__XImportDeclaration__Group_3_0__03415);
+            rule__XImportDeclaration__Group_3_0__0__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0__1_in_rule__XImportDeclaration__Group_3_0__03418);
+            rule__XImportDeclaration__Group_3_0__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4875,26 +4791,110 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0__1"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0__0"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0__1__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1764:1: rule__XImportDeclaration1__Group_3_0__1__Impl : ( ( rule__XImportDeclaration1__Group_3_0_1__0 )* ) ;
-    public final void rule__XImportDeclaration1__Group_3_0__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0__0__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1736:1: rule__XImportDeclaration__Group_3_0__0__Impl : ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 ) ) ;
+    public final void rule__XImportDeclaration__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1768:1: ( ( ( rule__XImportDeclaration1__Group_3_0_1__0 )* ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1769:1: ( ( rule__XImportDeclaration1__Group_3_0_1__0 )* )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1740:1: ( ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1741:1: ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1769:1: ( ( rule__XImportDeclaration1__Group_3_0_1__0 )* )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1770:1: ( rule__XImportDeclaration1__Group_3_0_1__0 )*
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1741:1: ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1742:1: ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getGroup_3_0_1()); 
+               before(grammarAccess.getXImportDeclarationAccess().getImportItemsAssignment_3_0_0()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1771:1: ( rule__XImportDeclaration1__Group_3_0_1__0 )*
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1743:1: ( rule__XImportDeclaration__ImportItemsAssignment_3_0_0 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1743:2: rule__XImportDeclaration__ImportItemsAssignment_3_0_0
+            {
+            pushFollow(FOLLOW_rule__XImportDeclaration__ImportItemsAssignment_3_0_0_in_rule__XImportDeclaration__Group_3_0__0__Impl3445);
+            rule__XImportDeclaration__ImportItemsAssignment_3_0_0();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getXImportDeclarationAccess().getImportItemsAssignment_3_0_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0__0__Impl"
+
+
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0__1"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1753:1: rule__XImportDeclaration__Group_3_0__1 : rule__XImportDeclaration__Group_3_0__1__Impl ;
+    public final void rule__XImportDeclaration__Group_3_0__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1757:1: ( rule__XImportDeclaration__Group_3_0__1__Impl )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1758:2: rule__XImportDeclaration__Group_3_0__1__Impl
+            {
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0__1__Impl_in_rule__XImportDeclaration__Group_3_0__13475);
+            rule__XImportDeclaration__Group_3_0__1__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0__1"
+
+
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0__1__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1764:1: rule__XImportDeclaration__Group_3_0__1__Impl : ( ( rule__XImportDeclaration__Group_3_0_1__0 )* ) ;
+    public final void rule__XImportDeclaration__Group_3_0__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1768:1: ( ( ( rule__XImportDeclaration__Group_3_0_1__0 )* ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1769:1: ( ( rule__XImportDeclaration__Group_3_0_1__0 )* )
+            {
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1769:1: ( ( rule__XImportDeclaration__Group_3_0_1__0 )* )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1770:1: ( rule__XImportDeclaration__Group_3_0_1__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXImportDeclarationAccess().getGroup_3_0_1()); 
+            }
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1771:1: ( rule__XImportDeclaration__Group_3_0_1__0 )*
             loop10:
             do {
                 int alt10=2;
@@ -4907,10 +4907,10 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1771:2: rule__XImportDeclaration1__Group_3_0_1__0
+            	    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1771:2: rule__XImportDeclaration__Group_3_0_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0_1__0_in_rule__XImportDeclaration1__Group_3_0__1__Impl3502);
-            	    rule__XImportDeclaration1__Group_3_0_1__0();
+            	    pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0_1__0_in_rule__XImportDeclaration__Group_3_0__1__Impl3502);
+            	    rule__XImportDeclaration__Group_3_0_1__0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -4924,7 +4924,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getGroup_3_0_1()); 
+               after(grammarAccess.getXImportDeclarationAccess().getGroup_3_0_1()); 
             }
 
             }
@@ -4944,26 +4944,26 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0__1__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0__1__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0_1__0"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1785:1: rule__XImportDeclaration1__Group_3_0_1__0 : rule__XImportDeclaration1__Group_3_0_1__0__Impl rule__XImportDeclaration1__Group_3_0_1__1 ;
-    public final void rule__XImportDeclaration1__Group_3_0_1__0() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0_1__0"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1785:1: rule__XImportDeclaration__Group_3_0_1__0 : rule__XImportDeclaration__Group_3_0_1__0__Impl rule__XImportDeclaration__Group_3_0_1__1 ;
+    public final void rule__XImportDeclaration__Group_3_0_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1789:1: ( rule__XImportDeclaration1__Group_3_0_1__0__Impl rule__XImportDeclaration1__Group_3_0_1__1 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1790:2: rule__XImportDeclaration1__Group_3_0_1__0__Impl rule__XImportDeclaration1__Group_3_0_1__1
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1789:1: ( rule__XImportDeclaration__Group_3_0_1__0__Impl rule__XImportDeclaration__Group_3_0_1__1 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1790:2: rule__XImportDeclaration__Group_3_0_1__0__Impl rule__XImportDeclaration__Group_3_0_1__1
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0_1__0__Impl_in_rule__XImportDeclaration1__Group_3_0_1__03537);
-            rule__XImportDeclaration1__Group_3_0_1__0__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0_1__0__Impl_in_rule__XImportDeclaration__Group_3_0_1__03537);
+            rule__XImportDeclaration__Group_3_0_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0_1__1_in_rule__XImportDeclaration1__Group_3_0_1__03540);
-            rule__XImportDeclaration1__Group_3_0_1__1();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0_1__1_in_rule__XImportDeclaration__Group_3_0_1__03540);
+            rule__XImportDeclaration__Group_3_0_1__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4982,12 +4982,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0_1__0"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0_1__0"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0_1__0__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1797:1: rule__XImportDeclaration1__Group_3_0_1__0__Impl : ( ',' ) ;
-    public final void rule__XImportDeclaration1__Group_3_0_1__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0_1__0__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1797:1: rule__XImportDeclaration__Group_3_0_1__0__Impl : ( ',' ) ;
+    public final void rule__XImportDeclaration__Group_3_0_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4999,11 +4999,11 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1803:1: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getCommaKeyword_3_0_1_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getCommaKeyword_3_0_1_0()); 
             }
-            match(input,14,FOLLOW_14_in_rule__XImportDeclaration1__Group_3_0_1__0__Impl3568); if (state.failed) return ;
+            match(input,14,FOLLOW_14_in_rule__XImportDeclaration__Group_3_0_1__0__Impl3568); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getCommaKeyword_3_0_1_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getCommaKeyword_3_0_1_0()); 
             }
 
             }
@@ -5023,21 +5023,21 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0_1__0__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0_1__0__Impl"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0_1__1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1816:1: rule__XImportDeclaration1__Group_3_0_1__1 : rule__XImportDeclaration1__Group_3_0_1__1__Impl ;
-    public final void rule__XImportDeclaration1__Group_3_0_1__1() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0_1__1"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1816:1: rule__XImportDeclaration__Group_3_0_1__1 : rule__XImportDeclaration__Group_3_0_1__1__Impl ;
+    public final void rule__XImportDeclaration__Group_3_0_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1820:1: ( rule__XImportDeclaration1__Group_3_0_1__1__Impl )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1821:2: rule__XImportDeclaration1__Group_3_0_1__1__Impl
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1820:1: ( rule__XImportDeclaration__Group_3_0_1__1__Impl )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1821:2: rule__XImportDeclaration__Group_3_0_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__Group_3_0_1__1__Impl_in_rule__XImportDeclaration1__Group_3_0_1__13599);
-            rule__XImportDeclaration1__Group_3_0_1__1__Impl();
+            pushFollow(FOLLOW_rule__XImportDeclaration__Group_3_0_1__1__Impl_in_rule__XImportDeclaration__Group_3_0_1__13599);
+            rule__XImportDeclaration__Group_3_0_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -5056,30 +5056,30 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0_1__1"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0_1__1"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__Group_3_0_1__1__Impl"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1827:1: rule__XImportDeclaration1__Group_3_0_1__1__Impl : ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 ) ) ;
-    public final void rule__XImportDeclaration1__Group_3_0_1__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__Group_3_0_1__1__Impl"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1827:1: rule__XImportDeclaration__Group_3_0_1__1__Impl : ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 ) ) ;
+    public final void rule__XImportDeclaration__Group_3_0_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1831:1: ( ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1832:1: ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1831:1: ( ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1832:1: ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1832:1: ( ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1833:1: ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1832:1: ( ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1833:1: ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_1_1()); 
+               before(grammarAccess.getXImportDeclarationAccess().getImportItemsAssignment_3_0_1_1()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1834:1: ( rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1834:2: rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1834:1: ( rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:1834:2: rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1
             {
-            pushFollow(FOLLOW_rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1_in_rule__XImportDeclaration1__Group_3_0_1__1__Impl3626);
-            rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1();
+            pushFollow(FOLLOW_rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1_in_rule__XImportDeclaration__Group_3_0_1__1__Impl3626);
+            rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -5087,7 +5087,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportItemsAssignment_3_0_1_1()); 
+               after(grammarAccess.getXImportDeclarationAccess().getImportItemsAssignment_3_0_1_1()); 
             }
 
             }
@@ -5107,7 +5107,7 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__Group_3_0_1__1__Impl"
+    // $ANTLR end "rule__XImportDeclaration__Group_3_0_1__1__Impl"
 
 
     // $ANTLR start "rule__XImportItem__Group__0"
@@ -7524,9 +7524,9 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__JvmLowerBound__TypeReferenceAssignment_1"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__ImportItemsAssignment_3_0_0"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2733:1: rule__XImportDeclaration1__ImportItemsAssignment_3_0_0 : ( ruleXImportItem ) ;
-    public final void rule__XImportDeclaration1__ImportItemsAssignment_3_0_0() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__ImportItemsAssignment_3_0_0"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2733:1: rule__XImportDeclaration__ImportItemsAssignment_3_0_0 : ( ruleXImportItem ) ;
+    public final void rule__XImportDeclaration__ImportItemsAssignment_3_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7538,15 +7538,15 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2739:1: ruleXImportItem
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXImportItem_in_rule__XImportDeclaration1__ImportItemsAssignment_3_0_05410);
+            pushFollow(FOLLOW_ruleXImportItem_in_rule__XImportDeclaration__ImportItemsAssignment_3_0_05410);
             ruleXImportItem();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
             }
 
             }
@@ -7566,12 +7566,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__ImportItemsAssignment_3_0_0"
+    // $ANTLR end "rule__XImportDeclaration__ImportItemsAssignment_3_0_0"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2748:1: rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1 : ( ruleXImportItem ) ;
-    public final void rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2748:1: rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1 : ( ruleXImportItem ) ;
+    public final void rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7583,15 +7583,15 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2754:1: ruleXImportItem
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXImportItem_in_rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_15441);
+            pushFollow(FOLLOW_ruleXImportItem_in_rule__XImportDeclaration__ImportItemsAssignment_3_0_1_15441);
             ruleXImportItem();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
             }
 
             }
@@ -7611,12 +7611,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1"
+    // $ANTLR end "rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__WildcardAssignment_3_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2763:1: rule__XImportDeclaration1__WildcardAssignment_3_1 : ( ( '*' ) ) ;
-    public final void rule__XImportDeclaration1__WildcardAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__WildcardAssignment_3_1"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2763:1: rule__XImportDeclaration__WildcardAssignment_3_1 : ( ( '*' ) ) ;
+    public final void rule__XImportDeclaration__WildcardAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7628,23 +7628,23 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2769:1: ( '*' )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_3_1_0()); 
             }
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2770:1: ( '*' )
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2771:1: '*'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_3_1_0()); 
             }
-            match(input,26,FOLLOW_26_in_rule__XImportDeclaration1__WildcardAssignment_3_15477); if (state.failed) return ;
+            match(input,26,FOLLOW_26_in_rule__XImportDeclaration__WildcardAssignment_3_15477); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_3_1_0()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_3_1_0()); 
             }
 
             }
@@ -7664,12 +7664,12 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__WildcardAssignment_3_1"
+    // $ANTLR end "rule__XImportDeclaration__WildcardAssignment_3_1"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__NameAssignment_6"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2786:1: rule__XImportDeclaration1__NameAssignment_6 : ( ruleValidID ) ;
-    public final void rule__XImportDeclaration1__NameAssignment_6() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__AliasAssignment_6"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2786:1: rule__XImportDeclaration__AliasAssignment_6 : ( ruleValidID ) ;
+    public final void rule__XImportDeclaration__AliasAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7681,15 +7681,15 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
             // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2792:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getNameValidIDParserRuleCall_6_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getAliasValidIDParserRuleCall_6_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__XImportDeclaration1__NameAssignment_65516);
+            pushFollow(FOLLOW_ruleValidID_in_rule__XImportDeclaration__AliasAssignment_65516);
             ruleValidID();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getNameValidIDParserRuleCall_6_0()); 
+               after(grammarAccess.getXImportDeclarationAccess().getAliasValidIDParserRuleCall_6_0()); 
             }
 
             }
@@ -7709,28 +7709,44 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__NameAssignment_6"
+    // $ANTLR end "rule__XImportDeclaration__AliasAssignment_6"
 
 
-    // $ANTLR start "rule__XImportDeclaration1__ImportURIAssignment_8"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2801:1: rule__XImportDeclaration1__ImportURIAssignment_8 : ( RULE_STRING ) ;
-    public final void rule__XImportDeclaration1__ImportURIAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__XImportDeclaration__ModuleAssignment_8"
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2801:1: rule__XImportDeclaration__ModuleAssignment_8 : ( ( ruleQualifiedName ) ) ;
+    public final void rule__XImportDeclaration__ModuleAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2805:1: ( ( RULE_STRING ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2806:1: ( RULE_STRING )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2805:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2806:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2806:1: ( RULE_STRING )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2807:1: RULE_STRING
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2806:1: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2807:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_8_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getModuleJvmModuleCrossReference_8_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XImportDeclaration1__ImportURIAssignment_85547); if (state.failed) return ;
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2808:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2809:1: ruleQualifiedName
+            {
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_8_0()); 
+               before(grammarAccess.getXImportDeclarationAccess().getModuleJvmModuleQualifiedNameParserRuleCall_8_0_1()); 
+            }
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ModuleAssignment_85551);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getXImportDeclarationAccess().getModuleJvmModuleQualifiedNameParserRuleCall_8_0_1()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getXImportDeclarationAccess().getModuleJvmModuleCrossReference_8_0()); 
             }
 
             }
@@ -7750,32 +7766,32 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__XImportDeclaration1__ImportURIAssignment_8"
+    // $ANTLR end "rule__XImportDeclaration__ModuleAssignment_8"
 
 
     // $ANTLR start "rule__XImportItem__ImportedIdAssignment_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2816:1: rule__XImportItem__ImportedIdAssignment_1 : ( ( RULE_ID ) ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2820:1: rule__XImportItem__ImportedIdAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__XImportItem__ImportedIdAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2820:1: ( ( ( RULE_ID ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2821:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2824:1: ( ( ( RULE_ID ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2825:1: ( ( RULE_ID ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2821:1: ( ( RULE_ID ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2822:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2825:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2826:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportItemAccess().getImportedIdJvmIdentifiableElementCrossReference_1_0()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2823:1: ( RULE_ID )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2824:1: RULE_ID
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2827:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2828:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportItemAccess().getImportedIdJvmIdentifiableElementIDTerminalRuleCall_1_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XImportItem__ImportedIdAssignment_15582); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XImportItem__ImportedIdAssignment_15590); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXImportItemAccess().getImportedIdJvmIdentifiableElementIDTerminalRuleCall_1_0_1()); 
             }
@@ -7807,22 +7823,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XImportItem__AliasAssignment_2_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2835:1: rule__XImportItem__AliasAssignment_2_1 : ( RULE_ID ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2839:1: rule__XImportItem__AliasAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__XImportItem__AliasAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2839:1: ( ( RULE_ID ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2840:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2843:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2844:1: ( RULE_ID )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2840:1: ( RULE_ID )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2841:1: RULE_ID
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2844:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2845:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportItemAccess().getAliasIDTerminalRuleCall_2_1_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XImportItem__AliasAssignment_2_15617); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XImportItem__AliasAssignment_2_15625); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXImportItemAccess().getAliasIDTerminalRuleCall_2_1_0()); 
             }
@@ -7848,22 +7864,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportDeclaration__ExportItemsAssignment_1_0_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2851:1: rule__XExportDeclaration__ExportItemsAssignment_1_0_1 : ( ruleXExportItem ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2855:1: rule__XExportDeclaration__ExportItemsAssignment_1_0_1 : ( ruleXExportItem ) ;
     public final void rule__XExportDeclaration__ExportItemsAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2855:1: ( ( ruleXExportItem ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2856:1: ( ruleXExportItem )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2859:1: ( ( ruleXExportItem ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2860:1: ( ruleXExportItem )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2856:1: ( ruleXExportItem )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2857:1: ruleXExportItem
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2860:1: ( ruleXExportItem )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2861:1: ruleXExportItem
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportDeclarationAccess().getExportItemsXExportItemParserRuleCall_1_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_15649);
+            pushFollow(FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_15657);
             ruleXExportItem();
 
             state._fsp--;
@@ -7893,22 +7909,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportDeclaration__ExportItemsAssignment_1_0_2_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2866:1: rule__XExportDeclaration__ExportItemsAssignment_1_0_2_1 : ( ruleXExportItem ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2870:1: rule__XExportDeclaration__ExportItemsAssignment_1_0_2_1 : ( ruleXExportItem ) ;
     public final void rule__XExportDeclaration__ExportItemsAssignment_1_0_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2870:1: ( ( ruleXExportItem ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2871:1: ( ruleXExportItem )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2874:1: ( ( ruleXExportItem ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2875:1: ( ruleXExportItem )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2871:1: ( ruleXExportItem )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2872:1: ruleXExportItem
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2875:1: ( ruleXExportItem )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2876:1: ruleXExportItem
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportDeclarationAccess().getExportItemsXExportItemParserRuleCall_1_0_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_2_15680);
+            pushFollow(FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_2_15688);
             ruleXExportItem();
 
             state._fsp--;
@@ -7938,22 +7954,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportDeclaration__ImportURIAssignment_1_0_4_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2881:1: rule__XExportDeclaration__ImportURIAssignment_1_0_4_1 : ( RULE_STRING ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2885:1: rule__XExportDeclaration__ImportURIAssignment_1_0_4_1 : ( RULE_STRING ) ;
     public final void rule__XExportDeclaration__ImportURIAssignment_1_0_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2885:1: ( ( RULE_STRING ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2886:1: ( RULE_STRING )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2889:1: ( ( RULE_STRING ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2890:1: ( RULE_STRING )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2886:1: ( RULE_STRING )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2887:1: RULE_STRING
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2890:1: ( RULE_STRING )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2891:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_0_4_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_0_4_15711); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_0_4_15719); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_0_4_1_0()); 
             }
@@ -7979,22 +7995,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportDeclaration__ImportURIAssignment_1_1_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2896:1: rule__XExportDeclaration__ImportURIAssignment_1_1_1 : ( RULE_STRING ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2900:1: rule__XExportDeclaration__ImportURIAssignment_1_1_1 : ( RULE_STRING ) ;
     public final void rule__XExportDeclaration__ImportURIAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2900:1: ( ( RULE_STRING ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2901:1: ( RULE_STRING )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2904:1: ( ( RULE_STRING ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2905:1: ( RULE_STRING )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2901:1: ( RULE_STRING )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2902:1: RULE_STRING
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2905:1: ( RULE_STRING )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2906:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_1_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_1_15742); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_1_15750); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXExportDeclarationAccess().getImportURISTRINGTerminalRuleCall_1_1_1_0()); 
             }
@@ -8020,22 +8036,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportDeclaration__AliasAssignment_1_1_3"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2911:1: rule__XExportDeclaration__AliasAssignment_1_1_3 : ( RULE_ID ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2915:1: rule__XExportDeclaration__AliasAssignment_1_1_3 : ( RULE_ID ) ;
     public final void rule__XExportDeclaration__AliasAssignment_1_1_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2915:1: ( ( RULE_ID ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2916:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2919:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2920:1: ( RULE_ID )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2916:1: ( RULE_ID )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2917:1: RULE_ID
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2920:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2921:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportDeclarationAccess().getAliasIDTerminalRuleCall_1_1_3_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportDeclaration__AliasAssignment_1_1_35773); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportDeclaration__AliasAssignment_1_1_35781); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXExportDeclarationAccess().getAliasIDTerminalRuleCall_1_1_3_0()); 
             }
@@ -8061,28 +8077,28 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportItem__ExportedIdAssignment_0"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2926:1: rule__XExportItem__ExportedIdAssignment_0 : ( ( RULE_ID ) ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2930:1: rule__XExportItem__ExportedIdAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__XExportItem__ExportedIdAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2930:1: ( ( ( RULE_ID ) ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2931:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2934:1: ( ( ( RULE_ID ) ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2935:1: ( ( RULE_ID ) )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2931:1: ( ( RULE_ID ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2932:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2935:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2936:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportItemAccess().getExportedIdJvmIdentifiableElementCrossReference_0_0()); 
             }
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2933:1: ( RULE_ID )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2934:1: RULE_ID
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2937:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2938:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportItemAccess().getExportedIdJvmIdentifiableElementIDTerminalRuleCall_0_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportItem__ExportedIdAssignment_05808); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportItem__ExportedIdAssignment_05816); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXExportItemAccess().getExportedIdJvmIdentifiableElementIDTerminalRuleCall_0_0_1()); 
             }
@@ -8114,22 +8130,22 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XExportItem__AliasAssignment_1_1"
-    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2945:1: rule__XExportItem__AliasAssignment_1_1 : ( RULE_ID ) ;
+    // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2949:1: rule__XExportItem__AliasAssignment_1_1 : ( RULE_ID ) ;
     public final void rule__XExportItem__AliasAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2949:1: ( ( RULE_ID ) )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2950:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2953:1: ( ( RULE_ID ) )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2954:1: ( RULE_ID )
             {
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2950:1: ( RULE_ID )
-            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2951:1: RULE_ID
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2954:1: ( RULE_ID )
+            // ../org.summer.dsl.xtype.ui/src-gen/org/summer/dsl/xtype/ui/contentassist/antlr/internal/InternalXtype.g:2955:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExportItemAccess().getAliasIDTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportItem__AliasAssignment_1_15843); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__XExportItem__AliasAssignment_1_15851); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXExportItemAccess().getAliasIDTerminalRuleCall_1_1_0()); 
             }
@@ -8188,9 +8204,9 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID611 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleValidID618 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleValidID644 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportDeclaration1_in_entryRuleXImportDeclaration1672 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXImportDeclaration1679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__0_in_ruleXImportDeclaration1705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportDeclaration_in_entryRuleXImportDeclaration672 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXImportDeclaration679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__0_in_ruleXImportDeclaration705 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXImportItem_in_entryRuleXImportItem732 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXImportItem739 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XImportItem__Group__0_in_ruleXImportItem765 = new BitSet(new long[]{0x0000000000000002L});
@@ -8204,8 +8220,8 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_rule__JvmArgumentTypeReference__Alternatives940 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0_in_rule__JvmWildcardTypeReference__Alternatives_2972 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1_in_rule__JvmWildcardTypeReference__Alternatives_2990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0__0_in_rule__XImportDeclaration1__Alternatives_31023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__WildcardAssignment_3_1_in_rule__XImportDeclaration1__Alternatives_31041 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0__0_in_rule__XImportDeclaration__Alternatives_31023 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__WildcardAssignment_3_1_in_rule__XImportDeclaration__Alternatives_31041 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XExportDeclaration__Group_1_0__0_in_rule__XExportDeclaration__Alternatives_11074 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XExportDeclaration__Group_1_1__0_in_rule__XExportDeclaration__Alternatives_11092 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__JvmTypeReference__Group__0__Impl_in_rule__JvmTypeReference__Group__01123 = new BitSet(new long[]{0x0000000000000400L});
@@ -8277,41 +8293,41 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_19_in_rule__QualifiedName__Group_1__0__Impl2756 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__12787 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl2814 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__0__Impl_in_rule__XImportDeclaration1__Group__02849 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__1_in_rule__XImportDeclaration1__Group__02852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__1__Impl_in_rule__XImportDeclaration1__Group__12910 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__2_in_rule__XImportDeclaration1__Group__12913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__XImportDeclaration1__Group__1__Impl2941 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__2__Impl_in_rule__XImportDeclaration1__Group__22972 = new BitSet(new long[]{0x0000000004000010L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__3_in_rule__XImportDeclaration1__Group__22975 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__XImportDeclaration1__Group__2__Impl3003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__3__Impl_in_rule__XImportDeclaration1__Group__33034 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__4_in_rule__XImportDeclaration1__Group__33037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Alternatives_3_in_rule__XImportDeclaration1__Group__3__Impl3064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__4__Impl_in_rule__XImportDeclaration1__Group__43094 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__5_in_rule__XImportDeclaration1__Group__43097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__XImportDeclaration1__Group__4__Impl3125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__5__Impl_in_rule__XImportDeclaration1__Group__53156 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__6_in_rule__XImportDeclaration1__Group__53159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__XImportDeclaration1__Group__5__Impl3187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__6__Impl_in_rule__XImportDeclaration1__Group__63218 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__7_in_rule__XImportDeclaration1__Group__63221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__NameAssignment_6_in_rule__XImportDeclaration1__Group__6__Impl3248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__7__Impl_in_rule__XImportDeclaration1__Group__73278 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__8_in_rule__XImportDeclaration1__Group__73281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__XImportDeclaration1__Group__7__Impl3309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group__8__Impl_in_rule__XImportDeclaration1__Group__83340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__ImportURIAssignment_8_in_rule__XImportDeclaration1__Group__8__Impl3367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0__0__Impl_in_rule__XImportDeclaration1__Group_3_0__03415 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0__1_in_rule__XImportDeclaration1__Group_3_0__03418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__ImportItemsAssignment_3_0_0_in_rule__XImportDeclaration1__Group_3_0__0__Impl3445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0__1__Impl_in_rule__XImportDeclaration1__Group_3_0__13475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0_1__0_in_rule__XImportDeclaration1__Group_3_0__1__Impl3502 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0_1__0__Impl_in_rule__XImportDeclaration1__Group_3_0_1__03537 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0_1__1_in_rule__XImportDeclaration1__Group_3_0_1__03540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__XImportDeclaration1__Group_3_0_1__0__Impl3568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__Group_3_0_1__1__Impl_in_rule__XImportDeclaration1__Group_3_0_1__13599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_1_in_rule__XImportDeclaration1__Group_3_0_1__1__Impl3626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__0__Impl_in_rule__XImportDeclaration__Group__02849 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__1_in_rule__XImportDeclaration__Group__02852 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__1__Impl_in_rule__XImportDeclaration__Group__12910 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__2_in_rule__XImportDeclaration__Group__12913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__XImportDeclaration__Group__1__Impl2941 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__2__Impl_in_rule__XImportDeclaration__Group__22972 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__3_in_rule__XImportDeclaration__Group__22975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__XImportDeclaration__Group__2__Impl3003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__3__Impl_in_rule__XImportDeclaration__Group__33034 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__4_in_rule__XImportDeclaration__Group__33037 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Alternatives_3_in_rule__XImportDeclaration__Group__3__Impl3064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__4__Impl_in_rule__XImportDeclaration__Group__43094 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__5_in_rule__XImportDeclaration__Group__43097 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__XImportDeclaration__Group__4__Impl3125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__5__Impl_in_rule__XImportDeclaration__Group__53156 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__6_in_rule__XImportDeclaration__Group__53159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__XImportDeclaration__Group__5__Impl3187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__6__Impl_in_rule__XImportDeclaration__Group__63218 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__7_in_rule__XImportDeclaration__Group__63221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__AliasAssignment_6_in_rule__XImportDeclaration__Group__6__Impl3248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__7__Impl_in_rule__XImportDeclaration__Group__73278 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__8_in_rule__XImportDeclaration__Group__73281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__XImportDeclaration__Group__7__Impl3309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group__8__Impl_in_rule__XImportDeclaration__Group__83340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__ModuleAssignment_8_in_rule__XImportDeclaration__Group__8__Impl3367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0__0__Impl_in_rule__XImportDeclaration__Group_3_0__03415 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0__1_in_rule__XImportDeclaration__Group_3_0__03418 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__ImportItemsAssignment_3_0_0_in_rule__XImportDeclaration__Group_3_0__0__Impl3445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0__1__Impl_in_rule__XImportDeclaration__Group_3_0__13475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0_1__0_in_rule__XImportDeclaration__Group_3_0__1__Impl3502 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0_1__0__Impl_in_rule__XImportDeclaration__Group_3_0_1__03537 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0_1__1_in_rule__XImportDeclaration__Group_3_0_1__03540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__XImportDeclaration__Group_3_0_1__0__Impl3568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__Group_3_0_1__1__Impl_in_rule__XImportDeclaration__Group_3_0_1__13599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__XImportDeclaration__ImportItemsAssignment_3_0_1_1_in_rule__XImportDeclaration__Group_3_0_1__1__Impl3626 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XImportItem__Group__0__Impl_in_rule__XImportItem__Group__03660 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__XImportItem__Group__1_in_rule__XImportItem__Group__03663 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XImportItem__Group__1__Impl_in_rule__XImportItem__Group__13721 = new BitSet(new long[]{0x0000000000800000L});
@@ -8382,19 +8398,19 @@ public class InternalXtypeParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBound__TypeReferenceAssignment_15313 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBoundAnded__TypeReferenceAssignment_15344 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmLowerBound__TypeReferenceAssignment_15375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_rule__XImportDeclaration1__ImportItemsAssignment_3_0_05410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportItem_in_rule__XImportDeclaration1__ImportItemsAssignment_3_0_1_15441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__XImportDeclaration1__WildcardAssignment_3_15477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__XImportDeclaration1__NameAssignment_65516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__XImportDeclaration1__ImportURIAssignment_85547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__XImportItem__ImportedIdAssignment_15582 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__XImportItem__AliasAssignment_2_15617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_15649 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_2_15680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_0_4_15711 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_1_15742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportDeclaration__AliasAssignment_1_1_35773 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportItem__ExportedIdAssignment_05808 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportItem__AliasAssignment_1_15843 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportItem_in_rule__XImportDeclaration__ImportItemsAssignment_3_0_05410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportItem_in_rule__XImportDeclaration__ImportItemsAssignment_3_0_1_15441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__XImportDeclaration__WildcardAssignment_3_15477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__XImportDeclaration__AliasAssignment_65516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ModuleAssignment_85551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__XImportItem__ImportedIdAssignment_15590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__XImportItem__AliasAssignment_2_15625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_15657 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExportItem_in_rule__XExportDeclaration__ExportItemsAssignment_1_0_2_15688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_0_4_15719 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__XExportDeclaration__ImportURIAssignment_1_1_15750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportDeclaration__AliasAssignment_1_1_35781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportItem__ExportedIdAssignment_05816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__XExportItem__AliasAssignment_1_15851 = new BitSet(new long[]{0x0000000000000002L});
 
 }

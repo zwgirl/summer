@@ -19,38 +19,4 @@ import org.summer.dsl.model.xtype.XtypePackage;
  */
 public class XImportDeclarationImplCustom extends XImportDeclarationImpl {
 
-	@Override
-	public boolean isWildcard() {
-		if (isStatic()) 
-			return true;
-		if (importedNamespace == null)
-			return false;
-		return importedNamespace.endsWith("*");
-	}
-
-	@Override
-	public String getImportedTypeName() {
-		String result = getImportedNamespace();
-		if (result == null) {
-			if (this.eIsSet(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE)) {
-				JvmType unresolvedType = (JvmType) this.eGet(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, false);
-				if(!unresolvedType.eIsProxy())
-					return unresolvedType.getIdentifier();
-				List<INode> list = NodeModelUtils.findNodesForFeature(this,
-						XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
-				StringBuilder sb = new StringBuilder();
-				for (INode iNode : list) {
-					sb.append(NodeModelUtils.getTokenText(iNode).replace("^", ""));
-				}
-				return sb.toString().replace(" ", "");
-			}
-			return null;
-		}
-		if (isWildcard()) {
-			if (result.length() > 2)
-				return result.substring(0, result.length() - 2);
-			return null;
-		}
-		return result;
-	}
 }

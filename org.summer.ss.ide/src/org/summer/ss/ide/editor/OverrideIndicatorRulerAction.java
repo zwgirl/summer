@@ -15,10 +15,6 @@ import org.eclipse.ui.texteditor.ITextEditorActionConstants;
 import org.eclipse.ui.texteditor.IUpdate;
 import org.eclipse.ui.texteditor.ResourceAction;
 import org.eclipse.ui.texteditor.SelectMarkerRulerAction;
-import org.summer.ss.core.typing.XtendOverridesService;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.util.jdt.IJavaElementFinder;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.XtextUIMessages;
 import org.eclipse.xtext.ui.editor.GlobalURIEditorOpener;
@@ -28,6 +24,9 @@ import org.eclipse.xtext.ui.editor.actions.IActionContributor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.XtextDocumentUtil;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.util.jdt.IJavaElementFinder;
+import org.summer.ss.core.typing.XtendOverridesService;
 
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
@@ -122,7 +121,7 @@ public class OverrideIndicatorRulerAction extends ResourceAction implements IAct
 		JvmOperation jvmOperation = getDocument().readOnly(new IUnitOfWork<JvmOperation, XtextResource>() {
 
 			public JvmOperation exec(XtextResource resourceSet) throws Exception {
-				XtendFunction xtendFunction = (XtendFunction) resourceSet.getEObject(overrideIndicatorAnnotation
+				JvmOperation xtendFunction = (JvmOperation) resourceSet.getEObject(overrideIndicatorAnnotation
 						.getFunctionURIFragment());
 				return xtendOverridesService.findOverriddenOperation(xtendFunction);
 			}

@@ -13,8 +13,6 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.JvmGenericType#isInterface <em>Interface</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmGenericType#isStrictFloatingPoint <em>Strict Floating Point</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmGenericType#getExtends <em>Extends</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmGenericType#getImplements <em>Implements</em>}</li>
  * </ul>
@@ -25,58 +23,6 @@ import java.util.List;
  * @generated
  */
 public interface JvmGenericType extends JvmDeclaredType, JvmTypeParameterDeclarator {
-	/**
-	 * Returns the value of the '<em><b>Interface</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Interface</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Interface</em>' attribute.
-	 * @see #setInterface(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmGenericType_Interface()
-	 * @model
-	 * @generated
-	 */
-	boolean isInterface();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmGenericType#isInterface <em>Interface</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Interface</em>' attribute.
-	 * @see #isInterface()
-	 * @generated
-	 */
-	void setInterface(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Strict Floating Point</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Strict Floating Point</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Strict Floating Point</em>' attribute.
-	 * @see #setStrictFloatingPoint(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmGenericType_StrictFloatingPoint()
-	 * @model
-	 * @generated
-	 */
-	boolean isStrictFloatingPoint();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmGenericType#isStrictFloatingPoint <em>Strict Floating Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Strict Floating Point</em>' attribute.
-	 * @see #isStrictFloatingPoint()
-	 * @generated
-	 */
-	void setStrictFloatingPoint(boolean value);
-
 	/**
 	 * Returns the value of the '<em><b>Extends</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

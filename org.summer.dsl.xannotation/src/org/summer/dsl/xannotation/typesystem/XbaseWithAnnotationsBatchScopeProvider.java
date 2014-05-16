@@ -7,24 +7,20 @@
  *******************************************************************************/
 package org.summer.dsl.xannotation.typesystem;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.transform;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmAnnotationReference;
-import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmAnnotationValue;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.MapBasedScope;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmAnnotationValue;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.xbase.scoping.batch.XbaseBatchScopeProvider;
 
 import com.google.common.base.Function;

@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.ui.quickfix;
 
-import static org.eclipse.xtext.ui.util.DisplayRunHelper.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static org.eclipse.xtext.ui.util.DisplayRunHelper.runAsyncInDisplayThread;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
@@ -37,7 +37,6 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
-import org.summer.dsl.model.types.TypesPackage;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
@@ -47,9 +46,9 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.ui.refactoring.impl.ProjectUtil;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.validation.Issue;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 
 import com.google.inject.Inject;
 
@@ -88,7 +87,7 @@ public class CreateJavaTypeQuickfixes implements ILinkingIssueQuickfixProvider {
 				|| unresolvedReference == TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE) {
 			newJavaClassQuickfix(typeName, packageName, resource, issue, issueResolutionAcceptor);
 			newJavaInterfaceQuickfix(typeName, packageName, resource, issue, issueResolutionAcceptor);
-		} else if(unresolvedReference == XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE) {
+		} else if(unresolvedReference == TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION) {
 			newJavaAnnotationQuickfix(typeName, packageName, resource, issue, issueResolutionAcceptor);
 		}
 	}

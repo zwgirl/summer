@@ -8,16 +8,10 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.summer.dsl.model.richstring.RichstringPackage;
-import org.summer.dsl.model.richstring.impl.RichstringPackageImpl;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.impl.SsPackageImpl;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
 import org.summer.dsl.model.xaml.XamlPackage;
 import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xbase.impl.XbasePackageImpl;
 import org.summer.dsl.model.xbase.typing.IJvmTypeReferenceProvider;
@@ -27,10 +21,8 @@ import org.summer.dsl.model.xtype.XExportItem;
 import org.summer.dsl.model.xtype.XExportSection;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XImportDeclaration;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 import org.summer.dsl.model.xtype.XtypeFactory;
 import org.summer.dsl.model.xtype.XtypePackage;
 
@@ -68,20 +60,6 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * @generated
 	 */
 	private EClass xImportDeclarationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass xImportSection1EClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass xImportDeclaration1EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,27 +145,18 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		// Obtain or create and register interdependencies
 		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI) instanceof TypesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI) : TypesPackage.eINSTANCE);
 		XbasePackageImpl theXbasePackage = (XbasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI) instanceof XbasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI) : XbasePackage.eINSTANCE);
-		SsPackageImpl theSsPackage = (SsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) instanceof SsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) : SsPackage.eINSTANCE);
-		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
-		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
 		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXtypePackage.createPackageContents();
 		theTypesPackage.createPackageContents();
 		theXbasePackage.createPackageContents();
-		theSsPackage.createPackageContents();
-		theXannotationPackage.createPackageContents();
-		theRichstringPackage.createPackageContents();
 		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXtypePackage.initializePackageContents();
 		theTypesPackage.initializePackageContents();
 		theXbasePackage.initializePackageContents();
-		theSsPackage.initializePackageContents();
-		theXannotationPackage.initializePackageContents();
-		theRichstringPackage.initializePackageContents();
 		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
@@ -294,8 +263,8 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXImportDeclaration_Extension() {
-		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(0);
+	public EReference getXImportDeclaration_ImportItems() {
+		return (EReference)xImportDeclarationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -303,7 +272,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXImportDeclaration_Static() {
+	public EAttribute getXImportDeclaration_Alias() {
 		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -312,8 +281,17 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXImportDeclaration_ImportedType() {
-		return (EReference)xImportDeclarationEClass.getEStructuralFeatures().get(2);
+	public EAttribute getXImportDeclaration_Wildcard() {
+		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXImportDeclaration_Module() {
+		return (EReference)xImportDeclarationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -322,88 +300,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * @generated
 	 */
 	public EAttribute getXImportDeclaration_ImportedNamespace() {
-		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXImportDeclaration_Wildcard() {
 		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getXImportSection1() {
-		return xImportSection1EClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXImportSection1_ImportDeclarations() {
-		return (EReference)xImportSection1EClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getXImportDeclaration1() {
-		return xImportDeclaration1EClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXImportDeclaration1_ImportItems() {
-		return (EReference)xImportDeclaration1EClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXImportDeclaration1_Alias() {
-		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXImportDeclaration1_ImportURI() {
-		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXImportDeclaration1_Name() {
-		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXImportDeclaration1_Wildcard() {
-		return (EAttribute)xImportDeclaration1EClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -573,21 +470,11 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		createEReference(xImportSectionEClass, XIMPORT_SECTION__IMPORT_DECLARATIONS);
 
 		xImportDeclarationEClass = createEClass(XIMPORT_DECLARATION);
-		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__EXTENSION);
-		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__STATIC);
-		createEReference(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORTED_TYPE);
-		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORTED_NAMESPACE);
+		createEReference(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORT_ITEMS);
+		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__ALIAS);
 		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__WILDCARD);
-
-		xImportSection1EClass = createEClass(XIMPORT_SECTION1);
-		createEReference(xImportSection1EClass, XIMPORT_SECTION1__IMPORT_DECLARATIONS);
-
-		xImportDeclaration1EClass = createEClass(XIMPORT_DECLARATION1);
-		createEReference(xImportDeclaration1EClass, XIMPORT_DECLARATION1__IMPORT_ITEMS);
-		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__ALIAS);
-		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__IMPORT_URI);
-		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__NAME);
-		createEAttribute(xImportDeclaration1EClass, XIMPORT_DECLARATION1__WILDCARD);
+		createEReference(xImportDeclarationEClass, XIMPORT_DECLARATION__MODULE);
+		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORTED_NAMESPACE);
 
 		xImportItemEClass = createEClass(XIMPORT_ITEM);
 		createEReference(xImportItemEClass, XIMPORT_ITEM__IMPORTED_ID);
@@ -643,7 +530,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		// Add supertypes to classes
 		xFunctionTypeRefEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
 		xComputedTypeReferenceEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
-		xImportDeclaration1EClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
+		xImportDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xFunctionTypeRefEClass, XFunctionTypeRef.class, "XFunctionTypeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -659,23 +546,13 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		initEReference(getXImportSection_ImportDeclarations(), this.getXImportDeclaration(), null, "importDeclarations", null, 0, -1, XImportSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xImportDeclarationEClass, XImportDeclaration.class, "XImportDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXImportDeclaration_Extension(), ecorePackage.getEBoolean(), "extension", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXImportDeclaration_ImportedType(), theTypesPackage.getJvmDeclaredType(), null, "importedType", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXImportDeclaration_ImportItems(), this.getXImportItem(), null, "importItems", null, 0, -1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXImportDeclaration_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXImportDeclaration_Wildcard(), ecorePackage.getEBoolean(), "wildcard", "false", 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXImportDeclaration_Module(), theTypesPackage.getJvmModule(), null, "module", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration_Wildcard(), ecorePackage.getEBoolean(), "wildcard", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(xImportDeclarationEClass, ecorePackage.getEString(), "getImportedTypeName", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(xImportSection1EClass, XImportSection1.class, "XImportSection1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXImportSection1_ImportDeclarations(), this.getXImportDeclaration1(), null, "importDeclarations", null, 0, -1, XImportSection1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(xImportDeclaration1EClass, XImportDeclaration1.class, "XImportDeclaration1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXImportDeclaration1_ImportItems(), this.getXImportItem(), null, "importItems", null, 0, -1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration1_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration1_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration1_Name(), ecorePackage.getEString(), "name", null, 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXImportDeclaration1_Wildcard(), ecorePackage.getEBoolean(), "wildcard", "false", 0, 1, XImportDeclaration1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		addEOperation(xImportDeclarationEClass, ecorePackage.getEString(), "getModuleName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(xImportItemEClass, XImportItem.class, "XImportItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXImportItem_ImportedId(), theTypesPackage.getJvmIdentifiableElement(), null, "importedId", null, 0, 1, XImportItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

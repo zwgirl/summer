@@ -34,7 +34,6 @@ import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XTypeLiteral;
-import org.summer.dsl.model.xannotation.XAnnotation;
 import org.summer.dsl.xbase.lib.BooleanExtensions;
 import org.summer.dsl.xbase.lib.Inline;
 import org.summer.dsl.xbase.lib.ObjectExtensions;
@@ -64,7 +63,7 @@ public class XExpressionHelper {
 			|| expr instanceof XBooleanLiteral
 			|| expr instanceof XNumberLiteral
 			|| expr instanceof XNullLiteral
-			|| expr instanceof XAnnotation
+			|| expr instanceof JvmAnnotationReference
 			)
 			return false;
 		if(expr instanceof XCollectionLiteral) {

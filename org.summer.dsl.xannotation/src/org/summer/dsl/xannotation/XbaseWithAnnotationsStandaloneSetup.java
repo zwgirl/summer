@@ -7,10 +7,6 @@
  *******************************************************************************/
 package org.summer.dsl.xannotation;
 
-import org.eclipse.emf.ecore.EPackage;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-
-import com.google.inject.Injector;
 
 /**
  * Initialization support for running Xtext languages 
@@ -22,10 +18,10 @@ public class XbaseWithAnnotationsStandaloneSetup extends XbaseWithAnnotationsSta
 		new XbaseWithAnnotationsStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 	
-	@Override
-	public Injector createInjectorAndDoEMFRegistration() {
-		EPackage.Registry.INSTANCE.put(XannotationPackage.eINSTANCE.getNsURI(),XannotationPackage.eINSTANCE);
-		return super.createInjectorAndDoEMFRegistration();
-	}
+//	@Override
+//	public Injector createInjectorAndDoEMFRegistration() {
+//		EPackage.Registry.INSTANCE.put(XannotationPackage.eINSTANCE.getNsURI(),XannotationPackage.eINSTANCE);
+//		return super.createInjectorAndDoEMFRegistration();
+//	}
 }
 

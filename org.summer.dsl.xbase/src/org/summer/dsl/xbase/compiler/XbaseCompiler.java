@@ -24,12 +24,15 @@ import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.Tuples;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmAnyTypeReference;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmSynonymTypeReference;
@@ -38,9 +41,6 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
@@ -334,8 +334,8 @@ public class XbaseCompiler extends FeatureCallCompiler {
 	
 	protected boolean canUseArrayInitializer(XListLiteral literal, ITreeAppendable appendable) {
 		if (literal.eContainingFeature() == XbasePackage.Literals.XVARIABLE_DECLARATION__RIGHT
-			|| literal.eContainingFeature() == XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__VALUE
-			|| literal.eContainingFeature() == XannotationPackage.Literals.XANNOTATION__VALUE
+			|| literal.eContainingFeature() == TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__VALUE
+			|| literal.eContainingFeature() == TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE
 			) {
 			return canUseArrayInitializerImpl(literal, appendable);
 		}
@@ -494,8 +494,8 @@ public class XbaseCompiler extends FeatureCallCompiler {
 			_toJavaExpression((XCastedExpression) obj, appendable);
 		} else if (obj instanceof XClosure) {
 			_toJavaExpression((XClosure) obj, appendable);
-		} else if (obj instanceof XAnnotation) {
-			_toJavaExpression((XAnnotation) obj, appendable);
+		} else if (obj instanceof JvmAnnotationReference) {
+			_toJavaExpression((JvmAnnotationReference) obj, appendable);
 		} else if (obj instanceof XConstructorCall) {
 			_toJavaExpression((XConstructorCall) obj, appendable);
 		} else if (obj instanceof XIfExpression) {
@@ -1745,7 +1745,7 @@ public class XbaseCompiler extends FeatureCallCompiler {
 	protected void appendOperationVisibility(final ITreeAppendable b, JvmOperation operation) {
 		b.newLine();
 		JvmDeclaredType declaringType = operation.getDeclaringType();
-		if (declaringType instanceof JvmGenericType && !((JvmGenericType) declaringType).isInterface()) {
+		if (declaringType instanceof JvmGenericType && !(declaringType instanceof JvmInterfaceType)) {
 			b.append("@Override").newLine();
 		}
 		switch(operation.getVisibility()) {
@@ -1832,7 +1832,7 @@ public class XbaseCompiler extends FeatureCallCompiler {
 	
 	@Override
 	protected boolean isVariableDeclarationRequired(XExpression expr, ITreeAppendable b) {
-		if (expr instanceof XAnnotation) {
+		if (expr instanceof JvmAnnotationReference) {
 			return false;
 		}
 		if (expr instanceof XListLiteral) {
@@ -1935,22 +1935,22 @@ public class XbaseCompiler extends FeatureCallCompiler {
 		b.append("}");
 	}
 	
-	protected void _toJavaExpression(final XAnnotation annotation, final ITreeAppendable b) {
+	protected void _toJavaExpression(final JvmAnnotationReference annotation, final ITreeAppendable b) {
 		b.append("@");
-		b.append(annotation.getAnnotationType());
+		b.append(annotation.getAnnotation());
 		XExpression value = annotation.getValue();
 		if (value != null) {
 			b.append("(");
 			internalToJavaExpression(value, b);
 			b.append(")");
 		} else {
-			EList<XAnnotationElementValuePair> valuePairs = annotation.getElementValuePairs();
+			EList<JvmAnnotationValue> valuePairs = annotation.getValues();
 			if (valuePairs.isEmpty())
 				return;
 			b.append("(");
 			for (int i = 0; i < valuePairs.size(); i++) {
-				XAnnotationElementValuePair pair = valuePairs.get(i);
-				b.append(pair.getElement().getSimpleName());
+				JvmAnnotationValue pair = valuePairs.get(i);
+				b.append(pair.getField().getSimpleName());
 				b.append(" = ");
 				internalToJavaExpression(pair.getValue(), b);
 				if (i < valuePairs.size()-1) {

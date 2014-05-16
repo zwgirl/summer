@@ -3,10 +3,10 @@
 */
 package org.summer.ss.ide.outline;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Sets.*;
-import static java.util.Collections.*;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newHashSet;
+import static java.util.Collections.sort;
 
 import java.util.Comparator;
 import java.util.List;
@@ -16,24 +16,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.ui.JavaElementImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StyledString;
-import org.summer.ss.core.jvmmodel.DispatchHelper;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.ss.ide.labeling.SsImages;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmFeature;
-import org.summer.dsl.model.types.JvmGenericType;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmTypeReference;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.BackgroundOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 import org.eclipse.xtext.ui.editor.outline.impl.EObjectNode;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineMode;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmFeature;
+import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.jvmmodel.JvmTypeExtensions;
 import org.summer.dsl.xbase.ui.labeling.XbaseImageAdornments;
-import org.summer.dsl.model.xtype.XtypePackage;
+import org.summer.ss.core.jvmmodel.DispatchHelper;
+import org.summer.ss.ide.labeling.SsImages;
 
 import com.google.inject.Inject;
 
@@ -91,11 +91,11 @@ public class SsOutlineTreeProvider extends BackgroundOutlineTreeProvider impleme
 	
 	@Override
 	protected void internalCreateChildren(DocumentRootNode parentNode, EObject modelElement) {
-		if(modelElement instanceof XModule) {
-			XModule xModule = (XModule) modelElement;
-			if (xModule.getPackage() != null)
-				factory.createEStructuralFeatureNode(parentNode, xModule, SsPackage.Literals.XMODULE__PACKAGE,
-						images.forPackage(), xModule.getPackage(), true);
+		if(modelElement instanceof JvmModule) {
+			JvmModule xModule = (JvmModule) modelElement;
+			if (xModule.getSimpleName() != null)
+				factory.createEStructuralFeatureNode(parentNode, xModule, TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME,
+						images.forPackage(), xModule.getSimpleName(), true);
 			if (xModule.getImportSection() != null && !xModule.getImportSection().getImportDeclarations().isEmpty())
 				factory.createEStructuralFeatureNode(parentNode, xModule.getImportSection(),
 						XtypePackage.Literals.XIMPORT_SECTION__IMPORT_DECLARATIONS, images.forImportContainer(),

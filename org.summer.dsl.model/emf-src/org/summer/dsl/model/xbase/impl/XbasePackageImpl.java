@@ -7,16 +7,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.summer.dsl.model.richstring.RichstringPackage;
-import org.summer.dsl.model.richstring.impl.RichstringPackageImpl;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.impl.SsPackageImpl;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.impl.TypesPackageImpl;
 import org.summer.dsl.model.xaml.XamlPackage;
 import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
-import org.summer.dsl.model.xannotation.XannotationPackage;
-import org.summer.dsl.model.xannotation.impl.XannotationPackageImpl;
 import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAbstractWhileExpression;
@@ -477,28 +471,19 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		// Obtain or create and register interdependencies
 		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI) instanceof TypesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI) : TypesPackage.eINSTANCE);
-		SsPackageImpl theSsPackage = (SsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) instanceof SsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(SsPackage.eNS_URI) : SsPackage.eINSTANCE);
-		XannotationPackageImpl theXannotationPackage = (XannotationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) instanceof XannotationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XannotationPackage.eNS_URI) : XannotationPackage.eINSTANCE);
 		XtypePackageImpl theXtypePackage = (XtypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) instanceof XtypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI) : XtypePackage.eINSTANCE);
-		RichstringPackageImpl theRichstringPackage = (RichstringPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) instanceof RichstringPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RichstringPackage.eNS_URI) : RichstringPackage.eINSTANCE);
 		XamlPackageImpl theXamlPackage = (XamlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) instanceof XamlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(XamlPackage.eNS_URI) : XamlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theXbasePackage.createPackageContents();
 		theTypesPackage.createPackageContents();
-		theSsPackage.createPackageContents();
-		theXannotationPackage.createPackageContents();
 		theXtypePackage.createPackageContents();
-		theRichstringPackage.createPackageContents();
 		theXamlPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theXbasePackage.initializePackageContents();
 		theTypesPackage.initializePackageContents();
-		theSsPackage.initializePackageContents();
-		theXannotationPackage.initializePackageContents();
 		theXtypePackage.initializePackageContents();
-		theRichstringPackage.initializePackageContents();
 		theXamlPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed

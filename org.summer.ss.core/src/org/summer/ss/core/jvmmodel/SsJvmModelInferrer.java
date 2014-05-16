@@ -55,6 +55,7 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmType;
@@ -135,8 +136,8 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	@Inject
 	private IFileHeaderProvider fileHeaderProvider;
 	
-	@Inject
-	private AnnotationProcessor annotationProcessor;
+//	@Inject
+//	private AnnotationProcessor annotationProcessor;
 	
 	@Inject
 	private ActiveAnnotationContextProvider contextProvider;
@@ -145,9 +146,9 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	private CompilerPhases compilerPhases;
 
 	public void infer(@Nullable EObject object, final @NonNull IJvmDeclaredTypeAcceptor acceptor, boolean preIndexingPhase) {
-		if (!(object instanceof XModule))
+		if (!(object instanceof JvmModule))
 			return;
-		XModule xtendFile = (XModule) object;
+		JvmModule xtendFile = (JvmModule) object;
 		List<Runnable> doLater = newArrayList();
 		//cym modified
 //		for (final XtendTypeDeclaration declaration: xtendFile.getXtendTypes()) {

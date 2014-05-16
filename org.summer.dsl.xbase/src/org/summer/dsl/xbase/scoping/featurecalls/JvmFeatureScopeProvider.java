@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -179,11 +180,11 @@ public class JvmFeatureScopeProvider implements IJvmFeatureScopeProvider {
 					JvmTypeReference ref1 = o1.getKey();
 					JvmTypeReference ref2 = o2.getKey();
 					if (ref1.getType() instanceof JvmGenericType && ref2.getType() instanceof JvmGenericType) {
-						if (((JvmGenericType) ref1.getType()).isInterface()) {
-							if (!((JvmGenericType) ref2.getType()).isInterface()) {
+						if (ref1.getType() instanceof JvmInterfaceType) {
+							if (!(ref2.getType() instanceof JvmInterfaceType)) {
 								return 1;
 							}
-						} else if (((JvmGenericType) ref2.getType()).isInterface()) {
+						} else if (ref2.getType() instanceof JvmInterfaceType) {
 							return -1;
 						}
 					}

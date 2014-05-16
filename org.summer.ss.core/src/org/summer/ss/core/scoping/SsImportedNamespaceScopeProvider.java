@@ -23,32 +23,33 @@ import org.eclipse.xtext.linking.impl.ImportedNamesAdapter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.CompilerPhases;
-import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.eclipse.xtext.util.IResourceScopeCache;
 import org.eclipse.xtext.util.Strings;
-import org.summer.dsl.model.ss.XModule;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.IJvmTypeProvider;
-import org.summer.dsl.model.types.access.impl.Primitives;
 import org.summer.dsl.model.types.xtext.AbstractTypeScope;
 import org.summer.dsl.model.types.xtext.AbstractTypeScopeProvider;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XStructLiteral;
-import org.summer.dsl.model.xtype.XImportDeclaration1;
+import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.scoping.AbstractNestedTypeAwareImportNormalizer;
 import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
@@ -87,11 +88,20 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 	@Override
 	public IScope getScope(final EObject context, final EReference reference) {
 		if(context instanceof XImportItem){
-			XImportDeclaration1 importDecl = (XImportDeclaration1) context.eContainer();
-			String uriStr = importDecl.getImportURI();
+//			XImportDeclaration importDecl = (XImportDeclaration) context.eContainer();
+//			String uriStr = importDecl.getModuleName();
+//			XtextResourceSet resourceSet = (XtextResourceSet) context.eResource().getResourceSet();
+//			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
+//			URI uri = URI.createFileURI(path.toOSString());
+//			if(resourceSet!=null){
+//				final Resource resource = resourceSet.getResource(uri, true);
+//				return new ImportResourceScope(resource);
+//			}
+			
+			XImportDeclaration importDecl = (XImportDeclaration) context.eContainer();
+			String namespace = importDecl.getImportedNamespace();
 			XtextResourceSet resourceSet = (XtextResourceSet) context.eResource().getResourceSet();
-//			IPath path = resourceSet.getProject().getLocation().append(uriStr);
-			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
+			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(namespace);
 			URI uri = URI.createFileURI(path.toOSString());
 			if(resourceSet!=null){
 				final Resource resource = resourceSet.getResource(uri, true);
@@ -101,7 +111,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		
 		EClass referenceType = reference.getEReferenceType();
 		if (TypesPackage.Literals.JVM_TYPE.isSuperTypeOf(referenceType)) {
-			if (context instanceof XImportDeclaration1) {
+			if (context instanceof XImportDeclaration) {
 				Resource resource = context.eResource();
 				IJvmTypeProvider typeProvider = typeScopeProvider.getTypeProvider(resource.getResourceSet());
 				AbstractTypeScope typeScope = typeScopeProvider.createTypeScope(typeProvider, null);
@@ -111,7 +121,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				IScope scope = SelectableBasedScope.createScope(recordingTypeScope, getAllDescriptions(resource), reference.getEReferenceType(), false);
 				return scope;
 			}
-			final XModule module = getModule(context);
+			final JvmModule module = getModule(context);
 //			final Resource resource = xtendFile.eResource();
 //			IScope result = resourceScopeCache.get("type.scope", xtendFile.eResource(), new Provider<IScope>() {
 //				public IScope get() {
@@ -155,7 +165,6 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				result = getContainerScope(syntacticContainer, result);
 			}
 			
-			
 			return result;
 			
 		} else if (TypesPackage.Literals.JVM_CONSTRUCTOR.isSuperTypeOf(referenceType)) {
@@ -172,6 +181,11 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		} else if (TypesPackage.Literals.JVM_FIELD.isSuperTypeOf(referenceType) && context instanceof XStructLiteral) {   //cym added
 			XStructLiteral structLiteral = (XStructLiteral) context;
 			IScope scope = new StructTypeScope(structLiteral.getType());
+			return scope;
+		} else if (TypesPackage.Literals.JVM_FIELD.isSuperTypeOf(referenceType) && context instanceof JvmAnnotationValue) {   //cym added
+			JvmAnnotationValue annotationRef = (JvmAnnotationValue) context;
+			JvmAnnotationType annonationType = ((JvmAnnotationReference) annotationRef.eContainer()).getAnnotation();
+			IScope scope = new JvmAnnotationTypeScope(annonationType);
 			return scope;
 		}
 		
@@ -196,9 +210,9 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return importedNamesAdapter;
 	}
 
-	protected XModule getModule(final EObject context) {
+	protected JvmModule getModule(final EObject context) {
 		Resource resource = context.eResource();
-		XModule result = (XModule) resource.getContents().get(0);
+		JvmModule result = (JvmModule) resource.getContents().get(0);
 		return result;
 	}
 	
@@ -284,10 +298,10 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return new KnownTypesScope(knownTypes, parent);
 	}
 
-	private AbstractScope getImportScope(XImportSection1 importSection, AbstractScope parent, RecordingTypeScope typeScope) {
+	private AbstractScope getImportScope(XImportSection importSection, AbstractScope parent, RecordingTypeScope typeScope) {
 		if (importSection == null)
 			return parent;
-		List<XImportDeclaration1> importDeclarations = importSection.getImportDeclarations();
+		List<XImportDeclaration> importDeclarations = importSection.getImportDeclarations();
 		if (importDeclarations.isEmpty()) {
 			return parent;
 		}
@@ -295,7 +309,7 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		List<JvmType> concreteImports = null;
 		List<QualifiedName> importedNames = null;
 		boolean hasLegacyImport = false;
-		for(XImportDeclaration1 importDeclaration: importDeclarations) {
+		for(XImportDeclaration importDeclaration: importDeclarations) {
 //			if (!importDeclaration.isStatic()) {
 				if (importDeclaration.isWildcard()) {
 					if (wildcardImports == null) {
@@ -308,11 +322,11 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				} else {
 					JvmDeclaredType importedType = null;
 					if (compilerPhases.isIndexing(importSection)) {
-						EObject proxy = (EObject) importDeclaration.eGet(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, false);
-						if (proxy.eIsProxy()) {
-							URI uri = ((InternalEObject)proxy).eProxyURI();
-							importedType = (JvmDeclaredType) importSection.eResource().getResourceSet().getEObject(uri, true);
-						} 
+//						EObject proxy = (EObject) importDeclaration.eGet(XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE, false);
+//						if (proxy.eIsProxy()) {
+//							URI uri = ((InternalEObject)proxy).eProxyURI();
+//							importedType = (JvmDeclaredType) importSection.eResource().getResourceSet().getEObject(uri, true);
+//						} 
 					} 
 //					else {
 //						importedType = importDeclaration.getImportedType();
@@ -355,8 +369,8 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 		return result;
 	}
 	
-	protected AbstractScope getRootTypeScope(XModule rootContainer, RecordingTypeScope typeScope) {
-		String packageName = rootContainer.getPackage();
+	protected AbstractScope getRootTypeScope(JvmModule rootContainer, RecordingTypeScope typeScope) {
+		String packageName = rootContainer.getSimpleName();
 		final ImportNormalizer[][] implicitImports;
 		if (packageName != null && packageName.length() > 0) {
 			QualifiedName packageQualifiedName = qualifiedNameConverter.toQualifiedName(packageName);

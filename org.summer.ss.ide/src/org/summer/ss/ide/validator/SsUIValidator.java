@@ -7,10 +7,9 @@
  *******************************************************************************/
 package org.summer.ss.ide.validator;
 
-import static org.summer.ss.core.validation.IssueCodes.*;
-import static org.eclipse.xtext.util.Strings.*;
-
-import java.util.List;
+import static org.eclipse.xtext.util.Strings.isEmpty;
+import static org.eclipse.xtext.util.Strings.notNull;
+import static org.summer.ss.core.validation.IssueCodes.ACTIVE_ANNOTAION_IN_SAME_CONTAINER;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
@@ -19,26 +18,25 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.summer.ss.core.macro.XAnnotationExtensions;
-import org.summer.ss.core.validation.IssueCodes;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.ui.resource.IStorage2UriMapper;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
 import org.summer.dsl.xbase.ui.validation.XbaseUIValidator;
+import org.summer.ss.core.macro.XAnnotationExtensions;
+import org.summer.ss.core.validation.IssueCodes;
 
 import com.google.inject.Inject;
 
@@ -57,25 +55,25 @@ public class SsUIValidator extends XbaseUIValidator {
 	@Inject private XAnnotationExtensions annotationExtensions;
 	@Inject private IJavaProjectProvider projectProvider;
 	
-	@Override
-	protected List<EPackage> getEPackages() {
-		List<EPackage> packages = super.getEPackages();
-		packages.add(SsPackage.eINSTANCE);
-		packages.add(XannotationPackage.eINSTANCE);
-		return packages;
-	}
+//	@Override
+//	protected List<EPackage> getEPackages() {
+//		List<EPackage> packages = super.getEPackages();
+//		packages.add(TypesPackage.eINSTANCE);
+////		packages.add(XannotationPackage.eINSTANCE);
+//		return packages;
+//	}
 	
 	@Check
-	protected void checkAnnotationInSameProject(XAnnotation annotation) throws JavaModelException {
+	protected void checkAnnotationInSameProject(JvmAnnotationReference annotation) throws JavaModelException {
 		if (annotationExtensions.isProcessed(annotation)) {
-			JvmType annotationType = annotation.getAnnotationType();
+			JvmType annotationType = annotation.getAnnotation();
 			if (isSameProject(annotation, annotationType)) {
-				error("The referenced active annotation cannot be used from within the same project.",XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE, -1, ACTIVE_ANNOTAION_IN_SAME_CONTAINER);
+				error("The referenced active annotation cannot be used from within the same project.",TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, -1, ACTIVE_ANNOTAION_IN_SAME_CONTAINER);
 			}
 		}
 	}
 
-	protected boolean isSameProject(XAnnotation annotation, JvmType annotationType) throws JavaModelException {
+	protected boolean isSameProject(JvmAnnotationReference annotation, JvmType annotationType) throws JavaModelException {
 		IJavaProject project = projectProvider.getJavaProject(annotation.eResource().getResourceSet());
 		if (annotationType.eResource().getURI().isPlatformResource()) {
 			String projectName = annotationType.eResource().getURI().segments()[1];
@@ -108,19 +106,30 @@ public class SsUIValidator extends XbaseUIValidator {
 		}
 		return false;
 	}
+	
+	private final String DEFAULT_PACKEGE = "default package";
 
 	@Check
-	public void checkFileNamingConventions(XModule xtendFile) {
-		//cym modified
-//		String expectedPackage = getExpectedPackageName(xtendFile);
-//		String declaredPackage = xtendFile.getPackage();
-//		if(expectedPackage != null && !((isEmpty(expectedPackage) && declaredPackage == null) || expectedPackage.equals(declaredPackage))) {
-//			error("The declared package '" + notNull(declaredPackage) + "' does not match the expected package '" + notNull(expectedPackage) + "'",
-//					SsPackage.Literals.XTEND_FILE__PACKAGE, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, expectedPackage);
-//		}
+	public void checkFileNamingConventions(JvmModule module) {
+		String expectedPackage = getExpectedPackageName(module);
+		String moduleName = module.getSimpleName();
+		String[] segments = moduleName.split("\\.");
+		String[] tag = new String[segments.length-1];
+		System.arraycopy(segments, 0, tag, 0, segments.length-1);
+		QualifiedName qfn = QualifiedName.create(tag);
+		
+		if(expectedPackage != null && !((isEmpty(expectedPackage) && moduleName == null) || expectedPackage.equals(qfn.toString()))) {
+			String packageName = expectedPackage;
+			if(expectedPackage == null ||expectedPackage.isEmpty() ){
+				packageName = DEFAULT_PACKEGE;
+			}
+			error("The declared module '" + notNull(moduleName) + "' does not match the expected namespace '" + 
+					packageName + "'",
+					TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, expectedPackage);
+		}
 	}
 	
-	protected String getExpectedPackageName(XModule xtendFile) {
+	protected String getExpectedPackageName(JvmModule xtendFile) {
 		URI fileURI = xtendFile.eResource().getURI();
 		for(Pair<IStorage, IProject> storage: storage2UriMapper.getStorages(fileURI)) {
 			if(storage.getFirst() instanceof IFile) {

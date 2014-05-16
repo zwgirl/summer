@@ -371,11 +371,11 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getIDTerminalRuleCall() { return cIDTerminalRuleCall; }
 	}
 
-	public class XImportSection1Elements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XImportSection1");
+	public class XImportSectionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XImportSection");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cImportDeclarationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cImportDeclarationsXImportDeclaration1ParserRuleCall_0_0 = (RuleCall)cImportDeclarationsAssignment_0.eContents().get(0);
+		private final RuleCall cImportDeclarationsXImportDeclarationParserRuleCall_0_0 = (RuleCall)cImportDeclarationsAssignment_0.eContents().get(0);
 		private final Keyword cSemicolonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		////XImportSection:
@@ -391,27 +391,27 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		// //		';'
 		//
 		////;
-		// XImportSection1:
-		//	(importDeclarations+=XImportDeclaration1 ";"?)+;
+		// XImportSection:
+		//	(importDeclarations+=XImportDeclaration ";"?)+;
 		public ParserRule getRule() { return rule; }
 
-		//(importDeclarations+=XImportDeclaration1 ";"?)+
+		//(importDeclarations+=XImportDeclaration ";"?)+
 		public Group getGroup() { return cGroup; }
 
-		//importDeclarations+=XImportDeclaration1
+		//importDeclarations+=XImportDeclaration
 		public Assignment getImportDeclarationsAssignment_0() { return cImportDeclarationsAssignment_0; }
 
-		//XImportDeclaration1
-		public RuleCall getImportDeclarationsXImportDeclaration1ParserRuleCall_0_0() { return cImportDeclarationsXImportDeclaration1ParserRuleCall_0_0; }
+		//XImportDeclaration
+		public RuleCall getImportDeclarationsXImportDeclarationParserRuleCall_0_0() { return cImportDeclarationsXImportDeclarationParserRuleCall_0_0; }
 
 		//";"?
 		public Keyword getSemicolonKeyword_1() { return cSemicolonKeyword_1; }
 	}
 
-	public class XImportDeclaration1Elements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XImportDeclaration1");
+	public class XImportDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "XImportDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cXImportDeclaration1Action_0 = (Action)cGroup.eContents().get(0);
+		private final Action cXImportDeclarationAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cImportKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
@@ -426,11 +426,12 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cWildcardAsteriskKeyword_3_1_0 = (Keyword)cWildcardAssignment_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cAsKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNameValidIDParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Assignment cAliasAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cAliasValidIDParserRuleCall_6_0 = (RuleCall)cAliasAssignment_6.eContents().get(0);
 		private final Keyword cFromKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cImportURIAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_8_0 = (RuleCall)cImportURIAssignment_8.eContents().get(0);
+		private final Assignment cModuleAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cModuleJvmModuleCrossReference_8_0 = (CrossReference)cModuleAssignment_8.eContents().get(0);
+		private final RuleCall cModuleJvmModuleQualifiedNameParserRuleCall_8_0_1 = (RuleCall)cModuleJvmModuleCrossReference_8_0.eContents().get(1);
 		
 		////XImportDeclaration1 returns XImportDeclaration1: 
 		// //	'import' (( 
@@ -448,17 +449,17 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		////	('from' importURI=STRING 'as' alias = ID))
 		// //		
 		// //;
-		// XImportDeclaration1:
-		//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
-		//	"as" name=ValidID "from" importURI=STRING;
+		// XImportDeclaration:
+		//	{XImportDeclaration} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}" "as"
+		//	alias=ValidID "from" module=[JvmModule|QualifiedName];
 		public ParserRule getRule() { return rule; }
 
-		//{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}" "as"
-		//name=ValidID "from" importURI=STRING
+		//{XImportDeclaration} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}" "as"
+		//alias=ValidID "from" module=[JvmModule|QualifiedName]
 		public Group getGroup() { return cGroup; }
 
-		//{XImportDeclaration1}
-		public Action getXImportDeclaration1Action_0() { return cXImportDeclaration1Action_0; }
+		//{XImportDeclaration}
+		public Action getXImportDeclarationAction_0() { return cXImportDeclarationAction_0; }
 
 		//"import"
 		public Keyword getImportKeyword_1() { return cImportKeyword_1; }
@@ -502,20 +503,23 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 		//"as"
 		public Keyword getAsKeyword_5() { return cAsKeyword_5; }
 
-		//name=ValidID
-		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		//alias=ValidID
+		public Assignment getAliasAssignment_6() { return cAliasAssignment_6; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_6_0() { return cNameValidIDParserRuleCall_6_0; }
+		public RuleCall getAliasValidIDParserRuleCall_6_0() { return cAliasValidIDParserRuleCall_6_0; }
 
 		//"from"
 		public Keyword getFromKeyword_7() { return cFromKeyword_7; }
 
-		//importURI=STRING
-		public Assignment getImportURIAssignment_8() { return cImportURIAssignment_8; }
+		//module=[JvmModule|QualifiedName]
+		public Assignment getModuleAssignment_8() { return cModuleAssignment_8; }
 
-		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_8_0() { return cImportURISTRINGTerminalRuleCall_8_0; }
+		//[JvmModule|QualifiedName]
+		public CrossReference getModuleJvmModuleCrossReference_8_0() { return cModuleJvmModuleCrossReference_8_0; }
+
+		//QualifiedName
+		public RuleCall getModuleJvmModuleQualifiedNameParserRuleCall_8_0_1() { return cModuleJvmModuleQualifiedNameParserRuleCall_8_0_1; }
 	}
 
 	public class XImportItemElements extends AbstractParserRuleElementFinder {
@@ -757,8 +761,8 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private ValidIDElements pValidID;
-	private XImportSection1Elements pXImportSection1;
-	private XImportDeclaration1Elements pXImportDeclaration1;
+	private XImportSectionElements pXImportSection;
+	private XImportDeclarationElements pXImportDeclaration;
 	private XImportItemElements pXImportItem;
 	private XExportSectionElements pXExportSection;
 	private XExportDeclarationElements pXExportDeclaration;
@@ -939,14 +943,14 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 	// //		';'
 	//
 	////;
-	// XImportSection1:
-	//	(importDeclarations+=XImportDeclaration1 ";"?)+;
-	public XImportSection1Elements getXImportSection1Access() {
-		return (pXImportSection1 != null) ? pXImportSection1 : (pXImportSection1 = new XImportSection1Elements());
+	// XImportSection:
+	//	(importDeclarations+=XImportDeclaration ";"?)+;
+	public XImportSectionElements getXImportSectionAccess() {
+		return (pXImportSection != null) ? pXImportSection : (pXImportSection = new XImportSectionElements());
 	}
 	
-	public ParserRule getXImportSection1Rule() {
-		return getXImportSection1Access().getRule();
+	public ParserRule getXImportSectionRule() {
+		return getXImportSectionAccess().getRule();
 	}
 
 	////XImportDeclaration1 returns XImportDeclaration1: 
@@ -965,15 +969,15 @@ public class XtypeGrammarAccess extends AbstractGrammarElementFinder {
 	////	('from' importURI=STRING 'as' alias = ID))
 	// //		
 	// //;
-	// XImportDeclaration1:
-	//	{XImportDeclaration1} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}"
-	//	"as" name=ValidID "from" importURI=STRING;
-	public XImportDeclaration1Elements getXImportDeclaration1Access() {
-		return (pXImportDeclaration1 != null) ? pXImportDeclaration1 : (pXImportDeclaration1 = new XImportDeclaration1Elements());
+	// XImportDeclaration:
+	//	{XImportDeclaration} "import" "{" (importItems+=XImportItem ("," importItems+=XImportItem)* | wildcard?="*") "}" "as"
+	//	alias=ValidID "from" module=[JvmModule|QualifiedName];
+	public XImportDeclarationElements getXImportDeclarationAccess() {
+		return (pXImportDeclaration != null) ? pXImportDeclaration : (pXImportDeclaration = new XImportDeclarationElements());
 	}
 	
-	public ParserRule getXImportDeclaration1Rule() {
-		return getXImportDeclaration1Access().getRule();
+	public ParserRule getXImportDeclarationRule() {
+		return getXImportDeclarationAccess().getRule();
 	}
 
 	//XImportItem:

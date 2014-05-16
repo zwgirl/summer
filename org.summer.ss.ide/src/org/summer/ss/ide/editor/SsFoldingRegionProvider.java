@@ -13,10 +13,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IRegion;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.xbase.XbasePackage;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -26,6 +22,9 @@ import org.eclipse.xtext.ui.editor.folding.FoldedPosition;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionAcceptor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.ITextRegion;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -53,7 +52,7 @@ public class SsFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	@Override
 	protected boolean shouldProcessContent(EObject object) {
 		EClass clazz = object.eClass();
-		return clazz == TypesPackage.Literals.JVM_DECLARED_TYPE || clazz == SsPackage.Literals.XMODULE;
+		return clazz == TypesPackage.Literals.JVM_DECLARED_TYPE || clazz == TypesPackage.Literals.JVM_MODULE;
 	}
 	
 	@Override
@@ -67,7 +66,7 @@ public class SsFoldingRegionProvider extends DefaultFoldingRegionProvider {
 	protected void computeImportFolding(XtextResource xtextResource, IFoldingRegionAcceptor<ITextRegion> foldingRegionAcceptor) {
 		EList<EObject> contents = xtextResource.getContents();
 		if(!contents.isEmpty()) {
-			XModule xtendFile = (XModule) contents.get(0);
+			JvmModule xtendFile = (JvmModule) contents.get(0);
 			// Only if we have at least 2 imports
 			if(xtendFile.getImportSection() != null 
 				&& xtendFile.getImportSection().getImportDeclarations().size() >1) {

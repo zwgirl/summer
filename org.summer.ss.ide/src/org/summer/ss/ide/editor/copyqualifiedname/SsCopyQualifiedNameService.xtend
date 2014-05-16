@@ -8,9 +8,9 @@
 package org.summer.ss.ide.editor.copyqualifiedname
 
 import org.eclipse.emf.ecore.EObject
-import org.summer.dsl.model.ss.XtendConstructor
-import org.summer.dsl.model.ss.XtendFunction
+import org.summer.dsl.model.types.JvmOperation
 import org.summer.dsl.xbase.ui.editor.copyqualifiedname.XbaseCopyQualifiedNameService
+import org.summer.dsl.model.types.JvmConstructor
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
@@ -18,27 +18,27 @@ import org.summer.dsl.xbase.ui.editor.copyqualifiedname.XbaseCopyQualifiedNameSe
  */
 class SsCopyQualifiedNameService extends XbaseCopyQualifiedNameService {
 
-	def dispatch String getQualifiedName(XtendFunction it, EObject context) {
+	def dispatch String getQualifiedName(JvmOperation it, EObject context) {
 		toQualifiedName
 	}
 
-	def dispatch String getQualifiedName(XtendFunction it, Void context) {
+	def dispatch String getQualifiedName(JvmOperation it, Void context) {
 		toQualifiedName
 	}
 
-	protected def String toQualifiedName(XtendFunction it) {
+	protected def String toQualifiedName(JvmOperation it) {
 		'''�toFullyQualifiedName�(�parameters.toQualifiedNames[parameterType.simpleName]�)'''
 	}
 
-	def dispatch String getQualifiedName(XtendConstructor it, EObject context) {
+	def dispatch String getQualifiedName(JvmConstructor it, EObject context) {
 		toQualifiedName
 	}
 
-	def dispatch String getQualifiedName(XtendConstructor it, Void context) {
+	def dispatch String getQualifiedName(JvmConstructor it, Void context) {
 		toQualifiedName
 	}
 
-	protected def String toQualifiedName(XtendConstructor it) {
+	protected def String toQualifiedName(JvmConstructor it) {
 		'''�toFullyQualifiedName�(�parameters.toQualifiedNames[parameterType.simpleName]�)'''
 	}
 

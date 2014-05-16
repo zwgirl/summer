@@ -173,7 +173,7 @@ public class ResourceForIEditorInputFactory implements IResourceForEditorInputFa
 	
 	//cym added
 	protected ResourceSet getResourceSet(@Nullable IStorage storage) {
-		return ResourceSetFactory.getInstanceof().getResourceSet();
+		return ResourceSetFactory.getInstance().getResourceSet();
 	}
 
 	protected void configureResourceSet(ResourceSet resourceSet, URI primaryURI) {

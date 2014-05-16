@@ -44,10 +44,10 @@ import org.eclipse.xtext.ui.refactoring.impl.StatusWrapper;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.util.TextRegion;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFunction;
+import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
@@ -138,9 +138,9 @@ public class ExtractMethodRefactoring extends Refactoring {
 
 	private URI resourceURI;
 
-	private XtendClass xtendClass;
+	private JvmDeclaredType xtendClass;
 
-	private XtendFunction originalMethod;
+	private JvmOperation originalMethod;
 
 	private TextEdit textEdit;
 
@@ -170,8 +170,8 @@ public class ExtractMethodRefactoring extends Refactoring {
 		this.firstExpression = expressions.get(0); 
 		this.lastExpression = expressions.get(expressions.size()-1);
 		this.resourceURI = EcoreUtil2.getPlatformResourceOrNormalizedURI(firstExpression).trimFragment();
-		this.xtendClass = EcoreUtil2.getContainerOfType(firstExpression, XtendClass.class);
-		this.originalMethod = EcoreUtil2.getContainerOfType(firstExpression, XtendFunction.class);
+		this.xtendClass = EcoreUtil2.getContainerOfType(firstExpression, JvmDeclaredType.class);
+		this.originalMethod = EcoreUtil2.getContainerOfType(firstExpression, JvmOperation.class);
 		if (xtendClass == null || originalMethod == null)
 			return false;
 		this.visibility = originalMethod.getVisibility();
@@ -218,7 +218,7 @@ public class ExtractMethodRefactoring extends Refactoring {
 		return isExplicitlyDeclareReturnType;
 	}
 
-	public XtendClass getXtendClass() {
+	public JvmDeclaredType getXtendClass() {
 		return xtendClass;
 	}
 

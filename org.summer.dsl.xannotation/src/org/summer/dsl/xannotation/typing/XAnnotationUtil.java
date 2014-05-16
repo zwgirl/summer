@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.summer.dsl.xannotation.typing;
 
-import static com.google.common.collect.Sets.*;
-import static java.util.Collections.*;
+import static com.google.common.collect.Sets.newHashSet;
+import static java.util.Collections.emptySet;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
@@ -20,10 +20,9 @@ import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmEnumAnnotationValue;
 import org.summer.dsl.model.types.JvmEnumerationLiteral;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
 
 
 /**
@@ -31,24 +30,24 @@ import org.summer.dsl.model.xannotation.XAnnotationElementValuePair;
  */
 public class XAnnotationUtil {
 	
-	public JvmOperation findSingleValueAttribute(JvmAnnotationType type) {
-		Iterable<JvmOperation> operations = type.getDeclaredOperations();
-		for (JvmOperation operation : operations) {
-			if (operation.getSimpleName().equals("value")) {
-				return operation;
+	public JvmField findSingleValueAttribute(JvmAnnotationType type) {
+		Iterable<JvmField> fields = type.getDeclaredFields();
+		for (JvmField field : fields) {
+			if (field.getSimpleName().equals("value")) {
+				return field;
 			}
 		}
 		return null;
 	}
 	
-	public XExpression findValue(XAnnotation annotation, JvmOperation jvmOperation) {
-		if (jvmOperation.getSimpleName().equals("value") && annotation.getValue() != null) {
+	public XExpression findValue(JvmAnnotationReference annotation, JvmField jvmField) {
+		if (jvmField.getSimpleName().equals("value") && annotation.getValue() != null) {
 			return annotation.getValue();
 		}
-		for (XAnnotationElementValuePair pair : annotation.getElementValuePairs()) {
-			if (pair.getElement() == jvmOperation)
-				return pair.getValue();
-		}
+//		for (XAnnotationElementValuePair pair : annotation.getElementValuePairs()) {
+//			if (pair.getElement() == jvmOperation)
+//				return pair.getValue();
+//		}
 		return null;
 	}
 	

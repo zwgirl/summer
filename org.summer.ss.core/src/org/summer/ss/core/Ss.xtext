@@ -5,49 +5,100 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-grammar org.summer.ss.core.Ss with org.summer.dsl.xannotation.XbaseWithAnnotations
+grammar org.summer.ss.core.Ss with org.summer.dsl.xbase.Xbase
 
-import "http://www.summer.org/dsl/model/ss"
+//import "http://www.summer.org/dsl/model/ss"
 
 import "http://www.summer.org/dsl/model/xbase" as xbase
 import "http://www.summer.org/dsl/model/xtype" as xtype
 import "http://www.summer.org/dsl/model/types" as types
 import "http://www.summer.org/dsl/model/xaml" as xaml
-import "http://www.summer.org/dsl/model/xannotation" as annotations
+//import "http://www.summer.org/dsl/model/xannotation" as annotations
 
-XModule returns XModule : 
-//	contents+=(
-//	JvmModule
-//	|
-//	JvmNoModule)
-	importSection=XImportSection1? 
-//	(xtendTypes+=Type)*
+JvmModule returns types::JvmModule : 
+	'module' simpleName=QualifiedName '{'
+	importSection=XImportSection? 
 	root=XObjectElement
 	(contents+=(Type | DelegateType) 
 	| (contents+= XExpressionInsideBlock ';'?)  )*
 	
 	exportSection=XExportSection? 
-	
+	'}'
 ;
 
-//JvmModule returns types::JvmModule:
-//	    ('module' simpleName=QualifiedName '{'
+XImportSection returns xtype::XImportSection:
+	(importDeclarations+=XImportDeclaration ';'?)+;
+
+XImportDeclaration returns xtype::XImportDeclaration: 
+	{xtype::XImportDeclaration}
+	'import' 
+		'{'
+			((importItems += XImportItem (',' importItems += XImportItem)*)
+			| wildcard ?= '*'
+			)
+		'}'
+		
+		'as' alias=ValidID
+		'from' module=[types::JvmModule|QualifiedName] 
+;
+
+XImportItem returns xtype::XImportItem:
+	{xtype::XImportItem}
+	importedId = [types::JvmIdentifiableElement|ID] ('as' alias=ID)?
+;
+
+XExportSection returns xtype::XExportSection:
+	(exportDeclarations+=XExportDeclaration ';'?)+;
+
+XExportDeclaration returns xtype::XExportDeclaration: 
+	'export' 
+	(
+		(
+			('{'
+				exportItems +=XExportItem (',' exportItems +=XExportItem)*
+			'}'('from' importURI=STRING)?
+			)
+//			|
+//			(exportItems +=XExportItem)
+//			|
+//			wildcard?='*'
+		)
+		|
+		( 'from' importURI=STRING 'as' alias=ID)
+	)
+;
+
+XExportItem returns xtype::XExportItem:
+	exportedId =[types::JvmIdentifiableElement|ID] ('as' alias=ID)?
+;
+
+//XModule returns XModule : 
+////	contents+=(
+////	JvmModule
+////	|
+////	JvmNoModule)
 //	importSection=XImportSection1? 
 ////	(xtendTypes+=Type)*
-//	(contents+=Type 
-//	| contents+= XExpressionInsideBlock ';'?)*
+//	root=XObjectElement
+//	(contents+=(Type | DelegateType) 
+//	| (contents+= XExpressionInsideBlock ';'?)  )*
 //	
 //	exportSection=XExportSection? 
-//	'}')
-//;
-//
-//JvmNoModule returns types::JvmNoModule:
-////	{types::JvmNoModule}
-//	importSection=XImportSection1? 
-//	(contents+=Type 
-//	| contents+= XExpressionInsideBlock ';'?)+
 //;
 
+XAnnotation returns types::JvmAnnotationReference:
+	{types::JvmAnnotationReference}
+	'@' annotation=[types::JvmAnnotationType | QualifiedName] (=>'('
+		(
+			values+=JvmAnnotationValue (',' values+=JvmAnnotationValue)* 
+		|	value=XLiteral
+		)?
+	')')?
+;
+
+JvmAnnotationValue returns types::JvmAnnotationValue:
+	=>(field=[types::JvmField|ValidID] '=') value=XLiteral	
+;
 
 
 //Type returns XtendTypeDeclaration :
@@ -111,9 +162,9 @@ Type returns types::JvmDeclaredType :
 		   (members+=Member)*
 	   	'}'
 	 |
-		{types::JvmGenericType.annotationInfo = current}
+		{types::JvmInterfaceType.annotationInfo = current}
 		(exported?='export')? //modifiers+=CommonModifier*
-	  	interface?='interface' simpleName=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
+	  	'interface' simpleName=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
 	   	('extends' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?'{'
 		   (members+=Member)*
 	   	'}'

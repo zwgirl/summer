@@ -12,15 +12,15 @@ import com.google.inject.Inject
 import com.google.inject.Provider
 import java.util.concurrent.CancellationException
 import java.util.concurrent.atomic.AtomicBoolean
-import org.summer.dsl.model.ss.XtendMember
+import org.eclipse.xtext.util.CancelIndicator
+import org.eclipse.xtext.util.internal.Stopwatches
+import org.summer.dsl.model.types.JvmFormalParameter
+import org.summer.dsl.model.types.JvmMember
+import org.summer.dsl.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.summer.ss.lib.macro.RegisterGlobalsParticipant
 import org.summer.ss.lib.macro.TransformationParticipant
 import org.summer.ss.lib.macro.declaration.MutableNamedElement
 import org.summer.ss.lib.macro.declaration.NamedElement
-import org.eclipse.xtext.util.CancelIndicator
-import org.eclipse.xtext.util.internal.Stopwatches
-import org.summer.dsl.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.summer.dsl.model.ss.XtendParameter
 
 /**
  * It checks whether the files contain macro annotations and calls their register and processing functions.
@@ -46,7 +46,7 @@ class AnnotationProcessor {
 					registerGlobalsCtx.compilationUnit = ctx.compilationUnit
 					
 					runWithCancelIndiciator(ctx, monitor) [|
-						processor.doRegisterGlobals(ctx.annotatedSourceElements.map[ctx.compilationUnit.toXtendMemberDeclaration(it as XtendMember)], registerGlobalsCtx)
+						processor.doRegisterGlobals(ctx.annotatedSourceElements.map[ctx.compilationUnit.toXtendMemberDeclaration(it as JvmMember)], registerGlobalsCtx)
 					]
 				}
 			}
@@ -67,8 +67,8 @@ class AnnotationProcessor {
 					runWithCancelIndiciator(ctx, monitor) [|
 						val map = ctx.annotatedSourceElements.map[
 							val xtendMember = switch it {
-								XtendMember : ctx.compilationUnit.toXtendMemberDeclaration(it)
-								XtendParameter : ctx.compilationUnit.toXtendParameterDeclaration(it)
+								JvmMember : ctx.compilationUnit.toXtendMemberDeclaration(it)
+								JvmFormalParameter : ctx.compilationUnit.toXtendParameterDeclaration(it)
 							}
 							return modifyCtx.getPrimaryGeneratedJavaElement(xtendMember)
 						]

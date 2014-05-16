@@ -10,7 +10,7 @@ grammar org.summer.dsl.xannotation.XbaseWithAnnotations with org.summer.dsl.xbas
 import "http://www.summer.org/dsl/model/xbase" as xbase
 import "http://www.summer.org/dsl/model/xtype" as xtype
 import "http://www.summer.org/dsl/model/types" as types
-import "http://www.summer.org/dsl/model/xannotation"
+//import "http://www.summer.org/dsl/model/xannotation"
 
 //XAnnotation :
 //	{XAnnotation}

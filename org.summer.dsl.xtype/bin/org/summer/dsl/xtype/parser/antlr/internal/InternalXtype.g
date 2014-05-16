@@ -546,42 +546,42 @@ ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 
 
-// Entry rule entryRuleXImportDeclaration1
-entryRuleXImportDeclaration1 returns [EObject current=null] 
+// Entry rule entryRuleXImportDeclaration
+entryRuleXImportDeclaration returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getXImportDeclaration1Rule()); }
-	 iv_ruleXImportDeclaration1=ruleXImportDeclaration1 
-	 { $current=$iv_ruleXImportDeclaration1.current; } 
+	{ newCompositeNode(grammarAccess.getXImportDeclarationRule()); }
+	 iv_ruleXImportDeclaration=ruleXImportDeclaration 
+	 { $current=$iv_ruleXImportDeclaration.current; } 
 	 EOF 
 ;
 
-// Rule XImportDeclaration1
-ruleXImportDeclaration1 returns [EObject current=null] 
+// Rule XImportDeclaration
+ruleXImportDeclaration returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getXImportDeclaration1Access().getXImportDeclaration1Action_0(),
+            grammarAccess.getXImportDeclarationAccess().getXImportDeclarationAction_0(),
             $current);
     }
 )	otherlv_1='import' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getXImportDeclaration1Access().getImportKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getXImportDeclarationAccess().getImportKeyword_1());
     }
 	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getXImportDeclaration1Access().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getXImportDeclarationAccess().getLeftCurlyBracketKeyword_2());
     }
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
+	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_0_0()); 
 	    }
 		lv_importItems_3_0=ruleXImportItem		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
+	            $current = createModelElementForParent(grammarAccess.getXImportDeclarationRule());
 	        }
        		add(
        			$current, 
@@ -594,16 +594,16 @@ ruleXImportDeclaration1 returns [EObject current=null]
 )
 )(	otherlv_4=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getXImportDeclaration1Access().getCommaKeyword_3_0_1_0());
+    	newLeafNode(otherlv_4, grammarAccess.getXImportDeclarationAccess().getCommaKeyword_3_0_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
+	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getImportItemsXImportItemParserRuleCall_3_0_1_1_0()); 
 	    }
 		lv_importItems_5_0=ruleXImportItem		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
+	            $current = createModelElementForParent(grammarAccess.getXImportDeclarationRule());
 	        }
        		add(
        			$current, 
@@ -619,12 +619,12 @@ ruleXImportDeclaration1 returns [EObject current=null]
 (
 		lv_wildcard_6_0=	'*' 
     {
-        newLeafNode(lv_wildcard_6_0, grammarAccess.getXImportDeclaration1Access().getWildcardAsteriskKeyword_3_1_0());
+        newLeafNode(lv_wildcard_6_0, grammarAccess.getXImportDeclarationAccess().getWildcardAsteriskKeyword_3_1_0());
     }
  
 	    {
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
+	            $current = createModelElement(grammarAccess.getXImportDeclarationRule());
 	        }
        		setWithLastConsumed($current, "wildcard", true, "*");
 	    }
@@ -632,25 +632,25 @@ ruleXImportDeclaration1 returns [EObject current=null]
 )
 ))	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getXImportDeclaration1Access().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_7, grammarAccess.getXImportDeclarationAccess().getRightCurlyBracketKeyword_4());
     }
 	otherlv_8='as' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getXImportDeclaration1Access().getAsKeyword_5());
+    	newLeafNode(otherlv_8, grammarAccess.getXImportDeclarationAccess().getAsKeyword_5());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXImportDeclaration1Access().getNameValidIDParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getAliasValidIDParserRuleCall_6_0()); 
 	    }
-		lv_name_9_0=ruleValidID		{
+		lv_alias_9_0=ruleValidID		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getXImportDeclaration1Rule());
+	            $current = createModelElementForParent(grammarAccess.getXImportDeclarationRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_9_0, 
+       			"alias",
+        		lv_alias_9_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -658,23 +658,20 @@ ruleXImportDeclaration1 returns [EObject current=null]
 )
 )	otherlv_10='from' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getXImportDeclaration1Access().getFromKeyword_7());
+    	newLeafNode(otherlv_10, grammarAccess.getXImportDeclarationAccess().getFromKeyword_7());
     }
 (
 (
-		lv_importURI_11_0=RULE_STRING
 		{
-			newLeafNode(lv_importURI_11_0, grammarAccess.getXImportDeclaration1Access().getImportURISTRINGTerminalRuleCall_8_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getXImportDeclaration1Rule());
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getXImportDeclarationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"importURI",
-        		lv_importURI_11_0, 
-        		"STRING");
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getXImportDeclarationAccess().getModuleJvmModuleCrossReference_8_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
 	    }
 
 )

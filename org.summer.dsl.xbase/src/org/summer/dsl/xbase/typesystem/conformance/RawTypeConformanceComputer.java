@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
@@ -752,7 +753,7 @@ public class RawTypeConformanceComputer {
 				}
 				return flags;
 			}
-			if (!castedLeftType.isInterface() && rightType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && ((JvmGenericType) rightType).isInterface()) {
+			if (!(castedLeftType instanceof JvmInterfaceType) && rightType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && rightType instanceof JvmInterfaceType) {
 				return flags;
 			}
 		} else if (leftType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER) {

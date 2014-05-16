@@ -198,105 +198,13 @@ public interface XtypePackage extends EPackage {
 	int XIMPORT_DECLARATION = 3;
 
 	/**
-	 * The feature id for the '<em><b>Extension</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__EXTENSION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__STATIC = 1;
-
-	/**
-	 * The feature id for the '<em><b>Imported Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__IMPORTED_TYPE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__IMPORTED_NAMESPACE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Wildcard</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__WILDCARD = 4;
-
-	/**
-	 * The number of structural features of the '<em>XImport Declaration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION_FEATURE_COUNT = 5;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XImportSection1Impl <em>XImport Section1</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xtype.impl.XImportSection1Impl
-	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXImportSection1()
-	 * @generated
-	 */
-	int XIMPORT_SECTION1 = 4;
-
-	/**
-	 * The feature id for the '<em><b>Import Declarations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_SECTION1__IMPORT_DECLARATIONS = 0;
-
-	/**
-	 * The number of structural features of the '<em>XImport Section1</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_SECTION1_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XImportDeclaration1Impl <em>XImport Declaration1</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xtype.impl.XImportDeclaration1Impl
-	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXImportDeclaration1()
-	 * @generated
-	 */
-	int XIMPORT_DECLARATION1 = 5;
-
-	/**
 	 * The feature id for the '<em><b>Import Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__IMPORT_ITEMS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
+	int XIMPORT_DECLARATION__IMPORT_ITEMS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Alias</b></em>' attribute.
@@ -305,25 +213,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__ALIAS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Import URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION1__IMPORT_URI = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION1__NAME = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
+	int XIMPORT_DECLARATION__ALIAS = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Wildcard</b></em>' attribute.
@@ -332,16 +222,34 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1__WILDCARD = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
+	int XIMPORT_DECLARATION__WILDCARD = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>XImport Declaration1</em>' class.
+	 * The feature id for the '<em><b>Module</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION1_FEATURE_COUNT = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 5;
+	int XIMPORT_DECLARATION__MODULE = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XIMPORT_DECLARATION__IMPORTED_NAMESPACE = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>XImport Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XIMPORT_DECLARATION_FEATURE_COUNT = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XImportItemImpl <em>XImport Item</em>}' class.
@@ -351,7 +259,7 @@ public interface XtypePackage extends EPackage {
 	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXImportItem()
 	 * @generated
 	 */
-	int XIMPORT_ITEM = 6;
+	int XIMPORT_ITEM = 4;
 
 	/**
 	 * The feature id for the '<em><b>Imported Id</b></em>' reference.
@@ -388,7 +296,7 @@ public interface XtypePackage extends EPackage {
 	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXExportSection()
 	 * @generated
 	 */
-	int XEXPORT_SECTION = 7;
+	int XEXPORT_SECTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Export Declarations</b></em>' containment reference list.
@@ -416,7 +324,7 @@ public interface XtypePackage extends EPackage {
 	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXExportDeclaration()
 	 * @generated
 	 */
-	int XEXPORT_DECLARATION = 8;
+	int XEXPORT_DECLARATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Export Items</b></em>' containment reference list.
@@ -471,7 +379,7 @@ public interface XtypePackage extends EPackage {
 	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXExportItem()
 	 * @generated
 	 */
-	int XEXPORT_ITEM = 9;
+	int XEXPORT_ITEM = 7;
 
 	/**
 	 * The feature id for the '<em><b>Exported Id</b></em>' reference.
@@ -508,7 +416,7 @@ public interface XtypePackage extends EPackage {
 	 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getIJvmTypeReferenceProvider()
 	 * @generated
 	 */
-	int IJVM_TYPE_REFERENCE_PROVIDER = 10;
+	int IJVM_TYPE_REFERENCE_PROVIDER = 8;
 
 
 	/**
@@ -618,48 +526,26 @@ public interface XtypePackage extends EPackage {
 	EClass getXImportDeclaration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#isExtension <em>Extension</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportItems <em>Import Items</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Extension</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration#isExtension()
+	 * @return the meta object for the containment reference list '<em>Import Items</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getImportItems()
 	 * @see #getXImportDeclaration()
 	 * @generated
 	 */
-	EAttribute getXImportDeclaration_Extension();
+	EReference getXImportDeclaration_ImportItems();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#isStatic <em>Static</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#getAlias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Static</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration#isStatic()
+	 * @return the meta object for the attribute '<em>Alias</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getAlias()
 	 * @see #getXImportDeclaration()
 	 * @generated
 	 */
-	EAttribute getXImportDeclaration_Static();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportedType <em>Imported Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Imported Type</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getImportedType()
-	 * @see #getXImportDeclaration()
-	 * @generated
-	 */
-	EReference getXImportDeclaration_ImportedType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace <em>Imported Namespace</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace()
-	 * @see #getXImportDeclaration()
-	 * @generated
-	 */
-	EAttribute getXImportDeclaration_ImportedNamespace();
+	EAttribute getXImportDeclaration_Alias();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#isWildcard <em>Wildcard</em>}'.
@@ -673,90 +559,26 @@ public interface XtypePackage extends EPackage {
 	EAttribute getXImportDeclaration_Wildcard();
 
 	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xtype.XImportSection1 <em>XImport Section1</em>}'.
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xtype.XImportDeclaration#getModule <em>Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XImport Section1</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportSection1
+	 * @return the meta object for the reference '<em>Module</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getModule()
+	 * @see #getXImportDeclaration()
 	 * @generated
 	 */
-	EClass getXImportSection1();
+	EReference getXImportDeclaration_Module();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xtype.XImportSection1#getImportDeclarations <em>Import Declarations</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace <em>Imported Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Import Declarations</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportSection1#getImportDeclarations()
-	 * @see #getXImportSection1()
+	 * @return the meta object for the attribute '<em>Imported Namespace</em>'.
+	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace()
+	 * @see #getXImportDeclaration()
 	 * @generated
 	 */
-	EReference getXImportSection1_ImportDeclarations();
-
-	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xtype.XImportDeclaration1 <em>XImport Declaration1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XImport Declaration1</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1
-	 * @generated
-	 */
-	EClass getXImportDeclaration1();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xtype.XImportDeclaration1#getImportItems <em>Import Items</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Import Items</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#getImportItems()
-	 * @see #getXImportDeclaration1()
-	 * @generated
-	 */
-	EReference getXImportDeclaration1_ImportItems();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#getAlias <em>Alias</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Alias</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#getAlias()
-	 * @see #getXImportDeclaration1()
-	 * @generated
-	 */
-	EAttribute getXImportDeclaration1_Alias();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#getImportURI <em>Import URI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Import URI</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#getImportURI()
-	 * @see #getXImportDeclaration1()
-	 * @generated
-	 */
-	EAttribute getXImportDeclaration1_ImportURI();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#getName()
-	 * @see #getXImportDeclaration1()
-	 * @generated
-	 */
-	EAttribute getXImportDeclaration1_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration1#isWildcard <em>Wildcard</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Wildcard</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration1#isWildcard()
-	 * @see #getXImportDeclaration1()
-	 * @generated
-	 */
-	EAttribute getXImportDeclaration1_Wildcard();
+	EAttribute getXImportDeclaration_ImportedNamespace();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xtype.XImportItem <em>XImport Item</em>}'.
@@ -1019,36 +841,20 @@ public interface XtypePackage extends EPackage {
 		EClass XIMPORT_DECLARATION = eINSTANCE.getXImportDeclaration();
 
 		/**
-		 * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Import Items</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XIMPORT_DECLARATION__EXTENSION = eINSTANCE.getXImportDeclaration_Extension();
+		EReference XIMPORT_DECLARATION__IMPORT_ITEMS = eINSTANCE.getXImportDeclaration_ImportItems();
 
 		/**
-		 * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XIMPORT_DECLARATION__STATIC = eINSTANCE.getXImportDeclaration_Static();
-
-		/**
-		 * The meta object literal for the '<em><b>Imported Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XIMPORT_DECLARATION__IMPORTED_TYPE = eINSTANCE.getXImportDeclaration_ImportedType();
-
-		/**
-		 * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XIMPORT_DECLARATION__IMPORTED_NAMESPACE = eINSTANCE.getXImportDeclaration_ImportedNamespace();
+		EAttribute XIMPORT_DECLARATION__ALIAS = eINSTANCE.getXImportDeclaration_Alias();
 
 		/**
 		 * The meta object literal for the '<em><b>Wildcard</b></em>' attribute feature.
@@ -1059,72 +865,20 @@ public interface XtypePackage extends EPackage {
 		EAttribute XIMPORT_DECLARATION__WILDCARD = eINSTANCE.getXImportDeclaration_Wildcard();
 
 		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xtype.impl.XImportSection1Impl <em>XImport Section1</em>}' class.
+		 * The meta object literal for the '<em><b>Module</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xtype.impl.XImportSection1Impl
-		 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXImportSection1()
 		 * @generated
 		 */
-		EClass XIMPORT_SECTION1 = eINSTANCE.getXImportSection1();
+		EReference XIMPORT_DECLARATION__MODULE = eINSTANCE.getXImportDeclaration_Module();
 
 		/**
-		 * The meta object literal for the '<em><b>Import Declarations</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XIMPORT_SECTION1__IMPORT_DECLARATIONS = eINSTANCE.getXImportSection1_ImportDeclarations();
-
-		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xtype.impl.XImportDeclaration1Impl <em>XImport Declaration1</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xtype.impl.XImportDeclaration1Impl
-		 * @see org.summer.dsl.model.xtype.impl.XtypePackageImpl#getXImportDeclaration1()
-		 * @generated
-		 */
-		EClass XIMPORT_DECLARATION1 = eINSTANCE.getXImportDeclaration1();
-
-		/**
-		 * The meta object literal for the '<em><b>Import Items</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XIMPORT_DECLARATION1__IMPORT_ITEMS = eINSTANCE.getXImportDeclaration1_ImportItems();
-
-		/**
-		 * The meta object literal for the '<em><b>Alias</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XIMPORT_DECLARATION1__ALIAS = eINSTANCE.getXImportDeclaration1_Alias();
-
-		/**
-		 * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XIMPORT_DECLARATION1__IMPORT_URI = eINSTANCE.getXImportDeclaration1_ImportURI();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XIMPORT_DECLARATION1__NAME = eINSTANCE.getXImportDeclaration1_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Wildcard</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XIMPORT_DECLARATION1__WILDCARD = eINSTANCE.getXImportDeclaration1_Wildcard();
+		EAttribute XIMPORT_DECLARATION__IMPORTED_NAMESPACE = eINSTANCE.getXImportDeclaration_ImportedNamespace();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xtype.impl.XImportItemImpl <em>XImport Item</em>}' class.

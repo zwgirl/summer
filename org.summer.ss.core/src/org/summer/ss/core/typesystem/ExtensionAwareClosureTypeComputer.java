@@ -10,7 +10,6 @@ package org.summer.ss.core.typesystem;
 import java.util.List;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.summer.dsl.model.ss.XtendFormalParameter;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.xbase.XClosure;
@@ -74,13 +73,13 @@ public class ExtensionAwareClosureTypeComputer extends ClosureTypeComputer {
 	
 	protected void addExtensions(ITypeComputationState state) {
 		List<JvmFormalParameter> extensionProviders = null;
-		for(JvmFormalParameter parameter: getClosure().getDeclaredFormalParameters()) {
-			if (parameter instanceof XtendFormalParameter && ((XtendFormalParameter) parameter).isExtension()) {
-				if (extensionProviders == null)
-					extensionProviders = Lists.newLinkedList();
-				extensionProviders.add(parameter);
-			}
-		}
+//		for(JvmFormalParameter parameter: getClosure().getDeclaredFormalParameters()) {
+//			if (parameter instanceof XtendFormalParameter && ((XtendFormalParameter) parameter).isExtension()) {
+//				if (extensionProviders == null)
+//					extensionProviders = Lists.newLinkedList();
+//				extensionProviders.add(parameter);
+//			}
+//		}
 		if (extensionProviders != null)
 			state.addExtensionsToCurrentScope(extensionProviders);
 	}

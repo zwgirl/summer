@@ -40,7 +40,6 @@ import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
 import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
@@ -63,11 +62,11 @@ public class DefaultImportsConfiguration implements IImportsConfiguration {
 	@Inject
 	private ILogicalContainerProvider logicalContainerProvider;
 
-	public XImportSection1 getImportSection(XtextResource resource) {
+	public XImportSection getImportSection(XtextResource resource) {
 		for (Iterator<EObject> i = resource.getAllContents(); i.hasNext();) {
 			EObject next = i.next();
-			if (next instanceof XImportSection1)
-				return (XImportSection1) next;
+			if (next instanceof XImportSection)
+				return (XImportSection) next;
 		}
 		return null;
 	}
@@ -142,21 +141,22 @@ public class DefaultImportsConfiguration implements IImportsConfiguration {
 	 * the resolved type rather than the concrete syntax. 
 	 */
 	public String getLegacyImportSyntax(XImportDeclaration importDeclaration) {
-		List<INode> list = NodeModelUtils.findNodesForFeature(importDeclaration, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
-		if (list.isEmpty()) {
-			return null;
-		}
-		INode singleNode = list.get(0);
-		if (singleNode.getText().indexOf('$') < 0) {
-			return null;
-		}
-		StringBuilder sb = new StringBuilder();
-		for(ILeafNode node: singleNode.getLeafNodes()) {
-			if (!node.isHidden()) {
-				sb.append(node.getText().replace("^", ""));
-			}
-		}
-		return sb.toString();
+		return null;
+//		List<INode> list = NodeModelUtils.findNodesForFeature(importDeclaration, XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE);
+//		if (list.isEmpty()) {
+//			return null;
+//		}
+//		INode singleNode = list.get(0);
+//		if (singleNode.getText().indexOf('$') < 0) {
+//			return null;
+//		}
+//		StringBuilder sb = new StringBuilder();
+//		for(ILeafNode node: singleNode.getLeafNodes()) {
+//			if (!node.isHidden()) {
+//				sb.append(node.getText().replace("^", ""));
+//			}
+//		}
+//		return sb.toString();
 	}
 	
 	protected INode findPreviousNode(ICompositeNode node, List<EObject> pathToImportSection) {

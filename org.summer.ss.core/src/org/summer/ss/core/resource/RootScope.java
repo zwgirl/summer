@@ -8,9 +8,9 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmDelegateType;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
@@ -65,7 +65,7 @@ public class RootScope extends AbstractScope{
 
 	public Iterable<IEObjectDescription> getAllElements() {
 		List<IEObjectDescription> result = Lists.newLinkedList();
-		XModule file = (XModule) resource.getContents().get(0);
+		JvmModule file = (JvmModule) resource.getContents().get(0);
 		
 		List<EObject> contents = file.getContents();
 		for(EObject obj: contents){

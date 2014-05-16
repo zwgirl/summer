@@ -135,7 +135,7 @@ public class JvmModelCompleter {
 	protected void completeJvmGenericType(JvmGenericType element) {
 		// if no super type add Object
 		ensureSuperTypeObject(element);
-		if (!element.isInterface()) {
+//		if (!element.isInterface()) {
 			// if no constructors have been added, add a default constructor
 			if (isEmpty(element.getDeclaredConstructors())) {
 				JvmConstructor constructor = TypesFactory.eINSTANCE.createJvmConstructor();
@@ -143,7 +143,7 @@ public class JvmModelCompleter {
 				constructor.setVisibility(JvmVisibility.PUBLIC);
 				element.getMembers().add(constructor);
 			}
-		}
+//		}
 	}
 
 	protected void ensureSuperTypeObject(JvmDeclaredType element) {

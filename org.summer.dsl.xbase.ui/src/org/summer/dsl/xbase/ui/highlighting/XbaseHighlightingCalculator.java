@@ -20,17 +20,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
-import org.summer.dsl.model.types.JvmAnnotationTarget;
-import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.util.DeprecationUtil;
-import org.summer.dsl.model.types.util.Primitives;
-import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
@@ -41,6 +30,17 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfigurati
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.util.ITextRegion;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationTarget;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.util.DeprecationUtil;
+import org.summer.dsl.model.types.util.Primitives;
+import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -50,8 +50,6 @@ import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess;
 
 import com.google.common.collect.Maps;
@@ -137,8 +135,8 @@ public class XbaseHighlightingCalculator implements ISemanticHighlightingCalcula
 			// Handle XAnnotation in a special way because we want the @ highlighted too
 			if (object instanceof XNumberLiteral) {
 				highlightNumberLiterals((XNumberLiteral) object, acceptor);
-			} if (object instanceof XAnnotation) {
-				highlightAnnotation((XAnnotation) object, acceptor);
+			} if (object instanceof JvmAnnotationReference) {
+				highlightAnnotation((JvmAnnotationReference) object, acceptor);
 			} else {
 				computeReferencedJvmTypeHighlighting(acceptor, object);
 			}
@@ -246,8 +244,8 @@ public class XbaseHighlightingCalculator implements ISemanticHighlightingCalcula
 		}
 	}
 	
-	protected void highlightAnnotation(XAnnotation annotation, IHighlightedPositionAcceptor acceptor) {
-		JvmType annotationType = annotation.getAnnotationType();
+	protected void highlightAnnotation(JvmAnnotationReference annotation, IHighlightedPositionAcceptor acceptor) {
+		JvmType annotationType = annotation.getAnnotation();
 		if (annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType) {
 			ICompositeNode xannotationNode = NodeModelUtils.findActualNodeFor(annotation);
 			if (xannotationNode != null) {
@@ -255,7 +253,7 @@ public class XbaseHighlightingCalculator implements ISemanticHighlightingCalcula
 				if(firstLeafNode != null)
 					highlightNode(firstLeafNode, XbaseHighlightingConfiguration.ANNOTATION, acceptor);
 			}
-			highlightReferenceJvmType(acceptor, annotation, XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE, annotationType);
+			highlightReferenceJvmType(acceptor, annotation, TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, annotationType);
 		}
 	}
 	

@@ -3,26 +3,23 @@
 package org.summer.dsl.model.types.impl;
 
 import java.util.Collection;
-
+import java.util.LinkedList;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.TypesPackage;
-
+import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xtype.XExportSection;
-import org.summer.dsl.model.xtype.XImportSection1;
+import org.summer.dsl.model.xtype.XImportSection;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +32,7 @@ import org.summer.dsl.model.xtype.XImportSection1;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getExportSection <em>Export Section</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,7 +67,7 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * @generated
 	 * @ordered
 	 */
-	protected XImportSection1 importSection;
+	protected XImportSection importSection;
 
 	/**
 	 * The cached value of the '{@link #getContents() <em>Contents</em>}' containment reference list.
@@ -90,6 +88,16 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * @ordered
 	 */
 	protected XExportSection exportSection;
+
+	/**
+	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected XObjectElement root;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,7 +144,7 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XImportSection1 getImportSection() {
+	public XImportSection getImportSection() {
 		return importSection;
 	}
 
@@ -145,8 +153,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetImportSection(XImportSection1 newImportSection, NotificationChain msgs) {
-		XImportSection1 oldImportSection = importSection;
+	public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs) {
+		XImportSection oldImportSection = importSection;
 		importSection = newImportSection;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__IMPORT_SECTION, oldImportSection, newImportSection);
@@ -160,7 +168,7 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImportSection(XImportSection1 newImportSection) {
+	public void setImportSection(XImportSection newImportSection) {
 		if (newImportSection != importSection) {
 			NotificationChain msgs = null;
 			if (importSection != null)
@@ -234,6 +242,49 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public XObjectElement getRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRoot(XObjectElement newRoot, NotificationChain msgs) {
+		XObjectElement oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__ROOT, oldRoot, newRoot);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoot(XObjectElement newRoot) {
+		if (newRoot != root) {
+			NotificationChain msgs = null;
+			if (root != null)
+				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_MODULE__ROOT, null, msgs);
+			if (newRoot != null)
+				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_MODULE__ROOT, null, msgs);
+			msgs = basicSetRoot(newRoot, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__ROOT, newRoot, newRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -243,6 +294,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
 			case TypesPackage.JVM_MODULE__EXPORT_SECTION:
 				return basicSetExportSection(null, msgs);
+			case TypesPackage.JVM_MODULE__ROOT:
+				return basicSetRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -263,6 +316,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return getContents();
 			case TypesPackage.JVM_MODULE__EXPORT_SECTION:
 				return getExportSection();
+			case TypesPackage.JVM_MODULE__ROOT:
+				return getRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -280,7 +335,7 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				setSimpleName((String)newValue);
 				return;
 			case TypesPackage.JVM_MODULE__IMPORT_SECTION:
-				setImportSection((XImportSection1)newValue);
+				setImportSection((XImportSection)newValue);
 				return;
 			case TypesPackage.JVM_MODULE__CONTENTS:
 				getContents().clear();
@@ -288,6 +343,9 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return;
 			case TypesPackage.JVM_MODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)newValue);
+				return;
+			case TypesPackage.JVM_MODULE__ROOT:
+				setRoot((XObjectElement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,13 +363,16 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				setSimpleName(SIMPLE_NAME_EDEFAULT);
 				return;
 			case TypesPackage.JVM_MODULE__IMPORT_SECTION:
-				setImportSection((XImportSection1)null);
+				setImportSection((XImportSection)null);
 				return;
 			case TypesPackage.JVM_MODULE__CONTENTS:
 				getContents().clear();
 				return;
 			case TypesPackage.JVM_MODULE__EXPORT_SECTION:
 				setExportSection((XExportSection)null);
+				return;
+			case TypesPackage.JVM_MODULE__ROOT:
+				setRoot((XObjectElement)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -333,6 +394,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return contents != null && !contents.isEmpty();
 			case TypesPackage.JVM_MODULE__EXPORT_SECTION:
 				return exportSection != null;
+			case TypesPackage.JVM_MODULE__ROOT:
+				return root != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -351,6 +414,17 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 		result.append(simpleName);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public Iterable<JvmDeclaredType> getJvmDeclaredTypes() {
+		List<JvmDeclaredType> result = new LinkedList<JvmDeclaredType>();
+		for(EObject object : getContents()){
+			if(object instanceof JvmDeclaredType){
+				result.add((JvmDeclaredType) object);
+			}
+		}
+		return result;
 	}
 
 } //JvmModuleImpl

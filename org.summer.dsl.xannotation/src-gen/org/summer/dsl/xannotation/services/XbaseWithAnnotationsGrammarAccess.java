@@ -41,9 +41,11 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		private final RuleCall cValueXLiteralParserRuleCall_3_1_1_0 = (RuleCall)cValueAssignment_3_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
-		////XAnnotation :
+		////import "http://www.summer.org/dsl/model/xannotation"
+		// //XAnnotation :
 		// //	{XAnnotation}
-		// //	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
+		//
+		////	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
 		// //		(
 		//
 		////			elementValuePairs+=XAnnotationElementValuePair (',' elementValuePairs+=XAnnotationElementValuePair)* 
@@ -234,9 +236,11 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 	}
 
 	
-	////XAnnotation :
+	////import "http://www.summer.org/dsl/model/xannotation"
+	// //XAnnotation :
 	// //	{XAnnotation}
-	// //	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
+	//
+	////	'@' annotationType=[types::JvmAnnotationType | QualifiedName] (=>'('
 	// //		(
 	//
 	////			elementValuePairs+=XAnnotationElementValuePair (',' elementValuePairs+=XAnnotationElementValuePair)* 
@@ -1433,47 +1437,7 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return getXStringLiteralAccess().getRule();
 	}
 
-	////XTemplateLiteral returns XExpression:
-	// //	{XTemplate} ( 
-	// //	  expressions+=RichStringLiteral |
-	//
-	////	  expressions+=RichStringLiteralStart expressions+=XExpression? 
-	//
-	////	  	(expressions+=RichStringLiteralInbetween expressions+=XExpression?)* 
-	// //	  expressions+=RichStringLiteralEnd
-	//
-	////	)
-	// //;
-	// //
-	// //RichStringLiteral returns XExpression :
-	// //	{RichStringLiteral} value=RICH_TEXT
-	// //;
-	// //
-	//
-	////RichStringLiteralStart returns XExpression :
-	// //	{RichStringLiteral} value=RICH_TEXT_START
-	// //; 
-	// //
-	//
-	////RichStringLiteralInbetween returns XExpression :
-	// //	{RichStringLiteral} 
-	// //	( value=RICH_TEXT_INBETWEEN  )
-	// //; 
-	//
-	////
-	// //RichStringLiteralEnd returns XExpression :
-	// //	{RichStringLiteral} 
-	// //	( value=RICH_TEXT_END  )
-	// //; 
-	//
-	////InternalRichString returns XExpression:
-	// //	{RichString} (
-	//
-	////		expressions+=RichStringLiteralInbetween (expressions+=XExpression? expressions+=RichStringLiteralInbetween)*
-	//
-	////	)
-	// //;
-	// XTypeLiteral returns XExpression:
+	//XTypeLiteral returns XExpression:
 	//	{XTypeLiteral} "typeof" "(" type=[types::JvmType|QualifiedName] arrayDimensions+=ArrayBrackets* ")";
 	public XbaseGrammarAccess.XTypeLiteralElements getXTypeLiteralAccess() {
 		return gaXbase.getXTypeLiteralAccess();
@@ -1718,108 +1682,7 @@ public class XbaseWithAnnotationsGrammarAccess extends AbstractGrammarElementFin
 		return gaXbase.getIN_RICH_STRINGRule();
 	} 
 
-	////terminal RICH_TEXT : "'''" IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF);
-	//
-	////terminal RICH_TEXT_START : "'''" IN_RICH_STRING* ("'" "'"?)? '«';
-	//
-	////terminal RICH_TEXT_END : '»' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF) ;
-	//
-	////terminal RICH_TEXT_INBETWEEN : '»' IN_RICH_STRING* ("'" "'"?)? '«';
-	//
-	//////terminal COMMENT_RICH_TEXT_INBETWEEN: "««" !('\n'|'\r')* ('\r'? '\n' IN_RICH_STRING* ("'" "'"?)? '«')?; 
-	//
-	//////terminal COMMENT_RICH_TEXT_END: "««" !('\n'|'\r')* (('\r'? '\n' IN_RICH_STRING* ("'''"| ("'" "'"?)? EOF)) | EOF); 
-	//
-	//////
-	// //terminal fragment IN_RICH_STRING : 
-	// //	  "''" !('«'|"'") 
-	// //	| "'" !('«'|"'")
-	// //	| !('«'|"'");
-	//
-	////Template ::
-	// //NoSubstitutionTemplate
-	// //TemplateHead
-	// //
-	// //NoSubstitutionTemplate ::
-	// //` TemplateCharacters `
-	//
-	////
-	// //TemplateHead ::
-	// //` TemplateCharacters ${
-	// //	
-	// //TemplateSubstitutionTail ::
-	// //TemplateMiddle
-	//
-	////TemplateTail
-	// //
-	// //TemplateMiddle ::
-	// //} TemplateCharacters ${
-	// //	
-	// //TemplateTail ::
-	//
-	////} TemplateCharactersopt `
-	// //
-	// //TemplateCharacters ::
-	// //TemplateCharacter TemplateCharactersopt
-	// //
-	//
-	////TemplateCharacter ::
-	// //SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
-	// //$ [lookahead ≠ { ]
-	//
-	////\ EscapeSequence
-	// //LineContinuation
-	// //LineTerminatorSequence
-	// //XTemplate returns XExpression:
-	// //	{XTemplate}
-	//
-	////	expressions+=RichStringLiteral
-	// //	|TemplateHead
-	// //;
-	// //
-	// //RichStringLiteral:
-	//
-	////	'`' value=TemplateCharacters '`'
-	// //;
-	// //
-	// //TemplateHead:
-	// //'`' TemplateCharacters '${'
-	// //;
-	// //
-	//
-	////TemplateSubstitutionTail:
-	// //	TemplateMiddle
-	// //	|TemplateTail
-	// //;
-	// //
-	// //TemplateMiddle:
-	//
-	////	 TemplateCharacters '${'
-	// //;
-	// //
-	// //	
-	// //TemplateTail:
-	// //	 TemplateCharacters '`'
-	// //;
-	// //
-	//
-	////terminal TemplateCharacters:
-	// //	TemplateCharacter*
-	// ////	|TemplateCharacters
-	// //;
-	// //
-	//
-	////terminal fragment TemplateCharacter:
-	// ////	SourceCharacter but not one of ` or \ or $ or LineTerminatorSequence
-	//
-	////	!('`' |'\\'|'$') 
-	// ////	$ [lookahead ≠ { ]
-	// ////	\ EscapeSequence
-	// ////	LineContinuation
-	//
-	//////	LineTerminatorSequence
-	// //;
-	// terminal fragment IDENTIFIER_START:
+	//terminal fragment IDENTIFIER_START:
 	//	"$" | "A".."Z" | "_" | "a".."z" | "¢".."¥" | "ª" | "µ" | "º" | "À".."Ö" | "Ø".."ö" | "ø".."ȶ" | "ɐ".."ˁ" | "ˆ".."ˑ" |
 	//	"ˠ".."ˤ" | "ˮ" | "ͺ" | "Ά" | "Έ".."Ί" | "Ό" | "Ύ".."Ρ" | "Σ".."ώ" | "ϐ".."ϵ" | "Ϸ".."ϻ" | "Ѐ".."ҁ" | "Ҋ".."ӎ" |
 	//	"Ӑ".."ӵ" | "Ӹ".."ӹ" | "Ԁ".."ԏ" | "Ա".."Ֆ" | "ՙ" | "ա".."և" | "א".."ת" | "װ".."ײ" | "ء".."غ" | "ـ".."ي" | "ٮ".."ٯ" |

@@ -8,19 +8,14 @@
 package org.summer.ss.core.dispatch;
 
 import static com.google.common.collect.Iterables.any;
-import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.xtext.util.Pair;
-import org.eclipse.xtext.util.Tuples;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.dsl.model.ss.XtendFunction;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmOperation;
@@ -60,78 +55,78 @@ public class DispatchingSupport {
 
 	public Multimap<Pair<String, Integer>, JvmOperation> getDispatchMethods(JvmGenericType type) {
 		Multimap<Pair<String, Integer>, JvmOperation> result = LinkedHashMultimap.create();
-		collectDispatchMethods(type, result);
+//		collectDispatchMethods(type, result);
 		removeNonLocalMethods(type, result);
 		return result;
 	}
 
-	public Multimap<JvmOperation, JvmOperation> getDispatcher2dispatched(XtendClass clazz, boolean isLocalOnly) {
-		final JvmGenericType type = associations.getInferredType(clazz);
-		Multimap<Pair<String, Integer>, JvmOperation> dispatchMethods = LinkedHashMultimap.create();
-		collectDispatchMethods(type, dispatchMethods);
-		Multimap<JvmOperation, JvmOperation> dispatcher2dispatched = LinkedHashMultimap.create();
-		for (final Pair<String, Integer> signature : dispatchMethods.keySet()) {
-			JvmOperation localDispatcher = findSyntheticDispatchMethod(clazz, signature);
-			if (localDispatcher != null) {
-				Iterable<JvmOperation> dispatched = dispatchMethods.get(signature);
-				if(isLocalOnly)
-					dispatched = filter(dispatched, new Predicate<JvmOperation>() {
-						public boolean apply(JvmOperation input) {
-							return input.getDeclaringType() == type;
-						}
-					});
-				dispatcher2dispatched.putAll(localDispatcher, dispatched);
-			} else if (!isLocalOnly) {
-				Iterator<JvmOperation> iterator = filter(filter(type.getAllFeatures(), JvmOperation.class),
-						new Predicate<JvmOperation>() {
-							public boolean apply(JvmOperation input) {
-								return visibilityService.isVisible(input, type)
-										&& input.getParameters().size() == signature.getSecond()
-										&& input.getSimpleName().equals(signature.getFirst());
-							}
-						}).iterator();
-				if (iterator.hasNext()) {
-					dispatcher2dispatched.putAll(iterator.next(), dispatchMethods.get(signature));
-				}
-			}
-		}
-		return dispatcher2dispatched;
-	}
+//	public Multimap<JvmOperation, JvmOperation> getDispatcher2dispatched(XtendClass clazz, boolean isLocalOnly) {
+//		final JvmGenericType type = associations.getInferredType(clazz);
+//		Multimap<Pair<String, Integer>, JvmOperation> dispatchMethods = LinkedHashMultimap.create();
+//		collectDispatchMethods(type, dispatchMethods);
+//		Multimap<JvmOperation, JvmOperation> dispatcher2dispatched = LinkedHashMultimap.create();
+//		for (final Pair<String, Integer> signature : dispatchMethods.keySet()) {
+//			JvmOperation localDispatcher = findSyntheticDispatchMethod(clazz, signature);
+//			if (localDispatcher != null) {
+//				Iterable<JvmOperation> dispatched = dispatchMethods.get(signature);
+//				if(isLocalOnly)
+//					dispatched = filter(dispatched, new Predicate<JvmOperation>() {
+//						public boolean apply(JvmOperation input) {
+//							return input.getDeclaringType() == type;
+//						}
+//					});
+//				dispatcher2dispatched.putAll(localDispatcher, dispatched);
+//			} else if (!isLocalOnly) {
+//				Iterator<JvmOperation> iterator = filter(filter(type.getAllFeatures(), JvmOperation.class),
+//						new Predicate<JvmOperation>() {
+//							public boolean apply(JvmOperation input) {
+//								return visibilityService.isVisible(input, type)
+//										&& input.getParameters().size() == signature.getSecond()
+//										&& input.getSimpleName().equals(signature.getFirst());
+//							}
+//						}).iterator();
+//				if (iterator.hasNext()) {
+//					dispatcher2dispatched.putAll(iterator.next(), dispatchMethods.get(signature));
+//				}
+//			}
+//		}
+//		return dispatcher2dispatched;
+//	}
 
-	public JvmOperation findSyntheticDispatchMethod(XtendClass clazz, final Pair<String, Integer> signature) {
-		Iterable<XtendFunction> filter = filter(filter(clazz.getMembers(), XtendFunction.class),
-				new Predicate<XtendFunction>() {
-					public boolean apply(XtendFunction input) {
-						return input.isDispatch() && input.getParameters().size() == signature.getSecond()
-								&& input.getName().equals(signature.getFirst());
-					}
-				});
-		final Iterator<XtendFunction> iterator = filter.iterator();
-		if (iterator.hasNext()) {
-			return associations.getDispatchOperation(iterator.next());
-		}
-		return null;
-	}
+//	public JvmOperation findSyntheticDispatchMethod(XtendClass clazz, final Pair<String, Integer> signature) {
+//		Iterable<XtendFunction> filter = filter(filter(clazz.getMembers(), XtendFunction.class),
+//				new Predicate<XtendFunction>() {
+//					public boolean apply(XtendFunction input) {
+//						return input.isDispatch() && input.getParameters().size() == signature.getSecond()
+//								&& input.getName().equals(signature.getFirst());
+//					}
+//				});
+//		final Iterator<XtendFunction> iterator = filter.iterator();
+//		if (iterator.hasNext()) {
+//			return associations.getDispatchOperation(iterator.next());
+//		}
+//		return null;
+//	}
 
-	protected void collectDispatchMethods(final JvmGenericType type,
-			Multimap<Pair<String, Integer>, JvmOperation> result) {
-		if (type == null)
-			return;
-		Iterable<JvmOperation> features = filter(overridesService.getAllJvmFeatures(typeRefs.createTypeRef(type)),
-				JvmOperation.class);
-		collectDispatchMethods(type, features, result);
-	}
+//	protected void collectDispatchMethods(final JvmGenericType type,
+//			Multimap<Pair<String, Integer>, JvmOperation> result) {
+//		if (type == null)
+//			return;
+//		Iterable<JvmOperation> features = filter(overridesService.getAllJvmFeatures(typeRefs.createTypeRef(type)),
+//				JvmOperation.class);
+//		collectDispatchMethods(type, features, result);
+//	}
 
-	public void collectDispatchMethods(final JvmGenericType type, Iterable<JvmOperation> operations,
-			Multimap<Pair<String, Integer>, JvmOperation> result) {
-		for (JvmOperation operation : operations) {
-			if (isDispatchOperation(operation, type)) {
-				final Pair<String, Integer> signatureTuple = Tuples.create(operation.getSimpleName().substring(1),
-						operation.getParameters().size());
-				result.put(signatureTuple, operation);
-			}
-		}
-	}
+//	public void collectDispatchMethods(final JvmGenericType type, Iterable<JvmOperation> operations,
+//			Multimap<Pair<String, Integer>, JvmOperation> result) {
+//		for (JvmOperation operation : operations) {
+//			if (isDispatchOperation(operation, type)) {
+//				final Pair<String, Integer> signatureTuple = Tuples.create(operation.getSimpleName().substring(1),
+//						operation.getParameters().size());
+//				result.put(signatureTuple, operation);
+//			}
+//		}
+//	}
 
 	protected void removeNonLocalMethods(final JvmGenericType type, Multimap<Pair<String, Integer>, JvmOperation> result) {
 		List<Pair<String, Integer>> removeKeys = newArrayList();
@@ -150,20 +145,20 @@ public class DispatchingSupport {
 		}
 	}
 
-	protected boolean isDispatchOperation(JvmOperation operation, JvmGenericType contextType) {
-		if (visibilityService.isVisible(operation, contextType)) {
-			List<XtendFunction> sourceElements = newArrayList(filter(associations.getSourceElements(operation),
-					XtendFunction.class));
-			if (sourceElements.size() == 1) {
-				final XtendFunction xtendFunction = sourceElements.get(0);
-				return xtendFunction.isDispatch() && operation.getSimpleName().equals("_" + xtendFunction.getName());
-			}
-			return !operation.getParameters().isEmpty() && !operation.isStatic()
-					&& operation.getSimpleName().startsWith("_");
-		} else {
-			return false;
-		}
-	}
+//	protected boolean isDispatchOperation(JvmOperation operation, JvmGenericType contextType) {
+//		if (visibilityService.isVisible(operation, contextType)) {
+//			List<XtendFunction> sourceElements = newArrayList(filter(associations.getSourceElements(operation),
+//					XtendFunction.class));
+//			if (sourceElements.size() == 1) {
+//				final XtendFunction xtendFunction = sourceElements.get(0);
+//				return xtendFunction.isDispatch() && operation.getSimpleName().equals("_" + xtendFunction.getName());
+//			}
+//			return !operation.getParameters().isEmpty() && !operation.isStatic()
+//					&& operation.getSimpleName().startsWith("_");
+//		} else {
+//			return false;
+//		}
+//	}
 
 	public List<JvmOperation> sort(Collection<JvmOperation> collection) {
 		List<JvmOperation> list = newArrayList(collection);

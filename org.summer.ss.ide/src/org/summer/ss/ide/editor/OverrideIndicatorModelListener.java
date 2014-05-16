@@ -7,8 +7,11 @@
  *******************************************************************************/
 package org.summer.ss.ide.editor;
 
-import static com.google.common.collect.Iterables.*;
-import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*;
+import static com.google.common.collect.Iterables.concat;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.getFirst;
+import static com.google.common.collect.Iterables.transform;
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.findNodesForFeature;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,12 +29,6 @@ import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.jface.text.source.IAnnotationModelExtension;
-import org.summer.ss.core.typing.XtendOverridesService;
-import org.summer.dsl.model.ss.XModule;
-import org.summer.dsl.model.ss.XtendFunction;
-import org.summer.dsl.model.ss.SsPackage;
-import org.summer.dsl.model.ss.XtendTypeDeclaration;
-import org.summer.dsl.model.types.JvmOperation;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
@@ -41,6 +38,11 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.ss.core.typing.XtendOverridesService;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
@@ -154,19 +156,19 @@ public class OverrideIndicatorModelListener extends NullImpl implements IXtextMo
 		if (contents.isEmpty())
 			return Maps.newHashMap();
 		EObject eObject = contents.get(0);
-		if (!(eObject instanceof XModule)) {
+		if (!(eObject instanceof JvmModule)) {
 			return Maps.newHashMap();
 		}
-		XModule xtendFile = (XModule) eObject;
+		JvmModule xtendFile = (JvmModule) eObject;
 		Map<Annotation, Position> annotationToPosition = Maps.newHashMap();
-		for (XtendFunction xtendFunction : getXtendFunctions(xtendFile)) {
+		for (JvmOperation xtendFunction : getXtendFunctions(xtendFile)) {
 			if (xtendFunction.isOverride()) {
 				INode node = NodeModelUtils.getNode(xtendFunction);
 				JvmOperation jvmOperation = xtendOverridesService.findOverriddenOperation(xtendFunction);
 				if (node != null && jvmOperation != null) {
 					boolean overwriteIndicator = isOverwriteIndicator(jvmOperation);
 					String text = (overwriteIndicator ? "overrides " : "implements ") + jvmOperation.getQualifiedName(); //$NON-NLS-1$ //$NON-NLS-2$
-					node = getFirst(findNodesForFeature(xtendFunction, SsPackage.eINSTANCE.getXtendFunction_Name()),
+					node = getFirst(findNodesForFeature(xtendFunction, TypesPackage.eINSTANCE.getJvmMember_SimpleName()),
 							node);
 					annotationToPosition.put(
 							new OverrideIndicatorAnnotation(overwriteIndicator, text, xtextResource
@@ -177,10 +179,10 @@ public class OverrideIndicatorModelListener extends NullImpl implements IXtextMo
 		return annotationToPosition;
 	}
 
-	private Iterable<XtendFunction> getXtendFunctions(XModule xtendFile) {
-		return concat(transform(xtendFile.getXtendTypes(), new Function<XtendTypeDeclaration, Iterable<XtendFunction>>() {
-			public Iterable<XtendFunction> apply(XtendTypeDeclaration input) {
-				return filter(input.getMembers(), XtendFunction.class);
+	private Iterable<JvmOperation> getXtendFunctions(JvmModule xtendFile) {
+		return concat(transform(xtendFile.getJvmDeclaredTypes(), new Function<JvmDeclaredType, Iterable<JvmOperation>>() {
+			public Iterable<JvmOperation> apply(JvmDeclaredType input) {
+				return filter(input.getMembers(), JvmOperation.class);
 			}
 		}));
 	}

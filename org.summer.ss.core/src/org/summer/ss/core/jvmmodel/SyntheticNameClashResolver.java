@@ -7,14 +7,13 @@
  *******************************************************************************/
 package org.summer.ss.core.jvmmodel;
 
-import static com.google.common.collect.Lists.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static org.eclipse.xtext.util.Strings.isEmpty;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.dsl.model.ss.XtendField;
-import org.summer.dsl.model.ss.XtendFunction;
+import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
@@ -98,11 +97,12 @@ public class SyntheticNameClashResolver {
 	}
 
 	protected boolean isAnonymousExtensionField(EObject source) {
-		return source instanceof XtendField && ((XtendField) source).isExtension()
-				&& isEmpty(((XtendField) source).getName());
+		return source instanceof JvmField /*&& ((JvmField) source).isExtension()*/
+				&& isEmpty(((JvmField) source).getSimpleName());
 	}
 
 	protected boolean isCreateExtension(EObject source) {
-		return source instanceof XtendFunction && ((XtendFunction) source).getCreateExtensionInfo() != null;
+		return false;
+//		return source instanceof JvmOperation && ((JvmOperation) source).getCreateExtensionInfo() != null;
 	}
 }

@@ -16,29 +16,25 @@ import java.util.Map
 import org.eclipse.emf.common.notify.impl.AdapterImpl
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
-import org.summer.ss.core.macro.declaration.CompilationUnitImpl
-import org.summer.ss.core.validation.IssueCodes
-import org.summer.dsl.model.ss.XtendAnnotationTarget
-import org.summer.dsl.model.ss.XtendClass
-import org.summer.dsl.model.ss.XtendConstructor
-import org.summer.dsl.model.ss.XtendEnum
-import org.summer.dsl.model.ss.XtendFunction
-import org.summer.dsl.model.ss.XtendInterface
-import org.summer.dsl.model.types.JvmAnnotationType
 import org.eclipse.xtext.diagnostics.Severity
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.util.internal.Stopwatches
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl
-import org.summer.dsl.model.xannotation.XAnnotation
-import org.summer.dsl.model.xannotation.XannotationPackage
-import org.summer.dsl.model.ss.XModule
+import org.eclipse.xtext.xbase.lib.Pair
+import org.summer.dsl.model.types.JvmAnnotationReference
+import org.summer.dsl.model.types.JvmAnnotationTarget
+import org.summer.dsl.model.types.JvmAnnotationType
+import org.summer.dsl.model.types.JvmModule
+import org.summer.dsl.model.types.TypesPackage
+import org.summer.ss.core.macro.declaration.CompilationUnitImpl
+import org.summer.ss.core.validation.IssueCodes
 
 /**
  * @author Sven Efftinge
  */
 class ActiveAnnotationContext {
 	
-	@Property val List<XtendAnnotationTarget> annotatedSourceElements = newArrayList()
+	@Property val List<JvmAnnotationTarget> annotatedSourceElements = newArrayList()
 	@Property Object processorInstance
 	@Property CompilationUnitImpl compilationUnit
 	
@@ -50,7 +46,7 @@ class ActiveAnnotationContext {
 		val List<? extends EObject> sourceElements = getAnnotatedSourceElements();
 		for (EObject target : sourceElements) {
 			switch target {
-				XtendAnnotationTarget : {
+				JvmAnnotationTarget : {
 					val annotations = target.annotations
 					errors.add(new EObjectDiagnosticImpl(Severity.ERROR, IssueCodes.PROCESSING_ERROR, msg, if (annotations.isEmpty()) target else annotations.head, null, -1, null));
 				}
@@ -122,7 +118,7 @@ class ActiveAnnotationContextProvider {
 	@Inject extension ProcessorInstanceForJvmTypeProvider
 	@Inject Provider<CompilationUnitImpl> compilationUnitProvider
 	
-	def ActiveAnnotationContexts computeContext(XModule file) {
+	def ActiveAnnotationContexts computeContext(JvmModule file) {
 		//TODO measure and improve (is called twice for each xtendfile)
 		val task = Stopwatches.forTask('[macros] findActiveAnnotations (ActiveAnnotationContextProvider.computeContext)')
 		task.start
@@ -134,24 +130,24 @@ class ActiveAnnotationContextProvider {
 				if (!result.contexts.containsKey(key)) {
 					val fa = new ActiveAnnotationContext
 					fa.compilationUnit = compilationUnit
-					val processorType = key.getProcessorType
-					try {
-						val processorInstance = processorType.processorInstance
-						if (processorInstance == null) {
-							throw new IllegalStateException("Couldn't instantiate the annotation processor of type '" + processorType.identifier + "'. This is usually the case when the processor resides in the same project as the annotated element.");
-						}
-						fa.setProcessorInstance(processorInstance)
-					} catch (VirtualMachineError e) {
-						throw e
-					} catch (Throwable e) {
-						val msg = switch e {
-							ExceptionInInitializerError : e.exception.message
-							default : e.message
-						} 
-						file.eResource.errors.add(new EObjectDiagnosticImpl(Severity.ERROR, 
-							IssueCodes.PROCESSING_ERROR, '''Problem while loading annotation processor: �msg�''', value,
-							XannotationPackage.Literals.XANNOTATION__ANNOTATION_TYPE, -1, null))
-					}
+//					val processorType = key.getProcessorType
+//					try {
+//						val processorInstance = processorType.processorInstance
+//						if (processorInstance == null) {
+//							throw new IllegalStateException("Couldn't instantiate the annotation processor of type '" + processorType.identifier + "'. This is usually the case when the processor resides in the same project as the annotated element.");
+//						}
+//						fa.setProcessorInstance(processorInstance)
+//					} catch (VirtualMachineError e) {
+//						throw e
+//					} catch (Throwable e) {
+//						val msg = switch e {
+//							ExceptionInInitializerError : e.exception.message
+//							default : e.message
+//						} 
+//						file.eResource.errors.add(new EObjectDiagnosticImpl(Severity.ERROR, 
+//							IssueCodes.PROCESSING_ERROR, '''Problem while loading annotation processor: �msg�''', value,
+//							TypesPackage.Literals.JVM_ANNOTATION_REFERENCE__ANNOTATION, -1, null))
+//					}
 					result.contexts.put(key, fa)
 				}
 				result.contexts.get(key).annotatedSourceElements += value.annotatedTarget
@@ -171,50 +167,50 @@ class ActiveAnnotationContextProvider {
 	/**
 	 * recursively looks for macro annotations on XtendAnnotationTargets 
 	 */
-	def private void searchAnnotatedElements(EObject element, IAcceptor<Pair<JvmAnnotationType, XAnnotation>> acceptor) {
-		switch element {
-			XModule : {
-				element.xtendTypes.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendClass : {
-				element.registerMacroAnnotations(acceptor)
-				element.members.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendInterface : {
-				element.registerMacroAnnotations(acceptor)
-				element.members.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendEnum : {
-				element.registerMacroAnnotations(acceptor)
-				element.members.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendFunction : {
-				element.registerMacroAnnotations(acceptor)
-				element.parameters.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendConstructor : {
-				element.registerMacroAnnotations(acceptor)
-				element.parameters.forEach [
-					searchAnnotatedElements(acceptor)
-				]
-			}
-			XtendAnnotationTarget : {
-				element.registerMacroAnnotations(acceptor)
-			}
-		}
+	def private void searchAnnotatedElements(EObject element, IAcceptor<Pair<JvmAnnotationType, JvmAnnotationReference>> acceptor) {
+//		switch element {
+//			JvmModule : {
+//				element.xtendTypes.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendClass : {
+//				element.registerMacroAnnotations(acceptor)
+//				element.members.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendInterface : {
+//				element.registerMacroAnnotations(acceptor)
+//				element.members.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendEnum : {
+//				element.registerMacroAnnotations(acceptor)
+//				element.members.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendFunction : {
+//				element.registerMacroAnnotations(acceptor)
+//				element.parameters.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendConstructor : {
+//				element.registerMacroAnnotations(acceptor)
+//				element.parameters.forEach [
+//					searchAnnotatedElements(acceptor)
+//				]
+//			}
+//			XtendAnnotationTarget : {
+//				element.registerMacroAnnotations(acceptor)
+//			}
+//		}
 	}
 	
-	def private void registerMacroAnnotations(XtendAnnotationTarget candidate, IAcceptor<Pair<JvmAnnotationType, XAnnotation>> acceptor) {
+	def private void registerMacroAnnotations(JvmAnnotationTarget candidate, IAcceptor<Pair<JvmAnnotationType, JvmAnnotationReference>> acceptor) {
 		for (annotation : candidate.annotations.filter[ processed ]) {
 			val activeAnnotationDeclaration = annotation.tryFindAnnotationType
 			if (activeAnnotationDeclaration != null) {
@@ -225,7 +221,7 @@ class ActiveAnnotationContextProvider {
 		}
 	}
 	
-	def private boolean isValid(XAnnotation annotation, JvmAnnotationType activeAnnotationDeclaration) {
+	def private boolean isValid(JvmAnnotationReference annotation, JvmAnnotationType activeAnnotationDeclaration) {
 		//TODO validate the annotationTarget against the annotation processor (compatible types, etc.)
 		return annotation != null
 	}

@@ -33,12 +33,12 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIntAnnotationValue;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLongAnnotationValue;
 import org.summer.dsl.model.types.JvmLowerBound;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmMultiTypeReference;
-import org.summer.dsl.model.types.JvmNoModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
@@ -102,7 +102,6 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 		switch (eClass.getClassifierID()) {
 			case TypesPackage.JVM_VOID: return createJvmVoid();
 			case TypesPackage.JVM_MODULE: return createJvmModule();
-			case TypesPackage.JVM_NO_MODULE: return createJvmNoModule();
 			case TypesPackage.JVM_DECLARED_TYPE: return createJvmDeclaredType();
 			case TypesPackage.JVM_ARRAY_TYPE: return createJvmArrayType();
 			case TypesPackage.JVM_TYPE_PARAMETER: return createJvmTypeParameter();
@@ -113,6 +112,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 			case TypesPackage.JVM_ENUMERATION_TYPE: return createJvmEnumerationType();
 			case TypesPackage.JVM_ENUMERATION_LITERAL: return createJvmEnumerationLiteral();
 			case TypesPackage.JVM_GENERIC_TYPE: return createJvmGenericType();
+			case TypesPackage.JVM_INTERFACE_TYPE: return createJvmInterfaceType();
 			case TypesPackage.JVM_PARAMETERIZED_TYPE_REFERENCE: return createJvmParameterizedTypeReference();
 			case TypesPackage.JVM_GENERIC_ARRAY_TYPE_REFERENCE: return createJvmGenericArrayTypeReference();
 			case TypesPackage.JVM_WILDCARD_TYPE_REFERENCE: return createJvmWildcardTypeReference();
@@ -657,10 +657,6 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 		return new JvmModuleImpl();
 	}
 
-	public JvmNoModule createJvmNoModule() {
-		return new JvmNoModuleImpl();
-	}
-
 	public JvmAnnotationValue createJvmAnnotationValue() {
 		return new JvmAnnotationValueImplCustom();
 	}
@@ -678,6 +674,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	@Override
 	public JvmEvent createJvmEvent() {
 		return new JvmEventImpl();
+	}
+
+	@Override
+	public JvmInterfaceType createJvmInterfaceType() {
+		return new JvmInterfaceTypeImpl();
 	}
 
 } //TypesFactoryImpl

@@ -22,6 +22,8 @@ import org.summer.dsl.xbase.typesystem.IBatchTypeResolver
 import org.summer.dsl.xbase.validation.UIStrings
 import org.summer.dsl.model.xtype.XImportDeclaration
 import org.summer.dsl.model.xtype.XImportSection
+import org.summer.dsl.model.types.JvmInterfaceType
+import org.summer.dsl.model.types.JvmEnumerationLiteral
 
 class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	
@@ -47,7 +49,7 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	protected def dispatch ImageDescriptor imageDescriptor(JvmGenericType genericType) {
-		if (genericType.interface)
+		if (genericType instanceof JvmInterfaceType)
 			images.forInterface(genericType.visibility, adornments.get(genericType))
 		else
 			images.forClass(genericType.visibility, adornments.get(genericType))
@@ -58,6 +60,10 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	protected def dispatch ImageDescriptor imageDescriptor(JvmAnnotationType annotationType) {
+		images.forAnnotation(annotationType.visibility, adornments.get(annotationType))
+	}
+	
+	protected def dispatch ImageDescriptor imageDescriptor(JvmInterfaceType annotationType) {
 		images.forAnnotation(annotationType.visibility, adornments.get(annotationType))
 	}
 
@@ -88,6 +94,11 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	protected def String text(JvmField field) {
 		field.simpleName + " : " + field.type.simpleName
 	}
+	
+	
+	protected def text(JvmEnumerationLiteral element) {
+		element.simpleName
+	}
 
 	protected def dispatch ImageDescriptor imageDescriptor(JvmFormalParameter parameter) {
 		images.forLocalVariable(adornments.get(parameter))
@@ -106,10 +117,10 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	protected def String text(XImportDeclaration importDeclaration) {
-		if (importDeclaration.getImportedNamespace() != null) 
-			importDeclaration.getImportedNamespace()
+		if (importDeclaration.getAlias() != null) 
+			importDeclaration.getAlias()
 		else
-			importDeclaration.getImportedTypeName()
+			importDeclaration.module.simpleName
 	}
 
 	protected def String text(XImportSection importSection) {

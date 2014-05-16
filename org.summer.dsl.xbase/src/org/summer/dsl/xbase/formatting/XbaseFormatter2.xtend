@@ -10,13 +10,13 @@ import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.nodemodel.ICompositeNode
 import org.eclipse.xtext.nodemodel.INode
+import org.summer.dsl.model.types.JvmAnnotationReference
 import org.summer.dsl.model.types.JvmFormalParameter
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference
 import org.summer.dsl.model.types.JvmParameterizedTypeReference
 import org.summer.dsl.model.types.JvmTypeConstraint
 import org.summer.dsl.model.types.JvmTypeParameter
 import org.summer.dsl.model.types.JvmWildcardTypeReference
-import org.summer.dsl.model.xannotation.XAnnotation
 import org.summer.dsl.model.xbase.XAbstractFeatureCall
 import org.summer.dsl.model.xbase.XAssignment
 import org.summer.dsl.model.xbase.XBinaryOperation
@@ -108,22 +108,23 @@ class XbaseFormatter2 extends AbstractFormatter {
 	}
 
 
-	def protected dispatch void format(XAnnotation ann, FormattableDocument document) {
+	def protected dispatch void format(JvmAnnotationReference ann, FormattableDocument document) {
 		ann.nodeForKeyword("@") => [document += append[noSpace]]
 		ann.nodeForKeyword("(") => [document += prepend[noSpace] document += append[noSpace]]
 		if (ann.value != null) {
 			ann.value.format(document)
 			ann.nodeForKeyword(")") => [document += prepend[noSpace]]
-		} else if (!ann.elementValuePairs.empty) {
-			for (pair : ann.elementValuePairs) {
-				pair.nodeForKeyword("=") => [document += prepend[noSpace] document += append[noSpace]]
-				pair.value.format(document)
-				val separator = pair.nodeForEObject.immediatelyFollowingKeyword(",")
-				document += separator.prepend[noSpace]
-				document += separator.append[oneSpace]
-			}
-			ann.nodeForKeyword(")") => [document += prepend[noSpace]]
-		}
+		} 
+//		else if (!ann.elementValuePairs.empty) {
+//			for (pair : ann.elementValuePairs) {
+//				pair.nodeForKeyword("=") => [document += prepend[noSpace] document += append[noSpace]]
+//				pair.value.format(document)
+//				val separator = pair.nodeForEObject.immediatelyFollowingKeyword(",")
+//				document += separator.prepend[noSpace]
+//				document += separator.append[oneSpace]
+//			}
+//			ann.nodeForKeyword(")") => [document += prepend[noSpace]]
+//		}
 	}
 
 	def protected dispatch void format(JvmGenericArrayTypeReference array, FormattableDocument document) {

@@ -21,7 +21,6 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmAnnotationValue;
@@ -37,7 +36,9 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmType;
@@ -250,9 +251,9 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 		Map<JvmIdentifiableElement, ResolvedTypes> resolvedTypesByContext = Maps.newHashMapWithExpectedSize(3); 
 		
 		EObject result = getRoot();
-		if (result instanceof XModule){
-			XModule file = (XModule) result;
-			List<EObject> contents = file.getContents();
+		if (result instanceof JvmModule){
+			JvmModule module = (JvmModule) result;
+			List<EObject> contents = module.getContents();
 			for(EObject obj: contents){
 				if(obj instanceof JvmDeclaredType || obj instanceof JvmDelegateType){
 					doPrepare(resolvedTypes, featureScopeSession, (JvmIdentifiableElement)obj, resolvedTypesByContext);
@@ -484,8 +485,8 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 //	}
 	
 	protected void computeTypes(Map<JvmIdentifiableElement, ResolvedTypes> preparedResolvedTypes, ResolvedTypes resolvedTypes, IFeatureScopeSession featureScopeSession, EObject element) {
-		if (element instanceof XModule) {
-			XModule module = (XModule) element;
+		if (element instanceof JvmModule) {
+			JvmModule module = (JvmModule) element;
 			List<EObject> contents = module.getContents();
 			
 			for(EObject obj: contents){
@@ -923,6 +924,14 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 				if(operation.getModifiers().contains("overload")){
 					operation.setOverload(true);
 				}
+				
+				if(operation.getModifiers().contains("override")){
+					operation.setOverride(true);
+				}
+				
+				if(operation.getModifiers().contains("abstract")){
+					operation.setAbstract(true);
+				}
 			}
 
 			computeTypes(preparedResolvedTypes, resolvedTypes, childSession, members.get(i));
@@ -956,7 +965,7 @@ public class LogicalContainerAwareReentrantTypeResolver extends DefaultReentrant
 	@Nullable
 	public JvmTypeReference getExtendedClass(JvmDeclaredType type) {
 		for(JvmTypeReference candidate: type.getSuperTypes()) {
-			if (candidate.getType() instanceof JvmGenericType && !((JvmGenericType) candidate.getType()).isInterface())
+			if (candidate.getType() instanceof JvmGenericType && !(candidate.getType() instanceof JvmInterfaceType))
 				return candidate;
 		}
 		return null;

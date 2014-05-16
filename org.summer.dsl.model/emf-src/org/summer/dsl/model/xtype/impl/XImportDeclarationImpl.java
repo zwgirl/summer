@@ -2,17 +2,19 @@
  */
 package org.summer.dsl.model.xtype.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.summer.dsl.model.types.JvmDeclaredType;
-
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.impl.JvmIdentifiableElementImpl;
 import org.summer.dsl.model.xtype.XImportDeclaration;
+import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XtypePackage;
 
 /**
@@ -22,86 +24,46 @@ import org.summer.dsl.model.xtype.XtypePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#isExtension <em>Extension</em>}</li>
- *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportedType <em>Imported Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportItems <em>Import Items</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#isWildcard <em>Wildcard</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getModule <em>Module</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class XImportDeclarationImpl extends MinimalEObjectImpl.Container implements XImportDeclaration {
+public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implements XImportDeclaration {
 	/**
-	 * The default value of the '{@link #isExtension() <em>Extension</em>}' attribute.
+	 * The cached value of the '{@link #getImportItems() <em>Import Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isExtension()
+	 * @see #getImportItems()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean EXTENSION_EDEFAULT = false;
+	protected EList<XImportItem> importItems;
 
 	/**
-	 * The cached value of the '{@link #isExtension() <em>Extension</em>}' attribute.
+	 * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isExtension()
+	 * @see #getAlias()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean extension = EXTENSION_EDEFAULT;
+	protected static final String ALIAS_EDEFAULT = null;
 
 	/**
-	 * The default value of the '{@link #isStatic() <em>Static</em>}' attribute.
+	 * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isStatic()
+	 * @see #getAlias()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean STATIC_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isStatic() <em>Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isStatic()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean static_ = STATIC_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getImportedType() <em>Imported Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImportedType()
-	 * @generated
-	 * @ordered
-	 */
-	protected JvmDeclaredType importedType;
-
-	/**
-	 * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImportedNamespace()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImportedNamespace()
-	 * @generated
-	 * @ordered
-	 */
-	protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
+	protected String alias = ALIAS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isWildcard() <em>Wildcard</em>}' attribute.
@@ -122,6 +84,36 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected boolean wildcard = WILDCARD_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getModule() <em>Module</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModule()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmModule module;
+
+	/**
+	 * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedNamespace()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedNamespace()
+	 * @generated
+	 * @ordered
+	 */
+	protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,58 +139,11 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isExtension() {
-		return extension;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExtension(boolean newExtension) {
-		boolean oldExtension = extension;
-		extension = newExtension;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__EXTENSION, oldExtension, extension));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isStatic() {
-		return static_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatic(boolean newStatic) {
-		boolean oldStatic = static_;
-		static_ = newStatic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__STATIC, oldStatic, static_));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JvmDeclaredType getImportedType() {
-		if (importedType != null && importedType.eIsProxy()) {
-			InternalEObject oldImportedType = (InternalEObject)importedType;
-			importedType = (JvmDeclaredType)eResolveProxy(oldImportedType);
-			if (importedType != oldImportedType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE, oldImportedType, importedType));
-			}
+	public EList<XImportItem> getImportItems() {
+		if (importItems == null) {
+			importItems = new EObjectContainmentEList<XImportItem>(XImportItem.class, this, XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS);
 		}
-		return importedType;
+		return importItems;
 	}
 
 	/**
@@ -206,8 +151,8 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmDeclaredType basicGetImportedType() {
-		return importedType;
+	public String getAlias() {
+		return alias;
 	}
 
 	/**
@@ -215,32 +160,11 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImportedType(JvmDeclaredType newImportedType) {
-		JvmDeclaredType oldImportedType = importedType;
-		importedType = newImportedType;
+	public void setAlias(String newAlias) {
+		String oldAlias = alias;
+		alias = newAlias;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE, oldImportedType, importedType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getImportedNamespace() {
-		return importedNamespace;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImportedNamespace(String newImportedNamespace) {
-		String oldImportedNamespace = importedNamespace;
-		importedNamespace = newImportedNamespace;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
+			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__ALIAS, oldAlias, alias));
 	}
 
 	/**
@@ -269,7 +193,66 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getImportedTypeName() {
+	public JvmModule getModule() {
+		if (module != null && module.eIsProxy()) {
+			InternalEObject oldModule = (InternalEObject)module;
+			module = (JvmModule)eResolveProxy(oldModule);
+			if (module != oldModule) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XtypePackage.XIMPORT_DECLARATION__MODULE, oldModule, module));
+			}
+		}
+		return module;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmModule basicGetModule() {
+		return module;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setModule(JvmModule newModule) {
+		JvmModule oldModule = module;
+		module = newModule;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__MODULE, oldModule, module));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getImportedNamespace() {
+		return importedNamespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImportedNamespace(String newImportedNamespace) {
+		String oldImportedNamespace = importedNamespace;
+		importedNamespace = newImportedNamespace;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getModuleName() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -281,19 +264,33 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS:
+				return ((InternalEList<?>)getImportItems()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XtypePackage.XIMPORT_DECLARATION__EXTENSION:
-				return isExtension();
-			case XtypePackage.XIMPORT_DECLARATION__STATIC:
-				return isStatic();
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE:
-				if (resolve) return getImportedType();
-				return basicGetImportedType();
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
-				return getImportedNamespace();
+			case XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS:
+				return getImportItems();
+			case XtypePackage.XIMPORT_DECLARATION__ALIAS:
+				return getAlias();
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				return isWildcard();
+			case XtypePackage.XIMPORT_DECLARATION__MODULE:
+				if (resolve) return getModule();
+				return basicGetModule();
+			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
+				return getImportedNamespace();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -303,23 +300,25 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XtypePackage.XIMPORT_DECLARATION__EXTENSION:
-				setExtension((Boolean)newValue);
+			case XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS:
+				getImportItems().clear();
+				getImportItems().addAll((Collection<? extends XImportItem>)newValue);
 				return;
-			case XtypePackage.XIMPORT_DECLARATION__STATIC:
-				setStatic((Boolean)newValue);
-				return;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE:
-				setImportedType((JvmDeclaredType)newValue);
-				return;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
-				setImportedNamespace((String)newValue);
+			case XtypePackage.XIMPORT_DECLARATION__ALIAS:
+				setAlias((String)newValue);
 				return;
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				setWildcard((Boolean)newValue);
+				return;
+			case XtypePackage.XIMPORT_DECLARATION__MODULE:
+				setModule((JvmModule)newValue);
+				return;
+			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
+				setImportedNamespace((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -333,20 +332,20 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XtypePackage.XIMPORT_DECLARATION__EXTENSION:
-				setExtension(EXTENSION_EDEFAULT);
+			case XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS:
+				getImportItems().clear();
 				return;
-			case XtypePackage.XIMPORT_DECLARATION__STATIC:
-				setStatic(STATIC_EDEFAULT);
-				return;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE:
-				setImportedType((JvmDeclaredType)null);
-				return;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
-				setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
+			case XtypePackage.XIMPORT_DECLARATION__ALIAS:
+				setAlias(ALIAS_EDEFAULT);
 				return;
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				setWildcard(WILDCARD_EDEFAULT);
+				return;
+			case XtypePackage.XIMPORT_DECLARATION__MODULE:
+				setModule((JvmModule)null);
+				return;
+			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
+				setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -360,16 +359,16 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XtypePackage.XIMPORT_DECLARATION__EXTENSION:
-				return extension != EXTENSION_EDEFAULT;
-			case XtypePackage.XIMPORT_DECLARATION__STATIC:
-				return static_ != STATIC_EDEFAULT;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE:
-				return importedType != null;
-			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
-				return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
+			case XtypePackage.XIMPORT_DECLARATION__IMPORT_ITEMS:
+				return importItems != null && !importItems.isEmpty();
+			case XtypePackage.XIMPORT_DECLARATION__ALIAS:
+				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				return wildcard != WILDCARD_EDEFAULT;
+			case XtypePackage.XIMPORT_DECLARATION__MODULE:
+				return module != null;
+			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
+				return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -384,14 +383,12 @@ public class XImportDeclarationImpl extends MinimalEObjectImpl.Container impleme
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (extension: ");
-		result.append(extension);
-		result.append(", static: ");
-		result.append(static_);
-		result.append(", importedNamespace: ");
-		result.append(importedNamespace);
+		result.append(" (alias: ");
+		result.append(alias);
 		result.append(", wildcard: ");
 		result.append(wildcard);
+		result.append(", importedNamespace: ");
+		result.append(importedNamespace);
 		result.append(')');
 		return result.toString();
 	}

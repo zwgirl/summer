@@ -22,11 +22,11 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
-import org.summer.dsl.model.ss.XModule;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -135,8 +135,8 @@ public class ReceiverFeatureScope extends AbstractSessionBasedScope implements I
 
 	@Override
 	protected Iterable<IEObjectDescription> getAllLocalElements() {
-		if(receiver instanceof XModule){
-			 XModule module = (XModule) receiver;
+		if(receiver instanceof JvmModule){
+			JvmModule module = (JvmModule) receiver;
 			 List<IEObjectDescription> allDescriptions = Lists.newArrayListWithCapacity(module.getContents().size());
 			 for(EObject obj: module.getContents()){
 				 if(obj instanceof JvmIdentifiableElement){

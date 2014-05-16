@@ -7,21 +7,15 @@
  *******************************************************************************/
 package org.summer.dsl.xannotation.validation;
 
-import static com.google.common.collect.Lists.*;
-import static org.summer.dsl.xbase.validation.IssueCodes.*;
+import static org.summer.dsl.xbase.validation.IssueCodes.ANNOTATIONS_MISSING_ATTRIBUTE_DEFINITION;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EPackage;
-import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.xannotation.validation.AnnotationValueValidator;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
 import org.summer.dsl.xannotation.typing.XAnnotationUtil;
 import org.summer.dsl.xbase.validation.XbaseJavaValidator;
 
@@ -35,24 +29,24 @@ public class XbaseWithAnnotationsJavaValidator extends XbaseJavaValidator {
 	@Inject
 	private AnnotationValueValidator annotationValueValidator;
 	
-	@Override
-	protected List<EPackage> getEPackages() {
-		final List<EPackage> ePackages = newArrayList(super.getEPackages());
-		ePackages.add(XannotationPackage.eINSTANCE);
-		return ePackages;
-	}
+//	@Override
+//	protected List<EPackage> getEPackages() {
+//		final List<EPackage> ePackages = newArrayList(super.getEPackages());
+//		ePackages.add(XannotationPackage.eINSTANCE);
+//		return ePackages;
+//	}
 
 	@Check
-	public void checkAllAttributesConfigured(XAnnotation annotation) {
-		JvmType annotationType = annotation.getAnnotationType();
+	public void checkAllAttributesConfigured(JvmAnnotationReference annotation) {
+		JvmType annotationType = annotation.getAnnotation();
 		if (annotationType == null || annotationType.eIsProxy() || !(annotationType instanceof JvmAnnotationType))
 			return;
-		Iterable<JvmOperation> attributes = ((JvmAnnotationType) annotationType).getDeclaredOperations();
-		for (JvmOperation jvmOperation : attributes) {
-			XExpression value = annotationUtil.findValue(annotation, jvmOperation);
+		Iterable<JvmField> attributes = ((JvmAnnotationType) annotationType).getDeclaredFields();
+		for (JvmField jvmField : attributes) {
+			XExpression value = annotationUtil.findValue(annotation, jvmField);
 			if(value == null) {
-				if (jvmOperation.getDefaultValue() == null) {
-					error("The annotation must define the attribute '"+jvmOperation.getSimpleName()+"'.", annotation, null, 
+				if (jvmField.getDefaultValue() == null) {
+					error("The annotation must define the attribute '"+jvmField.getSimpleName()+"'.", annotation, null, 
 							ValidationMessageAcceptor.INSIGNIFICANT_INDEX, ANNOTATIONS_MISSING_ATTRIBUTE_DEFINITION);
 				}
 			} else
@@ -62,7 +56,7 @@ public class XbaseWithAnnotationsJavaValidator extends XbaseJavaValidator {
 	
 	@Override
 	protected boolean isImplicitReturn(XExpression expr) {
-		if (expr instanceof XAnnotation)
+		if (expr instanceof JvmAnnotationReference)
 			return false;
 		return super.isImplicitReturn(expr);
 	}

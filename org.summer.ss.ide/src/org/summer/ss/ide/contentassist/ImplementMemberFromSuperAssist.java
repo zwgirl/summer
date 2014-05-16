@@ -7,11 +7,12 @@
  *******************************************************************************/
 package org.summer.ss.ide.contentassist;
 
-import static com.google.common.collect.Iterables.*;
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Sets.*;
-import static java.util.Collections.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Iterables.contains;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Lists.transform;
+import static com.google.common.collect.Sets.newHashSet;
+import static org.eclipse.xtext.util.Strings.notNull;
 
 import java.util.List;
 import java.util.Set;
@@ -23,11 +24,12 @@ import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
-import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
-import org.summer.ss.core.validation.TypeErasedSignature;
-import org.summer.dsl.model.ss.XtendClass;
-import org.summer.ss.ide.codebuilder.MemberFromSuperImplementor;
-import org.summer.ss.ide.labeling.SsImages;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.IImageHelper;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.ui.editor.contentassist.IProposalConflictHelper;
+import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmExecutable;
@@ -40,17 +42,15 @@ import org.summer.dsl.model.types.util.ITypeArgumentContext;
 import org.summer.dsl.model.types.util.TypeArgumentContextProvider;
 import org.summer.dsl.model.types.util.TypeReferences;
 import org.summer.dsl.model.types.util.VisibilityService;
-import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.IImageHelper;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.contentassist.IProposalConflictHelper;
-import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.summer.dsl.xbase.ui.contentassist.ImportOrganizingProposal;
 import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable;
 import org.summer.dsl.xbase.ui.document.DocumentSourceAppender.Factory.OptionalParameters;
 import org.summer.dsl.xbase.ui.labeling.XbaseImageAdornments;
 import org.summer.dsl.xbase.validation.UIStrings;
+import org.summer.ss.core.jvmmodel.IXtendJvmAssociations;
+import org.summer.ss.core.validation.TypeErasedSignature;
+import org.summer.ss.ide.codebuilder.MemberFromSuperImplementor;
+import org.summer.ss.ide.labeling.SsImages;
 
 import com.google.common.base.Function;
 import com.google.inject.Inject;
@@ -99,20 +99,20 @@ public class ImplementMemberFromSuperAssist {
 	private static Pattern bodyExpressionPattern = Pattern.compile("\\{\\s*(.*?)\\s*$\\s*\\}", Pattern.MULTILINE
 			| Pattern.DOTALL);
 
-	protected Iterable<JvmExecutable> getImplementationCandidates(XtendClass clazz) {
-		final JvmGenericType inferredType = associations.getInferredType(clazz);
-		if (inferredType == null)
-			return emptySet();
+	protected Iterable<JvmExecutable> getImplementationCandidates(JvmDeclaredType clazz) {
+//		final JvmGenericType inferredType = associations.getInferredType(clazz);
+//		if (inferredType == null)
+//			return emptySet();
 		ITypeArgumentContext typeArgumentContext = typeArgumentContextProvider
-				.getTypeArgumentContext(new TypeArgumentContextProvider.ReceiverRequest(typeReferences.createTypeRef(inferredType)));
+				.getTypeArgumentContext(new TypeArgumentContextProvider.ReceiverRequest(typeReferences.createTypeRef(clazz)));
 		Set<TypeErasedSignature> erasureKeys = newHashSet();
-		for (JvmOperation op : inferredType.getDeclaredOperations()) {
+		for (JvmOperation op : clazz.getDeclaredOperations()) {
 			erasureKeys.add(signatureProvider.get(op));
 		}
 		List<JvmExecutable> result = newArrayList();
 		for (JvmExecutable executable : filter(
-				featureOverridesService.getAllJvmFeatures(inferredType, typeArgumentContext), JvmExecutable.class)) {
-			if (isCandidate(executable, inferredType)) {
+				featureOverridesService.getAllJvmFeatures(clazz, typeArgumentContext), JvmExecutable.class)) {
+			if (isCandidate(executable, clazz)) {
 				TypeErasedSignature erasureKey = signatureProvider.get(executable);
 				if (erasureKeys.add(erasureKey)) {
 					result.add(executable);
@@ -139,7 +139,7 @@ public class ImplementMemberFromSuperAssist {
 		return false;
 	}
 
-	public void createOverrideProposals(XtendClass model, ContentAssistContext context,
+	public void createOverrideProposals(JvmDeclaredType model, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor, IProposalConflictHelper conflictHelper) {
 		Iterable<JvmExecutable> overrideables = getImplementationCandidates(model);
 		for (JvmExecutable overridden : overrideables) {
@@ -150,7 +150,7 @@ public class ImplementMemberFromSuperAssist {
 		}
 	}
 
-	protected ICompletionProposal createOverrideMethodProposal(XtendClass model, JvmExecutable overridden,
+	protected ICompletionProposal createOverrideMethodProposal(JvmDeclaredType model, JvmExecutable overridden,
 			final ContentAssistContext context, IProposalConflictHelper conflictHelper) {
 		ReplacingAppendable appendable = appendableFactory.create(context.getDocument(), (XtextResource) model.eResource(), context.getReplaceRegion()
 				.getOffset(), context.getReplaceRegion().getLength(), new OptionalParameters() {{ 
@@ -159,10 +159,10 @@ public class ImplementMemberFromSuperAssist {
 				}});
 		final String simpleName;
 		if (overridden instanceof JvmOperation) {
-			implementor.appendOverrideFunction(model, (JvmOperation) overridden, appendable);
+			implementor.appendOverrideFunction((JvmGenericType) model, (JvmOperation) overridden, appendable);
 			simpleName = overridden.getSimpleName();
 		} else {
-			implementor.appendConstructorFromSuper(model, (JvmConstructor) overridden, appendable);
+			implementor.appendConstructorFromSuper((JvmGenericType) model, (JvmConstructor) overridden, appendable);
 			simpleName = "new";
 		}
 		String code = appendable.getCode();
@@ -210,7 +210,7 @@ public class ImplementMemberFromSuperAssist {
 		return true;
 	}
 
-	protected int getPriority(XtendClass model, JvmExecutable overridden, ContentAssistContext context) {
+	protected int getPriority(JvmDeclaredType model, JvmExecutable overridden, ContentAssistContext context) {
 		return (overridden instanceof JvmOperation && ((JvmOperation) overridden).isAbstract()) ? 400 : 350;
 	}
 

@@ -21,6 +21,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmArrayType;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeConstraint;
@@ -401,7 +402,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 	
 	@Override
 	public boolean isInterfaceType() {
-		return type.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && ((JvmGenericType) type).isInterface();
+		return type.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && (type instanceof JvmInterfaceType);
 	}
 	
 	@Override
@@ -561,7 +562,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 	@Nullable
 	private JvmTypeReference getSuperTypeByName(String typeName, boolean interfaceType, JvmType thisType, RecursionGuard<JvmType> guard) {
 		EClass thisTypeEClass = thisType.eClass();
-		if (!interfaceType && thisTypeEClass == TypesPackage.Literals.JVM_GENERIC_TYPE && ((JvmGenericType) thisType).isInterface()) {
+		if (!interfaceType && thisTypeEClass == TypesPackage.Literals.JVM_GENERIC_TYPE && (thisType instanceof JvmInterfaceType)) {
 			return null;
 		}
 		if (thisTypeEClass == TypesPackage.Literals.JVM_VOID || thisTypeEClass == TypesPackage.Literals.JVM_PRIMITIVE_TYPE) {
@@ -674,7 +675,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 			} else if (isInterfaceType()) {
 				return null;
 			}
-			if (otherEClass == TypesPackage.Literals.JVM_GENERIC_TYPE && !(interfaceType = ((JvmGenericType) rawType).isInterface()) && isInterfaceType()) {
+			if (otherEClass == TypesPackage.Literals.JVM_GENERIC_TYPE && !(interfaceType = (rawType instanceof JvmInterfaceType) && isInterfaceType())) {
 				return null;
 			}
 		}
@@ -684,7 +685,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 
 	@Nullable
 	private JvmTypeReference getSuperType(JvmType rawType, boolean interfaceType, JvmType thisType, RecursionGuard<JvmType> guard) {
-		if (thisType == rawType || !interfaceType && thisType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && ((JvmGenericType) thisType).isInterface()) {
+		if (thisType == rawType || !interfaceType && thisType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && (thisType instanceof JvmInterfaceType)) {
 			return null;
 		}
 		if (!guard.tryNext(thisType)) {

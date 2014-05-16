@@ -9,11 +9,11 @@ package org.summer.ss.ide.codebuilder
 
 import com.google.inject.Inject
 import org.eclipse.jdt.core.IType
-import org.summer.dsl.model.ss.XtendTypeDeclaration
 import org.summer.dsl.xbase.compiler.ISourceAppender
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference
 
 import static org.summer.dsl.model.types.JvmVisibility.*
+import org.summer.dsl.model.types.JvmDeclaredType
 
 /**
  * @author Jan Koehnlein
@@ -60,7 +60,7 @@ class XtendMethodBuilder extends AbstractMethodBuilder implements ICodeBuilder.X
 	}
 	
 	override getXtendType() {
-		ownerSource as XtendTypeDeclaration
+		ownerSource as JvmDeclaredtype
 	}
 }
 

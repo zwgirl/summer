@@ -7,21 +7,21 @@
  *******************************************************************************/
 package org.summer.dsl.xannotation.scoping;
 
-import static com.google.common.collect.Iterables.*;
+import static com.google.common.collect.Iterables.transform;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.EcoreUtil2;
-import org.summer.dsl.model.types.JvmAnnotationType;
-import org.summer.dsl.model.types.JvmFeature;
-import org.summer.dsl.model.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.MapBasedScope;
-import org.summer.dsl.model.xannotation.XAnnotation;
-import org.summer.dsl.model.xannotation.XannotationPackage;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationType;
+import org.summer.dsl.model.types.JvmFeature;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.xbase.scoping.XbaseScopeProvider;
 
 import com.google.common.base.Function;
@@ -38,9 +38,9 @@ public class XbaseWithAnnotationsScopeProvider extends XbaseScopeProvider {
 	
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
-		if (reference == XannotationPackage.Literals.XANNOTATION_ELEMENT_VALUE_PAIR__ELEMENT) {
-			XAnnotation annotation = EcoreUtil2.getContainerOfType(context, XAnnotation.class);
-			JvmType annotationType = annotation.getAnnotationType();
+		if (reference == TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD) {
+			JvmAnnotationReference annotation = EcoreUtil2.getContainerOfType(context, JvmAnnotationReference.class);
+			JvmType annotationType = annotation.getAnnotation();
 			if (annotationType != null && !annotationType.eIsProxy() && annotationType instanceof JvmAnnotationType) {
 				Iterable<JvmFeature> features = ((JvmAnnotationType) annotationType).getAllFeatures();
 				Iterable<IEObjectDescription> descriptions = transform(features, new Function<JvmFeature, IEObjectDescription>() {

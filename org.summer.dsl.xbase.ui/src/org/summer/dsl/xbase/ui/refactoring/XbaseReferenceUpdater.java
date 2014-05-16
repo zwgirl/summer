@@ -119,8 +119,10 @@ public class XbaseReferenceUpdater extends JvmModelReferenceUpdater {
 		return new ImportAwareUpdateAcceptor(updateAcceptor, importSection);
 	}
 
+	//cym comment
 	protected boolean isImportTypeReference(IReferenceDescription input) {
-		return input.getEReference() == XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE;
+//		return input.getEReference() == XtypePackage.Literals.XIMPORT_DECLARATION__IMPORTED_TYPE;
+		return true;
 	}
 
 	@Override
