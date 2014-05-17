@@ -386,7 +386,7 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 			// check for final modifier
 			if (featureCall.getFeature() instanceof XVariableDeclaration) {
 				XVariableDeclaration variableDeclaration = (XVariableDeclaration) featureCall.getFeature();
-				if (!((XVariableDeclarationList)variableDeclaration.eContainer()).isWriteable()) {
+				if (!((XVariableDeclarationList)variableDeclaration.eContainer()).isReadonly()) {
 					internalToJavaStatement(arg, b, true);
 					return;
 				}

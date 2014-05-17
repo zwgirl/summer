@@ -103,7 +103,7 @@ public class TypeInsteadOfConstructorLinkingCandidate extends AbstractUnresolvab
 			typeKind = "annotation type";
 		} else if (type instanceof JvmEnumerationType) {
 			typeKind = "enum type";
-		} else if (type instanceof JvmGenericType && type instanceof JvmInterfaceType) {
+		} else if (type instanceof JvmInterfaceType) {
 			typeKind = "interface type";
 		} else if (type instanceof JvmTypeParameter) {
 			typeKind = "type parameter";

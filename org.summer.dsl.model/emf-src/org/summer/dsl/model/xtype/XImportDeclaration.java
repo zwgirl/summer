@@ -4,7 +4,6 @@ package org.summer.dsl.model.xtype;
 
 import org.eclipse.emf.common.util.EList;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmModule;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,7 +16,6 @@ import org.summer.dsl.model.types.JvmModule;
  *   <li>{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportItems <em>Import Items</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.XImportDeclaration#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.XImportDeclaration#isWildcard <em>Wildcard</em>}</li>
- *   <li>{@link org.summer.dsl.model.xtype.XImportDeclaration#getModule <em>Module</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
@@ -91,32 +89,6 @@ public interface XImportDeclaration extends JvmIdentifiableElement {
 	 * @generated
 	 */
 	void setWildcard(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Module</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Module</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Module</em>' reference.
-	 * @see #setModule(JvmModule)
-	 * @see org.summer.dsl.model.xtype.XtypePackage#getXImportDeclaration_Module()
-	 * @model
-	 * @generated
-	 */
-	JvmModule getModule();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xtype.XImportDeclaration#getModule <em>Module</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Module</em>' reference.
-	 * @see #getModule()
-	 * @generated
-	 */
-	void setModule(JvmModule value);
 
 	/**
 	 * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.

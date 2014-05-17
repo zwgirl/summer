@@ -39,7 +39,6 @@ import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
@@ -135,7 +134,6 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XPOSTFIX_OPERATION: return createXPostfixOperation();
 			case XbasePackage.XTERNARY_OPERATION: return createXTernaryOperation();
 			case XbasePackage.XINDEX_OPERATION: return createXIndexOperation();
-			case XbasePackage.XPREFIX_OPERATION: return createXPrefixOperation();
 			case XbasePackage.XMEMBER_FEATURE_CALL1: return createXMemberFeatureCall1();
 			case XbasePackage.XKEY_VALUE_PAIR: return createXKeyValuePair();
 			case XbasePackage.XOBJECT_LITERAL: return createXObjectLiteral();
@@ -236,33 +234,33 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XMemberFeatureCall createXMemberFeatureCall()
 	{
-		XMemberFeatureCallImpl xMemberFeatureCall = new XMemberFeatureCallImpl();
+		XMemberFeatureCallImplCustom xMemberFeatureCall = new XMemberFeatureCallImplCustom();
 		return xMemberFeatureCall;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XFeatureCall createXFeatureCall()
 	{
-		XFeatureCallImpl xFeatureCall = new XFeatureCallImpl();
+		XFeatureCallImplCustom xFeatureCall = new XFeatureCallImplCustom();
 		return xFeatureCall;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XConstructorCall createXConstructorCall()
 	{
-		XConstructorCallImpl xConstructorCall = new XConstructorCallImpl();
+		XConstructorCallImplCustom xConstructorCall = new XConstructorCallImplCustom();
 		return xConstructorCall;
 	}
 
@@ -335,11 +333,11 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XClosure createXClosure()
 	{
-		XClosureImpl xClosure = new XClosureImpl();
+		XClosureImplCustom xClosure = new XClosureImplCustom();
 		return xClosure;
 	}
 
@@ -357,22 +355,22 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XBinaryOperation createXBinaryOperation()
 	{
-		XBinaryOperationImpl xBinaryOperation = new XBinaryOperationImpl();
+		XBinaryOperationImplCustom xBinaryOperation = new XBinaryOperationImplCustom();
 		return xBinaryOperation;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XUnaryOperation createXUnaryOperation()
 	{
-		XUnaryOperationImpl xUnaryOperation = new XUnaryOperationImpl();
+		XUnaryOperationImplCustom xUnaryOperation = new XUnaryOperationImplCustom();
 		return xUnaryOperation;
 	}
 
@@ -467,22 +465,22 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XAssignment createXAssignment()
 	{
-		XAssignmentImpl xAssignment = new XAssignmentImpl();
+		XAssignmentImplCustom xAssignment = new XAssignmentImplCustom();
 		return xAssignment;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XReturnExpression createXReturnExpression()
 	{
-		XReturnExpressionImpl xReturnExpression = new XReturnExpressionImpl();
+		XReturnExpressionImplCustom xReturnExpression = new XReturnExpressionImplCustom();
 		return xReturnExpression;
 	}
 	
@@ -509,19 +507,15 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public XPostfixOperation createXPostfixOperation() {
-		XPostfixOperationImpl xPostfixOperation = new XPostfixOperationImpl();
+		XPostfixOperationImplCustom xPostfixOperation = new XPostfixOperationImplCustom();
 		return xPostfixOperation;
 	}
 	
 	public XTernaryOperation createXTernaryOperation() {
 		return new XTernaryOperationImpl();
-	}
-	
-	public XPrefixOperation createXPrefixOperation() {
-		return new XPrefixOperationImpl();
 	}
 
 	public XIndexOperation createXIndexOperation() {

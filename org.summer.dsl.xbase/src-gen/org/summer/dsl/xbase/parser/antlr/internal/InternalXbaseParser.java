@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_RICH_TEXT", "RULE_RICH_TEXT_START", "RULE_RICH_TEXT_INBETWEEN", "RULE_RICH_TEXT_END", "RULE_IDENTIFIER_START", "RULE_UNICODE_ESCAPE", "RULE_IDENTIFIER_PART", "RULE_HEX_DIGIT", "RULE_IN_RICH_STRING", "RULE_IDENTIFIER_PART_IMPL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'*='", "'/='", "'%='", "'+='", "'-='", "'>'", "'>='", "'<'", "'<='", "'&='", "'^='", "'|='", "'&'", "'|'", "'^'", "'+'", "'-'", "'?'", "':'", "'*'", "'/'", "'%'", "'++'", "'--'", "'!'", "'~'", "'as'", "'('", "','", "')'", "'['", "']'", "'.'", "'?.'", "'function'", "'operator'", "'if'", "'else'", "'switch'", "'{'", "'default'", "'}'", "'case'", "'for'", "';'", "'foreach'", "'while'", "'do'", "'export'", "'var'", "'const'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'break'", "'continue'", "'try'", "'finally'", "'catch'", "'extends'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_RICH_TEXT", "RULE_RICH_TEXT_START", "RULE_RICH_TEXT_INBETWEEN", "RULE_RICH_TEXT_END", "RULE_IDENTIFIER_START", "RULE_UNICODE_ESCAPE", "RULE_IDENTIFIER_PART", "RULE_HEX_DIGIT", "RULE_IN_RICH_STRING", "RULE_IDENTIFIER_PART_IMPL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'*='", "'/='", "'%='", "'+='", "'-='", "'>'", "'>='", "'<'", "'<='", "'&='", "'^='", "'|='", "'&'", "'|'", "'^'", "'+'", "'-'", "'?'", "':'", "'*'", "'/'", "'%'", "'++'", "'--'", "'!'", "'~'", "'as'", "'('", "','", "')'", "'['", "']'", "'.'", "'?.'", "'function'", "'operator'", "'if'", "'else'", "'switch'", "'{'", "'default'", "'}'", "'case'", "'for'", "';'", "'foreach'", "'while'", "'do'", "'export'", "'var'", "'const'", "'...'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'break'", "'continue'", "'try'", "'finally'", "'catch'", "'@'", "'extends'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -44,6 +44,8 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final int T__90=90;
     public static final int RULE_RICH_TEXT_END=12;
     public static final int RULE_DECIMAL=8;
+    public static final int T__97=97;
+    public static final int T__96=96;
     public static final int T__95=95;
     public static final int T__80=80;
     public static final int T__81=81;
@@ -53,8 +55,8 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final int T__85=85;
     public static final int T__84=84;
     public static final int T__87=87;
-    public static final int T__86=86;
     public static final int RULE_IN_RICH_STRING=17;
+    public static final int T__86=86;
     public static final int T__89=89;
     public static final int T__88=88;
     public static final int RULE_ML_COMMENT=19;
@@ -2453,7 +2455,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     if ( (LA9_3==36) ) {
                         alt9=1;
                     }
-                    else if ( (LA9_3==EOF||(LA9_3>=RULE_ID && LA9_3<=RULE_RICH_TEXT_START)||LA9_3==38||(LA9_3>=46 && LA9_3<=47)||(LA9_3>=53 && LA9_3<=56)||LA9_3==58||LA9_3==65||LA9_3==67||(LA9_3>=69 && LA9_3<=70)||LA9_3==74||(LA9_3>=76 && LA9_3<=78)||(LA9_3>=82 && LA9_3<=92)) ) {
+                    else if ( (LA9_3==EOF||(LA9_3>=RULE_ID && LA9_3<=RULE_RICH_TEXT_START)||LA9_3==38||(LA9_3>=46 && LA9_3<=47)||(LA9_3>=53 && LA9_3<=56)||LA9_3==58||LA9_3==65||LA9_3==67||(LA9_3>=69 && LA9_3<=70)||LA9_3==74||(LA9_3>=76 && LA9_3<=78)||(LA9_3>=83 && LA9_3<=93)) ) {
                         alt9=2;
                     }
                     else {
@@ -4731,7 +4733,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( ((LA21_0>=46 && LA21_0<=47)||(LA21_0>=53 && LA21_0<=56)) ) {
                 alt21=1;
             }
-            else if ( ((LA21_0>=RULE_ID && LA21_0<=RULE_RICH_TEXT_START)||LA21_0==38||LA21_0==58||LA21_0==65||LA21_0==67||(LA21_0>=69 && LA21_0<=70)||LA21_0==74||(LA21_0>=76 && LA21_0<=78)||(LA21_0>=82 && LA21_0<=92)) ) {
+            else if ( ((LA21_0>=RULE_ID && LA21_0<=RULE_RICH_TEXT_START)||LA21_0==38||LA21_0==58||LA21_0==65||LA21_0==67||(LA21_0>=69 && LA21_0<=70)||LA21_0==74||(LA21_0>=76 && LA21_0<=78)||(LA21_0>=83 && LA21_0<=93)) ) {
                 alt21=2;
             }
             else {
@@ -5442,7 +5444,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    int alt25=2;
             	    int LA25_0 = input.LA(1);
 
-            	    if ( ((LA25_0>=RULE_ID && LA25_0<=RULE_RICH_TEXT_START)||LA25_0==38||(LA25_0>=46 && LA25_0<=47)||(LA25_0>=53 && LA25_0<=56)||LA25_0==58||LA25_0==65||LA25_0==67||(LA25_0>=69 && LA25_0<=70)||LA25_0==74||(LA25_0>=76 && LA25_0<=78)||(LA25_0>=82 && LA25_0<=92)) ) {
+            	    if ( ((LA25_0>=RULE_ID && LA25_0<=RULE_RICH_TEXT_START)||LA25_0==38||(LA25_0>=46 && LA25_0<=47)||(LA25_0>=53 && LA25_0<=56)||LA25_0==58||LA25_0==65||LA25_0==67||(LA25_0>=69 && LA25_0<=70)||LA25_0==74||(LA25_0>=76 && LA25_0<=78)||(LA25_0>=83 && LA25_0<=93)) ) {
             	        alt25=1;
             	    }
             	    switch (alt25) {
@@ -5628,7 +5630,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    int alt27=2;
             	    int LA27_0 = input.LA(1);
 
-            	    if ( ((LA27_0>=RULE_ID && LA27_0<=RULE_RICH_TEXT_START)||LA27_0==38||(LA27_0>=46 && LA27_0<=47)||(LA27_0>=53 && LA27_0<=56)||LA27_0==58||LA27_0==65||LA27_0==67||(LA27_0>=69 && LA27_0<=70)||LA27_0==74||(LA27_0>=76 && LA27_0<=78)||(LA27_0>=82 && LA27_0<=92)) ) {
+            	    if ( ((LA27_0>=RULE_ID && LA27_0<=RULE_RICH_TEXT_START)||LA27_0==38||(LA27_0>=46 && LA27_0<=47)||(LA27_0>=53 && LA27_0<=56)||LA27_0==58||LA27_0==65||LA27_0==67||(LA27_0>=69 && LA27_0<=70)||LA27_0==74||(LA27_0>=76 && LA27_0<=78)||(LA27_0>=83 && LA27_0<=93)) ) {
             	        alt27=1;
             	    }
             	    switch (alt27) {
@@ -6176,7 +6178,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	            int alt32=2;
             	            int LA32_0 = input.LA(1);
 
-            	            if ( ((LA32_0>=RULE_ID && LA32_0<=RULE_RICH_TEXT_START)||LA32_0==38||(LA32_0>=46 && LA32_0<=47)||(LA32_0>=53 && LA32_0<=56)||LA32_0==58||LA32_0==65||LA32_0==67||(LA32_0>=69 && LA32_0<=70)||LA32_0==74||(LA32_0>=76 && LA32_0<=78)||(LA32_0>=82 && LA32_0<=92)) ) {
+            	            if ( ((LA32_0>=RULE_ID && LA32_0<=RULE_RICH_TEXT_START)||LA32_0==38||(LA32_0>=46 && LA32_0<=47)||(LA32_0>=53 && LA32_0<=56)||LA32_0==58||LA32_0==65||LA32_0==67||(LA32_0>=69 && LA32_0<=70)||LA32_0==74||(LA32_0>=76 && LA32_0<=78)||(LA32_0>=83 && LA32_0<=93)) ) {
             	                alt32=1;
             	            }
             	            switch (alt32) {
@@ -7351,7 +7353,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             int alt39=2;
             int LA39_0 = input.LA(1);
 
-            if ( (LA39_0==RULE_ID) ) {
+            if ( (LA39_0==RULE_ID||LA39_0==82||LA39_0==96) ) {
                 alt39=1;
             }
             switch (alt39) {
@@ -8055,13 +8057,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             int alt43=2;
             int LA43_0 = input.LA(1);
 
-            if ( ((LA43_0>=RULE_ID && LA43_0<=RULE_RICH_TEXT_START)||LA43_0==38||(LA43_0>=46 && LA43_0<=47)||(LA43_0>=53 && LA43_0<=56)||LA43_0==65||LA43_0==67||(LA43_0>=69 && LA43_0<=70)||LA43_0==74||(LA43_0>=76 && LA43_0<=78)||(LA43_0>=82 && LA43_0<=92)) ) {
+            if ( ((LA43_0>=RULE_ID && LA43_0<=RULE_RICH_TEXT_START)||LA43_0==38||(LA43_0>=46 && LA43_0<=47)||(LA43_0>=53 && LA43_0<=56)||LA43_0==65||LA43_0==67||(LA43_0>=69 && LA43_0<=70)||LA43_0==74||(LA43_0>=76 && LA43_0<=78)||(LA43_0>=83 && LA43_0<=93)) ) {
                 alt43=1;
             }
             else if ( (LA43_0==58) ) {
                 int LA43_2 = input.LA(2);
 
-                if ( ((LA43_2>=RULE_STRING && LA43_2<=RULE_RICH_TEXT_START)||LA43_2==38||(LA43_2>=46 && LA43_2<=47)||(LA43_2>=53 && LA43_2<=56)||LA43_2==58||LA43_2==65||LA43_2==67||(LA43_2>=69 && LA43_2<=70)||LA43_2==74||(LA43_2>=76 && LA43_2<=78)||(LA43_2>=82 && LA43_2<=92)) ) {
+                if ( ((LA43_2>=RULE_STRING && LA43_2<=RULE_RICH_TEXT_START)||LA43_2==38||(LA43_2>=46 && LA43_2<=47)||(LA43_2>=53 && LA43_2<=56)||LA43_2==58||LA43_2==65||LA43_2==67||(LA43_2>=69 && LA43_2<=70)||LA43_2==74||(LA43_2>=76 && LA43_2<=78)||(LA43_2>=83 && LA43_2<=93)) ) {
                     alt43=1;
                 }
                 else if ( (LA43_2==RULE_ID) ) {
@@ -8866,7 +8868,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             int alt48=2;
             int LA48_0 = input.LA(1);
 
-            if ( ((LA48_0>=RULE_ID && LA48_0<=RULE_RICH_TEXT_START)||LA48_0==38||(LA48_0>=46 && LA48_0<=47)||(LA48_0>=53 && LA48_0<=56)||LA48_0==58||LA48_0==65||LA48_0==67||(LA48_0>=69 && LA48_0<=70)||LA48_0==74||(LA48_0>=76 && LA48_0<=78)||(LA48_0>=82 && LA48_0<=92)) ) {
+            if ( ((LA48_0>=RULE_ID && LA48_0<=RULE_RICH_TEXT_START)||LA48_0==38||(LA48_0>=46 && LA48_0<=47)||(LA48_0>=53 && LA48_0<=56)||LA48_0==58||LA48_0==65||LA48_0==67||(LA48_0>=69 && LA48_0<=70)||LA48_0==74||(LA48_0>=76 && LA48_0<=78)||(LA48_0>=83 && LA48_0<=93)) ) {
                 alt48=1;
             }
             switch (alt48) {
@@ -9662,7 +9664,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                 int alt50=2;
                 int LA50_0 = input.LA(1);
 
-                if ( ((LA50_0>=RULE_ID && LA50_0<=RULE_RICH_TEXT_START)||LA50_0==38||(LA50_0>=46 && LA50_0<=47)||(LA50_0>=53 && LA50_0<=56)||LA50_0==58||LA50_0==65||LA50_0==67||(LA50_0>=69 && LA50_0<=70)||LA50_0==74||(LA50_0>=76 && LA50_0<=92)) ) {
+                if ( ((LA50_0>=RULE_ID && LA50_0<=RULE_RICH_TEXT_START)||LA50_0==38||(LA50_0>=46 && LA50_0<=47)||(LA50_0>=53 && LA50_0<=56)||LA50_0==58||LA50_0==65||LA50_0==67||(LA50_0>=69 && LA50_0<=70)||LA50_0==74||(LA50_0>=76 && LA50_0<=81)||(LA50_0>=83 && LA50_0<=93)) ) {
                     alt50=1;
                 }
 
@@ -9829,7 +9831,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( ((LA51_0>=79 && LA51_0<=81)) ) {
                 alt51=1;
             }
-            else if ( ((LA51_0>=RULE_ID && LA51_0<=RULE_RICH_TEXT_START)||LA51_0==38||(LA51_0>=46 && LA51_0<=47)||(LA51_0>=53 && LA51_0<=56)||LA51_0==58||LA51_0==65||LA51_0==67||(LA51_0>=69 && LA51_0<=70)||LA51_0==74||(LA51_0>=76 && LA51_0<=78)||(LA51_0>=82 && LA51_0<=92)) ) {
+            else if ( ((LA51_0>=RULE_ID && LA51_0<=RULE_RICH_TEXT_START)||LA51_0==38||(LA51_0>=46 && LA51_0<=47)||(LA51_0>=53 && LA51_0<=56)||LA51_0==58||LA51_0==65||LA51_0==67||(LA51_0>=69 && LA51_0<=70)||LA51_0==74||(LA51_0>=76 && LA51_0<=78)||(LA51_0>=83 && LA51_0<=93)) ) {
                 alt51=2;
             }
             else {
@@ -9947,13 +9949,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXVariableDeclarationList"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3468:1: ruleXVariableDeclarationList returns [EObject current=null] : ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3468:1: ruleXVariableDeclarationList returns [EObject current=null] : ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* ) ;
     public final EObject ruleXVariableDeclarationList() throws RecognitionException {
         EObject current = null;
 
         Token lv_exported_1_0=null;
         Token otherlv_2=null;
-        Token lv_writeable_3_0=null;
+        Token lv_readonly_3_0=null;
         Token otherlv_5=null;
         EObject lv_declarations_4_0 = null;
 
@@ -9963,11 +9965,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3471:28: ( ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:1: ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3471:28: ( ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:1: ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:1: ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:2: () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )*
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:1: ( () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:2: () ( (lv_exported_1_0= 'export' ) )? (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) ) ( (lv_declarations_4_0= ruleXVariableDeclaration ) ) (otherlv_5= ',' ( (lv_declarations_6_0= ruleXVariableDeclaration ) ) )*
             {
             // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3472:2: ()
             // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3473:5: 
@@ -10019,7 +10021,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3493:3: (otherlv_2= 'var' | ( (lv_writeable_3_0= 'const' ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3493:3: (otherlv_2= 'var' | ( (lv_readonly_3_0= 'const' ) ) )
             int alt53=2;
             int LA53_0 = input.LA(1);
 
@@ -10050,18 +10052,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3498:6: ( (lv_writeable_3_0= 'const' ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3498:6: ( (lv_readonly_3_0= 'const' ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3498:6: ( (lv_writeable_3_0= 'const' ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3499:1: (lv_writeable_3_0= 'const' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3498:6: ( (lv_readonly_3_0= 'const' ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3499:1: (lv_readonly_3_0= 'const' )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3499:1: (lv_writeable_3_0= 'const' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3500:3: lv_writeable_3_0= 'const'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3499:1: (lv_readonly_3_0= 'const' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3500:3: lv_readonly_3_0= 'const'
                     {
-                    lv_writeable_3_0=(Token)match(input,81,FOLLOW_81_in_ruleXVariableDeclarationList8415); if (state.failed) return current;
+                    lv_readonly_3_0=(Token)match(input,81,FOLLOW_81_in_ruleXVariableDeclarationList8415); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              newLeafNode(lv_writeable_3_0, grammarAccess.getXVariableDeclarationListAccess().getWriteableConstKeyword_2_1_0());
+                              newLeafNode(lv_readonly_3_0, grammarAccess.getXVariableDeclarationListAccess().getReadonlyConstKeyword_2_1_0());
                           
                     }
                     if ( state.backtracking==0 ) {
@@ -10069,7 +10071,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                       	        if (current==null) {
                       	            current = createModelElement(grammarAccess.getXVariableDeclarationListRule());
                       	        }
-                             		setWithLastConsumed(current, "writeable", true, "const");
+                             		setWithLastConsumed(current, "readonly", true, "const");
                       	    
                     }
 
@@ -10571,52 +10573,108 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmFormalParameter"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3687:1: ruleJvmFormalParameter returns [EObject current=null] : ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3687:1: ruleJvmFormalParameter returns [EObject current=null] : ( ( (lv_annotations_0_0= ruleJvmAnnotation ) )* ( (lv_parameterType_1_0= ruleJvmTypeReference ) )? ( (lv_varArg_2_0= '...' ) )? ( (lv_name_3_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )? ) ;
     public final EObject ruleJvmFormalParameter() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_2=null;
-        EObject lv_parameterType_0_0 = null;
+        Token lv_varArg_2_0=null;
+        Token otherlv_4=null;
+        EObject lv_annotations_0_0 = null;
 
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
+        EObject lv_parameterType_1_0 = null;
 
-        EObject lv_defaultValue_3_0 = null;
+        AntlrDatatypeRuleToken lv_name_3_0 = null;
+
+        EObject lv_defaultValue_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3690:28: ( ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:1: ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3690:28: ( ( ( (lv_annotations_0_0= ruleJvmAnnotation ) )* ( (lv_parameterType_1_0= ruleJvmTypeReference ) )? ( (lv_varArg_2_0= '...' ) )? ( (lv_name_3_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:1: ( ( (lv_annotations_0_0= ruleJvmAnnotation ) )* ( (lv_parameterType_1_0= ruleJvmTypeReference ) )? ( (lv_varArg_2_0= '...' ) )? ( (lv_name_3_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:1: ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:2: ( (lv_parameterType_0_0= ruleJvmTypeReference ) )? ( (lv_name_1_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:1: ( ( (lv_annotations_0_0= ruleJvmAnnotation ) )* ( (lv_parameterType_1_0= ruleJvmTypeReference ) )? ( (lv_varArg_2_0= '...' ) )? ( (lv_name_3_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:2: ( (lv_annotations_0_0= ruleJvmAnnotation ) )* ( (lv_parameterType_1_0= ruleJvmTypeReference ) )? ( (lv_varArg_2_0= '...' ) )? ( (lv_name_3_0= ruleValidID ) ) ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:2: ( (lv_parameterType_0_0= ruleJvmTypeReference ) )?
-            int alt57=2;
-            int LA57_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3691:2: ( (lv_annotations_0_0= ruleJvmAnnotation ) )*
+            loop57:
+            do {
+                int alt57=2;
+                int LA57_0 = input.LA(1);
 
-            if ( (LA57_0==RULE_ID) ) {
-                int LA57_1 = input.LA(2);
-
-                if ( (LA57_1==RULE_ID||LA57_1==38||LA57_1==61||LA57_1==63) ) {
+                if ( (LA57_0==96) ) {
                     alt57=1;
                 }
+
+
+                switch (alt57) {
+            	case 1 :
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3692:1: (lv_annotations_0_0= ruleJvmAnnotation )
+            	    {
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3692:1: (lv_annotations_0_0= ruleJvmAnnotation )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3693:3: lv_annotations_0_0= ruleJvmAnnotation
+            	    {
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getAnnotationsJvmAnnotationParserRuleCall_0_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleJvmAnnotation_in_ruleJvmFormalParameter8812);
+            	    lv_annotations_0_0=ruleJvmAnnotation();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getJvmFormalParameterRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"annotations",
+            	              		lv_annotations_0_0, 
+            	              		"JvmAnnotation");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop57;
+                }
+            } while (true);
+
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3709:3: ( (lv_parameterType_1_0= ruleJvmTypeReference ) )?
+            int alt58=2;
+            int LA58_0 = input.LA(1);
+
+            if ( (LA58_0==RULE_ID) ) {
+                int LA58_1 = input.LA(2);
+
+                if ( (LA58_1==RULE_ID||LA58_1==38||LA58_1==61||LA58_1==63||LA58_1==82) ) {
+                    alt58=1;
+                }
             }
-            switch (alt57) {
+            switch (alt58) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3692:1: (lv_parameterType_0_0= ruleJvmTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3710:1: (lv_parameterType_1_0= ruleJvmTypeReference )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3692:1: (lv_parameterType_0_0= ruleJvmTypeReference )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3693:3: lv_parameterType_0_0= ruleJvmTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3710:1: (lv_parameterType_1_0= ruleJvmTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3711:3: lv_parameterType_1_0= ruleJvmTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+                      	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter8812);
-                    lv_parameterType_0_0=ruleJvmTypeReference();
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter8834);
+                    lv_parameterType_1_0=ruleJvmTypeReference();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10628,7 +10686,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"parameterType",
-                              		lv_parameterType_0_0, 
+                              		lv_parameterType_1_0, 
                               		"JvmTypeReference");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10642,19 +10700,56 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3709:3: ( (lv_name_1_0= ruleValidID ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3710:1: (lv_name_1_0= ruleValidID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:3: ( (lv_varArg_2_0= '...' ) )?
+            int alt59=2;
+            int LA59_0 = input.LA(1);
+
+            if ( (LA59_0==82) ) {
+                alt59=1;
+            }
+            switch (alt59) {
+                case 1 :
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3728:1: (lv_varArg_2_0= '...' )
+                    {
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3728:1: (lv_varArg_2_0= '...' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3729:3: lv_varArg_2_0= '...'
+                    {
+                    lv_varArg_2_0=(Token)match(input,82,FOLLOW_82_in_ruleJvmFormalParameter8853); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              newLeafNode(lv_varArg_2_0, grammarAccess.getJvmFormalParameterAccess().getVarArgFullStopFullStopFullStopKeyword_2_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getJvmFormalParameterRule());
+                      	        }
+                             		setWithLastConsumed(current, "varArg", true, "...");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3742:3: ( (lv_name_3_0= ruleValidID ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3743:1: (lv_name_3_0= ruleValidID )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3710:1: (lv_name_1_0= ruleValidID )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3711:3: lv_name_1_0= ruleValidID
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3743:1: (lv_name_3_0= ruleValidID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3744:3: lv_name_3_0= ruleValidID
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getNameValidIDParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getNameValidIDParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleJvmFormalParameter8834);
-            lv_name_1_0=ruleValidID();
+            pushFollow(FOLLOW_ruleValidID_in_ruleJvmFormalParameter8888);
+            lv_name_3_0=ruleValidID();
 
             state._fsp--;
             if (state.failed) return current;
@@ -10666,7 +10761,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                      		set(
                      			current, 
                      			"name",
-                      		lv_name_1_0, 
+                      		lv_name_3_0, 
                       		"ValidID");
               	        afterParserOrEnumRuleCall();
               	    
@@ -10677,42 +10772,42 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:2: ( ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) ) )?
-            int alt58=2;
-            int LA58_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:2: ( ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) ) )?
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA58_0==23) && (synpred34_InternalXbase())) {
-                alt58=1;
+            if ( (LA60_0==23) && (synpred34_InternalXbase())) {
+                alt60=1;
             }
-            switch (alt58) {
+            switch (alt60) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:3: ( ( '=' )=>otherlv_2= '=' ) ( (lv_defaultValue_3_0= ruleXExpression ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:3: ( ( '=' )=>otherlv_4= '=' ) ( (lv_defaultValue_5_0= ruleXExpression ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:3: ( ( '=' )=>otherlv_2= '=' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:4: ( '=' )=>otherlv_2= '='
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:3: ( ( '=' )=>otherlv_4= '=' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:4: ( '=' )=>otherlv_4= '='
                     {
-                    otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleJvmFormalParameter8855); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,23,FOLLOW_23_in_ruleJvmFormalParameter8909); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_2, grammarAccess.getJvmFormalParameterAccess().getEqualsSignKeyword_2_0());
+                          	newLeafNode(otherlv_4, grammarAccess.getJvmFormalParameterAccess().getEqualsSignKeyword_4_0());
                           
                     }
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3732:2: ( (lv_defaultValue_3_0= ruleXExpression ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3733:1: (lv_defaultValue_3_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3765:2: ( (lv_defaultValue_5_0= ruleXExpression ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3766:1: (lv_defaultValue_5_0= ruleXExpression )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3733:1: (lv_defaultValue_3_0= ruleXExpression )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3734:3: lv_defaultValue_3_0= ruleXExpression
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3766:1: (lv_defaultValue_5_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3767:3: lv_defaultValue_5_0= ruleXExpression
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getDefaultValueXExpressionParserRuleCall_2_1_0()); 
+                      	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getDefaultValueXExpressionParserRuleCall_4_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleJvmFormalParameter8877);
-                    lv_defaultValue_3_0=ruleXExpression();
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleJvmFormalParameter8931);
+                    lv_defaultValue_5_0=ruleXExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -10724,7 +10819,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"defaultValue",
-                              		lv_defaultValue_3_0, 
+                              		lv_defaultValue_5_0, 
                               		"XExpression");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -10764,7 +10859,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXFeatureCall"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:1: entryRuleXFeatureCall returns [EObject current=null] : iv_ruleXFeatureCall= ruleXFeatureCall EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3793:1: entryRuleXFeatureCall returns [EObject current=null] : iv_ruleXFeatureCall= ruleXFeatureCall EOF ;
     public final EObject entryRuleXFeatureCall() throws RecognitionException {
         EObject current = null;
 
@@ -10772,13 +10867,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3761:2: (iv_ruleXFeatureCall= ruleXFeatureCall EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3762:2: iv_ruleXFeatureCall= ruleXFeatureCall EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3794:2: (iv_ruleXFeatureCall= ruleXFeatureCall EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3795:2: iv_ruleXFeatureCall= ruleXFeatureCall EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFeatureCallRule()); 
             }
-            pushFollow(FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall8917);
+            pushFollow(FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall8971);
             iv_ruleXFeatureCall=ruleXFeatureCall();
 
             state._fsp--;
@@ -10786,7 +10881,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXFeatureCall; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXFeatureCall8927); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXFeatureCall8981); if (state.failed) return current;
 
             }
 
@@ -10804,7 +10899,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXFeatureCall"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3769:1: ruleXFeatureCall returns [EObject current=null] : ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3802:1: ruleXFeatureCall returns [EObject current=null] : ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? ) ;
     public final EObject ruleXFeatureCall() throws RecognitionException {
         EObject current = null;
 
@@ -10826,14 +10921,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3772:28: ( ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3773:1: ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3805:28: ( ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:1: ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3773:1: ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3773:2: () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:1: ( () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:2: () (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ( ( ruleIdOrSuper ) ) ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3773:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3774:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3807:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -10845,35 +10940,35 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3779:2: (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
-            int alt60=2;
-            int LA60_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3812:2: (otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( (LA60_0==38) ) {
-                alt60=1;
+            if ( (LA62_0==38) ) {
+                alt62=1;
             }
-            switch (alt60) {
+            switch (alt62) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3779:4: otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3812:4: otherlv_1= '<' ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
                     {
-                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleXFeatureCall8974); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleXFeatureCall9028); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXFeatureCallAccess().getLessThanSignKeyword_1_0());
                           
                     }
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3783:1: ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3784:1: (lv_typeArguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3816:1: ( (lv_typeArguments_2_0= ruleJvmArgumentTypeReference ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3817:1: (lv_typeArguments_2_0= ruleJvmArgumentTypeReference )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3784:1: (lv_typeArguments_2_0= ruleJvmArgumentTypeReference )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3785:3: lv_typeArguments_2_0= ruleJvmArgumentTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3817:1: (lv_typeArguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3818:3: lv_typeArguments_2_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall8995);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9049);
                     lv_typeArguments_2_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -10897,39 +10992,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3801:2: (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop59:
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3834:2: (otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) )*
+                    loop61:
                     do {
-                        int alt59=2;
-                        int LA59_0 = input.LA(1);
+                        int alt61=2;
+                        int LA61_0 = input.LA(1);
 
-                        if ( (LA59_0==59) ) {
-                            alt59=1;
+                        if ( (LA61_0==59) ) {
+                            alt61=1;
                         }
 
 
-                        switch (alt59) {
+                        switch (alt61) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3801:4: otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3834:4: otherlv_3= ',' ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,59,FOLLOW_59_in_ruleXFeatureCall9008); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,59,FOLLOW_59_in_ruleXFeatureCall9062); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getXFeatureCallAccess().getCommaKeyword_1_2_0());
                     	          
                     	    }
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3805:1: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3838:1: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3839:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3806:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3807:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3839:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3840:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9029);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9083);
                     	    lv_typeArguments_4_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -10958,11 +11053,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop59;
+                    	    break loop61;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,36,FOLLOW_36_in_ruleXFeatureCall9043); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,36,FOLLOW_36_in_ruleXFeatureCall9097); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getXFeatureCallAccess().getGreaterThanSignKeyword_1_3());
@@ -10974,11 +11069,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3827:3: ( ( ruleIdOrSuper ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3828:1: ( ruleIdOrSuper )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3860:3: ( ( ruleIdOrSuper ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3861:1: ( ruleIdOrSuper )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3828:1: ( ruleIdOrSuper )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3829:3: ruleIdOrSuper
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3861:1: ( ruleIdOrSuper )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3862:3: ruleIdOrSuper
             {
             if ( state.backtracking==0 ) {
 
@@ -10992,7 +11087,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall9068);
+            pushFollow(FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall9122);
             ruleIdOrSuper();
 
             state._fsp--;
@@ -11008,20 +11103,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3842:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?
-            int alt63=2;
-            alt63 = dfa63.predict(input);
-            switch (alt63) {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3875:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?
+            int alt65=2;
+            alt65 = dfa65.predict(input);
+            switch (alt65) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3842:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3875:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')'
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3842:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3842:4: ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3875:3: ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3875:4: ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3849:1: (lv_explicitOperationCall_7_0= '(' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3850:3: lv_explicitOperationCall_7_0= '('
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3882:1: (lv_explicitOperationCall_7_0= '(' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3883:3: lv_explicitOperationCall_7_0= '('
                     {
-                    lv_explicitOperationCall_7_0=(Token)match(input,58,FOLLOW_58_in_ruleXFeatureCall9102); if (state.failed) return current;
+                    lv_explicitOperationCall_7_0=(Token)match(input,58,FOLLOW_58_in_ruleXFeatureCall9156); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_explicitOperationCall_7_0, grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0());
@@ -11041,29 +11136,29 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3863:2: ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )?
-                    int alt62=2;
-                    int LA62_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3896:2: ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )?
+                    int alt64=2;
+                    int LA64_0 = input.LA(1);
 
-                    if ( ((LA62_0>=RULE_ID && LA62_0<=RULE_RICH_TEXT_START)||LA62_0==38||(LA62_0>=46 && LA62_0<=47)||(LA62_0>=53 && LA62_0<=56)||LA62_0==58||LA62_0==65||LA62_0==67||(LA62_0>=69 && LA62_0<=70)||LA62_0==74||(LA62_0>=76 && LA62_0<=78)||(LA62_0>=82 && LA62_0<=92)) ) {
-                        alt62=1;
+                    if ( ((LA64_0>=RULE_ID && LA64_0<=RULE_RICH_TEXT_START)||LA64_0==38||(LA64_0>=46 && LA64_0<=47)||(LA64_0>=53 && LA64_0<=56)||LA64_0==58||LA64_0==65||LA64_0==67||(LA64_0>=69 && LA64_0<=70)||LA64_0==74||(LA64_0>=76 && LA64_0<=78)||(LA64_0>=83 && LA64_0<=93)) ) {
+                        alt64=1;
                     }
-                    switch (alt62) {
+                    switch (alt64) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3863:3: ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )*
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3896:3: ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )*
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3863:3: ( (lv_featureCallArguments_8_0= ruleXExpression ) )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3864:1: (lv_featureCallArguments_8_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3896:3: ( (lv_featureCallArguments_8_0= ruleXExpression ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3897:1: (lv_featureCallArguments_8_0= ruleXExpression )
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3864:1: (lv_featureCallArguments_8_0= ruleXExpression )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3865:3: lv_featureCallArguments_8_0= ruleXExpression
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3897:1: (lv_featureCallArguments_8_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3898:3: lv_featureCallArguments_8_0= ruleXExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall9137);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall9191);
                             lv_featureCallArguments_8_0=ruleXExpression();
 
                             state._fsp--;
@@ -11087,39 +11182,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3881:2: (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )*
-                            loop61:
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3914:2: (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )*
+                            loop63:
                             do {
-                                int alt61=2;
-                                int LA61_0 = input.LA(1);
+                                int alt63=2;
+                                int LA63_0 = input.LA(1);
 
-                                if ( (LA61_0==59) ) {
-                                    alt61=1;
+                                if ( (LA63_0==59) ) {
+                                    alt63=1;
                                 }
 
 
-                                switch (alt61) {
+                                switch (alt63) {
                             	case 1 :
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3881:4: otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3914:4: otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) )
                             	    {
-                            	    otherlv_9=(Token)match(input,59,FOLLOW_59_in_ruleXFeatureCall9150); if (state.failed) return current;
+                            	    otherlv_9=(Token)match(input,59,FOLLOW_59_in_ruleXFeatureCall9204); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_9, grammarAccess.getXFeatureCallAccess().getCommaKeyword_3_1_1_0());
                             	          
                             	    }
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3885:1: ( (lv_featureCallArguments_10_0= ruleXExpression ) )
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3886:1: (lv_featureCallArguments_10_0= ruleXExpression )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3918:1: ( (lv_featureCallArguments_10_0= ruleXExpression ) )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3919:1: (lv_featureCallArguments_10_0= ruleXExpression )
                             	    {
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3886:1: (lv_featureCallArguments_10_0= ruleXExpression )
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3887:3: lv_featureCallArguments_10_0= ruleXExpression
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3919:1: (lv_featureCallArguments_10_0= ruleXExpression )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3920:3: lv_featureCallArguments_10_0= ruleXExpression
                             	    {
                             	    if ( state.backtracking==0 ) {
                             	       
                             	      	        newCompositeNode(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall9171);
+                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXFeatureCall9225);
                             	    lv_featureCallArguments_10_0=ruleXExpression();
 
                             	    state._fsp--;
@@ -11148,7 +11243,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop61;
+                            	    break loop63;
                                 }
                             } while (true);
 
@@ -11158,7 +11253,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,60,FOLLOW_60_in_ruleXFeatureCall9187); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,60,FOLLOW_60_in_ruleXFeatureCall9241); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_11, grammarAccess.getXFeatureCallAccess().getRightParenthesisKeyword_3_2());
@@ -11193,7 +11288,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFeatureCallID"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3915:1: entryRuleFeatureCallID returns [String current=null] : iv_ruleFeatureCallID= ruleFeatureCallID EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3948:1: entryRuleFeatureCallID returns [String current=null] : iv_ruleFeatureCallID= ruleFeatureCallID EOF ;
     public final String entryRuleFeatureCallID() throws RecognitionException {
         String current = null;
 
@@ -11201,13 +11296,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3916:2: (iv_ruleFeatureCallID= ruleFeatureCallID EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3917:2: iv_ruleFeatureCallID= ruleFeatureCallID EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3949:2: (iv_ruleFeatureCallID= ruleFeatureCallID EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3950:2: iv_ruleFeatureCallID= ruleFeatureCallID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFeatureCallIDRule()); 
             }
-            pushFollow(FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID9226);
+            pushFollow(FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID9280);
             iv_ruleFeatureCallID=ruleFeatureCallID();
 
             state._fsp--;
@@ -11215,7 +11310,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFeatureCallID.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCallID9237); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCallID9291); if (state.failed) return current;
 
             }
 
@@ -11233,7 +11328,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeatureCallID"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3924:1: ruleFeatureCallID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ValidID_0= ruleValidID ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3957:1: ruleFeatureCallID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ValidID_0= ruleValidID ;
     public final AntlrDatatypeRuleToken ruleFeatureCallID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -11243,15 +11338,15 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3927:28: (this_ValidID_0= ruleValidID )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3929:5: this_ValidID_0= ruleValidID
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3960:28: (this_ValidID_0= ruleValidID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3962:5: this_ValidID_0= ruleValidID
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getFeatureCallIDAccess().getValidIDParserRuleCall()); 
                   
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleFeatureCallID9283);
+            pushFollow(FOLLOW_ruleValidID_in_ruleFeatureCallID9337);
             this_ValidID_0=ruleValidID();
 
             state._fsp--;
@@ -11286,7 +11381,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIdOrSuper"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3947:1: entryRuleIdOrSuper returns [String current=null] : iv_ruleIdOrSuper= ruleIdOrSuper EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3980:1: entryRuleIdOrSuper returns [String current=null] : iv_ruleIdOrSuper= ruleIdOrSuper EOF ;
     public final String entryRuleIdOrSuper() throws RecognitionException {
         String current = null;
 
@@ -11294,13 +11389,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3948:2: (iv_ruleIdOrSuper= ruleIdOrSuper EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3949:2: iv_ruleIdOrSuper= ruleIdOrSuper EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3981:2: (iv_ruleIdOrSuper= ruleIdOrSuper EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3982:2: iv_ruleIdOrSuper= ruleIdOrSuper EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIdOrSuperRule()); 
             }
-            pushFollow(FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper9328);
+            pushFollow(FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper9382);
             iv_ruleIdOrSuper=ruleIdOrSuper();
 
             state._fsp--;
@@ -11308,7 +11403,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIdOrSuper.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIdOrSuper9339); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIdOrSuper9393); if (state.failed) return current;
 
             }
 
@@ -11326,7 +11421,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIdOrSuper"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3956:1: ruleIdOrSuper returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3989:1: ruleIdOrSuper returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' ) ;
     public final AntlrDatatypeRuleToken ruleIdOrSuper() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -11337,36 +11432,36 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3959:28: ( (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3960:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3992:28: ( (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3993:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3960:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
-            int alt64=2;
-            int LA64_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3993:1: (this_FeatureCallID_0= ruleFeatureCallID | kw= 'super' )
+            int alt66=2;
+            int LA66_0 = input.LA(1);
 
-            if ( (LA64_0==RULE_ID) ) {
-                alt64=1;
+            if ( (LA66_0==RULE_ID) ) {
+                alt66=1;
             }
-            else if ( (LA64_0==82) ) {
-                alt64=2;
+            else if ( (LA66_0==83) ) {
+                alt66=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 64, 0, input);
+                    new NoViableAltException("", 66, 0, input);
 
                 throw nvae;
             }
-            switch (alt64) {
+            switch (alt66) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3961:5: this_FeatureCallID_0= ruleFeatureCallID
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3994:5: this_FeatureCallID_0= ruleFeatureCallID
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getIdOrSuperAccess().getFeatureCallIDParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper9386);
+                    pushFollow(FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper9440);
                     this_FeatureCallID_0=ruleFeatureCallID();
 
                     state._fsp--;
@@ -11385,9 +11480,9 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3973:2: kw= 'super'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4006:2: kw= 'super'
                     {
-                    kw=(Token)match(input,82,FOLLOW_82_in_ruleIdOrSuper9410); if (state.failed) return current;
+                    kw=(Token)match(input,83,FOLLOW_83_in_ruleIdOrSuper9464); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -11420,7 +11515,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXObjectLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3986:1: entryRuleXObjectLiteral returns [EObject current=null] : iv_ruleXObjectLiteral= ruleXObjectLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4019:1: entryRuleXObjectLiteral returns [EObject current=null] : iv_ruleXObjectLiteral= ruleXObjectLiteral EOF ;
     public final EObject entryRuleXObjectLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -11428,13 +11523,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3987:2: (iv_ruleXObjectLiteral= ruleXObjectLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3988:2: iv_ruleXObjectLiteral= ruleXObjectLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4020:2: (iv_ruleXObjectLiteral= ruleXObjectLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4021:2: iv_ruleXObjectLiteral= ruleXObjectLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXObjectLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXObjectLiteral_in_entryRuleXObjectLiteral9450);
+            pushFollow(FOLLOW_ruleXObjectLiteral_in_entryRuleXObjectLiteral9504);
             iv_ruleXObjectLiteral=ruleXObjectLiteral();
 
             state._fsp--;
@@ -11442,7 +11537,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXObjectLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXObjectLiteral9460); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXObjectLiteral9514); if (state.failed) return current;
 
             }
 
@@ -11460,7 +11555,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXObjectLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3995:1: ruleXObjectLiteral returns [EObject current=null] : ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4028:1: ruleXObjectLiteral returns [EObject current=null] : ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' ) ;
     public final EObject ruleXObjectLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -11476,14 +11571,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3998:28: ( ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3999:1: ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4031:28: ( ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4032:1: ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3999:1: ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3999:2: () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4032:1: ( () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4032:2: () otherlv_1= 'new' otherlv_2= '{' ( (lv_members_3_0= ruleXObjectLiteralPart ) ) (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )* otherlv_6= '}'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3999:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4000:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4032:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4033:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -11495,30 +11590,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,83,FOLLOW_83_in_ruleXObjectLiteral9506); if (state.failed) return current;
+            otherlv_1=(Token)match(input,84,FOLLOW_84_in_ruleXObjectLiteral9560); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXObjectLiteralAccess().getNewKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,70,FOLLOW_70_in_ruleXObjectLiteral9518); if (state.failed) return current;
+            otherlv_2=(Token)match(input,70,FOLLOW_70_in_ruleXObjectLiteral9572); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXObjectLiteralAccess().getLeftCurlyBracketKeyword_2());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4013:1: ( (lv_members_3_0= ruleXObjectLiteralPart ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4014:1: (lv_members_3_0= ruleXObjectLiteralPart )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4046:1: ( (lv_members_3_0= ruleXObjectLiteralPart ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4047:1: (lv_members_3_0= ruleXObjectLiteralPart )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4014:1: (lv_members_3_0= ruleXObjectLiteralPart )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4015:3: lv_members_3_0= ruleXObjectLiteralPart
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4047:1: (lv_members_3_0= ruleXObjectLiteralPart )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4048:3: lv_members_3_0= ruleXObjectLiteralPart
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXObjectLiteralAccess().getMembersXObjectLiteralPartParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9539);
+            pushFollow(FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9593);
             lv_members_3_0=ruleXObjectLiteralPart();
 
             state._fsp--;
@@ -11542,39 +11637,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4031:2: (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )*
-            loop65:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4064:2: (otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) ) )*
+            loop67:
             do {
-                int alt65=2;
-                int LA65_0 = input.LA(1);
+                int alt67=2;
+                int LA67_0 = input.LA(1);
 
-                if ( (LA65_0==59) ) {
-                    alt65=1;
+                if ( (LA67_0==59) ) {
+                    alt67=1;
                 }
 
 
-                switch (alt65) {
+                switch (alt67) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4031:4: otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4064:4: otherlv_4= ',' ( (lv_members_5_0= ruleXObjectLiteralPart ) )
             	    {
-            	    otherlv_4=(Token)match(input,59,FOLLOW_59_in_ruleXObjectLiteral9552); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,59,FOLLOW_59_in_ruleXObjectLiteral9606); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_4, grammarAccess.getXObjectLiteralAccess().getCommaKeyword_4_0());
             	          
             	    }
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4035:1: ( (lv_members_5_0= ruleXObjectLiteralPart ) )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4036:1: (lv_members_5_0= ruleXObjectLiteralPart )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4068:1: ( (lv_members_5_0= ruleXObjectLiteralPart ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4069:1: (lv_members_5_0= ruleXObjectLiteralPart )
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4036:1: (lv_members_5_0= ruleXObjectLiteralPart )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4037:3: lv_members_5_0= ruleXObjectLiteralPart
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4069:1: (lv_members_5_0= ruleXObjectLiteralPart )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4070:3: lv_members_5_0= ruleXObjectLiteralPart
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getXObjectLiteralAccess().getMembersXObjectLiteralPartParserRuleCall_4_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9573);
+            	    pushFollow(FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9627);
             	    lv_members_5_0=ruleXObjectLiteralPart();
 
             	    state._fsp--;
@@ -11603,11 +11698,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop65;
+            	    break loop67;
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,72,FOLLOW_72_in_ruleXObjectLiteral9587); if (state.failed) return current;
+            otherlv_6=(Token)match(input,72,FOLLOW_72_in_ruleXObjectLiteral9641); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXObjectLiteralAccess().getRightCurlyBracketKeyword_5());
@@ -11636,7 +11731,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXObjectLiteralPart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4065:1: entryRuleXObjectLiteralPart returns [EObject current=null] : iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4098:1: entryRuleXObjectLiteralPart returns [EObject current=null] : iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF ;
     public final EObject entryRuleXObjectLiteralPart() throws RecognitionException {
         EObject current = null;
 
@@ -11644,13 +11739,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4066:2: (iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4067:2: iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4099:2: (iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4100:2: iv_ruleXObjectLiteralPart= ruleXObjectLiteralPart EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXObjectLiteralPartRule()); 
             }
-            pushFollow(FOLLOW_ruleXObjectLiteralPart_in_entryRuleXObjectLiteralPart9623);
+            pushFollow(FOLLOW_ruleXObjectLiteralPart_in_entryRuleXObjectLiteralPart9677);
             iv_ruleXObjectLiteralPart=ruleXObjectLiteralPart();
 
             state._fsp--;
@@ -11658,7 +11753,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXObjectLiteralPart; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXObjectLiteralPart9633); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXObjectLiteralPart9687); if (state.failed) return current;
 
             }
 
@@ -11676,7 +11771,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXObjectLiteralPart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4074:1: ruleXObjectLiteralPart returns [EObject current=null] : ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4107:1: ruleXObjectLiteralPart returns [EObject current=null] : ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) ) ;
     public final EObject ruleXObjectLiteralPart() throws RecognitionException {
         EObject current = null;
 
@@ -11688,14 +11783,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4077:28: ( ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4078:1: ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4110:28: ( ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4111:1: ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4078:1: ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4078:2: () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4111:1: ( () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4111:2: () ( (lv_simpleName_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_defaultValue_3_0= ruleXExpression ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4078:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4079:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4111:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4112:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -11707,13 +11802,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4084:2: ( (lv_simpleName_1_0= RULE_ID ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4085:1: (lv_simpleName_1_0= RULE_ID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4117:2: ( (lv_simpleName_1_0= RULE_ID ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4118:1: (lv_simpleName_1_0= RULE_ID )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4085:1: (lv_simpleName_1_0= RULE_ID )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4086:3: lv_simpleName_1_0= RULE_ID
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4118:1: (lv_simpleName_1_0= RULE_ID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4119:3: lv_simpleName_1_0= RULE_ID
             {
-            lv_simpleName_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXObjectLiteralPart9684); if (state.failed) return current;
+            lv_simpleName_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXObjectLiteralPart9738); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_simpleName_1_0, grammarAccess.getXObjectLiteralPartAccess().getSimpleNameIDTerminalRuleCall_1_0()); 
@@ -11737,24 +11832,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,49,FOLLOW_49_in_ruleXObjectLiteralPart9701); if (state.failed) return current;
+            otherlv_2=(Token)match(input,49,FOLLOW_49_in_ruleXObjectLiteralPart9755); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXObjectLiteralPartAccess().getColonKeyword_2());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4106:1: ( (lv_defaultValue_3_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4107:1: (lv_defaultValue_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4139:1: ( (lv_defaultValue_3_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4140:1: (lv_defaultValue_3_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4107:1: (lv_defaultValue_3_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4108:3: lv_defaultValue_3_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4140:1: (lv_defaultValue_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4141:3: lv_defaultValue_3_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXObjectLiteralPartAccess().getDefaultValueXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXObjectLiteralPart9722);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXObjectLiteralPart9776);
             lv_defaultValue_3_0=ruleXExpression();
 
             state._fsp--;
@@ -11801,7 +11896,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXConstructorCall"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4132:1: entryRuleXConstructorCall returns [EObject current=null] : iv_ruleXConstructorCall= ruleXConstructorCall EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4165:1: entryRuleXConstructorCall returns [EObject current=null] : iv_ruleXConstructorCall= ruleXConstructorCall EOF ;
     public final EObject entryRuleXConstructorCall() throws RecognitionException {
         EObject current = null;
 
@@ -11809,13 +11904,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4133:2: (iv_ruleXConstructorCall= ruleXConstructorCall EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4134:2: iv_ruleXConstructorCall= ruleXConstructorCall EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4166:2: (iv_ruleXConstructorCall= ruleXConstructorCall EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4167:2: iv_ruleXConstructorCall= ruleXConstructorCall EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXConstructorCallRule()); 
             }
-            pushFollow(FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall9758);
+            pushFollow(FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall9812);
             iv_ruleXConstructorCall=ruleXConstructorCall();
 
             state._fsp--;
@@ -11823,7 +11918,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXConstructorCall; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXConstructorCall9768); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXConstructorCall9822); if (state.failed) return current;
 
             }
 
@@ -11841,7 +11936,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXConstructorCall"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4141:1: ruleXConstructorCall returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4174:1: ruleXConstructorCall returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? ) ;
     public final EObject ruleXConstructorCall() throws RecognitionException {
         EObject current = null;
 
@@ -11864,14 +11959,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4144:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4145:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4177:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4178:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4145:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4145:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4178:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4178:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )? ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4145:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4146:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4178:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4179:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -11883,17 +11978,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,83,FOLLOW_83_in_ruleXConstructorCall9814); if (state.failed) return current;
+            otherlv_1=(Token)match(input,84,FOLLOW_84_in_ruleXConstructorCall9868); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXConstructorCallAccess().getNewKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4155:1: ( ( ruleQualifiedName ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4156:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4188:1: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4189:1: ( ruleQualifiedName )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4156:1: ( ruleQualifiedName )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4157:3: ruleQualifiedName
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4189:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4190:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -11907,7 +12002,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getConstructorJvmConstructorCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXConstructorCall9837);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXConstructorCall9891);
             ruleQualifiedName();
 
             state._fsp--;
@@ -11923,17 +12018,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?
-            int alt67=2;
-            alt67 = dfa67.predict(input);
-            switch (alt67) {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?
+            int alt69=2;
+            alt69 = dfa69.predict(input);
+            switch (alt69) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:3: ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:3: ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>'
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:3: ( ( '<' )=>otherlv_3= '<' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:4: ( '<' )=>otherlv_3= '<'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:3: ( ( '<' )=>otherlv_3= '<' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:4: ( '<' )=>otherlv_3= '<'
                     {
-                    otherlv_3=(Token)match(input,38,FOLLOW_38_in_ruleXConstructorCall9858); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,38,FOLLOW_38_in_ruleXConstructorCall9912); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getXConstructorCallAccess().getLessThanSignKeyword_3_0());
@@ -11942,18 +12037,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4175:2: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4176:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4208:2: ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4209:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4176:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4177:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4209:1: (lv_typeArguments_4_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4210:3: lv_typeArguments_4_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9880);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9934);
                     lv_typeArguments_4_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -11977,39 +12072,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4193:2: (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop66:
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4226:2: (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )*
+                    loop68:
                     do {
-                        int alt66=2;
-                        int LA66_0 = input.LA(1);
+                        int alt68=2;
+                        int LA68_0 = input.LA(1);
 
-                        if ( (LA66_0==59) ) {
-                            alt66=1;
+                        if ( (LA68_0==59) ) {
+                            alt68=1;
                         }
 
 
-                        switch (alt66) {
+                        switch (alt68) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4193:4: otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4226:4: otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,59,FOLLOW_59_in_ruleXConstructorCall9893); if (state.failed) return current;
+                    	    otherlv_5=(Token)match(input,59,FOLLOW_59_in_ruleXConstructorCall9947); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_5, grammarAccess.getXConstructorCallAccess().getCommaKeyword_3_2_0());
                     	          
                     	    }
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4197:1: ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4198:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4230:1: ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4231:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4198:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4199:3: lv_typeArguments_6_0= ruleJvmArgumentTypeReference
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4231:1: (lv_typeArguments_6_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4232:3: lv_typeArguments_6_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9914);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9968);
                     	    lv_typeArguments_6_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -12038,11 +12133,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop66;
+                    	    break loop68;
                         }
                     } while (true);
 
-                    otherlv_7=(Token)match(input,36,FOLLOW_36_in_ruleXConstructorCall9928); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,36,FOLLOW_36_in_ruleXConstructorCall9982); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getXConstructorCallAccess().getGreaterThanSignKeyword_3_3());
@@ -12054,17 +12149,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?
-            int alt70=2;
-            alt70 = dfa70.predict(input);
-            switch (alt70) {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?
+            int alt72=2;
+            alt72 = dfa72.predict(input);
+            switch (alt72) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:4: ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:4: ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')'
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:4: ( ( '(' )=>otherlv_8= '(' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:5: ( '(' )=>otherlv_8= '('
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:4: ( ( '(' )=>otherlv_8= '(' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:5: ( '(' )=>otherlv_8= '('
                     {
-                    otherlv_8=(Token)match(input,58,FOLLOW_58_in_ruleXConstructorCall9951); if (state.failed) return current;
+                    otherlv_8=(Token)match(input,58,FOLLOW_58_in_ruleXConstructorCall10005); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_8, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0());
@@ -12073,29 +12168,29 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4224:2: ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )?
-                    int alt69=2;
-                    int LA69_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4257:2: ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )?
+                    int alt71=2;
+                    int LA71_0 = input.LA(1);
 
-                    if ( ((LA69_0>=RULE_ID && LA69_0<=RULE_RICH_TEXT_START)||LA69_0==38||(LA69_0>=46 && LA69_0<=47)||(LA69_0>=53 && LA69_0<=56)||LA69_0==58||LA69_0==65||LA69_0==67||(LA69_0>=69 && LA69_0<=70)||LA69_0==74||(LA69_0>=76 && LA69_0<=78)||(LA69_0>=82 && LA69_0<=92)) ) {
-                        alt69=1;
+                    if ( ((LA71_0>=RULE_ID && LA71_0<=RULE_RICH_TEXT_START)||LA71_0==38||(LA71_0>=46 && LA71_0<=47)||(LA71_0>=53 && LA71_0<=56)||LA71_0==58||LA71_0==65||LA71_0==67||(LA71_0>=69 && LA71_0<=70)||LA71_0==74||(LA71_0>=76 && LA71_0<=78)||(LA71_0>=83 && LA71_0<=93)) ) {
+                        alt71=1;
                     }
-                    switch (alt69) {
+                    switch (alt71) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4224:3: ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )*
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4257:3: ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )*
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4224:3: ( (lv_arguments_9_0= ruleXExpression ) )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4225:1: (lv_arguments_9_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4257:3: ( (lv_arguments_9_0= ruleXExpression ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4258:1: (lv_arguments_9_0= ruleXExpression )
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4225:1: (lv_arguments_9_0= ruleXExpression )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4226:3: lv_arguments_9_0= ruleXExpression
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4258:1: (lv_arguments_9_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4259:3: lv_arguments_9_0= ruleXExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall9974);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall10028);
                             lv_arguments_9_0=ruleXExpression();
 
                             state._fsp--;
@@ -12119,39 +12214,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4242:2: (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )*
-                            loop68:
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4275:2: (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )*
+                            loop70:
                             do {
-                                int alt68=2;
-                                int LA68_0 = input.LA(1);
+                                int alt70=2;
+                                int LA70_0 = input.LA(1);
 
-                                if ( (LA68_0==59) ) {
-                                    alt68=1;
+                                if ( (LA70_0==59) ) {
+                                    alt70=1;
                                 }
 
 
-                                switch (alt68) {
+                                switch (alt70) {
                             	case 1 :
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4242:4: otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4275:4: otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) )
                             	    {
-                            	    otherlv_10=(Token)match(input,59,FOLLOW_59_in_ruleXConstructorCall9987); if (state.failed) return current;
+                            	    otherlv_10=(Token)match(input,59,FOLLOW_59_in_ruleXConstructorCall10041); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_10, grammarAccess.getXConstructorCallAccess().getCommaKeyword_4_1_1_0());
                             	          
                             	    }
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4246:1: ( (lv_arguments_11_0= ruleXExpression ) )
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4247:1: (lv_arguments_11_0= ruleXExpression )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4279:1: ( (lv_arguments_11_0= ruleXExpression ) )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4280:1: (lv_arguments_11_0= ruleXExpression )
                             	    {
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4247:1: (lv_arguments_11_0= ruleXExpression )
-                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4248:3: lv_arguments_11_0= ruleXExpression
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4280:1: (lv_arguments_11_0= ruleXExpression )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4281:3: lv_arguments_11_0= ruleXExpression
                             	    {
                             	    if ( state.backtracking==0 ) {
                             	       
                             	      	        newCompositeNode(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall10008);
+                            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXConstructorCall10062);
                             	    lv_arguments_11_0=ruleXExpression();
 
                             	    state._fsp--;
@@ -12180,7 +12275,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop68;
+                            	    break loop70;
                                 }
                             } while (true);
 
@@ -12190,7 +12285,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_12=(Token)match(input,60,FOLLOW_60_in_ruleXConstructorCall10024); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,60,FOLLOW_60_in_ruleXConstructorCall10078); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2());
@@ -12225,7 +12320,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXStructLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4276:1: entryRuleXStructLiteral returns [EObject current=null] : iv_ruleXStructLiteral= ruleXStructLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4309:1: entryRuleXStructLiteral returns [EObject current=null] : iv_ruleXStructLiteral= ruleXStructLiteral EOF ;
     public final EObject entryRuleXStructLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12233,13 +12328,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4277:2: (iv_ruleXStructLiteral= ruleXStructLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4278:2: iv_ruleXStructLiteral= ruleXStructLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4310:2: (iv_ruleXStructLiteral= ruleXStructLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4311:2: iv_ruleXStructLiteral= ruleXStructLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXStructLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXStructLiteral_in_entryRuleXStructLiteral10062);
+            pushFollow(FOLLOW_ruleXStructLiteral_in_entryRuleXStructLiteral10116);
             iv_ruleXStructLiteral=ruleXStructLiteral();
 
             state._fsp--;
@@ -12247,7 +12342,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXStructLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXStructLiteral10072); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXStructLiteral10126); if (state.failed) return current;
 
             }
 
@@ -12265,7 +12360,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXStructLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4285:1: ruleXStructLiteral returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4318:1: ruleXStructLiteral returns [EObject current=null] : ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' ) ;
     public final EObject ruleXStructLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12281,14 +12376,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4288:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4289:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4321:28: ( ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4322:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4289:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4289:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4322:1: ( () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4322:2: () otherlv_1= 'new' ( ( ruleQualifiedName ) ) otherlv_3= '{' ( (lv_properties_4_0= ruleXFieldLiteralPart ) ) (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )* otherlv_7= '}'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4289:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4290:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4322:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4323:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -12300,17 +12395,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,83,FOLLOW_83_in_ruleXStructLiteral10118); if (state.failed) return current;
+            otherlv_1=(Token)match(input,84,FOLLOW_84_in_ruleXStructLiteral10172); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXStructLiteralAccess().getNewKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4299:1: ( ( ruleQualifiedName ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4300:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4332:1: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4333:1: ( ruleQualifiedName )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4300:1: ( ruleQualifiedName )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4301:3: ruleQualifiedName
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4333:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4334:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -12324,7 +12419,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXStructLiteralAccess().getTypeJvmStructTypeCrossReference_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXStructLiteral10141);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXStructLiteral10195);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12340,24 +12435,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,70,FOLLOW_70_in_ruleXStructLiteral10153); if (state.failed) return current;
+            otherlv_3=(Token)match(input,70,FOLLOW_70_in_ruleXStructLiteral10207); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getXStructLiteralAccess().getLeftCurlyBracketKeyword_3());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4318:1: ( (lv_properties_4_0= ruleXFieldLiteralPart ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4319:1: (lv_properties_4_0= ruleXFieldLiteralPart )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4351:1: ( (lv_properties_4_0= ruleXFieldLiteralPart ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4352:1: (lv_properties_4_0= ruleXFieldLiteralPart )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4319:1: (lv_properties_4_0= ruleXFieldLiteralPart )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4320:3: lv_properties_4_0= ruleXFieldLiteralPart
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4352:1: (lv_properties_4_0= ruleXFieldLiteralPart )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4353:3: lv_properties_4_0= ruleXFieldLiteralPart
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXStructLiteralAccess().getPropertiesXFieldLiteralPartParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10174);
+            pushFollow(FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10228);
             lv_properties_4_0=ruleXFieldLiteralPart();
 
             state._fsp--;
@@ -12381,39 +12476,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4336:2: (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )*
-            loop71:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4369:2: (otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) ) )*
+            loop73:
             do {
-                int alt71=2;
-                int LA71_0 = input.LA(1);
+                int alt73=2;
+                int LA73_0 = input.LA(1);
 
-                if ( (LA71_0==59) ) {
-                    alt71=1;
+                if ( (LA73_0==59) ) {
+                    alt73=1;
                 }
 
 
-                switch (alt71) {
+                switch (alt73) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4336:4: otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4369:4: otherlv_5= ',' ( (lv_properties_6_0= ruleXFieldLiteralPart ) )
             	    {
-            	    otherlv_5=(Token)match(input,59,FOLLOW_59_in_ruleXStructLiteral10187); if (state.failed) return current;
+            	    otherlv_5=(Token)match(input,59,FOLLOW_59_in_ruleXStructLiteral10241); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_5, grammarAccess.getXStructLiteralAccess().getCommaKeyword_5_0());
             	          
             	    }
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4340:1: ( (lv_properties_6_0= ruleXFieldLiteralPart ) )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4341:1: (lv_properties_6_0= ruleXFieldLiteralPart )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4373:1: ( (lv_properties_6_0= ruleXFieldLiteralPart ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4374:1: (lv_properties_6_0= ruleXFieldLiteralPart )
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4341:1: (lv_properties_6_0= ruleXFieldLiteralPart )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4342:3: lv_properties_6_0= ruleXFieldLiteralPart
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4374:1: (lv_properties_6_0= ruleXFieldLiteralPart )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4375:3: lv_properties_6_0= ruleXFieldLiteralPart
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getXStructLiteralAccess().getPropertiesXFieldLiteralPartParserRuleCall_5_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10208);
+            	    pushFollow(FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10262);
             	    lv_properties_6_0=ruleXFieldLiteralPart();
 
             	    state._fsp--;
@@ -12442,11 +12537,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop71;
+            	    break loop73;
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,72,FOLLOW_72_in_ruleXStructLiteral10222); if (state.failed) return current;
+            otherlv_7=(Token)match(input,72,FOLLOW_72_in_ruleXStructLiteral10276); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_7, grammarAccess.getXStructLiteralAccess().getRightCurlyBracketKeyword_6());
@@ -12475,7 +12570,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXFieldLiteralPart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4370:1: entryRuleXFieldLiteralPart returns [EObject current=null] : iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4403:1: entryRuleXFieldLiteralPart returns [EObject current=null] : iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF ;
     public final EObject entryRuleXFieldLiteralPart() throws RecognitionException {
         EObject current = null;
 
@@ -12483,13 +12578,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4371:2: (iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4372:2: iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4404:2: (iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4405:2: iv_ruleXFieldLiteralPart= ruleXFieldLiteralPart EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXFieldLiteralPartRule()); 
             }
-            pushFollow(FOLLOW_ruleXFieldLiteralPart_in_entryRuleXFieldLiteralPart10258);
+            pushFollow(FOLLOW_ruleXFieldLiteralPart_in_entryRuleXFieldLiteralPart10312);
             iv_ruleXFieldLiteralPart=ruleXFieldLiteralPart();
 
             state._fsp--;
@@ -12497,7 +12592,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXFieldLiteralPart; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXFieldLiteralPart10268); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXFieldLiteralPart10322); if (state.failed) return current;
 
             }
 
@@ -12515,7 +12610,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXFieldLiteralPart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4379:1: ruleXFieldLiteralPart returns [EObject current=null] : ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4412:1: ruleXFieldLiteralPart returns [EObject current=null] : ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) ) ;
     public final EObject ruleXFieldLiteralPart() throws RecognitionException {
         EObject current = null;
 
@@ -12526,14 +12621,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4382:28: ( ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4383:1: ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4415:28: ( ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4416:1: ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4383:1: ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4383:2: () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4416:1: ( () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4416:2: () ( ( ruleQualifiedName ) ) otherlv_2= ':' ( (lv_value_3_0= ruleXExpression ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4383:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4384:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4416:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4417:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -12545,11 +12640,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4389:2: ( ( ruleQualifiedName ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4390:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4422:2: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4423:1: ( ruleQualifiedName )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4390:1: ( ruleQualifiedName )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4391:3: ruleQualifiedName
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4423:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4424:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -12563,7 +12658,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXFieldLiteralPartAccess().getFieldJvmFieldCrossReference_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXFieldLiteralPart10325);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXFieldLiteralPart10379);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12579,24 +12674,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,49,FOLLOW_49_in_ruleXFieldLiteralPart10337); if (state.failed) return current;
+            otherlv_2=(Token)match(input,49,FOLLOW_49_in_ruleXFieldLiteralPart10391); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXFieldLiteralPartAccess().getColonKeyword_2());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4408:1: ( (lv_value_3_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4409:1: (lv_value_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4441:1: ( (lv_value_3_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4442:1: (lv_value_3_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4409:1: (lv_value_3_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4410:3: lv_value_3_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4442:1: (lv_value_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4443:3: lv_value_3_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXFieldLiteralPartAccess().getValueXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXFieldLiteralPart10358);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXFieldLiteralPart10412);
             lv_value_3_0=ruleXExpression();
 
             state._fsp--;
@@ -12643,7 +12738,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXArrayLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4434:1: entryRuleXArrayLiteral returns [EObject current=null] : iv_ruleXArrayLiteral= ruleXArrayLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4467:1: entryRuleXArrayLiteral returns [EObject current=null] : iv_ruleXArrayLiteral= ruleXArrayLiteral EOF ;
     public final EObject entryRuleXArrayLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12651,13 +12746,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4435:2: (iv_ruleXArrayLiteral= ruleXArrayLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4436:2: iv_ruleXArrayLiteral= ruleXArrayLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4468:2: (iv_ruleXArrayLiteral= ruleXArrayLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4469:2: iv_ruleXArrayLiteral= ruleXArrayLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXArrayLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXArrayLiteral_in_entryRuleXArrayLiteral10394);
+            pushFollow(FOLLOW_ruleXArrayLiteral_in_entryRuleXArrayLiteral10448);
             iv_ruleXArrayLiteral=ruleXArrayLiteral();
 
             state._fsp--;
@@ -12665,7 +12760,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXArrayLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXArrayLiteral10404); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXArrayLiteral10458); if (state.failed) return current;
 
             }
 
@@ -12683,7 +12778,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXArrayLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4443:1: ruleXArrayLiteral returns [EObject current=null] : ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4476:1: ruleXArrayLiteral returns [EObject current=null] : ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' ) ;
     public final EObject ruleXArrayLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12699,14 +12794,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4446:28: ( ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4447:1: ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4479:28: ( ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4480:1: ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4447:1: ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4447:2: () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4480:1: ( () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4480:2: () otherlv_1= 'new' otherlv_2= '[' ( (lv_elements_3_0= ruleXExpression ) ) (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )* otherlv_6= ']'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4447:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4448:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4480:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4481:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -12718,30 +12813,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,83,FOLLOW_83_in_ruleXArrayLiteral10450); if (state.failed) return current;
+            otherlv_1=(Token)match(input,84,FOLLOW_84_in_ruleXArrayLiteral10504); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXArrayLiteralAccess().getNewKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,61,FOLLOW_61_in_ruleXArrayLiteral10462); if (state.failed) return current;
+            otherlv_2=(Token)match(input,61,FOLLOW_61_in_ruleXArrayLiteral10516); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXArrayLiteralAccess().getLeftSquareBracketKeyword_2());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4461:1: ( (lv_elements_3_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4462:1: (lv_elements_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4494:1: ( (lv_elements_3_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4495:1: (lv_elements_3_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4462:1: (lv_elements_3_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4463:3: lv_elements_3_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4495:1: (lv_elements_3_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4496:3: lv_elements_3_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXArrayLiteralAccess().getElementsXExpressionParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXArrayLiteral10483);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXArrayLiteral10537);
             lv_elements_3_0=ruleXExpression();
 
             state._fsp--;
@@ -12765,39 +12860,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4479:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
-            loop72:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4512:2: (otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) ) )*
+            loop74:
             do {
-                int alt72=2;
-                int LA72_0 = input.LA(1);
+                int alt74=2;
+                int LA74_0 = input.LA(1);
 
-                if ( (LA72_0==59) ) {
-                    alt72=1;
+                if ( (LA74_0==59) ) {
+                    alt74=1;
                 }
 
 
-                switch (alt72) {
+                switch (alt74) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4479:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4512:4: otherlv_4= ',' ( (lv_elements_5_0= ruleXExpression ) )
             	    {
-            	    otherlv_4=(Token)match(input,59,FOLLOW_59_in_ruleXArrayLiteral10496); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,59,FOLLOW_59_in_ruleXArrayLiteral10550); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_4, grammarAccess.getXArrayLiteralAccess().getCommaKeyword_4_0());
             	          
             	    }
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4483:1: ( (lv_elements_5_0= ruleXExpression ) )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4484:1: (lv_elements_5_0= ruleXExpression )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4516:1: ( (lv_elements_5_0= ruleXExpression ) )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4517:1: (lv_elements_5_0= ruleXExpression )
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4484:1: (lv_elements_5_0= ruleXExpression )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4485:3: lv_elements_5_0= ruleXExpression
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4517:1: (lv_elements_5_0= ruleXExpression )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4518:3: lv_elements_5_0= ruleXExpression
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getXArrayLiteralAccess().getElementsXExpressionParserRuleCall_4_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXArrayLiteral10517);
+            	    pushFollow(FOLLOW_ruleXExpression_in_ruleXArrayLiteral10571);
             	    lv_elements_5_0=ruleXExpression();
 
             	    state._fsp--;
@@ -12826,11 +12921,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop72;
+            	    break loop74;
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,62,FOLLOW_62_in_ruleXArrayLiteral10531); if (state.failed) return current;
+            otherlv_6=(Token)match(input,62,FOLLOW_62_in_ruleXArrayLiteral10585); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getXArrayLiteralAccess().getRightSquareBracketKeyword_5());
@@ -12859,7 +12954,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXBooleanLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4513:1: entryRuleXBooleanLiteral returns [EObject current=null] : iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4546:1: entryRuleXBooleanLiteral returns [EObject current=null] : iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF ;
     public final EObject entryRuleXBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12867,13 +12962,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4514:2: (iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4515:2: iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4547:2: (iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4548:2: iv_ruleXBooleanLiteral= ruleXBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral10567);
+            pushFollow(FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral10621);
             iv_ruleXBooleanLiteral=ruleXBooleanLiteral();
 
             state._fsp--;
@@ -12881,7 +12976,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBooleanLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral10577); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBooleanLiteral10631); if (state.failed) return current;
 
             }
 
@@ -12899,7 +12994,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXBooleanLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4522:1: ruleXBooleanLiteral returns [EObject current=null] : ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4555:1: ruleXBooleanLiteral returns [EObject current=null] : ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) ;
     public final EObject ruleXBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -12909,14 +13004,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4525:28: ( ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4526:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4558:28: ( ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4559:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4526:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4526:2: () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4559:1: ( () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4559:2: () (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4526:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4527:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4559:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4560:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -12928,28 +13023,28 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4532:2: (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
-            int alt73=2;
-            int LA73_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4565:2: (otherlv_1= 'false' | ( (lv_isTrue_2_0= 'true' ) ) )
+            int alt75=2;
+            int LA75_0 = input.LA(1);
 
-            if ( (LA73_0==84) ) {
-                alt73=1;
+            if ( (LA75_0==85) ) {
+                alt75=1;
             }
-            else if ( (LA73_0==85) ) {
-                alt73=2;
+            else if ( (LA75_0==86) ) {
+                alt75=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 73, 0, input);
+                    new NoViableAltException("", 75, 0, input);
 
                 throw nvae;
             }
-            switch (alt73) {
+            switch (alt75) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4532:4: otherlv_1= 'false'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4565:4: otherlv_1= 'false'
                     {
-                    otherlv_1=(Token)match(input,84,FOLLOW_84_in_ruleXBooleanLiteral10624); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,85,FOLLOW_85_in_ruleXBooleanLiteral10678); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getXBooleanLiteralAccess().getFalseKeyword_1_0());
@@ -12959,15 +13054,15 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4537:6: ( (lv_isTrue_2_0= 'true' ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4570:6: ( (lv_isTrue_2_0= 'true' ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4537:6: ( (lv_isTrue_2_0= 'true' ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4538:1: (lv_isTrue_2_0= 'true' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4570:6: ( (lv_isTrue_2_0= 'true' ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4571:1: (lv_isTrue_2_0= 'true' )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4538:1: (lv_isTrue_2_0= 'true' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4539:3: lv_isTrue_2_0= 'true'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4571:1: (lv_isTrue_2_0= 'true' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4572:3: lv_isTrue_2_0= 'true'
                     {
-                    lv_isTrue_2_0=(Token)match(input,85,FOLLOW_85_in_ruleXBooleanLiteral10648); if (state.failed) return current;
+                    lv_isTrue_2_0=(Token)match(input,86,FOLLOW_86_in_ruleXBooleanLiteral10702); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTrue_2_0, grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0());
@@ -13016,7 +13111,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXNullLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4560:1: entryRuleXNullLiteral returns [EObject current=null] : iv_ruleXNullLiteral= ruleXNullLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4593:1: entryRuleXNullLiteral returns [EObject current=null] : iv_ruleXNullLiteral= ruleXNullLiteral EOF ;
     public final EObject entryRuleXNullLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13024,13 +13119,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4561:2: (iv_ruleXNullLiteral= ruleXNullLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4562:2: iv_ruleXNullLiteral= ruleXNullLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4594:2: (iv_ruleXNullLiteral= ruleXNullLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4595:2: iv_ruleXNullLiteral= ruleXNullLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNullLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral10698);
+            pushFollow(FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral10752);
             iv_ruleXNullLiteral=ruleXNullLiteral();
 
             state._fsp--;
@@ -13038,7 +13133,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNullLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral10708); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNullLiteral10762); if (state.failed) return current;
 
             }
 
@@ -13056,7 +13151,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXNullLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4569:1: ruleXNullLiteral returns [EObject current=null] : ( () otherlv_1= 'null' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4602:1: ruleXNullLiteral returns [EObject current=null] : ( () otherlv_1= 'null' ) ;
     public final EObject ruleXNullLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13065,14 +13160,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4572:28: ( ( () otherlv_1= 'null' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4573:1: ( () otherlv_1= 'null' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4605:28: ( ( () otherlv_1= 'null' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4606:1: ( () otherlv_1= 'null' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4573:1: ( () otherlv_1= 'null' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4573:2: () otherlv_1= 'null'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4606:1: ( () otherlv_1= 'null' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4606:2: () otherlv_1= 'null'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4573:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4574:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4606:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4607:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13084,7 +13179,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,86,FOLLOW_86_in_ruleXNullLiteral10754); if (state.failed) return current;
+            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleXNullLiteral10808); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXNullLiteralAccess().getNullKeyword_1());
@@ -13113,7 +13208,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXNumberLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4591:1: entryRuleXNumberLiteral returns [EObject current=null] : iv_ruleXNumberLiteral= ruleXNumberLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4624:1: entryRuleXNumberLiteral returns [EObject current=null] : iv_ruleXNumberLiteral= ruleXNumberLiteral EOF ;
     public final EObject entryRuleXNumberLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13121,13 +13216,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4592:2: (iv_ruleXNumberLiteral= ruleXNumberLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4593:2: iv_ruleXNumberLiteral= ruleXNumberLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4625:2: (iv_ruleXNumberLiteral= ruleXNumberLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4626:2: iv_ruleXNumberLiteral= ruleXNumberLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXNumberLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral10790);
+            pushFollow(FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral10844);
             iv_ruleXNumberLiteral=ruleXNumberLiteral();
 
             state._fsp--;
@@ -13135,7 +13230,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXNumberLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral10800); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXNumberLiteral10854); if (state.failed) return current;
 
             }
 
@@ -13153,7 +13248,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXNumberLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4600:1: ruleXNumberLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= ruleNumber ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4633:1: ruleXNumberLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= ruleNumber ) ) ) ;
     public final EObject ruleXNumberLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13163,14 +13258,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4603:28: ( ( () ( (lv_value_1_0= ruleNumber ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4604:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4636:28: ( ( () ( (lv_value_1_0= ruleNumber ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4637:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4604:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4604:2: () ( (lv_value_1_0= ruleNumber ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4637:1: ( () ( (lv_value_1_0= ruleNumber ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4637:2: () ( (lv_value_1_0= ruleNumber ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4604:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4605:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4637:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4638:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13182,18 +13277,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4610:2: ( (lv_value_1_0= ruleNumber ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4611:1: (lv_value_1_0= ruleNumber )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4643:2: ( (lv_value_1_0= ruleNumber ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4644:1: (lv_value_1_0= ruleNumber )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4611:1: (lv_value_1_0= ruleNumber )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4612:3: lv_value_1_0= ruleNumber
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4644:1: (lv_value_1_0= ruleNumber )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4645:3: lv_value_1_0= ruleNumber
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXNumberLiteralAccess().getValueNumberParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral10855);
+            pushFollow(FOLLOW_ruleNumber_in_ruleXNumberLiteral10909);
             lv_value_1_0=ruleNumber();
 
             state._fsp--;
@@ -13240,7 +13335,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXStringLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4636:1: entryRuleXStringLiteral returns [EObject current=null] : iv_ruleXStringLiteral= ruleXStringLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4669:1: entryRuleXStringLiteral returns [EObject current=null] : iv_ruleXStringLiteral= ruleXStringLiteral EOF ;
     public final EObject entryRuleXStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13248,13 +13343,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4637:2: (iv_ruleXStringLiteral= ruleXStringLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4638:2: iv_ruleXStringLiteral= ruleXStringLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4670:2: (iv_ruleXStringLiteral= ruleXStringLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4671:2: iv_ruleXStringLiteral= ruleXStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral10891);
+            pushFollow(FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral10945);
             iv_ruleXStringLiteral=ruleXStringLiteral();
 
             state._fsp--;
@@ -13262,7 +13357,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXStringLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXStringLiteral10901); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXStringLiteral10955); if (state.failed) return current;
 
             }
 
@@ -13280,7 +13375,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXStringLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4645:1: ruleXStringLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_STRING ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4678:1: ruleXStringLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_STRING ) ) ) ;
     public final EObject ruleXStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13289,14 +13384,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4648:28: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4649:1: ( () ( (lv_value_1_0= RULE_STRING ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4681:28: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4682:1: ( () ( (lv_value_1_0= RULE_STRING ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4649:1: ( () ( (lv_value_1_0= RULE_STRING ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4649:2: () ( (lv_value_1_0= RULE_STRING ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4682:1: ( () ( (lv_value_1_0= RULE_STRING ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4682:2: () ( (lv_value_1_0= RULE_STRING ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4649:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4650:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4682:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4683:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13308,13 +13403,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4655:2: ( (lv_value_1_0= RULE_STRING ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4656:1: (lv_value_1_0= RULE_STRING )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4688:2: ( (lv_value_1_0= RULE_STRING ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4689:1: (lv_value_1_0= RULE_STRING )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4656:1: (lv_value_1_0= RULE_STRING )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4657:3: lv_value_1_0= RULE_STRING
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4689:1: (lv_value_1_0= RULE_STRING )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4690:3: lv_value_1_0= RULE_STRING
             {
-            lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXStringLiteral10952); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleXStringLiteral11006); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getXStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0()); 
@@ -13361,7 +13456,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXTypeLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4681:1: entryRuleXTypeLiteral returns [EObject current=null] : iv_ruleXTypeLiteral= ruleXTypeLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4714:1: entryRuleXTypeLiteral returns [EObject current=null] : iv_ruleXTypeLiteral= ruleXTypeLiteral EOF ;
     public final EObject entryRuleXTypeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13369,13 +13464,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4682:2: (iv_ruleXTypeLiteral= ruleXTypeLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4683:2: iv_ruleXTypeLiteral= ruleXTypeLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4715:2: (iv_ruleXTypeLiteral= ruleXTypeLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4716:2: iv_ruleXTypeLiteral= ruleXTypeLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTypeLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral10993);
+            pushFollow(FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral11047);
             iv_ruleXTypeLiteral=ruleXTypeLiteral();
 
             state._fsp--;
@@ -13383,7 +13478,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTypeLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral11003); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTypeLiteral11057); if (state.failed) return current;
 
             }
 
@@ -13401,7 +13496,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXTypeLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4690:1: ruleXTypeLiteral returns [EObject current=null] : ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4723:1: ruleXTypeLiteral returns [EObject current=null] : ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' ) ;
     public final EObject ruleXTypeLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -13414,14 +13509,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4693:28: ( ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4694:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4726:28: ( ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4727:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4694:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4694:2: () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4727:1: ( () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4727:2: () otherlv_1= 'typeof' otherlv_2= '(' ( ( ruleQualifiedName ) ) ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )* otherlv_5= ')'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4694:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4695:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4727:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4728:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13433,23 +13528,23 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,87,FOLLOW_87_in_ruleXTypeLiteral11049); if (state.failed) return current;
+            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleXTypeLiteral11103); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTypeLiteralAccess().getTypeofKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,58,FOLLOW_58_in_ruleXTypeLiteral11061); if (state.failed) return current;
+            otherlv_2=(Token)match(input,58,FOLLOW_58_in_ruleXTypeLiteral11115); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getXTypeLiteralAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4708:1: ( ( ruleQualifiedName ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4709:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4741:1: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4742:1: ( ruleQualifiedName )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4709:1: ( ruleQualifiedName )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4710:3: ruleQualifiedName
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4742:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4743:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -13463,7 +13558,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral11084);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral11138);
             ruleQualifiedName();
 
             state._fsp--;
@@ -13479,30 +13574,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4723:2: ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )*
-            loop74:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4756:2: ( (lv_arrayDimensions_4_0= ruleArrayBrackets ) )*
+            loop76:
             do {
-                int alt74=2;
-                int LA74_0 = input.LA(1);
+                int alt76=2;
+                int LA76_0 = input.LA(1);
 
-                if ( (LA74_0==61) ) {
-                    alt74=1;
+                if ( (LA76_0==61) ) {
+                    alt76=1;
                 }
 
 
-                switch (alt74) {
+                switch (alt76) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4724:1: (lv_arrayDimensions_4_0= ruleArrayBrackets )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4757:1: (lv_arrayDimensions_4_0= ruleArrayBrackets )
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4724:1: (lv_arrayDimensions_4_0= ruleArrayBrackets )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4725:3: lv_arrayDimensions_4_0= ruleArrayBrackets
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4757:1: (lv_arrayDimensions_4_0= ruleArrayBrackets )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4758:3: lv_arrayDimensions_4_0= ruleArrayBrackets
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getXTypeLiteralAccess().getArrayDimensionsArrayBracketsParserRuleCall_4_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral11105);
+            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral11159);
             	    lv_arrayDimensions_4_0=ruleArrayBrackets();
 
             	    state._fsp--;
@@ -13528,11 +13623,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop74;
+            	    break loop76;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,60,FOLLOW_60_in_ruleXTypeLiteral11118); if (state.failed) return current;
+            otherlv_5=(Token)match(input,60,FOLLOW_60_in_ruleXTypeLiteral11172); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getXTypeLiteralAccess().getRightParenthesisKeyword_5());
@@ -13561,7 +13656,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXThrowExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4753:1: entryRuleXThrowExpression returns [EObject current=null] : iv_ruleXThrowExpression= ruleXThrowExpression EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4786:1: entryRuleXThrowExpression returns [EObject current=null] : iv_ruleXThrowExpression= ruleXThrowExpression EOF ;
     public final EObject entryRuleXThrowExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13569,13 +13664,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4754:2: (iv_ruleXThrowExpression= ruleXThrowExpression EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4755:2: iv_ruleXThrowExpression= ruleXThrowExpression EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4787:2: (iv_ruleXThrowExpression= ruleXThrowExpression EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4788:2: iv_ruleXThrowExpression= ruleXThrowExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXThrowExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression11154);
+            pushFollow(FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression11208);
             iv_ruleXThrowExpression=ruleXThrowExpression();
 
             state._fsp--;
@@ -13583,7 +13678,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXThrowExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression11164); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXThrowExpression11218); if (state.failed) return current;
 
             }
 
@@ -13601,7 +13696,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXThrowExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4762:1: ruleXThrowExpression returns [EObject current=null] : ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4795:1: ruleXThrowExpression returns [EObject current=null] : ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) ;
     public final EObject ruleXThrowExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13612,14 +13707,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4765:28: ( ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4766:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4798:28: ( ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4799:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4766:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4766:2: () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4799:1: ( () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4799:2: () otherlv_1= 'throw' ( (lv_expression_2_0= ruleXExpression ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4766:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4767:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4799:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4800:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13631,24 +13726,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,88,FOLLOW_88_in_ruleXThrowExpression11210); if (state.failed) return current;
+            otherlv_1=(Token)match(input,89,FOLLOW_89_in_ruleXThrowExpression11264); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXThrowExpressionAccess().getThrowKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4776:1: ( (lv_expression_2_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4777:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4809:1: ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4810:1: (lv_expression_2_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4777:1: (lv_expression_2_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4778:3: lv_expression_2_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4810:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4811:3: lv_expression_2_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXThrowExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression11231);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXThrowExpression11285);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -13695,7 +13790,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXReturnExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4802:1: entryRuleXReturnExpression returns [EObject current=null] : iv_ruleXReturnExpression= ruleXReturnExpression EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4835:1: entryRuleXReturnExpression returns [EObject current=null] : iv_ruleXReturnExpression= ruleXReturnExpression EOF ;
     public final EObject entryRuleXReturnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13703,13 +13798,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4803:2: (iv_ruleXReturnExpression= ruleXReturnExpression EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4804:2: iv_ruleXReturnExpression= ruleXReturnExpression EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4836:2: (iv_ruleXReturnExpression= ruleXReturnExpression EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4837:2: iv_ruleXReturnExpression= ruleXReturnExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXReturnExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression11267);
+            pushFollow(FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression11321);
             iv_ruleXReturnExpression=ruleXReturnExpression();
 
             state._fsp--;
@@ -13717,7 +13812,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXReturnExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression11277); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXReturnExpression11331); if (state.failed) return current;
 
             }
 
@@ -13735,7 +13830,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXReturnExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4811:1: ruleXReturnExpression returns [EObject current=null] : ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4844:1: ruleXReturnExpression returns [EObject current=null] : ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) ;
     public final EObject ruleXReturnExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13746,14 +13841,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4814:28: ( ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4815:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4847:28: ( ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4848:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4815:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4815:2: () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4848:1: ( () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4848:2: () otherlv_1= 'return' ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4815:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4816:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4848:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4849:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13765,28 +13860,28 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,89,FOLLOW_89_in_ruleXReturnExpression11323); if (state.failed) return current;
+            otherlv_1=(Token)match(input,90,FOLLOW_90_in_ruleXReturnExpression11377); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXReturnExpressionAccess().getReturnKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4825:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
-            int alt75=2;
-            alt75 = dfa75.predict(input);
-            switch (alt75) {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4858:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?
+            int alt77=2;
+            alt77 = dfa77.predict(input);
+            switch (alt77) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4825:2: ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4858:2: ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4830:1: (lv_expression_2_0= ruleXExpression )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4831:3: lv_expression_2_0= ruleXExpression
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4863:1: (lv_expression_2_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4864:3: lv_expression_2_0= ruleXExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXReturnExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression11354);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXReturnExpression11408);
                     lv_expression_2_0=ruleXExpression();
 
                     state._fsp--;
@@ -13836,7 +13931,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXBreakExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4855:1: entryRuleXBreakExpression returns [EObject current=null] : iv_ruleXBreakExpression= ruleXBreakExpression EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4888:1: entryRuleXBreakExpression returns [EObject current=null] : iv_ruleXBreakExpression= ruleXBreakExpression EOF ;
     public final EObject entryRuleXBreakExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13844,13 +13939,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4856:2: (iv_ruleXBreakExpression= ruleXBreakExpression EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4857:2: iv_ruleXBreakExpression= ruleXBreakExpression EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4889:2: (iv_ruleXBreakExpression= ruleXBreakExpression EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4890:2: iv_ruleXBreakExpression= ruleXBreakExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXBreakExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXBreakExpression_in_entryRuleXBreakExpression11391);
+            pushFollow(FOLLOW_ruleXBreakExpression_in_entryRuleXBreakExpression11445);
             iv_ruleXBreakExpression=ruleXBreakExpression();
 
             state._fsp--;
@@ -13858,7 +13953,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXBreakExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXBreakExpression11401); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXBreakExpression11455); if (state.failed) return current;
 
             }
 
@@ -13876,7 +13971,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXBreakExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4864:1: ruleXBreakExpression returns [EObject current=null] : ( () otherlv_1= 'break' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4897:1: ruleXBreakExpression returns [EObject current=null] : ( () otherlv_1= 'break' ) ;
     public final EObject ruleXBreakExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13885,14 +13980,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4867:28: ( ( () otherlv_1= 'break' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4868:1: ( () otherlv_1= 'break' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4900:28: ( ( () otherlv_1= 'break' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4901:1: ( () otherlv_1= 'break' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4868:1: ( () otherlv_1= 'break' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4868:2: () otherlv_1= 'break'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4901:1: ( () otherlv_1= 'break' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4901:2: () otherlv_1= 'break'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4868:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4869:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4901:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4902:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -13904,7 +13999,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,90,FOLLOW_90_in_ruleXBreakExpression11447); if (state.failed) return current;
+            otherlv_1=(Token)match(input,91,FOLLOW_91_in_ruleXBreakExpression11501); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXBreakExpressionAccess().getBreakKeyword_1());
@@ -13933,7 +14028,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXContinueExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4886:1: entryRuleXContinueExpression returns [EObject current=null] : iv_ruleXContinueExpression= ruleXContinueExpression EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4919:1: entryRuleXContinueExpression returns [EObject current=null] : iv_ruleXContinueExpression= ruleXContinueExpression EOF ;
     public final EObject entryRuleXContinueExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13941,13 +14036,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4887:2: (iv_ruleXContinueExpression= ruleXContinueExpression EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4888:2: iv_ruleXContinueExpression= ruleXContinueExpression EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4920:2: (iv_ruleXContinueExpression= ruleXContinueExpression EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4921:2: iv_ruleXContinueExpression= ruleXContinueExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXContinueExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXContinueExpression_in_entryRuleXContinueExpression11483);
+            pushFollow(FOLLOW_ruleXContinueExpression_in_entryRuleXContinueExpression11537);
             iv_ruleXContinueExpression=ruleXContinueExpression();
 
             state._fsp--;
@@ -13955,7 +14050,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXContinueExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXContinueExpression11493); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXContinueExpression11547); if (state.failed) return current;
 
             }
 
@@ -13973,7 +14068,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXContinueExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4895:1: ruleXContinueExpression returns [EObject current=null] : ( () otherlv_1= 'continue' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4928:1: ruleXContinueExpression returns [EObject current=null] : ( () otherlv_1= 'continue' ) ;
     public final EObject ruleXContinueExpression() throws RecognitionException {
         EObject current = null;
 
@@ -13982,14 +14077,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4898:28: ( ( () otherlv_1= 'continue' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4899:1: ( () otherlv_1= 'continue' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4931:28: ( ( () otherlv_1= 'continue' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4932:1: ( () otherlv_1= 'continue' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4899:1: ( () otherlv_1= 'continue' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4899:2: () otherlv_1= 'continue'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4932:1: ( () otherlv_1= 'continue' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4932:2: () otherlv_1= 'continue'
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4899:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4900:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4932:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4933:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -14001,7 +14096,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,91,FOLLOW_91_in_ruleXContinueExpression11539); if (state.failed) return current;
+            otherlv_1=(Token)match(input,92,FOLLOW_92_in_ruleXContinueExpression11593); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXContinueExpressionAccess().getContinueKeyword_1());
@@ -14030,7 +14125,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXTryCatchFinallyExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4917:1: entryRuleXTryCatchFinallyExpression returns [EObject current=null] : iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4950:1: entryRuleXTryCatchFinallyExpression returns [EObject current=null] : iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF ;
     public final EObject entryRuleXTryCatchFinallyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -14038,13 +14133,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4918:2: (iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4919:2: iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4951:2: (iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4952:2: iv_ruleXTryCatchFinallyExpression= ruleXTryCatchFinallyExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression11575);
+            pushFollow(FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression11629);
             iv_ruleXTryCatchFinallyExpression=ruleXTryCatchFinallyExpression();
 
             state._fsp--;
@@ -14052,7 +14147,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTryCatchFinallyExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression11585); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression11639); if (state.failed) return current;
 
             }
 
@@ -14070,7 +14165,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXTryCatchFinallyExpression"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4926:1: ruleXTryCatchFinallyExpression returns [EObject current=null] : ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4959:1: ruleXTryCatchFinallyExpression returns [EObject current=null] : ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) ;
     public final EObject ruleXTryCatchFinallyExpression() throws RecognitionException {
         EObject current = null;
 
@@ -14089,14 +14184,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4929:28: ( ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4930:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4962:28: ( ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4963:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4930:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4930:2: () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4963:1: ( () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4963:2: () otherlv_1= 'try' ( (lv_expression_2_0= ruleXExpression ) ) ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4930:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4931:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4963:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4964:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -14108,24 +14203,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,92,FOLLOW_92_in_ruleXTryCatchFinallyExpression11631); if (state.failed) return current;
+            otherlv_1=(Token)match(input,93,FOLLOW_93_in_ruleXTryCatchFinallyExpression11685); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXTryCatchFinallyExpressionAccess().getTryKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4940:1: ( (lv_expression_2_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4941:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4973:1: ( (lv_expression_2_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4974:1: (lv_expression_2_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4941:1: (lv_expression_2_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4942:3: lv_expression_2_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4974:1: (lv_expression_2_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4975:3: lv_expression_2_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11652);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11706);
             lv_expression_2_0=ruleXExpression();
 
             state._fsp--;
@@ -14149,42 +14244,42 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:2: ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
-            int alt77=2;
-            int LA77_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:2: ( ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? ) | (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) ) )
+            int alt79=2;
+            int LA79_0 = input.LA(1);
 
-            if ( (LA77_0==94) && (synpred39_InternalXbase())) {
-                alt77=1;
+            if ( (LA79_0==95) && (synpred39_InternalXbase())) {
+                alt79=1;
             }
-            else if ( (LA77_0==93) ) {
-                alt77=2;
+            else if ( (LA79_0==94) ) {
+                alt79=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 77, 0, input);
+                    new NoViableAltException("", 79, 0, input);
 
                 throw nvae;
             }
-            switch (alt77) {
+            switch (alt79) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:3: ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:3: ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:3: ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:4: ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:3: ( ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )? )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:4: ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) ) ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:4: ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:5: ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:4: ( ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:5: ( 'catch' )=> (lv_catchClause_3_0= ruleXCatchClause )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4960:1: (lv_catchClause_3_0= ruleXCatchClause )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4961:3: lv_catchClause_3_0= ruleXCatchClause
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4993:1: (lv_catchClause_3_0= ruleXCatchClause )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4994:3: lv_catchClause_3_0= ruleXCatchClause
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getCatchClauseXCatchClauseParserRuleCall_3_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression11682);
+                    pushFollow(FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression11736);
                     lv_catchClause_3_0=ruleXCatchClause();
 
                     state._fsp--;
@@ -14208,25 +14303,25 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:2: ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
-                    int alt76=2;
-                    int LA76_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:2: ( ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) ) )?
+                    int alt78=2;
+                    int LA78_0 = input.LA(1);
 
-                    if ( (LA76_0==93) ) {
-                        int LA76_1 = input.LA(2);
+                    if ( (LA78_0==94) ) {
+                        int LA78_1 = input.LA(2);
 
                         if ( (synpred40_InternalXbase()) ) {
-                            alt76=1;
+                            alt78=1;
                         }
                     }
-                    switch (alt76) {
+                    switch (alt78) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:3: ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:3: ( ( 'finally' )=>otherlv_4= 'finally' ) ( (lv_finallyExpression_5_0= ruleXExpression ) )
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:3: ( ( 'finally' )=>otherlv_4= 'finally' )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:4: ( 'finally' )=>otherlv_4= 'finally'
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:3: ( ( 'finally' )=>otherlv_4= 'finally' )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:4: ( 'finally' )=>otherlv_4= 'finally'
                             {
-                            otherlv_4=(Token)match(input,93,FOLLOW_93_in_ruleXTryCatchFinallyExpression11703); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,94,FOLLOW_94_in_ruleXTryCatchFinallyExpression11757); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_4, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_0_1_0());
@@ -14235,18 +14330,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4982:2: ( (lv_finallyExpression_5_0= ruleXExpression ) )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4983:1: (lv_finallyExpression_5_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5015:2: ( (lv_finallyExpression_5_0= ruleXExpression ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5016:1: (lv_finallyExpression_5_0= ruleXExpression )
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4983:1: (lv_finallyExpression_5_0= ruleXExpression )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4984:3: lv_finallyExpression_5_0= ruleXExpression
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5016:1: (lv_finallyExpression_5_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5017:3: lv_finallyExpression_5_0= ruleXExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_0_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11725);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11779);
                             lv_finallyExpression_5_0=ruleXExpression();
 
                             state._fsp--;
@@ -14283,29 +14378,29 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5001:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5034:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5001:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5001:8: otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5034:6: (otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5034:8: otherlv_6= 'finally' ( (lv_finallyExpression_7_0= ruleXExpression ) )
                     {
-                    otherlv_6=(Token)match(input,93,FOLLOW_93_in_ruleXTryCatchFinallyExpression11747); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,94,FOLLOW_94_in_ruleXTryCatchFinallyExpression11801); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyKeyword_3_1_0());
                           
                     }
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5005:1: ( (lv_finallyExpression_7_0= ruleXExpression ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5006:1: (lv_finallyExpression_7_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5038:1: ( (lv_finallyExpression_7_0= ruleXExpression ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5039:1: (lv_finallyExpression_7_0= ruleXExpression )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5006:1: (lv_finallyExpression_7_0= ruleXExpression )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5007:3: lv_finallyExpression_7_0= ruleXExpression
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5039:1: (lv_finallyExpression_7_0= ruleXExpression )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5040:3: lv_finallyExpression_7_0= ruleXExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11768);
+                    pushFollow(FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11822);
                     lv_finallyExpression_7_0=ruleXExpression();
 
                     state._fsp--;
@@ -14361,7 +14456,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXCatchClause"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5031:1: entryRuleXCatchClause returns [EObject current=null] : iv_ruleXCatchClause= ruleXCatchClause EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5064:1: entryRuleXCatchClause returns [EObject current=null] : iv_ruleXCatchClause= ruleXCatchClause EOF ;
     public final EObject entryRuleXCatchClause() throws RecognitionException {
         EObject current = null;
 
@@ -14369,13 +14464,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5032:2: (iv_ruleXCatchClause= ruleXCatchClause EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5033:2: iv_ruleXCatchClause= ruleXCatchClause EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5065:2: (iv_ruleXCatchClause= ruleXCatchClause EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5066:2: iv_ruleXCatchClause= ruleXCatchClause EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXCatchClauseRule()); 
             }
-            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause11806);
+            pushFollow(FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause11860);
             iv_ruleXCatchClause=ruleXCatchClause();
 
             state._fsp--;
@@ -14383,7 +14478,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXCatchClause; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause11816); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXCatchClause11870); if (state.failed) return current;
 
             }
 
@@ -14401,7 +14496,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXCatchClause"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5040:1: ruleXCatchClause returns [EObject current=null] : ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5073:1: ruleXCatchClause returns [EObject current=null] : ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
     public final EObject ruleXCatchClause() throws RecognitionException {
         EObject current = null;
 
@@ -14415,16 +14510,16 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5043:28: ( ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5044:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5076:28: ( ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5044:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5044:2: ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:1: ( ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:2: ( ( 'catch' )=>otherlv_0= 'catch' ) otherlv_1= '(' ( (lv_identifier_2_0= RULE_ID ) ) otherlv_3= ')' ( (lv_expression_4_0= ruleXExpression ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5044:2: ( ( 'catch' )=>otherlv_0= 'catch' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5044:3: ( 'catch' )=>otherlv_0= 'catch'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:2: ( ( 'catch' )=>otherlv_0= 'catch' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:3: ( 'catch' )=>otherlv_0= 'catch'
             {
-            otherlv_0=(Token)match(input,94,FOLLOW_94_in_ruleXCatchClause11861); if (state.failed) return current;
+            otherlv_0=(Token)match(input,95,FOLLOW_95_in_ruleXCatchClause11915); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getXCatchClauseAccess().getCatchKeyword_0());
@@ -14433,19 +14528,19 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,58,FOLLOW_58_in_ruleXCatchClause11874); if (state.failed) return current;
+            otherlv_1=(Token)match(input,58,FOLLOW_58_in_ruleXCatchClause11928); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getXCatchClauseAccess().getLeftParenthesisKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5053:1: ( (lv_identifier_2_0= RULE_ID ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5054:1: (lv_identifier_2_0= RULE_ID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5086:1: ( (lv_identifier_2_0= RULE_ID ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5087:1: (lv_identifier_2_0= RULE_ID )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5054:1: (lv_identifier_2_0= RULE_ID )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5055:3: lv_identifier_2_0= RULE_ID
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5087:1: (lv_identifier_2_0= RULE_ID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5088:3: lv_identifier_2_0= RULE_ID
             {
-            lv_identifier_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXCatchClause11891); if (state.failed) return current;
+            lv_identifier_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleXCatchClause11945); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_identifier_2_0, grammarAccess.getXCatchClauseAccess().getIdentifierIDTerminalRuleCall_2_0()); 
@@ -14469,24 +14564,24 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,60,FOLLOW_60_in_ruleXCatchClause11908); if (state.failed) return current;
+            otherlv_3=(Token)match(input,60,FOLLOW_60_in_ruleXCatchClause11962); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getXCatchClauseAccess().getRightParenthesisKeyword_3());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5075:1: ( (lv_expression_4_0= ruleXExpression ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5076:1: (lv_expression_4_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5108:1: ( (lv_expression_4_0= ruleXExpression ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5109:1: (lv_expression_4_0= ruleXExpression )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5076:1: (lv_expression_4_0= ruleXExpression )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5077:3: lv_expression_4_0= ruleXExpression
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5109:1: (lv_expression_4_0= ruleXExpression )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5110:3: lv_expression_4_0= ruleXExpression
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getXCatchClauseAccess().getExpressionXExpressionParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause11929);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleXCatchClause11983);
             lv_expression_4_0=ruleXExpression();
 
             state._fsp--;
@@ -14532,8 +14627,517 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleXCatchClause"
 
 
+    // $ANTLR start "entryRuleJvmAnnotation"
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5134:1: entryRuleJvmAnnotation returns [EObject current=null] : iv_ruleJvmAnnotation= ruleJvmAnnotation EOF ;
+    public final EObject entryRuleJvmAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleJvmAnnotation = null;
+
+
+        try {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5135:2: (iv_ruleJvmAnnotation= ruleJvmAnnotation EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5136:2: iv_ruleJvmAnnotation= ruleJvmAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getJvmAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleJvmAnnotation_in_entryRuleJvmAnnotation12019);
+            iv_ruleJvmAnnotation=ruleJvmAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleJvmAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmAnnotation12029); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleJvmAnnotation"
+
+
+    // $ANTLR start "ruleJvmAnnotation"
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5143:1: ruleJvmAnnotation returns [EObject current=null] : ( () otherlv_1= '@' ( ( ruleQualifiedName ) ) ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )? ) ;
+    public final EObject ruleJvmAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        Token otherlv_8=null;
+        EObject lv_values_4_0 = null;
+
+        EObject lv_values_6_0 = null;
+
+        EObject lv_value_7_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5146:28: ( ( () otherlv_1= '@' ( ( ruleQualifiedName ) ) ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5147:1: ( () otherlv_1= '@' ( ( ruleQualifiedName ) ) ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )? )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5147:1: ( () otherlv_1= '@' ( ( ruleQualifiedName ) ) ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5147:2: () otherlv_1= '@' ( ( ruleQualifiedName ) ) ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )?
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5147:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5148:5: 
+            {
+            if ( state.backtracking==0 ) {
+
+                      current = forceCreateModelElement(
+                          grammarAccess.getJvmAnnotationAccess().getJvmAnnotationReferenceAction_0(),
+                          current);
+                  
+            }
+
+            }
+
+            otherlv_1=(Token)match(input,96,FOLLOW_96_in_ruleJvmAnnotation12075); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getJvmAnnotationAccess().getCommercialAtKeyword_1());
+                  
+            }
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5157:1: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5158:1: ( ruleQualifiedName )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5158:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5159:3: ruleQualifiedName
+            {
+            if ( state.backtracking==0 ) {
+
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getJvmAnnotationRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getJvmAnnotationAccess().getAnnotationJvmAnnotationTypeCrossReference_2_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmAnnotation12098);
+            ruleQualifiedName();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:2: ( ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')' )?
+            int alt82=2;
+            int LA82_0 = input.LA(1);
+
+            if ( (LA82_0==58) && (synpred42_InternalXbase())) {
+                alt82=1;
+            }
+            switch (alt82) {
+                case 1 :
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:3: ( ( '(' )=>otherlv_3= '(' ) ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )? otherlv_8= ')'
+                    {
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:3: ( ( '(' )=>otherlv_3= '(' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:4: ( '(' )=>otherlv_3= '('
+                    {
+                    otherlv_3=(Token)match(input,58,FOLLOW_58_in_ruleJvmAnnotation12119); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getJvmAnnotationAccess().getLeftParenthesisKeyword_3_0());
+                          
+                    }
+
+                    }
+
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:2: ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* ) | ( (lv_value_7_0= ruleXLiteral ) ) )?
+                    int alt81=3;
+                    int LA81_0 = input.LA(1);
+
+                    if ( (LA81_0==RULE_ID) && (synpred43_InternalXbase())) {
+                        alt81=1;
+                    }
+                    else if ( ((LA81_0>=RULE_STRING && LA81_0<=RULE_RICH_TEXT_START)||LA81_0==65||(LA81_0>=84 && LA81_0<=88)) ) {
+                        alt81=2;
+                    }
+                    switch (alt81) {
+                        case 1 :
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:3: ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* )
+                            {
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:3: ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )* )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:4: ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) ) (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )*
+                            {
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:4: ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:5: ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_4_0= ruleJvmAnnotationValue )
+                            {
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5183:1: (lv_values_4_0= ruleJvmAnnotationValue )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5184:3: lv_values_4_0= ruleJvmAnnotationValue
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getJvmAnnotationAccess().getValuesJvmAnnotationValueParserRuleCall_3_1_0_0_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleJvmAnnotationValue_in_ruleJvmAnnotation12163);
+                            lv_values_4_0=ruleJvmAnnotationValue();
+
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getJvmAnnotationRule());
+                              	        }
+                                     		add(
+                                     			current, 
+                                     			"values",
+                                      		lv_values_4_0, 
+                                      		"JvmAnnotationValue");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
+
+                            }
+
+
+                            }
+
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5200:2: (otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) ) )*
+                            loop80:
+                            do {
+                                int alt80=2;
+                                int LA80_0 = input.LA(1);
+
+                                if ( (LA80_0==59) ) {
+                                    alt80=1;
+                                }
+
+
+                                switch (alt80) {
+                            	case 1 :
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5200:4: otherlv_5= ',' ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) )
+                            	    {
+                            	    otherlv_5=(Token)match(input,59,FOLLOW_59_in_ruleJvmAnnotation12176); if (state.failed) return current;
+                            	    if ( state.backtracking==0 ) {
+
+                            	          	newLeafNode(otherlv_5, grammarAccess.getJvmAnnotationAccess().getCommaKeyword_3_1_0_1_0());
+                            	          
+                            	    }
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5204:1: ( ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue ) )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5204:2: ( ( ( ( ruleValidID ) ) '=' ) )=> (lv_values_6_0= ruleJvmAnnotationValue )
+                            	    {
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5210:1: (lv_values_6_0= ruleJvmAnnotationValue )
+                            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5211:3: lv_values_6_0= ruleJvmAnnotationValue
+                            	    {
+                            	    if ( state.backtracking==0 ) {
+                            	       
+                            	      	        newCompositeNode(grammarAccess.getJvmAnnotationAccess().getValuesJvmAnnotationValueParserRuleCall_3_1_0_1_1_0()); 
+                            	      	    
+                            	    }
+                            	    pushFollow(FOLLOW_ruleJvmAnnotationValue_in_ruleJvmAnnotation12217);
+                            	    lv_values_6_0=ruleJvmAnnotationValue();
+
+                            	    state._fsp--;
+                            	    if (state.failed) return current;
+                            	    if ( state.backtracking==0 ) {
+
+                            	      	        if (current==null) {
+                            	      	            current = createModelElementForParent(grammarAccess.getJvmAnnotationRule());
+                            	      	        }
+                            	             		add(
+                            	             			current, 
+                            	             			"values",
+                            	              		lv_values_6_0, 
+                            	              		"JvmAnnotationValue");
+                            	      	        afterParserOrEnumRuleCall();
+                            	      	    
+                            	    }
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop80;
+                                }
+                            } while (true);
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5228:6: ( (lv_value_7_0= ruleXLiteral ) )
+                            {
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5228:6: ( (lv_value_7_0= ruleXLiteral ) )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5229:1: (lv_value_7_0= ruleXLiteral )
+                            {
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5229:1: (lv_value_7_0= ruleXLiteral )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5230:3: lv_value_7_0= ruleXLiteral
+                            {
+                            if ( state.backtracking==0 ) {
+                               
+                              	        newCompositeNode(grammarAccess.getJvmAnnotationAccess().getValueXLiteralParserRuleCall_3_1_1_0()); 
+                              	    
+                            }
+                            pushFollow(FOLLOW_ruleXLiteral_in_ruleJvmAnnotation12247);
+                            lv_value_7_0=ruleXLiteral();
+
+                            state._fsp--;
+                            if (state.failed) return current;
+                            if ( state.backtracking==0 ) {
+
+                              	        if (current==null) {
+                              	            current = createModelElementForParent(grammarAccess.getJvmAnnotationRule());
+                              	        }
+                                     		set(
+                                     			current, 
+                                     			"value",
+                                      		lv_value_7_0, 
+                                      		"XLiteral");
+                              	        afterParserOrEnumRuleCall();
+                              	    
+                            }
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    otherlv_8=(Token)match(input,60,FOLLOW_60_in_ruleJvmAnnotation12261); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_8, grammarAccess.getJvmAnnotationAccess().getRightParenthesisKeyword_3_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleJvmAnnotation"
+
+
+    // $ANTLR start "entryRuleJvmAnnotationValue"
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5258:1: entryRuleJvmAnnotationValue returns [EObject current=null] : iv_ruleJvmAnnotationValue= ruleJvmAnnotationValue EOF ;
+    public final EObject entryRuleJvmAnnotationValue() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleJvmAnnotationValue = null;
+
+
+        try {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5259:2: (iv_ruleJvmAnnotationValue= ruleJvmAnnotationValue EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5260:2: iv_ruleJvmAnnotationValue= ruleJvmAnnotationValue EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getJvmAnnotationValueRule()); 
+            }
+            pushFollow(FOLLOW_ruleJvmAnnotationValue_in_entryRuleJvmAnnotationValue12299);
+            iv_ruleJvmAnnotationValue=ruleJvmAnnotationValue();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleJvmAnnotationValue; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmAnnotationValue12309); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleJvmAnnotationValue"
+
+
+    // $ANTLR start "ruleJvmAnnotationValue"
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5267:1: ruleJvmAnnotationValue returns [EObject current=null] : ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) ) ( (lv_value_2_0= ruleXLiteral ) ) ) ;
+    public final EObject ruleJvmAnnotationValue() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        EObject lv_value_2_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5270:28: ( ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) ) ( (lv_value_2_0= ruleXLiteral ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5271:1: ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) ) ( (lv_value_2_0= ruleXLiteral ) ) )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5271:1: ( ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) ) ( (lv_value_2_0= ruleXLiteral ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5271:2: ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) ) ( (lv_value_2_0= ruleXLiteral ) )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5271:2: ( ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5271:3: ( ( ( ( ruleValidID ) ) '=' ) )=> ( ( ( ruleValidID ) ) otherlv_1= '=' )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5276:5: ( ( ( ruleValidID ) ) otherlv_1= '=' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5276:6: ( ( ruleValidID ) ) otherlv_1= '='
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5276:6: ( ( ruleValidID ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5277:1: ( ruleValidID )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5277:1: ( ruleValidID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5278:3: ruleValidID
+            {
+            if ( state.backtracking==0 ) {
+
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getJvmAnnotationValueRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldCrossReference_0_0_0_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleValidID_in_ruleJvmAnnotationValue12379);
+            ruleValidID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleJvmAnnotationValue12391); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getJvmAnnotationValueAccess().getEqualsSignKeyword_0_0_1());
+                  
+            }
+
+            }
+
+
+            }
+
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5295:3: ( (lv_value_2_0= ruleXLiteral ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5296:1: (lv_value_2_0= ruleXLiteral )
+            {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5296:1: (lv_value_2_0= ruleXLiteral )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5297:3: lv_value_2_0= ruleXLiteral
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getJvmAnnotationValueAccess().getValueXLiteralParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleXLiteral_in_ruleJvmAnnotationValue12414);
+            lv_value_2_0=ruleXLiteral();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getJvmAnnotationValueRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"value",
+                      		lv_value_2_0, 
+                      		"XLiteral");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleJvmAnnotationValue"
+
+
     // $ANTLR start "entryRuleQualifiedName"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5101:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5321:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -14541,13 +15145,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5102:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5103:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5322:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5323:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11966);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName12451);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -14555,7 +15159,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName11977); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName12462); if (state.failed) return current;
 
             }
 
@@ -14573,7 +15177,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5110:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5330:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14586,18 +15190,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5113:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5114:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5333:28: ( (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5334:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5114:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5115:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5334:1: (this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5335:5: this_ValidID_0= ruleValidID ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName12024);
+            pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName12509);
             this_ValidID_0=ruleValidID();
 
             state._fsp--;
@@ -14612,20 +15216,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5125:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
-            loop78:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5345:1: ( ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID )*
+            loop83:
             do {
-                int alt78=2;
-                int LA78_0 = input.LA(1);
+                int alt83=2;
+                int LA83_0 = input.LA(1);
 
-                if ( (LA78_0==63) ) {
-                    int LA78_2 = input.LA(2);
+                if ( (LA83_0==63) ) {
+                    int LA83_2 = input.LA(2);
 
-                    if ( (LA78_2==RULE_ID) ) {
-                        int LA78_3 = input.LA(3);
+                    if ( (LA83_2==RULE_ID) ) {
+                        int LA83_3 = input.LA(3);
 
-                        if ( (synpred42_InternalXbase()) ) {
-                            alt78=1;
+                        if ( (synpred46_InternalXbase()) ) {
+                            alt83=1;
                         }
 
 
@@ -14635,14 +15239,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                 }
 
 
-                switch (alt78) {
+                switch (alt83) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5125:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5345:2: ( ( '.' )=>kw= '.' ) this_ValidID_2= ruleValidID
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5125:2: ( ( '.' )=>kw= '.' )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5125:3: ( '.' )=>kw= '.'
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5345:2: ( ( '.' )=>kw= '.' )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5345:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,63,FOLLOW_63_in_ruleQualifiedName12052); if (state.failed) return current;
+            	    kw=(Token)match(input,63,FOLLOW_63_in_ruleQualifiedName12537); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -14657,7 +15261,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName12075);
+            	    pushFollow(FOLLOW_ruleValidID_in_ruleQualifiedName12560);
             	    this_ValidID_2=ruleValidID();
 
             	    state._fsp--;
@@ -14677,7 +15281,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop78;
+            	    break loop83;
                 }
             } while (true);
 
@@ -14704,7 +15308,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNumber"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5152:1: entryRuleNumber returns [String current=null] : iv_ruleNumber= ruleNumber EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5372:1: entryRuleNumber returns [String current=null] : iv_ruleNumber= ruleNumber EOF ;
     public final String entryRuleNumber() throws RecognitionException {
         String current = null;
 
@@ -14715,13 +15319,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
         	
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5156:2: (iv_ruleNumber= ruleNumber EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5157:2: iv_ruleNumber= ruleNumber EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5376:2: (iv_ruleNumber= ruleNumber EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5377:2: iv_ruleNumber= ruleNumber EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNumberRule()); 
             }
-            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber12129);
+            pushFollow(FOLLOW_ruleNumber_in_entryRuleNumber12614);
             iv_ruleNumber=ruleNumber();
 
             state._fsp--;
@@ -14729,7 +15333,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNumber.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber12140); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNumber12625); if (state.failed) return current;
 
             }
 
@@ -14750,7 +15354,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNumber"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5167:1: ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5387:1: ruleNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) ;
     public final AntlrDatatypeRuleToken ruleNumber() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -14765,31 +15369,31 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5171:28: ( (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5391:28: ( (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5392:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
-            int alt82=2;
-            int LA82_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5392:1: (this_HEX_0= RULE_HEX | ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? ) )
+            int alt87=2;
+            int LA87_0 = input.LA(1);
 
-            if ( (LA82_0==RULE_HEX) ) {
-                alt82=1;
+            if ( (LA87_0==RULE_HEX) ) {
+                alt87=1;
             }
-            else if ( ((LA82_0>=RULE_INT && LA82_0<=RULE_DECIMAL)) ) {
-                alt82=2;
+            else if ( ((LA87_0>=RULE_INT && LA87_0<=RULE_DECIMAL)) ) {
+                alt87=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 82, 0, input);
+                    new NoViableAltException("", 87, 0, input);
 
                 throw nvae;
             }
-            switch (alt82) {
+            switch (alt87) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:6: this_HEX_0= RULE_HEX
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5392:6: this_HEX_0= RULE_HEX
                     {
-                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber12184); if (state.failed) return current;
+                    this_HEX_0=(Token)match(input,RULE_HEX,FOLLOW_RULE_HEX_in_ruleNumber12669); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_HEX_0);
@@ -14804,33 +15408,33 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5180:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5400:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5180:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5180:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5400:6: ( (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )? )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5400:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL ) (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5180:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL )
-                    int alt79=2;
-                    int LA79_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5400:7: (this_INT_1= RULE_INT | this_DECIMAL_2= RULE_DECIMAL )
+                    int alt84=2;
+                    int LA84_0 = input.LA(1);
 
-                    if ( (LA79_0==RULE_INT) ) {
-                        alt79=1;
+                    if ( (LA84_0==RULE_INT) ) {
+                        alt84=1;
                     }
-                    else if ( (LA79_0==RULE_DECIMAL) ) {
-                        alt79=2;
+                    else if ( (LA84_0==RULE_DECIMAL) ) {
+                        alt84=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 79, 0, input);
+                            new NoViableAltException("", 84, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt79) {
+                    switch (alt84) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5180:12: this_INT_1= RULE_INT
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5400:12: this_INT_1= RULE_INT
                             {
-                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber12212); if (state.failed) return current;
+                            this_INT_1=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber12697); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_INT_1);
@@ -14845,9 +15449,9 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5188:10: this_DECIMAL_2= RULE_DECIMAL
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5408:10: this_DECIMAL_2= RULE_DECIMAL
                             {
-                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber12238); if (state.failed) return current;
+                            this_DECIMAL_2=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber12723); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		current.merge(this_DECIMAL_2);
@@ -14864,50 +15468,50 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5195:2: (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
-                    int alt81=2;
-                    int LA81_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5415:2: (kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL ) )?
+                    int alt86=2;
+                    int LA86_0 = input.LA(1);
 
-                    if ( (LA81_0==63) ) {
-                        int LA81_1 = input.LA(2);
+                    if ( (LA86_0==63) ) {
+                        int LA86_1 = input.LA(2);
 
-                        if ( ((LA81_1>=RULE_INT && LA81_1<=RULE_DECIMAL)) ) {
-                            alt81=1;
+                        if ( ((LA86_1>=RULE_INT && LA86_1<=RULE_DECIMAL)) ) {
+                            alt86=1;
                         }
                     }
-                    switch (alt81) {
+                    switch (alt86) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5196:2: kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5416:2: kw= '.' (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
                             {
-                            kw=(Token)match(input,63,FOLLOW_63_in_ruleNumber12258); if (state.failed) return current;
+                            kw=(Token)match(input,63,FOLLOW_63_in_ruleNumber12743); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                       current.merge(kw);
                                       newLeafNode(kw, grammarAccess.getNumberAccess().getFullStopKeyword_1_1_0()); 
                                   
                             }
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5201:1: (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
-                            int alt80=2;
-                            int LA80_0 = input.LA(1);
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5421:1: (this_INT_4= RULE_INT | this_DECIMAL_5= RULE_DECIMAL )
+                            int alt85=2;
+                            int LA85_0 = input.LA(1);
 
-                            if ( (LA80_0==RULE_INT) ) {
-                                alt80=1;
+                            if ( (LA85_0==RULE_INT) ) {
+                                alt85=1;
                             }
-                            else if ( (LA80_0==RULE_DECIMAL) ) {
-                                alt80=2;
+                            else if ( (LA85_0==RULE_DECIMAL) ) {
+                                alt85=2;
                             }
                             else {
                                 if (state.backtracking>0) {state.failed=true; return current;}
                                 NoViableAltException nvae =
-                                    new NoViableAltException("", 80, 0, input);
+                                    new NoViableAltException("", 85, 0, input);
 
                                 throw nvae;
                             }
-                            switch (alt80) {
+                            switch (alt85) {
                                 case 1 :
-                                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5201:6: this_INT_4= RULE_INT
+                                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5421:6: this_INT_4= RULE_INT
                                     {
-                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber12274); if (state.failed) return current;
+                                    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleNumber12759); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_INT_4);
@@ -14922,9 +15526,9 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                                     }
                                     break;
                                 case 2 :
-                                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5209:10: this_DECIMAL_5= RULE_DECIMAL
+                                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5429:10: this_DECIMAL_5= RULE_DECIMAL
                                     {
-                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber12300); if (state.failed) return current;
+                                    this_DECIMAL_5=(Token)match(input,RULE_DECIMAL,FOLLOW_RULE_DECIMAL_in_ruleNumber12785); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                       		current.merge(this_DECIMAL_5);
@@ -14979,7 +15583,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXTemplateLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5229:1: entryRuleXTemplateLiteral returns [EObject current=null] : iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5449:1: entryRuleXTemplateLiteral returns [EObject current=null] : iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF ;
     public final EObject entryRuleXTemplateLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -14987,13 +15591,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5230:2: (iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5231:2: iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5450:2: (iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5451:2: iv_ruleXTemplateLiteral= ruleXTemplateLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getXTemplateLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleXTemplateLiteral_in_entryRuleXTemplateLiteral12355);
+            pushFollow(FOLLOW_ruleXTemplateLiteral_in_entryRuleXTemplateLiteral12840);
             iv_ruleXTemplateLiteral=ruleXTemplateLiteral();
 
             state._fsp--;
@@ -15001,7 +15605,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleXTemplateLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleXTemplateLiteral12365); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleXTemplateLiteral12850); if (state.failed) return current;
 
             }
 
@@ -15019,7 +15623,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXTemplateLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5238:1: ruleXTemplateLiteral returns [EObject current=null] : ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5458:1: ruleXTemplateLiteral returns [EObject current=null] : ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) ) ;
     public final EObject ruleXTemplateLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -15039,14 +15643,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5241:28: ( ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5242:1: ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5461:28: ( ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5462:1: ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5242:1: ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5242:2: () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5462:1: ( () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5462:2: () ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5242:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5243:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5462:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5463:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -15058,39 +15662,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5248:2: ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) )
-            int alt86=2;
-            int LA86_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:2: ( ( (lv_expressions_1_0= ruleRichStringLiteral ) ) | ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) ) )
+            int alt91=2;
+            int LA91_0 = input.LA(1);
 
-            if ( (LA86_0==RULE_RICH_TEXT) ) {
-                alt86=1;
+            if ( (LA91_0==RULE_RICH_TEXT) ) {
+                alt91=1;
             }
-            else if ( (LA86_0==RULE_RICH_TEXT_START) ) {
-                alt86=2;
+            else if ( (LA91_0==RULE_RICH_TEXT_START) ) {
+                alt91=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 86, 0, input);
+                    new NoViableAltException("", 91, 0, input);
 
                 throw nvae;
             }
-            switch (alt86) {
+            switch (alt91) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5248:3: ( (lv_expressions_1_0= ruleRichStringLiteral ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:3: ( (lv_expressions_1_0= ruleRichStringLiteral ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5248:3: ( (lv_expressions_1_0= ruleRichStringLiteral ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5249:1: (lv_expressions_1_0= ruleRichStringLiteral )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:3: ( (lv_expressions_1_0= ruleRichStringLiteral ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5469:1: (lv_expressions_1_0= ruleRichStringLiteral )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5249:1: (lv_expressions_1_0= ruleRichStringLiteral )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5250:3: lv_expressions_1_0= ruleRichStringLiteral
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5469:1: (lv_expressions_1_0= ruleRichStringLiteral )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5470:3: lv_expressions_1_0= ruleRichStringLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsRichStringLiteralParserRuleCall_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleRichStringLiteral_in_ruleXTemplateLiteral12421);
+                    pushFollow(FOLLOW_ruleRichStringLiteral_in_ruleXTemplateLiteral12906);
                     lv_expressions_1_0=ruleRichStringLiteral();
 
                     state._fsp--;
@@ -15118,23 +15722,23 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5267:6: ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5487:6: ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5267:6: ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5267:7: ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5487:6: ( ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5487:7: ( (lv_expressions_2_0= ruleRichStringLiteralStart ) ) ( (lv_expressions_3_0= ruleXExpression ) )? ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )* ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5267:7: ( (lv_expressions_2_0= ruleRichStringLiteralStart ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5268:1: (lv_expressions_2_0= ruleRichStringLiteralStart )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5487:7: ( (lv_expressions_2_0= ruleRichStringLiteralStart ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5488:1: (lv_expressions_2_0= ruleRichStringLiteralStart )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5268:1: (lv_expressions_2_0= ruleRichStringLiteralStart )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5269:3: lv_expressions_2_0= ruleRichStringLiteralStart
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5488:1: (lv_expressions_2_0= ruleRichStringLiteralStart )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5489:3: lv_expressions_2_0= ruleRichStringLiteralStart
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsRichStringLiteralStartParserRuleCall_1_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleRichStringLiteralStart_in_ruleXTemplateLiteral12449);
+                    pushFollow(FOLLOW_ruleRichStringLiteralStart_in_ruleXTemplateLiteral12934);
                     lv_expressions_2_0=ruleRichStringLiteralStart();
 
                     state._fsp--;
@@ -15158,26 +15762,26 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5285:2: ( (lv_expressions_3_0= ruleXExpression ) )?
-                    int alt83=2;
-                    int LA83_0 = input.LA(1);
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5505:2: ( (lv_expressions_3_0= ruleXExpression ) )?
+                    int alt88=2;
+                    int LA88_0 = input.LA(1);
 
-                    if ( ((LA83_0>=RULE_ID && LA83_0<=RULE_RICH_TEXT_START)||LA83_0==38||(LA83_0>=46 && LA83_0<=47)||(LA83_0>=53 && LA83_0<=56)||LA83_0==58||LA83_0==65||LA83_0==67||(LA83_0>=69 && LA83_0<=70)||LA83_0==74||(LA83_0>=76 && LA83_0<=78)||(LA83_0>=82 && LA83_0<=92)) ) {
-                        alt83=1;
+                    if ( ((LA88_0>=RULE_ID && LA88_0<=RULE_RICH_TEXT_START)||LA88_0==38||(LA88_0>=46 && LA88_0<=47)||(LA88_0>=53 && LA88_0<=56)||LA88_0==58||LA88_0==65||LA88_0==67||(LA88_0>=69 && LA88_0<=70)||LA88_0==74||(LA88_0>=76 && LA88_0<=78)||(LA88_0>=83 && LA88_0<=93)) ) {
+                        alt88=1;
                     }
-                    switch (alt83) {
+                    switch (alt88) {
                         case 1 :
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5286:1: (lv_expressions_3_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5506:1: (lv_expressions_3_0= ruleXExpression )
                             {
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5286:1: (lv_expressions_3_0= ruleXExpression )
-                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5287:3: lv_expressions_3_0= ruleXExpression
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5506:1: (lv_expressions_3_0= ruleXExpression )
+                            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5507:3: lv_expressions_3_0= ruleXExpression
                             {
                             if ( state.backtracking==0 ) {
                                
                               	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsXExpressionParserRuleCall_1_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12470);
+                            pushFollow(FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12955);
                             lv_expressions_3_0=ruleXExpression();
 
                             state._fsp--;
@@ -15204,33 +15808,33 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5303:3: ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )*
-                    loop85:
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5523:3: ( ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )? )*
+                    loop90:
                     do {
-                        int alt85=2;
-                        int LA85_0 = input.LA(1);
+                        int alt90=2;
+                        int LA90_0 = input.LA(1);
 
-                        if ( (LA85_0==RULE_RICH_TEXT_INBETWEEN) ) {
-                            alt85=1;
+                        if ( (LA90_0==RULE_RICH_TEXT_INBETWEEN) ) {
+                            alt90=1;
                         }
 
 
-                        switch (alt85) {
+                        switch (alt90) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5303:4: ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )?
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5523:4: ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) ) ( (lv_expressions_5_0= ruleXExpression ) )?
                     	    {
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5303:4: ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5304:1: (lv_expressions_4_0= ruleRichStringLiteralInbetween )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5523:4: ( (lv_expressions_4_0= ruleRichStringLiteralInbetween ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5524:1: (lv_expressions_4_0= ruleRichStringLiteralInbetween )
                     	    {
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5304:1: (lv_expressions_4_0= ruleRichStringLiteralInbetween )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5305:3: lv_expressions_4_0= ruleRichStringLiteralInbetween
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5524:1: (lv_expressions_4_0= ruleRichStringLiteralInbetween )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5525:3: lv_expressions_4_0= ruleRichStringLiteralInbetween
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsRichStringLiteralInbetweenParserRuleCall_1_1_2_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleRichStringLiteralInbetween_in_ruleXTemplateLiteral12493);
+                    	    pushFollow(FOLLOW_ruleRichStringLiteralInbetween_in_ruleXTemplateLiteral12978);
                     	    lv_expressions_4_0=ruleRichStringLiteralInbetween();
 
                     	    state._fsp--;
@@ -15254,26 +15858,26 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5321:2: ( (lv_expressions_5_0= ruleXExpression ) )?
-                    	    int alt84=2;
-                    	    int LA84_0 = input.LA(1);
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5541:2: ( (lv_expressions_5_0= ruleXExpression ) )?
+                    	    int alt89=2;
+                    	    int LA89_0 = input.LA(1);
 
-                    	    if ( ((LA84_0>=RULE_ID && LA84_0<=RULE_RICH_TEXT_START)||LA84_0==38||(LA84_0>=46 && LA84_0<=47)||(LA84_0>=53 && LA84_0<=56)||LA84_0==58||LA84_0==65||LA84_0==67||(LA84_0>=69 && LA84_0<=70)||LA84_0==74||(LA84_0>=76 && LA84_0<=78)||(LA84_0>=82 && LA84_0<=92)) ) {
-                    	        alt84=1;
+                    	    if ( ((LA89_0>=RULE_ID && LA89_0<=RULE_RICH_TEXT_START)||LA89_0==38||(LA89_0>=46 && LA89_0<=47)||(LA89_0>=53 && LA89_0<=56)||LA89_0==58||LA89_0==65||LA89_0==67||(LA89_0>=69 && LA89_0<=70)||LA89_0==74||(LA89_0>=76 && LA89_0<=78)||(LA89_0>=83 && LA89_0<=93)) ) {
+                    	        alt89=1;
                     	    }
-                    	    switch (alt84) {
+                    	    switch (alt89) {
                     	        case 1 :
-                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5322:1: (lv_expressions_5_0= ruleXExpression )
+                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5542:1: (lv_expressions_5_0= ruleXExpression )
                     	            {
-                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5322:1: (lv_expressions_5_0= ruleXExpression )
-                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5323:3: lv_expressions_5_0= ruleXExpression
+                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5542:1: (lv_expressions_5_0= ruleXExpression )
+                    	            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5543:3: lv_expressions_5_0= ruleXExpression
                     	            {
                     	            if ( state.backtracking==0 ) {
                     	               
                     	              	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsXExpressionParserRuleCall_1_1_2_1_0()); 
                     	              	    
                     	            }
-                    	            pushFollow(FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12514);
+                    	            pushFollow(FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12999);
                     	            lv_expressions_5_0=ruleXExpression();
 
                     	            state._fsp--;
@@ -15305,22 +15909,22 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop85;
+                    	    break loop90;
                         }
                     } while (true);
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5339:5: ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5340:1: (lv_expressions_6_0= ruleRichStringLiteralEnd )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5559:5: ( (lv_expressions_6_0= ruleRichStringLiteralEnd ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5560:1: (lv_expressions_6_0= ruleRichStringLiteralEnd )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5340:1: (lv_expressions_6_0= ruleRichStringLiteralEnd )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5341:3: lv_expressions_6_0= ruleRichStringLiteralEnd
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5560:1: (lv_expressions_6_0= ruleRichStringLiteralEnd )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5561:3: lv_expressions_6_0= ruleRichStringLiteralEnd
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getXTemplateLiteralAccess().getExpressionsRichStringLiteralEndParserRuleCall_1_1_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleRichStringLiteralEnd_in_ruleXTemplateLiteral12538);
+                    pushFollow(FOLLOW_ruleRichStringLiteralEnd_in_ruleXTemplateLiteral13023);
                     lv_expressions_6_0=ruleRichStringLiteralEnd();
 
                     state._fsp--;
@@ -15376,7 +15980,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRichStringLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5365:1: entryRuleRichStringLiteral returns [EObject current=null] : iv_ruleRichStringLiteral= ruleRichStringLiteral EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5585:1: entryRuleRichStringLiteral returns [EObject current=null] : iv_ruleRichStringLiteral= ruleRichStringLiteral EOF ;
     public final EObject entryRuleRichStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -15384,13 +15988,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5366:2: (iv_ruleRichStringLiteral= ruleRichStringLiteral EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5367:2: iv_ruleRichStringLiteral= ruleRichStringLiteral EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5586:2: (iv_ruleRichStringLiteral= ruleRichStringLiteral EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5587:2: iv_ruleRichStringLiteral= ruleRichStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRichStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleRichStringLiteral_in_entryRuleRichStringLiteral12576);
+            pushFollow(FOLLOW_ruleRichStringLiteral_in_entryRuleRichStringLiteral13061);
             iv_ruleRichStringLiteral=ruleRichStringLiteral();
 
             state._fsp--;
@@ -15398,7 +16002,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRichStringLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteral12586); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteral13071); if (state.failed) return current;
 
             }
 
@@ -15416,7 +16020,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRichStringLiteral"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5374:1: ruleRichStringLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5594:1: ruleRichStringLiteral returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) ) ;
     public final EObject ruleRichStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -15425,14 +16029,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5377:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5378:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5597:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5598:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5378:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5378:2: () ( (lv_value_1_0= RULE_RICH_TEXT ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5598:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5598:2: () ( (lv_value_1_0= RULE_RICH_TEXT ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5378:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5379:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5598:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5599:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -15444,13 +16048,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5384:2: ( (lv_value_1_0= RULE_RICH_TEXT ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5385:1: (lv_value_1_0= RULE_RICH_TEXT )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5604:2: ( (lv_value_1_0= RULE_RICH_TEXT ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5605:1: (lv_value_1_0= RULE_RICH_TEXT )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5385:1: (lv_value_1_0= RULE_RICH_TEXT )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5386:3: lv_value_1_0= RULE_RICH_TEXT
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5605:1: (lv_value_1_0= RULE_RICH_TEXT )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5606:3: lv_value_1_0= RULE_RICH_TEXT
             {
-            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT,FOLLOW_RULE_RICH_TEXT_in_ruleRichStringLiteral12637); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT,FOLLOW_RULE_RICH_TEXT_in_ruleRichStringLiteral13122); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getRichStringLiteralAccess().getValueRICH_TEXTTerminalRuleCall_1_0()); 
@@ -15497,7 +16101,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRichStringLiteralStart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5410:1: entryRuleRichStringLiteralStart returns [EObject current=null] : iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5630:1: entryRuleRichStringLiteralStart returns [EObject current=null] : iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF ;
     public final EObject entryRuleRichStringLiteralStart() throws RecognitionException {
         EObject current = null;
 
@@ -15505,13 +16109,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5411:2: (iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5412:2: iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5631:2: (iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5632:2: iv_ruleRichStringLiteralStart= ruleRichStringLiteralStart EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRichStringLiteralStartRule()); 
             }
-            pushFollow(FOLLOW_ruleRichStringLiteralStart_in_entryRuleRichStringLiteralStart12678);
+            pushFollow(FOLLOW_ruleRichStringLiteralStart_in_entryRuleRichStringLiteralStart13163);
             iv_ruleRichStringLiteralStart=ruleRichStringLiteralStart();
 
             state._fsp--;
@@ -15519,7 +16123,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRichStringLiteralStart; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralStart12688); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralStart13173); if (state.failed) return current;
 
             }
 
@@ -15537,7 +16141,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRichStringLiteralStart"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5419:1: ruleRichStringLiteralStart returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5639:1: ruleRichStringLiteralStart returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) ) ;
     public final EObject ruleRichStringLiteralStart() throws RecognitionException {
         EObject current = null;
 
@@ -15546,14 +16150,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5422:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5423:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5642:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5643:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5423:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5423:2: () ( (lv_value_1_0= RULE_RICH_TEXT_START ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5643:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_START ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5643:2: () ( (lv_value_1_0= RULE_RICH_TEXT_START ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5423:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5424:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5643:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5644:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -15565,13 +16169,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5429:2: ( (lv_value_1_0= RULE_RICH_TEXT_START ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5430:1: (lv_value_1_0= RULE_RICH_TEXT_START )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5649:2: ( (lv_value_1_0= RULE_RICH_TEXT_START ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5650:1: (lv_value_1_0= RULE_RICH_TEXT_START )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5430:1: (lv_value_1_0= RULE_RICH_TEXT_START )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5431:3: lv_value_1_0= RULE_RICH_TEXT_START
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5650:1: (lv_value_1_0= RULE_RICH_TEXT_START )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:3: lv_value_1_0= RULE_RICH_TEXT_START
             {
-            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_START,FOLLOW_RULE_RICH_TEXT_START_in_ruleRichStringLiteralStart12739); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_START,FOLLOW_RULE_RICH_TEXT_START_in_ruleRichStringLiteralStart13224); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getRichStringLiteralStartAccess().getValueRICH_TEXT_STARTTerminalRuleCall_1_0()); 
@@ -15618,7 +16222,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRichStringLiteralInbetween"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5455:1: entryRuleRichStringLiteralInbetween returns [EObject current=null] : iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5675:1: entryRuleRichStringLiteralInbetween returns [EObject current=null] : iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF ;
     public final EObject entryRuleRichStringLiteralInbetween() throws RecognitionException {
         EObject current = null;
 
@@ -15626,13 +16230,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5456:2: (iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5457:2: iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5676:2: (iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5677:2: iv_ruleRichStringLiteralInbetween= ruleRichStringLiteralInbetween EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRichStringLiteralInbetweenRule()); 
             }
-            pushFollow(FOLLOW_ruleRichStringLiteralInbetween_in_entryRuleRichStringLiteralInbetween12780);
+            pushFollow(FOLLOW_ruleRichStringLiteralInbetween_in_entryRuleRichStringLiteralInbetween13265);
             iv_ruleRichStringLiteralInbetween=ruleRichStringLiteralInbetween();
 
             state._fsp--;
@@ -15640,7 +16244,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRichStringLiteralInbetween; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralInbetween12790); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralInbetween13275); if (state.failed) return current;
 
             }
 
@@ -15658,7 +16262,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRichStringLiteralInbetween"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5464:1: ruleRichStringLiteralInbetween returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5684:1: ruleRichStringLiteralInbetween returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) ) ;
     public final EObject ruleRichStringLiteralInbetween() throws RecognitionException {
         EObject current = null;
 
@@ -15667,14 +16271,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5467:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5687:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5688:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:2: () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5688:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5688:2: () ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5468:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5469:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5688:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5689:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -15686,13 +16290,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5474:2: ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5475:1: (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5694:2: ( (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5695:1: (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5475:1: (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5476:3: lv_value_1_0= RULE_RICH_TEXT_INBETWEEN
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5695:1: (lv_value_1_0= RULE_RICH_TEXT_INBETWEEN )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5696:3: lv_value_1_0= RULE_RICH_TEXT_INBETWEEN
             {
-            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_INBETWEEN,FOLLOW_RULE_RICH_TEXT_INBETWEEN_in_ruleRichStringLiteralInbetween12841); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_INBETWEEN,FOLLOW_RULE_RICH_TEXT_INBETWEEN_in_ruleRichStringLiteralInbetween13326); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getRichStringLiteralInbetweenAccess().getValueRICH_TEXT_INBETWEENTerminalRuleCall_1_0()); 
@@ -15739,7 +16343,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRichStringLiteralEnd"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5500:1: entryRuleRichStringLiteralEnd returns [EObject current=null] : iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5720:1: entryRuleRichStringLiteralEnd returns [EObject current=null] : iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF ;
     public final EObject entryRuleRichStringLiteralEnd() throws RecognitionException {
         EObject current = null;
 
@@ -15747,13 +16351,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5501:2: (iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5502:2: iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5721:2: (iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5722:2: iv_ruleRichStringLiteralEnd= ruleRichStringLiteralEnd EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRichStringLiteralEndRule()); 
             }
-            pushFollow(FOLLOW_ruleRichStringLiteralEnd_in_entryRuleRichStringLiteralEnd12882);
+            pushFollow(FOLLOW_ruleRichStringLiteralEnd_in_entryRuleRichStringLiteralEnd13367);
             iv_ruleRichStringLiteralEnd=ruleRichStringLiteralEnd();
 
             state._fsp--;
@@ -15761,7 +16365,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRichStringLiteralEnd; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralEnd12892); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRichStringLiteralEnd13377); if (state.failed) return current;
 
             }
 
@@ -15779,7 +16383,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRichStringLiteralEnd"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5509:1: ruleRichStringLiteralEnd returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5729:1: ruleRichStringLiteralEnd returns [EObject current=null] : ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) ) ;
     public final EObject ruleRichStringLiteralEnd() throws RecognitionException {
         EObject current = null;
 
@@ -15788,14 +16392,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5512:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5513:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5732:28: ( ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5733:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5513:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5513:2: () ( (lv_value_1_0= RULE_RICH_TEXT_END ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5733:1: ( () ( (lv_value_1_0= RULE_RICH_TEXT_END ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5733:2: () ( (lv_value_1_0= RULE_RICH_TEXT_END ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5513:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5514:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5733:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5734:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -15807,13 +16411,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5519:2: ( (lv_value_1_0= RULE_RICH_TEXT_END ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5520:1: (lv_value_1_0= RULE_RICH_TEXT_END )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5739:2: ( (lv_value_1_0= RULE_RICH_TEXT_END ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5740:1: (lv_value_1_0= RULE_RICH_TEXT_END )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5520:1: (lv_value_1_0= RULE_RICH_TEXT_END )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5521:3: lv_value_1_0= RULE_RICH_TEXT_END
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5740:1: (lv_value_1_0= RULE_RICH_TEXT_END )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5741:3: lv_value_1_0= RULE_RICH_TEXT_END
             {
-            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_END,FOLLOW_RULE_RICH_TEXT_END_in_ruleRichStringLiteralEnd12943); if (state.failed) return current;
+            lv_value_1_0=(Token)match(input,RULE_RICH_TEXT_END,FOLLOW_RULE_RICH_TEXT_END_in_ruleRichStringLiteralEnd13428); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_1_0, grammarAccess.getRichStringLiteralEndAccess().getValueRICH_TEXT_ENDTerminalRuleCall_1_0()); 
@@ -15860,7 +16464,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5545:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5765:1: entryRuleJvmTypeReference returns [EObject current=null] : iv_ruleJvmTypeReference= ruleJvmTypeReference EOF ;
     public final EObject entryRuleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -15868,13 +16472,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5546:2: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5547:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5766:2: (iv_ruleJvmTypeReference= ruleJvmTypeReference EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5767:2: iv_ruleJvmTypeReference= ruleJvmTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference12984);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference13469);
             iv_ruleJvmTypeReference=ruleJvmTypeReference();
 
             state._fsp--;
@@ -15882,7 +16486,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference12994); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmTypeReference13479); if (state.failed) return current;
 
             }
 
@@ -15900,7 +16504,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5554:1: ruleJvmTypeReference returns [EObject current=null] : (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5774:1: ruleJvmTypeReference returns [EObject current=null] : (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) ;
     public final EObject ruleJvmTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -15910,18 +16514,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5557:28: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5558:1: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5777:28: ( (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5778:1: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5558:1: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5559:5: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5778:1: (this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )* )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5779:5: this_JvmParameterizedTypeReference_0= ruleJvmParameterizedTypeReference ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
             {
             if ( state.backtracking==0 ) {
                
                       newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getJvmParameterizedTypeReferenceParserRuleCall_0()); 
                   
             }
-            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference13041);
+            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference13526);
             this_JvmParameterizedTypeReference_0=ruleJvmParameterizedTypeReference();
 
             state._fsp--;
@@ -15932,20 +16536,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                       afterParserOrEnumRuleCall();
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:1: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
-            loop87:
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:1: ( ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets ) )*
+            loop92:
             do {
-                int alt87=2;
-                int LA87_0 = input.LA(1);
+                int alt92=2;
+                int LA92_0 = input.LA(1);
 
-                if ( (LA87_0==61) ) {
-                    int LA87_2 = input.LA(2);
+                if ( (LA92_0==61) ) {
+                    int LA92_2 = input.LA(2);
 
-                    if ( (LA87_2==62) ) {
-                        int LA87_3 = input.LA(3);
+                    if ( (LA92_2==62) ) {
+                        int LA92_3 = input.LA(3);
 
-                        if ( (synpred43_InternalXbase()) ) {
-                            alt87=1;
+                        if ( (synpred47_InternalXbase()) ) {
+                            alt92=1;
                         }
 
 
@@ -15955,15 +16559,15 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                 }
 
 
-                switch (alt87) {
+                switch (alt92) {
             	case 1 :
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:2: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:2: ( ( () ruleArrayBrackets ) )=> ( () ruleArrayBrackets )
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5568:24: ( () ruleArrayBrackets )
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5568:25: () ruleArrayBrackets
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5788:24: ( () ruleArrayBrackets )
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5788:25: () ruleArrayBrackets
             	    {
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5568:25: ()
-            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5569:5: 
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5788:25: ()
+            	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5789:5: 
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -15980,7 +16584,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	              newCompositeNode(grammarAccess.getJvmTypeReferenceAccess().getArrayBracketsParserRuleCall_1_0_1()); 
             	          
             	    }
-            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference13077);
+            	    pushFollow(FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference13562);
             	    ruleArrayBrackets();
 
             	    state._fsp--;
@@ -15998,7 +16602,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop87;
+            	    break loop92;
                 }
             } while (true);
 
@@ -16025,7 +16629,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArrayBrackets"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5590:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5810:1: entryRuleArrayBrackets returns [String current=null] : iv_ruleArrayBrackets= ruleArrayBrackets EOF ;
     public final String entryRuleArrayBrackets() throws RecognitionException {
         String current = null;
 
@@ -16033,13 +16637,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5591:2: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5592:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5811:2: (iv_ruleArrayBrackets= ruleArrayBrackets EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5812:2: iv_ruleArrayBrackets= ruleArrayBrackets EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayBracketsRule()); 
             }
-            pushFollow(FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets13116);
+            pushFollow(FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets13601);
             iv_ruleArrayBrackets=ruleArrayBrackets();
 
             state._fsp--;
@@ -16047,7 +16651,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArrayBrackets.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayBrackets13127); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayBrackets13612); if (state.failed) return current;
 
             }
 
@@ -16065,7 +16669,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArrayBrackets"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5599:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5819:1: ruleArrayBrackets returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' kw= ']' ) ;
     public final AntlrDatatypeRuleToken ruleArrayBrackets() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -16074,20 +16678,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5602:28: ( (kw= '[' kw= ']' ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5603:1: (kw= '[' kw= ']' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5822:28: ( (kw= '[' kw= ']' ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5823:1: (kw= '[' kw= ']' )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5603:1: (kw= '[' kw= ']' )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5604:2: kw= '[' kw= ']'
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5823:1: (kw= '[' kw= ']' )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5824:2: kw= '[' kw= ']'
             {
-            kw=(Token)match(input,61,FOLLOW_61_in_ruleArrayBrackets13165); if (state.failed) return current;
+            kw=(Token)match(input,61,FOLLOW_61_in_ruleArrayBrackets13650); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
                       newLeafNode(kw, grammarAccess.getArrayBracketsAccess().getLeftSquareBracketKeyword_0()); 
                   
             }
-            kw=(Token)match(input,62,FOLLOW_62_in_ruleArrayBrackets13178); if (state.failed) return current;
+            kw=(Token)match(input,62,FOLLOW_62_in_ruleArrayBrackets13663); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       current.merge(kw);
@@ -16117,7 +16721,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmParameterizedTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5623:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5843:1: entryRuleJvmParameterizedTypeReference returns [EObject current=null] : iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF ;
     public final EObject entryRuleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16125,13 +16729,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5624:2: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5625:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5844:2: (iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5845:2: iv_ruleJvmParameterizedTypeReference= ruleJvmParameterizedTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference13218);
+            pushFollow(FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference13703);
             iv_ruleJvmParameterizedTypeReference=ruleJvmParameterizedTypeReference();
 
             state._fsp--;
@@ -16139,7 +16743,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmParameterizedTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference13228); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference13713); if (state.failed) return current;
 
             }
 
@@ -16157,7 +16761,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmParameterizedTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5632:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5852:1: ruleJvmParameterizedTypeReference returns [EObject current=null] : ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) ;
     public final EObject ruleJvmParameterizedTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16172,17 +16776,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5635:28: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5636:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5855:28: ( ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5856:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5636:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5636:2: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5856:1: ( ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5856:2: ( ( ruleQualifiedName ) ) ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5636:2: ( ( ruleQualifiedName ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5637:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5856:2: ( ( ruleQualifiedName ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5857:1: ( ruleQualifiedName )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5637:1: ( ruleQualifiedName )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5638:3: ruleQualifiedName
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5857:1: ( ruleQualifiedName )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5858:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
@@ -16196,7 +16800,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference13276);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference13761);
             ruleQualifiedName();
 
             state._fsp--;
@@ -16212,17 +16816,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
-            int alt89=2;
-            alt89 = dfa89.predict(input);
-            switch (alt89) {
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?
+            int alt94=2;
+            alt94 = dfa94.predict(input);
+            switch (alt94) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:3: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:3: ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>'
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:3: ( ( '<' )=>otherlv_1= '<' )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:4: ( '<' )=>otherlv_1= '<'
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:3: ( ( '<' )=>otherlv_1= '<' )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:4: ( '<' )=>otherlv_1= '<'
                     {
-                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleJvmParameterizedTypeReference13297); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,38,FOLLOW_38_in_ruleJvmParameterizedTypeReference13782); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getJvmParameterizedTypeReferenceAccess().getLessThanSignKeyword_1_0());
@@ -16231,18 +16835,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5656:2: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5657:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5876:2: ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5877:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5657:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5658:3: lv_arguments_2_0= ruleJvmArgumentTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5877:1: (lv_arguments_2_0= ruleJvmArgumentTypeReference )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5878:3: lv_arguments_2_0= ruleJvmArgumentTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13319);
+                    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13804);
                     lv_arguments_2_0=ruleJvmArgumentTypeReference();
 
                     state._fsp--;
@@ -16266,39 +16870,39 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5674:2: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
-                    loop88:
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5894:2: (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )*
+                    loop93:
                     do {
-                        int alt88=2;
-                        int LA88_0 = input.LA(1);
+                        int alt93=2;
+                        int LA93_0 = input.LA(1);
 
-                        if ( (LA88_0==59) ) {
-                            alt88=1;
+                        if ( (LA93_0==59) ) {
+                            alt93=1;
                         }
 
 
-                        switch (alt88) {
+                        switch (alt93) {
                     	case 1 :
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5674:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5894:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,59,FOLLOW_59_in_ruleJvmParameterizedTypeReference13332); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,59,FOLLOW_59_in_ruleJvmParameterizedTypeReference13817); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getJvmParameterizedTypeReferenceAccess().getCommaKeyword_1_2_0());
                     	          
                     	    }
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5678:1: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5679:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5898:1: ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5899:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
                     	    {
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5679:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
-                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5680:3: lv_arguments_4_0= ruleJvmArgumentTypeReference
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5899:1: (lv_arguments_4_0= ruleJvmArgumentTypeReference )
+                    	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5900:3: lv_arguments_4_0= ruleJvmArgumentTypeReference
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13353);
+                    	    pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13838);
                     	    lv_arguments_4_0=ruleJvmArgumentTypeReference();
 
                     	    state._fsp--;
@@ -16327,11 +16931,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop88;
+                    	    break loop93;
                         }
                     } while (true);
 
-                    otherlv_5=(Token)match(input,36,FOLLOW_36_in_ruleJvmParameterizedTypeReference13367); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,36,FOLLOW_36_in_ruleJvmParameterizedTypeReference13852); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getJvmParameterizedTypeReferenceAccess().getGreaterThanSignKeyword_1_3());
@@ -16366,7 +16970,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmArgumentTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5708:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5928:1: entryRuleJvmArgumentTypeReference returns [EObject current=null] : iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF ;
     public final EObject entryRuleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16374,13 +16978,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5709:2: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5710:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5929:2: (iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5930:2: iv_ruleJvmArgumentTypeReference= ruleJvmArgumentTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference13405);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference13890);
             iv_ruleJvmArgumentTypeReference=ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -16388,7 +16992,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmArgumentTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference13415); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference13900); if (state.failed) return current;
 
             }
 
@@ -16406,7 +17010,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmArgumentTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5717:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5937:1: ruleJvmArgumentTypeReference returns [EObject current=null] : (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) ;
     public final EObject ruleJvmArgumentTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16418,36 +17022,36 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5720:28: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5721:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5940:28: ( (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5941:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5721:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
-            int alt90=2;
-            int LA90_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5941:1: (this_JvmTypeReference_0= ruleJvmTypeReference | this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference )
+            int alt95=2;
+            int LA95_0 = input.LA(1);
 
-            if ( (LA90_0==RULE_ID) ) {
-                alt90=1;
+            if ( (LA95_0==RULE_ID) ) {
+                alt95=1;
             }
-            else if ( (LA90_0==48) ) {
-                alt90=2;
+            else if ( (LA95_0==48) ) {
+                alt95=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 90, 0, input);
+                    new NoViableAltException("", 95, 0, input);
 
                 throw nvae;
             }
-            switch (alt90) {
+            switch (alt95) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5722:5: this_JvmTypeReference_0= ruleJvmTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5942:5: this_JvmTypeReference_0= ruleJvmTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmTypeReferenceParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference13462);
+                    pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference13947);
                     this_JvmTypeReference_0=ruleJvmTypeReference();
 
                     state._fsp--;
@@ -16462,14 +17066,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5732:5: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5952:5: this_JvmWildcardTypeReference_1= ruleJvmWildcardTypeReference
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getJvmArgumentTypeReferenceAccess().getJvmWildcardTypeReferenceParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference13489);
+                    pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference13974);
                     this_JvmWildcardTypeReference_1=ruleJvmWildcardTypeReference();
 
                     state._fsp--;
@@ -16506,7 +17110,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmWildcardTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5748:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5968:1: entryRuleJvmWildcardTypeReference returns [EObject current=null] : iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF ;
     public final EObject entryRuleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16514,13 +17118,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5749:2: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5750:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5969:2: (iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5970:2: iv_ruleJvmWildcardTypeReference= ruleJvmWildcardTypeReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference13524);
+            pushFollow(FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference14009);
             iv_ruleJvmWildcardTypeReference=ruleJvmWildcardTypeReference();
 
             state._fsp--;
@@ -16528,7 +17132,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmWildcardTypeReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference13534); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference14019); if (state.failed) return current;
 
             }
 
@@ -16546,7 +17150,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmWildcardTypeReference"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5757:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5977:1: ruleJvmWildcardTypeReference returns [EObject current=null] : ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) ;
     public final EObject ruleJvmWildcardTypeReference() throws RecognitionException {
         EObject current = null;
 
@@ -16559,14 +17163,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5760:28: ( ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5761:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5980:28: ( ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5981:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5761:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5761:2: () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5981:1: ( () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )? )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5981:2: () otherlv_1= '?' ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5761:2: ()
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5762:5: 
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5981:2: ()
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5982:5: 
             {
             if ( state.backtracking==0 ) {
 
@@ -16578,38 +17182,38 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,48,FOLLOW_48_in_ruleJvmWildcardTypeReference13580); if (state.failed) return current;
+            otherlv_1=(Token)match(input,48,FOLLOW_48_in_ruleJvmWildcardTypeReference14065); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getJvmWildcardTypeReferenceAccess().getQuestionMarkKeyword_1());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5771:1: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
-            int alt91=3;
-            int LA91_0 = input.LA(1);
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5991:1: ( ( (lv_constraints_2_0= ruleJvmUpperBound ) ) | ( (lv_constraints_3_0= ruleJvmLowerBound ) ) )?
+            int alt96=3;
+            int LA96_0 = input.LA(1);
 
-            if ( (LA91_0==95) ) {
-                alt91=1;
+            if ( (LA96_0==97) ) {
+                alt96=1;
             }
-            else if ( (LA91_0==82) ) {
-                alt91=2;
+            else if ( (LA96_0==83) ) {
+                alt96=2;
             }
-            switch (alt91) {
+            switch (alt96) {
                 case 1 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5771:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5991:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5771:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5772:1: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5991:2: ( (lv_constraints_2_0= ruleJvmUpperBound ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5992:1: (lv_constraints_2_0= ruleJvmUpperBound )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5772:1: (lv_constraints_2_0= ruleJvmUpperBound )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5773:3: lv_constraints_2_0= ruleJvmUpperBound
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5992:1: (lv_constraints_2_0= ruleJvmUpperBound )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5993:3: lv_constraints_2_0= ruleJvmUpperBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference13602);
+                    pushFollow(FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference14087);
                     lv_constraints_2_0=ruleJvmUpperBound();
 
                     state._fsp--;
@@ -16637,20 +17241,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5790:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6010:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5790:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5791:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6010:6: ( (lv_constraints_3_0= ruleJvmLowerBound ) )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6011:1: (lv_constraints_3_0= ruleJvmLowerBound )
                     {
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5791:1: (lv_constraints_3_0= ruleJvmLowerBound )
-                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5792:3: lv_constraints_3_0= ruleJvmLowerBound
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6011:1: (lv_constraints_3_0= ruleJvmLowerBound )
+                    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6012:3: lv_constraints_3_0= ruleJvmLowerBound
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference13629);
+                    pushFollow(FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference14114);
                     lv_constraints_3_0=ruleJvmLowerBound();
 
                     state._fsp--;
@@ -16703,7 +17307,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBound"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5816:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6036:1: entryRuleJvmUpperBound returns [EObject current=null] : iv_ruleJvmUpperBound= ruleJvmUpperBound EOF ;
     public final EObject entryRuleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -16711,13 +17315,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5817:2: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5818:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6037:2: (iv_ruleJvmUpperBound= ruleJvmUpperBound EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6038:2: iv_ruleJvmUpperBound= ruleJvmUpperBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound13667);
+            pushFollow(FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound14152);
             iv_ruleJvmUpperBound=ruleJvmUpperBound();
 
             state._fsp--;
@@ -16725,7 +17329,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound13677); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBound14162); if (state.failed) return current;
 
             }
 
@@ -16743,7 +17347,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBound"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5825:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6045:1: ruleJvmUpperBound returns [EObject current=null] : (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBound() throws RecognitionException {
         EObject current = null;
 
@@ -16754,30 +17358,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5828:28: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5829:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6048:28: ( (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6049:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5829:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5829:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6049:1: (otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6049:3: otherlv_0= 'extends' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,95,FOLLOW_95_in_ruleJvmUpperBound13714); if (state.failed) return current;
+            otherlv_0=(Token)match(input,97,FOLLOW_97_in_ruleJvmUpperBound14199); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAccess().getExtendsKeyword_0());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5833:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5834:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6053:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6054:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5834:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5835:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6054:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6055:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound13735);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound14220);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -16824,7 +17428,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmUpperBoundAnded"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5859:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6079:1: entryRuleJvmUpperBoundAnded returns [EObject current=null] : iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF ;
     public final EObject entryRuleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -16832,13 +17436,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5860:2: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5861:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6080:2: (iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6081:2: iv_ruleJvmUpperBoundAnded= ruleJvmUpperBoundAnded EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmUpperBoundAndedRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded13771);
+            pushFollow(FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded14256);
             iv_ruleJvmUpperBoundAnded=ruleJvmUpperBoundAnded();
 
             state._fsp--;
@@ -16846,7 +17450,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmUpperBoundAnded; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded13781); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded14266); if (state.failed) return current;
 
             }
 
@@ -16864,7 +17468,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmUpperBoundAnded"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5868:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6088:1: ruleJvmUpperBoundAnded returns [EObject current=null] : (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmUpperBoundAnded() throws RecognitionException {
         EObject current = null;
 
@@ -16875,30 +17479,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:28: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5872:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6091:28: ( (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6092:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5872:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5872:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6092:1: (otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6092:3: otherlv_0= '&' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleJvmUpperBoundAnded13818); if (state.failed) return current;
+            otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleJvmUpperBoundAnded14303); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmUpperBoundAndedAccess().getAmpersandKeyword_0());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5876:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5877:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6096:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6097:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5877:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5878:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6097:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6098:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded13839);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded14324);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -16945,7 +17549,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJvmLowerBound"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5902:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6122:1: entryRuleJvmLowerBound returns [EObject current=null] : iv_ruleJvmLowerBound= ruleJvmLowerBound EOF ;
     public final EObject entryRuleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -16953,13 +17557,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5903:2: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5904:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6123:2: (iv_ruleJvmLowerBound= ruleJvmLowerBound EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6124:2: iv_ruleJvmLowerBound= ruleJvmLowerBound EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getJvmLowerBoundRule()); 
             }
-            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound13875);
+            pushFollow(FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound14360);
             iv_ruleJvmLowerBound=ruleJvmLowerBound();
 
             state._fsp--;
@@ -16967,7 +17571,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleJvmLowerBound; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound13885); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJvmLowerBound14370); if (state.failed) return current;
 
             }
 
@@ -16985,7 +17589,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJvmLowerBound"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5911:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6131:1: ruleJvmLowerBound returns [EObject current=null] : (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) ;
     public final EObject ruleJvmLowerBound() throws RecognitionException {
         EObject current = null;
 
@@ -16996,30 +17600,30 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5914:28: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5915:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6134:28: ( (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6135:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5915:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5915:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6135:1: (otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6135:3: otherlv_0= 'super' ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
             {
-            otherlv_0=(Token)match(input,82,FOLLOW_82_in_ruleJvmLowerBound13922); if (state.failed) return current;
+            otherlv_0=(Token)match(input,83,FOLLOW_83_in_ruleJvmLowerBound14407); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getJvmLowerBoundAccess().getSuperKeyword_0());
                   
             }
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5919:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5920:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6139:1: ( (lv_typeReference_1_0= ruleJvmTypeReference ) )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6140:1: (lv_typeReference_1_0= ruleJvmTypeReference )
             {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5920:1: (lv_typeReference_1_0= ruleJvmTypeReference )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5921:3: lv_typeReference_1_0= ruleJvmTypeReference
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6140:1: (lv_typeReference_1_0= ruleJvmTypeReference )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6141:3: lv_typeReference_1_0= ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound13943);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound14428);
             lv_typeReference_1_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -17066,7 +17670,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValidID"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5949:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6169:1: entryRuleValidID returns [String current=null] : iv_ruleValidID= ruleValidID EOF ;
     public final String entryRuleValidID() throws RecognitionException {
         String current = null;
 
@@ -17074,13 +17678,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5950:2: (iv_ruleValidID= ruleValidID EOF )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5951:2: iv_ruleValidID= ruleValidID EOF
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6170:2: (iv_ruleValidID= ruleValidID EOF )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6171:2: iv_ruleValidID= ruleValidID EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValidIDRule()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID13984);
+            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID14469);
             iv_ruleValidID=ruleValidID();
 
             state._fsp--;
@@ -17088,7 +17692,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValidID.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID13995); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID14480); if (state.failed) return current;
 
             }
 
@@ -17106,7 +17710,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValidID"
-    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5958:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
+    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6178:1: ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_ID_0= RULE_ID ;
     public final AntlrDatatypeRuleToken ruleValidID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -17115,10 +17719,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5961:28: (this_ID_0= RULE_ID )
-            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5962:5: this_ID_0= RULE_ID
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6181:28: (this_ID_0= RULE_ID )
+            // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:6182:5: this_ID_0= RULE_ID
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID14034); if (state.failed) return current;
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID14519); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		current.merge(this_ID_0);
@@ -17745,23 +18349,23 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         }
 
         // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:1943:2: ( '.' | ( ( '?.' ) ) )
-        int alt92=2;
-        int LA92_0 = input.LA(1);
+        int alt97=2;
+        int LA97_0 = input.LA(1);
 
-        if ( (LA92_0==63) ) {
-            alt92=1;
+        if ( (LA97_0==63) ) {
+            alt97=1;
         }
-        else if ( (LA92_0==64) ) {
-            alt92=2;
+        else if ( (LA97_0==64) ) {
+            alt97=2;
         }
         else {
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 92, 0, input);
+                new NoViableAltException("", 97, 0, input);
 
             throw nvae;
         }
-        switch (alt92) {
+        switch (alt97) {
             case 1 :
                 // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:1943:4: '.'
                 {
@@ -17826,13 +18430,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         {
         match(input,58,FOLLOW_58_in_synpred26_InternalXbase6202); if (state.failed) return ;
         // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2489:1: ( ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )* )?
-        int alt94=2;
-        int LA94_0 = input.LA(1);
+        int alt99=2;
+        int LA99_0 = input.LA(1);
 
-        if ( (LA94_0==RULE_ID) ) {
-            alt94=1;
+        if ( (LA99_0==RULE_ID||LA99_0==82||LA99_0==96) ) {
+            alt99=1;
         }
-        switch (alt94) {
+        switch (alt99) {
             case 1 :
                 // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2489:2: ( ( ruleJvmFormalParameter ) ) ( ',' ( ( ruleJvmFormalParameter ) ) )*
                 {
@@ -17854,17 +18458,17 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                 }
 
                 // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2493:2: ( ',' ( ( ruleJvmFormalParameter ) ) )*
-                loop93:
+                loop98:
                 do {
-                    int alt93=2;
-                    int LA93_0 = input.LA(1);
+                    int alt98=2;
+                    int LA98_0 = input.LA(1);
 
-                    if ( (LA93_0==59) ) {
-                        alt93=1;
+                    if ( (LA98_0==59) ) {
+                        alt98=1;
                     }
 
 
-                    switch (alt93) {
+                    switch (alt98) {
                 	case 1 :
                 	    // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2493:4: ',' ( ( ruleJvmFormalParameter ) )
                 	    {
@@ -17891,7 +18495,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop93;
+                	    break loop98;
                     }
                 } while (true);
 
@@ -17903,13 +18507,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
         match(input,60,FOLLOW_60_in_synpred26_InternalXbase6234); if (state.failed) return ;
         // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2499:1: ( ':' ( ( ruleJvmTypeReference ) ) )?
-        int alt95=2;
-        int LA95_0 = input.LA(1);
+        int alt100=2;
+        int LA100_0 = input.LA(1);
 
-        if ( (LA95_0==49) ) {
-            alt95=1;
+        if ( (LA100_0==49) ) {
+            alt100=1;
         }
-        switch (alt95) {
+        switch (alt100) {
             case 1 :
                 // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:2499:3: ':' ( ( ruleJvmTypeReference ) )
                 {
@@ -18165,10 +18769,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred34_InternalXbase
     public final void synpred34_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:4: ( '=' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3727:6: '='
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:4: ( '=' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3760:6: '='
         {
-        match(input,23,FOLLOW_23_in_synpred34_InternalXbase8847); if (state.failed) return ;
+        match(input,23,FOLLOW_23_in_synpred34_InternalXbase8901); if (state.failed) return ;
 
         }
     }
@@ -18176,13 +18780,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred35_InternalXbase
     public final void synpred35_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3842:4: ( ( '(' ) )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3843:1: ( '(' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3875:4: ( ( '(' ) )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3876:1: ( '(' )
         {
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3843:1: ( '(' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3844:2: '('
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3876:1: ( '(' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:3877:2: '('
         {
-        match(input,58,FOLLOW_58_in_synpred35_InternalXbase9084); if (state.failed) return ;
+        match(input,58,FOLLOW_58_in_synpred35_InternalXbase9138); if (state.failed) return ;
 
         }
 
@@ -18193,10 +18797,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred36_InternalXbase
     public final void synpred36_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:4: ( '<' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4170:6: '<'
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:4: ( '<' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4203:6: '<'
         {
-        match(input,38,FOLLOW_38_in_synpred36_InternalXbase9850); if (state.failed) return ;
+        match(input,38,FOLLOW_38_in_synpred36_InternalXbase9904); if (state.failed) return ;
 
         }
     }
@@ -18204,10 +18808,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred37_InternalXbase
     public final void synpred37_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:5: ( '(' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4219:7: '('
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:5: ( '(' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4252:7: '('
         {
-        match(input,58,FOLLOW_58_in_synpred37_InternalXbase9943); if (state.failed) return ;
+        match(input,58,FOLLOW_58_in_synpred37_InternalXbase9997); if (state.failed) return ;
 
         }
     }
@@ -18215,13 +18819,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred38_InternalXbase
     public final void synpred38_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4825:2: ( ( ruleXExpression ) )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4826:1: ( ruleXExpression )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4858:2: ( ( ruleXExpression ) )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4859:1: ( ruleXExpression )
         {
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4826:1: ( ruleXExpression )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4827:1: ruleXExpression
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4859:1: ( ruleXExpression )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4860:1: ruleXExpression
         {
-        pushFollow(FOLLOW_ruleXExpression_in_synpred38_InternalXbase11337);
+        pushFollow(FOLLOW_ruleXExpression_in_synpred38_InternalXbase11391);
         ruleXExpression();
 
         state._fsp--;
@@ -18236,10 +18840,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred39_InternalXbase
     public final void synpred39_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:5: ( 'catch' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4958:7: 'catch'
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:5: ( 'catch' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4991:7: 'catch'
         {
-        match(input,94,FOLLOW_94_in_synpred39_InternalXbase11666); if (state.failed) return ;
+        match(input,95,FOLLOW_95_in_synpred39_InternalXbase11720); if (state.failed) return ;
 
         }
     }
@@ -18247,10 +18851,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred40_InternalXbase
     public final void synpred40_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:4: ( 'finally' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:4977:6: 'finally'
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:4: ( 'finally' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5010:6: 'finally'
         {
-        match(input,93,FOLLOW_93_in_synpred40_InternalXbase11695); if (state.failed) return ;
+        match(input,94,FOLLOW_94_in_synpred40_InternalXbase11749); if (state.failed) return ;
 
         }
     }
@@ -18258,10 +18862,10 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred42_InternalXbase
     public final void synpred42_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5125:3: ( '.' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5126:2: '.'
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:4: ( '(' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5172:6: '('
         {
-        match(input,63,FOLLOW_63_in_synpred42_InternalXbase12043); if (state.failed) return ;
+        match(input,58,FOLLOW_58_in_synpred42_InternalXbase12111); if (state.failed) return ;
 
         }
     }
@@ -18269,18 +18873,63 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred43_InternalXbase
     public final void synpred43_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:2: ( ( () ruleArrayBrackets ) )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:3: ( () ruleArrayBrackets )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:5: ( ( ( ( ruleValidID ) ) '=' ) )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:6: ( ( ( ruleValidID ) ) '=' )
         {
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:3: ( () ruleArrayBrackets )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:4: () ruleArrayBrackets
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:6: ( ( ( ruleValidID ) ) '=' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:7: ( ( ruleValidID ) ) '='
         {
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5567:4: ()
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5568:1: 
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5177:7: ( ( ruleValidID ) )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5178:1: ( ruleValidID )
+        {
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5178:1: ( ruleValidID )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5179:3: ruleValidID
+        {
+        pushFollow(FOLLOW_ruleValidID_in_synpred43_InternalXbase12140);
+        ruleValidID();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+
+
+        }
+
+        match(input,23,FOLLOW_23_in_synpred43_InternalXbase12146); if (state.failed) return ;
+
+        }
+
+
+        }
+    }
+    // $ANTLR end synpred43_InternalXbase
+
+    // $ANTLR start synpred46_InternalXbase
+    public final void synpred46_InternalXbase_fragment() throws RecognitionException {   
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5345:3: ( '.' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5346:2: '.'
+        {
+        match(input,63,FOLLOW_63_in_synpred46_InternalXbase12528); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred46_InternalXbase
+
+    // $ANTLR start synpred47_InternalXbase
+    public final void synpred47_InternalXbase_fragment() throws RecognitionException {   
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:2: ( ( () ruleArrayBrackets ) )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:3: ( () ruleArrayBrackets )
+        {
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:3: ( () ruleArrayBrackets )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:4: () ruleArrayBrackets
+        {
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5787:4: ()
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5788:1: 
         {
         }
 
-        pushFollow(FOLLOW_ruleArrayBrackets_in_synpred43_InternalXbase13056);
+        pushFollow(FOLLOW_ruleArrayBrackets_in_synpred47_InternalXbase13541);
         ruleArrayBrackets();
 
         state._fsp--;
@@ -18291,18 +18940,18 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred43_InternalXbase
+    // $ANTLR end synpred47_InternalXbase
 
-    // $ANTLR start synpred44_InternalXbase
-    public final void synpred44_InternalXbase_fragment() throws RecognitionException {   
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:4: ( '<' )
-        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5651:6: '<'
+    // $ANTLR start synpred48_InternalXbase
+    public final void synpred48_InternalXbase_fragment() throws RecognitionException {   
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:4: ( '<' )
+        // ../org.summer.dsl.xbase/src-gen/org/summer/dsl/xbase/parser/antlr/internal/InternalXbase.g:5871:6: '<'
         {
-        match(input,38,FOLLOW_38_in_synpred44_InternalXbase13289); if (state.failed) return ;
+        match(input,38,FOLLOW_38_in_synpred48_InternalXbase13774); if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred44_InternalXbase
+    // $ANTLR end synpred48_InternalXbase
 
     // Delegated rules
 
@@ -18432,6 +19081,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
+    public final boolean synpred47_InternalXbase() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred47_InternalXbase_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred15_InternalXbase() {
         state.backtracking++;
         int start = input.mark();
@@ -18516,6 +19179,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
+    public final boolean synpred48_InternalXbase() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred48_InternalXbase_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
     public final boolean synpred32_InternalXbase() {
         state.backtracking++;
         int start = input.mark();
@@ -18572,11 +19249,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred16_InternalXbase() {
+    public final boolean synpred46_InternalXbase() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred16_InternalXbase_fragment(); // can never throw exception
+            synpred46_InternalXbase_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -18586,11 +19263,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred44_InternalXbase() {
+    public final boolean synpred16_InternalXbase() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred44_InternalXbase_fragment(); // can never throw exception
+            synpred16_InternalXbase_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -18834,11 +19511,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     protected DFA36 dfa36 = new DFA36(this);
     protected DFA46 dfa46 = new DFA46(this);
     protected DFA47 dfa47 = new DFA47(this);
-    protected DFA63 dfa63 = new DFA63(this);
-    protected DFA67 dfa67 = new DFA67(this);
-    protected DFA70 dfa70 = new DFA70(this);
-    protected DFA75 dfa75 = new DFA75(this);
-    protected DFA89 dfa89 = new DFA89(this);
+    protected DFA65 dfa65 = new DFA65(this);
+    protected DFA69 dfa69 = new DFA69(this);
+    protected DFA72 dfa72 = new DFA72(this);
+    protected DFA77 dfa77 = new DFA77(this);
+    protected DFA94 dfa94 = new DFA94(this);
     static final String DFA2_eotS =
         "\15\uffff";
     static final String DFA2_eofS =
@@ -18846,14 +19523,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA2_minS =
         "\1\4\1\uffff\12\0\1\uffff";
     static final String DFA2_maxS =
-        "\1\136\1\uffff\12\0\1\uffff";
+        "\1\137\1\uffff\12\0\1\uffff";
     static final String DFA2_acceptS =
         "\1\uffff\1\2\12\uffff\1\1";
     static final String DFA2_specialS =
-        "\2\uffff\1\6\1\0\1\1\1\7\1\4\1\10\1\2\1\3\1\11\1\5\1\uffff}>";
+        "\2\uffff\1\4\1\3\1\10\1\2\1\6\1\0\1\5\1\7\1\1\1\11\1\uffff}>";
     static final String[] DFA2_transitionS = {
             "\11\1\12\uffff\10\1\1\4\1\5\1\6\1\7\1\10\1\2\1\1\1\3\1\1\1"+
-            "\11\1\12\1\13\27\1\1\uffff\34\1",
+            "\11\1\12\1\13\27\1\1\uffff\17\1\1\uffff\15\1",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -18905,126 +19582,6 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA2_3 = input.LA(1);
-
-                         
-                        int index2_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA2_4 = input.LA(1);
-
-                         
-                        int index2_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA2_8 = input.LA(1);
-
-                         
-                        int index2_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA2_9 = input.LA(1);
-
-                         
-                        int index2_9 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA2_6 = input.LA(1);
-
-                         
-                        int index2_6 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_6);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA2_11 = input.LA(1);
-
-                         
-                        int index2_11 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_11);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA2_2 = input.LA(1);
-
-                         
-                        int index2_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
-                        int LA2_5 = input.LA(1);
-
-                         
-                        int index2_5 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalXbase()) ) {s = 12;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index2_5);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 8 : 
                         int LA2_7 = input.LA(1);
 
                          
@@ -19039,7 +19596,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         input.seek(index2_7);
                         if ( s>=0 ) return s;
                         break;
-                    case 9 : 
+                    case 1 : 
                         int LA2_10 = input.LA(1);
 
                          
@@ -19052,6 +19609,126 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index2_10);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA2_5 = input.LA(1);
+
+                         
+                        int index2_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA2_3 = input.LA(1);
+
+                         
+                        int index2_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA2_2 = input.LA(1);
+
+                         
+                        int index2_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA2_8 = input.LA(1);
+
+                         
+                        int index2_8 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_8);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA2_6 = input.LA(1);
+
+                         
+                        int index2_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA2_9 = input.LA(1);
+
+                         
+                        int index2_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_9);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA2_4 = input.LA(1);
+
+                         
+                        int index2_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 9 : 
+                        int LA2_11 = input.LA(1);
+
+                         
+                        int index2_11 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred2_InternalXbase()) ) {s = 12;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index2_11);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -19131,14 +19808,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA34_minS =
         "\1\4\1\uffff\4\0\4\uffff";
     static final String DFA34_maxS =
-        "\1\136\1\uffff\4\0\4\uffff";
+        "\1\137\1\uffff\4\0\4\uffff";
     static final String DFA34_acceptS =
         "\1\uffff\1\5\4\uffff\1\1\1\2\1\3\1\4";
     static final String DFA34_specialS =
-        "\2\uffff\1\0\1\1\1\3\1\2\4\uffff}>";
+        "\2\uffff\1\2\1\0\1\3\1\1\4\uffff}>";
     static final String[] DFA34_transitionS = {
-            "\11\1\12\uffff\43\1\1\2\2\1\1\3\1\1\1\4\1\5\1\1\1\uffff\34"+
-            "\1",
+            "\11\1\12\uffff\43\1\1\2\2\1\1\3\1\1\1\4\1\5\1\1\1\uffff\17"+
+            "\1\1\uffff\15\1",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -19187,21 +19864,6 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA34_2 = input.LA(1);
-
-                         
-                        int index34_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred21_InternalXbase()) ) {s = 6;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index34_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA34_3 = input.LA(1);
 
                          
@@ -19216,7 +19878,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         input.seek(index34_3);
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 1 : 
                         int LA34_5 = input.LA(1);
 
                          
@@ -19229,6 +19891,21 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                          
                         input.seek(index34_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA34_2 = input.LA(1);
+
+                         
+                        int index34_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred21_InternalXbase()) ) {s = 6;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index34_2);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
@@ -19263,13 +19940,13 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA33_minS =
         "\1\4\1\0\121\uffff";
     static final String DFA33_maxS =
-        "\1\136\1\0\121\uffff";
+        "\1\137\1\0\121\uffff";
     static final String DFA33_acceptS =
         "\2\uffff\1\2\117\uffff\1\1";
     static final String DFA33_specialS =
         "\1\uffff\1\0\121\uffff}>";
     static final String[] DFA33_transitionS = {
-            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\34\2",
+            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\17\2\1\uffff\15\2",
             "\1\uffff",
             "",
             "",
@@ -19416,20 +20093,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA35_eotS =
         "\31\uffff";
     static final String DFA35_eofS =
-        "\21\uffff\1\23\3\uffff\1\23\3\uffff";
+        "\21\uffff\1\24\3\uffff\1\24\3\uffff";
     static final String DFA35_minS =
-        "\2\4\17\uffff\2\4\1\uffff\5\4";
+        "\2\4\17\uffff\3\4\1\uffff\4\4";
     static final String DFA35_maxS =
-        "\1\134\1\106\17\uffff\1\136\1\46\1\uffff\1\134\1\136\1\134\1\46"+
-        "\1\134";
+        "\1\135\1\106\17\uffff\1\137\1\46\1\135\1\uffff\1\137\1\135\1\46"+
+        "\1\135";
     static final String DFA35_acceptS =
         "\2\uffff\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
-        "\1\16\1\17\1\20\2\uffff\1\1\5\uffff";
+        "\1\16\1\17\1\20\3\uffff\1\1\4\uffff";
     static final String DFA35_specialS =
         "\31\uffff}>";
     static final String[] DFA35_transitionS = {
             "\1\2\6\3\33\uffff\1\2\23\uffff\1\20\6\uffff\1\3\1\uffff\1\6"+
-            "\1\uffff\1\5\1\4\3\uffff\1\7\1\uffff\1\10\1\11\1\12\3\uffff"+
+            "\1\uffff\1\5\1\4\3\uffff\1\7\1\uffff\1\10\1\11\1\12\4\uffff"+
             "\1\2\1\1\4\3\1\13\1\14\1\16\1\17\1\15",
             "\1\21\70\uffff\1\3\10\uffff\1\3",
             "",
@@ -19447,18 +20124,22 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\11\23\12\uffff\50\23\1\22\2\23\1\uffff\3\23\1\24\30\23",
-            "\1\25\41\uffff\1\23",
+            "\11\24\12\uffff\50\24\1\22\2\24\1\uffff\3\24\1\23\13\24\1"+
+            "\uffff\15\24",
+            "\1\25\41\uffff\1\24",
+            "\1\26\6\24\33\uffff\1\24\7\uffff\2\24\5\uffff\4\24\1\uffff"+
+            "\1\24\6\uffff\1\24\1\uffff\1\24\1\uffff\2\24\1\uffff\3\24\1"+
+            "\uffff\6\24\1\uffff\13\24",
             "",
-            "\1\26\6\23\33\uffff\1\23\7\uffff\2\23\5\uffff\4\23\1\uffff"+
-            "\1\23\6\uffff\1\23\1\uffff\1\23\1\uffff\2\23\1\uffff\3\23\1"+
-            "\uffff\21\23",
-            "\11\23\12\uffff\50\23\1\22\2\23\1\uffff\3\23\1\24\30\23",
-            "\7\23\14\uffff\32\23\1\3\11\23\2\uffff\1\23\1\uffff\1\27\2"+
-            "\23\1\uffff\1\23\1\uffff\2\23\1\uffff\1\23\1\uffff\23\23",
-            "\1\30\41\uffff\1\23",
-            "\7\23\14\uffff\32\23\1\3\11\23\2\uffff\1\23\1\uffff\1\27\2"+
-            "\23\1\uffff\1\23\1\uffff\2\23\1\uffff\1\23\1\uffff\23\23"
+            "\11\24\12\uffff\50\24\1\22\2\24\1\uffff\3\24\1\23\13\24\1"+
+            "\uffff\15\24",
+            "\7\24\14\uffff\32\24\1\3\11\24\2\uffff\1\24\1\uffff\1\27\2"+
+            "\24\1\uffff\1\24\1\uffff\2\24\1\uffff\1\24\1\uffff\10\24\1\uffff"+
+            "\13\24",
+            "\1\30\41\uffff\1\24",
+            "\7\24\14\uffff\32\24\1\3\11\24\2\uffff\1\24\1\uffff\1\27\2"+
+            "\24\1\uffff\1\24\1\uffff\2\24\1\uffff\1\24\1\uffff\10\24\1\uffff"+
+            "\13\24"
     };
 
     static final short[] DFA35_eot = DFA.unpackEncodedString(DFA35_eotS);
@@ -19501,14 +20182,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA36_minS =
         "\1\5\1\4\12\uffff";
     static final String DFA36_maxS =
-        "\1\127\1\106\12\uffff";
+        "\1\130\1\106\12\uffff";
     static final String DFA36_acceptS =
-        "\2\uffff\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\3\1\2\1\1";
+        "\2\uffff\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\3\1\1\1\2";
     static final String DFA36_specialS =
         "\14\uffff}>";
     static final String[] DFA36_transitionS = {
-            "\1\6\3\4\2\10\66\uffff\1\2\21\uffff\1\1\2\3\1\5\1\7",
-            "\1\12\70\uffff\1\11\10\uffff\1\13",
+            "\1\6\3\4\2\10\66\uffff\1\2\22\uffff\1\1\2\3\1\5\1\7",
+            "\1\13\70\uffff\1\11\10\uffff\1\12",
             "",
             "",
             "",
@@ -19561,7 +20242,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA46_minS =
         "\1\4\46\uffff";
     static final String DFA46_maxS =
-        "\1\134\46\uffff";
+        "\1\135\46\uffff";
     static final String DFA46_acceptS =
         "\1\uffff\45\1\1\2";
     static final String DFA46_specialS =
@@ -19570,8 +20251,8 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             "\1\14\1\25\1\21\1\22\1\23\1\27\1\30\33\uffff\1\13\7\uffff\1"+
             "\6\1\5\5\uffff\1\10\1\11\1\4\1\7\1\uffff\1\45\6\uffff\1\16\1"+
             "\uffff\1\33\1\uffff\1\32\1\31\3\uffff\1\34\1\46\1\35\1\36\1"+
-            "\37\1\1\1\2\1\3\1\15\1\12\1\17\1\20\1\24\1\26\1\40\1\41\1\43"+
-            "\1\44\1\42",
+            "\37\1\1\1\2\1\3\1\uffff\1\15\1\12\1\17\1\20\1\24\1\26\1\40\1"+
+            "\41\1\43\1\44\1\42",
             "",
             "",
             "",
@@ -19673,19 +20354,19 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA46_0==54) && (synpred30_InternalXbase())) {s = 9;}
 
-                        else if ( (LA46_0==83) && (synpred30_InternalXbase())) {s = 10;}
+                        else if ( (LA46_0==84) && (synpred30_InternalXbase())) {s = 10;}
 
                         else if ( (LA46_0==38) && (synpred30_InternalXbase())) {s = 11;}
 
                         else if ( (LA46_0==RULE_ID) && (synpred30_InternalXbase())) {s = 12;}
 
-                        else if ( (LA46_0==82) && (synpred30_InternalXbase())) {s = 13;}
+                        else if ( (LA46_0==83) && (synpred30_InternalXbase())) {s = 13;}
 
                         else if ( (LA46_0==65) && (synpred30_InternalXbase())) {s = 14;}
 
-                        else if ( (LA46_0==84) && (synpred30_InternalXbase())) {s = 15;}
+                        else if ( (LA46_0==85) && (synpred30_InternalXbase())) {s = 15;}
 
-                        else if ( (LA46_0==85) && (synpred30_InternalXbase())) {s = 16;}
+                        else if ( (LA46_0==86) && (synpred30_InternalXbase())) {s = 16;}
 
                         else if ( (LA46_0==RULE_HEX) && (synpred30_InternalXbase())) {s = 17;}
 
@@ -19693,11 +20374,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA46_0==RULE_DECIMAL) && (synpred30_InternalXbase())) {s = 19;}
 
-                        else if ( (LA46_0==86) && (synpred30_InternalXbase())) {s = 20;}
+                        else if ( (LA46_0==87) && (synpred30_InternalXbase())) {s = 20;}
 
                         else if ( (LA46_0==RULE_STRING) && (synpred30_InternalXbase())) {s = 21;}
 
-                        else if ( (LA46_0==87) && (synpred30_InternalXbase())) {s = 22;}
+                        else if ( (LA46_0==88) && (synpred30_InternalXbase())) {s = 22;}
 
                         else if ( (LA46_0==RULE_RICH_TEXT) && (synpred30_InternalXbase())) {s = 23;}
 
@@ -19717,15 +20398,15 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA46_0==78) && (synpred30_InternalXbase())) {s = 31;}
 
-                        else if ( (LA46_0==88) && (synpred30_InternalXbase())) {s = 32;}
+                        else if ( (LA46_0==89) && (synpred30_InternalXbase())) {s = 32;}
 
-                        else if ( (LA46_0==89) && (synpred30_InternalXbase())) {s = 33;}
+                        else if ( (LA46_0==90) && (synpred30_InternalXbase())) {s = 33;}
 
-                        else if ( (LA46_0==92) && (synpred30_InternalXbase())) {s = 34;}
+                        else if ( (LA46_0==93) && (synpred30_InternalXbase())) {s = 34;}
 
-                        else if ( (LA46_0==90) && (synpred30_InternalXbase())) {s = 35;}
+                        else if ( (LA46_0==91) && (synpred30_InternalXbase())) {s = 35;}
 
-                        else if ( (LA46_0==91) && (synpred30_InternalXbase())) {s = 36;}
+                        else if ( (LA46_0==92) && (synpred30_InternalXbase())) {s = 36;}
 
                         else if ( (LA46_0==58) && (synpred30_InternalXbase())) {s = 37;}
 
@@ -19750,7 +20431,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String DFA47_minS =
         "\1\4\43\uffff";
     static final String DFA47_maxS =
-        "\1\134\43\uffff";
+        "\1\135\43\uffff";
     static final String DFA47_acceptS =
         "\1\uffff\42\1\1\2";
     static final String DFA47_specialS =
@@ -19758,7 +20439,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     static final String[] DFA47_transitionS = {
             "\1\11\1\22\1\16\1\17\1\20\1\24\1\25\33\uffff\1\10\7\uffff\1"+
             "\3\1\2\5\uffff\1\5\1\6\1\1\1\4\1\uffff\1\42\6\uffff\1\13\1\uffff"+
-            "\1\30\1\uffff\1\27\1\26\3\uffff\1\31\1\43\1\32\1\33\1\34\3\uffff"+
+            "\1\30\1\uffff\1\27\1\26\3\uffff\1\31\1\43\1\32\1\33\1\34\4\uffff"+
             "\1\12\1\7\1\14\1\15\1\21\1\23\1\35\1\36\1\40\1\41\1\37",
             "",
             "",
@@ -19852,19 +20533,19 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA47_0==54) && (synpred31_InternalXbase())) {s = 6;}
 
-                        else if ( (LA47_0==83) && (synpred31_InternalXbase())) {s = 7;}
+                        else if ( (LA47_0==84) && (synpred31_InternalXbase())) {s = 7;}
 
                         else if ( (LA47_0==38) && (synpred31_InternalXbase())) {s = 8;}
 
                         else if ( (LA47_0==RULE_ID) && (synpred31_InternalXbase())) {s = 9;}
 
-                        else if ( (LA47_0==82) && (synpred31_InternalXbase())) {s = 10;}
+                        else if ( (LA47_0==83) && (synpred31_InternalXbase())) {s = 10;}
 
                         else if ( (LA47_0==65) && (synpred31_InternalXbase())) {s = 11;}
 
-                        else if ( (LA47_0==84) && (synpred31_InternalXbase())) {s = 12;}
+                        else if ( (LA47_0==85) && (synpred31_InternalXbase())) {s = 12;}
 
-                        else if ( (LA47_0==85) && (synpred31_InternalXbase())) {s = 13;}
+                        else if ( (LA47_0==86) && (synpred31_InternalXbase())) {s = 13;}
 
                         else if ( (LA47_0==RULE_HEX) && (synpred31_InternalXbase())) {s = 14;}
 
@@ -19872,11 +20553,11 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA47_0==RULE_DECIMAL) && (synpred31_InternalXbase())) {s = 16;}
 
-                        else if ( (LA47_0==86) && (synpred31_InternalXbase())) {s = 17;}
+                        else if ( (LA47_0==87) && (synpred31_InternalXbase())) {s = 17;}
 
                         else if ( (LA47_0==RULE_STRING) && (synpred31_InternalXbase())) {s = 18;}
 
-                        else if ( (LA47_0==87) && (synpred31_InternalXbase())) {s = 19;}
+                        else if ( (LA47_0==88) && (synpred31_InternalXbase())) {s = 19;}
 
                         else if ( (LA47_0==RULE_RICH_TEXT) && (synpred31_InternalXbase())) {s = 20;}
 
@@ -19896,15 +20577,15 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA47_0==78) && (synpred31_InternalXbase())) {s = 28;}
 
-                        else if ( (LA47_0==88) && (synpred31_InternalXbase())) {s = 29;}
+                        else if ( (LA47_0==89) && (synpred31_InternalXbase())) {s = 29;}
 
-                        else if ( (LA47_0==89) && (synpred31_InternalXbase())) {s = 30;}
+                        else if ( (LA47_0==90) && (synpred31_InternalXbase())) {s = 30;}
 
-                        else if ( (LA47_0==92) && (synpred31_InternalXbase())) {s = 31;}
+                        else if ( (LA47_0==93) && (synpred31_InternalXbase())) {s = 31;}
 
-                        else if ( (LA47_0==90) && (synpred31_InternalXbase())) {s = 32;}
+                        else if ( (LA47_0==91) && (synpred31_InternalXbase())) {s = 32;}
 
-                        else if ( (LA47_0==91) && (synpred31_InternalXbase())) {s = 33;}
+                        else if ( (LA47_0==92) && (synpred31_InternalXbase())) {s = 33;}
 
                         else if ( (LA47_0==58) && (synpred31_InternalXbase())) {s = 34;}
 
@@ -19922,20 +20603,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String DFA63_eotS =
+    static final String DFA65_eotS =
         "\123\uffff";
-    static final String DFA63_eofS =
+    static final String DFA65_eofS =
         "\1\2\122\uffff";
-    static final String DFA63_minS =
+    static final String DFA65_minS =
         "\1\4\1\0\121\uffff";
-    static final String DFA63_maxS =
-        "\1\136\1\0\121\uffff";
-    static final String DFA63_acceptS =
+    static final String DFA65_maxS =
+        "\1\137\1\0\121\uffff";
+    static final String DFA65_acceptS =
         "\2\uffff\1\2\117\uffff\1\1";
-    static final String DFA63_specialS =
+    static final String DFA65_specialS =
         "\1\uffff\1\0\121\uffff}>";
-    static final String[] DFA63_transitionS = {
-            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\34\2",
+    static final String[] DFA65_transitionS = {
+            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\17\2\1\uffff\15\2",
             "\1\uffff",
             "",
             "",
@@ -20020,47 +20701,47 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA63_eot = DFA.unpackEncodedString(DFA63_eotS);
-    static final short[] DFA63_eof = DFA.unpackEncodedString(DFA63_eofS);
-    static final char[] DFA63_min = DFA.unpackEncodedStringToUnsignedChars(DFA63_minS);
-    static final char[] DFA63_max = DFA.unpackEncodedStringToUnsignedChars(DFA63_maxS);
-    static final short[] DFA63_accept = DFA.unpackEncodedString(DFA63_acceptS);
-    static final short[] DFA63_special = DFA.unpackEncodedString(DFA63_specialS);
-    static final short[][] DFA63_transition;
+    static final short[] DFA65_eot = DFA.unpackEncodedString(DFA65_eotS);
+    static final short[] DFA65_eof = DFA.unpackEncodedString(DFA65_eofS);
+    static final char[] DFA65_min = DFA.unpackEncodedStringToUnsignedChars(DFA65_minS);
+    static final char[] DFA65_max = DFA.unpackEncodedStringToUnsignedChars(DFA65_maxS);
+    static final short[] DFA65_accept = DFA.unpackEncodedString(DFA65_acceptS);
+    static final short[] DFA65_special = DFA.unpackEncodedString(DFA65_specialS);
+    static final short[][] DFA65_transition;
 
     static {
-        int numStates = DFA63_transitionS.length;
-        DFA63_transition = new short[numStates][];
+        int numStates = DFA65_transitionS.length;
+        DFA65_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA63_transition[i] = DFA.unpackEncodedString(DFA63_transitionS[i]);
+            DFA65_transition[i] = DFA.unpackEncodedString(DFA65_transitionS[i]);
         }
     }
 
-    class DFA63 extends DFA {
+    class DFA65 extends DFA {
 
-        public DFA63(BaseRecognizer recognizer) {
+        public DFA65(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 63;
-            this.eot = DFA63_eot;
-            this.eof = DFA63_eof;
-            this.min = DFA63_min;
-            this.max = DFA63_max;
-            this.accept = DFA63_accept;
-            this.special = DFA63_special;
-            this.transition = DFA63_transition;
+            this.decisionNumber = 65;
+            this.eot = DFA65_eot;
+            this.eof = DFA65_eof;
+            this.min = DFA65_min;
+            this.max = DFA65_max;
+            this.accept = DFA65_accept;
+            this.special = DFA65_special;
+            this.transition = DFA65_transition;
         }
         public String getDescription() {
-            return "3842:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?";
+            return "3875:2: ( ( ( ( '(' ) )=> (lv_explicitOperationCall_7_0= '(' ) ) ( ( (lv_featureCallArguments_8_0= ruleXExpression ) ) (otherlv_9= ',' ( (lv_featureCallArguments_10_0= ruleXExpression ) ) )* )? otherlv_11= ')' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA63_1 = input.LA(1);
+                        int LA65_1 = input.LA(1);
 
                          
-                        int index63_1 = input.index();
+                        int index65_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred35_InternalXbase()) ) {s = 82;}
@@ -20068,31 +20749,31 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index63_1);
+                        input.seek(index65_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 63, _s, input);
+                new NoViableAltException(getDescription(), 65, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA67_eotS =
+    static final String DFA69_eotS =
         "\123\uffff";
-    static final String DFA67_eofS =
+    static final String DFA69_eofS =
         "\1\2\122\uffff";
-    static final String DFA67_minS =
+    static final String DFA69_minS =
         "\1\4\1\0\121\uffff";
-    static final String DFA67_maxS =
-        "\1\136\1\0\121\uffff";
-    static final String DFA67_acceptS =
+    static final String DFA69_maxS =
+        "\1\137\1\0\121\uffff";
+    static final String DFA69_acceptS =
         "\2\uffff\1\2\117\uffff\1\1";
-    static final String DFA67_specialS =
+    static final String DFA69_specialS =
         "\1\uffff\1\0\121\uffff}>";
-    static final String[] DFA67_transitionS = {
-            "\11\2\12\uffff\17\2\1\1\33\2\1\uffff\34\2",
+    static final String[] DFA69_transitionS = {
+            "\11\2\12\uffff\17\2\1\1\33\2\1\uffff\17\2\1\uffff\15\2",
             "\1\uffff",
             "",
             "",
@@ -20177,47 +20858,47 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA67_eot = DFA.unpackEncodedString(DFA67_eotS);
-    static final short[] DFA67_eof = DFA.unpackEncodedString(DFA67_eofS);
-    static final char[] DFA67_min = DFA.unpackEncodedStringToUnsignedChars(DFA67_minS);
-    static final char[] DFA67_max = DFA.unpackEncodedStringToUnsignedChars(DFA67_maxS);
-    static final short[] DFA67_accept = DFA.unpackEncodedString(DFA67_acceptS);
-    static final short[] DFA67_special = DFA.unpackEncodedString(DFA67_specialS);
-    static final short[][] DFA67_transition;
+    static final short[] DFA69_eot = DFA.unpackEncodedString(DFA69_eotS);
+    static final short[] DFA69_eof = DFA.unpackEncodedString(DFA69_eofS);
+    static final char[] DFA69_min = DFA.unpackEncodedStringToUnsignedChars(DFA69_minS);
+    static final char[] DFA69_max = DFA.unpackEncodedStringToUnsignedChars(DFA69_maxS);
+    static final short[] DFA69_accept = DFA.unpackEncodedString(DFA69_acceptS);
+    static final short[] DFA69_special = DFA.unpackEncodedString(DFA69_specialS);
+    static final short[][] DFA69_transition;
 
     static {
-        int numStates = DFA67_transitionS.length;
-        DFA67_transition = new short[numStates][];
+        int numStates = DFA69_transitionS.length;
+        DFA69_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA67_transition[i] = DFA.unpackEncodedString(DFA67_transitionS[i]);
+            DFA69_transition[i] = DFA.unpackEncodedString(DFA69_transitionS[i]);
         }
     }
 
-    class DFA67 extends DFA {
+    class DFA69 extends DFA {
 
-        public DFA67(BaseRecognizer recognizer) {
+        public DFA69(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 67;
-            this.eot = DFA67_eot;
-            this.eof = DFA67_eof;
-            this.min = DFA67_min;
-            this.max = DFA67_max;
-            this.accept = DFA67_accept;
-            this.special = DFA67_special;
-            this.transition = DFA67_transition;
+            this.decisionNumber = 69;
+            this.eot = DFA69_eot;
+            this.eof = DFA69_eof;
+            this.min = DFA69_min;
+            this.max = DFA69_max;
+            this.accept = DFA69_accept;
+            this.special = DFA69_special;
+            this.transition = DFA69_transition;
         }
         public String getDescription() {
-            return "4170:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?";
+            return "4203:2: ( ( ( '<' )=>otherlv_3= '<' ) ( (lv_typeArguments_4_0= ruleJvmArgumentTypeReference ) ) (otherlv_5= ',' ( (lv_typeArguments_6_0= ruleJvmArgumentTypeReference ) ) )* otherlv_7= '>' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA67_1 = input.LA(1);
+                        int LA69_1 = input.LA(1);
 
                          
-                        int index67_1 = input.index();
+                        int index69_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred36_InternalXbase()) ) {s = 82;}
@@ -20225,31 +20906,31 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index67_1);
+                        input.seek(index69_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 67, _s, input);
+                new NoViableAltException(getDescription(), 69, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA70_eotS =
+    static final String DFA72_eotS =
         "\123\uffff";
-    static final String DFA70_eofS =
+    static final String DFA72_eofS =
         "\1\2\122\uffff";
-    static final String DFA70_minS =
+    static final String DFA72_minS =
         "\1\4\1\0\121\uffff";
-    static final String DFA70_maxS =
-        "\1\136\1\0\121\uffff";
-    static final String DFA70_acceptS =
+    static final String DFA72_maxS =
+        "\1\137\1\0\121\uffff";
+    static final String DFA72_acceptS =
         "\2\uffff\1\2\117\uffff\1\1";
-    static final String DFA70_specialS =
+    static final String DFA72_specialS =
         "\1\uffff\1\0\121\uffff}>";
-    static final String[] DFA70_transitionS = {
-            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\34\2",
+    static final String[] DFA72_transitionS = {
+            "\11\2\12\uffff\43\2\1\1\7\2\1\uffff\17\2\1\uffff\15\2",
             "\1\uffff",
             "",
             "",
@@ -20334,47 +21015,47 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA70_eot = DFA.unpackEncodedString(DFA70_eotS);
-    static final short[] DFA70_eof = DFA.unpackEncodedString(DFA70_eofS);
-    static final char[] DFA70_min = DFA.unpackEncodedStringToUnsignedChars(DFA70_minS);
-    static final char[] DFA70_max = DFA.unpackEncodedStringToUnsignedChars(DFA70_maxS);
-    static final short[] DFA70_accept = DFA.unpackEncodedString(DFA70_acceptS);
-    static final short[] DFA70_special = DFA.unpackEncodedString(DFA70_specialS);
-    static final short[][] DFA70_transition;
+    static final short[] DFA72_eot = DFA.unpackEncodedString(DFA72_eotS);
+    static final short[] DFA72_eof = DFA.unpackEncodedString(DFA72_eofS);
+    static final char[] DFA72_min = DFA.unpackEncodedStringToUnsignedChars(DFA72_minS);
+    static final char[] DFA72_max = DFA.unpackEncodedStringToUnsignedChars(DFA72_maxS);
+    static final short[] DFA72_accept = DFA.unpackEncodedString(DFA72_acceptS);
+    static final short[] DFA72_special = DFA.unpackEncodedString(DFA72_specialS);
+    static final short[][] DFA72_transition;
 
     static {
-        int numStates = DFA70_transitionS.length;
-        DFA70_transition = new short[numStates][];
+        int numStates = DFA72_transitionS.length;
+        DFA72_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA70_transition[i] = DFA.unpackEncodedString(DFA70_transitionS[i]);
+            DFA72_transition[i] = DFA.unpackEncodedString(DFA72_transitionS[i]);
         }
     }
 
-    class DFA70 extends DFA {
+    class DFA72 extends DFA {
 
-        public DFA70(BaseRecognizer recognizer) {
+        public DFA72(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 70;
-            this.eot = DFA70_eot;
-            this.eof = DFA70_eof;
-            this.min = DFA70_min;
-            this.max = DFA70_max;
-            this.accept = DFA70_accept;
-            this.special = DFA70_special;
-            this.transition = DFA70_transition;
+            this.decisionNumber = 72;
+            this.eot = DFA72_eot;
+            this.eof = DFA72_eof;
+            this.min = DFA72_min;
+            this.max = DFA72_max;
+            this.accept = DFA72_accept;
+            this.special = DFA72_special;
+            this.transition = DFA72_transition;
         }
         public String getDescription() {
-            return "4219:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?";
+            return "4252:3: ( ( ( '(' )=>otherlv_8= '(' ) ( ( (lv_arguments_9_0= ruleXExpression ) ) (otherlv_10= ',' ( (lv_arguments_11_0= ruleXExpression ) ) )* )? otherlv_12= ')' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA70_1 = input.LA(1);
+                        int LA72_1 = input.LA(1);
 
                          
-                        int index70_1 = input.index();
+                        int index72_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred37_InternalXbase()) ) {s = 82;}
@@ -20382,36 +21063,36 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index70_1);
+                        input.seek(index72_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 70, _s, input);
+                new NoViableAltException(getDescription(), 72, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA75_eotS =
+    static final String DFA77_eotS =
         "\123\uffff";
-    static final String DFA75_eofS =
+    static final String DFA77_eofS =
         "\1\43\122\uffff";
-    static final String DFA75_minS =
+    static final String DFA77_minS =
         "\1\4\42\0\60\uffff";
-    static final String DFA75_maxS =
-        "\1\136\42\0\60\uffff";
-    static final String DFA75_acceptS =
+    static final String DFA77_maxS =
+        "\1\137\42\0\60\uffff";
+    static final String DFA77_acceptS =
         "\43\uffff\1\2\56\uffff\1\1";
-    static final String DFA75_specialS =
+    static final String DFA77_specialS =
         "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
         "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
         "\1\31\1\32\1\33\1\34\1\35\1\36\1\37\1\40\1\41\60\uffff}>";
-    static final String[] DFA75_transitionS = {
+    static final String[] DFA77_transitionS = {
             "\1\11\1\22\1\16\1\17\1\20\1\24\1\25\2\43\12\uffff\17\43\1\10"+
             "\7\43\1\3\1\2\5\43\1\5\1\6\1\1\1\4\1\43\1\42\6\43\1\13\1\uffff"+
-            "\1\30\1\43\1\27\1\26\3\43\1\31\1\43\1\32\1\33\1\34\3\43\1\12"+
-            "\1\7\1\14\1\15\1\21\1\23\1\35\1\36\1\40\1\41\1\37\2\43",
+            "\1\30\1\43\1\27\1\26\3\43\1\31\1\43\1\32\1\33\1\34\3\43\1\uffff"+
+            "\1\12\1\7\1\14\1\15\1\21\1\23\1\35\1\36\1\40\1\41\1\37\2\43",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -20496,47 +21177,47 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA75_eot = DFA.unpackEncodedString(DFA75_eotS);
-    static final short[] DFA75_eof = DFA.unpackEncodedString(DFA75_eofS);
-    static final char[] DFA75_min = DFA.unpackEncodedStringToUnsignedChars(DFA75_minS);
-    static final char[] DFA75_max = DFA.unpackEncodedStringToUnsignedChars(DFA75_maxS);
-    static final short[] DFA75_accept = DFA.unpackEncodedString(DFA75_acceptS);
-    static final short[] DFA75_special = DFA.unpackEncodedString(DFA75_specialS);
-    static final short[][] DFA75_transition;
+    static final short[] DFA77_eot = DFA.unpackEncodedString(DFA77_eotS);
+    static final short[] DFA77_eof = DFA.unpackEncodedString(DFA77_eofS);
+    static final char[] DFA77_min = DFA.unpackEncodedStringToUnsignedChars(DFA77_minS);
+    static final char[] DFA77_max = DFA.unpackEncodedStringToUnsignedChars(DFA77_maxS);
+    static final short[] DFA77_accept = DFA.unpackEncodedString(DFA77_acceptS);
+    static final short[] DFA77_special = DFA.unpackEncodedString(DFA77_specialS);
+    static final short[][] DFA77_transition;
 
     static {
-        int numStates = DFA75_transitionS.length;
-        DFA75_transition = new short[numStates][];
+        int numStates = DFA77_transitionS.length;
+        DFA77_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA75_transition[i] = DFA.unpackEncodedString(DFA75_transitionS[i]);
+            DFA77_transition[i] = DFA.unpackEncodedString(DFA77_transitionS[i]);
         }
     }
 
-    class DFA75 extends DFA {
+    class DFA77 extends DFA {
 
-        public DFA75(BaseRecognizer recognizer) {
+        public DFA77(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 75;
-            this.eot = DFA75_eot;
-            this.eof = DFA75_eof;
-            this.min = DFA75_min;
-            this.max = DFA75_max;
-            this.accept = DFA75_accept;
-            this.special = DFA75_special;
-            this.transition = DFA75_transition;
+            this.decisionNumber = 77;
+            this.eot = DFA77_eot;
+            this.eof = DFA77_eof;
+            this.min = DFA77_min;
+            this.max = DFA77_max;
+            this.accept = DFA77_accept;
+            this.special = DFA77_special;
+            this.transition = DFA77_transition;
         }
         public String getDescription() {
-            return "4825:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?";
+            return "4858:1: ( ( ( ruleXExpression ) )=> (lv_expression_2_0= ruleXExpression ) )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA75_1 = input.LA(1);
+                        int LA77_1 = input.LA(1);
 
                          
-                        int index75_1 = input.index();
+                        int index77_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20544,14 +21225,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_1);
+                        input.seek(index77_1);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA75_2 = input.LA(1);
+                        int LA77_2 = input.LA(1);
 
                          
-                        int index75_2 = input.index();
+                        int index77_2 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20559,14 +21240,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_2);
+                        input.seek(index77_2);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA75_3 = input.LA(1);
+                        int LA77_3 = input.LA(1);
 
                          
-                        int index75_3 = input.index();
+                        int index77_3 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20574,14 +21255,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_3);
+                        input.seek(index77_3);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA75_4 = input.LA(1);
+                        int LA77_4 = input.LA(1);
 
                          
-                        int index75_4 = input.index();
+                        int index77_4 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20589,14 +21270,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_4);
+                        input.seek(index77_4);
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA75_5 = input.LA(1);
+                        int LA77_5 = input.LA(1);
 
                          
-                        int index75_5 = input.index();
+                        int index77_5 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20604,14 +21285,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_5);
+                        input.seek(index77_5);
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA75_6 = input.LA(1);
+                        int LA77_6 = input.LA(1);
 
                          
-                        int index75_6 = input.index();
+                        int index77_6 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20619,14 +21300,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_6);
+                        input.seek(index77_6);
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA75_7 = input.LA(1);
+                        int LA77_7 = input.LA(1);
 
                          
-                        int index75_7 = input.index();
+                        int index77_7 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20634,14 +21315,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_7);
+                        input.seek(index77_7);
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA75_8 = input.LA(1);
+                        int LA77_8 = input.LA(1);
 
                          
-                        int index75_8 = input.index();
+                        int index77_8 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20649,14 +21330,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_8);
+                        input.seek(index77_8);
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA75_9 = input.LA(1);
+                        int LA77_9 = input.LA(1);
 
                          
-                        int index75_9 = input.index();
+                        int index77_9 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20664,14 +21345,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_9);
+                        input.seek(index77_9);
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA75_10 = input.LA(1);
+                        int LA77_10 = input.LA(1);
 
                          
-                        int index75_10 = input.index();
+                        int index77_10 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20679,14 +21360,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_10);
+                        input.seek(index77_10);
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA75_11 = input.LA(1);
+                        int LA77_11 = input.LA(1);
 
                          
-                        int index75_11 = input.index();
+                        int index77_11 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20694,14 +21375,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_11);
+                        input.seek(index77_11);
                         if ( s>=0 ) return s;
                         break;
                     case 11 : 
-                        int LA75_12 = input.LA(1);
+                        int LA77_12 = input.LA(1);
 
                          
-                        int index75_12 = input.index();
+                        int index77_12 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20709,14 +21390,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_12);
+                        input.seek(index77_12);
                         if ( s>=0 ) return s;
                         break;
                     case 12 : 
-                        int LA75_13 = input.LA(1);
+                        int LA77_13 = input.LA(1);
 
                          
-                        int index75_13 = input.index();
+                        int index77_13 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20724,14 +21405,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_13);
+                        input.seek(index77_13);
                         if ( s>=0 ) return s;
                         break;
                     case 13 : 
-                        int LA75_14 = input.LA(1);
+                        int LA77_14 = input.LA(1);
 
                          
-                        int index75_14 = input.index();
+                        int index77_14 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20739,14 +21420,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_14);
+                        input.seek(index77_14);
                         if ( s>=0 ) return s;
                         break;
                     case 14 : 
-                        int LA75_15 = input.LA(1);
+                        int LA77_15 = input.LA(1);
 
                          
-                        int index75_15 = input.index();
+                        int index77_15 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20754,14 +21435,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_15);
+                        input.seek(index77_15);
                         if ( s>=0 ) return s;
                         break;
                     case 15 : 
-                        int LA75_16 = input.LA(1);
+                        int LA77_16 = input.LA(1);
 
                          
-                        int index75_16 = input.index();
+                        int index77_16 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20769,14 +21450,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_16);
+                        input.seek(index77_16);
                         if ( s>=0 ) return s;
                         break;
                     case 16 : 
-                        int LA75_17 = input.LA(1);
+                        int LA77_17 = input.LA(1);
 
                          
-                        int index75_17 = input.index();
+                        int index77_17 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20784,14 +21465,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_17);
+                        input.seek(index77_17);
                         if ( s>=0 ) return s;
                         break;
                     case 17 : 
-                        int LA75_18 = input.LA(1);
+                        int LA77_18 = input.LA(1);
 
                          
-                        int index75_18 = input.index();
+                        int index77_18 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20799,14 +21480,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_18);
+                        input.seek(index77_18);
                         if ( s>=0 ) return s;
                         break;
                     case 18 : 
-                        int LA75_19 = input.LA(1);
+                        int LA77_19 = input.LA(1);
 
                          
-                        int index75_19 = input.index();
+                        int index77_19 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20814,14 +21495,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_19);
+                        input.seek(index77_19);
                         if ( s>=0 ) return s;
                         break;
                     case 19 : 
-                        int LA75_20 = input.LA(1);
+                        int LA77_20 = input.LA(1);
 
                          
-                        int index75_20 = input.index();
+                        int index77_20 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20829,14 +21510,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_20);
+                        input.seek(index77_20);
                         if ( s>=0 ) return s;
                         break;
                     case 20 : 
-                        int LA75_21 = input.LA(1);
+                        int LA77_21 = input.LA(1);
 
                          
-                        int index75_21 = input.index();
+                        int index77_21 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20844,14 +21525,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_21);
+                        input.seek(index77_21);
                         if ( s>=0 ) return s;
                         break;
                     case 21 : 
-                        int LA75_22 = input.LA(1);
+                        int LA77_22 = input.LA(1);
 
                          
-                        int index75_22 = input.index();
+                        int index77_22 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20859,14 +21540,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_22);
+                        input.seek(index77_22);
                         if ( s>=0 ) return s;
                         break;
                     case 22 : 
-                        int LA75_23 = input.LA(1);
+                        int LA77_23 = input.LA(1);
 
                          
-                        int index75_23 = input.index();
+                        int index77_23 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20874,14 +21555,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_23);
+                        input.seek(index77_23);
                         if ( s>=0 ) return s;
                         break;
                     case 23 : 
-                        int LA75_24 = input.LA(1);
+                        int LA77_24 = input.LA(1);
 
                          
-                        int index75_24 = input.index();
+                        int index77_24 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20889,14 +21570,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_24);
+                        input.seek(index77_24);
                         if ( s>=0 ) return s;
                         break;
                     case 24 : 
-                        int LA75_25 = input.LA(1);
+                        int LA77_25 = input.LA(1);
 
                          
-                        int index75_25 = input.index();
+                        int index77_25 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20904,14 +21585,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_25);
+                        input.seek(index77_25);
                         if ( s>=0 ) return s;
                         break;
                     case 25 : 
-                        int LA75_26 = input.LA(1);
+                        int LA77_26 = input.LA(1);
 
                          
-                        int index75_26 = input.index();
+                        int index77_26 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20919,14 +21600,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_26);
+                        input.seek(index77_26);
                         if ( s>=0 ) return s;
                         break;
                     case 26 : 
-                        int LA75_27 = input.LA(1);
+                        int LA77_27 = input.LA(1);
 
                          
-                        int index75_27 = input.index();
+                        int index77_27 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20934,14 +21615,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_27);
+                        input.seek(index77_27);
                         if ( s>=0 ) return s;
                         break;
                     case 27 : 
-                        int LA75_28 = input.LA(1);
+                        int LA77_28 = input.LA(1);
 
                          
-                        int index75_28 = input.index();
+                        int index77_28 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20949,14 +21630,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_28);
+                        input.seek(index77_28);
                         if ( s>=0 ) return s;
                         break;
                     case 28 : 
-                        int LA75_29 = input.LA(1);
+                        int LA77_29 = input.LA(1);
 
                          
-                        int index75_29 = input.index();
+                        int index77_29 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20964,14 +21645,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_29);
+                        input.seek(index77_29);
                         if ( s>=0 ) return s;
                         break;
                     case 29 : 
-                        int LA75_30 = input.LA(1);
+                        int LA77_30 = input.LA(1);
 
                          
-                        int index75_30 = input.index();
+                        int index77_30 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20979,14 +21660,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_30);
+                        input.seek(index77_30);
                         if ( s>=0 ) return s;
                         break;
                     case 30 : 
-                        int LA75_31 = input.LA(1);
+                        int LA77_31 = input.LA(1);
 
                          
-                        int index75_31 = input.index();
+                        int index77_31 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -20994,14 +21675,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_31);
+                        input.seek(index77_31);
                         if ( s>=0 ) return s;
                         break;
                     case 31 : 
-                        int LA75_32 = input.LA(1);
+                        int LA77_32 = input.LA(1);
 
                          
-                        int index75_32 = input.index();
+                        int index77_32 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -21009,14 +21690,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_32);
+                        input.seek(index77_32);
                         if ( s>=0 ) return s;
                         break;
                     case 32 : 
-                        int LA75_33 = input.LA(1);
+                        int LA77_33 = input.LA(1);
 
                          
-                        int index75_33 = input.index();
+                        int index77_33 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -21024,14 +21705,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_33);
+                        input.seek(index77_33);
                         if ( s>=0 ) return s;
                         break;
                     case 33 : 
-                        int LA75_34 = input.LA(1);
+                        int LA77_34 = input.LA(1);
 
                          
-                        int index75_34 = input.index();
+                        int index77_34 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred38_InternalXbase()) ) {s = 82;}
@@ -21039,32 +21720,33 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
                         else if ( (true) ) {s = 35;}
 
                          
-                        input.seek(index75_34);
+                        input.seek(index77_34);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 75, _s, input);
+                new NoViableAltException(getDescription(), 77, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String DFA89_eotS =
-        "\123\uffff";
-    static final String DFA89_eofS =
-        "\1\2\122\uffff";
-    static final String DFA89_minS =
-        "\1\4\1\0\121\uffff";
-    static final String DFA89_maxS =
-        "\1\136\1\0\121\uffff";
-    static final String DFA89_acceptS =
-        "\2\uffff\1\2\117\uffff\1\1";
-    static final String DFA89_specialS =
-        "\1\uffff\1\0\121\uffff}>";
-    static final String[] DFA89_transitionS = {
-            "\11\2\12\uffff\17\2\1\1\33\2\1\uffff\34\2",
+    static final String DFA94_eotS =
+        "\124\uffff";
+    static final String DFA94_eofS =
+        "\1\2\123\uffff";
+    static final String DFA94_minS =
+        "\1\4\1\0\122\uffff";
+    static final String DFA94_maxS =
+        "\1\137\1\0\122\uffff";
+    static final String DFA94_acceptS =
+        "\2\uffff\1\2\120\uffff\1\1";
+    static final String DFA94_specialS =
+        "\1\uffff\1\0\122\uffff}>";
+    static final String[] DFA94_transitionS = {
+            "\11\2\12\uffff\17\2\1\1\33\2\1\uffff\35\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -21148,61 +21830,61 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA89_eot = DFA.unpackEncodedString(DFA89_eotS);
-    static final short[] DFA89_eof = DFA.unpackEncodedString(DFA89_eofS);
-    static final char[] DFA89_min = DFA.unpackEncodedStringToUnsignedChars(DFA89_minS);
-    static final char[] DFA89_max = DFA.unpackEncodedStringToUnsignedChars(DFA89_maxS);
-    static final short[] DFA89_accept = DFA.unpackEncodedString(DFA89_acceptS);
-    static final short[] DFA89_special = DFA.unpackEncodedString(DFA89_specialS);
-    static final short[][] DFA89_transition;
+    static final short[] DFA94_eot = DFA.unpackEncodedString(DFA94_eotS);
+    static final short[] DFA94_eof = DFA.unpackEncodedString(DFA94_eofS);
+    static final char[] DFA94_min = DFA.unpackEncodedStringToUnsignedChars(DFA94_minS);
+    static final char[] DFA94_max = DFA.unpackEncodedStringToUnsignedChars(DFA94_maxS);
+    static final short[] DFA94_accept = DFA.unpackEncodedString(DFA94_acceptS);
+    static final short[] DFA94_special = DFA.unpackEncodedString(DFA94_specialS);
+    static final short[][] DFA94_transition;
 
     static {
-        int numStates = DFA89_transitionS.length;
-        DFA89_transition = new short[numStates][];
+        int numStates = DFA94_transitionS.length;
+        DFA94_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA89_transition[i] = DFA.unpackEncodedString(DFA89_transitionS[i]);
+            DFA94_transition[i] = DFA.unpackEncodedString(DFA94_transitionS[i]);
         }
     }
 
-    class DFA89 extends DFA {
+    class DFA94 extends DFA {
 
-        public DFA89(BaseRecognizer recognizer) {
+        public DFA94(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 89;
-            this.eot = DFA89_eot;
-            this.eof = DFA89_eof;
-            this.min = DFA89_min;
-            this.max = DFA89_max;
-            this.accept = DFA89_accept;
-            this.special = DFA89_special;
-            this.transition = DFA89_transition;
+            this.decisionNumber = 94;
+            this.eot = DFA94_eot;
+            this.eof = DFA94_eof;
+            this.min = DFA94_min;
+            this.max = DFA94_max;
+            this.accept = DFA94_accept;
+            this.special = DFA94_special;
+            this.transition = DFA94_transition;
         }
         public String getDescription() {
-            return "5651:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?";
+            return "5871:2: ( ( ( '<' )=>otherlv_1= '<' ) ( (lv_arguments_2_0= ruleJvmArgumentTypeReference ) ) (otherlv_3= ',' ( (lv_arguments_4_0= ruleJvmArgumentTypeReference ) ) )* otherlv_5= '>' )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA89_1 = input.LA(1);
+                        int LA94_1 = input.LA(1);
 
                          
-                        int index89_1 = input.index();
+                        int index94_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred44_InternalXbase()) ) {s = 82;}
+                        if ( (synpred48_InternalXbase()) ) {s = 83;}
 
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index89_1);
+                        input.seek(index94_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 89, _s, input);
+                new NoViableAltException(getDescription(), 94, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -21215,7 +21897,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXAssignment_in_entryRuleXAssignment165 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXAssignment175 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXMultiAssignment_in_ruleXAssignment222 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXAssignment259 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXAssignment259 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXMultiAssignment_in_ruleXAssignment281 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpSingleAssign_in_entryRuleOpSingleAssign320 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpSingleAssign331 = new BitSet(new long[]{0x0000000000000002L});
@@ -21223,12 +21905,12 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXMultiAssignment_in_entryRuleXMultiAssignment407 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXMultiAssignment417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXOrExpression_in_ruleXMultiAssignment464 = new BitSet(new long[]{0x0000075F80000002L});
-    public static final BitSet FOLLOW_ruleOpMultiAssign_in_ruleXMultiAssignment517 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpMultiAssign_in_ruleXMultiAssignment517 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXOrExpression_in_ruleXMultiAssignment540 = new BitSet(new long[]{0x0000075F80000002L});
     public static final BitSet FOLLOW_ruleXOrExpression_in_entryRuleXOrExpression578 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXOrExpression588 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression635 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_ruleOpOr_in_ruleXOrExpression688 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpOr_in_ruleXOrExpression688 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXAndExpression_in_ruleXOrExpression711 = new BitSet(new long[]{0x0000000001000002L});
     public static final BitSet FOLLOW_ruleOpOr_in_entryRuleOpOr750 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpOr761 = new BitSet(new long[]{0x0000000000000002L});
@@ -21236,7 +21918,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXAndExpression_in_entryRuleXAndExpression837 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXAndExpression847 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression894 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_ruleOpAnd_in_ruleXAndExpression947 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpAnd_in_ruleXAndExpression947 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXEqualityExpression_in_ruleXAndExpression970 = new BitSet(new long[]{0x0000000002000002L});
     public static final BitSet FOLLOW_ruleOpAnd_in_entryRuleOpAnd1009 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpAnd1020 = new BitSet(new long[]{0x0000000000000002L});
@@ -21244,7 +21926,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXEqualityExpression_in_entryRuleXEqualityExpression1096 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXEqualityExpression1106 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression1153 = new BitSet(new long[]{0x000000003C000002L});
-    public static final BitSet FOLLOW_ruleOpEquality_in_ruleXEqualityExpression1206 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpEquality_in_ruleXEqualityExpression1206 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXRelationalExpression_in_ruleXEqualityExpression1229 = new BitSet(new long[]{0x000000003C000002L});
     public static final BitSet FOLLOW_ruleOpEquality_in_entryRuleOpEquality1268 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpEquality1279 = new BitSet(new long[]{0x0000000000000002L});
@@ -21257,7 +21939,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXBitwiseExpression_in_ruleXRelationalExpression1471 = new BitSet(new long[]{0x000000F040000002L});
     public static final BitSet FOLLOW_30_in_ruleXRelationalExpression1507 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXRelationalExpression1530 = new BitSet(new long[]{0x000000F040000002L});
-    public static final BitSet FOLLOW_ruleOpCompare_in_ruleXRelationalExpression1591 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpCompare_in_ruleXRelationalExpression1591 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXBitwiseExpression_in_ruleXRelationalExpression1614 = new BitSet(new long[]{0x000000F040000002L});
     public static final BitSet FOLLOW_ruleOpMultiAssign_in_entryRuleOpMultiAssign1654 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpMultiAssign1665 = new BitSet(new long[]{0x0000000000000002L});
@@ -21294,7 +21976,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXBitwiseExpression_in_entryRuleXBitwiseExpression2402 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXBitwiseExpression2412 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXShiftExpression_in_ruleXBitwiseExpression2459 = new BitSet(new long[]{0x0000380000000002L});
-    public static final BitSet FOLLOW_ruleBinaryBitwiseOp_in_ruleXBitwiseExpression2512 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleBinaryBitwiseOp_in_ruleXBitwiseExpression2512 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXShiftExpression_in_ruleXBitwiseExpression2535 = new BitSet(new long[]{0x0000380000000002L});
     public static final BitSet FOLLOW_ruleBinaryBitwiseOp_in_entryRuleBinaryBitwiseOp2574 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleBinaryBitwiseOp2585 = new BitSet(new long[]{0x0000000000000002L});
@@ -21304,12 +21986,12 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXShiftExpression_in_entryRuleXShiftExpression2701 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXShiftExpression2711 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXShiftExpression2758 = new BitSet(new long[]{0x0000005000000002L});
-    public static final BitSet FOLLOW_ruleShiftOp_in_ruleXShiftExpression2811 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleShiftOp_in_ruleXShiftExpression2811 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXAdditiveExpression_in_ruleXShiftExpression2834 = new BitSet(new long[]{0x0000005000000002L});
     public static final BitSet FOLLOW_ruleXAdditiveExpression_in_entryRuleXAdditiveExpression2872 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXAdditiveExpression2882 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXTernaryOperation_in_ruleXAdditiveExpression2929 = new BitSet(new long[]{0x0000C00000000002L});
-    public static final BitSet FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression2982 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpAdd_in_ruleXAdditiveExpression2982 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXAdditiveExpression3005 = new BitSet(new long[]{0x0000C00000000002L});
     public static final BitSet FOLLOW_ruleOpAdd_in_entryRuleOpAdd3044 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpAdd3055 = new BitSet(new long[]{0x0000000000000002L});
@@ -21318,14 +22000,14 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXTernaryOperation_in_entryRuleXTernaryOperation3152 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXTernaryOperation3162 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_ruleXTernaryOperation3209 = new BitSet(new long[]{0x0001000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleXTernaryOperation3244 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_48_in_ruleXTernaryOperation3244 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXTernaryOperation3267 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXTernaryOperation3279 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXTernaryOperation3279 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXTernaryOperation3300 = new BitSet(new long[]{0x0001000000000002L});
     public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_entryRuleXMultiplicativeExpression3338 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXMultiplicativeExpression3348 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXPostfixOperation_in_ruleXMultiplicativeExpression3395 = new BitSet(new long[]{0x001C000000000002L});
-    public static final BitSet FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression3448 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpMulti_in_ruleXMultiplicativeExpression3448 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXPostfixOperation_in_ruleXMultiplicativeExpression3471 = new BitSet(new long[]{0x001C000000000002L});
     public static final BitSet FOLLOW_ruleOpMulti_in_entryRuleOpMulti3510 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleOpMulti3521 = new BitSet(new long[]{0x0000000000000002L});
@@ -21342,7 +22024,7 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_54_in_rulePrefixOp3854 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXUnaryOperation_in_entryRuleXUnaryOperation3894 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXUnaryOperation3904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpUnary_in_ruleXUnaryOperation3962 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpUnary_in_ruleXUnaryOperation3962 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXUnaryOperation_in_ruleXUnaryOperation3983 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXCastedExpression_in_ruleXUnaryOperation4012 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpUnary_in_entryRuleOpUnary4048 = new BitSet(new long[]{0x0000000000000000L});
@@ -21361,19 +22043,19 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXMemberFeatureCall_in_entryRuleXMemberFeatureCall4385 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXMemberFeatureCall4395 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXPrimaryExpression_in_ruleXMemberFeatureCall4442 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_58_in_ruleXMemberFeatureCall4494 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXMemberFeatureCall4494 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall4531 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall4544 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall4544 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall4565 = new BitSet(new long[]{0x1800000000000000L});
     public static final BitSet FOLLOW_60_in_ruleXMemberFeatureCall4581 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_61_in_ruleXMemberFeatureCall4640 = new BitSet(new long[]{0x45E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_61_in_ruleXMemberFeatureCall4640 = new BitSet(new long[]{0x45E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall4677 = new BitSet(new long[]{0x4800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall4690 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall4690 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall4711 = new BitSet(new long[]{0x4800000000000000L});
     public static final BitSet FOLLOW_62_in_ruleXMemberFeatureCall4727 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
     public static final BitSet FOLLOW_63_in_ruleXMemberFeatureCall4783 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall4806 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall4822 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleOpSingleAssign_in_ruleXMemberFeatureCall4822 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXAssignment_in_ruleXMemberFeatureCall4844 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
     public static final BitSet FOLLOW_63_in_ruleXMemberFeatureCall4910 = new BitSet(new long[]{0x0000004000000010L});
     public static final BitSet FOLLOW_64_in_ruleXMemberFeatureCall4934 = new BitSet(new long[]{0x0000004000000010L});
@@ -21383,9 +22065,9 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXMemberFeatureCall5018 = new BitSet(new long[]{0x0800001000000000L});
     public static final BitSet FOLLOW_36_in_ruleXMemberFeatureCall5032 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleXMemberFeatureCall5057 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_58_in_ruleXMemberFeatureCall5091 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXMemberFeatureCall5091 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall5126 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall5139 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_59_in_ruleXMemberFeatureCall5139 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXMemberFeatureCall5160 = new BitSet(new long[]{0x1800000000000000L});
     public static final BitSet FOLLOW_60_in_ruleXMemberFeatureCall5176 = new BitSet(new long[]{0xA400000000000002L,0x0000000000000001L});
     public static final BitSet FOLLOW_ruleXPrimaryExpression_in_entryRuleXPrimaryExpression5217 = new BitSet(new long[]{0x0000000000000000L});
@@ -21424,91 +22106,91 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleValidID_in_ruleXClosure6127 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_66_in_ruleXClosure6152 = new BitSet(new long[]{0x001C000000000000L});
     public static final BitSet FOLLOW_ruleOpMulti_in_ruleXClosure6186 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXClosure6260 = new BitSet(new long[]{0x1000000000000010L});
+    public static final BitSet FOLLOW_58_in_ruleXClosure6260 = new BitSet(new long[]{0x1000000000000010L,0x0000000100040000L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure6282 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXClosure6295 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_59_in_ruleXClosure6295 = new BitSet(new long[]{0x0000000000000010L,0x0000000100040000L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXClosure6316 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXClosure6332 = new BitSet(new long[]{0x05E2C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_60_in_ruleXClosure6332 = new BitSet(new long[]{0x05E2C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_49_in_ruleXClosure6345 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXClosure6366 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXClosure6366 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXClosure6391 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXParenthesizedExpression_in_entryRuleXParenthesizedExpression6427 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXParenthesizedExpression6437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleXParenthesizedExpression6474 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXParenthesizedExpression6474 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXParenthesizedExpression6496 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_60_in_ruleXParenthesizedExpression6507 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXIfExpression_in_entryRuleXIfExpression6543 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXIfExpression6553 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_67_in_ruleXIfExpression6599 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXIfExpression6611 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXIfExpression6611 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression6632 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXIfExpression6644 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_60_in_ruleXIfExpression6644 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression6665 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
-    public static final BitSet FOLLOW_68_in_ruleXIfExpression6686 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_68_in_ruleXIfExpression6686 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXIfExpression6708 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXSwitchExpression_in_entryRuleXSwitchExpression6746 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXSwitchExpression6756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_ruleXSwitchExpression6802 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_69_in_ruleXSwitchExpression6802 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleValidID_in_ruleXSwitchExpression6845 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression6857 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression6857 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression6881 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_58_in_ruleXSwitchExpression6925 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleValidID_in_ruleXSwitchExpression6946 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression6958 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression6958 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression6981 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_60_in_ruleXSwitchExpression6993 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_70_in_ruleXSwitchExpression7007 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
     public static final BitSet FOLLOW_ruleXCasePart_in_ruleXSwitchExpression7028 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000380L});
     public static final BitSet FOLLOW_71_in_ruleXSwitchExpression7042 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression7054 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXSwitchExpression7054 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXSwitchExpression7075 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_72_in_ruleXSwitchExpression7089 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXCasePart_in_entryRuleXCasePart7125 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXCasePart7135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_ruleXCasePart7172 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_73_in_ruleXCasePart7172 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart7193 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXCasePart7205 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXCasePart7205 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXCasePart7226 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXForLoopExpression_in_entryRuleXForLoopExpression7262 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXForLoopExpression7272 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_74_in_ruleXForLoopExpression7318 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXForLoopExpression7330 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFFFC6AL});
+    public static final BitSet FOLLOW_58_in_ruleXForLoopExpression7330 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FFBFC6AL});
     public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_ruleXForLoopExpression7365 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_75_in_ruleXForLoopExpression7379 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC7C6AL});
+    public static final BitSet FOLLOW_75_in_ruleXForLoopExpression7379 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF87C6AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression7415 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_75_in_ruleXForLoopExpression7429 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_75_in_ruleXForLoopExpression7429 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression7451 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXForLoopExpression7464 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_60_in_ruleXForLoopExpression7464 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXForLoopExpression7485 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXForEachLoopExpression_in_entryRuleXForEachLoopExpression7521 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXForEachLoopExpression7531 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_76_in_ruleXForEachLoopExpression7577 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXForEachLoopExpression7589 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_58_in_ruleXForEachLoopExpression7589 = new BitSet(new long[]{0x0000000000000010L,0x0000000100040000L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_ruleXForEachLoopExpression7610 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXForEachLoopExpression7622 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_49_in_ruleXForEachLoopExpression7622 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXForEachLoopExpression7643 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXForEachLoopExpression7655 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_60_in_ruleXForEachLoopExpression7655 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXForEachLoopExpression7676 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXWhileExpression_in_entryRuleXWhileExpression7712 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXWhileExpression7722 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_77_in_ruleXWhileExpression7768 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXWhileExpression7780 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXWhileExpression7780 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression7801 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXWhileExpression7813 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_60_in_ruleXWhileExpression7813 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXWhileExpression7834 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXDoWhileExpression_in_entryRuleXDoWhileExpression7870 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXDoWhileExpression7880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_78_in_ruleXDoWhileExpression7926 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_78_in_ruleXDoWhileExpression7926 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression7947 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_77_in_ruleXDoWhileExpression7959 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXDoWhileExpression7971 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_58_in_ruleXDoWhileExpression7971 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXDoWhileExpression7992 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_60_in_ruleXDoWhileExpression8004 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXBlockExpression_in_entryRuleXBlockExpression8040 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXBlockExpression8050 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_70_in_ruleXBlockExpression8096 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFFF56AL});
-    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_ruleXBlockExpression8118 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFFFD6AL});
-    public static final BitSet FOLLOW_75_in_ruleXBlockExpression8131 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFFF56AL});
+    public static final BitSet FOLLOW_70_in_ruleXBlockExpression8096 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FFBF56AL});
+    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_ruleXBlockExpression8118 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FFBFD6AL});
+    public static final BitSet FOLLOW_75_in_ruleXBlockExpression8131 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FFBF56AL});
     public static final BitSet FOLLOW_72_in_ruleXBlockExpression8147 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_entryRuleXExpressionInsideBlock8183 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleXExpressionInsideBlock8193 = new BitSet(new long[]{0x0000000000000002L});
@@ -21527,206 +22209,223 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleXVariableDeclaration8613 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration8634 = new BitSet(new long[]{0x0000000000800002L});
     public static final BitSet FOLLOW_ruleValidID_in_ruleXVariableDeclaration8663 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_23_in_ruleXVariableDeclaration8696 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_23_in_ruleXVariableDeclaration8696 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleXVariableDeclaration8717 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_entryRuleJvmFormalParameter8756 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleJvmFormalParameter8766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter8812 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmFormalParameter8834 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_23_in_ruleJvmFormalParameter8855 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleJvmFormalParameter8877 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall8917 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXFeatureCall8927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleXFeatureCall8974 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall8995 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXFeatureCall9008 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9029 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleXFeatureCall9043 = new BitSet(new long[]{0x0000004000000010L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall9068 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleXFeatureCall9102 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall9137 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXFeatureCall9150 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall9171 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXFeatureCall9187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID9226 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCallID9237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleFeatureCallID9283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper9328 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIdOrSuper9339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper9386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_82_in_ruleIdOrSuper9410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXObjectLiteral_in_entryRuleXObjectLiteral9450 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXObjectLiteral9460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_83_in_ruleXObjectLiteral9506 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleXObjectLiteral9518 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9539 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_59_in_ruleXObjectLiteral9552 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9573 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleXObjectLiteral9587 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_entryRuleXObjectLiteralPart9623 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXObjectLiteralPart9633 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXObjectLiteralPart9684 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXObjectLiteralPart9701 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXObjectLiteralPart9722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall9758 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXConstructorCall9768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_83_in_ruleXConstructorCall9814 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall9837 = new BitSet(new long[]{0x0400004000000002L});
-    public static final BitSet FOLLOW_38_in_ruleXConstructorCall9858 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9880 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXConstructorCall9893 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9914 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleXConstructorCall9928 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_58_in_ruleXConstructorCall9951 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall9974 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXConstructorCall9987 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall10008 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXConstructorCall10024 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXStructLiteral_in_entryRuleXStructLiteral10062 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXStructLiteral10072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_83_in_ruleXStructLiteral10118 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXStructLiteral10141 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleXStructLiteral10153 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10174 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_59_in_ruleXStructLiteral10187 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10208 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleXStructLiteral10222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_entryRuleXFieldLiteralPart10258 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXFieldLiteralPart10268 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXFieldLiteralPart10325 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_49_in_ruleXFieldLiteralPart10337 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFieldLiteralPart10358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXArrayLiteral_in_entryRuleXArrayLiteral10394 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXArrayLiteral10404 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_83_in_ruleXArrayLiteral10450 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_61_in_ruleXArrayLiteral10462 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXArrayLiteral10483 = new BitSet(new long[]{0x4800000000000000L});
-    public static final BitSet FOLLOW_59_in_ruleXArrayLiteral10496 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXArrayLiteral10517 = new BitSet(new long[]{0x4800000000000000L});
-    public static final BitSet FOLLOW_62_in_ruleXArrayLiteral10531 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral10567 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral10577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_84_in_ruleXBooleanLiteral10624 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_85_in_ruleXBooleanLiteral10648 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral10698 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral10708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_86_in_ruleXNullLiteral10754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral10790 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral10800 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral10855 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral10891 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXStringLiteral10901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleXStringLiteral10952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral10993 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral11003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_87_in_ruleXTypeLiteral11049 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXTypeLiteral11061 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral11084 = new BitSet(new long[]{0x3000000000000000L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral11105 = new BitSet(new long[]{0x3000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXTypeLiteral11118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression11154 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression11164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_88_in_ruleXThrowExpression11210 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression11231 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression11267 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression11277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_89_in_ruleXReturnExpression11323 = new BitSet(new long[]{0x05E0C040000007F2L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression11354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXBreakExpression_in_entryRuleXBreakExpression11391 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXBreakExpression11401 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_90_in_ruleXBreakExpression11447 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXContinueExpression_in_entryRuleXContinueExpression11483 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXContinueExpression11493 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_91_in_ruleXContinueExpression11539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression11575 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression11585 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_92_in_ruleXTryCatchFinallyExpression11631 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11652 = new BitSet(new long[]{0x0000000000000000L,0x0000000060000000L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression11682 = new BitSet(new long[]{0x0000000000000002L,0x0000000020000000L});
-    public static final BitSet FOLLOW_93_in_ruleXTryCatchFinallyExpression11703 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_ruleXTryCatchFinallyExpression11747 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause11806 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause11816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_94_in_ruleXCatchClause11861 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_58_in_ruleXCatchClause11874 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleXCatchClause11891 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_ruleXCatchClause11908 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause11929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName11966 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName11977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName12024 = new BitSet(new long[]{0x8000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleQualifiedName12052 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName12075 = new BitSet(new long[]{0x8000000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber12129 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNumber12140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber12184 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber12212 = new BitSet(new long[]{0x8000000000000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber12238 = new BitSet(new long[]{0x8000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleNumber12258 = new BitSet(new long[]{0x0000000000000180L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber12274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber12300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXTemplateLiteral_in_entryRuleXTemplateLiteral12355 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleXTemplateLiteral12365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteral_in_ruleXTemplateLiteral12421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteralStart_in_ruleXTemplateLiteral12449 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12470 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleRichStringLiteralInbetween_in_ruleXTemplateLiteral12493 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12514 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000001FFC746AL});
-    public static final BitSet FOLLOW_ruleRichStringLiteralEnd_in_ruleXTemplateLiteral12538 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteral_in_entryRuleRichStringLiteral12576 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteral12586 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RICH_TEXT_in_ruleRichStringLiteral12637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteralStart_in_entryRuleRichStringLiteralStart12678 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralStart12688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RICH_TEXT_START_in_ruleRichStringLiteralStart12739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteralInbetween_in_entryRuleRichStringLiteralInbetween12780 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralInbetween12790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RICH_TEXT_INBETWEEN_in_ruleRichStringLiteralInbetween12841 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRichStringLiteralEnd_in_entryRuleRichStringLiteralEnd12882 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralEnd12892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RICH_TEXT_END_in_ruleRichStringLiteralEnd12943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference12984 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference12994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference13041 = new BitSet(new long[]{0x2000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference13077 = new BitSet(new long[]{0x2000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets13116 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArrayBrackets13127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_ruleArrayBrackets13165 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_62_in_ruleArrayBrackets13178 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference13218 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference13228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference13276 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_38_in_ruleJvmParameterizedTypeReference13297 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13319 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_59_in_ruleJvmParameterizedTypeReference13332 = new BitSet(new long[]{0x0001000000000010L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13353 = new BitSet(new long[]{0x0800001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleJvmParameterizedTypeReference13367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference13405 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference13415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference13462 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference13489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference13524 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference13534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleJvmWildcardTypeReference13580 = new BitSet(new long[]{0x0000000000000002L,0x0000000080040000L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference13602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference13629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound13667 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound13677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_95_in_ruleJvmUpperBound13714 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound13735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded13771 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded13781 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleJvmUpperBoundAnded13818 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded13839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound13875 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound13885 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_82_in_ruleJvmLowerBound13922 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound13943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID13984 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValidID13995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID14034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmAnnotation_in_ruleJvmFormalParameter8812 = new BitSet(new long[]{0x0000000000000010L,0x0000000100040000L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmFormalParameter8834 = new BitSet(new long[]{0x0000000000000010L,0x0000000000040000L});
+    public static final BitSet FOLLOW_82_in_ruleJvmFormalParameter8853 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmFormalParameter8888 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_23_in_ruleJvmFormalParameter8909 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleJvmFormalParameter8931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFeatureCall_in_entryRuleXFeatureCall8971 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXFeatureCall8981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleXFeatureCall9028 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9049 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_59_in_ruleXFeatureCall9062 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXFeatureCall9083 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_36_in_ruleXFeatureCall9097 = new BitSet(new long[]{0x0000004000000010L,0x0000000000080000L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_ruleXFeatureCall9122 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleXFeatureCall9156 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall9191 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_59_in_ruleXFeatureCall9204 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFeatureCall9225 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleXFeatureCall9241 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_entryRuleFeatureCallID9280 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCallID9291 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleFeatureCallID9337 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_entryRuleIdOrSuper9382 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIdOrSuper9393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_ruleIdOrSuper9440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_83_in_ruleIdOrSuper9464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXObjectLiteral_in_entryRuleXObjectLiteral9504 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXObjectLiteral9514 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_84_in_ruleXObjectLiteral9560 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleXObjectLiteral9572 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9593 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_59_in_ruleXObjectLiteral9606 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_ruleXObjectLiteral9627 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleXObjectLiteral9641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXObjectLiteralPart_in_entryRuleXObjectLiteralPart9677 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXObjectLiteralPart9687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXObjectLiteralPart9738 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_ruleXObjectLiteralPart9755 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXObjectLiteralPart9776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXConstructorCall_in_entryRuleXConstructorCall9812 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXConstructorCall9822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_84_in_ruleXConstructorCall9868 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXConstructorCall9891 = new BitSet(new long[]{0x0400004000000002L});
+    public static final BitSet FOLLOW_38_in_ruleXConstructorCall9912 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9934 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_59_in_ruleXConstructorCall9947 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleXConstructorCall9968 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_36_in_ruleXConstructorCall9982 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleXConstructorCall10005 = new BitSet(new long[]{0x15E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall10028 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_59_in_ruleXConstructorCall10041 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXConstructorCall10062 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleXConstructorCall10078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXStructLiteral_in_entryRuleXStructLiteral10116 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXStructLiteral10126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_84_in_ruleXStructLiteral10172 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXStructLiteral10195 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleXStructLiteral10207 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10228 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_59_in_ruleXStructLiteral10241 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_ruleXStructLiteral10262 = new BitSet(new long[]{0x0800000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleXStructLiteral10276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXFieldLiteralPart_in_entryRuleXFieldLiteralPart10312 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXFieldLiteralPart10322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXFieldLiteralPart10379 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_49_in_ruleXFieldLiteralPart10391 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXFieldLiteralPart10412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXArrayLiteral_in_entryRuleXArrayLiteral10448 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXArrayLiteral10458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_84_in_ruleXArrayLiteral10504 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_61_in_ruleXArrayLiteral10516 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXArrayLiteral10537 = new BitSet(new long[]{0x4800000000000000L});
+    public static final BitSet FOLLOW_59_in_ruleXArrayLiteral10550 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXArrayLiteral10571 = new BitSet(new long[]{0x4800000000000000L});
+    public static final BitSet FOLLOW_62_in_ruleXArrayLiteral10585 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBooleanLiteral_in_entryRuleXBooleanLiteral10621 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBooleanLiteral10631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_85_in_ruleXBooleanLiteral10678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_86_in_ruleXBooleanLiteral10702 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNullLiteral_in_entryRuleXNullLiteral10752 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNullLiteral10762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_87_in_ruleXNullLiteral10808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXNumberLiteral_in_entryRuleXNumberLiteral10844 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXNumberLiteral10854 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_ruleXNumberLiteral10909 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXStringLiteral_in_entryRuleXStringLiteral10945 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXStringLiteral10955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleXStringLiteral11006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTypeLiteral_in_entryRuleXTypeLiteral11047 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTypeLiteral11057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_88_in_ruleXTypeLiteral11103 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_ruleXTypeLiteral11115 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleXTypeLiteral11138 = new BitSet(new long[]{0x3000000000000000L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleXTypeLiteral11159 = new BitSet(new long[]{0x3000000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleXTypeLiteral11172 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXThrowExpression_in_entryRuleXThrowExpression11208 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXThrowExpression11218 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_89_in_ruleXThrowExpression11264 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXThrowExpression11285 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXReturnExpression_in_entryRuleXReturnExpression11321 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXReturnExpression11331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_90_in_ruleXReturnExpression11377 = new BitSet(new long[]{0x05E0C040000007F2L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXReturnExpression11408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXBreakExpression_in_entryRuleXBreakExpression11445 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXBreakExpression11455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_91_in_ruleXBreakExpression11501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXContinueExpression_in_entryRuleXContinueExpression11537 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXContinueExpression11547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_92_in_ruleXContinueExpression11593 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTryCatchFinallyExpression_in_entryRuleXTryCatchFinallyExpression11629 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTryCatchFinallyExpression11639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_93_in_ruleXTryCatchFinallyExpression11685 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11706 = new BitSet(new long[]{0x0000000000000000L,0x00000000C0000000L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_ruleXTryCatchFinallyExpression11736 = new BitSet(new long[]{0x0000000000000002L,0x0000000040000000L});
+    public static final BitSet FOLLOW_94_in_ruleXTryCatchFinallyExpression11757 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_ruleXTryCatchFinallyExpression11801 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTryCatchFinallyExpression11822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_entryRuleXCatchClause11860 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXCatchClause11870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_95_in_ruleXCatchClause11915 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_ruleXCatchClause11928 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleXCatchClause11945 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleXCatchClause11962 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXCatchClause11983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmAnnotation_in_entryRuleJvmAnnotation12019 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmAnnotation12029 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_96_in_ruleJvmAnnotation12075 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmAnnotation12098 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleJvmAnnotation12119 = new BitSet(new long[]{0x10000000000007F0L,0x0000000001F00002L});
+    public static final BitSet FOLLOW_ruleJvmAnnotationValue_in_ruleJvmAnnotation12163 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_59_in_ruleJvmAnnotation12176 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleJvmAnnotationValue_in_ruleJvmAnnotation12217 = new BitSet(new long[]{0x1800000000000000L});
+    public static final BitSet FOLLOW_ruleXLiteral_in_ruleJvmAnnotation12247 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_ruleJvmAnnotation12261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmAnnotationValue_in_entryRuleJvmAnnotationValue12299 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmAnnotationValue12309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleJvmAnnotationValue12379 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleJvmAnnotationValue12391 = new BitSet(new long[]{0x00000000000007E0L,0x0000000001F00002L});
+    public static final BitSet FOLLOW_ruleXLiteral_in_ruleJvmAnnotationValue12414 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName12451 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName12462 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName12509 = new BitSet(new long[]{0x8000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleQualifiedName12537 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleValidID_in_ruleQualifiedName12560 = new BitSet(new long[]{0x8000000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_entryRuleNumber12614 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNumber12625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_HEX_in_ruleNumber12669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber12697 = new BitSet(new long[]{0x8000000000000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber12723 = new BitSet(new long[]{0x8000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleNumber12743 = new BitSet(new long[]{0x0000000000000180L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleNumber12759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_DECIMAL_in_ruleNumber12785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXTemplateLiteral_in_entryRuleXTemplateLiteral12840 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleXTemplateLiteral12850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteral_in_ruleXTemplateLiteral12906 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteralStart_in_ruleXTemplateLiteral12934 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12955 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleRichStringLiteralInbetween_in_ruleXTemplateLiteral12978 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleXTemplateLiteral12999 = new BitSet(new long[]{0x05E0C04000001FF0L,0x000000003FF8746AL});
+    public static final BitSet FOLLOW_ruleRichStringLiteralEnd_in_ruleXTemplateLiteral13023 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteral_in_entryRuleRichStringLiteral13061 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteral13071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_RICH_TEXT_in_ruleRichStringLiteral13122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteralStart_in_entryRuleRichStringLiteralStart13163 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralStart13173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_RICH_TEXT_START_in_ruleRichStringLiteralStart13224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteralInbetween_in_entryRuleRichStringLiteralInbetween13265 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralInbetween13275 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_RICH_TEXT_INBETWEEN_in_ruleRichStringLiteralInbetween13326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRichStringLiteralEnd_in_entryRuleRichStringLiteralEnd13367 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRichStringLiteralEnd13377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_RICH_TEXT_END_in_ruleRichStringLiteralEnd13428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_entryRuleJvmTypeReference13469 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmTypeReference13479 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_ruleJvmTypeReference13526 = new BitSet(new long[]{0x2000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_ruleJvmTypeReference13562 = new BitSet(new long[]{0x2000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_entryRuleArrayBrackets13601 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArrayBrackets13612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_ruleArrayBrackets13650 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_62_in_ruleArrayBrackets13663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmParameterizedTypeReference_in_entryRuleJvmParameterizedTypeReference13703 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmParameterizedTypeReference13713 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleJvmParameterizedTypeReference13761 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_38_in_ruleJvmParameterizedTypeReference13782 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13804 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_59_in_ruleJvmParameterizedTypeReference13817 = new BitSet(new long[]{0x0001000000000010L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_ruleJvmParameterizedTypeReference13838 = new BitSet(new long[]{0x0800001000000000L});
+    public static final BitSet FOLLOW_36_in_ruleJvmParameterizedTypeReference13852 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_entryRuleJvmArgumentTypeReference13890 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmArgumentTypeReference13900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmArgumentTypeReference13947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_ruleJvmArgumentTypeReference13974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmWildcardTypeReference_in_entryRuleJvmWildcardTypeReference14009 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmWildcardTypeReference14019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleJvmWildcardTypeReference14065 = new BitSet(new long[]{0x0000000000000002L,0x0000000200080000L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_ruleJvmWildcardTypeReference14087 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_ruleJvmWildcardTypeReference14114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_entryRuleJvmUpperBound14152 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBound14162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_97_in_ruleJvmUpperBound14199 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBound14220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBoundAnded_in_entryRuleJvmUpperBoundAnded14256 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmUpperBoundAnded14266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_ruleJvmUpperBoundAnded14303 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmUpperBoundAnded14324 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_entryRuleJvmLowerBound14360 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJvmLowerBound14370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_83_in_ruleJvmLowerBound14407 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleJvmLowerBound14428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID14469 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidID14480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID14519 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpSingleAssign_in_synpred1_InternalXbase238 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpMultiAssign_in_synpred2_InternalXbase485 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleOpOr_in_synpred3_InternalXbase656 = new BitSet(new long[]{0x0000000000000002L});
@@ -21749,9 +22448,9 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_63_in_synpred24_InternalXbase4869 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_64_in_synpred24_InternalXbase4883 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_58_in_synpred25_InternalXbase5073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_synpred26_InternalXbase6202 = new BitSet(new long[]{0x1000000000000010L});
+    public static final BitSet FOLLOW_58_in_synpred26_InternalXbase6202 = new BitSet(new long[]{0x1000000000000010L,0x0000000100040000L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred26_InternalXbase6210 = new BitSet(new long[]{0x1800000000000000L});
-    public static final BitSet FOLLOW_59_in_synpred26_InternalXbase6217 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_59_in_synpred26_InternalXbase6217 = new BitSet(new long[]{0x0000000000000010L,0x0000000100040000L});
     public static final BitSet FOLLOW_ruleJvmFormalParameter_in_synpred26_InternalXbase6224 = new BitSet(new long[]{0x1800000000000000L});
     public static final BitSet FOLLOW_60_in_synpred26_InternalXbase6234 = new BitSet(new long[]{0x0002000000000002L});
     public static final BitSet FOLLOW_49_in_synpred26_InternalXbase6239 = new BitSet(new long[]{0x0000000000000010L});
@@ -21766,17 +22465,20 @@ public class InternalXbaseParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleXExpression_in_synpred31_InternalXbase7396 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_synpred32_InternalXbase8583 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleValidID_in_synpred32_InternalXbase8592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_synpred33_InternalXbase8677 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000001FFC746AL});
+    public static final BitSet FOLLOW_23_in_synpred33_InternalXbase8677 = new BitSet(new long[]{0x05E0C040000007F0L,0x000000003FF8746AL});
     public static final BitSet FOLLOW_ruleXExpression_in_synpred33_InternalXbase8684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_synpred34_InternalXbase8847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_synpred35_InternalXbase9084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_synpred36_InternalXbase9850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_synpred37_InternalXbase9943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_synpred38_InternalXbase11337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_94_in_synpred39_InternalXbase11666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_93_in_synpred40_InternalXbase11695 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_synpred42_InternalXbase12043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_synpred43_InternalXbase13056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_synpred44_InternalXbase13289 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_synpred34_InternalXbase8901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_synpred35_InternalXbase9138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_synpred36_InternalXbase9904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_synpred37_InternalXbase9997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_synpred38_InternalXbase11391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_95_in_synpred39_InternalXbase11720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_94_in_synpred40_InternalXbase11749 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_synpred42_InternalXbase12111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_synpred43_InternalXbase12140 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_synpred43_InternalXbase12146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_synpred46_InternalXbase12528 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_synpred47_InternalXbase13541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_synpred48_InternalXbase13774 = new BitSet(new long[]{0x0000000000000002L});
 
 }

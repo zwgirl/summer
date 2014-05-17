@@ -225,10 +225,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXContinueExpressionAdapter();
 			}
 			@Override
-			public Adapter caseXPrefixOperation(XPrefixOperation object) {
-				return createXPrefixOperationAdapter();
-			}
-			@Override
 			public Adapter caseXPostfixOperation(XPostfixOperation object) {
 				return createXPostfixOperationAdapter();
 			}
@@ -853,20 +849,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXContinueExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XPrefixOperation <em>XPrefix Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XPrefixOperation
-	 * @generated
-	 */
-	public Adapter createXPrefixOperationAdapter() {
 		return null;
 	}
 

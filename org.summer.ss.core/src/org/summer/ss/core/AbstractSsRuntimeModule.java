@@ -5,7 +5,6 @@ package org.summer.ss.core;
 
 import java.util.Properties;
 
-import org.eclipse.ui.editors.text.templates.ContributionContextTypeRegistry;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.service.DefaultRuntimeModule;
 import org.summer.ss.core.scoping.XSsBatchScopeProvider;
@@ -20,7 +19,6 @@ import com.google.inject.name.Names;
 public abstract class AbstractSsRuntimeModule extends DefaultRuntimeModule {
 
 	 protected Properties properties = null;
-	 ContributionContextTypeRegistry a;  // class not load
 
 	@Override
 	public void configure(Binder binder) {

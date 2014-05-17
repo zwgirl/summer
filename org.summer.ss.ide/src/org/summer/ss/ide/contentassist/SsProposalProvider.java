@@ -93,27 +93,6 @@ public class SsProposalProvider extends AbstractSsProposalProvider {
 	}
 
 	@Override
-	public void completeParameter_Name(final EObject model, Assignment assignment, final ContentAssistContext context,
-			final ICompletionProposalAcceptor acceptor) {
-		if (model instanceof JvmFormalParameter) {
-			final List<JvmFormalParameter> siblings = EcoreUtil2.getSiblingsOfType(model, JvmFormalParameter.class);
-			Set<String> alreadyTaken = Sets.newHashSet();
-			for(JvmFormalParameter sibling: siblings) {
-				alreadyTaken.add(sibling.getName());
-			}
-			alreadyTaken.addAll(getAllKeywords());
-			completions.getVariableProposals(model, TypesPackage.Literals.JVM_FORMAL_PARAMETER__PARAMETER_TYPE,
-					VariableType.PARAMETER, alreadyTaken, new JdtVariableCompletions.CompletionDataAcceptor() {
-						public void accept(String replaceText, StyledString label, Image img) {
-							acceptor.accept(createCompletionProposal(replaceText, label, img, context));
-						}
-					});
-		} else {
-			super.completeParameter_Name(model, assignment, context, acceptor);
-		}
-	}
-
-	@Override
 	protected Predicate<IEObjectDescription> getFeatureDescriptionPredicate(ContentAssistContext contentAssistContext) {
 		if (contentAssistContext.getPrefix().startsWith("_"))
 			return super.getFeatureDescriptionPredicate(contentAssistContext);

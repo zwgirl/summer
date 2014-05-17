@@ -57,7 +57,6 @@ import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XStructLiteral;
@@ -174,9 +173,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 //		} else if (expression instanceof XSetLiteral) {
 //			_computeTypes((XSetLiteral)expression, state);
 //		} 
-		else if (expression instanceof XPrefixOperation) {
-			_computeTypes((XPrefixOperation)expression, state);
-		} else if (expression instanceof XPostfixOperation) {
+		 else if (expression instanceof XPostfixOperation) {
 			_computeTypes((XPostfixOperation)expression, state);
 		}  else if (expression instanceof XIndexOperation) {
 			_computeTypes((XIndexOperation)expression, state);
@@ -1427,11 +1424,6 @@ public class XbaseTypeComputer implements ITypeComputer {
 		state.acceptActualType(bool);
 	}
 	
-	protected void _computeTypes(XPrefixOperation object, ITypeComputationState state) {
-		LightweightTypeReference bool = getTypeForName(Integer.TYPE, state);
-		state.acceptActualType(bool);
-	}
-	
 //	protected void _computeTypes(XTryCatchFinallyExpression object, ITypeComputationState state) {
 //		List<LightweightTypeReference> caughtExceptions = Lists.newArrayList();
 //		OwnedConverter converter = state.getConverter();
@@ -1530,7 +1522,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	
 	protected boolean mustDiscardRefinement(JvmIdentifiableElement feature) {
 		if (feature instanceof XVariableDeclaration) {
-			return ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isWriteable();  //cym modified
+			return ((XVariableDeclarationList) feature.eContainer()).isReadonly();  //cym modified
 		}
 		if (feature instanceof JvmField) {
 			return !((JvmField) feature).isFinal();

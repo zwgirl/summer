@@ -316,13 +316,13 @@ public interface XbasePackage extends EPackage {
 	int XVARIABLE_DECLARATION_LIST__DECLARATIONS = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Writeable</b></em>' attribute.
+	 * The feature id for the '<em><b>Readonly</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XVARIABLE_DECLARATION_LIST__WRITEABLE = XEXPRESSION_FEATURE_COUNT + 1;
+	int XVARIABLE_DECLARATION_LIST__READONLY = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Exported</b></em>' attribute.
@@ -2049,88 +2049,6 @@ public interface XbasePackage extends EPackage {
 	int XCONTINUE_EXPRESSION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XPrefixOperationImpl <em>XPrefix Operation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xbase.impl.XPrefixOperationImpl
-	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXPrefixOperation()
-	 * @generated
-	 */
-	int XPREFIX_OPERATION = 38;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__FEATURE = XABSTRACT_FEATURE_CALL__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__TYPE_ARGUMENTS = XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__IMPLICIT_RECEIVER = XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER;
-
-	/**
-	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__INVALID_FEATURE_ISSUE_CODE = XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE;
-
-	/**
-	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__VALID_FEATURE = XABSTRACT_FEATURE_CALL__VALID_FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__IMPLICIT_FIRST_ARGUMENT = XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
-
-	/**
-	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION__OPERAND = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>XPrefix Operation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPREFIX_OPERATION_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XPostfixOperationImpl <em>XPostfix Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2138,7 +2056,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXPostfixOperation()
 	 * @generated
 	 */
-	int XPOSTFIX_OPERATION = 39;
+	int XPOSTFIX_OPERATION = 38;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -2221,7 +2139,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTernaryOperation()
 	 * @generated
 	 */
-	int XTERNARY_OPERATION = 40;
+	int XTERNARY_OPERATION = 39;
 
 	/**
 	 * The feature id for the '<em><b>True Operand</b></em>' containment reference.
@@ -2268,7 +2186,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXIndexOperation()
 	 * @generated
 	 */
-	int XINDEX_OPERATION = 41;
+	int XINDEX_OPERATION = 40;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -2359,7 +2277,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFunctionDeclaration()
 	 * @generated
 	 */
-	int XFUNCTION_DECLARATION = 42;
+	int XFUNCTION_DECLARATION = 41;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2414,7 +2332,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteral()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL = 43;
+	int XOBJECT_LITERAL = 42;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2568,7 +2486,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteralPart()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL_PART = 44;
+	int XOBJECT_LITERAL_PART = 43;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2722,7 +2640,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXArrayLiteral()
 	 * @generated
 	 */
-	int XARRAY_LITERAL = 45;
+	int XARRAY_LITERAL = 44;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2750,7 +2668,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStructLiteral()
 	 * @generated
 	 */
-	int XSTRUCT_LITERAL = 46;
+	int XSTRUCT_LITERAL = 45;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -2796,7 +2714,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFieldLiteralPart()
 	 * @generated
 	 */
-	int XFIELD_LITERAL_PART = 47;
+	int XFIELD_LITERAL_PART = 46;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2833,7 +2751,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTemplate()
 	 * @generated
 	 */
-	int XTEMPLATE = 48;
+	int XTEMPLATE = 47;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2861,7 +2779,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getRichStringLiteral()
 	 * @generated
 	 */
-	int RICH_STRING_LITERAL = 49;
+	int RICH_STRING_LITERAL = 48;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3106,17 +3024,6 @@ public interface XbasePackage extends EPackage {
 	EClass getXVariableDeclarationList();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable <em>Writeable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Writeable</em>'.
-	 * @see org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable()
-	 * @see #getXVariableDeclarationList()
-	 * @generated
-	 */
-	EAttribute getXVariableDeclarationList_Writeable();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#getDeclarations <em>Declarations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3126,6 +3033,17 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXVariableDeclarationList_Declarations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isReadonly <em>Readonly</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Readonly</em>'.
+	 * @see org.summer.dsl.model.xbase.XVariableDeclarationList#isReadonly()
+	 * @see #getXVariableDeclarationList()
+	 * @generated
+	 */
+	EAttribute getXVariableDeclarationList_Readonly();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isExported <em>Exported</em>}'.
@@ -4351,27 +4269,6 @@ public interface XbasePackage extends EPackage {
 	EClass getXContinueExpression();
 
 	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XPrefixOperation <em>XPrefix Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XPrefix Operation</em>'.
-	 * @see org.summer.dsl.model.xbase.XPrefixOperation
-	 * @generated
-	 */
-	EClass getXPrefixOperation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XPrefixOperation#getOperand <em>Operand</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Operand</em>'.
-	 * @see org.summer.dsl.model.xbase.XPrefixOperation#getOperand()
-	 * @see #getXPrefixOperation()
-	 * @generated
-	 */
-	EReference getXPrefixOperation_Operand();
-
-	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XPostfixOperation <em>XPostfix Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4862,20 +4759,20 @@ public interface XbasePackage extends EPackage {
 		EClass XVARIABLE_DECLARATION_LIST = eINSTANCE.getXVariableDeclarationList();
 
 		/**
-		 * The meta object literal for the '<em><b>Writeable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XVARIABLE_DECLARATION_LIST__WRITEABLE = eINSTANCE.getXVariableDeclarationList_Writeable();
-
-		/**
 		 * The meta object literal for the '<em><b>Declarations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference XVARIABLE_DECLARATION_LIST__DECLARATIONS = eINSTANCE.getXVariableDeclarationList_Declarations();
+
+		/**
+		 * The meta object literal for the '<em><b>Readonly</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XVARIABLE_DECLARATION_LIST__READONLY = eINSTANCE.getXVariableDeclarationList_Readonly();
 
 		/**
 		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.
@@ -5850,24 +5747,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass XCONTINUE_EXPRESSION = eINSTANCE.getXContinueExpression();
-
-		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XPrefixOperationImpl <em>XPrefix Operation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xbase.impl.XPrefixOperationImpl
-		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXPrefixOperation()
-		 * @generated
-		 */
-		EClass XPREFIX_OPERATION = eINSTANCE.getXPrefixOperation();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XPREFIX_OPERATION__OPERAND = eINSTANCE.getXPrefixOperation_Operand();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XPostfixOperationImpl <em>XPostfix Operation</em>}' class.

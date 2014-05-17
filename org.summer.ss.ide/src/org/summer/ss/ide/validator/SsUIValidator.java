@@ -110,7 +110,7 @@ public class SsUIValidator extends XbaseUIValidator {
 	private final String DEFAULT_PACKEGE = "default package";
 
 	@Check
-	public void checkFileNamingConventions(JvmModule module) {
+	public void checkModuleNamespaceConventions(JvmModule module) {
 		String expectedPackage = getExpectedPackageName(module);
 		String moduleName = module.getSimpleName();
 		String[] segments = moduleName.split("\\.");
@@ -129,6 +129,24 @@ public class SsUIValidator extends XbaseUIValidator {
 		}
 	}
 	
+	@Check
+	public void checkFileNamingConventions(JvmModule module) {
+		String fileName = getFileName(module);
+		String moduleName = module.getModuleName();
+		
+		if( !(fileName.equals(moduleName))) {
+			error("The declared module '" + notNull(moduleName) + "' does not match the file '" + 
+					fileName + "'",
+					TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, fileName);
+		}
+	}
+	
+	private String getFileName(JvmModule module) {
+		return module.eResource().getURI().trimFileExtension().lastSegment();
+	}
+	
+	
+
 	protected String getExpectedPackageName(JvmModule xtendFile) {
 		URI fileURI = xtendFile.eResource().getURI();
 		for(Pair<IStorage, IProject> storage: storage2UriMapper.getStorages(fileURI)) {

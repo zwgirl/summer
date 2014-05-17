@@ -188,7 +188,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 				}
 			}
 			JvmIdentifiableElement feature = getFeature();
-			if (feature instanceof XVariableDeclaration && ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isWriteable()) {
+			if (feature instanceof XVariableDeclaration && ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isReadonly()) {
 				XClosure containingClosure = EcoreUtil2.getContainerOfType(getExpression(), XClosure.class);
 				if (containingClosure != null && !EcoreUtil.isAncestor(containingClosure, feature)) {
 					String message = String.format("Cannot refer to the non-final variable %s inside a lambda expression", feature.getSimpleName());

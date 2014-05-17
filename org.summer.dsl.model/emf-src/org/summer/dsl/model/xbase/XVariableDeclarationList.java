@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#getDeclarations <em>Declarations</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable <em>Writeable</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isReadonly <em>Readonly</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
@@ -23,32 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface XVariableDeclarationList extends XExpression {
-	/**
-	 * Returns the value of the '<em><b>Writeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Writeable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Writeable</em>' attribute.
-	 * @see #setWriteable(boolean)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclarationList_Writeable()
-	 * @model
-	 * @generated
-	 */
-	boolean isWriteable();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isWriteable <em>Writeable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Writeable</em>' attribute.
-	 * @see #isWriteable()
-	 * @generated
-	 */
-	void setWriteable(boolean value);
-
 	/**
 	 * Returns the value of the '<em><b>Declarations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.summer.dsl.model.xbase.XExpression}.
@@ -64,6 +38,33 @@ public interface XVariableDeclarationList extends XExpression {
 	 * @generated
 	 */
 	EList<XExpression> getDeclarations();
+
+	/**
+	 * Returns the value of the '<em><b>Readonly</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Readonly</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Readonly</em>' attribute.
+	 * @see #setReadonly(boolean)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclarationList_Readonly()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isReadonly();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclarationList#isReadonly <em>Readonly</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Readonly</em>' attribute.
+	 * @see #isReadonly()
+	 * @generated
+	 */
+	void setReadonly(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Exported</b></em>' attribute.

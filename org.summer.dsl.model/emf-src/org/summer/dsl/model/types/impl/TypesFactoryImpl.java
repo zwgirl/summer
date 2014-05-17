@@ -14,6 +14,7 @@ import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmAnyTypeReference;
 import org.summer.dsl.model.types.JvmArrayType;
+import org.summer.dsl.model.types.JvmBeanType;
 import org.summer.dsl.model.types.JvmBooleanAnnotationValue;
 import org.summer.dsl.model.types.JvmByteAnnotationValue;
 import org.summer.dsl.model.types.JvmCharAnnotationValue;
@@ -42,6 +43,7 @@ import org.summer.dsl.model.types.JvmMultiTypeReference;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
+import org.summer.dsl.model.types.JvmRemoteType;
 import org.summer.dsl.model.types.JvmShortAnnotationValue;
 import org.summer.dsl.model.types.JvmStringAnnotationValue;
 import org.summer.dsl.model.types.JvmStructType;
@@ -142,8 +144,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 			case TypesPackage.JVM_CUSTOM_ANNOTATION_VALUE: return createJvmCustomAnnotationValue();
 			case TypesPackage.JVM_STRUCT_TYPE: return createJvmStructType();
 			case TypesPackage.JVM_DELEGATE_TYPE: return createJvmDelegateType();
+			case TypesPackage.JVM_REMOTE_TYPE: return createJvmRemoteType();
 			case TypesPackage.JVM_EVENT: return createJvmEvent();
-
+			case TypesPackage.JVM_BEAN_TYPE: return createJvmBeanType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -679,6 +682,16 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 	@Override
 	public JvmInterfaceType createJvmInterfaceType() {
 		return new JvmInterfaceTypeImpl();
+	}
+
+	@Override
+	public JvmRemoteType createJvmRemoteType() {
+		return new JvmRemoteTypeImpl();
+	}
+
+	@Override
+	public JvmBeanType createJvmBeanType() {
+		return new JvmBeanTypeImpl();
 	}
 
 } //TypesFactoryImpl

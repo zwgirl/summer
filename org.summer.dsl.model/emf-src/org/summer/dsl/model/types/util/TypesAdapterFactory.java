@@ -152,6 +152,14 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 				return createJvmInterfaceTypeAdapter();
 			}
 			@Override
+			public Adapter caseJvmRemoteType(JvmRemoteType object) {
+				return createJvmRemoteTypeAdapter();
+			}
+			@Override
+			public Adapter caseJvmBeanType(JvmBeanType object) {
+				return createJvmBeanTypeAdapter();
+			}
+			@Override
 			public Adapter caseJvmTypeReference(JvmTypeReference object) {
 				return createJvmTypeReferenceAdapter();
 			}
@@ -602,6 +610,34 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmInterfaceTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmRemoteType <em>Jvm Remote Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmRemoteType
+	 * @generated
+	 */
+	public Adapter createJvmRemoteTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmBeanType <em>Jvm Bean Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmBeanType
+	 * @generated
+	 */
+	public Adapter createJvmBeanTypeAdapter() {
 		return null;
 	}
 

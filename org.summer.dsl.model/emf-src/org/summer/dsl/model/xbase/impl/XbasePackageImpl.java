@@ -46,7 +46,6 @@ import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
@@ -338,13 +337,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * @generated
 	 */
 	private EClass xContinueExpressionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass xPrefixOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -689,8 +681,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXVariableDeclarationList_Writeable() {
-		return (EAttribute)xVariableDeclarationListEClass.getEStructuralFeatures().get(1);
+	public EReference getXVariableDeclarationList_Declarations() {
+		return (EReference)xVariableDeclarationListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -698,8 +690,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXVariableDeclarationList_Declarations() {
-		return (EReference)xVariableDeclarationListEClass.getEStructuralFeatures().get(0);
+	public EAttribute getXVariableDeclarationList_Readonly() {
+		return (EAttribute)xVariableDeclarationListEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1733,24 +1725,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getXPrefixOperation() {
-		return xPrefixOperationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXPrefixOperation_Operand() {
-		return (EReference)xPrefixOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getXPostfixOperation() {
 		return xPostfixOperationEClass;
 	}
@@ -2045,7 +2019,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		xVariableDeclarationListEClass = createEClass(XVARIABLE_DECLARATION_LIST);
 		createEReference(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__DECLARATIONS);
-		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__WRITEABLE);
+		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__READONLY);
 		createEAttribute(xVariableDeclarationListEClass, XVARIABLE_DECLARATION_LIST__EXPORTED);
 
 		xAbstractFeatureCallEClass = createEClass(XABSTRACT_FEATURE_CALL);
@@ -2192,9 +2166,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		xContinueExpressionEClass = createEClass(XCONTINUE_EXPRESSION);
 
-		xPrefixOperationEClass = createEClass(XPREFIX_OPERATION);
-		createEReference(xPrefixOperationEClass, XPREFIX_OPERATION__OPERAND);
-
 		xPostfixOperationEClass = createEClass(XPOSTFIX_OPERATION);
 		createEReference(xPostfixOperationEClass, XPOSTFIX_OPERATION__OPERAND);
 
@@ -2303,7 +2274,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xReturnExpressionEClass.getESuperTypes().add(this.getXExpression());
 		xBreakExpressionEClass.getESuperTypes().add(this.getXExpression());
 		xContinueExpressionEClass.getESuperTypes().add(this.getXExpression());
-		xPrefixOperationEClass.getESuperTypes().add(this.getXAbstractFeatureCall());
 		xPostfixOperationEClass.getESuperTypes().add(this.getXAbstractFeatureCall());
 		xTernaryOperationEClass.getESuperTypes().add(this.getXExpression());
 		xIndexOperationEClass.getESuperTypes().add(this.getXAbstractFeatureCall());
@@ -2345,7 +2315,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		initEClass(xVariableDeclarationListEClass, XVariableDeclarationList.class, "XVariableDeclarationList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXVariableDeclarationList_Declarations(), this.getXExpression(), null, "declarations", null, 0, -1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXVariableDeclarationList_Writeable(), ecorePackage.getEBoolean(), "writeable", null, 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXVariableDeclarationList_Readonly(), ecorePackage.getEBoolean(), "readonly", "true", 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXVariableDeclarationList_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xAbstractFeatureCallEClass, XAbstractFeatureCall.class, "XAbstractFeatureCall", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2511,9 +2481,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEClass(xBreakExpressionEClass, XBreakExpression.class, "XBreakExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(xContinueExpressionEClass, XContinueExpression.class, "XContinueExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(xPrefixOperationEClass, XPrefixOperation.class, "XPrefixOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXPrefixOperation_Operand(), this.getXExpression(), null, "operand", null, 0, 1, XPrefixOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xPostfixOperationEClass, XPostfixOperation.class, "XPostfixOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXPostfixOperation_Operand(), this.getXExpression(), null, "operand", null, 0, 1, XPostfixOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

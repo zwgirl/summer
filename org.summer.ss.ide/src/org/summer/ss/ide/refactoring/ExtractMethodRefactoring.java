@@ -518,6 +518,6 @@ public class ExtractMethodRefactoring extends Refactoring {
 	protected boolean isFinalFeature(JvmIdentifiableElement returnFeature) {
 		return returnFeature instanceof JvmFormalParameter
 				|| (returnFeature instanceof XVariableDeclaration && !((XVariableDeclarationList)((XVariableDeclaration) returnFeature)
-						.eContainer()).isWriteable());
+						.eContainer()).isReadonly());
 	}
 }

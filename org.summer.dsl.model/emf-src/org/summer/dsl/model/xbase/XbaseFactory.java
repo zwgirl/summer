@@ -328,15 +328,6 @@ public interface XbaseFactory extends EFactory {
 	XContinueExpression createXContinueExpression();
 
 	/**
-	 * Returns a new object of class '<em>XPrefix Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XPrefix Operation</em>'.
-	 * @generated
-	 */
-	XPrefixOperation createXPrefixOperation();
-
-	/**
 	 * Returns a new object of class '<em>XPostfix Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

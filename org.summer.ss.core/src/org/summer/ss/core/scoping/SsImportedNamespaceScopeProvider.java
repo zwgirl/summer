@@ -10,19 +10,25 @@ package org.summer.ss.core.scoping;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.linking.impl.ImportedNamesAdapter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.CompilerPhases;
+import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
@@ -50,7 +56,6 @@ import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.scoping.AbstractNestedTypeAwareImportNormalizer;
 import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
@@ -97,16 +102,8 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 //				final Resource resource = resourceSet.getResource(uri, true);
 //				return new ImportResourceScope(resource);
 //			}
-			
 			XImportDeclaration importDecl = (XImportDeclaration) context.eContainer();
-			String namespace = importDecl.getImportedNamespace();
-			XtextResourceSet resourceSet = (XtextResourceSet) context.eResource().getResourceSet();
-			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(namespace);
-			URI uri = URI.createFileURI(path.toOSString());
-			if(resourceSet!=null){
-				final Resource resource = resourceSet.getResource(uri, true);
-				return new ImportResourceScope(resource);
-			}
+			return new ImportResourceScope(NamespaceUtil.getResource(importDecl));
 		}
 		
 		EClass referenceType = reference.getEReferenceType();
@@ -194,7 +191,6 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			throw new IllegalArgumentException("Unexpected global request for " + reference);  
 		}
 	}
-	
 	
 	protected Set<QualifiedName> getImportedNamesSet(Resource resource) {
 		ImportedNamesAdapter adapter = getImportedNamesAdapter(resource);

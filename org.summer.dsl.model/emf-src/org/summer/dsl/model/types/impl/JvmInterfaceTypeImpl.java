@@ -33,9 +33,9 @@ import org.summer.dsl.model.types.TypesPackage;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated NOT
  */
-public class JvmInterfaceTypeImpl extends JvmDeclaredTypeImpl implements JvmInterfaceType {
+public class JvmInterfaceTypeImpl extends JvmDeclaredTypeImplCustom implements JvmInterfaceType {
 	/**
 	 * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -509,7 +509,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	public void checkAssignment(XAssignment assignment) {
 		JvmIdentifiableElement assignmentFeature = assignment.getFeature();
 		if (assignmentFeature instanceof XVariableDeclaration
-				&& !((XVariableDeclarationList)((XVariableDeclaration) assignmentFeature).eContainer()).isWriteable())  //cym modified
+				&& !((XVariableDeclarationList)((XVariableDeclaration) assignmentFeature).eContainer()).isReadonly())  //cym modified
 			error("Assignment to final variable", Literals.XASSIGNMENT__ASSIGNABLE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, ASSIGNMENT_TO_FINAL);
 		else if (assignmentFeature instanceof JvmFormalParameter)
@@ -687,11 +687,11 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	@Check
 	public void checkVariableDeclaration(XVariableDeclaration declaration) {
 		if (declaration.getRight() == null) {
-			if (!((XVariableDeclarationList)declaration.eContainer()).isWriteable())  // cym modified
-				error("Value must be initialized", Literals.XVARIABLE_DECLARATION_LIST__WRITEABLE,
+			if (!((XVariableDeclarationList)declaration.eContainer()).isReadonly())  // cym modified
+				error("Value must be initialized", declaration.eContainer(), Literals.XVARIABLE_DECLARATION_LIST__READONLY,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, MISSING_INITIALIZATION);
 			if (declaration.getType() == null)
-				error("Type cannot be derived", Literals.XVARIABLE_DECLARATION__NAME,
+				error("Type cannot be derived", declaration, Literals.XVARIABLE_DECLARATION__NAME,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, MISSING_TYPE);
 		}
 	}

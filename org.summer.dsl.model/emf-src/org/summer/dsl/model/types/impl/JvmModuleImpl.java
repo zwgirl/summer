@@ -5,6 +5,7 @@ package org.summer.dsl.model.types.impl;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -398,6 +399,12 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return root != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	@Override
+	public String getModuleName() {
+		String[] segments = simpleName.split("\\.");
+		return segments[segments.length-1];
 	}
 
 	/**

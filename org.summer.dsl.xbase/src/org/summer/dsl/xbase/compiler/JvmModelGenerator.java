@@ -203,7 +203,7 @@ public class JvmModelGenerator implements IGenerator {
     if(importSection != null){
         for(XImportDeclaration decl : importSection.getImportDeclarations()){
         	header.append(",");
-        	header.append("\'").append(decl.getModule().getIdentifier()).append("\'");
+        	header.append("\'").append(decl.getModuleName()).append("\'");
         	body.append(",");
         	body.append(decl.getModuleName());
         }

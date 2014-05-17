@@ -21,6 +21,7 @@ import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmAnyTypeReference;
 import org.summer.dsl.model.types.JvmArrayType;
+import org.summer.dsl.model.types.JvmBeanType;
 import org.summer.dsl.model.types.JvmBooleanAnnotationValue;
 import org.summer.dsl.model.types.JvmByteAnnotationValue;
 import org.summer.dsl.model.types.JvmCharAnnotationValue;
@@ -55,6 +56,7 @@ import org.summer.dsl.model.types.JvmMultiTypeReference;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmPrimitiveType;
+import org.summer.dsl.model.types.JvmRemoteType;
 import org.summer.dsl.model.types.JvmShortAnnotationValue;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmStringAnnotationValue;
@@ -235,6 +237,20 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	private EClass jvmInterfaceTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jvmRemoteTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jvmBeanTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1090,6 +1106,42 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EReference getJvmInterfaceType_Implements() {
 		return (EReference)jvmInterfaceTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJvmRemoteType() {
+		return jvmRemoteTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmRemoteType_Implements() {
+		return (EReference)jvmRemoteTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJvmBeanType() {
+		return jvmBeanTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmBeanType_Implements() {
+		return (EReference)jvmBeanTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2169,6 +2221,12 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmInterfaceTypeEClass = createEClass(JVM_INTERFACE_TYPE);
 		createEReference(jvmInterfaceTypeEClass, JVM_INTERFACE_TYPE__IMPLEMENTS);
 
+		jvmRemoteTypeEClass = createEClass(JVM_REMOTE_TYPE);
+		createEReference(jvmRemoteTypeEClass, JVM_REMOTE_TYPE__IMPLEMENTS);
+
+		jvmBeanTypeEClass = createEClass(JVM_BEAN_TYPE);
+		createEReference(jvmBeanTypeEClass, JVM_BEAN_TYPE__IMPLEMENTS);
+
 		jvmTypeReferenceEClass = createEClass(JVM_TYPE_REFERENCE);
 
 		jvmParameterizedTypeReferenceEClass = createEClass(JVM_PARAMETERIZED_TYPE_REFERENCE);
@@ -2378,6 +2436,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmGenericTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
 		jvmInterfaceTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
 		jvmInterfaceTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
+		jvmRemoteTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
+		jvmRemoteTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
+		jvmBeanTypeEClass.getESuperTypes().add(this.getJvmDeclaredType());
+		jvmBeanTypeEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
 		jvmParameterizedTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
 		jvmGenericArrayTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
 		jvmWildcardTypeReferenceEClass.getESuperTypes().add(this.getJvmTypeReference());
@@ -2555,6 +2617,12 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		initEClass(jvmInterfaceTypeEClass, JvmInterfaceType.class, "JvmInterfaceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJvmInterfaceType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmInterfaceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jvmRemoteTypeEClass, JvmRemoteType.class, "JvmRemoteType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJvmRemoteType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmRemoteType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jvmBeanTypeEClass, JvmBeanType.class, "JvmBeanType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJvmBeanType_Implements(), this.getJvmParameterizedTypeReference(), null, "implements", null, 0, -1, JvmBeanType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeReferenceEClass, JvmTypeReference.class, "JvmTypeReference", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

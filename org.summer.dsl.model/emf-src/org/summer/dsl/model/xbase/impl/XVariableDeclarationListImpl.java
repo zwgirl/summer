@@ -23,7 +23,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#getDeclarations <em>Declarations</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isWriteable <em>Writeable</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isReadonly <em>Readonly</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationListImpl#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
@@ -42,24 +42,24 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	protected EList<XExpression> declarations;
 
 	/**
-	 * The default value of the '{@link #isWriteable() <em>Writeable</em>}' attribute.
+	 * The default value of the '{@link #isReadonly() <em>Readonly</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isWriteable()
+	 * @see #isReadonly()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean WRITEABLE_EDEFAULT = false;
+	protected static final boolean READONLY_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isWriteable() <em>Writeable</em>}' attribute.
+	 * The cached value of the '{@link #isReadonly() <em>Readonly</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isWriteable()
+	 * @see #isReadonly()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean writeable = WRITEABLE_EDEFAULT;
+	protected boolean readonly = READONLY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isExported() <em>Exported</em>}' attribute.
@@ -105,32 +105,32 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isWriteable() {
-		return writeable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWriteable(boolean newWriteable) {
-		boolean oldWriteable = writeable;
-		writeable = newWriteable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE, oldWriteable, writeable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<XExpression> getDeclarations() {
 		if (declarations == null) {
 			declarations = new EObjectContainmentEList<XExpression>(XExpression.class, this, XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS);
 		}
 		return declarations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isReadonly() {
+		return readonly;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReadonly(boolean newReadonly) {
+		boolean oldReadonly = readonly;
+		readonly = newReadonly;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XVARIABLE_DECLARATION_LIST__READONLY, oldReadonly, readonly));
 	}
 
 	/**
@@ -178,8 +178,8 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 		switch (featureID) {
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				return getDeclarations();
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				return isWriteable();
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__READONLY:
+				return isReadonly();
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				return isExported();
 		}
@@ -199,8 +199,8 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 				getDeclarations().clear();
 				getDeclarations().addAll((Collection<? extends XExpression>)newValue);
 				return;
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				setWriteable((Boolean)newValue);
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__READONLY:
+				setReadonly((Boolean)newValue);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				setExported((Boolean)newValue);
@@ -220,8 +220,8 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				getDeclarations().clear();
 				return;
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				setWriteable(WRITEABLE_EDEFAULT);
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__READONLY:
+				setReadonly(READONLY_EDEFAULT);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				setExported(EXPORTED_EDEFAULT);
@@ -240,8 +240,8 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 		switch (featureID) {
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__DECLARATIONS:
 				return declarations != null && !declarations.isEmpty();
-			case XbasePackage.XVARIABLE_DECLARATION_LIST__WRITEABLE:
-				return writeable != WRITEABLE_EDEFAULT;
+			case XbasePackage.XVARIABLE_DECLARATION_LIST__READONLY:
+				return readonly != READONLY_EDEFAULT;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST__EXPORTED:
 				return exported != EXPORTED_EDEFAULT;
 		}
@@ -258,8 +258,8 @@ public class XVariableDeclarationListImpl extends XExpressionImpl implements XVa
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (writeable: ");
-		result.append(writeable);
+		result.append(" (readonly: ");
+		result.append(readonly);
 		result.append(", exported: ");
 		result.append(exported);
 		result.append(')');

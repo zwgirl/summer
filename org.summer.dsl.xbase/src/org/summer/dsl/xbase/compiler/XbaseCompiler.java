@@ -67,7 +67,6 @@ import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XPrefixOperation;
 import org.summer.dsl.model.xbase.XReturnExpression;
 import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XSwitchExpression;
@@ -577,8 +576,6 @@ public class XbaseCompiler extends FeatureCallCompiler {
 			_toJavaStatement((XContinueExpression) obj, appendable, isReferenced);
 		} else if (obj instanceof XPostfixOperation) {
 			_toJavaStatement((XPostfixOperation) obj, appendable, isReferenced);
-		} else if (obj instanceof XPrefixOperation) {
-			_toJavaStatement((XPrefixOperation) obj, appendable, isReferenced);
 		} else if (obj instanceof XIndexOperation) {
 			_toJavaStatement((XIndexOperation) obj, appendable, isReferenced);
 		} else if (obj instanceof XTernaryOperation) {
@@ -597,12 +594,6 @@ public class XbaseCompiler extends FeatureCallCompiler {
 	}
 	
 	protected void _toJavaStatement(XPostfixOperation expr, ITreeAppendable outerAppendable, boolean isReferenced) {
-		internalToConvertedExpression(expr, outerAppendable, null);
-		outerAppendable.append(";");
-		
-	}
-	
-	protected void _toJavaStatement(XPrefixOperation expr, ITreeAppendable outerAppendable, boolean isReferenced) {
 		internalToConvertedExpression(expr, outerAppendable, null);
 		outerAppendable.append(";");
 		
@@ -1293,13 +1284,6 @@ public class XbaseCompiler extends FeatureCallCompiler {
 //		b.trace(expr, false).append(varName);
 		internalToJavaExpression(expr.getOperand(), b);
 		b.append("++");
-	}
-	
-	protected void _toJavaExpression(XPrefixOperation expr, ITreeAppendable b) {
-//		String varName = getVarName(expr, b);
-//		b.trace(expr, false).append(varName);
-		b.append("--");
-		internalToJavaExpression(expr.getOperand(), b);
 	}
 	
 	protected void _toJavaExpression(XIndexOperation expr, ITreeAppendable b) {

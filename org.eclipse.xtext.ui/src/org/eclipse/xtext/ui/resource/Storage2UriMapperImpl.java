@@ -234,8 +234,8 @@ public class Storage2UriMapperImpl implements IStorage2UriMapperExtension {
 
 	private URI internalGetUri(@NonNull IStorage storage) {
 		if (storage instanceof IFile) {
-//			return URI.createPlatformResourceURI(storage.getFullPath().toString(), true);  //cym comment
-			return URI.createFileURI(((IFile) storage).getLocation().toString());
+			return URI.createPlatformResourceURI(storage.getFullPath().toString(), true);  //cym comment
+//			return URI.createFileURI(((IFile) storage).getLocation().toString());
 		} 
 		return contribution.getUri(storage);
 	}

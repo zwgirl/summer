@@ -19,10 +19,10 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 
 	protected SsGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AnnotationField_SemicolonKeyword_3_q;
+	protected AbstractElementAlias match_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_JvmModule_SemicolonKeyword_5_1_1_q;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_3_0_1_q;
-	protected AbstractElementAlias match_Type_SemicolonKeyword_2_3_6_q;
-	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
+	protected AbstractElementAlias match_Type_SemicolonKeyword_2_5_6_q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q;
 	protected AbstractElementAlias match_XExportSection_SemicolonKeyword_1_q;
@@ -34,10 +34,10 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SsGrammarAccess) access;
 		match_AnnotationField_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getAnnotationFieldAccess().getSemicolonKeyword_3());
+		match_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getJvmAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getJvmAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_JvmModule_SemicolonKeyword_5_1_1_q = new TokenAlias(false, true, grammarAccess.getJvmModuleAccess().getSemicolonKeyword_5_1_1());
 		match_Member_SemicolonKeyword_2_0_3_0_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_3_0_1());
-		match_Type_SemicolonKeyword_2_3_6_q = new TokenAlias(false, true, grammarAccess.getTypeAccess().getSemicolonKeyword_2_3_6());
-		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
+		match_Type_SemicolonKeyword_2_5_6_q = new TokenAlias(false, true, grammarAccess.getTypeAccess().getSemicolonKeyword_2_5_6());
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()));
 		match_XExportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXExportSectionAccess().getSemicolonKeyword_1());
@@ -85,14 +85,14 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_AnnotationField_SemicolonKeyword_3_q.equals(syntax))
 				emit_AnnotationField_SemicolonKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
+				emit_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_JvmModule_SemicolonKeyword_5_1_1_q.equals(syntax))
 				emit_JvmModule_SemicolonKeyword_5_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_SemicolonKeyword_2_0_3_0_1_q.equals(syntax))
 				emit_Member_SemicolonKeyword_2_0_3_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Type_SemicolonKeyword_2_3_6_q.equals(syntax))
-				emit_Type_SemicolonKeyword_2_3_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
-				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Type_SemicolonKeyword_2_5_6_q.equals(syntax))
+				emit_Type_SemicolonKeyword_2_5_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q.equals(syntax))
@@ -119,6 +119,14 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	
 	/**
 	 * Syntax:
+	 *     ('(' ')')?
+	 */
+	protected void emit_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
 	 *     ';'?
 	 */
 	protected void emit_JvmModule_SemicolonKeyword_5_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -137,15 +145,7 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	 * Syntax:
 	 *     ';'?
 	 */
-	protected void emit_Type_SemicolonKeyword_2_3_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     ('(' ')')?
-	 */
-	protected void emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Type_SemicolonKeyword_2_5_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

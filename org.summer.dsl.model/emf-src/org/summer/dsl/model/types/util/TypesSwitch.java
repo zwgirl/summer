@@ -257,6 +257,32 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TypesPackage.JVM_REMOTE_TYPE: {
+				JvmRemoteType jvmRemoteType = (JvmRemoteType)theEObject;
+				T result = caseJvmRemoteType(jvmRemoteType);
+				if (result == null) result = caseJvmDeclaredType(jvmRemoteType);
+				if (result == null) result = caseJvmTypeParameterDeclarator(jvmRemoteType);
+				if (result == null) result = caseJvmMember(jvmRemoteType);
+				if (result == null) result = caseJvmComponentType(jvmRemoteType);
+				if (result == null) result = caseJvmAnnotationTarget(jvmRemoteType);
+				if (result == null) result = caseJvmType(jvmRemoteType);
+				if (result == null) result = caseJvmIdentifiableElement(jvmRemoteType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.JVM_BEAN_TYPE: {
+				JvmBeanType jvmBeanType = (JvmBeanType)theEObject;
+				T result = caseJvmBeanType(jvmBeanType);
+				if (result == null) result = caseJvmDeclaredType(jvmBeanType);
+				if (result == null) result = caseJvmTypeParameterDeclarator(jvmBeanType);
+				if (result == null) result = caseJvmMember(jvmBeanType);
+				if (result == null) result = caseJvmComponentType(jvmBeanType);
+				if (result == null) result = caseJvmAnnotationTarget(jvmBeanType);
+				if (result == null) result = caseJvmType(jvmBeanType);
+				if (result == null) result = caseJvmIdentifiableElement(jvmBeanType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TypesPackage.JVM_TYPE_REFERENCE: {
 				JvmTypeReference jvmTypeReference = (JvmTypeReference)theEObject;
 				T result = caseJvmTypeReference(jvmTypeReference);
@@ -842,6 +868,36 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmInterfaceType(JvmInterfaceType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Remote Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Remote Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmRemoteType(JvmRemoteType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Bean Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Bean Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmBeanType(JvmBeanType object) {
 		return null;
 	}
 

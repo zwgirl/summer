@@ -157,6 +157,24 @@ public interface TypesFactory extends EFactory {
 	JvmInterfaceType createJvmInterfaceType();
 
 	/**
+	 * Returns a new object of class '<em>Jvm Remote Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Remote Type</em>'.
+	 * @generated
+	 */
+	JvmRemoteType createJvmRemoteType();
+
+	/**
+	 * Returns a new object of class '<em>Jvm Bean Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Bean Type</em>'.
+	 * @generated
+	 */
+	JvmBeanType createJvmBeanType();
+
+	/**
 	 * Returns a new object of class '<em>Jvm Parameterized Type Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

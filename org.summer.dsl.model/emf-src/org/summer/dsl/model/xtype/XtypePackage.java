@@ -225,22 +225,13 @@ public interface XtypePackage extends EPackage {
 	int XIMPORT_DECLARATION__WILDCARD = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Module</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XIMPORT_DECLARATION__MODULE = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION__IMPORTED_NAMESPACE = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
+	int XIMPORT_DECLARATION__IMPORTED_NAMESPACE = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>XImport Declaration</em>' class.
@@ -249,7 +240,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XIMPORT_DECLARATION_FEATURE_COUNT = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 5;
+	int XIMPORT_DECLARATION_FEATURE_COUNT = TypesPackage.JVM_IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XImportItemImpl <em>XImport Item</em>}' class.
@@ -559,17 +550,6 @@ public interface XtypePackage extends EPackage {
 	EAttribute getXImportDeclaration_Wildcard();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xtype.XImportDeclaration#getModule <em>Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Module</em>'.
-	 * @see org.summer.dsl.model.xtype.XImportDeclaration#getModule()
-	 * @see #getXImportDeclaration()
-	 * @generated
-	 */
-	EReference getXImportDeclaration_Module();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xtype.XImportDeclaration#getImportedNamespace <em>Imported Namespace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -863,14 +843,6 @@ public interface XtypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute XIMPORT_DECLARATION__WILDCARD = eINSTANCE.getXImportDeclaration_Wildcard();
-
-		/**
-		 * The meta object literal for the '<em><b>Module</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XIMPORT_DECLARATION__MODULE = eINSTANCE.getXImportDeclaration_Module();
 
 		/**
 		 * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.

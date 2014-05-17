@@ -26,6 +26,7 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.resource.ResourceSetFactory;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.ui.resource.IStorage2UriMapper;
@@ -37,7 +38,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * @author Jan Köhnlein - Initial contribution and API
+ * @author Jan Kï¿½hnlein - Initial contribution and API
  * @author Sebastian Zarnekow - original coding
  * @author Peter Friese
  */

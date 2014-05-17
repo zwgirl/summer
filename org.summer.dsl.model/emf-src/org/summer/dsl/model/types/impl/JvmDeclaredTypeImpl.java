@@ -387,6 +387,8 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 	public Iterable<JvmField> getDeclaredFields() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
+		
+		System.out.println("JvmDeclaredType.getDeclaredFields(): " + this.getClass());
 		throw new UnsupportedOperationException();
 	}
 

@@ -348,14 +348,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XPREFIX_OPERATION: {
-				XPrefixOperation xPrefixOperation = (XPrefixOperation)theEObject;
-				T result = caseXPrefixOperation(xPrefixOperation);
-				if (result == null) result = caseXAbstractFeatureCall(xPrefixOperation);
-				if (result == null) result = caseXExpression(xPrefixOperation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case XbasePackage.XPOSTFIX_OPERATION: {
 				XPostfixOperation xPostfixOperation = (XPostfixOperation)theEObject;
 				T result = caseXPostfixOperation(xPostfixOperation);
@@ -1017,21 +1009,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXContinueExpression(XContinueExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XPrefix Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XPrefix Operation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXPrefixOperation(XPrefixOperation object) {
 		return null;
 	}
 

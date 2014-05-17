@@ -13,6 +13,8 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.summer.dsl.model.types.JvmAnnotationReference;
+import org.summer.dsl.model.types.JvmAnnotationValue;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmLowerBound;
@@ -72,6 +74,18 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == TypesPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case TypesPackage.JVM_ANNOTATION_REFERENCE:
+				if(context == grammarAccess.getJvmAnnotationRule()) {
+					sequence_JvmAnnotation(context, (JvmAnnotationReference) semanticObject); 
+					return; 
+				}
+				else break;
+			case TypesPackage.JVM_ANNOTATION_VALUE:
+				if(context == grammarAccess.getJvmAnnotationValueRule()) {
+					sequence_JvmAnnotationValue(context, (JvmAnnotationValue) semanticObject); 
+					return; 
+				}
+				else break;
 			case TypesPackage.JVM_FORMAL_PARAMETER:
 				if(context == grammarAccess.getFullJvmFormalParameterRule()) {
 					sequence_FullJvmFormalParameter(context, (JvmFormalParameter) semanticObject); 
@@ -1620,7 +1634,35 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (parameterType=JvmTypeReference? name=ValidID defaultValue=XExpression?)
+	 *     (field=[JvmField|ValidID] value=XLiteral)
+	 */
+	protected void sequence_JvmAnnotationValue(EObject context, JvmAnnotationValue semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__FIELD));
+			if(transientValues.isValueTransient(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.JVM_ANNOTATION_VALUE__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getFieldJvmFieldValidIDParserRuleCall_0_0_0_0_1(), semanticObject.getField());
+		feeder.accept(grammarAccess.getJvmAnnotationValueAccess().getValueXLiteralParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotation=[JvmAnnotationType|QualifiedName] ((values+=JvmAnnotationValue values+=JvmAnnotationValue*) | value=XLiteral)?)
+	 */
+	protected void sequence_JvmAnnotation(EObject context, JvmAnnotationReference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (annotations+=JvmAnnotation* parameterType=JvmTypeReference? varArg?='...'? name=ValidID defaultValue=XExpression?)
 	 */
 	protected void sequence_JvmFormalParameter(EObject context, JvmFormalParameter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2225,7 +2267,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (exported?='export'? writeable?='const'? declarations+=XVariableDeclaration declarations+=XVariableDeclaration*)
+	 *     (exported?='export'? readonly?='const'? declarations+=XVariableDeclaration declarations+=XVariableDeclaration*)
 	 */
 	protected void sequence_XVariableDeclarationList(EObject context, XVariableDeclarationList semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

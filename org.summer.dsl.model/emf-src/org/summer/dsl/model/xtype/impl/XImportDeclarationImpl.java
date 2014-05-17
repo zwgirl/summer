@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.impl.JvmIdentifiableElementImpl;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
@@ -27,7 +26,6 @@ import org.summer.dsl.model.xtype.XtypePackage;
  *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportItems <em>Import Items</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#isWildcard <em>Wildcard</em>}</li>
- *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getModule <em>Module</em>}</li>
  *   <li>{@link org.summer.dsl.model.xtype.impl.XImportDeclarationImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
@@ -84,16 +82,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 	 * @ordered
 	 */
 	protected boolean wildcard = WILDCARD_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getModule() <em>Module</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getModule()
-	 * @generated
-	 * @ordered
-	 */
-	protected JvmModule module;
 
 	/**
 	 * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
@@ -193,44 +181,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmModule getModule() {
-		if (module != null && module.eIsProxy()) {
-			InternalEObject oldModule = (InternalEObject)module;
-			module = (JvmModule)eResolveProxy(oldModule);
-			if (module != oldModule) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XtypePackage.XIMPORT_DECLARATION__MODULE, oldModule, module));
-			}
-		}
-		return module;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JvmModule basicGetModule() {
-		return module;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setModule(JvmModule newModule) {
-		JvmModule oldModule = module;
-		module = newModule;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XtypePackage.XIMPORT_DECLARATION__MODULE, oldModule, module));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getImportedNamespace() {
 		return importedNamespace;
 	}
@@ -250,12 +200,15 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getModuleName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if(alias!=null && !alias.isEmpty()){
+			return alias;
+		}
+		
+		String[] name = importedNamespace.split("\\.");
+		return name[name.length-1];
 	}
 
 	/**
@@ -286,9 +239,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 				return getAlias();
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				return isWildcard();
-			case XtypePackage.XIMPORT_DECLARATION__MODULE:
-				if (resolve) return getModule();
-				return basicGetModule();
 			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
 				return getImportedNamespace();
 		}
@@ -314,9 +264,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				setWildcard((Boolean)newValue);
 				return;
-			case XtypePackage.XIMPORT_DECLARATION__MODULE:
-				setModule((JvmModule)newValue);
-				return;
 			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
 				setImportedNamespace((String)newValue);
 				return;
@@ -341,9 +288,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				setWildcard(WILDCARD_EDEFAULT);
 				return;
-			case XtypePackage.XIMPORT_DECLARATION__MODULE:
-				setModule((JvmModule)null);
-				return;
 			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
 				setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
 				return;
@@ -365,8 +309,6 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 				return ALIAS_EDEFAULT == null ? alias != null : !ALIAS_EDEFAULT.equals(alias);
 			case XtypePackage.XIMPORT_DECLARATION__WILDCARD:
 				return wildcard != WILDCARD_EDEFAULT;
-			case XtypePackage.XIMPORT_DECLARATION__MODULE:
-				return module != null;
 			case XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE:
 				return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
 		}

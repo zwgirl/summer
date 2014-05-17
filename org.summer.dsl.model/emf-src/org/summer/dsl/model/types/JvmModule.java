@@ -150,5 +150,7 @@ public interface JvmModule extends JvmType {
 	void setRoot(XObjectElement value);
 
 	Iterable<JvmDeclaredType> getJvmDeclaredTypes();
+	
+	String getModuleName();
 
 } // JvmModule

@@ -27,6 +27,7 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
+import org.summer.ss.core.scoping.NamespaceUtil;
 
 import com.google.common.collect.Lists;
 
@@ -91,14 +92,15 @@ public class ImportScope implements IScope {
 		List<XImportDeclaration> importDecls = importSection.getImportDeclarations();
 		for(XImportDeclaration importDecl : importDecls){
 //			String uriStr = importDecl.getModuleName();
-			JvmModule importModule = importDecl.getModule();
 //			XtextResourceSet resourceSet = (XtextResourceSet) resource.getResourceSet();
 //			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
 //			URI uri = URI.createFileURI(path.toOSString());
 //			Resource resource = resourceSet.getResource(uri, true);
 //			result.add(EObjectDescription.create(importDecl.getModuleName(), resource.getContents().get(0)));
-			
-			result.add(EObjectDescription.create(importDecl.getModuleName(), importModule));
+			Resource res = NamespaceUtil.getResource(importDecl);
+			if(res.getContents().size()>0){
+				result.add(EObjectDescription.create(importDecl.getModuleName(), resource.getContents().get(0)));
+			}
 			
 			List<XImportItem> items = importDecl.getImportItems();
 			for(XImportItem item : items){

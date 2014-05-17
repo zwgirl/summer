@@ -290,17 +290,8 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXImportDeclaration_Module() {
-		return (EReference)xImportDeclarationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getXImportDeclaration_ImportedNamespace() {
-		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)xImportDeclarationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -473,7 +464,6 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		createEReference(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORT_ITEMS);
 		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__ALIAS);
 		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__WILDCARD);
-		createEReference(xImportDeclarationEClass, XIMPORT_DECLARATION__MODULE);
 		createEAttribute(xImportDeclarationEClass, XIMPORT_DECLARATION__IMPORTED_NAMESPACE);
 
 		xImportItemEClass = createEClass(XIMPORT_ITEM);
@@ -549,7 +539,6 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		initEReference(getXImportDeclaration_ImportItems(), this.getXImportItem(), null, "importItems", null, 0, -1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration_Wildcard(), ecorePackage.getEBoolean(), "wildcard", "false", 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXImportDeclaration_Module(), theTypesPackage.getJvmModule(), null, "module", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportDeclaration_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, XImportDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(xImportDeclarationEClass, ecorePackage.getEString(), "getModuleName", 0, 1, IS_UNIQUE, IS_ORDERED);
