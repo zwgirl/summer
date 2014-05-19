@@ -53,7 +53,7 @@ public class ConstructorBodyComputationState extends AbstractLogicalContainerAwa
 	@Override
 	protected XExpression getRootExpression() {
 		JvmConstructor constructor = (JvmConstructor) getMember();
-		return constructor.getExpression();
+		return constructor.getBody();
 	}
 
 }

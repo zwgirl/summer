@@ -10,17 +10,18 @@ package org.summer.dsl.xbase.typesystem.util;
 import java.util.List;
 
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.xbase.XAbstractWhileExpression;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XAbstractWhileStatment;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
-import org.summer.dsl.model.xbase.XReturnExpression;
-import org.summer.dsl.model.xbase.XSwitchExpression;
-import org.summer.dsl.model.xbase.XThrowExpression;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XIfStatment;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XSwitchStatment;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -38,22 +39,22 @@ public class ExtendedEarlyExitComputer {
 	 *   }
 	 * </pre>
 	 */
-	public boolean isIntentionalEarlyExit(@Nullable XExpression expression) {
+	public boolean isIntentionalEarlyExit(@Nullable XStatment expression) {
 		if (expression == null) {
 			return true;
 		}
-		if (expression instanceof XBlockExpression) {
-			XBlockExpression block = (XBlockExpression) expression;
-			List<XExpression> children = block.getExpressions();
-			for(XExpression child: children) {
+		if (expression instanceof XBlockStatment) {
+			XBlockStatment block = (XBlockStatment) expression;
+			List<XStatment> children = block.getStatments();
+			for(XStatment child: children) {
 				if (isIntentionalEarlyExit(child)) {
 					return true;
 				}
 			}
-		} else if (expression instanceof XIfExpression) {
-			return isIntentionalEarlyExit(((XIfExpression) expression).getThen()) && isIntentionalEarlyExit(((XIfExpression) expression).getElse());
-		} else if (expression instanceof XTryCatchFinallyExpression) {
-			XTryCatchFinallyExpression tryCatchFinally = (XTryCatchFinallyExpression) expression;
+		} else if (expression instanceof XIfStatment) {
+			return isIntentionalEarlyExit(((XIfStatment) expression).getThen()) && isIntentionalEarlyExit(((XIfStatment) expression).getElse());
+		} else if (expression instanceof XTryCatchFinallyStatment) {
+			XTryCatchFinallyStatment tryCatchFinally = (XTryCatchFinallyStatment) expression;
 			
 			//cym comment
 //			if (isIntentionalEarlyExit(tryCatchFinally.getExpression())) {
@@ -64,29 +65,29 @@ public class ExtendedEarlyExitComputer {
 //				return true;
 //			}
 			
-			if (isIntentionalEarlyExit(tryCatchFinally.getExpression())) {
+			if (isIntentionalEarlyExit(tryCatchFinally.getStatment())) {
 				XCatchClause catchClause = tryCatchFinally.getCatchClause();
-				if (!isIntentionalEarlyExit(catchClause.getExpression()))
+				if (!isIntentionalEarlyExit(catchClause.getStatment()))
 					return false;
 				
 				return true;
 			}
 			return false;
-		} else if (expression instanceof XAbstractWhileExpression) {
-			return isIntentionalEarlyExit(((XAbstractWhileExpression) expression).getBody());
-		} else if (expression instanceof XForLoopExpression) {
-			return isIntentionalEarlyExit(((XForLoopExpression) expression).getEachExpression());
+		} else if (expression instanceof XAbstractWhileStatment) {
+			return isIntentionalEarlyExit(((XAbstractWhileStatment) expression).getBody());
+		} else if (expression instanceof XForLoopStatment) {
+			return isIntentionalEarlyExit(((XForLoopStatment) expression).getStatment());
 		}
-		return expression instanceof XReturnExpression || expression instanceof XThrowExpression;
+		return expression instanceof XReturnStatment || expression instanceof XThrowStatment;
 	}
 
-	public boolean isDefiniteEarlyExit(XExpression expression) {
+	public boolean isDefiniteEarlyExit(XStatment expression) {
 		// TODO further improvements
-		if (expression instanceof XIfExpression) {
-			XIfExpression ifExpression = (XIfExpression) expression;
+		if (expression instanceof XIfStatment) {
+			XIfStatment ifExpression = (XIfStatment) expression;
 			return isDefiniteEarlyExit(ifExpression.getThen()) && isDefiniteEarlyExit(ifExpression.getElse());
-		} else if (expression instanceof XSwitchExpression) {
-			XSwitchExpression switchExpression = (XSwitchExpression) expression;
+		} else if (expression instanceof XSwitchStatment) {
+			XSwitchStatment switchExpression = (XSwitchStatment) expression;
 			if (isDefiniteEarlyExit(switchExpression.getDefault())) {
 				for(XCasePart caseExpression: switchExpression.getCases()) {
 					if (!isDefiniteEarlyExit(caseExpression.getThen())) {
@@ -96,9 +97,9 @@ public class ExtendedEarlyExitComputer {
 				return true;
 			}
 			return false;
-		} else if (expression instanceof XTryCatchFinallyExpression) {
-			XTryCatchFinallyExpression tryExpression = (XTryCatchFinallyExpression) expression;
-			if (isDefiniteEarlyExit(tryExpression.getFinallyExpression())) {
+		} else if (expression instanceof XTryCatchFinallyStatment) {
+			XTryCatchFinallyStatment tryExpression = (XTryCatchFinallyStatment) expression;
+			if (isDefiniteEarlyExit(tryExpression.getFinallyStatment())) {
 				return true;
 			}
 			
@@ -112,24 +113,24 @@ public class ExtendedEarlyExitComputer {
 //				return true;
 //			}
 			
-			if (isDefiniteEarlyExit(tryExpression.getExpression())) {
+			if (isDefiniteEarlyExit(tryExpression.getStatment())) {
 				XCatchClause catchClause = tryExpression.getCatchClause();
-				if (!isDefiniteEarlyExit(catchClause.getExpression())) {
+				if (!isDefiniteEarlyExit(catchClause.getStatment())) {
 					return false;
 				}
 				
 				return true;
 			}
 			return false;
-		} else if (expression instanceof XBlockExpression) {
-			List<XExpression> expressions = ((XBlockExpression) expression).getExpressions();
+		} else if (expression instanceof XBlockStatment) {
+			List<XStatment> expressions = ((XBlockStatment) expression).getStatments();
 			for(int i = expressions.size() - 1; i >= 0; i--) {
 				if (isDefiniteEarlyExit(expressions.get(i))) {
 					return true;
 				}
 			}
 		}
-		return expression instanceof XReturnExpression || expression instanceof XThrowExpression;
+		return expression instanceof XReturnStatment || expression instanceof XThrowStatment;
 	}
 	
 }

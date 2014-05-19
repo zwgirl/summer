@@ -639,22 +639,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_DECLARED_TYPE__ABSTRACT = JVM_MEMBER_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_DECLARED_TYPE__STATIC = JVM_MEMBER_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_DECLARED_TYPE__FINAL = JVM_MEMBER_FEATURE_COUNT + 5;
+	int JVM_DECLARED_TYPE__FINAL = JVM_MEMBER_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Package Name</b></em>' attribute.
@@ -663,7 +654,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_DECLARED_TYPE__PACKAGE_NAME = JVM_MEMBER_FEATURE_COUNT + 6;
+	int JVM_DECLARED_TYPE__PACKAGE_NAME = JVM_MEMBER_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Exported</b></em>' attribute.
@@ -672,7 +663,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_DECLARED_TYPE__EXPORTED = JVM_MEMBER_FEATURE_COUNT + 7;
+	int JVM_DECLARED_TYPE__EXPORTED = JVM_MEMBER_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Declared Type</em>' class.
@@ -681,7 +672,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_DECLARED_TYPE_FEATURE_COUNT = JVM_MEMBER_FEATURE_COUNT + 8;
+	int JVM_DECLARED_TYPE_FEATURE_COUNT = JVM_MEMBER_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -781,15 +772,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_STRUCT_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_STRUCT_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1148,15 +1130,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_ANNOTATION_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
 
 	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_ANNOTATION_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
-
-	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1300,15 +1273,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_ENUMERATION_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_ENUMERATION_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -1520,31 +1484,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_FIELD__STATIC = JVM_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * The feature id for the '<em><b>Const</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__FINAL = JVM_FEATURE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_FIELD__TYPE = JVM_FEATURE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Volatile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_FIELD__VOLATILE = JVM_FEATURE_FEATURE_COUNT + 3;
+	int JVM_FIELD__CONST = JVM_FEATURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -1553,7 +1499,34 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__TRANSIENT = JVM_FEATURE_FEATURE_COUNT + 4;
+	int JVM_FIELD__TRANSIENT = JVM_FEATURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Virtaul</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FIELD__VIRTAUL = JVM_FEATURE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FIELD__OVERRIDE = JVM_FEATURE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FIELD__TYPE = JVM_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -1562,7 +1535,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__DEFAULT_VALUE = JVM_FEATURE_FEATURE_COUNT + 5;
+	int JVM_FIELD__DEFAULT_VALUE = JVM_FEATURE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Set</b></em>' containment reference.
@@ -1571,7 +1544,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__SET = JVM_FEATURE_FEATURE_COUNT + 6;
+	int JVM_FIELD__SET = JVM_FEATURE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Get</b></em>' containment reference.
@@ -1580,7 +1553,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__GET = JVM_FEATURE_FEATURE_COUNT + 7;
+	int JVM_FIELD__GET = JVM_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Field</em>' class.
@@ -1589,7 +1562,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD_FEATURE_COUNT = JVM_FEATURE_FEATURE_COUNT + 8;
+	int JVM_FIELD_FEATURE_COUNT = JVM_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmEnumerationLiteralImpl <em>Jvm Enumeration Literal</em>}' class.
@@ -1674,31 +1647,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_ENUMERATION_LITERAL__STATIC = JVM_FIELD__STATIC;
 
 	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * The feature id for the '<em><b>Const</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ENUMERATION_LITERAL__FINAL = JVM_FIELD__FINAL;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_ENUMERATION_LITERAL__TYPE = JVM_FIELD__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Volatile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_ENUMERATION_LITERAL__VOLATILE = JVM_FIELD__VOLATILE;
+	int JVM_ENUMERATION_LITERAL__CONST = JVM_FIELD__CONST;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -1708,6 +1663,33 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_ENUMERATION_LITERAL__TRANSIENT = JVM_FIELD__TRANSIENT;
+
+	/**
+	 * The feature id for the '<em><b>Virtaul</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_ENUMERATION_LITERAL__VIRTAUL = JVM_FIELD__VIRTAUL;
+
+	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_ENUMERATION_LITERAL__OVERRIDE = JVM_FIELD__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_ENUMERATION_LITERAL__TYPE = JVM_FIELD__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -1862,15 +1844,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_GENERIC_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_GENERIC_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -2045,15 +2018,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_INTERFACE_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
 
 	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_INTERFACE_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
-
-	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2217,15 +2181,6 @@ public interface TypesPackage extends EPackage {
 	int JVM_REMOTE_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
 
 	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_REMOTE_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
-
-	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2387,15 +2342,6 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_BEAN_TYPE__ABSTRACT = JVM_DECLARED_TYPE__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_BEAN_TYPE__STATIC = JVM_DECLARED_TYPE__STATIC;
 
 	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -3020,13 +2966,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_CONSTRUCTOR__VAR_ARGS = JVM_EXECUTABLE__VAR_ARGS;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_CONSTRUCTOR__EXPRESSION = JVM_EXECUTABLE_FEATURE_COUNT + 0;
+	int JVM_CONSTRUCTOR__BODY = JVM_EXECUTABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Constructor</em>' class.
@@ -3156,103 +3102,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_OPERATION__STATIC = JVM_EXECUTABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__FINAL = JVM_EXECUTABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION__ABSTRACT = JVM_EXECUTABLE_FEATURE_COUNT + 2;
+	int JVM_OPERATION__ABSTRACT = JVM_EXECUTABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * The feature id for the '<em><b>Virtaul</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION__RETURN_TYPE = JVM_EXECUTABLE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__DEFAULT_VALUE = JVM_EXECUTABLE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Synchronized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__SYNCHRONIZED = JVM_EXECUTABLE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__DEFAULT = JVM_EXECUTABLE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Native</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__NATIVE = JVM_EXECUTABLE_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Strict Floating Point</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__STRICT_FLOATING_POINT = JVM_EXECUTABLE_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__EXPRESSION = JVM_EXECUTABLE_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__FUNCTION = JVM_EXECUTABLE_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Overload</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JVM_OPERATION__OVERLOAD = JVM_EXECUTABLE_FEATURE_COUNT + 11;
+	int JVM_OPERATION__VIRTAUL = JVM_EXECUTABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Override</b></em>' attribute.
@@ -3261,7 +3126,43 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION__OVERRIDE = JVM_EXECUTABLE_FEATURE_COUNT + 12;
+	int JVM_OPERATION__OVERRIDE = JVM_EXECUTABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Native</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__NATIVE = JVM_EXECUTABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Overload</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__OVERLOAD = JVM_EXECUTABLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__RETURN_TYPE = JVM_EXECUTABLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__BODY = JVM_EXECUTABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Operation</em>' class.
@@ -3270,7 +3171,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 13;
+	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.
@@ -4478,17 +4379,6 @@ public interface TypesPackage extends EPackage {
 	EAttribute getJvmDeclaredType_Abstract();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDeclaredType#isStatic <em>Static</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Static</em>'.
-	 * @see org.summer.dsl.model.types.JvmDeclaredType#isStatic()
-	 * @see #getJvmDeclaredType()
-	 * @generated
-	 */
-	EAttribute getJvmDeclaredType_Static();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmDeclaredType#isFinal <em>Final</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5038,15 +4928,15 @@ public interface TypesPackage extends EPackage {
 	EAttribute getJvmField_Static();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Final</em>'.
-	 * @see org.summer.dsl.model.types.JvmField#isFinal()
+	 * @return the meta object for the attribute '<em>Const</em>'.
+	 * @see org.summer.dsl.model.types.JvmField#isConst()
 	 * @see #getJvmField()
 	 * @generated
 	 */
-	EAttribute getJvmField_Final();
+	EAttribute getJvmField_Const();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}'.
@@ -5060,17 +4950,6 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmField_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isVolatile <em>Volatile</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Volatile</em>'.
-	 * @see org.summer.dsl.model.types.JvmField#isVolatile()
-	 * @see #getJvmField()
-	 * @generated
-	 */
-	EAttribute getJvmField_Volatile();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isTransient <em>Transient</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5080,6 +4959,28 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJvmField_Transient();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isVirtaul <em>Virtaul</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Virtaul</em>'.
+	 * @see org.summer.dsl.model.types.JvmField#isVirtaul()
+	 * @see #getJvmField()
+	 * @generated
+	 */
+	EAttribute getJvmField_Virtaul();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isOverride <em>Override</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Override</em>'.
+	 * @see org.summer.dsl.model.types.JvmField#isOverride()
+	 * @see #getJvmField()
+	 * @generated
+	 */
+	EAttribute getJvmField_Override();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmField#getDefaultValue <em>Default Value</em>}'.
@@ -5233,15 +5134,15 @@ public interface TypesPackage extends EPackage {
 	EClass getJvmConstructor();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmConstructor#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmConstructor#getBody <em>Body</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see org.summer.dsl.model.types.JvmConstructor#getExpression()
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see org.summer.dsl.model.types.JvmConstructor#getBody()
 	 * @see #getJvmConstructor()
 	 * @generated
 	 */
-	EReference getJvmConstructor_Expression();
+	EReference getJvmConstructor_Body();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmOperation <em>Jvm Operation</em>}'.
@@ -5265,17 +5166,6 @@ public interface TypesPackage extends EPackage {
 	EAttribute getJvmOperation_Static();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isFinal <em>Final</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Final</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#isFinal()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EAttribute getJvmOperation_Final();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isAbstract <em>Abstract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5285,6 +5175,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJvmOperation_Abstract();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isVirtaul <em>Virtaul</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Virtaul</em>'.
+	 * @see org.summer.dsl.model.types.JvmOperation#isVirtaul()
+	 * @see #getJvmOperation()
+	 * @generated
+	 */
+	EAttribute getJvmOperation_Virtaul();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmOperation#getReturnType <em>Return Type</em>}'.
@@ -5298,39 +5199,6 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmOperation_ReturnType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmOperation#getDefaultValue <em>Default Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Default Value</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#getDefaultValue()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EReference getJvmOperation_DefaultValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isSynchronized <em>Synchronized</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Synchronized</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#isSynchronized()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EAttribute getJvmOperation_Synchronized();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isDefault <em>Default</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#isDefault()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EAttribute getJvmOperation_Default();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isNative <em>Native</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5340,39 +5208,6 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJvmOperation_Native();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isStrictFloatingPoint <em>Strict Floating Point</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Strict Floating Point</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#isStrictFloatingPoint()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EAttribute getJvmOperation_StrictFloatingPoint();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmOperation#getExpression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#getExpression()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EReference getJvmOperation_Expression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmOperation#getFunction <em>Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Function</em>'.
-	 * @see org.summer.dsl.model.types.JvmOperation#getFunction()
-	 * @see #getJvmOperation()
-	 * @generated
-	 */
-	EReference getJvmOperation_Function();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}'.
@@ -5395,6 +5230,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJvmOperation_Override();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmOperation#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see org.summer.dsl.model.types.JvmOperation#getBody()
+	 * @see #getJvmOperation()
+	 * @generated
+	 */
+	EReference getJvmOperation_Body();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmFormalParameter <em>Jvm Formal Parameter</em>}'.
@@ -6235,14 +6081,6 @@ public interface TypesPackage extends EPackage {
 		EAttribute JVM_DECLARED_TYPE__ABSTRACT = eINSTANCE.getJvmDeclaredType_Abstract();
 
 		/**
-		 * The meta object literal for the '<em><b>Static</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_DECLARED_TYPE__STATIC = eINSTANCE.getJvmDeclaredType_Static();
-
-		/**
 		 * The meta object literal for the '<em><b>Final</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6705,12 +6543,12 @@ public interface TypesPackage extends EPackage {
 		EAttribute JVM_FIELD__STATIC = eINSTANCE.getJvmField_Static();
 
 		/**
-		 * The meta object literal for the '<em><b>Final</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Const</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JVM_FIELD__FINAL = eINSTANCE.getJvmField_Final();
+		EAttribute JVM_FIELD__CONST = eINSTANCE.getJvmField_Const();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -6721,20 +6559,28 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_FIELD__TYPE = eINSTANCE.getJvmField_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Volatile</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_FIELD__VOLATILE = eINSTANCE.getJvmField_Volatile();
-
-		/**
 		 * The meta object literal for the '<em><b>Transient</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute JVM_FIELD__TRANSIENT = eINSTANCE.getJvmField_Transient();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtaul</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_FIELD__VIRTAUL = eINSTANCE.getJvmField_Virtaul();
+
+		/**
+		 * The meta object literal for the '<em><b>Override</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_FIELD__OVERRIDE = eINSTANCE.getJvmField_Override();
 
 		/**
 		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
@@ -6855,12 +6701,12 @@ public interface TypesPackage extends EPackage {
 		EClass JVM_CONSTRUCTOR = eINSTANCE.getJvmConstructor();
 
 		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JVM_CONSTRUCTOR__EXPRESSION = eINSTANCE.getJvmConstructor_Expression();
+		EReference JVM_CONSTRUCTOR__BODY = eINSTANCE.getJvmConstructor_Body();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmOperationImpl <em>Jvm Operation</em>}' class.
@@ -6881,20 +6727,20 @@ public interface TypesPackage extends EPackage {
 		EAttribute JVM_OPERATION__STATIC = eINSTANCE.getJvmOperation_Static();
 
 		/**
-		 * The meta object literal for the '<em><b>Final</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_OPERATION__FINAL = eINSTANCE.getJvmOperation_Final();
-
-		/**
 		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute JVM_OPERATION__ABSTRACT = eINSTANCE.getJvmOperation_Abstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtaul</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_OPERATION__VIRTAUL = eINSTANCE.getJvmOperation_Virtaul();
 
 		/**
 		 * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
@@ -6905,60 +6751,12 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_OPERATION__RETURN_TYPE = eINSTANCE.getJvmOperation_ReturnType();
 
 		/**
-		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JVM_OPERATION__DEFAULT_VALUE = eINSTANCE.getJvmOperation_DefaultValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Synchronized</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_OPERATION__SYNCHRONIZED = eINSTANCE.getJvmOperation_Synchronized();
-
-		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_OPERATION__DEFAULT = eINSTANCE.getJvmOperation_Default();
-
-		/**
 		 * The meta object literal for the '<em><b>Native</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute JVM_OPERATION__NATIVE = eINSTANCE.getJvmOperation_Native();
-
-		/**
-		 * The meta object literal for the '<em><b>Strict Floating Point</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JVM_OPERATION__STRICT_FLOATING_POINT = eINSTANCE.getJvmOperation_StrictFloatingPoint();
-
-		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JVM_OPERATION__EXPRESSION = eINSTANCE.getJvmOperation_Expression();
-
-		/**
-		 * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JVM_OPERATION__FUNCTION = eINSTANCE.getJvmOperation_Function();
 
 		/**
 		 * The meta object literal for the '<em><b>Overload</b></em>' attribute feature.
@@ -6975,6 +6773,14 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JVM_OPERATION__OVERRIDE = eINSTANCE.getJvmOperation_Override();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_OPERATION__BODY = eINSTANCE.getJvmOperation_Body();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.

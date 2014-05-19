@@ -12,22 +12,24 @@ import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
-import org.summer.dsl.model.xbase.XBreakExpression;
+import org.summer.dsl.model.xbase.XBreakStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XContinueExpression;
-import org.summer.dsl.model.xbase.XDoWhileExpression;
+import org.summer.dsl.model.xbase.XContinueStatment;
+import org.summer.dsl.model.xbase.XDoWhileStatment;
+import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
-import org.summer.dsl.model.xbase.XForEachExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XFunction;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XKeyValuePair;
@@ -39,20 +41,20 @@ import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XSetLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XStructLiteral;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XTemplate;
 import org.summer.dsl.model.xbase.XTernaryOperation;
-import org.summer.dsl.model.xbase.XThrowExpression;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
-import org.summer.dsl.model.xbase.XWhileExpression;
+import org.summer.dsl.model.xbase.XWhileStatment;
 import org.summer.dsl.model.xbase.XbaseFactory;
 import org.summer.dsl.model.xbase.XbasePackage;
 
@@ -100,10 +102,10 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case XbasePackage.XIF_EXPRESSION: return createXIfExpression();
-			case XbasePackage.XSWITCH_EXPRESSION: return createXSwitchExpression();
+			case XbasePackage.XIF_STATMENT: return createXIfStatment();
+			case XbasePackage.XSWITCH_STATMENT: return createXSwitchStatment();
 			case XbasePackage.XCASE_PART: return createXCasePart();
-			case XbasePackage.XBLOCK_EXPRESSION: return createXBlockExpression();
+			case XbasePackage.XBLOCK_STATMENT: return createXBlockStatment();
 			case XbasePackage.XVARIABLE_DECLARATION: return createXVariableDeclaration();
 			case XbasePackage.XMEMBER_FEATURE_CALL: return createXMemberFeatureCall();
 			case XbasePackage.XFEATURE_CALL: return createXFeatureCall();
@@ -118,19 +120,19 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XCASTED_EXPRESSION: return createXCastedExpression();
 			case XbasePackage.XBINARY_OPERATION: return createXBinaryOperation();
 			case XbasePackage.XUNARY_OPERATION: return createXUnaryOperation();
-			case XbasePackage.XFOR_LOOP_EXPRESSION: return createXForLoopExpression();
-			case XbasePackage.XFOR_EACH_EXPRESSION: return createXForEachExpression();
-			case XbasePackage.XDO_WHILE_EXPRESSION: return createXDoWhileExpression();
-			case XbasePackage.XWHILE_EXPRESSION: return createXWhileExpression();
+			case XbasePackage.XFOR_LOOP_STATMENT: return createXForLoopStatment();
+			case XbasePackage.XFOR_EACH_STATMENT: return createXForEachStatment();
+			case XbasePackage.XDO_WHILE_STATMENT: return createXDoWhileStatment();
+			case XbasePackage.XWHILE_STATMENT: return createXWhileStatment();
 			case XbasePackage.XTYPE_LITERAL: return createXTypeLiteral();
 			case XbasePackage.XINSTANCE_OF_EXPRESSION: return createXInstanceOfExpression();
-			case XbasePackage.XTHROW_EXPRESSION: return createXThrowExpression();
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION: return createXTryCatchFinallyExpression();
+			case XbasePackage.XTHROW_STATMENT: return createXThrowStatment();
+			case XbasePackage.XTRY_CATCH_FINALLY_STATMENT: return createXTryCatchFinallyStatment();
 			case XbasePackage.XCATCH_CLAUSE: return createXCatchClause();
 			case XbasePackage.XASSIGNMENT: return createXAssignment();
-			case XbasePackage.XRETURN_EXPRESSION: return createXReturnExpression();
-			case XbasePackage.XBREAK_EXPRESSION: return createXBreakExpression();
-			case XbasePackage.XCONTINUE_EXPRESSION: return createXContinueExpression();
+			case XbasePackage.XRETURN_STATMENT: return createXReturnStatment();
+			case XbasePackage.XBREAK_STATMENT: return createXBreakStatment();
+			case XbasePackage.XCONTINUE_STATMENT: return createXContinueStatment();
 			case XbasePackage.XPOSTFIX_OPERATION: return createXPostfixOperation();
 			case XbasePackage.XTERNARY_OPERATION: return createXTernaryOperation();
 			case XbasePackage.XINDEX_OPERATION: return createXIndexOperation();
@@ -144,6 +146,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XFIELD_LITERAL_PART: return createXFieldLiteralPart();
 			case XbasePackage.XTEMPLATE: return createXTemplate();
 			case XbasePackage.RICH_STRING_LITERAL: return createRichStringLiteral();
+			case XbasePackage.XFUNCTION: return createXFunction();
+			case XbasePackage.XEXPRESSION_STATMENT: return createXExpressionStatment();
 			
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -181,9 +185,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XIfExpression createXIfExpression()
+	public XIfStatment createXIfStatment()
 	{
-		XIfExpressionImpl xIfExpression = new XIfExpressionImpl();
+		XIfStatmentImpl xIfExpression = new XIfStatmentImpl();
 		return xIfExpression;
 	}
 
@@ -192,9 +196,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XSwitchExpression createXSwitchExpression()
+	public XSwitchStatment createXSwitchStatment()
 	{
-		XSwitchExpressionImpl xSwitchExpression = new XSwitchExpressionImpl();
+		XSwitchStatmentImpl xSwitchExpression = new XSwitchStatmentImpl();
 		return xSwitchExpression;
 	}
 
@@ -214,9 +218,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XBlockExpression createXBlockExpression()
+	public XBlockStatment createXBlockStatment()
 	{
-		XBlockExpressionImpl xBlockExpression = new XBlockExpressionImpl();
+		XBlockStatmentImpl xBlockExpression = new XBlockStatmentImpl();
 		return xBlockExpression;
 	}
 
@@ -379,9 +383,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XForLoopExpression createXForLoopExpression()
+	public XForLoopStatment createXForLoopStatment()
 	{
-		XForLoopExpressionImpl xForLoopExpression = new XForLoopExpressionImpl();
+		XForLoopStatmentImpl xForLoopExpression = new XForLoopStatmentImpl();
 		return xForLoopExpression;
 	}
 
@@ -390,9 +394,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XDoWhileExpression createXDoWhileExpression()
+	public XDoWhileStatment createXDoWhileStatment()
 	{
-		XDoWhileExpressionImpl xDoWhileExpression = new XDoWhileExpressionImpl();
+		XDoWhileStatmentImpl xDoWhileExpression = new XDoWhileStatmentImpl();
 		return xDoWhileExpression;
 	}
 
@@ -401,9 +405,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XWhileExpression createXWhileExpression()
+	public XWhileStatment createXWhileStatment()
 	{
-		XWhileExpressionImpl xWhileExpression = new XWhileExpressionImpl();
+		XWhileStatmentImpl xWhileExpression = new XWhileStatmentImpl();
 		return xWhileExpression;
 	}
 
@@ -434,9 +438,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XThrowExpression createXThrowExpression()
+	public XThrowStatment createXThrowStatment()
 	{
-		XThrowExpressionImpl xThrowExpression = new XThrowExpressionImpl();
+		XThrowStatmentImpl xThrowExpression = new XThrowStatmentImpl();
 		return xThrowExpression;
 	}
 
@@ -445,9 +449,9 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XTryCatchFinallyExpression createXTryCatchFinallyExpression()
+	public XTryCatchFinallyStatment createXTryCatchFinallyStatment()
 	{
-		XTryCatchFinallyExpressionImpl xTryCatchFinallyExpression = new XTryCatchFinallyExpressionImpl();
+		XTryCatchFinallyStatmentImpl xTryCatchFinallyExpression = new XTryCatchFinallyStatmentImpl();
 		return xTryCatchFinallyExpression;
 	}
 
@@ -478,7 +482,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public XReturnExpression createXReturnExpression()
+	public XReturnStatment createXReturnStatment()
 	{
 		XReturnExpressionImplCustom xReturnExpression = new XReturnExpressionImplCustom();
 		return xReturnExpression;
@@ -489,8 +493,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XBreakExpression createXBreakExpression() {
-		XBreakExpressionImpl xBreakExpression = new XBreakExpressionImpl();
+	public XBreakStatment createXBreakStatment() {
+		XBreakStatmentImpl xBreakExpression = new XBreakStatmentImpl();
 		return xBreakExpression;
 	}
 
@@ -499,8 +503,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XContinueExpression createXContinueExpression() {
-		XContinueExpressionImpl xContinueExpression = new XContinueExpressionImpl();
+	public XContinueStatment createXContinueStatment() {
+		XContinueStatmentImpl xContinueExpression = new XContinueStatmentImpl();
 		return xContinueExpression;
 	}
 
@@ -572,8 +576,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 		return new XVariableDeclarationListImpl();
 	}
 
-	public XForEachExpression createXForEachExpression() {
-		return new XForEachExpressionImpl();
+	public XForEachStatment createXForEachStatment() {
+		return new XForEachStatmentImpl();
 	}
 
 	@Override
@@ -594,6 +598,16 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	@Override
 	public RichStringLiteral createRichStringLiteral() {
 		return new RichStringLiteralImpl();
+	}
+
+	@Override
+	public XFunction createXFunction() {
+		return new XFunctionImpl();
+	}
+
+	@Override
+	public XExpressionStatment createXExpressionStatment() {
+		return new XExpressionStatmentImpl();
 	}
 
 } //XbaseFactoryImpl

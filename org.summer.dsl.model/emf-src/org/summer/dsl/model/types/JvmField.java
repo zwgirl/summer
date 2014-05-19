@@ -3,6 +3,7 @@
 package org.summer.dsl.model.types;
 
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 
 /**
@@ -14,10 +15,11 @@ import org.summer.dsl.model.xbase.XExpression;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmField#isVolatile <em>Volatile</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isTransient <em>Transient</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isVirtaul <em>Virtaul</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isOverride <em>Override</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getSet <em>Set</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getGet <em>Get</em>}</li>
@@ -56,30 +58,30 @@ public interface JvmField extends JvmFeature {
 	void setStatic(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Final</b></em>' attribute.
+	 * Returns the value of the '<em><b>Const</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Final</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Const</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Final</em>' attribute.
-	 * @see #setFinal(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Final()
+	 * @return the value of the '<em>Const</em>' attribute.
+	 * @see #setConst(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Const()
 	 * @model
 	 * @generated
 	 */
-	boolean isFinal();
+	boolean isConst();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Final</em>' attribute.
-	 * @see #isFinal()
+	 * @param value the new value of the '<em>Const</em>' attribute.
+	 * @see #isConst()
 	 * @generated
 	 */
-	void setFinal(boolean value);
+	void setConst(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -108,32 +110,6 @@ public interface JvmField extends JvmFeature {
 	void setType(JvmTypeReference value);
 
 	/**
-	 * Returns the value of the '<em><b>Volatile</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Volatile</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Volatile</em>' attribute.
-	 * @see #setVolatile(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Volatile()
-	 * @model
-	 * @generated
-	 */
-	boolean isVolatile();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isVolatile <em>Volatile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Volatile</em>' attribute.
-	 * @see #isVolatile()
-	 * @generated
-	 */
-	void setVolatile(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Transient</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -158,6 +134,59 @@ public interface JvmField extends JvmFeature {
 	 * @generated
 	 */
 	void setTransient(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtaul</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtaul</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtaul</em>' attribute.
+	 * @see #setVirtaul(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Virtaul()
+	 * @model
+	 * @generated
+	 */
+	boolean isVirtaul();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isVirtaul <em>Virtaul</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtaul</em>' attribute.
+	 * @see #isVirtaul()
+	 * @generated
+	 */
+	void setVirtaul(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Override</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Override</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Override</em>' attribute.
+	 * @see #setOverride(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Override()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isOverride();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isOverride <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Override</em>' attribute.
+	 * @see #isOverride()
+	 * @generated
+	 */
+	void setOverride(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
@@ -194,12 +223,12 @@ public interface JvmField extends JvmFeature {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Set</em>' containment reference.
-	 * @see #setSet(XExpression)
+	 * @see #setSet(XStatment)
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Set()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getSet();
+	XStatment getSet();
 
 	/**
 	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#getSet <em>Set</em>}' containment reference.
@@ -209,7 +238,7 @@ public interface JvmField extends JvmFeature {
 	 * @see #getSet()
 	 * @generated
 	 */
-	void setSet(XExpression value);
+	void setSet(XStatment value);
 
 	/**
 	 * Returns the value of the '<em><b>Get</b></em>' containment reference.
@@ -220,12 +249,12 @@ public interface JvmField extends JvmFeature {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Get</em>' containment reference.
-	 * @see #setGet(XExpression)
+	 * @see #setGet(XStatment)
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Get()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getGet();
+	XStatment getGet();
 
 	/**
 	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#getGet <em>Get</em>}' containment reference.
@@ -235,6 +264,6 @@ public interface JvmField extends JvmFeature {
 	 * @see #getGet()
 	 * @generated
 	 */
-	void setGet(XExpression value);
+	void setGet(XStatment value);
 
 } // JvmField

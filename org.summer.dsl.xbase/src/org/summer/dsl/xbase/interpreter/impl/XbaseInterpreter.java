@@ -8,8 +8,6 @@
 package org.summer.dsl.xbase.interpreter.impl;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.google.common.collect.Sets.newHashSet;
 import static org.eclipse.xtext.util.Strings.equal;
 
 import java.lang.reflect.Array;
@@ -25,8 +23,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
@@ -36,7 +32,6 @@ import org.eclipse.xtext.util.ReflectionUtil;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmInterfaceType;
@@ -51,33 +46,33 @@ import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
-import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XDoWhileExpression;
+import org.summer.dsl.model.xbase.XDoWhileStatment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XForEachExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XListLiteral;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
-import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XSetLiteral;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XStringLiteral;
-import org.summer.dsl.model.xbase.XSwitchExpression;
-import org.summer.dsl.model.xbase.XThrowExpression;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
-import org.summer.dsl.model.xbase.XWhileExpression;
+import org.summer.dsl.model.xbase.XWhileStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.featurecalls.IdentifiableSimpleNameProvider;
 import org.summer.dsl.xbase.interpreter.IEvaluationContext;
@@ -85,11 +80,8 @@ import org.summer.dsl.xbase.interpreter.IEvaluationResult;
 import org.summer.dsl.xbase.interpreter.IExpressionInterpreter;
 import org.summer.dsl.xbase.lib.Conversions;
 import org.summer.dsl.xbase.lib.Functions;
-import org.summer.dsl.xbase.lib.ObjectExtensions;
-import org.summer.dsl.xbase.lib.Pair;
 import org.summer.dsl.xbase.lib.Procedures;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
-import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 import org.summer.dsl.xbase.typesystem.IBatchTypeResolver;
 import org.summer.dsl.xbase.typesystem.IResolvedTypes;
 import org.summer.dsl.xbase.typesystem.computation.NumberLiterals;
@@ -203,24 +195,58 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return result;
 	}
 	
+	protected Object internalEvaluate(XStatment expression, IEvaluationContext context, CancelIndicator indicator) throws EvaluationException {
+		if (indicator.isCanceled())
+			throw new InterpreterCanceledException();
+		Object result = doEvaluate(expression, context, indicator);
+//		final LightweightTypeReference expectedType = typeResolver.resolveTypes(expression).getExpectedType(expression);
+//		if(expectedType != null)
+//			result = wrapOrUnwrapArray(result, expectedType);
+		return result;
+	}
+	
+	/**
+	 * don't call this directly. Always call evaluate() internalEvaluate()
+	 */
+	protected Object doEvaluate(XStatment expression, IEvaluationContext context, CancelIndicator indicator) {
+		if (expression instanceof XDoWhileStatment) {
+	      return _doEvaluate((XDoWhileStatment)expression, context, indicator);
+	    } else if (expression instanceof XWhileStatment) {
+	      return _doEvaluate((XWhileStatment)expression, context, indicator);
+	    } else if (expression instanceof XBlockStatment) {
+	      return _doEvaluate((XBlockStatment)expression, context, indicator);
+	    } else if (expression instanceof XForLoopStatment) {
+	      return _doEvaluate((XForEachStatment)expression, context, indicator);
+	    } else if (expression instanceof XIfStatment) {
+	      return _doEvaluate((XIfStatment)expression, context, indicator);
+	    } else if (expression instanceof XReturnStatment) {
+	      return _doEvaluate((XReturnStatment)expression, context, indicator);
+	    } else if (expression instanceof XSwitchStatment) {
+	      return _doEvaluate((XSwitchStatment)expression, context, indicator);
+	    } else if (expression instanceof XThrowStatment) {
+	      return _doEvaluate((XThrowStatment)expression, context, indicator);
+	    } else if (expression instanceof XTryCatchFinallyStatment) {
+	      return _doEvaluate((XTryCatchFinallyStatment)expression, context, indicator);
+	    } else if (expression instanceof XVariableDeclaration) {
+		      return _doEvaluate((XVariableDeclaration)expression, context, indicator);
+	    } else {
+	      throw new IllegalArgumentException("Unhandled parameter types: " +
+	        Arrays.<Object>asList(expression, context, indicator).toString());
+	    }
+	}
+	
 	/**
 	 * don't call this directly. Always call evaluate() internalEvaluate()
 	 */
 	protected Object doEvaluate(XExpression expression, IEvaluationContext context, CancelIndicator indicator) {
 		if (expression instanceof XAssignment) {
 	      return _doEvaluate((XAssignment)expression, context, indicator);
-	    } else if (expression instanceof XDoWhileExpression) {
-	      return _doEvaluate((XDoWhileExpression)expression, context, indicator);
 	    } else if (expression instanceof XMemberFeatureCall) {
 	      return _doEvaluate((XMemberFeatureCall)expression, context, indicator);
-	    } else if (expression instanceof XWhileExpression) {
-	      return _doEvaluate((XWhileExpression)expression, context, indicator);
 	    } else if (expression instanceof XFeatureCall) {
 	    	return _doEvaluate((XFeatureCall)expression, context, indicator);
 	    } else if (expression instanceof XAbstractFeatureCall) {
 	    	return _doEvaluate((XAbstractFeatureCall)expression, context, indicator);
-	    } else if (expression instanceof XBlockExpression) {
-	      return _doEvaluate((XBlockExpression)expression, context, indicator);
 	    } else if (expression instanceof XBooleanLiteral) {
 	      return _doEvaluate((XBooleanLiteral)expression, context, indicator);
 	    } else if (expression instanceof XCastedExpression) {
@@ -229,30 +255,18 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 	      return _doEvaluate((XClosure)expression, context, indicator);
 	    } else if (expression instanceof XConstructorCall) {
 	      return _doEvaluate((XConstructorCall)expression, context, indicator);
-	    } else if (expression instanceof XForLoopExpression) {
-	      return _doEvaluate((XForEachExpression)expression, context, indicator);
-	    } else if (expression instanceof XIfExpression) {
-	      return _doEvaluate((XIfExpression)expression, context, indicator);
 	    } else if (expression instanceof XInstanceOfExpression) {
 	      return _doEvaluate((XInstanceOfExpression)expression, context, indicator);
 	    } else if (expression instanceof XNullLiteral) {
 	      return _doEvaluate((XNullLiteral)expression, context, indicator);
 	    } else if (expression instanceof XNumberLiteral) {
 	      return _doEvaluate((XNumberLiteral)expression, context, indicator);
-	    } else if (expression instanceof XReturnExpression) {
-	      return _doEvaluate((XReturnExpression)expression, context, indicator);
 	    } else if (expression instanceof XStringLiteral) {
 	      return _doEvaluate((XStringLiteral)expression, context, indicator);
-	    } else if (expression instanceof XSwitchExpression) {
-	      return _doEvaluate((XSwitchExpression)expression, context, indicator);
-	    } else if (expression instanceof XThrowExpression) {
-	      return _doEvaluate((XThrowExpression)expression, context, indicator);
-	    } else if (expression instanceof XTryCatchFinallyExpression) {
-	      return _doEvaluate((XTryCatchFinallyExpression)expression, context, indicator);
+	    } else if (expression instanceof XSwitchStatment) {
+	      return _doEvaluate((XSwitchStatment)expression, context, indicator);
 	    } else if (expression instanceof XTypeLiteral) {
 	      return _doEvaluate((XTypeLiteral)expression, context, indicator);
-	    } else if (expression instanceof XVariableDeclaration) {
-		      return _doEvaluate((XVariableDeclaration)expression, context, indicator);
 	    } else if (expression instanceof XListLiteral) {
 		      return _doEvaluate((XListLiteral)expression, context, indicator);
 	    } else if (expression instanceof XSetLiteral) {
@@ -272,7 +286,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return null;
 	}
 	
-	protected Object _doEvaluate(XReturnExpression returnExpr, IEvaluationContext context, CancelIndicator indicator) {
+	protected Object _doEvaluate(XReturnStatment returnExpr, IEvaluationContext context, CancelIndicator indicator) {
 		Object returnValue = internalEvaluate(returnExpr.getExpression(), context, indicator);
 		throw new ReturnValue(returnValue);
 	}
@@ -447,8 +461,8 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return proxy;
 	}
 
-	protected Object _doEvaluate(XBlockExpression literal, IEvaluationContext context, CancelIndicator indicator) {
-		List<XExpression> expressions = literal.getExpressions();
+	protected Object _doEvaluate(XBlockStatment literal, IEvaluationContext context, CancelIndicator indicator) {
+		List<XStatment> expressions = literal.getStatments();
 
 		Object result = null;
 		IEvaluationContext forkedContext = context.fork();
@@ -458,52 +472,53 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return result;
 	}
 
-	protected Object _doEvaluate(XIfExpression ifExpression, IEvaluationContext context, CancelIndicator indicator) {
+	protected Object _doEvaluate(XIfStatment ifExpression, IEvaluationContext context, CancelIndicator indicator) {
 		Object conditionResult = internalEvaluate(ifExpression.getIf(), context, indicator);
 		if (Boolean.TRUE.equals(conditionResult)) {
 			return internalEvaluate(ifExpression.getThen(), context, indicator);
 		} else {
-			if (ifExpression.getElse() == null)
-				return getDefaultObjectValue(typeResolver.resolveTypes(ifExpression).getActualType(ifExpression));
+//			if (ifExpression.getElse() == null)
+//				return getDefaultObjectValue(typeResolver.resolveTypes(ifExpression).getActualType(ifExpression));
 			return internalEvaluate(ifExpression.getElse(), context, indicator);
 		}
 	}
 
-	protected Object _doEvaluate(XSwitchExpression switchExpression, IEvaluationContext context, CancelIndicator indicator) {
-		IEvaluationContext forkedContext = context.fork();
-		Object conditionResult = internalEvaluate(switchExpression.getSwitch(), forkedContext, indicator);
-		String simpleName = switchExpression.getLocalVarName() != null ? featureNameProvider.getSimpleName(switchExpression) : null;
-		if (simpleName != null) {
-			forkedContext.newValue(QualifiedName.create(simpleName), conditionResult);
-		}
-		for (XCasePart casePart : switchExpression.getCases()) {
-			Class<?> expectedType = null;
-			if (casePart.getTypeGuard() != null) {
-				String typeName = casePart.getTypeGuard().getType().getQualifiedName();
-				try {
-					expectedType = classFinder.forName(typeName);
-				} catch (ClassNotFoundException e) {
-					throw new EvaluationException(new NoClassDefFoundError(typeName));
-				}
-			}
-			if (expectedType != null && conditionResult == null)
-				throw new IllegalStateException("Switch without expression or implicit 'this' may not use type guards");
-			if (expectedType == null || expectedType.isInstance(conditionResult)) {
-				if (casePart.getCase() != null) {
-					Object casePartResult = internalEvaluate(casePart.getCase(), forkedContext, indicator);
-					if (Boolean.TRUE.equals(casePartResult) || eq(conditionResult, casePartResult)) {
-						return internalEvaluate(casePart.getThen(), forkedContext, indicator);
-					}
-				} else {
-					return internalEvaluate(casePart.getThen(), forkedContext, indicator);
-				}
-			}
-		}
-		if (switchExpression.getDefault() != null) {
-			Object defaultResult = internalEvaluate(switchExpression.getDefault(), forkedContext, indicator);
-			return defaultResult;
-		}
-		return getDefaultObjectValue(typeResolver.resolveTypes(switchExpression).getActualType((XExpression)switchExpression));
+	protected Object _doEvaluate(XSwitchStatment switchExpression, IEvaluationContext context, CancelIndicator indicator) {
+		return indicator;
+//		IEvaluationContext forkedContext = context.fork();
+//		Object conditionResult = internalEvaluate(switchExpression.getSwitch(), forkedContext, indicator);
+//		String simpleName = switchExpression.getLocalVarName() != null ? featureNameProvider.getSimpleName(switchExpression) : null;
+//		if (simpleName != null) {
+//			forkedContext.newValue(QualifiedName.create(simpleName), conditionResult);
+//		}
+//		for (XCasePart casePart : switchExpression.getCases()) {
+//			Class<?> expectedType = null;
+//			if (casePart.getTypeGuard() != null) {
+//				String typeName = casePart.getTypeGuard().getType().getQualifiedName();
+//				try {
+//					expectedType = classFinder.forName(typeName);
+//				} catch (ClassNotFoundException e) {
+//					throw new EvaluationException(new NoClassDefFoundError(typeName));
+//				}
+//			}
+//			if (expectedType != null && conditionResult == null)
+//				throw new IllegalStateException("Switch without expression or implicit 'this' may not use type guards");
+//			if (expectedType == null || expectedType.isInstance(conditionResult)) {
+//				if (casePart.getCase() != null) {
+//					Object casePartResult = internalEvaluate(casePart.getCase(), forkedContext, indicator);
+//					if (Boolean.TRUE.equals(casePartResult) || eq(conditionResult, casePartResult)) {
+//						return internalEvaluate(casePart.getThen(), forkedContext, indicator);
+//					}
+//				} else {
+//					return internalEvaluate(casePart.getThen(), forkedContext, indicator);
+//				}
+//			}
+//		}
+//		if (switchExpression.getDefault() != null) {
+//			Object defaultResult = internalEvaluate(switchExpression.getDefault(), forkedContext, indicator);
+//			return defaultResult;
+//		}
+//		return getDefaultObjectValue(typeResolver.resolveTypes(switchExpression).getActualType((XExpression)switchExpression));
 	}
 
 	protected Object _doEvaluate(XCastedExpression castedExpression, IEvaluationContext context, CancelIndicator indicator) {
@@ -600,22 +615,22 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		throw new EvaluationException(new ClassCastException(castMe.getClass().getName() + "!=" + kind.name().toLowerCase()));
 	}
 
-	protected Object _doEvaluate(XThrowExpression throwExpression, IEvaluationContext context, CancelIndicator indicator) {
+	protected Object _doEvaluate(XThrowStatment throwExpression, IEvaluationContext context, CancelIndicator indicator) {
 		Object thrown = internalEvaluate(throwExpression.getExpression(), context, indicator);
-		if (thrown == null) {
-			return throwNullPointerException(throwExpression, "throwable expression evaluated to 'null'");
-		}
+//		if (thrown == null) {
+//			return throwNullPointerException(throwExpression, "throwable expression evaluated to 'null'");
+//		}
 		if (!(thrown instanceof Throwable)) {
 			return throwClassCastException(throwExpression.getExpression(), thrown, Throwable.class);
 		}
 		throw new EvaluationException((Throwable) thrown);
 	}
 
-	protected Object _doEvaluate(XTryCatchFinallyExpression tryCatchFinally,
+	protected Object _doEvaluate(XTryCatchFinallyStatment tryCatchFinally,
 			IEvaluationContext context, CancelIndicator indicator) {
 		Object result = null;
 		try {
-			result = internalEvaluate(tryCatchFinally.getExpression(), context, indicator);
+			result = internalEvaluate(tryCatchFinally.getStatment(), context, indicator);
 		} catch (EvaluationException evaluationException) {
 			Throwable cause = evaluationException.getCause();
 			
@@ -639,9 +654,9 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 			
 		}
 
-		if (tryCatchFinally.getFinallyExpression() != null) {
+		if (tryCatchFinally.getFinallyStatment() != null) {
 			try {
-				internalEvaluate(tryCatchFinally.getFinallyExpression(), context, indicator);
+				internalEvaluate(tryCatchFinally.getFinallyStatment(), context, indicator);
 			} catch (EvaluationException e) {
 				throw new EvaluationException(new FinallyDidNotCompleteException(e));
 			}
@@ -684,17 +699,17 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return result;
 	}
 
-	protected Object _doEvaluate(XForEachExpression forLoop, IEvaluationContext context, CancelIndicator indicator) {
-		Object iterableOrIterator = internalEvaluate(forLoop.getForExpression(), context, indicator);
+	protected Object _doEvaluate(XForEachStatment forLoop, IEvaluationContext context, CancelIndicator indicator) {
+		Object iterableOrIterator = internalEvaluate(forLoop.getExpression(), context, indicator);
 		if (iterableOrIterator == null)
-			return throwNullPointerException(forLoop.getForExpression(), "iterable evaluated to 'null'");
+			return throwNullPointerException(forLoop.getExpression(), "iterable evaluated to 'null'");
 		Iterator<?> iter = null;
 		if (iterableOrIterator instanceof Iterable<?>) {
 			iter = ((Iterable<?>) iterableOrIterator).iterator();
 		} else if (iterableOrIterator.getClass().isArray()) {
 			iter = ((Iterable<?>) Conversions.doWrapArray(iterableOrIterator)).iterator();
 		} else {
-			return throwClassCastException(forLoop.getForExpression(), iterableOrIterator, java.lang.Iterable.class);
+			return throwClassCastException(forLoop.getExpression(), iterableOrIterator, java.lang.Iterable.class);
 		}
 		IEvaluationContext forkedContext = context.fork();
 		QualifiedName paramName = QualifiedName.create(forLoop.getDeclaredParam().getName());
@@ -702,12 +717,12 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		while (iter.hasNext()) {
 			Object next = iter.next();
 			forkedContext.assignValue(paramName, next);
-			internalEvaluate(forLoop.getEachExpression(), forkedContext, indicator);
+			internalEvaluate(forLoop.getStatment(), forkedContext, indicator);
 		}
 		return null;
 	}
 
-	protected Object _doEvaluate(XWhileExpression whileLoop, IEvaluationContext context, CancelIndicator indicator) {
+	protected Object _doEvaluate(XWhileStatment whileLoop, IEvaluationContext context, CancelIndicator indicator) {
 		Object condition = internalEvaluate(whileLoop.getPredicate(), context, indicator);
 		while (Boolean.TRUE.equals(condition)) {
 			internalEvaluate(whileLoop.getBody(), context, indicator);
@@ -716,7 +731,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		return null;
 	}
 
-	protected IEvaluationResult _doEvaluate(XDoWhileExpression doWhileLoop, IEvaluationContext context, CancelIndicator indicator) {
+	protected IEvaluationResult _doEvaluate(XDoWhileStatment doWhileLoop, IEvaluationContext context, CancelIndicator indicator) {
 		Object condition = null;
 		do {
 			internalEvaluate(doWhileLoop.getBody(), context, indicator);

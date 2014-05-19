@@ -286,18 +286,6 @@ ruleXExpression :
 	ruleXConstructorCall |
 	ruleXFeatureCall |
 	ruleXLiteral |
-	ruleXBlockExpression |
-	ruleXSwitchExpression |
-	ruleXIfExpression |
-	ruleXForLoopExpression |
-	ruleXForEachLoopExpression |
-	ruleXWhileExpression |
-	ruleXDoWhileExpression |
-	ruleXThrowExpression |
-	ruleXReturnExpression |
-	ruleXTryCatchFinallyExpression |
-	ruleXBreakExpression |
-	ruleXContinueExpression |
 	ruleXParenthesizedExpression
 ;
 
@@ -315,28 +303,53 @@ ruleXExpression :
 	ruleXTemplateLiteral
 ;
 
+// Rule XStatment
+ ruleXStatment :
+	ruleXBlockStatment |
+	ruleXSwitchStatment |
+	ruleXIfStatment |
+	ruleXForLoopStatment |
+	ruleXForEachStatment |
+	ruleXWhileStatment |
+	ruleXDoWhileStatment |
+	ruleXThrowStatment |
+	ruleXReturnStatment |
+	ruleXTryCatchFinallyStatment |
+	ruleXBreakStatment |
+	ruleXContinueStatment |
+	ruleXFunction |
+	ruleXExpressionStatment
+;
+
+// Rule XExpressionStatment
+ ruleXExpressionStatment :
+	ruleXPrimaryExpression ';'
+;
+
 // Rule XClosure
  ruleXClosure :
-	'function' (
-		ruleValidID |
-		'operator' ruleOpMulti
-	)? ( (
-	'(' (
+	'closure' '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' (
-		':' ruleJvmTypeReference
-	)?
+	)? ')' ruleXExpression
+;
+
+// Rule XFunction
+ ruleXFunction :
+	'export'? 'function' ( (
+	'<' ruleJvmTypeParameter (
+		',' ruleJvmTypeParameter
+	)* '>'
 	) => (
-		'(' (
-			ruleJvmFormalParameter (
-				',' ruleJvmFormalParameter
-			)*
-		)? ')' (
-			':' ruleJvmTypeReference
-		)?
-	) ) ruleXExpression
+		'<' ruleJvmTypeParameter (
+			',' ruleJvmTypeParameter
+		)* '>'
+	) )? ruleJvmTypeReference? ruleValidID '(' (
+		ruleJvmFormalParameter (
+			',' ruleJvmFormalParameter
+		)*
+	)? ')' ruleXBlockStatment
 ;
 
 // Rule XParenthesizedExpression
@@ -344,87 +357,61 @@ ruleXExpression :
 	'(' ruleXExpression ')'
 ;
 
-// Rule XIfExpression
- ruleXIfExpression :
-	'if' '(' ruleXExpression ')' ruleXExpression (
+// Rule XIfStatment
+ ruleXIfStatment :
+	'if' '(' ruleXExpression ')' ruleXStatment (
 		( (
 		'else'
-		) => 'else' ) ruleXExpression
+		) => 'else' ) ruleXStatment
 	)?
 ;
 
-// Rule XSwitchExpression
- ruleXSwitchExpression :
-	'switch' (
-		( (
-		ruleValidID ':'
-		) => (
-			ruleValidID ':'
-		) )? ruleXExpression |
-		( (
-		'(' ruleValidID ':'
-		) => (
-			'(' ruleValidID ':'
-		) ) ruleXExpression ')'
-	) '{' ruleXCasePart+ (
-		'default' ':' ruleXExpression
+// Rule XSwitchStatment
+ ruleXSwitchStatment :
+	'switch' '(' ruleXExpression ')' '{' ruleXCasePart* (
+		'default' ':' ruleXStatment
 	)? '}'
 ;
 
 // Rule XCasePart
  ruleXCasePart :
-	'case' ruleXExpression ':' ruleXExpression
+	'case' ruleXExpression ':' ruleXStatment
 ;
 
-// Rule XForLoopExpression
- ruleXForLoopExpression :
+// Rule XForLoopStatment
+ ruleXForLoopStatment :
 	'for' '(' (
-		( (
-		ruleXExpressionInsideBlock
-		) => ruleXExpressionInsideBlock )? ';'
+		(
+			ruleXExpression? |
+			'var' ruleXVariableDeclaration (
+				',' ruleXVariableDeclaration
+			)*
+		) ';'
 	) (
 		( (
 		ruleXExpression
 		) => ruleXExpression )? ';'
-	) ruleXExpression? ')' ruleXExpression
+	) ruleXExpression? ')' ruleXStatment
 ;
 
-// Rule XForEachLoopExpression
- ruleXForEachLoopExpression :
-	'foreach' '(' ruleJvmFormalParameter ':' ruleXExpression ')' ruleXExpression
+// Rule XForEachStatment
+ ruleXForEachStatment :
+	'foreach' '(' ruleJvmFormalParameter 'of' ruleXExpression ')' ruleXStatment
 ;
 
-// Rule XWhileExpression
- ruleXWhileExpression :
-	'while' '(' ruleXExpression ')' ruleXExpression
+// Rule XWhileStatment
+ ruleXWhileStatment :
+	'while' '(' ruleXExpression ')' ruleXStatment
 ;
 
-// Rule XDoWhileExpression
- ruleXDoWhileExpression :
-	'do' ruleXExpression 'while' '(' ruleXExpression ')'
+// Rule XDoWhileStatment
+ ruleXDoWhileStatment :
+	'do' ruleXStatment 'while' '(' ruleXExpression ')'
 ;
 
-// Rule XBlockExpression
- ruleXBlockExpression :
-	'{' (
-		ruleXExpressionInsideBlock ';'?
-	)* '}'
-;
-
-// Rule XExpressionInsideBlock
- ruleXExpressionInsideBlock :
-	ruleXVariableDeclarationList |
-	ruleXExpression
-;
-
-// Rule XVariableDeclarationList
- ruleXVariableDeclarationList :
-	'export'? (
-		'var' |
-		'const'
-	) ruleXVariableDeclaration (
-		',' ruleXVariableDeclaration
-	)*
+// Rule XBlockStatment
+ ruleXBlockStatment :
+	'{' ruleXStatment* '}'
 ;
 
 // Rule XVariableDeclaration
@@ -445,7 +432,7 @@ ruleXExpression :
 
 // Rule JvmFormalParameter
  ruleJvmFormalParameter :
-	ruleJvmTypeReference? ruleValidID (
+	ruleJvmAnnotation* ruleJvmTypeReference? '...'? ruleValidID (
 		( (
 		'='
 		) => '=' ) ruleXExpression
@@ -556,39 +543,39 @@ ruleXExpression :
 	'typeof' '(' ruleQualifiedName ruleArrayBrackets* ')'
 ;
 
-// Rule XThrowExpression
- ruleXThrowExpression :
+// Rule XThrowStatment
+ ruleXThrowStatment :
 	'throw' ruleXExpression
 ;
 
-// Rule XReturnExpression
- ruleXReturnExpression :
+// Rule XReturnStatment
+ ruleXReturnStatment :
 	'return' ( (
 	ruleXExpression
 	) => ruleXExpression )?
 ;
 
-// Rule XBreakExpression
- ruleXBreakExpression :
+// Rule XBreakStatment
+ ruleXBreakStatment :
 	'break'
 ;
 
-// Rule XContinueExpression
- ruleXContinueExpression :
+// Rule XContinueStatment
+ ruleXContinueStatment :
 	'continue'
 ;
 
-// Rule XTryCatchFinallyExpression
- ruleXTryCatchFinallyExpression :
-	'try' ruleXExpression (
+// Rule XTryCatchFinallyStatment
+ ruleXTryCatchFinallyStatment :
+	'try' ruleXStatment (
 		( (
 		'catch'
 		) => ruleXCatchClause ) (
 			( (
 			'finally'
-			) => 'finally' ) ruleXExpression
+			) => 'finally' ) ruleXStatment
 		)? |
-		'finally' ruleXExpression
+		'finally' ruleXStatment
 	)
 ;
 
@@ -596,7 +583,34 @@ ruleXExpression :
  ruleXCatchClause :
 	( (
 	'catch'
-	) => 'catch' ) '(' RULE_ID ')' ruleXExpression
+	) => 'catch' ) '(' RULE_ID ')' ruleXStatment
+;
+
+// Rule JvmAnnotation
+ ruleJvmAnnotation :
+	'@' ruleQualifiedName (
+		( (
+		'('
+		) => '(' ) (
+			( (
+			ruleValidID '='
+			) => ruleJvmAnnotationValue ) (
+				',' ( (
+				ruleValidID '='
+				) => ruleJvmAnnotationValue )
+			)* |
+			ruleXLiteral
+		)? ')'
+	)?
+;
+
+// Rule JvmAnnotationValue
+ ruleJvmAnnotationValue :
+	( (
+	ruleValidID '='
+	) => (
+		ruleValidID '='
+	) ) ruleXLiteral
 ;
 
 // Rule QualifiedName
@@ -700,6 +714,13 @@ ruleXExpression :
 // Rule JvmLowerBound
  ruleJvmLowerBound :
 	'super' ruleJvmTypeReference
+;
+
+// Rule JvmTypeParameter
+ ruleJvmTypeParameter :
+	ruleValidID (
+		ruleJvmUpperBound ruleJvmUpperBoundAnded*
+	)?
 ;
 
 // Rule ValidID

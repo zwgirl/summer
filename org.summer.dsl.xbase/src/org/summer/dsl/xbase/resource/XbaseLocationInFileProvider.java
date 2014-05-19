@@ -25,7 +25,6 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XSwitchExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.util.FeatureCallAsTypeLiteralHelper;
 
@@ -45,9 +44,6 @@ public class XbaseLocationInFileProvider extends DefaultLocationInFileProvider {
 	
 	@Override
 	public ITextRegion getSignificantTextRegion(EObject element) {
-		if(element instanceof XSwitchExpression && ((XSwitchExpression)element).getLocalVarName() != null) {
-			 return getLocationOfAttribute(element, XbasePackage.Literals.XSWITCH_EXPRESSION__LOCAL_VAR_NAME, -1, true);
-		}
 		if (element instanceof XAbstractFeatureCall) {
 			XAbstractFeatureCall typeLiteral = typeLiteralHelper.getRootTypeLiteral((XAbstractFeatureCall) element);
 			if (typeLiteral != null) {

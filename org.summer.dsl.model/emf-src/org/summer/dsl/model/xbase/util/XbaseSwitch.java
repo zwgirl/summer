@@ -78,18 +78,30 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XIF_EXPRESSION: {
-				XIfExpression xIfExpression = (XIfExpression)theEObject;
-				T result = caseXIfExpression(xIfExpression);
-				if (result == null) result = caseXExpression(xIfExpression);
+			case XbasePackage.XSTATMENT: {
+				XStatment xStatment = (XStatment)theEObject;
+				T result = caseXStatment(xStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XSWITCH_EXPRESSION: {
-				XSwitchExpression xSwitchExpression = (XSwitchExpression)theEObject;
-				T result = caseXSwitchExpression(xSwitchExpression);
-				if (result == null) result = caseXExpression(xSwitchExpression);
-				if (result == null) result = caseJvmIdentifiableElement(xSwitchExpression);
+			case XbasePackage.XIF_STATMENT: {
+				XIfStatment xIfStatment = (XIfStatment)theEObject;
+				T result = caseXIfStatment(xIfStatment);
+				if (result == null) result = caseXStatment(xIfStatment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XEXPRESSION_STATMENT: {
+				XExpressionStatment xExpressionStatment = (XExpressionStatment)theEObject;
+				T result = caseXExpressionStatment(xExpressionStatment);
+				if (result == null) result = caseXStatment(xExpressionStatment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XSWITCH_STATMENT: {
+				XSwitchStatment xSwitchStatment = (XSwitchStatment)theEObject;
+				T result = caseXSwitchStatment(xSwitchStatment);
+				if (result == null) result = caseXStatment(xSwitchStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,10 +111,10 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XBLOCK_EXPRESSION: {
-				XBlockExpression xBlockExpression = (XBlockExpression)theEObject;
-				T result = caseXBlockExpression(xBlockExpression);
-				if (result == null) result = caseXExpression(xBlockExpression);
+			case XbasePackage.XBLOCK_STATMENT: {
+				XBlockStatment xBlockStatment = (XBlockStatment)theEObject;
+				T result = caseXBlockStatment(xBlockStatment);
+				if (result == null) result = caseXStatment(xBlockStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,7 +129,7 @@ public class XbaseSwitch<T> extends Switch<T> {
 			case XbasePackage.XVARIABLE_DECLARATION_LIST: {
 				XVariableDeclarationList xVariableDeclarationList = (XVariableDeclarationList)theEObject;
 				T result = caseXVariableDeclarationList(xVariableDeclarationList);
-				if (result == null) result = caseXExpression(xVariableDeclarationList);
+				if (result == null) result = caseXStatment(xVariableDeclarationList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -248,40 +260,40 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XFOR_LOOP_EXPRESSION: {
-				XForLoopExpression xForLoopExpression = (XForLoopExpression)theEObject;
-				T result = caseXForLoopExpression(xForLoopExpression);
-				if (result == null) result = caseXExpression(xForLoopExpression);
+			case XbasePackage.XFOR_LOOP_STATMENT: {
+				XForLoopStatment xForLoopStatment = (XForLoopStatment)theEObject;
+				T result = caseXForLoopStatment(xForLoopStatment);
+				if (result == null) result = caseXStatment(xForLoopStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XFOR_EACH_EXPRESSION: {
-				XForEachExpression xForEachExpression = (XForEachExpression)theEObject;
-				T result = caseXForEachExpression(xForEachExpression);
-				if (result == null) result = caseXExpression(xForEachExpression);
+			case XbasePackage.XFOR_EACH_STATMENT: {
+				XForEachStatment xForEachStatment = (XForEachStatment)theEObject;
+				T result = caseXForEachStatment(xForEachStatment);
+				if (result == null) result = caseXStatment(xForEachStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XABSTRACT_WHILE_EXPRESSION: {
-				XAbstractWhileExpression xAbstractWhileExpression = (XAbstractWhileExpression)theEObject;
-				T result = caseXAbstractWhileExpression(xAbstractWhileExpression);
-				if (result == null) result = caseXExpression(xAbstractWhileExpression);
+			case XbasePackage.XABSTRACT_WHILE_STATMENT: {
+				XAbstractWhileStatment xAbstractWhileStatment = (XAbstractWhileStatment)theEObject;
+				T result = caseXAbstractWhileStatment(xAbstractWhileStatment);
+				if (result == null) result = caseXStatment(xAbstractWhileStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XDO_WHILE_EXPRESSION: {
-				XDoWhileExpression xDoWhileExpression = (XDoWhileExpression)theEObject;
-				T result = caseXDoWhileExpression(xDoWhileExpression);
-				if (result == null) result = caseXAbstractWhileExpression(xDoWhileExpression);
-				if (result == null) result = caseXExpression(xDoWhileExpression);
+			case XbasePackage.XDO_WHILE_STATMENT: {
+				XDoWhileStatment xDoWhileStatment = (XDoWhileStatment)theEObject;
+				T result = caseXDoWhileStatment(xDoWhileStatment);
+				if (result == null) result = caseXAbstractWhileStatment(xDoWhileStatment);
+				if (result == null) result = caseXStatment(xDoWhileStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XWHILE_EXPRESSION: {
-				XWhileExpression xWhileExpression = (XWhileExpression)theEObject;
-				T result = caseXWhileExpression(xWhileExpression);
-				if (result == null) result = caseXAbstractWhileExpression(xWhileExpression);
-				if (result == null) result = caseXExpression(xWhileExpression);
+			case XbasePackage.XWHILE_STATMENT: {
+				XWhileStatment xWhileStatment = (XWhileStatment)theEObject;
+				T result = caseXWhileStatment(xWhileStatment);
+				if (result == null) result = caseXAbstractWhileStatment(xWhileStatment);
+				if (result == null) result = caseXStatment(xWhileStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -299,17 +311,17 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XTHROW_EXPRESSION: {
-				XThrowExpression xThrowExpression = (XThrowExpression)theEObject;
-				T result = caseXThrowExpression(xThrowExpression);
-				if (result == null) result = caseXExpression(xThrowExpression);
+			case XbasePackage.XTHROW_STATMENT: {
+				XThrowStatment xThrowStatment = (XThrowStatment)theEObject;
+				T result = caseXThrowStatment(xThrowStatment);
+				if (result == null) result = caseXStatment(xThrowStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION: {
-				XTryCatchFinallyExpression xTryCatchFinallyExpression = (XTryCatchFinallyExpression)theEObject;
-				T result = caseXTryCatchFinallyExpression(xTryCatchFinallyExpression);
-				if (result == null) result = caseXExpression(xTryCatchFinallyExpression);
+			case XbasePackage.XTRY_CATCH_FINALLY_STATMENT: {
+				XTryCatchFinallyStatment xTryCatchFinallyStatment = (XTryCatchFinallyStatment)theEObject;
+				T result = caseXTryCatchFinallyStatment(xTryCatchFinallyStatment);
+				if (result == null) result = caseXStatment(xTryCatchFinallyStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -327,24 +339,24 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XRETURN_EXPRESSION: {
-				XReturnExpression xReturnExpression = (XReturnExpression)theEObject;
-				T result = caseXReturnExpression(xReturnExpression);
-				if (result == null) result = caseXExpression(xReturnExpression);
+			case XbasePackage.XRETURN_STATMENT: {
+				XReturnStatment xReturnStatment = (XReturnStatment)theEObject;
+				T result = caseXReturnStatment(xReturnStatment);
+				if (result == null) result = caseXStatment(xReturnStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XBREAK_EXPRESSION: {
-				XBreakExpression xBreakExpression = (XBreakExpression)theEObject;
-				T result = caseXBreakExpression(xBreakExpression);
-				if (result == null) result = caseXExpression(xBreakExpression);
+			case XbasePackage.XBREAK_STATMENT: {
+				XBreakStatment xBreakStatment = (XBreakStatment)theEObject;
+				T result = caseXBreakStatment(xBreakStatment);
+				if (result == null) result = caseXStatment(xBreakStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XCONTINUE_EXPRESSION: {
-				XContinueExpression xContinueExpression = (XContinueExpression)theEObject;
-				T result = caseXContinueExpression(xContinueExpression);
-				if (result == null) result = caseXExpression(xContinueExpression);
+			case XbasePackage.XCONTINUE_STATMENT: {
+				XContinueStatment xContinueStatment = (XContinueStatment)theEObject;
+				T result = caseXContinueStatment(xContinueStatment);
+				if (result == null) result = caseXStatment(xContinueStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -425,7 +437,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 			case XbasePackage.XTEMPLATE: {
 				XTemplate xTemplate = (XTemplate)theEObject;
 				T result = caseXTemplate(xTemplate);
-				if (result == null) result = caseXBlockExpression(xTemplate);
 				if (result == null) result = caseXExpression(xTemplate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -435,6 +446,14 @@ public class XbaseSwitch<T> extends Switch<T> {
 				T result = caseRichStringLiteral(richStringLiteral);
 				if (result == null) result = caseXStringLiteral(richStringLiteral);
 				if (result == null) result = caseXExpression(richStringLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XFUNCTION: {
+				XFunction xFunction = (XFunction)theEObject;
+				T result = caseXFunction(xFunction);
+				if (result == null) result = caseXStatment(xFunction);
+				if (result == null) result = caseJvmIdentifiableElement(xFunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -458,32 +477,62 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XIf Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XStatment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XIf Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XStatment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXIfExpression(XIfExpression object) {
+	public T caseXStatment(XStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XSwitch Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XIf Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XSwitch Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XIf Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXSwitchExpression(XSwitchExpression object) {
+	public T caseXIfStatment(XIfStatment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XExpression Statment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XExpression Statment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXExpressionStatment(XExpressionStatment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XSwitch Statment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XSwitch Statment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXSwitchStatment(XSwitchStatment object) {
 		return null;
 	}
 
@@ -503,17 +552,17 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XBlock Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XBlock Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XBlock Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXBlockExpression(XBlockExpression object) {
+	public T caseXBlockStatment(XBlockStatment object) {
 		return null;
 	}
 
@@ -803,77 +852,77 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XFor Loop Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XFor Loop Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XFor Loop Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XFor Loop Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXForLoopExpression(XForLoopExpression object) {
+	public T caseXForLoopStatment(XForLoopStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XFor Each Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XFor Each Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XFor Each Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XFor Each Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXForEachExpression(XForEachExpression object) {
+	public T caseXForEachStatment(XForEachStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XAbstract While Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XAbstract While Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XAbstract While Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XAbstract While Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXAbstractWhileExpression(XAbstractWhileExpression object) {
+	public T caseXAbstractWhileStatment(XAbstractWhileStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XDo While Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XDo While Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XDo While Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XDo While Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXDoWhileExpression(XDoWhileExpression object) {
+	public T caseXDoWhileStatment(XDoWhileStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XWhile Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XWhile Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XWhile Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XWhile Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXWhileExpression(XWhileExpression object) {
+	public T caseXWhileStatment(XWhileStatment object) {
 		return null;
 	}
 
@@ -908,32 +957,32 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XThrow Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XThrow Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XThrow Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XThrow Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXThrowExpression(XThrowExpression object) {
+	public T caseXThrowStatment(XThrowStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XTry Catch Finally Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XTry Catch Finally Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XTry Catch Finally Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XTry Catch Finally Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXTryCatchFinallyExpression(XTryCatchFinallyExpression object) {
+	public T caseXTryCatchFinallyStatment(XTryCatchFinallyStatment object) {
 		return null;
 	}
 
@@ -968,47 +1017,47 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XReturn Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XReturn Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XReturn Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XReturn Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXReturnExpression(XReturnExpression object) {
+	public T caseXReturnStatment(XReturnStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XBreak Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XBreak Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XBreak Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XBreak Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXBreakExpression(XBreakExpression object) {
+	public T caseXBreakStatment(XBreakStatment object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XContinue Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XContinue Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XContinue Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XContinue Statment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXContinueExpression(XContinueExpression object) {
+	public T caseXContinueStatment(XContinueStatment object) {
 		return null;
 	}
 
@@ -1174,6 +1223,21 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRichStringLiteral(RichStringLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XFunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XFunction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXFunction(XFunction object) {
 		return null;
 	}
 

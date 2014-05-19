@@ -7,8 +7,9 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.ui.refactoring;
 
-import static com.google.common.collect.Lists.*;
-import static java.util.Collections.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.summer.dsl.model.xbase.XbasePackage.Literals.*;
 
 import java.util.List;
@@ -24,8 +25,9 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.ITextRegion;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -35,7 +37,7 @@ public class ExpressionUtil {
 	/**
 	 * @returns the smallest single expression containing the selection.  
 	 */
-	public XExpression findSelectedExpression(XtextResource resource, ITextSelection selection) {
+	public XStatment findSelectedExpression(XtextResource resource, ITextSelection selection) {
 		IParseResult parseResult = resource.getParseResult();
 		if (parseResult != null) {
 			INode node = NodeModelUtils.findLeafNodeAtOffset(parseResult.getRootNode(), selection.getOffset());
@@ -53,7 +55,7 @@ public class ExpressionUtil {
 						return null;
 					currentSemanticElement = NodeModelUtils.findActualSemanticObjectFor(node);
 				}
-				return (XExpression) currentSemanticElement;
+				return (XStatment) currentSemanticElement;
 			}
 		}
 		return null;
@@ -62,12 +64,12 @@ public class ExpressionUtil {
 	/**
 	 * @returns the list of sibling expressions (expressions in the same block expression) containing the selection.  
 	 */
-	public List<XExpression> findSelectedSiblingExpressions(XtextResource resource, ITextSelection selection) {
+	public List<XStatment> findSelectedSiblingExpressions(XtextResource resource, ITextSelection selection) {
 		ITextSelection trimmedSelection = trimSelection(resource, selection);
-		XExpression selectedExpression = findSelectedExpression(resource, trimmedSelection);
-		if(selectedExpression instanceof XBlockExpression) {
-			List<XExpression> selectedExpressions = newArrayList();
-			for(XExpression subExpression: ((XBlockExpression) selectedExpression).getExpressions()) {
+		XStatment selectedExpression = findSelectedExpression(resource, trimmedSelection);
+		if(selectedExpression instanceof XBlockStatment) {
+			List<XStatment> selectedExpressions = newArrayList();
+			for(XStatment subExpression: ((XBlockStatment) selectedExpression).getStatments()) {
 				ICompositeNode node = NodeModelUtils.findActualNodeFor(subExpression);
 				if(node != null && nodeIntersectsWithSelection(trimmedSelection, node)) {
 					selectedExpressions.add(subExpression);
@@ -117,7 +119,7 @@ public class ExpressionUtil {
 		if (eContainer == null)
 			return null;
 		if (expression instanceof XExpression) {
-			if (eContainer instanceof XBlockExpression)
+			if (eContainer instanceof XBlockStatment)
 				return (XExpression) expression;
 			else if (isBlockInsertable(eContainer, expression))
 				return (XExpression) expression;
@@ -128,15 +130,15 @@ public class ExpressionUtil {
 	protected boolean isBlockInsertable(EObject eContainer, EObject expression) {
 		EReference ref = expression.eContainmentFeature();
 		return ref == XCLOSURE__EXPRESSION 
-				|| ref == XIF_EXPRESSION__THEN 
-				|| ref == XIF_EXPRESSION__ELSE
+				|| ref == XIF_STATMENT__THEN 
+				|| ref == XIF_STATMENT__ELSE
 				|| ref == XCASE_PART__THEN
-				|| ref == XSWITCH_EXPRESSION__DEFAULT
-				|| ref == XFOR_LOOP_EXPRESSION__EACH_EXPRESSION
-				|| ref == XABSTRACT_WHILE_EXPRESSION__BODY
-				|| ref == XTRY_CATCH_FINALLY_EXPRESSION__EXPRESSION
-				|| ref == XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION
-				|| ref == XCATCH_CLAUSE__EXPRESSION;
+				|| ref == XSWITCH_STATMENT__DEFAULT
+				|| ref == XFOR_LOOP_STATMENT__STATMENT
+				|| ref == XABSTRACT_WHILE_STATMENT__BODY
+				|| ref == XTRY_CATCH_FINALLY_STATMENT__STATMENT
+				|| ref == XTRY_CATCH_FINALLY_STATMENT__FINALLY_STATMENT
+				|| ref == XCATCH_CLAUSE__STATMENT;
 	}
 	
 }

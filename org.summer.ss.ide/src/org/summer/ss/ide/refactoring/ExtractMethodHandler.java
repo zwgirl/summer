@@ -56,25 +56,25 @@ public class ExtractMethodHandler extends AbstractHandler {
 			syncUtil.totalSync(false);
 			final XtextEditor editor = EditorUtils.getActiveXtextEditor(event);
 			if (editor != null) {
-				final ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
-				final IXtextDocument document = editor.getDocument();
-				document.readOnly(new IUnitOfWork.Void<XtextResource>() {
-					@Override
-					public void process(XtextResource resource) throws Exception {
-						List<XExpression> expressions = expressionUtil.findSelectedSiblingExpressions(resource,
-								selection);
-						if (!expressions.isEmpty()) {
-							ExtractMethodRefactoring extractMethodRefactoring = refactoringProvider.get();
-							if (extractMethodRefactoring.initialize(editor, expressions, true)) {
-								updateSelection(editor, expressions);
-								ExtractMethodWizard wizard = wizardFactory.create(extractMethodRefactoring);
-								RefactoringWizardOpenOperation_NonForking openOperation = new RefactoringWizardOpenOperation_NonForking(
-										wizard);
-								openOperation.run(editor.getSite().getShell(), "Extract Method");
-							}
-						}
-					}
-				});
+//				final ITextSelection selection = (ITextSelection) editor.getSelectionProvider().getSelection();
+//				final IXtextDocument document = editor.getDocument();
+//				document.readOnly(new IUnitOfWork.Void<XtextResource>() {
+//					@Override
+//					public void process(XtextResource resource) throws Exception {
+//						List<XExpression> expressions = expressionUtil.findSelectedSiblingExpressions(resource,
+//								selection);
+//						if (!expressions.isEmpty()) {
+//							ExtractMethodRefactoring extractMethodRefactoring = refactoringProvider.get();
+//							if (extractMethodRefactoring.initialize(editor, expressions, true)) {
+//								updateSelection(editor, expressions);
+//								ExtractMethodWizard wizard = wizardFactory.create(extractMethodRefactoring);
+//								RefactoringWizardOpenOperation_NonForking openOperation = new RefactoringWizardOpenOperation_NonForking(
+//										wizard);
+//								openOperation.run(editor.getSite().getShell(), "Extract Method");
+//							}
+//						}
+//					}
+//				});
 			}
 		} catch (Exception exc) {
 			LOG.error("Error during refactoring", exc);

@@ -37,7 +37,6 @@ import org.summer.dsl.model.types.TypesPackage;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#getMembers <em>Members</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#isStatic <em>Static</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmDeclaredTypeImpl#isExported <em>Exported</em>}</li>
@@ -96,26 +95,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 	 * @ordered
 	 */
 	protected boolean abstract_ = ABSTRACT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isStatic() <em>Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isStatic()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean STATIC_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isStatic() <em>Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isStatic()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean static_ = STATIC_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
@@ -289,27 +268,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isStatic() {
-		return static_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatic(boolean newStatic) {
-		boolean oldStatic = static_;
-		static_ = newStatic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_DECLARED_TYPE__STATIC, oldStatic, static_));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isFinal() {
 		return final_;
 	}
@@ -387,8 +345,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 	public Iterable<JvmField> getDeclaredFields() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		
-		System.out.println("JvmDeclaredType.getDeclaredFields(): " + this.getClass());
 		throw new UnsupportedOperationException();
 	}
 
@@ -467,8 +423,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 				return getMembers();
 			case TypesPackage.JVM_DECLARED_TYPE__ABSTRACT:
 				return isAbstract();
-			case TypesPackage.JVM_DECLARED_TYPE__STATIC:
-				return isStatic();
 			case TypesPackage.JVM_DECLARED_TYPE__FINAL:
 				return isFinal();
 			case TypesPackage.JVM_DECLARED_TYPE__PACKAGE_NAME:
@@ -501,9 +455,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 				return;
 			case TypesPackage.JVM_DECLARED_TYPE__ABSTRACT:
 				setAbstract((Boolean)newValue);
-				return;
-			case TypesPackage.JVM_DECLARED_TYPE__STATIC:
-				setStatic((Boolean)newValue);
 				return;
 			case TypesPackage.JVM_DECLARED_TYPE__FINAL:
 				setFinal((Boolean)newValue);
@@ -538,9 +489,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 			case TypesPackage.JVM_DECLARED_TYPE__ABSTRACT:
 				setAbstract(ABSTRACT_EDEFAULT);
 				return;
-			case TypesPackage.JVM_DECLARED_TYPE__STATIC:
-				setStatic(STATIC_EDEFAULT);
-				return;
 			case TypesPackage.JVM_DECLARED_TYPE__FINAL:
 				setFinal(FINAL_EDEFAULT);
 				return;
@@ -570,8 +518,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 				return members != null && !members.isEmpty();
 			case TypesPackage.JVM_DECLARED_TYPE__ABSTRACT:
 				return abstract_ != ABSTRACT_EDEFAULT;
-			case TypesPackage.JVM_DECLARED_TYPE__STATIC:
-				return static_ != STATIC_EDEFAULT;
 			case TypesPackage.JVM_DECLARED_TYPE__FINAL:
 				return final_ != FINAL_EDEFAULT;
 			case TypesPackage.JVM_DECLARED_TYPE__PACKAGE_NAME:
@@ -636,8 +582,6 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (abstract: ");
 		result.append(abstract_);
-		result.append(", static: ");
-		result.append(static_);
 		result.append(", final: ");
 		result.append(final_);
 		result.append(", packageName: ");

@@ -52,22 +52,22 @@ public class LiteralsCompiler extends TypeConvertingCompiler {
 		}
 	}
 	
-	@Override
-	protected void doInternalToJavaStatement(XExpression obj, ITreeAppendable appendable, boolean isReferenced) {
-		if (obj instanceof XStringLiteral) {
-			_toJavaStatement((XStringLiteral) obj, appendable, isReferenced);
-		} else if (obj instanceof XNumberLiteral) {
-			_toJavaStatement((XNumberLiteral) obj, appendable, isReferenced);
-		} else if (obj instanceof XNullLiteral) {
-			_toJavaStatement((XNullLiteral) obj, appendable, isReferenced);
-		} else if (obj instanceof XBooleanLiteral) {
-			_toJavaStatement((XBooleanLiteral) obj, appendable, isReferenced);
-		} else if (obj instanceof XTypeLiteral) {
-			_toJavaStatement((XTypeLiteral) obj, appendable, isReferenced);
-		} else {
-			super.doInternalToJavaStatement(obj, appendable, isReferenced);
-		}
-	}
+//	@Override
+//	protected void doInternalToJavaStatement(XExpression obj, ITreeAppendable appendable, boolean isReferenced) {
+//		if (obj instanceof XStringLiteral) {
+//			_toJavaStatement((XStringLiteral) obj, appendable, isReferenced);
+//		} else if (obj instanceof XNumberLiteral) {
+//			_toJavaStatement((XNumberLiteral) obj, appendable, isReferenced);
+//		} else if (obj instanceof XNullLiteral) {
+//			_toJavaStatement((XNullLiteral) obj, appendable, isReferenced);
+//		} else if (obj instanceof XBooleanLiteral) {
+//			_toJavaStatement((XBooleanLiteral) obj, appendable, isReferenced);
+//		} else if (obj instanceof XTypeLiteral) {
+//			_toJavaStatement((XTypeLiteral) obj, appendable, isReferenced);
+//		} else {
+//			super.doInternalToJavaStatement(obj, appendable, isReferenced);
+//		}
+//	}
 	
 	public void _toJavaExpression(XStringLiteral expr, ITreeAppendable b) {
 		toJavaExpression(expr, b, true);

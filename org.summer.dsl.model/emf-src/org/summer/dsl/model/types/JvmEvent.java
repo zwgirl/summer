@@ -2,7 +2,7 @@
  */
 package org.summer.dsl.model.types;
 
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,12 +112,12 @@ public interface JvmEvent extends JvmFeature {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Add</em>' containment reference.
-	 * @see #setAdd(XExpression)
+	 * @see #setAdd(XStatment)
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmEvent_Add()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getAdd();
+	XStatment getAdd();
 
 	/**
 	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmEvent#getAdd <em>Add</em>}' containment reference.
@@ -127,7 +127,7 @@ public interface JvmEvent extends JvmFeature {
 	 * @see #getAdd()
 	 * @generated
 	 */
-	void setAdd(XExpression value);
+	void setAdd(XStatment value);
 
 	/**
 	 * Returns the value of the '<em><b>Remove</b></em>' containment reference.
@@ -138,12 +138,12 @@ public interface JvmEvent extends JvmFeature {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Remove</em>' containment reference.
-	 * @see #setRemove(XExpression)
+	 * @see #setRemove(XStatment)
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmEvent_Remove()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getRemove();
+	XStatment getRemove();
 
 	/**
 	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmEvent#getRemove <em>Remove</em>}' containment reference.
@@ -153,6 +153,6 @@ public interface JvmEvent extends JvmFeature {
 	 * @see #getRemove()
 	 * @generated
 	 */
-	void setRemove(XExpression value);
+	void setRemove(XStatment value);
 
 } // JvmEvent

@@ -12,7 +12,7 @@ import com.google.common.base.Joiner;
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-public class XBlockExpressionImplCustom extends XBlockExpressionImpl {
+public class XBlockExpressionImplCustom extends XBlockStatmentImpl {
 
 	@Override
 	public String toString() {

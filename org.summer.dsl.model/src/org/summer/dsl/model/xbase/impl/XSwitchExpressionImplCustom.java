@@ -10,7 +10,7 @@ package org.summer.dsl.model.xbase.impl;
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-public class XSwitchExpressionImplCustom extends XSwitchExpressionImpl {
+public class XSwitchExpressionImplCustom extends XSwitchStatmentImpl {
 
 	@Override
 	public String getIdentifier() {

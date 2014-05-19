@@ -14,8 +14,9 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
@@ -75,7 +76,10 @@ public class OperationBodyComputationState extends AbstractLogicalContainerAware
 	@Override
 	protected XExpression getRootExpression() {
 		JvmOperation operation = (JvmOperation) getMember();
-		XClosure closure = (XClosure) operation.getFunction();
+		XStatment statment = operation.getBody();
+		if(statment instanceof XBlockStatment){
+			return statment.
+		}
 		return closure.getExpression();
 	}
 }

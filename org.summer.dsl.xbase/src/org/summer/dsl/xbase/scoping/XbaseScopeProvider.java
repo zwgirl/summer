@@ -50,18 +50,17 @@ import org.summer.dsl.model.types.util.VisibilityService;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XForEachExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNullLiteral;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
@@ -558,12 +557,12 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 		}
 		if (scopeContext.canSpawnForContainer())
 			createLocalVarScope(acceptor, scopeContext.spawnForContainer());
-		if (context.eContainer() instanceof XBlockExpression) {
-			XBlockExpression block = (XBlockExpression) context.eContainer();
-			createLocalVarScopeForBlock(block, block.getExpressions().indexOf(context), scopeContext.isReferredFromClosure(), acceptor);
+		if (context.eContainer() instanceof XBlockStatment) {
+			XBlockStatment block = (XBlockStatment) context.eContainer();
+			createLocalVarScopeForBlock(block, block.getStatments().indexOf(context), scopeContext.isReferredFromClosure(), acceptor);
 		}
-		if (context.eContainer() instanceof XForEachExpression && context.eContainingFeature() == XbasePackage.Literals.XFOR_EACH_EXPRESSION__EACH_EXPRESSION) {
-			XForEachExpression loop = (XForEachExpression) context.eContainer();
+		if (context.eContainer() instanceof XForEachStatment && context.eContainingFeature() == XbasePackage.Literals.XFOR_EACH_STATMENT__STATMENT) {
+			XForEachStatment loop = (XForEachStatment) context.eContainer();
 			createLocalScopeForParameter(loop.getDeclaredParam(), acceptor);
 		}
 		if (context.eContainer() instanceof XCatchClause) {
@@ -576,18 +575,18 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 		if (context instanceof XCasePart) {
 			createLocalVarScopeForTypeGuardedCase((XCasePart) context, acceptor);
 		}
-		if (context instanceof XSwitchExpression) {
-			createLocalVarScopeForSwitchExpression((XSwitchExpression) context, acceptor);
-		}
+//		if (context instanceof XSwitchStatment) {
+//			createLocalVarScopeForSwitchExpression((XSwitchStatment) context, acceptor);
+//		}
 		if (scopeContext.isIncludeCurrentBlock()) {
-			if (context instanceof XBlockExpression) {
-				XBlockExpression block = (XBlockExpression) context;
-				if (!block.getExpressions().isEmpty()) {
+			if (context instanceof XBlockStatment) {
+				XBlockStatment block = (XBlockStatment) context;
+				if (!block.getStatments().isEmpty()) {
 					createLocalVarScopeForBlock(block, scopeContext.getIndex(), scopeContext.isReferredFromClosure(), acceptor);
 				}
 			}
-			if (context instanceof XForEachExpression) {
-				createLocalScopeForParameter(((XForEachExpression) context).getDeclaredParam(), acceptor);
+			if (context instanceof XForEachStatment) {
+				createLocalScopeForParameter(((XForEachStatment) context).getDeclaredParam(), acceptor);
 			}
 			if (context instanceof XCatchClause) {
 				createLocalScopeForParameter(((XCatchClause) context).getDeclaredParam(), acceptor);
@@ -648,12 +647,12 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 		return false;
 	}
 
-	protected void createLocalVarScopeForSwitchExpression(XSwitchExpression context, LocalVariableAcceptor acceptor) {
-		if (context.getLocalVarName() != null) {
-			acceptor.accept("XSwitchExpression",
-					new LocalVarDescription(QualifiedName.create(context.getLocalVarName()), context));
-		}
-	}
+//	protected void createLocalVarScopeForSwitchExpression(XSwitchStatment context, LocalVariableAcceptor acceptor) {
+//		if (context.getLocalVarName() != null) {
+//			acceptor.accept("XSwitchExpression",
+//					new LocalVarDescription(QualifiedName.create(context.getLocalVarName()), context));
+//		}
+//	}
 
 	/**
 	 * Allows to hook into the case guards to introduce new local variables with a specialized type.
@@ -676,22 +675,11 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 	}
 
 	protected void createLocalVarScopeForBlock(
-			XBlockExpression block, int indexOfContextExpressionInBlock,
+			XBlockStatment block, int indexOfContextExpressionInBlock,
 			boolean referredFromClosure, LocalVariableAcceptor acceptor) {
 		List<IValidatedEObjectDescription> descriptions = Lists.newArrayList();
 		for (int i = 0; i < indexOfContextExpressionInBlock; i++) {
-			XExpression expression = block.getExpressions().get(i);
-			//cym comment
-//			if (expression instanceof XVariableDeclaration) {
-//				XVariableDeclaration varDecl = (XVariableDeclaration) expression;
-//				if (varDecl.getName() != null) {
-//					IValidatedEObjectDescription desc = createLocalVarDescription(varDecl);
-//					if (referredFromClosure && varDecl.isWriteable())
-//						desc.setIssueCode(IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS);
-//					descriptions.add(desc);
-//				}
-//			}
-			
+			XStatment expression = block.getStatments().get(i);
 			if (expression instanceof XVariableDeclarationList) {
 				XVariableDeclarationList declList = (XVariableDeclarationList) expression;
 				for(XExpression exp : declList.getDeclarations()){

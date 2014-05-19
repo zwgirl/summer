@@ -53,7 +53,7 @@ import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInpu
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
 
 import com.google.inject.Inject;
@@ -198,7 +198,7 @@ public class XbaseHoverProvider extends DefaultEObjectHoverProvider {
 
 	@Override
 	protected boolean hasHover(EObject o) {
-		if (o instanceof XSwitchExpression)
+		if (o instanceof XSwitchStatment)
 			return false;
 		return o instanceof JvmIdentifiableElement || super.hasHover(o);
 	}

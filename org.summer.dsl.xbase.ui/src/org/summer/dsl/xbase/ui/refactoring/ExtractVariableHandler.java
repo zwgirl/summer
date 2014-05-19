@@ -57,18 +57,19 @@ public class ExtractVariableHandler extends AbstractHandler {
 				document.readOnly(new IUnitOfWork.Void<XtextResource>() {
 					@Override
 					public void process(XtextResource resource) throws Exception {
-						XExpression expression = expressionUtil.findSelectedExpression(resource, selection);
-						if(expression != null) {
-							ExtractVariableRefactoring introduceVariableRefactoring = refactoringProvider.get();
-							if(introduceVariableRefactoring.initialize(editor, expression)) {
-								ITextRegion region = locationInFileProvider.getFullTextRegion(expression);
-								editor.selectAndReveal(region.getOffset(), region.getLength());
-								ExtractVariableWizard wizard = new ExtractVariableWizard(introduceVariableRefactoring);
-								RefactoringWizardOpenOperation_NonForking openOperation = new RefactoringWizardOpenOperation_NonForking(
-										wizard);
-								openOperation.run(editor.getSite().getShell(), "Extract Local Variable");
-							}
-						}
+						// cym comment
+//						XExpression expression = expressionUtil.findSelectedExpression(resource, selection);
+//						if(expression != null) {
+//							ExtractVariableRefactoring introduceVariableRefactoring = refactoringProvider.get();
+//							if(introduceVariableRefactoring.initialize(editor, expression)) {
+//								ITextRegion region = locationInFileProvider.getFullTextRegion(expression);
+//								editor.selectAndReveal(region.getOffset(), region.getLength());
+//								ExtractVariableWizard wizard = new ExtractVariableWizard(introduceVariableRefactoring);
+//								RefactoringWizardOpenOperation_NonForking openOperation = new RefactoringWizardOpenOperation_NonForking(
+//										wizard);
+//								openOperation.run(editor.getSite().getShell(), "Extract Local Variable");
+//							}
+//						}
 					}
 				});
 			}

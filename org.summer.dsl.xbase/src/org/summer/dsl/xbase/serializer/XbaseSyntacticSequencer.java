@@ -20,13 +20,13 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.SynStateType;
 import org.eclipse.xtext.serializer.sequencer.RuleCallStack;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 
 public class XbaseSyntacticSequencer extends AbstractXbaseSyntacticSequencer {
@@ -63,7 +63,7 @@ public class XbaseSyntacticSequencer extends AbstractXbaseSyntacticSequencer {
 	
 	@Override
 	public boolean enterAssignedParserRuleCall(RuleCall rc, EObject semanticChild, ICompositeNode node) {
-		if (rc == grammarAccess.getXBlockExpressionAccess().getExpressionsXExpressionInsideBlockParserRuleCall_2_0_0()) {
+		if (rc == grammarAccess.getXBlockStatmentAccess().getStatmentsXStatmentParserRuleCall_2_0()) {
 			semicolonBeforeNextExpressionRequired = startsWithUnaryOperator(semanticChild);
 		} else
 			semicolonBeforeNextExpressionRequired = false;

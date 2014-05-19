@@ -22,8 +22,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	protected AbstractElementAlias match_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_JvmModule_SemicolonKeyword_5_1_1_q;
 	protected AbstractElementAlias match_Member_SemicolonKeyword_2_0_3_0_1_q;
-	protected AbstractElementAlias match_Type_SemicolonKeyword_2_5_6_q;
-	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q;
 	protected AbstractElementAlias match_XExportSection_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_XImportSection_SemicolonKeyword_1_q;
@@ -37,8 +35,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 		match_JvmAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getJvmAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getJvmAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_JvmModule_SemicolonKeyword_5_1_1_q = new TokenAlias(false, true, grammarAccess.getJvmModuleAccess().getSemicolonKeyword_5_1_1());
 		match_Member_SemicolonKeyword_2_0_3_0_1_q = new TokenAlias(false, true, grammarAccess.getMemberAccess().getSemicolonKeyword_2_0_3_0_1());
-		match_Type_SemicolonKeyword_2_5_6_q = new TokenAlias(false, true, grammarAccess.getTypeAccess().getSemicolonKeyword_2_5_6());
-		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getXConstructorCallAccess().getRightParenthesisKeyword_4_2()));
 		match_XExportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXExportSectionAccess().getSemicolonKeyword_1());
 		match_XImportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXImportSectionAccess().getSemicolonKeyword_1());
@@ -91,10 +87,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 				emit_JvmModule_SemicolonKeyword_5_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Member_SemicolonKeyword_2_0_3_0_1_q.equals(syntax))
 				emit_Member_SemicolonKeyword_2_0_3_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Type_SemicolonKeyword_2_5_6_q.equals(syntax))
-				emit_Type_SemicolonKeyword_2_5_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
-				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q.equals(syntax))
 				emit_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XExportSection_SemicolonKeyword_1_q.equals(syntax))
@@ -138,22 +130,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	 *     ';'?
 	 */
 	protected void emit_Member_SemicolonKeyword_2_0_3_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     ';'?
-	 */
-	protected void emit_Type_SemicolonKeyword_2_5_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     ';'?
-	 */
-	protected void emit_XBlockExpression_SemicolonKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

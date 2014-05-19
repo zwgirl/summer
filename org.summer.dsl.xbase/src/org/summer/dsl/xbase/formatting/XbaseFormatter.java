@@ -10,24 +10,15 @@ package org.summer.dsl.xbase.formatting;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XBlockExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XCasePartElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XCatchClauseElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XClosureElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XConstructorCallElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XDoWhileExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XFeatureCallElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XForLoopExpressionElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XIfExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XMemberFeatureCallElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XParenthesizedExpressionElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XSwitchExpressionElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XTryCatchFinallyExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XTypeLiteralElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XUnaryOperationElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XWhileExpressionElements;
-
-import com.google.inject.Inject;
 
 /**
  * This class is deprecated since it uses Xtext's old formatter architecture.
@@ -48,18 +39,18 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 		configureXClosure(c, ga.getXClosureAccess());
 //		configureXShortClosure(c, ga.getXShortClosureAccess());
 		configureXParenthesizedExpression(c, ga.getXParenthesizedExpressionAccess());
-		configureXIfExpression(c, ga.getXIfExpressionAccess());
-		configureXSwitchExpression(c, ga.getXSwitchExpressionAccess());
+//		configureXIfExpression(c, ga.getXIfStatmentAccess());
+//		configureXSwitchExpression(c, ga.getXSwitchStatmentAccess());
 		configureXCasePart(c, ga.getXCasePartAccess());
-		configureXForLoopExpression(c, ga.getXForLoopExpressionAccess());
-		configureXWhileExpression(c, ga.getXWhileExpressionAccess());
-		configureXDoWhileExpression(c, ga.getXDoWhileExpressionAccess());
-		configureXBlockExpression(c, ga.getXBlockExpressionAccess());
+//		configureXForLoopExpression(c, ga.getXForLoopStatmentAccess());
+//		configureXWhileExpression(c, ga.getXWhileStatmentAccess());
+//		configureXDoWhileExpression(c, ga.getXDoWhileStatmentAccess());
+//		configureXBlockExpression(c, ga.getXBlockStatmentAccess());
 		configureXFeatureCall(c, ga.getXFeatureCallAccess());
 		configureXConstructorCall(c, ga.getXConstructorCallAccess());
 		configureXTypeLiteral(c, ga.getXTypeLiteralAccess());
-		configureXTryCatchFinallyExpression(c, ga.getXTryCatchFinallyExpressionAccess());
-		configureXCatchClause(c, ga.getXCatchClauseAccess());
+//		configureXTryCatchFinallyExpression(c, ga.getXTryCatchFinallyStatmentAccess());
+//		configureXCatchClause(c, ga.getXCatchClauseAccess());
 	}
 
 //	public void configure(FormattingConfig c, XbaseWithAnnotationsGrammarAccess ga) {
@@ -99,30 +90,30 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 		c.setNoSpace().before(ele.getRightParenthesisKeyword_2());
 	}
 
-	public void configureXIfExpression(FormattingConfig c, XIfExpressionElements ele) {
-		c.setNoSpace().around(ele.getLeftParenthesisKeyword_2());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_4());
-		c.setLinewrap().around(ele.getThenAssignment_5());
-		c.setIndentationIncrement().before(ele.getThenAssignment_5());
-		c.setIndentationDecrement().after(ele.getThenAssignment_5());
-		c.setLinewrap().around(ele.getElseAssignment_6_1());
-		c.setIndentationIncrement().before(ele.getElseAssignment_6_1());
-		c.setIndentationDecrement().after(ele.getElseAssignment_6_1());
-	}
+//	public void configureXIfExpression(FormattingConfig c, XIfExpressionElements ele) {
+//		c.setNoSpace().around(ele.getLeftParenthesisKeyword_2());
+//		c.setNoSpace().before(ele.getRightParenthesisKeyword_4());
+//		c.setLinewrap().around(ele.getThenAssignment_5());
+//		c.setIndentationIncrement().before(ele.getThenAssignment_5());
+//		c.setIndentationDecrement().after(ele.getThenAssignment_5());
+//		c.setLinewrap().around(ele.getElseAssignment_6_1());
+//		c.setIndentationIncrement().before(ele.getElseAssignment_6_1());
+//		c.setIndentationDecrement().after(ele.getElseAssignment_6_1());
+//	}
 
-	public void configureXSwitchExpression(FormattingConfig c, XSwitchExpressionElements ele) {
-		c.setNoSpace().around(ele.getColonKeyword_2_0_0_0_1());
-		c.setNoSpace().around(ele.getColonKeyword_2_1_0_0_2());
-		c.setNoLinewrap().before(ele.getLeftCurlyBracketKeyword_3());
-		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_3());
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_3());
-		c.setNoSpace().before(ele.getColonKeyword_5_1());
-		c.setIndentationIncrement().before(ele.getDefaultAssignment_5_2());
-		c.setLinewrap().around(ele.getDefaultAssignment_5_2());
-		c.setIndentationDecrement().after(ele.getDefaultAssignment_5_2());
-		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_6());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_6());
-	}
+//	public void configureXSwitchExpression(FormattingConfig c, XSwitchExpressionElements ele) {
+//		c.setNoSpace().around(ele.getColonKeyword_2_0_0_0_1());
+//		c.setNoSpace().around(ele.getColonKeyword_2_1_0_0_2());
+//		c.setNoLinewrap().before(ele.getLeftCurlyBracketKeyword_3());
+//		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_3());
+//		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_3());
+//		c.setNoSpace().before(ele.getColonKeyword_5_1());
+//		c.setIndentationIncrement().before(ele.getDefaultAssignment_5_2());
+//		c.setLinewrap().around(ele.getDefaultAssignment_5_2());
+//		c.setIndentationDecrement().after(ele.getDefaultAssignment_5_2());
+//		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_6());
+//		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_6());
+//	}
 
 	public void configureXCasePart(FormattingConfig c, XCasePartElements ele) {
 //		c.setNoSpace().before(ele.getColonKeyword_2());
@@ -131,41 +122,41 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 //		c.setIndentationDecrement().after(ele.getThenAssignment_3());
 	}
 
-	public void configureXForLoopExpression(FormattingConfig c, XForLoopExpressionElements ele) {
+//	public void configureXForLoopExpression(FormattingConfig c, XForLoopExpressionElements ele) {
+////		c.setNoSpace().around(ele.getLeftParenthesisKeyword_2());
+////		c.setNoSpace().around(ele.getColonKeyword_4());
+////		c.setNoSpace().around(ele.getRightParenthesisKeyword_6());
+////		c.setIndentationIncrement().before(ele.getEachExpressionAssignment_7());
+////		c.setLinewrap().around(ele.getEachExpressionAssignment_7());
+////		c.setIndentationDecrement().after(ele.getEachExpressionAssignment_7());
+//	}
+
+//	public void configureXWhileExpression(FormattingConfig c, XWhileExpressionElements ele) {
 //		c.setNoSpace().around(ele.getLeftParenthesisKeyword_2());
-//		c.setNoSpace().around(ele.getColonKeyword_4());
-//		c.setNoSpace().around(ele.getRightParenthesisKeyword_6());
-//		c.setIndentationIncrement().before(ele.getEachExpressionAssignment_7());
-//		c.setLinewrap().around(ele.getEachExpressionAssignment_7());
-//		c.setIndentationDecrement().after(ele.getEachExpressionAssignment_7());
-	}
+//		c.setNoSpace().before(ele.getRightParenthesisKeyword_4());
+//		c.setIndentationIncrement().before(ele.getBodyAssignment_5());
+//		c.setLinewrap().around(ele.getBodyAssignment_5());
+//		c.setIndentationDecrement().after(ele.getBodyAssignment_5());
+//	}
 
-	public void configureXWhileExpression(FormattingConfig c, XWhileExpressionElements ele) {
-		c.setNoSpace().around(ele.getLeftParenthesisKeyword_2());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_4());
-		c.setIndentationIncrement().before(ele.getBodyAssignment_5());
-		c.setLinewrap().around(ele.getBodyAssignment_5());
-		c.setIndentationDecrement().after(ele.getBodyAssignment_5());
-	}
-
-	public void configureXBlockExpression(FormattingConfig c, XBlockExpressionElements ele) {
-		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_1());
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_1());
-		c.setLinewrap().after(ele.getExpressionsAssignment_2_0());
-		c.setNoSpace().before(ele.getSemicolonKeyword_2_1());
-		c.setLinewrap().after(ele.getSemicolonKeyword_2_1());
-		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_3());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_3());
-	}
-
-	public void configureXDoWhileExpression(FormattingConfig c, XDoWhileExpressionElements ele) {
-		c.setLinewrap().after(ele.getDoKeyword_1());
-		c.setIndentationIncrement().after(ele.getDoKeyword_1());
-		c.setLinewrap().before(ele.getDoKeyword_1());
-		c.setIndentationDecrement().before(ele.getWhileKeyword_3());
-		c.setNoSpace().around(ele.getLeftParenthesisKeyword_4());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_6());
-	}
+//	public void configureXBlockExpression(FormattingConfig c, XBlockExpressionElements ele) {
+//		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_1());
+//		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_1());
+//		c.setLinewrap().after(ele.getExpressionsAssignment_2_0());
+//		c.setNoSpace().before(ele.getSemicolonKeyword_2_1());
+//		c.setLinewrap().after(ele.getSemicolonKeyword_2_1());
+//		c.setLinewrap().before(ele.getRightCurlyBracketKeyword_3());
+//		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_3());
+//	}
+//
+//	public void configureXDoWhileExpression(FormattingConfig c, XDoWhileExpressionElements ele) {
+//		c.setLinewrap().after(ele.getDoKeyword_1());
+//		c.setIndentationIncrement().after(ele.getDoKeyword_1());
+//		c.setLinewrap().before(ele.getDoKeyword_1());
+//		c.setIndentationDecrement().before(ele.getWhileKeyword_3());
+//		c.setNoSpace().around(ele.getLeftParenthesisKeyword_4());
+//		c.setNoSpace().before(ele.getRightParenthesisKeyword_6());
+//	}
 
 	public void configureXFeatureCall(FormattingConfig c, XFeatureCallElements ele) {
 		c.setNoSpace().around(ele.getLessThanSignKeyword_1_0());
@@ -191,24 +182,24 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 		c.setNoSpace().around(ele.getRightParenthesisKeyword_5());
 	}
 
-	public void configureXTryCatchFinallyExpression(FormattingConfig c, XTryCatchFinallyExpressionElements ele) {
-		c.setIndentationIncrement().before(ele.getExpressionAssignment_2());
-		c.setLinewrap().around(ele.getExpressionAssignment_2());
-		c.setIndentationDecrement().after(ele.getExpressionAssignment_2());
-		c.setIndentationIncrement().before(ele.getFinallyExpressionAssignment_3_0_1_1());
-		c.setLinewrap().around(ele.getFinallyExpressionAssignment_3_0_1_1());
-		c.setIndentationDecrement().after(ele.getFinallyExpressionAssignment_3_0_1_1());
-		c.setIndentationIncrement().before(ele.getFinallyExpressionAssignment_3_1_1());
-		c.setLinewrap().around(ele.getFinallyExpressionAssignment_3_1_1());
-		c.setIndentationDecrement().after(ele.getFinallyExpressionAssignment_3_1_1());
-	}
-
-	public void configureXCatchClause(FormattingConfig c, XCatchClauseElements ele) {
-		c.setNoSpace().around(ele.getLeftParenthesisKeyword_1());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_3());
-		c.setIndentationIncrement().before(ele.getExpressionAssignment_4());
-		c.setLinewrap().around(ele.getExpressionAssignment_4());
-		c.setIndentationDecrement().after(ele.getExpressionAssignment_4());
-	}
+//	public void configureXTryCatchFinallyExpression(FormattingConfig c, XTryCatchFinallyExpressionElements ele) {
+//		c.setIndentationIncrement().before(ele.getExpressionAssignment_2());
+//		c.setLinewrap().around(ele.getExpressionAssignment_2());
+//		c.setIndentationDecrement().after(ele.getExpressionAssignment_2());
+//		c.setIndentationIncrement().before(ele.getFinallyExpressionAssignment_3_0_1_1());
+//		c.setLinewrap().around(ele.getFinallyExpressionAssignment_3_0_1_1());
+//		c.setIndentationDecrement().after(ele.getFinallyExpressionAssignment_3_0_1_1());
+//		c.setIndentationIncrement().before(ele.getFinallyExpressionAssignment_3_1_1());
+//		c.setLinewrap().around(ele.getFinallyExpressionAssignment_3_1_1());
+//		c.setIndentationDecrement().after(ele.getFinallyExpressionAssignment_3_1_1());
+//	}
+//
+//	public void configureXCatchClause(FormattingConfig c, XCatchClauseElements ele) {
+//		c.setNoSpace().around(ele.getLeftParenthesisKeyword_1());
+//		c.setNoSpace().before(ele.getRightParenthesisKeyword_3());
+//		c.setIndentationIncrement().before(ele.getExpressionAssignment_4());
+//		c.setLinewrap().around(ele.getExpressionAssignment_4());
+//		c.setIndentationDecrement().after(ele.getExpressionAssignment_4());
+//	}
 
 }

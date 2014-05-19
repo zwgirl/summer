@@ -14,7 +14,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getStatment <em>Statment</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getDeclaredParam <em>Declared Param</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XCatchClause#getIdentifier <em>Identifier</em>}</li>
  * </ul>
@@ -26,30 +26,30 @@ import org.summer.dsl.model.types.JvmFormalParameter;
  */
 public interface XCatchClause extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Statment</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Statment</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' containment reference.
-	 * @see #setExpression(XExpression)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXCatchClause_Expression()
+	 * @return the value of the '<em>Statment</em>' containment reference.
+	 * @see #setStatment(XStatment)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXCatchClause_Statment()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getExpression();
+	XStatment getStatment();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XCatchClause#getExpression <em>Expression</em>}' containment reference.
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XCatchClause#getStatment <em>Statment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' containment reference.
-	 * @see #getExpression()
+	 * @param value the new value of the '<em>Statment</em>' containment reference.
+	 * @see #getStatment()
 	 * @generated
 	 */
-	void setExpression(XExpression value);
+	void setStatment(XStatment value);
 
 	/**
 	 * Returns the value of the '<em><b>Declared Param</b></em>' containment reference.

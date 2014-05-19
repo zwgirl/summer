@@ -10,7 +10,7 @@ package org.summer.dsl.model.xbase.impl;
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
-public class XReturnExpressionImplCustom extends XReturnExpressionImpl {
+public class XReturnExpressionImplCustom extends XReturnStatmentImpl {
 
 	@Override
 	public String toString() {

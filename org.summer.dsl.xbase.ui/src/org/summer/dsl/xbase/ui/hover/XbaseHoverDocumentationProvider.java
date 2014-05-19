@@ -286,30 +286,30 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 //	}
 	
 	protected void addAnnotations(EObject associatedElement) {
-//		Set<EObject> jvmElements = associations.getJvmElements(object);
-//		if (jvmElements.size() > 0) {
-			if (associatedElement instanceof JvmAnnotationTarget) {
-				EList<JvmAnnotationReference> annotations = ((JvmAnnotationTarget) associatedElement).getAnnotations();
-				for (JvmAnnotationReference annotationReference : annotations) {
-					buffer.append("@");
-					buffer.append(createLinkWithLabel(XtextElementLinks.XTEXTDOC_SCHEME, EcoreUtil
-							.getURI(annotationReference.getAnnotation()), annotationReference.getAnnotation()
-							.getSimpleName()));
-					if (annotationReference.getValues().size() > 0) {
-						buffer.append("(");
-						for (JvmAnnotationValue value : annotationReference.getValues()) {
-							ITreeAppendable appendable = new FakeTreeAppendable();
-							jvmModelGenerator.toJava(value, appendable, generatorConfigProvider.get(associatedElement));
-							String java = appendable.getContent();
-							buffer.append(java);
-						}
-						buffer.append(")");
-					}
-					buffer.append("<br>");
-	
-				}
-//			}
-		}
+////		Set<EObject> jvmElements = associations.getJvmElements(object);
+////		if (jvmElements.size() > 0) {
+//			if (associatedElement instanceof JvmAnnotationTarget) {
+//				EList<JvmAnnotationReference> annotations = ((JvmAnnotationTarget) associatedElement).getAnnotations();
+//				for (JvmAnnotationReference annotationReference : annotations) {
+//					buffer.append("@");
+//					buffer.append(createLinkWithLabel(XtextElementLinks.XTEXTDOC_SCHEME, EcoreUtil
+//							.getURI(annotationReference.getAnnotation()), annotationReference.getAnnotation()
+//							.getSimpleName()));
+//					if (annotationReference.getValues().size() > 0) {
+//						buffer.append("(");
+//						for (JvmAnnotationValue value : annotationReference.getValues()) {
+//							ITreeAppendable appendable = new FakeTreeAppendable();
+//							jvmModelGenerator.toJava(value, appendable, generatorConfigProvider.get(associatedElement));
+//							String java = appendable.getContent();
+//							buffer.append(java);
+//						}
+//						buffer.append(")");
+//					}
+//					buffer.append("<br>");
+//	
+//				}
+////			}
+//		}
 	
 	}
 

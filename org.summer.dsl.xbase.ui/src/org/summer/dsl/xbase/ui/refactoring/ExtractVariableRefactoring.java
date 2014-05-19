@@ -29,7 +29,7 @@ import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.refactoring.impl.EditorDocumentChange;
 import org.eclipse.xtext.ui.refactoring.impl.StatusWrapper;
 import org.eclipse.xtext.util.ITextRegion;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -98,7 +98,7 @@ public class ExtractVariableRefactoring extends Refactoring {
 		successor = expressionUtil.findSuccessorExpressionForVariableDeclaration(expression);
 		if(successor == null)
 			return false;
-		isNeedsNewBlock = !(successor.eContainer() instanceof XBlockExpression);
+		isNeedsNewBlock = !(successor.eContainer() instanceof XBlockStatment);
 		nameUtil.setFeatureScopeContext(successor);
 		variableName = nameUtil.getDefaultName(expression);
 		rewriter = rewriterFactory.create(document, (XtextResource) expression.eResource());

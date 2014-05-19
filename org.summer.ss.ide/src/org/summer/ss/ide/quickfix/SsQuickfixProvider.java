@@ -48,7 +48,7 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.jdt.IJavaProjectProvider;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.ui.contentassist.ReplacingAppendable;
 import org.summer.dsl.xbase.ui.document.DocumentSourceAppender.Factory.OptionalParameters;
@@ -261,20 +261,20 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 							List<JvmType> exceptions = getExceptions(issueData, xtextResource);
 							if (exceptions.size() > 0) {
 								int insertPosition;
-								if (xtendFunction.getExpression() == null) {
+								if (xtendFunction.getBody() == null) {
 									ICompositeNode functionNode = NodeModelUtils.findActualNodeFor(xtendFunction);
 									if (functionNode == null)
 										throw new IllegalStateException("functionNode may not be null");
 									insertPosition = functionNode.getEndOffset();
 								} else {
-									ICompositeNode expressionNode = NodeModelUtils.findActualNodeFor(xtendFunction.getExpression());
+									ICompositeNode expressionNode = NodeModelUtils.findActualNodeFor(xtendFunction.getBody());
 									if (expressionNode == null)
 										throw new IllegalStateException("expressionNode may not be null");
 									insertPosition = expressionNode.getOffset();
 								}
 								ReplacingAppendable appendable = appendableFactory.create(context.getXtextDocument(),
 										(XtextResource) xtendFunction.eResource(), insertPosition, 0);
-								if (xtendFunction.getExpression() == null) 
+								if (xtendFunction.getBody() == null) 
 									appendable.append(" ");
 								EList<JvmTypeReference> thrownExceptions = xtendFunction.getExceptions();
 								if (thrownExceptions.isEmpty())
@@ -288,7 +288,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 										appendable.append(", ");
 									}
 								}
-								if (xtendFunction.getExpression() != null) 
+								if (xtendFunction.getBody() != null) 
 									appendable.append(" ");
 								appendable.commitChanges();
 							}
@@ -377,7 +377,7 @@ public class SsQuickfixProvider extends XbaseQuickfixProvider {
 		if (expr == null)
 			return null;
 		EObject container = expr.eContainer();
-		if (container instanceof XBlockExpression)
+		if (container instanceof XBlockStatment)
 			return (XExpression) expr;
 		else
 			return findContainerExpressionInBlockExpression(container);

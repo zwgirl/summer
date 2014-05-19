@@ -2,8 +2,7 @@
  */
 package org.summer.dsl.model.types;
 
-import java.util.List;
-
+import java.lang.Iterable;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#getSuperTypes <em>Super Types</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#getMembers <em>Members</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#isStatic <em>Static</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#isFinal <em>Final</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#getPackageName <em>Package Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmDeclaredType#isExported <em>Exported</em>}</li>
@@ -26,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.summer.dsl.model.types.TypesPackage#getJvmDeclaredType()
  * @model
- * @generated NOT
+ * @generated
  */
 public interface JvmDeclaredType extends JvmMember, JvmComponentType {
 	/**
@@ -43,7 +41,7 @@ public interface JvmDeclaredType extends JvmMember, JvmComponentType {
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<JvmTypeReference> getSuperTypes();
+	EList<JvmTypeReference> getSuperTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
@@ -88,32 +86,6 @@ public interface JvmDeclaredType extends JvmMember, JvmComponentType {
 	 * @generated
 	 */
 	void setAbstract(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Static</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Static</em>' attribute.
-	 * @see #setStatic(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmDeclaredType_Static()
-	 * @model
-	 * @generated
-	 */
-	boolean isStatic();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmDeclaredType#isStatic <em>Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Static</em>' attribute.
-	 * @see #isStatic()
-	 * @generated
-	 */
-	void setStatic(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Final</b></em>' attribute.

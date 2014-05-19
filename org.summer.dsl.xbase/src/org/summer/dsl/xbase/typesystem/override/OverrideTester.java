@@ -217,9 +217,9 @@ public class OverrideTester {
 		if (isMorePrivateThan(overriding.getVisibility(), overridden.getVisibility())) {
 			result.add(OverrideCheckDetails.REDUCED_VISIBILITY);
 		}
-		if (overridden.isFinal()) {
-			result.add(OverrideCheckDetails.IS_FINAL);
-		}
+//		if (overridden.isFinal()) {
+//			result.add(OverrideCheckDetails.IS_FINAL);
+//		}
 		if (overriding.isVarArgs() != overridden.isVarArgs()) {
 			result.add(OverrideCheckDetails.VAR_ARG_MISMATCH);
 		}

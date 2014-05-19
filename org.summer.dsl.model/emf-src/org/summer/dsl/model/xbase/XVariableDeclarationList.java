@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface XVariableDeclarationList extends XExpression {
+public interface XVariableDeclarationList extends XStatment {
 	/**
 	 * Returns the value of the '<em><b>Declarations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.summer.dsl.model.xbase.XExpression}.

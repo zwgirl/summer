@@ -85,6 +85,7 @@ import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeConstraint;
@@ -93,10 +94,10 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XAbstractWhileExpression;
+import org.summer.dsl.model.xbase.XAbstractWhileStatment;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
@@ -104,16 +105,17 @@ import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XForEachExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
-import org.summer.dsl.model.xbase.XReturnExpression;
-import org.summer.dsl.model.xbase.XSwitchExpression;
-import org.summer.dsl.model.xbase.XThrowExpression;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XSwitchStatment;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
@@ -377,46 +379,38 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 	
 	@Check
-	public void checkTypeReferenceIsNotVoid(XCasePart expression) {
-		if (expression.getTypeGuard() != null) {
-			if (toLightweightTypeReference(expression.getTypeGuard()).isPrimitiveVoid()) {
-				error("Primitive void cannot be used here.", expression.getTypeGuard(), null, INVALID_USE_OF_TYPE);
-			}
-		}
-	}
-	
-	@Check
-	public void checkReturn(XReturnExpression expr) {
+	public void checkReturn(XReturnStatment expr) {
 		IResolvedTypes resolvedTypes = typeResolver.resolveTypes(expr);
-		LightweightTypeReference expectedReturnType = resolvedTypes.getExpectedReturnType(expr);
-		if (expectedReturnType == null) {
-			return;
-		}
-		if (expectedReturnType.isPrimitiveVoid()) {
-			if (expr.getExpression() != null)
-				error("Void functions cannot return a value.", expr, null,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
-		} else {
-			if (expr.getExpression() == null)
-				error("The function must return a result of type " + expectedReturnType.getSimpleName() + ".", expr, null,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
-			else {
-				LightweightTypeReference expressionType = getActualType(expr.getExpression());
-				if (expressionType.isPrimitiveVoid()) {
-					error("Incompatible types. Expected " + getNameOfTypes(expectedReturnType) + " but was "
-							+ canonicalName(expressionType), expr.getExpression(), null,
-							ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
-				}
-			}
-
-		}
+		
+//		LightweightTypeReference expectedReturnType = resolvedTypes.getExpectedReturnType(expr);
+//		if (expectedReturnType == null) {
+//			return;
+//		}
+//		if (expectedReturnType.isPrimitiveVoid()) {
+//			if (expr.getExpression() != null)
+//				error("Void functions cannot return a value.", expr, null,
+//						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
+//		} else {
+//			if (expr.getExpression() == null)
+//				error("The function must return a result of type " + expectedReturnType.getSimpleName() + ".", expr, null,
+//						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
+//			else {
+//				LightweightTypeReference expressionType = getActualType(expr.getExpression());
+//				if (expressionType.isPrimitiveVoid()) {
+//					error("Incompatible types. Expected " + getNameOfTypes(expectedReturnType) + " but was "
+//							+ canonicalName(expressionType), expr.getExpression(), null,
+//							ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
+//				}
+//			}
+//
+//		}
 	}
 
-	protected boolean isImplicitReturn(XExpression expr) {
-		JvmIdentifiableElement logicalContainer = logicalContainerProvider.getLogicalContainer(expr);
-		return (logicalContainer instanceof JvmExecutable || logicalContainer instanceof JvmField || expr.eContainer() instanceof XClosure)
-				&& !earlyExitComputer.isEarlyExit(expr);
-	}
+//	protected boolean isImplicitReturn(XExpression expr) {
+//		JvmIdentifiableElement logicalContainer = logicalContainerProvider.getLogicalContainer(expr);
+//		return (logicalContainer instanceof JvmExecutable || logicalContainer instanceof JvmField || expr.eContainer() instanceof XClosure)
+//				&& !earlyExitComputer.isEarlyExit(expr);
+//	}
 
 	protected String getNameOfTypes(LightweightTypeReference expectedType) {
 		final StringBuilder result = new StringBuilder(canonicalName(expectedType));
@@ -465,8 +459,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 			return false;
 		if(element instanceof JvmFeature)
 			return ((JvmFeature) element).isStatic();
-		if(element instanceof JvmDeclaredType)
-			return ((JvmDeclaredType) element).isStatic() || ((JvmDeclaredType)element).getDeclaringType() == null;
+		if(element instanceof JvmModule)
+			return true;
 		return false;
 	}
 	
@@ -515,7 +509,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		else if (assignmentFeature instanceof JvmFormalParameter)
 			error("Assignment to final parameter", Literals.XASSIGNMENT__ASSIGNABLE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, ASSIGNMENT_TO_FINAL);
-		else if (assignmentFeature instanceof JvmField && ((JvmField) assignmentFeature).isFinal()) {
+		else if (assignmentFeature instanceof JvmField && ((JvmField) assignmentFeature).isConst()) {
 			JvmField field = (JvmField) assignmentFeature;
 			JvmIdentifiableElement container = logicalContainerProvider.getNearestLogicalContainer(assignment);
 			
@@ -536,7 +530,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	protected void checkFinalFieldInitialization(JvmGenericType type) {
 		final Set<JvmField> finalFields = Sets.newLinkedHashSet(Iterables.filter(type.getDeclaredFields(), new Predicate<JvmField>() {
 			public boolean apply(JvmField input) {
-				return input.isFinal();
+				return input.isConst();
 			}
 		}));
 		if (finalFields.isEmpty())
@@ -592,20 +586,20 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 				initializedForSure.add(field);
 				initializedMaybe.add(field);
 			}
-		} else if (expr instanceof XForEachExpression) {
-			XForEachExpression loopExpression = (XForEachExpression) expr;
-			checkInitializationRec(loopExpression.getForExpression(), fields, initializedForSure, initializedMaybe, visited);
-			checkInitializationRec(loopExpression.getEachExpression(), fields, initializedMaybe, Sets.newLinkedHashSet(fields), visited);
-		} else if (expr instanceof XAbstractWhileExpression) {
-			XAbstractWhileExpression loopExpression = (XAbstractWhileExpression) expr;
+		} else if (expr instanceof XForEachStatment) {
+			XForEachStatment loopExpression = (XForEachStatment) expr;
+			checkInitializationRec(loopExpression.getExpression(), fields, initializedForSure, initializedMaybe, visited);
+			checkInitializationRec(loopExpression.getStatment(), fields, initializedMaybe, Sets.newLinkedHashSet(fields), visited);
+		} else if (expr instanceof XAbstractWhileStatment) {
+			XAbstractWhileStatment loopExpression = (XAbstractWhileStatment) expr;
 			checkInitializationRec(loopExpression.getPredicate(), fields, initializedForSure, Sets.newLinkedHashSet(fields), visited);
 			checkInitializationRec(loopExpression.getBody(), fields, initializedMaybe, Sets.newLinkedHashSet(fields), visited);
-		} else if (expr instanceof XTryCatchFinallyExpression) {
-			XTryCatchFinallyExpression tryExpr = (XTryCatchFinallyExpression) expr;
-			checkInitializationRec(tryExpr.getExpression(),fields,  initializedForSure, initializedMaybe, visited);
-			checkInitializationRec(tryExpr.getFinallyExpression(), fields, initializedForSure, initializedMaybe, visited);
-		} else if (expr instanceof XIfExpression) {
-			XIfExpression ifExpr = (XIfExpression) expr;
+		} else if (expr instanceof XTryCatchFinallyStatment) {
+			XTryCatchFinallyStatment tryExpr = (XTryCatchFinallyStatment) expr;
+			checkInitializationRec(tryExpr.getStatment(),fields,  initializedForSure, initializedMaybe, visited);
+			checkInitializationRec(tryExpr.getFinallyStatment(), fields, initializedForSure, initializedMaybe, visited);
+		} else if (expr instanceof XIfStatment) {
+			XIfStatment ifExpr = (XIfStatment) expr;
 			checkInitializationRec(ifExpr.getIf(), fields, initializedForSure, initializedMaybe, visited);
 			
 			Set<JvmField> initializedThenForSure = Sets.newLinkedHashSet(initializedForSure);
@@ -622,8 +616,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 				initializedMaybe.addAll(initializedThenMaybe);
 				initializedMaybe.addAll(initializedElseMaybe);
 			}
-		} else if (expr instanceof XSwitchExpression) {
-			XSwitchExpression switchExpr = (XSwitchExpression) expr;
+		} else if (expr instanceof XSwitchStatment) {
+			XSwitchStatment switchExpr = (XSwitchStatment) expr;
 			checkInitializationRec(switchExpr.getSwitch(), fields, initializedForSure, initializedMaybe, visited);
 			Set<JvmField> initializedAllCasesForSure = null;
 			Set<JvmField> initializedAllCasesMaybe = Sets.newLinkedHashSet(initializedMaybe);
@@ -708,17 +702,17 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		EObject container = expr.eContainer();
 		
 		// is part of block
-		if (container instanceof XBlockExpression) {
-			XBlockExpression blockExpression = (XBlockExpression) container;
-			final List<XExpression> expressions = blockExpression.getExpressions();
+		if (container instanceof XBlockStatment) {
+			XBlockStatment blockExpression = (XBlockStatment) container;
+			final List<XStatment> expressions = blockExpression.getStatments();
 			if (expressions.get(expressions.size()-1) != expr) {
 				return false;
 			}
 		}
 		// no expectation cases
-		if (feature == XbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION
-			|| feature == XbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__BODY
-			|| feature == XbasePackage.Literals.XFOR_LOOP_EXPRESSION__EACH_EXPRESSION) {
+		if (feature == XbasePackage.Literals.XTRY_CATCH_FINALLY_STATMENT__FINALLY_STATMENT
+			|| feature == XbasePackage.Literals.XABSTRACT_WHILE_STATMENT__BODY
+			|| feature == XbasePackage.Literals.XFOR_LOOP_STATMENT__STATMENT) {
 			return false;
 		}
 		// is value expected
@@ -726,13 +720,13 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 			|| container instanceof XConstructorCall
 			|| container instanceof XAssignment
 			|| container instanceof XVariableDeclaration
-			|| container instanceof XReturnExpression
-			|| container instanceof XThrowExpression
-			|| feature == XbasePackage.Literals.XFOR_EACH_EXPRESSION__FOR_EXPRESSION
-			|| feature == XbasePackage.Literals.XSWITCH_EXPRESSION__SWITCH
+			|| container instanceof XReturnStatment
+			|| container instanceof XThrowStatment
+			|| feature == XbasePackage.Literals.XFOR_EACH_STATMENT__EXPRESSION
+			|| feature == XbasePackage.Literals.XSWITCH_STATMENT__SWITCH
 			|| feature == XbasePackage.Literals.XCASE_PART__CASE
-			|| feature == XbasePackage.Literals.XIF_EXPRESSION__IF
-			|| feature == XbasePackage.Literals.XABSTRACT_WHILE_EXPRESSION__PREDICATE) {
+			|| feature == XbasePackage.Literals.XIF_STATMENT__IF
+			|| feature == XbasePackage.Literals.XABSTRACT_WHILE_STATMENT__PREDICATE) {
 			return true;
 		}
 		if (container instanceof XClosure || logicalContainerProvider.getLogicalContainer(expr) != null) {
@@ -762,18 +756,18 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		checkCast(cast.getType(), toType, fromType);
 	}
 
-	@Check
-	public void checkTypeGuards(XCasePart casePart) {
-		if (casePart.getTypeGuard() == null)
-			return;
-		LightweightTypeReference typeGuard = toLightweightTypeReference(casePart.getTypeGuard());
-		if (typeGuard.isPrimitive()) {
-			error("Primitives are not allowed as type guards", Literals.XCASE_PART__TYPE_GUARD, INVALID_USE_OF_TYPE);
-			return;
-		}
-		LightweightTypeReference targetTypeRef = getActualType(((XSwitchExpression) casePart.eContainer()).getSwitch());
-		checkCast(casePart.getTypeGuard(), typeGuard, targetTypeRef);
-	}
+//	@Check
+//	public void checkTypeGuards(XCasePart casePart) {
+//		if (casePart.getTypeGuard() == null)
+//			return;
+//		LightweightTypeReference typeGuard = toLightweightTypeReference(casePart.getTypeGuard());
+//		if (typeGuard.isPrimitive()) {
+//			error("Primitives are not allowed as type guards", Literals.XCASE_PART__TYPE_GUARD, INVALID_USE_OF_TYPE);
+//			return;
+//		}
+//		LightweightTypeReference targetTypeRef = getActualType(((XSwitchStatment) casePart.eContainer()).getSwitch());
+//		checkCast(casePart.getTypeGuard(), typeGuard, targetTypeRef);
+//	}
 
 	@Check
 	public void checkInstanceOf(XInstanceOfExpression instanceOfExpression) {
@@ -859,8 +853,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 					XExpression body = logicalContainerProvider.getAssociatedExpression(container);
 					if (body == featureCall)
 						return;
-					if (body instanceof XBlockExpression) {
-						List<XExpression> expressions = ((XBlockExpression) body).getExpressions();
+					if (body instanceof XBlockStatment) {
+						List<XStatment> expressions = ((XBlockStatment) body).getStatments();
 						if (expressions.isEmpty() || expressions.get(0) != featureCall) {
 							error("Constructor call must be the first expression in a constructor", null, INVALID_CONSTRUCTOR_INVOCATION);
 						}
@@ -926,11 +920,11 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 						return;
 					}
 					XExpression constructorBody = logicalContainerProvider.getAssociatedExpression(calledConstructor);
-					if (constructorBody instanceof XBlockExpression) {
-						List<XExpression> expressions = ((XBlockExpression) constructorBody).getExpressions();
+					if (constructorBody instanceof XBlockStatment) {
+						List<XStatment> expressions = ((XBlockStatment) constructorBody).getStatments();
 						if (expressions.isEmpty())
 							return;
-						XExpression firstInBody = ((XBlockExpression) constructorBody).getExpressions().get(0);
+						XStatment firstInBody = ((XBlockStatment) constructorBody).getStatments().get(0);
 						if (firstInBody instanceof XFeatureCall) {
 							JvmIdentifiableElement calledFeature = ((XFeatureCall) firstInBody).getFeature();
 							if (calledFeature != null && !calledFeature.eIsProxy() && calledFeature instanceof JvmConstructor) {
@@ -1272,11 +1266,11 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 	
 	@Check
-	public void checkNoJavaStyleTypeCasting(XBlockExpression blockExpression) {
+	public void checkNoJavaStyleTypeCasting(XBlockStatment blockExpression) {
 		if(isIgnored(JAVA_STYLE_TYPE_CAST)) {
 			return;
 		}
-		if (blockExpression.getExpressions().size() <= 1) {
+		if (blockExpression.getStatments().size() <= 1) {
 			return;
 		}
 		ICompositeNode node = NodeModelUtils.getNode(blockExpression);
@@ -1285,9 +1279,10 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		}
 		INode expressionNode = null;
 		for (INode child : node.getChildren()) {
-			if (isSemicolon(child)) {
-				expressionNode = null;
-			} else if (isXExpressionInsideBlock(child)) {
+//			if (isSemicolon(child)) {
+//				expressionNode = null;
+//			} else 
+			if (isXExpressionInsideBlock(child)) {
 				if (expressionNode != null) {
 					checkNoJavaStyleTypeCasting(expressionNode);
 				}
@@ -1297,14 +1292,14 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 
 	protected boolean isXExpressionInsideBlock(INode child) {
-		return child.getGrammarElement() == grammarAccess.getXBlockExpressionAccess().getExpressionsXExpressionInsideBlockParserRuleCall_2_0_0()
+		return child.getGrammarElement() == grammarAccess.getXBlockStatmentAccess().getStatmentsXStatmentParserRuleCall_2_0()
 				/*|| child.getGrammarElement() == grammarAccess.getXExpressionInClosureAccess().getExpressionsXExpressionInsideBlockParserRuleCall_1_0_0()*/;
 	}
 
-	protected boolean isSemicolon(INode child) {
-		return child.getGrammarElement() == grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1()
-				/*|| child.getGrammarElement() == grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1()*/;
-	}
+//	protected boolean isSemicolon(INode child) {
+//		return child.getGrammarElement() == grammarAccess.getXBlockStatmentAccess().getSemicolonKeyword_2_1()
+//				/*|| child.getGrammarElement() == grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1()*/;
+//	}
 
 	protected void checkNoJavaStyleTypeCasting(INode node) {
 		BidiTreeIterator<INode> iterator = node.getAsTreeIterable().reverse().iterator();

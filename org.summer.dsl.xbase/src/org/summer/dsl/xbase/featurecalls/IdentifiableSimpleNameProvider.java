@@ -11,9 +11,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XSwitchExpression;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 
 /**
@@ -33,18 +30,6 @@ public class IdentifiableSimpleNameProvider {
 		}
 		if (element instanceof XVariableDeclaration) {
 			return ((XVariableDeclaration) element).getName();
-		}
-		if (element instanceof XSwitchExpression) {
-			final XSwitchExpression xSwitchExpression = (XSwitchExpression) element;
-			String varName = xSwitchExpression.getLocalVarName();
-			if (varName!=null)
-				return varName;
-			XExpression expression = xSwitchExpression.getSwitch();
-			if (expression instanceof XFeatureCall) {
-				return getSimpleName(((XFeatureCall) expression).getFeature());
-			} else {
-				return null;
-			}
 		}
 		return element.getSimpleName();
 	}

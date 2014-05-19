@@ -4,17 +4,13 @@ package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.summer.dsl.model.types.JvmEvent;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
-
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,7 +88,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression add;
+	protected XStatment add;
 
 	/**
 	 * The cached value of the '{@link #getRemove() <em>Remove</em>}' containment reference.
@@ -102,7 +98,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression remove;
+	protected XStatment remove;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,7 +209,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getAdd() {
+	public XStatment getAdd() {
 		return add;
 	}
 
@@ -222,8 +218,8 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAdd(XExpression newAdd, NotificationChain msgs) {
-		XExpression oldAdd = add;
+	public NotificationChain basicSetAdd(XStatment newAdd, NotificationChain msgs) {
+		XStatment oldAdd = add;
 		add = newAdd;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_EVENT__ADD, oldAdd, newAdd);
@@ -237,7 +233,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAdd(XExpression newAdd) {
+	public void setAdd(XStatment newAdd) {
 		if (newAdd != add) {
 			NotificationChain msgs = null;
 			if (add != null)
@@ -256,7 +252,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getRemove() {
+	public XStatment getRemove() {
 		return remove;
 	}
 
@@ -265,8 +261,8 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRemove(XExpression newRemove, NotificationChain msgs) {
-		XExpression oldRemove = remove;
+	public NotificationChain basicSetRemove(XStatment newRemove, NotificationChain msgs) {
+		XStatment oldRemove = remove;
 		remove = newRemove;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_EVENT__REMOVE, oldRemove, newRemove);
@@ -280,7 +276,7 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRemove(XExpression newRemove) {
+	public void setRemove(XStatment newRemove) {
 		if (newRemove != remove) {
 			NotificationChain msgs = null;
 			if (remove != null)
@@ -352,10 +348,10 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 				setType((JvmTypeReference)newValue);
 				return;
 			case TypesPackage.JVM_EVENT__ADD:
-				setAdd((XExpression)newValue);
+				setAdd((XStatment)newValue);
 				return;
 			case TypesPackage.JVM_EVENT__REMOVE:
-				setRemove((XExpression)newValue);
+				setRemove((XStatment)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -379,10 +375,10 @@ public class JvmEventImpl extends JvmFeatureImpl implements JvmEvent {
 				setType((JvmTypeReference)null);
 				return;
 			case TypesPackage.JVM_EVENT__ADD:
-				setAdd((XExpression)null);
+				setAdd((XStatment)null);
 				return;
 			case TypesPackage.JVM_EVENT__REMOVE:
-				setRemove((XExpression)null);
+				setRemove((XStatment)null);
 				return;
 		}
 		super.eUnset(featureID);

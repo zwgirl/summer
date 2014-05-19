@@ -3,9 +3,10 @@
 */
 package org.summer.dsl.xbase.ui.contentassist;
 
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Maps.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static org.eclipse.xtext.util.Strings.isEmpty;
+import static org.eclipse.xtext.util.Strings.notNull;
 
 import java.util.List;
 import java.util.Map;
@@ -23,22 +24,6 @@ import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.RuleCall;
-import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmEnumerationLiteral;
-import org.summer.dsl.model.types.JvmEnumerationType;
-import org.summer.dsl.model.types.JvmExecutable;
-import org.summer.dsl.model.types.JvmFeature;
-import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.types.JvmParameterizedTypeReference;
-import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.types.xtext.ui.ITypesProposalProvider;
-import org.summer.dsl.model.types.xtext.ui.TypeMatchFilters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
@@ -62,14 +47,31 @@ import org.eclipse.xtext.ui.editor.contentassist.RepeatedContentAssistProcessor;
 import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Triple;
 import org.eclipse.xtext.util.Tuples;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmEnumerationLiteral;
+import org.summer.dsl.model.types.JvmEnumerationType;
+import org.summer.dsl.model.types.JvmExecutable;
+import org.summer.dsl.model.types.JvmFeature;
+import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmOperation;
+import org.summer.dsl.model.types.JvmParameterizedTypeReference;
+import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.TypesPackage;
+import org.summer.dsl.model.types.xtext.ui.ITypesProposalProvider;
+import org.summer.dsl.model.types.xtext.ui.TypeMatchFilters;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.conversion.XbaseQualifiedNameValueConverter;
 import org.summer.dsl.xbase.scoping.XbaseScopeProvider;
@@ -83,7 +85,6 @@ import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.OwnedConverter;
 import org.summer.dsl.xbase.typesystem.util.CommonTypeComputationServices;
-import org.summer.dsl.model.xtype.XtypePackage;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -373,12 +374,12 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 	@Override
 	public void completeXFeatureCall_Feature(EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof XBlockExpression) {
-			XBlockExpression block = (XBlockExpression) model;
-			if (!block.getExpressions().isEmpty()) {
+		if (model instanceof XBlockStatment) {
+			XBlockStatment block = (XBlockStatment) model;
+			if (!block.getStatments().isEmpty()) {
 				EObject previousModel = context.getPreviousModel();
 				if (context.getPreviousModel() == model) {
-					for(XExpression expression: block.getExpressions()) {
+					for(XStatment expression: block.getStatments()) {
 						ICompositeNode node = NodeModelUtils.findActualNodeFor(expression);
 						if (node != null && node.getOffset() >= context.getOffset())
 							break;
@@ -389,12 +390,12 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 						previousModel = previousModel.eContainer();
 					}
 				}
-				int idx = block.getExpressions().indexOf(previousModel);
+				int idx = block.getStatments().indexOf(previousModel);
 				createLocalVariableAndImplicitProposals(block, idx + 1, context, acceptor);
 				return;
 			}
 		} 
-		if (model instanceof XForLoopExpression) {
+		if (model instanceof XForLoopStatment) {
 			ICompositeNode node = NodeModelUtils.getNode(model);
 			if (node != null) {
 				boolean eachExpression = false;
@@ -418,13 +419,13 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 	}
 
 	protected Keyword getXForLoopRightParenthesis() {
-		return grammarAccess.getXForLoopExpressionAccess().getRightParenthesisKeyword_6();
+		return grammarAccess.getXForLoopStatmentAccess().getRightParenthesisKeyword_6();
 	}
 	
 	@Override
-	public void completeXBlockExpression_Expressions(EObject model, Assignment assignment,
+	public void completeXBlockStatment_Statments(EObject model, Assignment assignment,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXBlockExpression_Expressions(model, assignment, context, acceptor);
+		super.completeXBlockStatment_Statments(model, assignment, context, acceptor);
 		completeWithinBlock(model, context, acceptor);
 	}
 	
@@ -436,15 +437,15 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 //	}
 
 	protected void completeWithinBlock(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		if (!(model instanceof XBlockExpression)) {
+		if (!(model instanceof XBlockStatment)) {
 			EObject local = model;
-			while(!(local.eContainer() instanceof XBlockExpression)) {
+			while(!(local.eContainer() instanceof XBlockStatment)) {
 				local = local.eContainer();
 				if (local == null)
 					return;
 			}
-			XBlockExpression block = (XBlockExpression) local.eContainer();
-			int idx = block.getExpressions().indexOf(local);
+			XBlockStatment block = (XBlockStatment) local.eContainer();
+			int idx = block.getStatments().indexOf(local);
 			createLocalVariableAndImplicitProposals(block, idx + 1, context, acceptor);
 		}
 	}
@@ -466,7 +467,7 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 		if (model instanceof XCasePart) {
 			createLocalVariableAndImplicitProposals(model, -1, context, acceptor);
 		}
-		XSwitchExpression switchExpression = EcoreUtil2.getContainerOfType(model, XSwitchExpression.class);
+		XSwitchStatment switchExpression = EcoreUtil2.getContainerOfType(model, XSwitchStatment.class);
 		if (switchExpression != null) {
 			LightweightTypeReference switchExpressionType = typeResolver.resolveTypes(switchExpression).getActualType(switchExpression.getSwitch());
 			if (switchExpressionType != null) {

@@ -332,13 +332,13 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		if (expression == null) {
 			return true;
 		}
-		if (expression.eClass() == XbasePackage.Literals.XRETURN_EXPRESSION) {
+		if (expression.eClass() == XbasePackage.Literals.XRETURN_STATMENT) {
 			return false;
 		}
 		TreeIterator<EObject> contents = expression.eAllContents();
 		while (contents.hasNext()) {
 			EObject next = contents.next();
-			if (next.eClass() == XbasePackage.Literals.XRETURN_EXPRESSION) {
+			if (next.eClass() == XbasePackage.Literals.XRETURN_STATMENT) {
 				return false;
 			}
 			if (next.eClass() == XbasePackage.Literals.XCLOSURE) {

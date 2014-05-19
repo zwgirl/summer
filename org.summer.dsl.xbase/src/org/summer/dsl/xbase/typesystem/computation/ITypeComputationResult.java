@@ -12,7 +12,7 @@ import java.util.EnumSet;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
@@ -31,7 +31,7 @@ import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
  *   val x = if (guard) return 'dummy' else 1
  * <pre>
  * 
- * The return type of the {@link XIfExpression if expression} is the 
+ * The return type of the {@link XIfStatment if expression} is the 
  * type <code>Comparable&lt;?&gt; & Serializable</code> while the actual type
  * of the conditional expression is type <code>int</code>. The first branch 
  * of the condition will never complete normally thus its type is not 

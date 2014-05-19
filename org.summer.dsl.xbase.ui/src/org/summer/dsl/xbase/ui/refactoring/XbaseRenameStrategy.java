@@ -10,7 +10,7 @@ package org.summer.dsl.xbase.ui.refactoring;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
@@ -19,9 +19,6 @@ import org.summer.dsl.model.xbase.XbasePackage;
 public class XbaseRenameStrategy extends DefaultRenameStrategy {
 	@Override
 	protected EAttribute getNameAttribute(EObject targetElement) {
-		if (targetElement instanceof XSwitchExpression) {
-			return XbasePackage.Literals.XSWITCH_EXPRESSION__LOCAL_VAR_NAME;
-		}
 		return super.getNameAttribute(targetElement);
 	}
 

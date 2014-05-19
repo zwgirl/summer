@@ -11,16 +11,11 @@ import static com.google.common.collect.Iterables.filter;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.eclipse.jdt.annotation.Nullable;
-import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.Region;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.GrammarUtil;
@@ -40,7 +35,6 @@ import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.types.JvmField;
-import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmOperation;
@@ -53,17 +47,14 @@ import org.summer.dsl.model.xaml.XElement;
 import org.summer.dsl.model.xaml.XMarkupExtenson;
 import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xaml.XamlPackage;
-import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingCalculator;
 import org.summer.dsl.xbase.ui.highlighting.XbaseHighlightingConfiguration;
 import org.summer.ss.core.services.SsGrammarAccess;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
@@ -163,8 +154,8 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 				for (JvmMember member : filter(declType.getMembers(), JvmMember.class)) {
 					if (member.eClass() == TypesPackage.Literals.JVM_OPERATION) {
 						JvmOperation function = (JvmOperation) member;
-						XExpression rootExpression = function.getExpression();
-						highlightRichStrings(rootExpression, acceptor);
+						XStatment rootExpression = function.getBody();
+//						highlightRichStrings(rootExpression, acceptor);
 //						CreateExtensionInfo createExtensionInfo = function.getCreateExtensionInfo();
 //						if (createExtensionInfo != null) {
 //							highlightRichStrings(createExtensionInfo.getCreateExpression(), acceptor);

@@ -35,20 +35,20 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
-import org.summer.dsl.model.xbase.XBreakExpression;
+import org.summer.dsl.model.xbase.XBreakStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XContinueExpression;
-import org.summer.dsl.model.xbase.XDoWhileExpression;
+import org.summer.dsl.model.xbase.XContinueStatment;
+import org.summer.dsl.model.xbase.XDoWhileStatment;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XForEachExpression;
-import org.summer.dsl.model.xbase.XForLoopExpression;
-import org.summer.dsl.model.xbase.XIfExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -58,17 +58,17 @@ import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
 import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XStringLiteral;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XTernaryOperation;
-import org.summer.dsl.model.xbase.XThrowExpression;
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
-import org.summer.dsl.model.xbase.XWhileExpression;
+import org.summer.dsl.model.xbase.XWhileStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XExportDeclaration;
 import org.summer.dsl.model.xtype.XExportItem;
@@ -422,7 +422,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
 				if(context == grammarAccess.getXBlockExpressionRule()) {
-					sequence_XBlockExpression(context, (XBlockExpression) semanticObject); 
+					sequence_XBlockExpression(context, (XBlockStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -435,7 +435,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XBREAK_EXPRESSION:
 				if(context == grammarAccess.getXBreakExpressionRule()) {
-					sequence_XBreakExpression(context, (XBreakExpression) semanticObject); 
+					sequence_XBreakExpression(context, (XBreakStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -502,13 +502,13 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XCONTINUE_EXPRESSION:
 				if(context == grammarAccess.getXContinueExpressionRule()) {
-					sequence_XContinueExpression(context, (XContinueExpression) semanticObject); 
+					sequence_XContinueExpression(context, (XContinueStatment) semanticObject); 
 					return; 
 				}
 				else break;
 			case XbasePackage.XDO_WHILE_EXPRESSION:
 				if(context == grammarAccess.getXDoWhileExpressionRule()) {
-					sequence_XDoWhileExpression(context, (XDoWhileExpression) semanticObject); 
+					sequence_XDoWhileExpression(context, (XDoWhileStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -520,19 +520,19 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XFOR_EACH_EXPRESSION:
 				if(context == grammarAccess.getXForEachLoopExpressionRule()) {
-					sequence_XForEachLoopExpression(context, (XForEachExpression) semanticObject); 
+					sequence_XForEachLoopExpression(context, (XForEachStatment) semanticObject); 
 					return; 
 				}
 				else break;
 			case XbasePackage.XFOR_LOOP_EXPRESSION:
 				if(context == grammarAccess.getXForLoopExpressionRule()) {
-					sequence_XForLoopExpression(context, (XForLoopExpression) semanticObject); 
+					sequence_XForLoopExpression(context, (XForLoopStatment) semanticObject); 
 					return; 
 				}
 				else break;
 			case XbasePackage.XIF_EXPRESSION:
 				if(context == grammarAccess.getXIfExpressionRule()) {
-					sequence_XIfExpression(context, (XIfExpression) semanticObject); 
+					sequence_XIfExpression(context, (XIfStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -741,7 +741,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XRETURN_EXPRESSION:
 				if(context == grammarAccess.getXReturnExpressionRule()) {
-					sequence_XReturnExpression(context, (XReturnExpression) semanticObject); 
+					sequence_XReturnExpression(context, (XReturnStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -796,7 +796,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XSWITCH_EXPRESSION:
 				if(context == grammarAccess.getXSwitchExpressionRule()) {
-					sequence_XSwitchExpression(context, (XSwitchExpression) semanticObject); 
+					sequence_XSwitchExpression(context, (XSwitchStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -831,13 +831,13 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XTHROW_EXPRESSION:
 				if(context == grammarAccess.getXThrowExpressionRule()) {
-					sequence_XThrowExpression(context, (XThrowExpression) semanticObject); 
+					sequence_XThrowExpression(context, (XThrowStatment) semanticObject); 
 					return; 
 				}
 				else break;
 			case XbasePackage.XTRY_CATCH_FINALLY_EXPRESSION:
 				if(context == grammarAccess.getXTryCatchFinallyExpressionRule()) {
-					sequence_XTryCatchFinallyExpression(context, (XTryCatchFinallyExpression) semanticObject); 
+					sequence_XTryCatchFinallyExpression(context, (XTryCatchFinallyStatment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -897,7 +897,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				else break;
 			case XbasePackage.XWHILE_EXPRESSION:
 				if(context == grammarAccess.getXWhileExpressionRule()) {
-					sequence_XWhileExpression(context, (XWhileExpression) semanticObject); 
+					sequence_XWhileExpression(context, (XWhileStatment) semanticObject); 
 					return; 
 				}
 				else break;

@@ -77,20 +77,28 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXExpressionAdapter();
 			}
 			@Override
-			public Adapter caseXIfExpression(XIfExpression object) {
-				return createXIfExpressionAdapter();
+			public Adapter caseXStatment(XStatment object) {
+				return createXStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXSwitchExpression(XSwitchExpression object) {
-				return createXSwitchExpressionAdapter();
+			public Adapter caseXIfStatment(XIfStatment object) {
+				return createXIfStatmentAdapter();
+			}
+			@Override
+			public Adapter caseXExpressionStatment(XExpressionStatment object) {
+				return createXExpressionStatmentAdapter();
+			}
+			@Override
+			public Adapter caseXSwitchStatment(XSwitchStatment object) {
+				return createXSwitchStatmentAdapter();
 			}
 			@Override
 			public Adapter caseXCasePart(XCasePart object) {
 				return createXCasePartAdapter();
 			}
 			@Override
-			public Adapter caseXBlockExpression(XBlockExpression object) {
-				return createXBlockExpressionAdapter();
+			public Adapter caseXBlockStatment(XBlockStatment object) {
+				return createXBlockStatmentAdapter();
 			}
 			@Override
 			public Adapter caseXVariableDeclaration(XVariableDeclaration object) {
@@ -169,24 +177,24 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXUnaryOperationAdapter();
 			}
 			@Override
-			public Adapter caseXForLoopExpression(XForLoopExpression object) {
-				return createXForLoopExpressionAdapter();
+			public Adapter caseXForLoopStatment(XForLoopStatment object) {
+				return createXForLoopStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXForEachExpression(XForEachExpression object) {
-				return createXForEachExpressionAdapter();
+			public Adapter caseXForEachStatment(XForEachStatment object) {
+				return createXForEachStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXAbstractWhileExpression(XAbstractWhileExpression object) {
-				return createXAbstractWhileExpressionAdapter();
+			public Adapter caseXAbstractWhileStatment(XAbstractWhileStatment object) {
+				return createXAbstractWhileStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXDoWhileExpression(XDoWhileExpression object) {
-				return createXDoWhileExpressionAdapter();
+			public Adapter caseXDoWhileStatment(XDoWhileStatment object) {
+				return createXDoWhileStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXWhileExpression(XWhileExpression object) {
-				return createXWhileExpressionAdapter();
+			public Adapter caseXWhileStatment(XWhileStatment object) {
+				return createXWhileStatmentAdapter();
 			}
 			@Override
 			public Adapter caseXTypeLiteral(XTypeLiteral object) {
@@ -197,12 +205,12 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXInstanceOfExpressionAdapter();
 			}
 			@Override
-			public Adapter caseXThrowExpression(XThrowExpression object) {
-				return createXThrowExpressionAdapter();
+			public Adapter caseXThrowStatment(XThrowStatment object) {
+				return createXThrowStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXTryCatchFinallyExpression(XTryCatchFinallyExpression object) {
-				return createXTryCatchFinallyExpressionAdapter();
+			public Adapter caseXTryCatchFinallyStatment(XTryCatchFinallyStatment object) {
+				return createXTryCatchFinallyStatmentAdapter();
 			}
 			@Override
 			public Adapter caseXCatchClause(XCatchClause object) {
@@ -213,16 +221,16 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXAssignmentAdapter();
 			}
 			@Override
-			public Adapter caseXReturnExpression(XReturnExpression object) {
-				return createXReturnExpressionAdapter();
+			public Adapter caseXReturnStatment(XReturnStatment object) {
+				return createXReturnStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXBreakExpression(XBreakExpression object) {
-				return createXBreakExpressionAdapter();
+			public Adapter caseXBreakStatment(XBreakStatment object) {
+				return createXBreakStatmentAdapter();
 			}
 			@Override
-			public Adapter caseXContinueExpression(XContinueExpression object) {
-				return createXContinueExpressionAdapter();
+			public Adapter caseXContinueStatment(XContinueStatment object) {
+				return createXContinueStatmentAdapter();
 			}
 			@Override
 			public Adapter caseXPostfixOperation(XPostfixOperation object) {
@@ -267,6 +275,10 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRichStringLiteral(RichStringLiteral object) {
 				return createRichStringLiteralAdapter();
+			}
+			@Override
+			public Adapter caseXFunction(XFunction object) {
+				return createXFunctionAdapter();
 			}
 			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
@@ -335,30 +347,58 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XIfExpression <em>XIf Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XStatment <em>XStatment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XIfExpression
+	 * @see org.summer.dsl.model.xbase.XStatment
 	 * @generated
 	 */
-	public Adapter createXIfExpressionAdapter() {
+	public Adapter createXStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XSwitchExpression <em>XSwitch Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XIfStatment <em>XIf Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XSwitchExpression
+	 * @see org.summer.dsl.model.xbase.XIfStatment
 	 * @generated
 	 */
-	public Adapter createXSwitchExpressionAdapter() {
+	public Adapter createXIfStatmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XExpressionStatment <em>XExpression Statment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XExpressionStatment
+	 * @generated
+	 */
+	public Adapter createXExpressionStatmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XSwitchStatment <em>XSwitch Statment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XSwitchStatment
+	 * @generated
+	 */
+	public Adapter createXSwitchStatmentAdapter() {
 		return null;
 	}
 
@@ -377,16 +417,16 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XBlockExpression <em>XBlock Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XBlockStatment <em>XBlock Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XBlockExpression
+	 * @see org.summer.dsl.model.xbase.XBlockStatment
 	 * @generated
 	 */
-	public Adapter createXBlockExpressionAdapter() {
+	public Adapter createXBlockStatmentAdapter() {
 		return null;
 	}
 
@@ -657,72 +697,72 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XForLoopExpression <em>XFor Loop Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XForLoopStatment <em>XFor Loop Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XForLoopExpression
+	 * @see org.summer.dsl.model.xbase.XForLoopStatment
 	 * @generated
 	 */
-	public Adapter createXForLoopExpressionAdapter() {
+	public Adapter createXForLoopStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XForEachExpression <em>XFor Each Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XForEachStatment <em>XFor Each Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XForEachExpression
+	 * @see org.summer.dsl.model.xbase.XForEachStatment
 	 * @generated
 	 */
-	public Adapter createXForEachExpressionAdapter() {
+	public Adapter createXForEachStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XAbstractWhileExpression <em>XAbstract While Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XAbstractWhileStatment <em>XAbstract While Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XAbstractWhileExpression
+	 * @see org.summer.dsl.model.xbase.XAbstractWhileStatment
 	 * @generated
 	 */
-	public Adapter createXAbstractWhileExpressionAdapter() {
+	public Adapter createXAbstractWhileStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XDoWhileExpression <em>XDo While Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XDoWhileStatment <em>XDo While Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XDoWhileExpression
+	 * @see org.summer.dsl.model.xbase.XDoWhileStatment
 	 * @generated
 	 */
-	public Adapter createXDoWhileExpressionAdapter() {
+	public Adapter createXDoWhileStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XWhileExpression <em>XWhile Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XWhileStatment <em>XWhile Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XWhileExpression
+	 * @see org.summer.dsl.model.xbase.XWhileStatment
 	 * @generated
 	 */
-	public Adapter createXWhileExpressionAdapter() {
+	public Adapter createXWhileStatmentAdapter() {
 		return null;
 	}
 
@@ -755,30 +795,30 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XThrowExpression <em>XThrow Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XThrowStatment <em>XThrow Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XThrowExpression
+	 * @see org.summer.dsl.model.xbase.XThrowStatment
 	 * @generated
 	 */
-	public Adapter createXThrowExpressionAdapter() {
+	public Adapter createXThrowStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XTryCatchFinallyExpression <em>XTry Catch Finally Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XTryCatchFinallyStatment <em>XTry Catch Finally Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XTryCatchFinallyExpression
+	 * @see org.summer.dsl.model.xbase.XTryCatchFinallyStatment
 	 * @generated
 	 */
-	public Adapter createXTryCatchFinallyExpressionAdapter() {
+	public Adapter createXTryCatchFinallyStatmentAdapter() {
 		return null;
 	}
 
@@ -811,44 +851,44 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XReturnExpression <em>XReturn Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XReturnStatment <em>XReturn Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XReturnExpression
+	 * @see org.summer.dsl.model.xbase.XReturnStatment
 	 * @generated
 	 */
-	public Adapter createXReturnExpressionAdapter() {
+	public Adapter createXReturnStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XBreakExpression <em>XBreak Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XBreakStatment <em>XBreak Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XBreakExpression
+	 * @see org.summer.dsl.model.xbase.XBreakStatment
 	 * @generated
 	 */
-	public Adapter createXBreakExpressionAdapter() {
+	public Adapter createXBreakStatmentAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XContinueExpression <em>XContinue Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XContinueStatment <em>XContinue Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XContinueExpression
+	 * @see org.summer.dsl.model.xbase.XContinueStatment
 	 * @generated
 	 */
-	public Adapter createXContinueExpressionAdapter() {
+	public Adapter createXContinueStatmentAdapter() {
 		return null;
 	}
 
@@ -1003,6 +1043,20 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRichStringLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XFunction <em>XFunction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XFunction
+	 * @generated
+	 */
+	public Adapter createXFunctionAdapter() {
 		return null;
 	}
 

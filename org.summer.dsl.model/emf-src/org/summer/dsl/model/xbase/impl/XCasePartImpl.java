@@ -4,17 +4,13 @@ package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.summer.dsl.model.types.JvmTypeReference;
-
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
@@ -26,7 +22,6 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getCase <em>Case</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getThen <em>Then</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getTypeGuard <em>Type Guard</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,17 +46,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression then;
-
-	/**
-	 * The cached value of the '{@link #getTypeGuard() <em>Type Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypeGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected JvmTypeReference typeGuard;
+	protected XStatment then;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,7 +115,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getThen() {
+	public XStatment getThen() {
 		return then;
 	}
 
@@ -139,8 +124,8 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetThen(XExpression newThen, NotificationChain msgs) {
-		XExpression oldThen = then;
+	public NotificationChain basicSetThen(XStatment newThen, NotificationChain msgs) {
+		XStatment oldThen = then;
 		then = newThen;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__THEN, oldThen, newThen);
@@ -154,7 +139,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setThen(XExpression newThen) {
+	public void setThen(XStatment newThen) {
 		if (newThen != then) {
 			NotificationChain msgs = null;
 			if (then != null)
@@ -173,49 +158,6 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JvmTypeReference getTypeGuard() {
-		return typeGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTypeGuard(JvmTypeReference newTypeGuard, NotificationChain msgs) {
-		JvmTypeReference oldTypeGuard = typeGuard;
-		typeGuard = newTypeGuard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__TYPE_GUARD, oldTypeGuard, newTypeGuard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypeGuard(JvmTypeReference newTypeGuard) {
-		if (newTypeGuard != typeGuard) {
-			NotificationChain msgs = null;
-			if (typeGuard != null)
-				msgs = ((InternalEObject)typeGuard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
-			if (newTypeGuard != null)
-				msgs = ((InternalEObject)newTypeGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCASE_PART__TYPE_GUARD, null, msgs);
-			msgs = basicSetTypeGuard(newTypeGuard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__TYPE_GUARD, newTypeGuard, newTypeGuard));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -223,8 +165,6 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 				return basicSetCase(null, msgs);
 			case XbasePackage.XCASE_PART__THEN:
 				return basicSetThen(null, msgs);
-			case XbasePackage.XCASE_PART__TYPE_GUARD:
-				return basicSetTypeGuard(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -241,8 +181,6 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 				return getCase();
 			case XbasePackage.XCASE_PART__THEN:
 				return getThen();
-			case XbasePackage.XCASE_PART__TYPE_GUARD:
-				return getTypeGuard();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,10 +197,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 				setCase((XExpression)newValue);
 				return;
 			case XbasePackage.XCASE_PART__THEN:
-				setThen((XExpression)newValue);
-				return;
-			case XbasePackage.XCASE_PART__TYPE_GUARD:
-				setTypeGuard((JvmTypeReference)newValue);
+				setThen((XStatment)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,10 +215,7 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 				setCase((XExpression)null);
 				return;
 			case XbasePackage.XCASE_PART__THEN:
-				setThen((XExpression)null);
-				return;
-			case XbasePackage.XCASE_PART__TYPE_GUARD:
-				setTypeGuard((JvmTypeReference)null);
+				setThen((XStatment)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -301,8 +233,6 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 				return case_ != null;
 			case XbasePackage.XCASE_PART__THEN:
 				return then != null;
-			case XbasePackage.XCASE_PART__TYPE_GUARD:
-				return typeGuard != null;
 		}
 		return super.eIsSet(featureID);
 	}

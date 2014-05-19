@@ -25,7 +25,7 @@ import org.eclipse.xtext.validation.IssueSeveritiesProvider;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XbaseFactory;
 import org.summer.dsl.xbase.scoping.batch.IBatchScopeProvider;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
@@ -292,7 +292,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 			final XCasePart casePart = (XCasePart) abortOn;
 			return new ITypeComputer() {
 				public void computeTypes(XExpression expression, ITypeComputationState state) {
-					if (expression instanceof XSwitchExpression && casePart.eContainer() == expression) {
+					if (expression instanceof XSwitchStatment && casePart.eContainer() == expression) {
 						class State extends ForwardingTypeComputationState {
 
 							public State(ITypeComputationState delegate) {

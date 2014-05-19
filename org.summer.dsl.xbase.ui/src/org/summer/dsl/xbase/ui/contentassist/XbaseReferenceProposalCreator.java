@@ -283,10 +283,10 @@ public class XbaseReferenceProposalCreator extends TypeAwareReferenceProposalCre
 				flags |= Flags.AccAbstract;
 				decorator |= JavaElementImageDescriptor.ABSTRACT;
 			}
-			if (operation.isFinal()) {
-				flags |= Flags.AccFinal;
-				decorator |= JavaElementImageDescriptor.FINAL;
-			}
+//			if (operation.isFinal()) {
+//				flags |= Flags.AccFinal;
+//				decorator |= JavaElementImageDescriptor.FINAL;
+//			}
 			return computeMethodImage(interfaceOrAnnotation, flags, decorator);
 		} else if (feature instanceof JvmField) {
 			JvmField field = (JvmField) feature;
@@ -294,7 +294,7 @@ public class XbaseReferenceProposalCreator extends TypeAwareReferenceProposalCre
 				flags |= Flags.AccStatic;
 				decorator |= JavaElementImageDescriptor.STATIC;
 			}
-			if (field.isFinal()) {
+			if (field.isConst()) {
 				flags |= Flags.AccFinal;
 				decorator |= JavaElementImageDescriptor.FINAL;
 			}

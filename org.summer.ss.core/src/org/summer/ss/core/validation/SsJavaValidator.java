@@ -55,7 +55,6 @@ import static org.summer.ss.core.validation.IssueCodes.WILDCARD_IN_SUPERTYPE;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -102,11 +101,13 @@ import org.summer.dsl.model.types.JvmVisibility;
 import org.summer.dsl.model.types.JvmWildcardTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XAssignment;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xbase.XbasePackage.Literals;
@@ -760,15 +761,27 @@ public class SsJavaValidator extends XbaseJavaValidator {
 							xtendClass.getSimpleName() + " must define an explicit constructor.",
 							xtendClass, TypesPackage.Literals.JVM_DELEGATE_TYPE__SIMPLE_NAME, MISSING_CONSTRUCTOR, toArray(issueData, String.class));
 				} else {
+//					for(JvmConstructor constructor: constructors) {
+//						XExpression expression = containerProvider.getAssociatedExpression(constructor);
+//						if (expression instanceof XBlockStatment) {
+//							List<XStatment> expressions = ((XBlockStatment) expression).getStatments();
+//							if(expressions.isEmpty() || !isDelegatConstructorCall(expressions.get(0))) {
+//								JvmConstructor xtendConstructor = constructor; //associations.getXtendConstructor(constructor);
+//								error("No default constructor in super type " + superType.getSimpleName() 
+//										+ ". Another constructor must be invoked explicitly.",
+//										xtendConstructor, null, MUST_INVOKE_SUPER_CONSTRUCTOR);
+//							}
+//						}
+//					}
+					
 					for(JvmConstructor constructor: constructors) {
-						XExpression expression = containerProvider.getAssociatedExpression(constructor);
-						if (expression instanceof XBlockExpression) {
-							List<XExpression> expressions = ((XBlockExpression) expression).getExpressions();
+						XStatment statment = constructor.getBody();
+						if (statment instanceof XBlockStatment) {
+							List<XStatment> expressions = ((XBlockStatment) statment).getStatments();
 							if(expressions.isEmpty() || !isDelegatConstructorCall(expressions.get(0))) {
-								JvmConstructor xtendConstructor = constructor; //associations.getXtendConstructor(constructor);
 								error("No default constructor in super type " + superType.getSimpleName() 
 										+ ". Another constructor must be invoked explicitly.",
-										xtendConstructor, null, MUST_INVOKE_SUPER_CONSTRUCTOR);
+										constructor, null, MUST_INVOKE_SUPER_CONSTRUCTOR);
 							}
 						}
 					}
@@ -777,10 +790,13 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		} 
 	}
 
-	protected boolean isDelegatConstructorCall(XExpression expression) {
-		if(expression instanceof XFeatureCall) {
-			JvmIdentifiableElement feature = ((XFeatureCall)expression).getFeature();
-			return (feature != null && !feature.eIsProxy() && feature instanceof JvmConstructor);
+	protected boolean isDelegatConstructorCall(XStatment statment) {
+		if(statment instanceof XExpressionStatment){
+			XExpressionStatment expressionStat = (XExpressionStatment) statment;
+			if(expressionStat.getExpression() instanceof XFeatureCall) {
+				JvmIdentifiableElement feature = ((XFeatureCall)expressionStat).getFeature();
+				return (feature != null && !feature.eIsProxy() && feature instanceof JvmConstructor);
+			}
 		}
 		return false;
 	}
@@ -851,7 +867,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	
 	@Check
 	public void checkAbstract(JvmOperation function) {
-		if (function.getExpression() == null) {
+		if (function.getBody() == null) {
 			if(function.getDeclaringType() instanceof JvmGenericType) {
 				JvmGenericType declarator = (JvmGenericType) function.getDeclaringType();
 //				if (function.isDispatch()) {
@@ -922,9 +938,9 @@ public class SsJavaValidator extends XbaseJavaValidator {
 //		return super.isValueExpectedRecursive(expr);
 //	}
 
-	protected void collectReturnExpressions(EObject expr, List<XReturnExpression> found) {
-		if (expr instanceof XReturnExpression) {
-			found.add((XReturnExpression) expr);
+	protected void collectReturnExpressions(EObject expr, List<XReturnStatment> found) {
+		if (expr instanceof XReturnStatment) {
+			found.add((XReturnStatment) expr);
 		} else if (expr instanceof XClosure) {
 			return;
 		}
@@ -1175,7 +1191,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		
 	private ModifierValidator methodModifierValidator = new ModifierValidator(
 //			newArrayList("public", "protected", "package", "private", "static", "abstract", "dispatch", "final", "function", "override"), this);
-			newArrayList("static", "abstract", "overload", "final", "function", "override"), this);
+			newArrayList("static", "abstract", "overload", "final", "function", "override", "native"), this);
 		
 	private ModifierValidator methodInInterfaceModifierValidator = new ModifierValidator(
 			newArrayList("public", "abstract", "def", "override"), this);
@@ -1217,7 +1233,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		if(method.getDeclaringType() instanceof JvmGenericType) {
 			methodModifierValidator.checkModifiers(method, "method " + method.getSimpleName());
 			int abstractIndex = method.getModifiers().indexOf("abstract");
-			if (method.getExpression() != null) {
+			if (method.getBody() != null) {
 				if (abstractIndex != -1) 
 					error("Method " + method.getSimpleName() + " with a body cannot be abstract", TypesPackage.Literals.JVM_MEMBER__MODIFIERS, abstractIndex, INVALID_MODIFIER);
 			} else {

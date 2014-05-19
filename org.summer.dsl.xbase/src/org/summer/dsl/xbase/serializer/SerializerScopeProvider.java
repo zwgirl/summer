@@ -36,7 +36,7 @@ import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XSwitchExpression;
+import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xtype.XImportDeclaration;
@@ -119,7 +119,7 @@ public class SerializerScopeProvider extends XbaseBatchScopeProvider implements 
 		if (feature instanceof JvmExecutable) {
 			return getExecutableScope(call, feature);
 		}
-		if (feature instanceof JvmFormalParameter || feature instanceof JvmField || feature instanceof XVariableDeclaration || feature instanceof XSwitchExpression) {
+		if (feature instanceof JvmFormalParameter || feature instanceof JvmField || feature instanceof XVariableDeclaration || feature instanceof XSwitchStatment) {
 			return new SingletonScope(EObjectDescription.create(feature.getSimpleName(), feature), IScope.NULLSCOPE);
 		}
 		return IScope.NULLSCOPE;

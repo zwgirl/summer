@@ -10,6 +10,7 @@ package org.summer.dsl.xbase.controlflow;
 import java.util.Collection;
 
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 import com.google.inject.ImplementedBy;
 
@@ -24,20 +25,20 @@ public interface IEarlyExitComputer {
 	 * termination, e.g. a return or throw expression. 
 	 * @return <code>true</code> if the given expression will definitely exit early.
 	 */
-	boolean isEarlyExit(XExpression expression);
+	boolean isEarlyExit(XStatment expression);
 
-	Collection<ExitPoint> getExitPoints(XExpression expression);
+	Collection<ExitPoint> getExitPoints(XStatment expression);
 	
 	public static class ExitPoint {
 		protected boolean exceptionalExit;
-		protected XExpression expression;
+		protected XStatment expression;
 		
-		protected ExitPoint(XExpression expression, boolean exceptionalExit) {
+		protected ExitPoint(XStatment expression, boolean exceptionalExit) {
 			this.expression = expression;
 			this.exceptionalExit = exceptionalExit;
 		}
 		
-		public XExpression getExpression() {
+		public XStatment getExpression() {
 			return expression;
 		}
 	}

@@ -23,7 +23,7 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
@@ -62,16 +62,16 @@ public class NewFeatureNameUtil {
 	}
 	
 	public void setFeatureScopeContext(XExpression siblingExpression) {
-		XBlockExpression containerBlock = 
-				(siblingExpression.eContainer() instanceof XBlockExpression) 
-				? (XBlockExpression) siblingExpression.eContainer() 
+		XBlockStatment containerBlock = 
+				(siblingExpression.eContainer() instanceof XBlockStatment) 
+				? (XBlockStatment) siblingExpression.eContainer() 
 				: null;
 		featureCallScope = scopeProvider.createSimpleFeatureCallScope(
 				siblingExpression.eContainer(), 
 				XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, 
 				siblingExpression.eResource(), 
 				true,
-				(containerBlock != null) ? containerBlock.getExpressions().size() : 0);
+				(containerBlock != null) ? containerBlock.getStatments().size() : 0);
 	}
 
 	public void checkNewFeatureName(String newFeatureName, boolean isLookupInScope, RefactoringStatus status) {

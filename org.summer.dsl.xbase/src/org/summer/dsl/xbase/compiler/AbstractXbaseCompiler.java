@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.compiler;
 
-import static com.google.common.collect.Sets.*;
+import static com.google.common.collect.Sets.newHashSet;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.util.Strings;
 import org.summer.dsl.model.types.JvmAnyTypeReference;
 import org.summer.dsl.model.types.JvmArrayType;
 import org.summer.dsl.model.types.JvmFormalParameter;
@@ -31,12 +32,12 @@ import org.summer.dsl.model.types.util.Primitives;
 import org.summer.dsl.model.types.util.Primitives.Primitive;
 import org.summer.dsl.model.types.util.TypeConformanceComputer;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.util.Strings;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.summer.dsl.xbase.controlflow.IEarlyExitComputer;
@@ -135,7 +136,7 @@ public abstract class AbstractXbaseCompiler {
 		this.typeReferences = typeReferences;
 	}
 	
-	public ITreeAppendable compile(XExpression obj, ITreeAppendable appendable, JvmTypeReference expectedReturnType) {
+	public ITreeAppendable compile(XStatment obj, ITreeAppendable appendable, JvmTypeReference expectedReturnType) {
 		compile(obj, appendable, expectedReturnType, null);
 		return appendable;
 	}
@@ -144,64 +145,64 @@ public abstract class AbstractXbaseCompiler {
 		ITreeAppendable appendable = parentAppendable.trace(obj, true);
 		
 		final boolean isPrimitiveVoidExpected = isPrimitiveVoid(expectedType); 
-		final boolean isPrimitiveVoid = isPrimitiveVoid(obj);
-		final boolean earlyExit = exitComputer.isEarlyExit(obj);
-		boolean needsSneakyThrow = needsSneakyThrow(obj, Collections.<JvmTypeReference>emptySet());
-		boolean needsToBeWrapped = earlyExit || needsSneakyThrow || !canCompileToJavaExpression(obj, appendable);
-		if (needsToBeWrapped) {
-			appendable.openScope();
-			try {
-				if (appendable.hasObject("this")) {
-					Object thisElement = appendable.getObject("this");
-					if (thisElement instanceof JvmType) {
-						appendable.declareVariable(thisElement, ((JvmType) thisElement).getSimpleName()+".this");
-						if (appendable.hasObject("super")) {
-							Object superElement = appendable.getObject("super");
-							if (superElement instanceof JvmType) {
-								appendable.declareVariable(superElement, ((JvmType) thisElement).getSimpleName()+".super");
-							}
-						}
-					}
-				}
-				appendable.append("new ");
-				JvmTypeReference procedureOrFunction = null;
-				if (isPrimitiveVoidExpected) {
-					procedureOrFunction = typeReferences.getTypeForName(Procedures.Procedure0.class, obj);
-				} else {
-					procedureOrFunction = typeReferences.getTypeForName(Functions.Function0.class, obj, expectedType);
-				}
-				if (procedureOrFunction != null)
-					referenceSerializer.serialize(procedureOrFunction, obj, appendable, false, false, true, false);
-				else
-					appendable.append("Object");
-				appendable.append("() {").increaseIndentation();
-				appendable.newLine().append("public ");
-				referenceSerializer.serialize(primitives.asWrapperTypeIfPrimitive(expectedType), obj, appendable);
-				appendable.append(" apply() {").increaseIndentation();
-				if (needsSneakyThrow) {
-					appendable.newLine().append("try {").increaseIndentation();
-				}
-				internalToJavaStatement(obj, appendable, !isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit);
-				if (!isPrimitiveVoidExpected && !earlyExit) {
-						appendable.newLine().append("return ");
-						if (isPrimitiveVoid && !isPrimitiveVoidExpected) {
-							appendDefaultLiteral(appendable, expectedType);
-						} else {
-							internalToJavaExpression(obj, appendable);
-						}
-						appendable.append(";");
-				}
-				if (needsSneakyThrow) {
-					generateCheckedExceptionHandling(obj, appendable);
-				}
-				appendable.decreaseIndentation().newLine().append("}");
-				appendable.decreaseIndentation().newLine().append("}.apply()");
-			} finally {
-				appendable.closeScope();
-			}
-		} else {
-			internalToJavaExpression(obj, appendable);
-		}
+//		final boolean isPrimitiveVoid = isPrimitiveVoid(obj);
+//		final boolean earlyExit = exitComputer.isEarlyExit(obj);
+//		boolean needsSneakyThrow = needsSneakyThrow(obj, Collections.<JvmTypeReference>emptySet());
+//		boolean needsToBeWrapped = earlyExit || needsSneakyThrow || !canCompileToJavaExpression(obj, appendable);
+//		if (needsToBeWrapped) {
+//			appendable.openScope();
+//			try {
+//				if (appendable.hasObject("this")) {
+//					Object thisElement = appendable.getObject("this");
+//					if (thisElement instanceof JvmType) {
+//						appendable.declareVariable(thisElement, ((JvmType) thisElement).getSimpleName()+".this");
+//						if (appendable.hasObject("super")) {
+//							Object superElement = appendable.getObject("super");
+//							if (superElement instanceof JvmType) {
+//								appendable.declareVariable(superElement, ((JvmType) thisElement).getSimpleName()+".super");
+//							}
+//						}
+//					}
+//				}
+//				appendable.append("new ");
+//				JvmTypeReference procedureOrFunction = null;
+//				if (isPrimitiveVoidExpected) {
+//					procedureOrFunction = typeReferences.getTypeForName(Procedures.Procedure0.class, obj);
+//				} else {
+//					procedureOrFunction = typeReferences.getTypeForName(Functions.Function0.class, obj, expectedType);
+//				}
+//				if (procedureOrFunction != null)
+//					referenceSerializer.serialize(procedureOrFunction, obj, appendable, false, false, true, false);
+//				else
+//					appendable.append("Object");
+//				appendable.append("() {").increaseIndentation();
+//				appendable.newLine().append("public ");
+//				referenceSerializer.serialize(primitives.asWrapperTypeIfPrimitive(expectedType), obj, appendable);
+//				appendable.append(" apply() {").increaseIndentation();
+//				if (needsSneakyThrow) {
+//					appendable.newLine().append("try {").increaseIndentation();
+//				}
+//				internalToJavaStatement(obj, appendable, !isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit);
+//				if (!isPrimitiveVoidExpected && !earlyExit) {
+//						appendable.newLine().append("return ");
+//						if (isPrimitiveVoid && !isPrimitiveVoidExpected) {
+//							appendDefaultLiteral(appendable, expectedType);
+//						} else {
+//							internalToJavaExpression(obj, appendable);
+//						}
+//						appendable.append(";");
+//				}
+//				if (needsSneakyThrow) {
+//					generateCheckedExceptionHandling(obj, appendable);
+//				}
+//				appendable.decreaseIndentation().newLine().append("}");
+//				appendable.decreaseIndentation().newLine().append("}.apply()");
+//			} finally {
+//				appendable.closeScope();
+//			}
+//		} else {
+//			internalToJavaExpression(obj, appendable);
+//		}
 		return parentAppendable;
 	}
 	
@@ -252,32 +253,32 @@ public abstract class AbstractXbaseCompiler {
 		return getReferenceName(expression, appendable) != null || !isVariableDeclarationRequired(expression, appendable);
 	}
 	
-	public ITreeAppendable compile(XExpression obj, ITreeAppendable parentAppendable, @Nullable JvmTypeReference expectedReturnType, @Nullable Set<JvmTypeReference> declaredExceptions) {
+	public ITreeAppendable compile(XStatment obj, ITreeAppendable parentAppendable, @Nullable JvmTypeReference expectedReturnType, @Nullable Set<JvmTypeReference> declaredExceptions) {
 		ITreeAppendable appendable = parentAppendable.trace(obj, true);
-		if (declaredExceptions == null) {
-			declaredExceptions = newHashSet();
-			assert declaredExceptions != null;
-		}
-		final boolean isPrimitiveVoidExpected = isPrimitiveVoid(expectedReturnType); 
-		final boolean isPrimitiveVoid = isPrimitiveVoid(obj);
-		final boolean earlyExit = exitComputer.isEarlyExit(obj);
-		boolean needsSneakyThrow = needsSneakyThrow(obj, declaredExceptions);
-		if (needsSneakyThrow) {
-			appendable.newLine().append("try {").increaseIndentation();
-		}
-		internalToJavaStatement(obj, appendable, !isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit);
-		if (!isPrimitiveVoidExpected && !earlyExit) {
-				appendable.newLine().append("return ");
-				if (isPrimitiveVoid && !isPrimitiveVoidExpected) {
-					appendDefaultLiteral(appendable, expectedReturnType);
-				} else {
-					internalToJavaExpression(obj, appendable);
-				}
-				appendable.append(";");
-		}
-		if (needsSneakyThrow) {
-			generateCheckedExceptionHandling(obj, appendable);
-		}
+//		if (declaredExceptions == null) {
+//			declaredExceptions = newHashSet();
+//			assert declaredExceptions != null;
+//		}
+//		final boolean isPrimitiveVoidExpected = isPrimitiveVoid(expectedReturnType); 
+//		final boolean isPrimitiveVoid = isPrimitiveVoid(obj);
+//		final boolean earlyExit = exitComputer.isEarlyExit(obj);
+//		boolean needsSneakyThrow = needsSneakyThrow(obj, declaredExceptions);
+//		if (needsSneakyThrow) {
+//			appendable.newLine().append("try {").increaseIndentation();
+//		}
+		internalToJavaStatement(obj, appendable, false/*!isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit*/);
+//		if (!isPrimitiveVoidExpected && !earlyExit) {
+//				appendable.newLine().append("return ");
+//				if (isPrimitiveVoid && !isPrimitiveVoidExpected) {
+//					appendDefaultLiteral(appendable, expectedReturnType);
+//				} else {
+//					internalToJavaExpression(obj, appendable);
+//				}
+//				appendable.append(";");
+//		}
+//		if (needsSneakyThrow) {
+//			generateCheckedExceptionHandling(obj, appendable);
+//		}
 		return parentAppendable;
 	}
 
@@ -287,28 +288,43 @@ public abstract class AbstractXbaseCompiler {
 		return ! Iterables.isEmpty(exceptions);
 	}
 	
+	//cym comment
+//	/**
+//	 * this one trims the outer block
+//	 */
+//	public ITreeAppendable compile(XBlockStatment expr, ITreeAppendable b, JvmTypeReference expectedReturnType) {
+//		final boolean isPrimitiveVoidExpected = isPrimitiveVoid(expectedReturnType); 
+//		final boolean isPrimitiveVoid = isPrimitiveVoid(expr);
+//		final boolean earlyExit = exitComputer.isEarlyExit(expr);
+//		final boolean isImplicitReturn = !isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit;
+//		final EList<XStatment> statments = expr.getStatments();
+//		for (int i = 0; i < statments.size(); i++) {
+//			XStatment ex = statments.get(i);
+//			if (i < statments.size() - 1) {
+//				internalToJavaStatement(ex, b.trace(ex, true), false);
+//			} else {
+//				internalToJavaStatement(ex, b.trace(ex, true), isImplicitReturn);
+//				if (isImplicitReturn) {
+//					b.newLine().append("return (");
+//					internalToConvertedExpression(ex, b, getType(expr));
+//					b.append(");");
+//				}
+//			}
+//		}
+//		return b;
+//	}
+	
 	/**
 	 * this one trims the outer block
 	 */
-	public ITreeAppendable compile(XBlockExpression expr, ITreeAppendable b, JvmTypeReference expectedReturnType) {
-		final boolean isPrimitiveVoidExpected = isPrimitiveVoid(expectedReturnType); 
-		final boolean isPrimitiveVoid = isPrimitiveVoid(expr);
-		final boolean earlyExit = exitComputer.isEarlyExit(expr);
-		final boolean isImplicitReturn = !isPrimitiveVoidExpected && !isPrimitiveVoid && !earlyExit;
-		final EList<XExpression> expressions = expr.getExpressions();
-		for (int i = 0; i < expressions.size(); i++) {
-			XExpression ex = expressions.get(i);
-			if (i < expressions.size() - 1) {
-				internalToJavaStatement(ex, b.trace(ex, true), false);
-			} else {
-				internalToJavaStatement(ex, b.trace(ex, true), isImplicitReturn);
-				if (isImplicitReturn) {
-					b.newLine().append("return (");
-					internalToConvertedExpression(ex, b, getType(expr));
-					b.append(");");
-				}
-			}
+	public ITreeAppendable compile(XBlockStatment expr, ITreeAppendable b, JvmTypeReference expectedReturnType) {
+		b.append("{").increaseIndentation().newLine();
+		final EList<XStatment> statments = expr.getStatments();
+		for (int i = 0; i < statments.size(); i++) {
+			XStatment ex = statments.get(i);
+			internalToJavaStatement(ex, b.trace(ex, true), false);
 		}
+		b.decreaseIndentation().newLine().append("}");
 		return b;
 	}
 
@@ -328,20 +344,32 @@ public abstract class AbstractXbaseCompiler {
 		return isPrimitiveVoid(type);
 	}
 
-	protected final void internalToJavaStatement(XExpression obj, ITreeAppendable builder, boolean isReferenced) {
+//	protected final void internalToJavaStatement(XExpression obj, ITreeAppendable builder, boolean isReferenced) {
+//		final ITreeAppendable trace = builder.trace(obj, true);
+//		doInternalToJavaStatement(obj, trace, isReferenced);
+//	}
+	
+	protected final void internalToJavaStatement(XStatment obj, ITreeAppendable builder, boolean isReferenced) {
 		final ITreeAppendable trace = builder.trace(obj, true);
 		doInternalToJavaStatement(obj, trace, isReferenced);
 	}
-
-	protected void doInternalToJavaStatement(XExpression obj, ITreeAppendable builder, boolean isReferenced) {
+	protected void doInternalToJavaStatement(XStatment obj, ITreeAppendable builder, boolean isReferenced) {
 		_toJavaStatement(obj, builder, isReferenced);
 	}
+
+//	protected void doInternalToJavaStatement(XExpression obj, ITreeAppendable builder, boolean isReferenced) {
+//		_toJavaStatement(obj, builder, isReferenced);
+//	}
 	
 	public void toJavaExpression(final XExpression obj, final ITreeAppendable appendable) {
 		internalToJavaExpression(obj, appendable.trace(obj, true));
 	}
 	
-	public void toJavaStatement(final XExpression obj, final ITreeAppendable appendable, boolean isReferenced) {
+//	public void toJavaStatement(final XExpression obj, final ITreeAppendable appendable, boolean isReferenced) {
+//		internalToJavaStatement(obj, appendable.trace(obj, true), isReferenced);
+//	}
+	
+	public void toJavaStatement(final XStatment obj, final ITreeAppendable appendable, boolean isReferenced) {
 		internalToJavaStatement(obj, appendable.trace(obj, true), isReferenced);
 	}
 
@@ -349,11 +377,20 @@ public abstract class AbstractXbaseCompiler {
 		_toJavaExpression(obj, appendable);
 	}
 
+//	/**
+//	 * @param b the appendable, unused, but necessary for dispatching purpose
+//	 * @param isReferenced unused, but necessary for dispatching purpose
+//	 */
+//	public void _toJavaStatement(XExpression func, ITreeAppendable b, boolean isReferenced) {
+//		throw new UnsupportedOperationException("Coudn't find a compilation strategy for expressions of type "
+//				+ func.getClass().getCanonicalName());
+//	}
+	
 	/**
 	 * @param b the appendable, unused, but necessary for dispatching purpose
 	 * @param isReferenced unused, but necessary for dispatching purpose
 	 */
-	public void _toJavaStatement(XExpression func, ITreeAppendable b, boolean isReferenced) {
+	public void _toJavaStatement(XStatment func, ITreeAppendable b, boolean isReferenced) {
 		throw new UnsupportedOperationException("Coudn't find a compilation strategy for expressions of type "
 				+ func.getClass().getCanonicalName());
 	}

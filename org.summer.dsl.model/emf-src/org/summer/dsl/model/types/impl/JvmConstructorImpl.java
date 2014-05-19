@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +18,7 @@ import org.summer.dsl.model.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmConstructorImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmConstructorImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,15 +26,14 @@ import org.summer.dsl.model.xbase.XExpression;
  */
 public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmConstructor {
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpression()
+	 * @see #getBody()
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression expression;
-
+	protected XStatment body;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,8 +58,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getExpression() {
-		return expression;
+	public XStatment getBody() {
+		return body;
 	}
 
 	/**
@@ -68,11 +67,11 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(XExpression newExpression, NotificationChain msgs) {
-		XExpression oldExpression = expression;
-		expression = newExpression;
+	public NotificationChain basicSetBody(XStatment newBody, NotificationChain msgs) {
+		XStatment oldBody = body;
+		body = newBody;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_CONSTRUCTOR__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_CONSTRUCTOR__BODY, oldBody, newBody);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -83,18 +82,18 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpression(XExpression newExpression) {
-		if (newExpression != expression) {
+	public void setBody(XStatment newBody) {
+		if (newBody != body) {
 			NotificationChain msgs = null;
-			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_CONSTRUCTOR__EXPRESSION, null, msgs);
-			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_CONSTRUCTOR__EXPRESSION, null, msgs);
-			msgs = basicSetExpression(newExpression, msgs);
+			if (body != null)
+				msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_CONSTRUCTOR__BODY, null, msgs);
+			if (newBody != null)
+				msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_CONSTRUCTOR__BODY, null, msgs);
+			msgs = basicSetBody(newBody, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_CONSTRUCTOR__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_CONSTRUCTOR__BODY, newBody, newBody));
 	}
 
 	/**
@@ -105,8 +104,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TypesPackage.JVM_CONSTRUCTOR__EXPRESSION:
-				return basicSetExpression(null, msgs);
+			case TypesPackage.JVM_CONSTRUCTOR__BODY:
+				return basicSetBody(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -119,8 +118,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TypesPackage.JVM_CONSTRUCTOR__EXPRESSION:
-				return getExpression();
+			case TypesPackage.JVM_CONSTRUCTOR__BODY:
+				return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,8 +132,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TypesPackage.JVM_CONSTRUCTOR__EXPRESSION:
-				setExpression((XExpression)newValue);
+			case TypesPackage.JVM_CONSTRUCTOR__BODY:
+				setBody((XStatment)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -148,8 +147,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_CONSTRUCTOR__EXPRESSION:
-				setExpression((XExpression)null);
+			case TypesPackage.JVM_CONSTRUCTOR__BODY:
+				setBody((XStatment)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -163,8 +162,8 @@ public class JvmConstructorImpl extends JvmExecutableImplCustom implements JvmCo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_CONSTRUCTOR__EXPRESSION:
-				return expression != null;
+			case TypesPackage.JVM_CONSTRUCTOR__BODY:
+				return body != null;
 		}
 		return super.eIsSet(featureID);
 	}

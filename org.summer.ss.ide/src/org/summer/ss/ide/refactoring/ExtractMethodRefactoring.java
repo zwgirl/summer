@@ -52,12 +52,13 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmVisibility;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XReturnExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -294,7 +295,7 @@ public class ExtractMethodRefactoring extends Refactoring {
 			if (returnType != null && !equal("void", returnType.getIdentifier()))
 				returnExpression = lastExpression;
 			boolean isReturnAllowed = isEndOfOriginalMethod(); 
-			for (EObject element : EcoreUtil2.eAllContents(originalMethod.getExpression())) {
+			for (EObject element : EcoreUtil2.eAllContents(originalMethod.getBody())) {
 				boolean isLocalExpression = EcoreUtil.isAncestor(expressions, element);
 				if (element instanceof XFeatureCall) {
 					XFeatureCall featureCall = (XFeatureCall) element;
@@ -325,7 +326,7 @@ public class ExtractMethodRefactoring extends Refactoring {
 						returnType = featureType;
 					}
 				} else if(isLocalExpression) {
-					if(element instanceof XReturnExpression && !isReturnAllowed) {
+					if(element instanceof XReturnStatment && !isReturnAllowed) {
 						status.add(RefactoringStatus.FATAL,
 							"Extracting method would break control flow due to return statements.");
 						break;
@@ -502,9 +503,9 @@ public class ExtractMethodRefactoring extends Refactoring {
 
 	protected boolean isEndOfOriginalMethod() {
 		EObject eContainer = lastExpression.eContainer();
-		if(eContainer instanceof XBlockExpression) {
+		if(eContainer instanceof XBlockStatment) {
 			if(eContainer.eContainer() == originalMethod) {
-				EList<XExpression> siblings = ((XBlockExpression)eContainer).getExpressions();
+				EList<XStatment> siblings = ((XBlockStatment)eContainer).getStatments();
 				return siblings.indexOf(lastExpression) == siblings.size()-1;
 			}
 		}

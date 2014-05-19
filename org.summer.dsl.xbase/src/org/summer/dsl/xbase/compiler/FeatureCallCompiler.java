@@ -56,7 +56,7 @@ import org.summer.dsl.model.types.util.Primitives;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -115,17 +115,6 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		}
 	}
 
-	@Override
-	protected void doInternalToJavaStatement(XExpression obj, ITreeAppendable appendable, boolean isReferenced) {
-		if (obj instanceof XFeatureCall) {
-			_toJavaStatement((XFeatureCall) obj, appendable, isReferenced);
-		} else if (obj instanceof XAbstractFeatureCall) {
-			_toJavaStatement((XAbstractFeatureCall) obj, appendable, isReferenced);
-		} else {
-			super.doInternalToJavaStatement(obj, appendable, isReferenced);
-		}
-	}
-
 	protected boolean nullSafeMemberFeatureCallExpressionNeedsPreparation(XExpression argument, ITreeAppendable b) {
 		if (b.hasName(argument))
 			return false;
@@ -134,116 +123,6 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		return true;
 	}
 	
-	protected List<XExpression> normalizeBlockExpression(Collection<XExpression> expr) {
-		List<XExpression> result  = Lists.newArrayListWithExpectedSize(expr.size());
-		for(XExpression e:expr)
-			result.add(normalizeBlockExpression(e));
-		return result;
-	}
-
-	protected XExpression normalizeBlockExpression(XExpression expr) {
-		if (expr instanceof XBlockExpression) {
-			XBlockExpression block = ((XBlockExpression) expr);
-			if (block.getExpressions().size() == 1)
-				return normalizeBlockExpression(block.getExpressions().get(0));
-		}
-		return expr;
-	}
-	
-	protected void _toJavaStatement(final XAbstractFeatureCall expr, ITreeAppendable b, final boolean isReferenced) {
-		if (expr.isTypeLiteral()) {
-			generateComment(new Later() {
-				public void exec(ITreeAppendable appendable) {
-					internalToJavaExpression(expr, appendable);
-				}
-			}, b, isReferenced);
-		} else if (expressionHelper.isShortCircuitOperation(expr)) {
-			generateShortCircuitInvocation(expr, b);
-		} else {
-			XExpression receiver = getActualReceiver(expr);
-			if (receiver != null) {
-				prepareExpression(receiver, b);
-			}
-			if (expr instanceof XMemberFeatureCall && ((XMemberFeatureCall) expr).isNullSafe()) {
-				XExpression memberCallTarget = normalizeBlockExpression(((XMemberFeatureCall) expr).getMemberCallTarget());
-				if (!isReferenced) {
-					if (!expressionHelper.hasSideEffects(expr, false)) {
-						b.append("/* ");
-					}
-					try {
-						if (nullSafeMemberFeatureCallExpressionNeedsPreparation(memberCallTarget, b))
-							prepareExpression(memberCallTarget, b);
-						b.newLine().append("if (");
-						internalToJavaExpression(memberCallTarget, b);
-						b.append("!=null) {").increaseIndentation();
-						for (XExpression arg : getActualArguments(expr)) {
-							if (nullSafeMemberFeatureCallExpressionNeedsPreparation(arg, b))
-								prepareExpression(arg, b);
-						}
-						b.newLine();
-						featureCalltoJavaExpression(expr, b, false);
-						b.append(";");
-					} finally {
-						b.decreaseIndentation().newLine().append("}");
-						if (!expressionHelper.hasSideEffects(expr, false)) {
-							b.append(" */");
-						}
-					}
-				} else if (isVariableDeclarationRequired(expr, b)) {
-					Later later = new Later() {
-						public void exec(ITreeAppendable appendable) {
-							appendNullValueUntyped(getTypeForVariableDeclaration(expr), expr, appendable);
-						}
-					};
-					declareFreshLocalVariable(expr, b, later);
-					if (nullSafeMemberFeatureCallExpressionNeedsPreparation(memberCallTarget, b))
-						prepareExpression(memberCallTarget, b);
-					b.newLine().append("if (");
-					internalToJavaExpression(memberCallTarget, b);
-					b.append("!=null) {").increaseIndentation();
-					try {
-						for (XExpression arg : getActualArguments(expr)) {
-							if (nullSafeMemberFeatureCallExpressionNeedsPreparation(arg, b))
-								prepareExpression(arg, b);
-						}
-						b.newLine();
-						b.append(b.getName(expr));
-						b.append("=");
-						featureCalltoJavaExpression(expr, b, true);
-						b.append(";");
-					} finally {
-						b.decreaseIndentation().newLine().append("}");
-					}
-				}
-			} else {
-				for (XExpression arg : getActualArguments(expr)) {
-					prepareExpression(arg, b);
-				}
-				if (!isReferenced) {
-					b.newLine();
-					if (!expressionHelper.hasSideEffects(expr, false)) {
-						b.append("/* ");
-					}
-					try {
-						featureCalltoJavaExpression(expr, b, false);
-						b.append(";");
-					} finally {
-						if (!expressionHelper.hasSideEffects(expr, false)) {
-							b.append(" */");
-						}
-					}
-				} else if (isVariableDeclarationRequired(expr, b)) {
-					Later later = new Later() {
-						public void exec(ITreeAppendable appendable) {
-							featureCalltoJavaExpression(expr, appendable, true);
-						}
-					};
-					declareFreshLocalVariable(expr, b, later);
-				}
-			}
-		}
-	}
-
 	protected List<XExpression> getActualArguments(final XAbstractFeatureCall expr) {
 		return featureCallToJavaMapping.getActualArguments(expr);
 	}
@@ -253,53 +132,53 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		return featureCallToJavaMapping.getActualReceiver(expr);
 	}
 	
-	protected void _toJavaStatement(final XFeatureCall expr, final ITreeAppendable b, boolean isReferenced) {
-		// if it's a call to this() or super() make sure the arguments are forced to be compiled to expressions.
-		if (expr.getFeature() instanceof JvmConstructor) {
-			b.newLine();
-			featureCalltoJavaExpression(expr, b, false);
-			b.append(";");
-		} else {
-			_toJavaStatement((XAbstractFeatureCall) expr, b, isReferenced);
-		}
-	}
+//	protected void _toJavaStatement(final XFeatureCall expr, final ITreeAppendable b, boolean isReferenced) {
+//		// if it's a call to this() or super() make sure the arguments are forced to be compiled to expressions.
+//		if (expr.getFeature() instanceof JvmConstructor) {
+//			b.newLine();
+//			featureCalltoJavaExpression(expr, b, false);
+//			b.append(";");
+//		} else {
+//			_toJavaStatement((XAbstractFeatureCall) expr, b, isReferenced);
+//		}
+//	}
 
-	protected void generateShortCircuitInvocation(final XAbstractFeatureCall binaryOperation, final ITreeAppendable b) {
-		final XExpression leftOperand = ((XBinaryOperation) binaryOperation).getLeftOperand();
-		declareSyntheticVariable(binaryOperation, b);
-		boolean isElvis = binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getElvisOperator());
-		prepareExpression(leftOperand, b);
-		if(isElvis) {
-			b.newLine().append("if (");
-			toJavaExpression(leftOperand, b);
-			b.append(" != null) {").increaseIndentation();
-			b.newLine().append(b.getName(binaryOperation)).append(" = ");
-			toJavaExpression(leftOperand, b);
-			b.append(";");
-		} else {
-			b.newLine().append("if (");
-			if (binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getAndOperator())) {
-				b.append("!");
-			}
-			toJavaExpression(leftOperand, b);
-			b.append(") {").increaseIndentation();
-			boolean rightOperand = binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getOrOperator());
-			b.newLine().append(b.getName(binaryOperation)).append(" = ");
-			b.append(Boolean.toString(rightOperand)).append(";");
-		}
-		b.decreaseIndentation().newLine().append("} else {").increaseIndentation();
-		if (binaryOperation.getImplicitReceiver() != null) {
-			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b, true);
-		}
-		for (XExpression arg : binaryOperation.getExplicitArguments()) {
-			if (arg != leftOperand)
-				prepareExpression(arg, b);
-		}
-		b.newLine().append(b.getName(binaryOperation)).append(" = ");
-		featureCalltoJavaExpression(binaryOperation, b, true);
-		b.append(";");
-		b.decreaseIndentation().newLine().append("}");
-	}
+//	protected void generateShortCircuitInvocation(final XAbstractFeatureCall binaryOperation, final ITreeAppendable b) {
+//		final XExpression leftOperand = ((XBinaryOperation) binaryOperation).getLeftOperand();
+//		declareSyntheticVariable(binaryOperation, b);
+//		boolean isElvis = binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getElvisOperator());
+//		prepareExpression(leftOperand, b);
+//		if(isElvis) {
+//			b.newLine().append("if (");
+//			toJavaExpression(leftOperand, b);
+//			b.append(" != null) {").increaseIndentation();
+//			b.newLine().append(b.getName(binaryOperation)).append(" = ");
+//			toJavaExpression(leftOperand, b);
+//			b.append(";");
+//		} else {
+//			b.newLine().append("if (");
+//			if (binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getAndOperator())) {
+//				b.append("!");
+//			}
+//			toJavaExpression(leftOperand, b);
+//			b.append(") {").increaseIndentation();
+//			boolean rightOperand = binaryOperation.getConcreteSyntaxFeatureName().equals(expressionHelper.getOrOperator());
+//			b.newLine().append(b.getName(binaryOperation)).append(" = ");
+//			b.append(Boolean.toString(rightOperand)).append(";");
+//		}
+//		b.decreaseIndentation().newLine().append("} else {").increaseIndentation();
+//		if (binaryOperation.getImplicitReceiver() != null) {
+//			internalToJavaStatement(binaryOperation.getImplicitReceiver(), b, true);
+//		}
+//		for (XExpression arg : binaryOperation.getExplicitArguments()) {
+//			if (arg != leftOperand)
+//				prepareExpression(arg, b);
+//		}
+//		b.newLine().append(b.getName(binaryOperation)).append(" = ");
+//		featureCalltoJavaExpression(binaryOperation, b, true);
+//		b.append(";");
+//		b.decreaseIndentation().newLine().append("}");
+//	}
 	
 	@Override
 	protected boolean internalCanCompileToJavaExpression(XExpression expression, ITreeAppendable appendable) {
@@ -375,41 +254,41 @@ public class FeatureCallCompiler extends LiteralsCompiler {
 		return super.isVariableDeclarationRequired(expr, b);
 	}
 
-	protected void prepareExpression(XExpression arg, ITreeAppendable b) {
-		if (arg instanceof XAbstractFeatureCall && !(((XAbstractFeatureCall) arg).getFeature() instanceof JvmField)
-				&& !isVariableDeclarationRequired(arg, b)) {
-			// we have to convert the given value in a later step and the
-			// conversion code may produce an anonymous class of the expected type
-			// where the implementation needs to reference the value of this expression
-			// thus we have to make sure that the value is stored in a final variable
-			XAbstractFeatureCall featureCall = (XAbstractFeatureCall) arg;
-			// check for final modifier
-			if (featureCall.getFeature() instanceof XVariableDeclaration) {
-				XVariableDeclaration variableDeclaration = (XVariableDeclaration) featureCall.getFeature();
-				if (!((XVariableDeclarationList)variableDeclaration.eContainer()).isReadonly()) {
-					internalToJavaStatement(arg, b, true);
-					return;
-				}
-			} else if (featureCall.getFeature() instanceof JvmFormalParameter) {
-				// always final
-				internalToJavaStatement(arg, b, true);
-				return;
-			}
-			JvmTypeReference expectedType = getTypeProvider().getExpectedType(arg);
-			JvmTypeReference type = getType(arg);
-			if (expectedType != null && !jvmConformance.isConformant(expectedType, type)) {
-				String varName = getVarName(((XAbstractFeatureCall) arg).getFeature(), b);
-				String finalVariable = b.declareSyntheticVariable(arg, "_converted_" + varName);
-				b.newLine().append("final ");
-				serialize(type, arg, b);
-				b.append(" ").append(finalVariable).append(" = ").append("(");
-				serialize(type, arg, b);
-				b.append(")").append(varName).append(";");
-			}
-		} else {
-			internalToJavaStatement(arg, b, true);
-		}
-	}
+//	protected void prepareExpression(XExpression arg, ITreeAppendable b) {
+//		if (arg instanceof XAbstractFeatureCall && !(((XAbstractFeatureCall) arg).getFeature() instanceof JvmField)
+//				&& !isVariableDeclarationRequired(arg, b)) {
+//			// we have to convert the given value in a later step and the
+//			// conversion code may produce an anonymous class of the expected type
+//			// where the implementation needs to reference the value of this expression
+//			// thus we have to make sure that the value is stored in a final variable
+//			XAbstractFeatureCall featureCall = (XAbstractFeatureCall) arg;
+//			// check for final modifier
+//			if (featureCall.getFeature() instanceof XVariableDeclaration) {
+//				XVariableDeclaration variableDeclaration = (XVariableDeclaration) featureCall.getFeature();
+//				if (!((XVariableDeclarationList)variableDeclaration.eContainer()).isReadonly()) {
+//					internalToJavaStatement(arg, b, true);
+//					return;
+//				}
+//			} else if (featureCall.getFeature() instanceof JvmFormalParameter) {
+//				// always final
+//				internalToJavaStatement(arg, b, true);
+//				return;
+//			}
+//			JvmTypeReference expectedType = getTypeProvider().getExpectedType(arg);
+//			JvmTypeReference type = getType(arg);
+//			if (expectedType != null && !jvmConformance.isConformant(expectedType, type)) {
+//				String varName = getVarName(((XAbstractFeatureCall) arg).getFeature(), b);
+//				String finalVariable = b.declareSyntheticVariable(arg, "_converted_" + varName);
+//				b.newLine().append("final ");
+//				serialize(type, arg, b);
+//				b.append(" ").append(finalVariable).append(" = ").append("(");
+//				serialize(type, arg, b);
+//				b.append(")").append(varName).append(";");
+//			}
+//		} else {
+//			internalToJavaStatement(arg, b, true);
+//		}
+//	}
 
 	protected void _toJavaExpression(XAbstractFeatureCall call, ITreeAppendable b) {
 		if (call.isTypeLiteral()) {

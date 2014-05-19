@@ -1442,7 +1442,6 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 		result.setAbstract(Modifier.isAbstract(modifiers));
 		result.setFinal(Modifier.isFinal(modifiers));
 		result.setStatic(Modifier.isStatic(modifiers));
-		result.setStrictFloatingPoint(Modifier.isStrictfp(modifiers));
 		result.setSynchronized(Modifier.isSynchronized(modifiers));
 		result.setNative(Modifier.isNative(modifiers));
 		result.setReturnType(createTypeReference(method.getReturnType()));

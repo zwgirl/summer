@@ -35,7 +35,7 @@ public class XbaseStratumBreakpointSupport implements IStratumBreakpointSupport 
 			ITextRegionWithLineInformation textRegion = n.getTextRegionWithLineInformation();
 			if (textRegion.getLineNumber()<= line && textRegion.getEndLineNumber() >= line) {
 				EObject eObject = n.getSemanticElement();
-				if (eObject instanceof XExpression && !(eObject.eClass() == XbasePackage.Literals.XBLOCK_EXPRESSION)) {
+				if (eObject instanceof XExpression && !(eObject.eClass() == XbasePackage.Literals.XBLOCK_STATMENT)) {
 					return true;
 				}
 				if (n instanceof ICompositeNode && isValidLineForBreakpoint((ICompositeNode) n, line)) {

@@ -38,6 +38,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
@@ -58,8 +59,6 @@ import org.summer.dsl.xbase.typesystem.util.TypeParameterByConstraintSubstitutor
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.VarianceInfo;
 import org.summer.dsl.xbase.validation.IssueCodes;
-
-import com.google.common.collect.Lists;
 
 /**
  * Abstract base for linking candidates that attempt to resolve features
@@ -321,35 +320,36 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 	
 	protected boolean validateTypeArgumentConformance(IAcceptor<? super AbstractDiagnostic> result) {
 		if (getTypeArgumentConformanceFailures(result) == 0) {
+			//cym comment 既然已经把表达式和语句分开了，自然在表达式中不会再出现退出语句了。
 			// TODO use early exit computation
-			List<XExpression> arguments = getSyntacticArguments();
-			for(int i = 0; i < arguments.size(); i++) {
-				XExpression argument = arguments.get(i);
-				if (isDefiniteEarlyExit(argument)) {
-					XExpression errorOn = getExpression();
-					String message = "Unreachable code.";
-					EStructuralFeature errorFeature = null;
-					if (i < arguments.size() - 1) {
-						errorOn = arguments.get(i + 1);
-					} else {
-						errorFeature = getDefaultValidationFeature();
-						if (errorOn instanceof XBinaryOperation) {
-							message = "Unreachable code. The right argument expression does not complete normally.";
-						} else {
-							message = "Unreachable code. The last argument expression does not complete normally.";
-						}
-					}
-					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
-							Severity.ERROR, 
-							IssueCodes.UNREACHABLE_CODE, 
-							message, 
-							errorOn, 
-							errorFeature, 
-							-1, null);
-					result.accept(diagnostic);
-					return false;
-				}
-			}
+//			List<XExpression> arguments = getSyntacticArguments();
+//			for(int i = 0; i < arguments.size(); i++) {
+//				XExpression argument = arguments.get(i);
+//				if (isDefiniteEarlyExit(argument)) {
+//					XExpression errorOn = getExpression();
+//					String message = "Unreachable code.";
+//					EStructuralFeature errorFeature = null;
+//					if (i < arguments.size() - 1) {
+//						errorOn = arguments.get(i + 1);
+//					} else {
+//						errorFeature = getDefaultValidationFeature();
+//						if (errorOn instanceof XBinaryOperation) {
+//							message = "Unreachable code. The right argument expression does not complete normally.";
+//						} else {
+//							message = "Unreachable code. The last argument expression does not complete normally.";
+//						}
+//					}
+//					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
+//							Severity.ERROR, 
+//							IssueCodes.UNREACHABLE_CODE, 
+//							message, 
+//							errorOn, 
+//							errorFeature, 
+//							-1, null);
+//					result.accept(diagnostic);
+//					return false;
+//				}
+//			}
 		} else {
 			return false;
 		}
@@ -418,7 +418,7 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 		return true;
 	}
 	
-	protected boolean isDefiniteEarlyExit(XExpression expression) {
+	protected boolean isDefiniteEarlyExit(XStatment expression) {
 		CommonTypeComputationServices services = getState().getReferenceOwner().getServices();
 		return services.getEarlyExitComputer().isDefiniteEarlyExit(expression);
 	}

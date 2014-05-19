@@ -16,7 +16,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XCatchClause;
 import org.summer.dsl.model.xbase.XClosure;
-import org.summer.dsl.model.xbase.XForEachExpression;
+import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XListLiteral;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
@@ -367,12 +367,12 @@ public class SsCompiler extends XbaseCompiler {
 //			b.append(".toString()");
 //	}
 //	
-	@Override
-	protected void appendCatchClauseParameter(XCatchClause catchClause, JvmTypeReference parameterType,
-			String parameterName, ITreeAppendable appendable) {
-		appendExtensionAnnotation(catchClause.getDeclaredParam(), catchClause, appendable, false);
-		super.appendCatchClauseParameter(catchClause, parameterType, parameterName, appendable);
-	}
+//	@Override
+//	protected void appendCatchClauseParameter(XCatchClause catchClause, JvmTypeReference parameterType,
+//			String parameterName, ITreeAppendable appendable) {
+//		appendExtensionAnnotation(catchClause.getDeclaredParam(), catchClause, appendable, false);
+//		super.appendCatchClauseParameter(catchClause, parameterType, parameterName, appendable);
+//	}
 
 	protected void appendExtensionAnnotation(JvmFormalParameter parameter, EObject context,
 			ITreeAppendable appendable, boolean newLine) {
@@ -396,15 +396,15 @@ public class SsCompiler extends XbaseCompiler {
 		}
 	}
 	
-	@Override
-	protected JvmTypeReference appendVariableTypeAndName(XVariableDeclaration varDeclaration, ITreeAppendable appendable) {
-		if (varDeclaration instanceof XVariableDeclaration /*&& ((XVariableDeclaration) varDeclaration).isExtension()*/)
-			appendExtensionAnnotation(varDeclaration, appendable, true);
-		return super.appendVariableTypeAndName(varDeclaration, appendable);
-	}
+//	@Override
+//	protected JvmTypeReference appendVariableTypeAndName(XVariableDeclaration varDeclaration, ITreeAppendable appendable) {
+//		if (varDeclaration instanceof XVariableDeclaration /*&& ((XVariableDeclaration) varDeclaration).isExtension()*/)
+//			appendExtensionAnnotation(varDeclaration, appendable, true);
+//		return super.appendVariableTypeAndName(varDeclaration, appendable);
+//	}
 	
 	@Override
-	protected void appendForLoopParameter(XForEachExpression expr, ITreeAppendable appendable) {
+	protected void appendForLoopParameter(XForEachStatment expr, ITreeAppendable appendable) {
 		appendExtensionAnnotation(expr.getDeclaredParam(), expr, appendable, false);
 		super.appendForLoopParameter(expr, appendable);
 	}

@@ -14,6 +14,7 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,10 +24,11 @@ import org.summer.dsl.model.xbase.XExpression;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isFinal <em>Final</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isVolatile <em>Volatile</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isConst <em>Const</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isTransient <em>Transient</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isVirtaul <em>Virtaul</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isOverride <em>Override</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getSet <em>Set</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getGet <em>Get</em>}</li>
@@ -57,54 +59,24 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	protected boolean static_ = STATIC_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
+	 * The default value of the '{@link #isConst() <em>Const</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
+	 * @see #isConst()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean FINAL_EDEFAULT = false;
+	protected static final boolean CONST_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
+	 * The cached value of the '{@link #isConst() <em>Const</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
+	 * @see #isConst()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean final_ = FINAL_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected JvmTypeReference type;
-
-	/**
-	 * The default value of the '{@link #isVolatile() <em>Volatile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVolatile()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean VOLATILE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isVolatile() <em>Volatile</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVolatile()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean volatile_ = VOLATILE_EDEFAULT;
+	protected boolean const_ = CONST_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isTransient() <em>Transient</em>}' attribute.
@@ -127,6 +99,56 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	protected boolean transient_ = TRANSIENT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isVirtaul() <em>Virtaul</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVirtaul()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean VIRTAUL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isVirtaul() <em>Virtaul</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVirtaul()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean virtaul = VIRTAUL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OVERRIDE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean override = OVERRIDE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference type;
+
+	/**
 	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,7 +166,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression set;
+	protected XStatment set;
 
 	/**
 	 * The cached value of the '{@link #getGet() <em>Get</em>}' containment reference.
@@ -154,7 +176,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression get;
+	protected XStatment get;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,8 +223,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isFinal() {
-		return final_;
+	public boolean isConst() {
+		return const_;
 	}
 
 	/**
@@ -210,11 +232,11 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFinal(boolean newFinal) {
-		boolean oldFinal = final_;
-		final_ = newFinal;
+	public void setConst(boolean newConst) {
+		boolean oldConst = const_;
+		const_ = newConst;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__FINAL, oldFinal, final_));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__CONST, oldConst, const_));
 	}
 
 	/**
@@ -265,27 +287,6 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isVolatile() {
-		return volatile_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVolatile(boolean newVolatile) {
-		boolean oldVolatile = volatile_;
-		volatile_ = newVolatile;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__VOLATILE, oldVolatile, volatile_));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isTransient() {
 		return transient_;
 	}
@@ -300,6 +301,48 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		transient_ = newTransient;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__TRANSIENT, oldTransient, transient_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isVirtaul() {
+		return virtaul;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVirtaul(boolean newVirtaul) {
+		boolean oldVirtaul = virtaul;
+		virtaul = newVirtaul;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__VIRTAUL, oldVirtaul, virtaul));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isOverride() {
+		return override;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverride(boolean newOverride) {
+		boolean oldOverride = override;
+		override = newOverride;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__OVERRIDE, oldOverride, override));
 	}
 
 	/**
@@ -350,7 +393,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getSet() {
+	public XStatment getSet() {
 		return set;
 	}
 
@@ -359,8 +402,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSet(XExpression newSet, NotificationChain msgs) {
-		XExpression oldSet = set;
+	public NotificationChain basicSetSet(XStatment newSet, NotificationChain msgs) {
+		XStatment oldSet = set;
 		set = newSet;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__SET, oldSet, newSet);
@@ -374,7 +417,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSet(XExpression newSet) {
+	public void setSet(XStatment newSet) {
 		if (newSet != set) {
 			NotificationChain msgs = null;
 			if (set != null)
@@ -393,7 +436,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getGet() {
+	public XStatment getGet() {
 		return get;
 	}
 
@@ -402,8 +445,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGet(XExpression newGet, NotificationChain msgs) {
-		XExpression oldGet = get;
+	public NotificationChain basicSetGet(XStatment newGet, NotificationChain msgs) {
+		XStatment oldGet = get;
 		get = newGet;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__GET, oldGet, newGet);
@@ -417,7 +460,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGet(XExpression newGet) {
+	public void setGet(XStatment newGet) {
 		if (newGet != get) {
 			NotificationChain msgs = null;
 			if (get != null)
@@ -461,14 +504,16 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		switch (featureID) {
 			case TypesPackage.JVM_FIELD__STATIC:
 				return isStatic();
-			case TypesPackage.JVM_FIELD__FINAL:
-				return isFinal();
-			case TypesPackage.JVM_FIELD__TYPE:
-				return getType();
-			case TypesPackage.JVM_FIELD__VOLATILE:
-				return isVolatile();
+			case TypesPackage.JVM_FIELD__CONST:
+				return isConst();
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				return isTransient();
+			case TypesPackage.JVM_FIELD__VIRTAUL:
+				return isVirtaul();
+			case TypesPackage.JVM_FIELD__OVERRIDE:
+				return isOverride();
+			case TypesPackage.JVM_FIELD__TYPE:
+				return getType();
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				return getDefaultValue();
 			case TypesPackage.JVM_FIELD__SET:
@@ -490,26 +535,29 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__STATIC:
 				setStatic((Boolean)newValue);
 				return;
-			case TypesPackage.JVM_FIELD__FINAL:
-				setFinal((Boolean)newValue);
-				return;
-			case TypesPackage.JVM_FIELD__TYPE:
-				setType((JvmTypeReference)newValue);
-				return;
-			case TypesPackage.JVM_FIELD__VOLATILE:
-				setVolatile((Boolean)newValue);
+			case TypesPackage.JVM_FIELD__CONST:
+				setConst((Boolean)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				setTransient((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_FIELD__VIRTAUL:
+				setVirtaul((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_FIELD__OVERRIDE:
+				setOverride((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_FIELD__TYPE:
+				setType((JvmTypeReference)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				setDefaultValue((XExpression)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__SET:
-				setSet((XExpression)newValue);
+				setSet((XStatment)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__GET:
-				setGet((XExpression)newValue);
+				setGet((XStatment)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -526,26 +574,29 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__STATIC:
 				setStatic(STATIC_EDEFAULT);
 				return;
-			case TypesPackage.JVM_FIELD__FINAL:
-				setFinal(FINAL_EDEFAULT);
-				return;
-			case TypesPackage.JVM_FIELD__TYPE:
-				setType((JvmTypeReference)null);
-				return;
-			case TypesPackage.JVM_FIELD__VOLATILE:
-				setVolatile(VOLATILE_EDEFAULT);
+			case TypesPackage.JVM_FIELD__CONST:
+				setConst(CONST_EDEFAULT);
 				return;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				setTransient(TRANSIENT_EDEFAULT);
+				return;
+			case TypesPackage.JVM_FIELD__VIRTAUL:
+				setVirtaul(VIRTAUL_EDEFAULT);
+				return;
+			case TypesPackage.JVM_FIELD__OVERRIDE:
+				setOverride(OVERRIDE_EDEFAULT);
+				return;
+			case TypesPackage.JVM_FIELD__TYPE:
+				setType((JvmTypeReference)null);
 				return;
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				setDefaultValue((XExpression)null);
 				return;
 			case TypesPackage.JVM_FIELD__SET:
-				setSet((XExpression)null);
+				setSet((XStatment)null);
 				return;
 			case TypesPackage.JVM_FIELD__GET:
-				setGet((XExpression)null);
+				setGet((XStatment)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -561,14 +612,16 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		switch (featureID) {
 			case TypesPackage.JVM_FIELD__STATIC:
 				return static_ != STATIC_EDEFAULT;
-			case TypesPackage.JVM_FIELD__FINAL:
-				return final_ != FINAL_EDEFAULT;
-			case TypesPackage.JVM_FIELD__TYPE:
-				return type != null;
-			case TypesPackage.JVM_FIELD__VOLATILE:
-				return volatile_ != VOLATILE_EDEFAULT;
+			case TypesPackage.JVM_FIELD__CONST:
+				return const_ != CONST_EDEFAULT;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				return transient_ != TRANSIENT_EDEFAULT;
+			case TypesPackage.JVM_FIELD__VIRTAUL:
+				return virtaul != VIRTAUL_EDEFAULT;
+			case TypesPackage.JVM_FIELD__OVERRIDE:
+				return override != OVERRIDE_EDEFAULT;
+			case TypesPackage.JVM_FIELD__TYPE:
+				return type != null;
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				return defaultValue != null;
 			case TypesPackage.JVM_FIELD__SET:
@@ -591,12 +644,14 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (static: ");
 		result.append(static_);
-		result.append(", final: ");
-		result.append(final_);
-		result.append(", volatile: ");
-		result.append(volatile_);
+		result.append(", const: ");
+		result.append(const_);
 		result.append(", transient: ");
 		result.append(transient_);
+		result.append(", virtaul: ");
+		result.append(virtaul);
+		result.append(", override: ");
+		result.append(override);
 		result.append(')');
 		return result.toString();
 	}

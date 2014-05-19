@@ -4,17 +4,13 @@ package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.summer.dsl.model.types.JvmFormalParameter;
-
 import org.summer.dsl.model.xbase.XCatchClause;
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
@@ -24,7 +20,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getStatment <em>Statment</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getDeclaredParam <em>Declared Param</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCatchClauseImpl#getIdentifier <em>Identifier</em>}</li>
  * </ul>
@@ -34,14 +30,14 @@ import org.summer.dsl.model.xbase.XbasePackage;
  */
 public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XCatchClause {
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * The cached value of the '{@link #getStatment() <em>Statment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpression()
+	 * @see #getStatment()
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression expression;
+	protected XStatment statment;
 
 	/**
 	 * The cached value of the '{@link #getDeclaredParam() <em>Declared Param</em>}' containment reference.
@@ -97,8 +93,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getExpression() {
-		return expression;
+	public XStatment getStatment() {
+		return statment;
 	}
 
 	/**
@@ -106,11 +102,11 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(XExpression newExpression, NotificationChain msgs) {
-		XExpression oldExpression = expression;
-		expression = newExpression;
+	public NotificationChain basicSetStatment(XStatment newStatment, NotificationChain msgs) {
+		XStatment oldStatment = statment;
+		statment = newStatment;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCATCH_CLAUSE__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCATCH_CLAUSE__STATMENT, oldStatment, newStatment);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -121,18 +117,18 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpression(XExpression newExpression) {
-		if (newExpression != expression) {
+	public void setStatment(XStatment newStatment) {
+		if (newStatment != statment) {
 			NotificationChain msgs = null;
-			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
-			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCATCH_CLAUSE__EXPRESSION, null, msgs);
-			msgs = basicSetExpression(newExpression, msgs);
+			if (statment != null)
+				msgs = ((InternalEObject)statment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCATCH_CLAUSE__STATMENT, null, msgs);
+			if (newStatment != null)
+				msgs = ((InternalEObject)newStatment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCATCH_CLAUSE__STATMENT, null, msgs);
+			msgs = basicSetStatment(newStatment, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCATCH_CLAUSE__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCATCH_CLAUSE__STATMENT, newStatment, newStatment));
 	}
 
 	/**
@@ -207,8 +203,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case XbasePackage.XCATCH_CLAUSE__EXPRESSION:
-				return basicSetExpression(null, msgs);
+			case XbasePackage.XCATCH_CLAUSE__STATMENT:
+				return basicSetStatment(null, msgs);
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return basicSetDeclaredParam(null, msgs);
 		}
@@ -223,8 +219,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XbasePackage.XCATCH_CLAUSE__EXPRESSION:
-				return getExpression();
+			case XbasePackage.XCATCH_CLAUSE__STATMENT:
+				return getStatment();
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return getDeclaredParam();
 			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:
@@ -241,8 +237,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XbasePackage.XCATCH_CLAUSE__EXPRESSION:
-				setExpression((XExpression)newValue);
+			case XbasePackage.XCATCH_CLAUSE__STATMENT:
+				setStatment((XStatment)newValue);
 				return;
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)newValue);
@@ -262,8 +258,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XCATCH_CLAUSE__EXPRESSION:
-				setExpression((XExpression)null);
+			case XbasePackage.XCATCH_CLAUSE__STATMENT:
+				setStatment((XStatment)null);
 				return;
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				setDeclaredParam((JvmFormalParameter)null);
@@ -283,8 +279,8 @@ public class XCatchClauseImpl extends MinimalEObjectImpl.Container implements XC
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XCATCH_CLAUSE__EXPRESSION:
-				return expression != null;
+			case XbasePackage.XCATCH_CLAUSE__STATMENT:
+				return statment != null;
 			case XbasePackage.XCATCH_CLAUSE__DECLARED_PARAM:
 				return declaredParam != null;
 			case XbasePackage.XCATCH_CLAUSE__IDENTIFIER:

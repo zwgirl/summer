@@ -2,7 +2,7 @@
  */
 package org.summer.dsl.model.types;
 
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 
 /**
@@ -14,18 +14,13 @@ import org.summer.dsl.model.xbase.XExpression;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isFinal <em>Final</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isSynchronized <em>Synchronized</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isDefault <em>Default</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isNative <em>Native</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isStrictFloatingPoint <em>Strict Floating Point</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#getFunction <em>Function</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#isVirtaul <em>Virtaul</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmOperation#isOverride <em>Override</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#isNative <em>Native</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#isOverload <em>Overload</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmOperation#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,32 +56,6 @@ public interface JvmOperation extends JvmExecutable {
 	void setStatic(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Final</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Final</em>' attribute.
-	 * @see #setFinal(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Final()
-	 * @model
-	 * @generated
-	 */
-	boolean isFinal();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isFinal <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Final</em>' attribute.
-	 * @see #isFinal()
-	 * @generated
-	 */
-	void setFinal(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -111,6 +80,32 @@ public interface JvmOperation extends JvmExecutable {
 	 * @generated
 	 */
 	void setAbstract(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtaul</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtaul</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtaul</em>' attribute.
+	 * @see #setVirtaul(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Virtaul()
+	 * @model
+	 * @generated
+	 */
+	boolean isVirtaul();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isVirtaul <em>Virtaul</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtaul</em>' attribute.
+	 * @see #isVirtaul()
+	 * @generated
+	 */
+	void setVirtaul(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
@@ -139,84 +134,6 @@ public interface JvmOperation extends JvmExecutable {
 	void setReturnType(JvmTypeReference value);
 
 	/**
-	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * <p>Returns the default value for the annotation member represented by this JvmOperation instance.</p>
-	 * <p>Returns null if no default is associated with the member, or if the operation does not represent a declared member of an annotation type.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Default Value</em>' containment reference.
-	 * @see #setDefaultValue(JvmAnnotationValue)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_DefaultValue()
-	 * @model containment="true"
-	 * @generated
-	 */
-	JvmAnnotationValue getDefaultValue();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#getDefaultValue <em>Default Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default Value</em>' containment reference.
-	 * @see #getDefaultValue()
-	 * @generated
-	 */
-	void setDefaultValue(JvmAnnotationValue value);
-
-	/**
-	 * Returns the value of the '<em><b>Synchronized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Synchronized</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Synchronized</em>' attribute.
-	 * @see #setSynchronized(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Synchronized()
-	 * @model
-	 * @generated
-	 */
-	boolean isSynchronized();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isSynchronized <em>Synchronized</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Synchronized</em>' attribute.
-	 * @see #isSynchronized()
-	 * @generated
-	 */
-	void setSynchronized(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default</em>' attribute.
-	 * @see #setDefault(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Default()
-	 * @model
-	 * @generated
-	 */
-	boolean isDefault();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isDefault <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' attribute.
-	 * @see #isDefault()
-	 * @generated
-	 */
-	void setDefault(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Native</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -241,84 +158,6 @@ public interface JvmOperation extends JvmExecutable {
 	 * @generated
 	 */
 	void setNative(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Strict Floating Point</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Strict Floating Point</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Strict Floating Point</em>' attribute.
-	 * @see #setStrictFloatingPoint(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_StrictFloatingPoint()
-	 * @model
-	 * @generated
-	 */
-	boolean isStrictFloatingPoint();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#isStrictFloatingPoint <em>Strict Floating Point</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Strict Floating Point</em>' attribute.
-	 * @see #isStrictFloatingPoint()
-	 * @generated
-	 */
-	void setStrictFloatingPoint(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' containment reference.
-	 * @see #setExpression(XExpression)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Expression()
-	 * @model containment="true"
-	 * @generated
-	 */
-	XExpression getExpression();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#getExpression <em>Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' containment reference.
-	 * @see #getExpression()
-	 * @generated
-	 */
-	void setExpression(XExpression value);
-
-	/**
-	 * Returns the value of the '<em><b>Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Function</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Function</em>' containment reference.
-	 * @see #setFunction(XExpression)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Function()
-	 * @model containment="true"
-	 * @generated
-	 */
-	XExpression getFunction();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#getFunction <em>Function</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Function</em>' containment reference.
-	 * @see #getFunction()
-	 * @generated
-	 */
-	void setFunction(XExpression value);
 
 	/**
 	 * Returns the value of the '<em><b>Overload</b></em>' attribute.
@@ -373,5 +212,31 @@ public interface JvmOperation extends JvmExecutable {
 	 * @generated
 	 */
 	void setOverride(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Body</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Body</em>' containment reference.
+	 * @see #setBody(XStatment)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmOperation_Body()
+	 * @model containment="true"
+	 * @generated
+	 */
+	XStatment getBody();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmOperation#getBody <em>Body</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Body</em>' containment reference.
+	 * @see #getBody()
+	 * @generated
+	 */
+	void setBody(XStatment value);
 
 } // JvmOperation

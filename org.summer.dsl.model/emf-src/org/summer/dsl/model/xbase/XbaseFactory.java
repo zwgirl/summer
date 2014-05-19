@@ -22,22 +22,31 @@ public interface XbaseFactory extends EFactory {
 	XbaseFactory eINSTANCE = org.summer.dsl.model.xbase.impl.XbaseFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>XIf Expression</em>'.
+	 * Returns a new object of class '<em>XIf Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XIf Expression</em>'.
+	 * @return a new object of class '<em>XIf Statment</em>'.
 	 * @generated
 	 */
-	XIfExpression createXIfExpression();
+	XIfStatment createXIfStatment();
 
 	/**
-	 * Returns a new object of class '<em>XSwitch Expression</em>'.
+	 * Returns a new object of class '<em>XExpression Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XSwitch Expression</em>'.
+	 * @return a new object of class '<em>XExpression Statment</em>'.
 	 * @generated
 	 */
-	XSwitchExpression createXSwitchExpression();
+	XExpressionStatment createXExpressionStatment();
+
+	/**
+	 * Returns a new object of class '<em>XSwitch Statment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XSwitch Statment</em>'.
+	 * @generated
+	 */
+	XSwitchStatment createXSwitchStatment();
 
 	/**
 	 * Returns a new object of class '<em>XCase Part</em>'.
@@ -49,13 +58,13 @@ public interface XbaseFactory extends EFactory {
 	XCasePart createXCasePart();
 
 	/**
-	 * Returns a new object of class '<em>XBlock Expression</em>'.
+	 * Returns a new object of class '<em>XBlock Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XBlock Expression</em>'.
+	 * @return a new object of class '<em>XBlock Statment</em>'.
 	 * @generated
 	 */
-	XBlockExpression createXBlockExpression();
+	XBlockStatment createXBlockStatment();
 
 	/**
 	 * Returns a new object of class '<em>XVariable Declaration</em>'.
@@ -211,40 +220,40 @@ public interface XbaseFactory extends EFactory {
 	XUnaryOperation createXUnaryOperation();
 
 	/**
-	 * Returns a new object of class '<em>XFor Loop Expression</em>'.
+	 * Returns a new object of class '<em>XFor Loop Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XFor Loop Expression</em>'.
+	 * @return a new object of class '<em>XFor Loop Statment</em>'.
 	 * @generated
 	 */
-	XForLoopExpression createXForLoopExpression();
+	XForLoopStatment createXForLoopStatment();
 
 	/**
-	 * Returns a new object of class '<em>XFor Each Expression</em>'.
+	 * Returns a new object of class '<em>XFor Each Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XFor Each Expression</em>'.
+	 * @return a new object of class '<em>XFor Each Statment</em>'.
 	 * @generated
 	 */
-	XForEachExpression createXForEachExpression();
+	XForEachStatment createXForEachStatment();
 
 	/**
-	 * Returns a new object of class '<em>XDo While Expression</em>'.
+	 * Returns a new object of class '<em>XDo While Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XDo While Expression</em>'.
+	 * @return a new object of class '<em>XDo While Statment</em>'.
 	 * @generated
 	 */
-	XDoWhileExpression createXDoWhileExpression();
+	XDoWhileStatment createXDoWhileStatment();
 
 	/**
-	 * Returns a new object of class '<em>XWhile Expression</em>'.
+	 * Returns a new object of class '<em>XWhile Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XWhile Expression</em>'.
+	 * @return a new object of class '<em>XWhile Statment</em>'.
 	 * @generated
 	 */
-	XWhileExpression createXWhileExpression();
+	XWhileStatment createXWhileStatment();
 
 	/**
 	 * Returns a new object of class '<em>XType Literal</em>'.
@@ -265,22 +274,22 @@ public interface XbaseFactory extends EFactory {
 	XInstanceOfExpression createXInstanceOfExpression();
 
 	/**
-	 * Returns a new object of class '<em>XThrow Expression</em>'.
+	 * Returns a new object of class '<em>XThrow Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XThrow Expression</em>'.
+	 * @return a new object of class '<em>XThrow Statment</em>'.
 	 * @generated
 	 */
-	XThrowExpression createXThrowExpression();
+	XThrowStatment createXThrowStatment();
 
 	/**
-	 * Returns a new object of class '<em>XTry Catch Finally Expression</em>'.
+	 * Returns a new object of class '<em>XTry Catch Finally Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XTry Catch Finally Expression</em>'.
+	 * @return a new object of class '<em>XTry Catch Finally Statment</em>'.
 	 * @generated
 	 */
-	XTryCatchFinallyExpression createXTryCatchFinallyExpression();
+	XTryCatchFinallyStatment createXTryCatchFinallyStatment();
 
 	/**
 	 * Returns a new object of class '<em>XCatch Clause</em>'.
@@ -301,31 +310,31 @@ public interface XbaseFactory extends EFactory {
 	XAssignment createXAssignment();
 
 	/**
-	 * Returns a new object of class '<em>XReturn Expression</em>'.
+	 * Returns a new object of class '<em>XReturn Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XReturn Expression</em>'.
+	 * @return a new object of class '<em>XReturn Statment</em>'.
 	 * @generated
 	 */
-	XReturnExpression createXReturnExpression();
+	XReturnStatment createXReturnStatment();
 
 	/**
-	 * Returns a new object of class '<em>XBreak Expression</em>'.
+	 * Returns a new object of class '<em>XBreak Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XBreak Expression</em>'.
+	 * @return a new object of class '<em>XBreak Statment</em>'.
 	 * @generated
 	 */
-	XBreakExpression createXBreakExpression();
+	XBreakStatment createXBreakStatment();
 
 	/**
-	 * Returns a new object of class '<em>XContinue Expression</em>'.
+	 * Returns a new object of class '<em>XContinue Statment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XContinue Expression</em>'.
+	 * @return a new object of class '<em>XContinue Statment</em>'.
 	 * @generated
 	 */
-	XContinueExpression createXContinueExpression();
+	XContinueStatment createXContinueStatment();
 
 	/**
 	 * Returns a new object of class '<em>XPostfix Operation</em>'.
@@ -425,6 +434,15 @@ public interface XbaseFactory extends EFactory {
 	 * @generated
 	 */
 	RichStringLiteral createRichStringLiteral();
+
+	/**
+	 * Returns a new object of class '<em>XFunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XFunction</em>'.
+	 * @generated
+	 */
+	XFunction createXFunction();
 
 	/**
 	 * Returns the package supported by this factory.

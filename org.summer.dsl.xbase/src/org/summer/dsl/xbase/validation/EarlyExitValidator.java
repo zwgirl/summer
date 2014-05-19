@@ -7,7 +7,7 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.validation;
 
-import static com.google.common.collect.Lists.*;
+import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 import java.util.Map;
@@ -18,11 +18,12 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.EValidatorRegistrar;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XBlockExpression;
+import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XReturnExpression;
-import org.summer.dsl.model.xbase.XThrowExpression;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XThrowStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.controlflow.IEarlyExitComputer;
 
@@ -35,7 +36,7 @@ import com.google.inject.Inject;
 public class EarlyExitValidator extends AbstractDeclarativeValidator {
 
 	private final Map<EReference,EarlyExitKind> disallowedEarylExitReferences = ImmutableMap.of(
-		XbasePackage.Literals.XTRY_CATCH_FINALLY_EXPRESSION__FINALLY_EXPRESSION, EarlyExitKind.BOTH
+		XbasePackage.Literals.XTRY_CATCH_FINALLY_STATMENT__FINALLY_STATMENT, EarlyExitKind.BOTH
 	);
 	
 	/**
@@ -61,10 +62,10 @@ public class EarlyExitValidator extends AbstractDeclarativeValidator {
 			List<XExpression> returns = newArrayList();
 			collectExits(expression, returns);
 			for (XExpression expr : returns) {
-				if (expr instanceof XReturnExpression && (exitKind == EarlyExitKind.RETURN || exitKind == EarlyExitKind.BOTH)) {
+				if (expr instanceof XReturnStatment && (exitKind == EarlyExitKind.RETURN || exitKind == EarlyExitKind.BOTH)) {
 					error("A return expression is not allowed in this context.", expr, null, IssueCodes.INVALID_EARLY_EXIT);
 				}
-				if (expr instanceof XThrowExpression && (exitKind == EarlyExitKind.THROW || exitKind == EarlyExitKind.BOTH)) {
+				if (expr instanceof XThrowStatment && (exitKind == EarlyExitKind.THROW || exitKind == EarlyExitKind.BOTH)) {
 					error("A throw expression is not allowed in this context.", expr, null, IssueCodes.INVALID_EARLY_EXIT);
 				}
 			}
@@ -72,9 +73,9 @@ public class EarlyExitValidator extends AbstractDeclarativeValidator {
 	}
 
 	protected void collectExits(EObject expr, List<XExpression> found) {
-		if (expr instanceof XReturnExpression) {
+		if (expr instanceof XReturnStatment) {
 			found.add((XExpression) expr);
-		} else if (expr instanceof XThrowExpression) {
+		} else if (expr instanceof XThrowStatment) {
 			found.add((XExpression) expr);
 		} else if (expr instanceof XClosure) {
 			return;
@@ -85,10 +86,10 @@ public class EarlyExitValidator extends AbstractDeclarativeValidator {
 	}
 	
 	@Check
-	public void checkDeadCode(XBlockExpression block) {
-		List<XExpression> expressions = block.getExpressions();
+	public void checkDeadCode(XBlockStatment block) {
+		List<XStatment> expressions = block.getStatments();
 		for(int i = 0; i < expressions.size() - 1; i++) {
-			XExpression expression = expressions.get(i);
+			XStatment expression = expressions.get(i);
 			if (earlyExitComputer.isEarlyExit(expression)) {
 				if (!(expression instanceof XAbstractFeatureCall)) {
 					// XAbstractFeatureCall does already a decent job for its argument lists

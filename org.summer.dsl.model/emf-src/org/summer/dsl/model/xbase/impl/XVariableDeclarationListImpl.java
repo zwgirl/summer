@@ -30,7 +30,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  *
  * @generated
  */
-public class XVariableDeclarationListImpl extends XExpressionImpl implements XVariableDeclarationList {
+public class XVariableDeclarationListImpl extends XStatmentImpl implements XVariableDeclarationList {
 	/**
 	 * The cached value of the '{@link #getDeclarations() <em>Declarations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
