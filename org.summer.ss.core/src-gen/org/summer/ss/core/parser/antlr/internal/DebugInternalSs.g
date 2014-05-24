@@ -5,7 +5,9 @@
 // Rule JvmModule
 
 ruleJvmModule :
-	'module' ruleQualifiedName '{' ruleXImportSection? ruleXObjectElement (
+	(
+		'package' ruleQualifiedName
+	)? 'module' RULE_ID '{' ruleXImportSection? ruleXObjectElement (
 		(
 			ruleType |
 			ruleDelegateType
@@ -28,7 +30,7 @@ ruleJvmModule :
 			',' ruleXImportItem
 		)* |
 		'*'
-	) '}' 'as' ruleValidID 'from' ruleQualifiedName
+	) '}' 'from' ruleQualifiedName 'as' ruleValidID
 ;
 
 // Rule XImportItem
@@ -125,17 +127,15 @@ ruleJvmModule :
 
 // Rule DelegateType
  ruleDelegateType :
-	'export'? 'delegate' ruleValidID (
+	'export'? 'delegate' (
 		'<' ruleJvmTypeParameter (
 			',' ruleJvmTypeParameter
 		)* '>'
-	)? '(' (
+	)? ruleJvmTypeReference ruleValidID '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' (
-		':' ruleJvmTypeReference
-	)? ';'
+	)? ')' ';'
 ;
 
 // Rule AnnotationField
@@ -164,7 +164,7 @@ ruleJvmModule :
 			'<' ruleJvmTypeParameter (
 				',' ruleJvmTypeParameter
 			)* '>'
-		)? ruleJvmTypeReference? ruleFunctionID '(' (
+		)? ruleJvmTypeReference ruleFunctionID '(' (
 			ruleJvmFormalParameter (
 				',' ruleJvmFormalParameter
 			)*
@@ -627,8 +627,9 @@ ruleJvmModule :
 	ruleXTryCatchFinallyStatment |
 	ruleXBreakStatment |
 	ruleXContinueStatment |
-	ruleXFunction |
-	ruleXExpressionStatment
+	ruleXFunctionDeclaration |
+	ruleXExpressionStatment |
+	ruleXVariableDeclarationList
 ;
 
 // Rule XExpressionStatment
@@ -638,15 +639,15 @@ ruleJvmModule :
 
 // Rule XClosure
  ruleXClosure :
-	'closure' '(' (
+	'function' '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' ruleXExpression
+	)? ')' ruleXBlockStatment
 ;
 
-// Rule XFunction
- ruleXFunction :
+// Rule XFunctionDeclaration
+ ruleXFunctionDeclaration :
 	'export'? 'function' ( (
 	'<' ruleJvmTypeParameter (
 		',' ruleJvmTypeParameter
@@ -655,7 +656,7 @@ ruleJvmModule :
 		'<' ruleJvmTypeParameter (
 			',' ruleJvmTypeParameter
 		)* '>'
-	) )? ruleJvmTypeReference? ruleValidID '(' (
+	) )? ruleJvmTypeReference ruleValidID '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
@@ -722,6 +723,16 @@ ruleJvmModule :
 // Rule XBlockStatment
  ruleXBlockStatment :
 	'{' ruleXStatment* '}'
+;
+
+// Rule XVariableDeclarationList
+ ruleXVariableDeclarationList :
+	'export'? (
+		'var' |
+		'const'
+	) ruleXVariableDeclaration (
+		',' ruleXVariableDeclaration
+	)*
 ;
 
 // Rule XVariableDeclaration

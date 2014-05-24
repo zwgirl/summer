@@ -317,8 +317,9 @@ ruleXExpression :
 	ruleXTryCatchFinallyStatment |
 	ruleXBreakStatment |
 	ruleXContinueStatment |
-	ruleXFunction |
-	ruleXExpressionStatment
+	ruleXFunctionDeclaration |
+	ruleXExpressionStatment |
+	ruleXVariableDeclarationList
 ;
 
 // Rule XExpressionStatment
@@ -328,15 +329,15 @@ ruleXExpression :
 
 // Rule XClosure
  ruleXClosure :
-	'closure' '(' (
+	'function' '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' ruleXExpression
+	)? ')' ruleXBlockStatment
 ;
 
-// Rule XFunction
- ruleXFunction :
+// Rule XFunctionDeclaration
+ ruleXFunctionDeclaration :
 	'export'? 'function' ( (
 	'<' ruleJvmTypeParameter (
 		',' ruleJvmTypeParameter
@@ -345,7 +346,7 @@ ruleXExpression :
 		'<' ruleJvmTypeParameter (
 			',' ruleJvmTypeParameter
 		)* '>'
-	) )? ruleJvmTypeReference? ruleValidID '(' (
+	) )? ruleJvmTypeReference ruleValidID '(' (
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
@@ -412,6 +413,16 @@ ruleXExpression :
 // Rule XBlockStatment
  ruleXBlockStatment :
 	'{' ruleXStatment* '}'
+;
+
+// Rule XVariableDeclarationList
+ ruleXVariableDeclarationList :
+	'export'? (
+		'var' |
+		'const'
+	) ruleXVariableDeclaration (
+		',' ruleXVariableDeclaration
+	)*
 ;
 
 // Rule XVariableDeclaration
