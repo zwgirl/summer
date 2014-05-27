@@ -19,16 +19,18 @@ import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @NonNullByDefault
-public class StandardFeatureCallArgumentSlot implements IFeatureCallArgumentSlot {
+public class StandardFeatureCallArgumentSlot implements
+		IFeatureCallArgumentSlot {
 
 	protected final StandardFeatureCallArguments parent;
 	protected final int idx;
 
-	protected StandardFeatureCallArgumentSlot(StandardFeatureCallArguments parent, int idx) {
+	protected StandardFeatureCallArgumentSlot(
+			StandardFeatureCallArguments parent, int idx) {
 		this.parent = parent;
 		this.idx = idx;
 	}
-	
+
 	public boolean isVarArg() {
 		return false;
 	}
@@ -54,10 +56,11 @@ public class StandardFeatureCallArgumentSlot implements IFeatureCallArgumentSlot
 	public void markProcessed() {
 		parent.markProcessed(idx);
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("%s @ %d for %s", getClass().getSimpleName(), idx, getArgumentExpressions());
+		return String.format("%s @ %d for %s", getClass().getSimpleName(), idx,
+				getArgumentExpressions());
 	}
 
 }

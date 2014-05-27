@@ -34,7 +34,6 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
-import org.summer.dsl.model.xbase.XFunction;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
@@ -431,13 +430,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * @generated
 	 */
 	private EClass richStringLiteralEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass xFunctionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1254,7 +1246,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXClosure_Expression() {
+	public EReference getXClosure_Statment() {
 		return (EReference)xClosureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1857,8 +1849,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXFunctionDeclaration_Name() {
-		return (EAttribute)xFunctionDeclarationEClass.getEStructuralFeatures().get(0);
+	public EReference getXFunctionDeclaration_DeclaredFormalParameters() {
+		return (EReference)xFunctionDeclarationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1875,8 +1867,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXFunctionDeclaration_ReturnType() {
-		return (EReference)xFunctionDeclarationEClass.getEStructuralFeatures().get(2);
+	public EAttribute getXFunctionDeclaration_SimpleName() {
+		return (EAttribute)xFunctionDeclarationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1884,8 +1876,26 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXFunctionDeclaration_Parameters() {
+	public EReference getXFunctionDeclaration_ReturnType() {
 		return (EReference)xFunctionDeclarationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXFunctionDeclaration_TypeParameters() {
+		return (EReference)xFunctionDeclarationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXFunctionDeclaration_Exported() {
+		return (EAttribute)xFunctionDeclarationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2012,69 +2022,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 */
 	public EClass getRichStringLiteral() {
 		return richStringLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getXFunction() {
-		return xFunctionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXFunction_DeclaredFormalParameters() {
-		return (EReference)xFunctionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXFunction_Body() {
-		return (EReference)xFunctionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXFunction_Name() {
-		return (EAttribute)xFunctionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXFunction_ReturnType() {
-		return (EReference)xFunctionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXFunction_TypeParameters() {
-		return (EReference)xFunctionEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getXFunction_Exported() {
-		return (EAttribute)xFunctionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2209,7 +2156,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		xClosureEClass = createEClass(XCLOSURE);
 		createEReference(xClosureEClass, XCLOSURE__DECLARED_FORMAL_PARAMETERS);
-		createEReference(xClosureEClass, XCLOSURE__EXPRESSION);
+		createEReference(xClosureEClass, XCLOSURE__STATMENT);
 		createEAttribute(xClosureEClass, XCLOSURE__EXPLICIT_SYNTAX);
 		createEReference(xClosureEClass, XCLOSURE__IMPLICIT_PARAMETER);
 		createEAttribute(xClosureEClass, XCLOSURE__NAME);
@@ -2296,12 +2243,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		createEReference(xIndexOperationEClass, XINDEX_OPERATION__EXPRESSION);
 		createEReference(xIndexOperationEClass, XINDEX_OPERATION__INDEX);
 
-		xFunctionDeclarationEClass = createEClass(XFUNCTION_DECLARATION);
-		createEAttribute(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__NAME);
-		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__BODY);
-		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__RETURN_TYPE);
-		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__PARAMETERS);
-
 		xObjectLiteralEClass = createEClass(XOBJECT_LITERAL);
 
 		xObjectLiteralPartEClass = createEClass(XOBJECT_LITERAL_PART);
@@ -2323,13 +2264,13 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		richStringLiteralEClass = createEClass(RICH_STRING_LITERAL);
 
-		xFunctionEClass = createEClass(XFUNCTION);
-		createEReference(xFunctionEClass, XFUNCTION__DECLARED_FORMAL_PARAMETERS);
-		createEReference(xFunctionEClass, XFUNCTION__BODY);
-		createEAttribute(xFunctionEClass, XFUNCTION__NAME);
-		createEReference(xFunctionEClass, XFUNCTION__RETURN_TYPE);
-		createEReference(xFunctionEClass, XFUNCTION__TYPE_PARAMETERS);
-		createEAttribute(xFunctionEClass, XFUNCTION__EXPORTED);
+		xFunctionDeclarationEClass = createEClass(XFUNCTION_DECLARATION);
+		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS);
+		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__BODY);
+		createEAttribute(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__SIMPLE_NAME);
+		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__RETURN_TYPE);
+		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__TYPE_PARAMETERS);
+		createEAttribute(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__EXPORTED);
 	}
 
 	/**
@@ -2404,7 +2345,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xPostfixOperationEClass.getESuperTypes().add(this.getXAbstractFeatureCall());
 		xTernaryOperationEClass.getESuperTypes().add(this.getXExpression());
 		xIndexOperationEClass.getESuperTypes().add(this.getXAbstractFeatureCall());
-		xFunctionDeclarationEClass.getESuperTypes().add(this.getXExpression());
 		xObjectLiteralEClass.getESuperTypes().add(theTypesPackage.getJvmDeclaredType());
 		xObjectLiteralEClass.getESuperTypes().add(this.getXExpression());
 		xObjectLiteralPartEClass.getESuperTypes().add(theTypesPackage.getJvmField());
@@ -2412,8 +2352,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xStructLiteralEClass.getESuperTypes().add(this.getXExpression());
 		xTemplateEClass.getESuperTypes().add(this.getXExpression());
 		richStringLiteralEClass.getESuperTypes().add(this.getXStringLiteral());
-		xFunctionEClass.getESuperTypes().add(this.getXStatment());
-		xFunctionEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
+		xFunctionDeclarationEClass.getESuperTypes().add(this.getXStatment());
+		xFunctionDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xExpressionEClass, XExpression.class, "XExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2538,7 +2478,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		initEClass(xClosureEClass, XClosure.class, "XClosure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXClosure_DeclaredFormalParameters(), theTypesPackage.getJvmFormalParameter(), null, "declaredFormalParameters", null, 0, -1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXClosure_Expression(), this.getXExpression(), null, "expression", null, 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXClosure_Statment(), this.getXStatment(), null, "statment", null, 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXClosure_ExplicitSyntax(), ecorePackage.getEBoolean(), "explicitSyntax", null, 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXClosure_ImplicitParameter(), theTypesPackage.getJvmFormalParameter(), null, "implicitParameter", null, 0, 1, XClosure.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXClosure_Name(), ecorePackage.getEString(), "name", null, 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2627,12 +2567,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEReference(getXIndexOperation_Expression(), this.getXExpression(), null, "expression", null, 0, 1, XIndexOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXIndexOperation_Index(), this.getXExpression(), null, "index", null, 1, 1, XIndexOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(xFunctionDeclarationEClass, XFunctionDeclaration.class, "XFunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunctionDeclaration_Body(), this.getXExpression(), null, "body", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunctionDeclaration_ReturnType(), theTypesPackage.getJvmTypeReference(), null, "returnType", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunctionDeclaration_Parameters(), theTypesPackage.getJvmFormalParameter(), null, "parameters", null, 0, -1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(xObjectLiteralEClass, XObjectLiteral.class, "XObjectLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(xObjectLiteralPartEClass, XObjectLiteralPart.class, "XObjectLiteralPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2654,15 +2588,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		initEClass(richStringLiteralEClass, RichStringLiteral.class, "RichStringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(xFunctionEClass, XFunction.class, "XFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXFunction_DeclaredFormalParameters(), theTypesPackage.getJvmFormalParameter(), null, "declaredFormalParameters", null, 0, -1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunction_Body(), this.getXStatment(), null, "body", null, 0, 1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunction_ReturnType(), theTypesPackage.getJvmTypeReference(), null, "returnType", null, 0, 1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXFunction_TypeParameters(), theTypesPackage.getJvmTypeParameter(), null, "typeParameters", null, 0, -1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXFunction_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(xFunctionDeclarationEClass, XFunctionDeclaration.class, "XFunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXFunctionDeclaration_DeclaredFormalParameters(), theTypesPackage.getJvmFormalParameter(), null, "declaredFormalParameters", null, 0, -1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXFunctionDeclaration_Body(), this.getXStatment(), null, "body", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXFunctionDeclaration_SimpleName(), ecorePackage.getEString(), "simpleName", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXFunctionDeclaration_ReturnType(), theTypesPackage.getJvmTypeReference(), null, "returnType", null, 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXFunctionDeclaration_TypeParameters(), theTypesPackage.getJvmTypeParameter(), null, "typeParameters", null, 0, -1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXFunctionDeclaration_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(xFunctionEClass, theTypesPackage.getJvmFormalParameter(), "getFormalParameters", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(xFunctionDeclarationEClass, theTypesPackage.getJvmFormalParameter(), "getFormalParameters", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -12,7 +12,6 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
-import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XStatment;
 
 /**
@@ -264,10 +263,10 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 	 * @generated NOT
 	 */
 	public JvmTypeReference getReturnType() {
-		if(function != null){
-			XClosure closure  = (XClosure) function;
-			return closure.getReturnType();
-		}
+//		if(function != null){
+//			XClosure closure  = (XClosure) function;
+//			return closure.getReturnType();
+//		}
 		return returnType;
 	}
 
@@ -591,10 +590,10 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 	
 	@Override
 	public EList<JvmFormalParameter> getParameters() {
-		if(getFunction() != null){
-			XClosure closure = (XClosure) getFunction() ;
-			return closure.getDeclaredFormalParameters();
-		}
+//		if(getFunction() != null){
+//			XClosure closure = (XClosure) getFunction() ;
+//			return closure.getDeclaredFormalParameters();
+//		}
 		return super.getParameters();
 	}
 

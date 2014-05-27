@@ -2,7 +2,6 @@
  */
 package org.summer.dsl.model.types.impl;
 
-import java.lang.Iterable;
 import java.util.Collection;
 import java.util.List;
 

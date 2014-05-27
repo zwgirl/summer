@@ -93,8 +93,8 @@ public class WrapperTypeLookup {
 //				return findTopLevelType(context, "java.lang.Long");
 			case Short:
 				return findTopLevelType(context, Buildin.Short.JvmType);
-//			case Void:
-//				return findTopLevelType(context, "java.lang.Void");
+			case Void:
+				return findTopLevelType(context, Buildin.Void.JvmType);
 			default:
 				throw new IllegalArgumentException("Unknown primitive type: " + primitiveKind);
 		}

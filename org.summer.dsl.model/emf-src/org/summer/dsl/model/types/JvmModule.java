@@ -21,6 +21,7 @@ import org.summer.dsl.model.xtype.XImportSection;
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getExportSection <em>Export Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getRoot <em>Root</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -148,6 +149,32 @@ public interface JvmModule extends JvmType {
 	 * @generated
 	 */
 	void setRoot(XObjectElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Package</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Package</em>' attribute.
+	 * @see #setPackage(String)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_Package()
+	 * @model
+	 * @generated
+	 */
+	String getPackage();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Package</em>' attribute.
+	 * @see #getPackage()
+	 * @generated
+	 */
+	void setPackage(String value);
 
 	Iterable<JvmDeclaredType> getJvmDeclaredTypes();
 	

@@ -13,9 +13,12 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
+import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
 /**
@@ -41,19 +44,39 @@ public class ConstructorBodyComputationState extends AbstractLogicalContainerAwa
 	
 	@Override
 	protected LightweightTypeReference getExpectedType() {
-		return getResolvedTypes().getConverter().toLightweightReference(getTypeReferences().getTypeForName(Void.TYPE, getMember()));
+		return getResolvedTypes().getConverter().toLightweightReference(getTypeReferences().getTypeForName(Buildin.Void.JvmType, getContainer()));
 	}
 	
 	@Override
 	protected ITypeComputationResult createNoTypeResult() {
-		return new NoTypeResult(getMember(), resolvedTypes.getReferenceOwner());
+		return new NoTypeResult(getContainer(), resolvedTypes.getReferenceOwner());
 	}
 	
-	//cym added
 	@Override
-	protected XExpression getRootExpression() {
-		JvmConstructor constructor = (JvmConstructor) getMember();
-		return constructor.getBody();
+	protected JvmConstructor getContainer() {
+		return (JvmConstructor) super.getContainer();
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(ResolvedTypes types,
+			AbstractTypeExpectation expectation, LightweightTypeReference type,
+			boolean returnType, ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(XExpression alreadyHandled,
+			ResolvedTypes types, AbstractTypeExpectation expectation,
+			LightweightTypeReference type, boolean returnType,
+			ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void computeTypes() {
+		 getResolver().getTypeComputer().computeTypes(getContainer().getBody(), this);
 	}
 
 }

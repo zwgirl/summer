@@ -3,6 +3,7 @@
 package org.summer.dsl.model.xbase.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -15,7 +16,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XClosure;
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
@@ -26,7 +27,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getDeclaredFormalParameters <em>Declared Formal Parameters</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getStatment <em>Statment</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#isExplicitSyntax <em>Explicit Syntax</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getImplicitParameter <em>Implicit Parameter</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getName <em>Name</em>}</li>
@@ -51,14 +52,14 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	protected EList<JvmFormalParameter> declaredFormalParameters;
 
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * The cached value of the '{@link #getStatment() <em>Statment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpression()
+	 * @see #getStatment()
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression expression;
+	protected XStatment statment;
 
 	/**
 	 * The default value of the '{@link #isExplicitSyntax() <em>Explicit Syntax</em>}' attribute.
@@ -206,8 +207,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XExpression getExpression() {
-		return expression;
+	public XStatment getStatment() {
+		return statment;
 	}
 
 	/**
@@ -215,11 +216,11 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpression(XExpression newExpression, NotificationChain msgs) {
-		XExpression oldExpression = expression;
-		expression = newExpression;
+	public NotificationChain basicSetStatment(XStatment newStatment, NotificationChain msgs) {
+		XStatment oldStatment = statment;
+		statment = newStatment;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCLOSURE__EXPRESSION, oldExpression, newExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCLOSURE__STATMENT, oldStatment, newStatment);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -230,18 +231,18 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpression(XExpression newExpression) {
-		if (newExpression != expression) {
+	public void setStatment(XStatment newStatment) {
+		if (newStatment != statment) {
 			NotificationChain msgs = null;
-			if (expression != null)
-				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCLOSURE__EXPRESSION, null, msgs);
-			if (newExpression != null)
-				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCLOSURE__EXPRESSION, null, msgs);
-			msgs = basicSetExpression(newExpression, msgs);
+			if (statment != null)
+				msgs = ((InternalEObject)statment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCLOSURE__STATMENT, null, msgs);
+			if (newStatment != null)
+				msgs = ((InternalEObject)newStatment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCLOSURE__STATMENT, null, msgs);
+			msgs = basicSetStatment(newStatment, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCLOSURE__EXPRESSION, newExpression, newExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCLOSURE__STATMENT, newStatment, newStatment));
 	}
 
 	/**
@@ -463,8 +464,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 		switch (featureID) {
 			case XbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return ((InternalEList<?>)getDeclaredFormalParameters()).basicRemove(otherEnd, msgs);
-			case XbasePackage.XCLOSURE__EXPRESSION:
-				return basicSetExpression(null, msgs);
+			case XbasePackage.XCLOSURE__STATMENT:
+				return basicSetStatment(null, msgs);
 			case XbasePackage.XCLOSURE__IMPLICIT_PARAMETER:
 				return basicSetImplicitParameter(null, msgs);
 			case XbasePackage.XCLOSURE__RETURN_TYPE:
@@ -485,8 +486,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 		switch (featureID) {
 			case XbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return getDeclaredFormalParameters();
-			case XbasePackage.XCLOSURE__EXPRESSION:
-				return getExpression();
+			case XbasePackage.XCLOSURE__STATMENT:
+				return getStatment();
 			case XbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				return isExplicitSyntax();
 			case XbasePackage.XCLOSURE__IMPLICIT_PARAMETER:
@@ -518,8 +519,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 				getDeclaredFormalParameters().clear();
 				getDeclaredFormalParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
 				return;
-			case XbasePackage.XCLOSURE__EXPRESSION:
-				setExpression((XExpression)newValue);
+			case XbasePackage.XCLOSURE__STATMENT:
+				setStatment((XStatment)newValue);
 				return;
 			case XbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				setExplicitSyntax((Boolean)newValue);
@@ -558,8 +559,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 			case XbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				getDeclaredFormalParameters().clear();
 				return;
-			case XbasePackage.XCLOSURE__EXPRESSION:
-				setExpression((XExpression)null);
+			case XbasePackage.XCLOSURE__STATMENT:
+				setStatment((XStatment)null);
 				return;
 			case XbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				setExplicitSyntax(EXPLICIT_SYNTAX_EDEFAULT);
@@ -596,8 +597,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 		switch (featureID) {
 			case XbasePackage.XCLOSURE__DECLARED_FORMAL_PARAMETERS:
 				return declaredFormalParameters != null && !declaredFormalParameters.isEmpty();
-			case XbasePackage.XCLOSURE__EXPRESSION:
-				return expression != null;
+			case XbasePackage.XCLOSURE__STATMENT:
+				return statment != null;
 			case XbasePackage.XCLOSURE__EXPLICIT_SYNTAX:
 				return explicitSyntax != EXPLICIT_SYNTAX_EDEFAULT;
 			case XbasePackage.XCLOSURE__IMPLICIT_PARAMETER:

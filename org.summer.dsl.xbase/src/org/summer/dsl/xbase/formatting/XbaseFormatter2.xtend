@@ -20,24 +20,25 @@ import org.summer.dsl.model.types.JvmWildcardTypeReference
 import org.summer.dsl.model.xbase.XAbstractFeatureCall
 import org.summer.dsl.model.xbase.XAssignment
 import org.summer.dsl.model.xbase.XBinaryOperation
-import org.summer.dsl.model.xbase.XBlockExpression
+import org.summer.dsl.model.xbase.XBlockStatment
 import org.summer.dsl.model.xbase.XCatchClause
 import org.summer.dsl.model.xbase.XClosure
 import org.summer.dsl.model.xbase.XCollectionLiteral
 import org.summer.dsl.model.xbase.XConstructorCall
-import org.summer.dsl.model.xbase.XDoWhileExpression
+import org.summer.dsl.model.xbase.XDoWhileStatment
 import org.summer.dsl.model.xbase.XExpression
 import org.summer.dsl.model.xbase.XFeatureCall
-import org.summer.dsl.model.xbase.XForEachExpression
-import org.summer.dsl.model.xbase.XIfExpression
+import org.summer.dsl.model.xbase.XForEachStatment
+import org.summer.dsl.model.xbase.XIfStatment
 import org.summer.dsl.model.xbase.XMemberFeatureCall
-import org.summer.dsl.model.xbase.XReturnExpression
-import org.summer.dsl.model.xbase.XSwitchExpression
-import org.summer.dsl.model.xbase.XThrowExpression
-import org.summer.dsl.model.xbase.XTryCatchFinallyExpression
+import org.summer.dsl.model.xbase.XReturnStatment
+import org.summer.dsl.model.xbase.XStatment
+import org.summer.dsl.model.xbase.XSwitchStatment
+import org.summer.dsl.model.xbase.XThrowStatment
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment
 import org.summer.dsl.model.xbase.XTypeLiteral
 import org.summer.dsl.model.xbase.XVariableDeclaration
-import org.summer.dsl.model.xbase.XWhileExpression
+import org.summer.dsl.model.xbase.XWhileStatment
 import org.summer.dsl.model.xtype.XFunctionTypeRef
 import org.summer.dsl.xbase.services.XbaseGrammarAccess
 
@@ -332,12 +333,12 @@ class XbaseFormatter2 extends AbstractFormatter {
 			return closingBracket.hiddenLeafsBefore.newLines > 0
 		}
 		return switch block : closure.expression {
-			XBlockExpression: block.expressions.size > 1 && block.expressions.eachExpressionInOwnLine
+			XBlockStatment: block.statments.size > 1 && block.statments.eachExpressionInOwnLine
 			default : false
 		}
 	}
 
-	def protected boolean isEachExpressionInOwnLine(Iterable<? extends XExpression> expressions) {
+	def protected boolean isEachExpressionInOwnLine(Iterable<? extends XStatment> expressions) {
 		var lastLine = -1
 		for (e : expressions) {
 			val node = e.nodeForEObject
@@ -397,7 +398,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			return closingBracket.hiddenLeafsBefore.newLines > 0
 		}
 		val params = fc.memberCallArguments.explicitParams
-		return params.size > 1 && params.eachExpressionInOwnLine
+		return params.size > 1 //&& params.eachExpressionInOwnLine
 	}
 
 	def protected dispatch boolean isMultiParamInOwnLine(XFeatureCall fc, FormattableDocument doc) {
@@ -406,7 +407,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			return closingBracket.hiddenLeafsBefore.newLines > 0
 		}
 		val params = fc.featureCallArguments.explicitParams
-		return params.size > 1 && params.eachExpressionInOwnLine
+		return params.size > 1 //&& params.eachExpressionInOwnLine
 	}
 
 	def protected dispatch boolean isMultiParamInOwnLine(XConstructorCall fc, FormattableDocument doc) {
@@ -415,7 +416,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			return closingBracket.hiddenLeafsBefore.newLines > 0
 		}
 		val params = fc.arguments.explicitParams
-		return params.size > 1 && params.eachExpressionInOwnLine
+		return params.size > 1 //&& params.eachExpressionInOwnLine
 	}
 
 	def protected dispatch void format(XMemberFeatureCall expr, FormattableDocument format) {
@@ -547,7 +548,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			format += calls.last.nodeForEObject.append[decreaseIndentation]
 	}
 
-	def protected dispatch void format(XIfExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XIfStatment expr, FormattableDocument format) {
 		if (expr.eContainer instanceof XVariableDeclaration) {
 			format += expr.nodeForKeyword("if").append[increaseIndentation]
 			format += expr.nodeForEObject.append[decreaseIndentation]
@@ -556,12 +557,12 @@ class XbaseFormatter2 extends AbstractFormatter {
 		val elsenode = expr.^else?.nodeForEObject
 		val multiline = thennode?.text?.trim?.contains("\n") || thennode?.hiddenLeafsBefore?.newLines > 0 ||
 			elsenode?.text?.trim?.contains("\n")
-		format += expr.nodeForFeature(XIF_EXPRESSION__IF).surround[noSpace]
-		if (expr.then instanceof XBlockExpression || multiline)
+		format += expr.nodeForFeature(XIF_STATMENT__IF).surround[noSpace]
+		if (expr.then instanceof XBlockStatment || multiline)
 			format += expr.nodeForKeyword("if").append[cfg(whitespaceBetweenKeywordAndParenthesisML)]
 		else
 			format += expr.nodeForKeyword("if").append[cfg(whitespaceBetweenKeywordAndParenthesisSL)]
-		if (expr.then instanceof XBlockExpression) {
+		if (expr.then instanceof XBlockStatment) {
 			format += thennode.prepend[cfg(bracesInNewLine)]
 			if (expr.^else != null)
 				format += thennode.append[cfg(bracesInNewLine)]
@@ -576,9 +577,9 @@ class XbaseFormatter2 extends AbstractFormatter {
 			else
 				format += thennode.append[decreaseIndentation]
 		}
-		if (expr.^else instanceof XBlockExpression) {
+		if (expr.^else instanceof XBlockStatment) {
 			format += elsenode.prepend[cfg(bracesInNewLine)]
-		} else if (expr.^else instanceof XIfExpression || !multiline) {
+		} else if (expr.^else instanceof XIfStatment || !multiline) {
 			format += elsenode.prepend[oneSpace]
 		} else {
 			format += elsenode.prepend[newLine increaseIndentation]
@@ -590,26 +591,26 @@ class XbaseFormatter2 extends AbstractFormatter {
 			expr.^else.format(format)
 	}
 
-	def protected dispatch void format(XForEachExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XForEachStatment expr, FormattableDocument format) {
 		expr.nodeForKeyword("for") => [format += append[oneSpace]]
 		expr.declaredParam.nodeForEObject => [format += prepend[noSpace] format += append[oneSpace]]
-		expr.forExpression.nodeForEObject => [format += prepend[oneSpace] format += append[noSpace]]
-		val each = expr.eachExpression.nodeForEObject
-		if (expr.eachExpression instanceof XBlockExpression) {
+		expr.expression.nodeForEObject => [format += prepend[oneSpace] format += append[noSpace]]
+		val each = expr.statment.nodeForEObject
+		if (expr.statment instanceof XBlockStatment) {
 			format += each.prepend[cfg(bracesInNewLine)]
 		} else {
 			format += each.prepend[newLine increaseIndentation]
 			format += each.append[decreaseIndentation]
 		}
-		expr.forExpression.format(format)
-		expr.eachExpression.format(format)
+		expr.expression.format(format)
+		expr.statment.format(format)
 	}
 
-	def protected dispatch void format(XWhileExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XWhileStatment expr, FormattableDocument format) {
 		format += expr.nodeForKeyword("while").append[cfg(whitespaceBetweenKeywordAndParenthesisML)]
 		format += expr.predicate.nodeForEObject.surround([noSpace], [noSpace])
 		val body = expr.body.nodeForEObject
-		if (expr.body instanceof XBlockExpression) {
+		if (expr.body instanceof XBlockStatment) {
 			format += body.prepend[cfg(bracesInNewLine)]
 		} else {
 			format += body.prepend[newLine increaseIndentation]
@@ -619,11 +620,11 @@ class XbaseFormatter2 extends AbstractFormatter {
 		expr.body.format(format)
 	}
 
-	def protected dispatch void format(XDoWhileExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XDoWhileStatment expr, FormattableDocument format) {
 		format += expr.nodeForKeyword("while").append[cfg(whitespaceBetweenKeywordAndParenthesisML)]
 		format += expr.predicate.nodeForEObject.surround([noSpace], [noSpace])
 		val body = expr.body.nodeForEObject
-		if (expr.body instanceof XBlockExpression) {
+		if (expr.body instanceof XBlockStatment) {
 			format += body.prepend[cfg(bracesInNewLine)]
 			format += body.append[cfg(bracesInNewLine)]
 		} else {
@@ -634,22 +635,22 @@ class XbaseFormatter2 extends AbstractFormatter {
 		expr.body.format(format)
 	}
 
-	def protected dispatch void format(XBlockExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XBlockStatment expr, FormattableDocument format) {
 		val open = expr.nodeForKeyword("{")
 		if(expr.eContainer == null)
 			format += open.prepend[noSpace]
 		val close = expr.nodeForKeyword("}")
 		if (open != null && close != null) {
-			if (expr.expressions.empty) {
+			if (expr.statments.empty) {
 				if(open.hiddenLeafsAfter.containsComment)
 					format += open.append[newLine increaseIndentation decreaseIndentation]
 				else
 					format += open.append[newLine]
 			} else {
 				format += open.append[cfg(blankLinesAroundExpression) increaseIndentation]
-				for (child : expr.expressions) {
+				for (child : expr.statments) {
 					child.format(format)
-					if (child != expr.expressions.last || close != null) {
+					if (child != expr.statments.last || close != null) {
 						val childNode = child.nodeForEObject
 						val sem = childNode.immediatelyFollowingKeyword(";")
 						if (sem != null) {
@@ -683,60 +684,60 @@ class XbaseFormatter2 extends AbstractFormatter {
 		}
 	}
 
-	def protected dispatch void format(XThrowExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XThrowStatment expr, FormattableDocument format) {
 		format += expr.expression.nodeForEObject.prepend[oneSpace]
 		expr.expression.format(format)
 	}
 
-	def protected dispatch void format(XReturnExpression expr, FormattableDocument format) {
+	def protected dispatch void format(XReturnStatment expr, FormattableDocument format) {
 		format += expr.expression.nodeForEObject.prepend[oneSpace]
 		expr.expression.format(format)
 	}
 
-	def protected dispatch void format(XTryCatchFinallyExpression expr, FormattableDocument format) {
-		val body = expr.expression.nodeForEObject
-		if (expr.expression instanceof XBlockExpression) {
+	def protected dispatch void format(XTryCatchFinallyStatment expr, FormattableDocument format) {
+		val body = expr.statment.nodeForEObject
+		if (expr.statment instanceof XBlockStatment) {
 			format += body.prepend[cfg(bracesInNewLine)]
 			format += body.append[cfg(bracesInNewLine)]
 		} else {
 			format += body.prepend[newLine increaseIndentation]
 			format += body.append[newLine decreaseIndentation]
 		}
-		expr.expression.format(format)
+		expr.statment.format(format)
 		if( expr.catchClause != null) {
 			val cc = expr.catchClause;
 			cc.format(format)
-			if (expr.finallyExpression != null) {
-				if (cc.expression instanceof XBlockExpression)
+			if (expr.finallyStatment != null) {
+				if (cc.statment instanceof XBlockStatment)
 					format += cc.nodeForEObject.append[cfg(bracesInNewLine)]
 				else
 					format += cc.nodeForEObject.append[newLine]
 			}
 		}
-		if (expr.finallyExpression != null) {
-			val fin = expr.finallyExpression.nodeForEObject
-			if (expr.finallyExpression instanceof XBlockExpression) {
+		if (expr.finallyStatment != null) {
+			val fin = expr.finallyStatment.nodeForEObject
+			if (expr.finallyStatment instanceof XBlockStatment) {
 				format += fin.prepend[cfg(bracesInNewLine)]
 			} else {
 				format += fin.prepend[newLine increaseIndentation]
 				format += fin.append[decreaseIndentation]
 			}
-			expr.finallyExpression.format(format)
+			expr.finallyStatment.format(format)
 		}
 	}
 
 	def protected dispatch void format(XCatchClause expr, FormattableDocument format) {
 		format += expr.nodeForKeyword("catch").append[cfg(whitespaceBetweenKeywordAndParenthesisML)]
 		expr.declaredParam.nodeForEObject => [format += prepend[noSpace] format += append[noSpace]]
-		val body = expr.expression.nodeForEObject
-		if (expr.expression instanceof XBlockExpression)
+		val body = expr.statment.nodeForEObject
+		if (expr.statment instanceof XBlockStatment)
 			format += body.prepend[cfg(bracesInNewLine)]
 		else {
 			format += body.prepend[newLine increaseIndentation]
 			format += body.append[decreaseIndentation]
 		}
 		expr.declaredParam.format(format)
-		expr.expression.format(format)
+		expr.statment.format(format)
 	}
 
 	def protected dispatch void format(JvmFormalParameter expr, FormattableDocument format) {
@@ -752,8 +753,8 @@ class XbaseFormatter2 extends AbstractFormatter {
 			}
 	}
 
-	def protected dispatch void format(XSwitchExpression expr, FormattableDocument format) {
-		val containsBlockExpr = expr.cases.exists[then instanceof XBlockExpression]
+	def protected dispatch void format(XSwitchStatment expr, FormattableDocument format) {
+		val containsBlockExpr = expr.cases.exists[then instanceof XBlockStatment]
 		val switchSL = !containsBlockExpr && !expr.nodeForEObject.text.trim.contains("\n")
 		val caseSL = !containsBlockExpr && !expr.cases.exists[nodeForEObject.text.trim.contains("\n")] && !expr.^default?.nodeForEObject?.text?.contains("\n")
 		val open = expr.nodeForKeyword("{")
@@ -789,7 +790,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			format += open.append[newLine; increaseIndentation]
 			for (c : expr.cases) {
 				val cnode = c.then.nodeForEObject
-				if (c.then instanceof XBlockExpression) {
+				if (c.then instanceof XBlockStatment) {
 					format += cnode.prepend[cfg(bracesInNewLine)]
 					if (expr.^default != null || c != expr.cases.last)
 						format += cnode.append[newLine]
@@ -805,7 +806,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			}
 			if(expr.^default != null) {
 				format += expr.nodeForKeyword("default").append[noSpace]
-				if (expr.^default instanceof XBlockExpression) {
+				if (expr.^default instanceof XBlockStatment) {
 					format += expr.^default.nodeForEObject.surround([cfg(bracesInNewLine)], [newLine; decreaseIndentation])
 				} else {
 					format += expr.^default.nodeForEObject.surround([newLine; increaseIndentation], [newLine; decreaseIndentationChange = -2])
@@ -813,16 +814,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 			}
 		}
 		for (c : expr.cases) {
-			if (c.typeGuard != null && c.^case != null) {
-				val typenode = c.nodeForFeature(XCASE_PART__TYPE_GUARD)
-				val casenode = c.nodeForFeature(XCASE_PART__CASE)
-				format += typenode.append[oneSpace]
-				format += casenode.prepend[oneSpace]
-				format += casenode.append[noSpace]
-			} else if (c.typeGuard != null) {
-				val typenode = c.nodeForFeature(XCASE_PART__TYPE_GUARD)
-				format += typenode.append[noSpace]
-			} else if (c.^case != null) {
+			if (c.^case != null) {
 				val casenode = c.nodeForFeature(XCASE_PART__CASE)
 				format += casenode.prepend[oneSpace]
 				format += casenode.append[noSpace]
@@ -838,7 +830,7 @@ class XbaseFormatter2 extends AbstractFormatter {
 		val open = expr.nodeForKeyword("[") 
 		val close = expr.nodeForKeyword("]")
 		val children = switch x:expr.expression {
-			XBlockExpression: x.expressions
+			XBlockStatment: x.statments
 			default: newArrayList(x)
 		}
 		if (expr.declaredFormalParameters.empty && children.empty) {
@@ -847,9 +839,9 @@ class XbaseFormatter2 extends AbstractFormatter {
 			else
 				format += open.append[noSpace]
 		} else if (expr.isMultilineLambda) {
-			formatClosureMultiLine(expr, open, children, close, format)
+//			formatClosureMultiLine(expr, open, children, close, format)  //cym comment
 		} else {
-			formatClosureWrapIfNeeded(expr, open, children, close, format)
+//			formatClosureWrapIfNeeded(expr, open, children, close, format) //cym comment
 		}
 	}
 

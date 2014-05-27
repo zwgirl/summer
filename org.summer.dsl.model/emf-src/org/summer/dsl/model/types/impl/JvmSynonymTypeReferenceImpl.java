@@ -3,7 +3,6 @@
 package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.summer.dsl.model.types.impl.JvmCompoundTypeReferenceImplCustom;
 import org.summer.dsl.model.types.JvmSynonymTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 

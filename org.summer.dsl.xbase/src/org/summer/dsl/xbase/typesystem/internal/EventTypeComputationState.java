@@ -13,10 +13,13 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmEvent;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
+import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
 /**
@@ -43,17 +46,17 @@ public class EventTypeComputationState extends AbstractLogicalContainerAwareRoot
 	@Override
 	@Nullable
 	protected LightweightTypeReference getExpectedType() {
-		return getResolvedTypes().getExpectedTypeForAssociatedExpression(getMember(), getNonNullRootExpression());
+		return getResolvedTypes().getConverter().toLightweightReference(getTypeReferences().getTypeForName(Buildin.Void.JvmType, getContainer()));
 	}
 	
 	@Override
 	protected ITypeComputationResult createNoTypeResult() {
-		JvmEvent event = (JvmEvent) getMember();
+		JvmEvent event = (JvmEvent) getContainer();
 		JvmTypeReference type = event.getType();
 		if (type != null) {
 			final LightweightTypeReference result = resolvedTypes.getConverter().toLightweightReference(type);
 			if (result != null) {
-				return new NoTypeResult(getMember(), result.getOwner()) {
+				return new NoTypeResult(getContainer(), result.getOwner()) {
 					@Override
 					public LightweightTypeReference getActualExpressionType() {
 						return result;
@@ -61,12 +64,40 @@ public class EventTypeComputationState extends AbstractLogicalContainerAwareRoot
 				};
 			}
 		}
-		return new NoTypeResult(getMember(), resolvedTypes.getReferenceOwner());
+		return new NoTypeResult(getContainer(), resolvedTypes.getReferenceOwner());
 	}
 	
 	@Override
 	protected ExpressionTypeComputationState createExpressionComputationState(XExpression expression, StackedResolvedTypes typeResolution) {
 		return new RootExpressionTypeComputationStateWithNonVoidExpectation(typeResolution, getFeatureScopeSession(), this, expression, getExpectedType());
 		
+	}
+	
+	@Override
+	protected JvmEvent getContainer() {
+		return (JvmEvent) super.getContainer();
+	}
+
+	@Override
+	public void computeTypes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(ResolvedTypes types,
+			AbstractTypeExpectation expectation, LightweightTypeReference type,
+			boolean returnType, ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(XExpression alreadyHandled,
+			ResolvedTypes types, AbstractTypeExpectation expectation,
+			LightweightTypeReference type, boolean returnType,
+			ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

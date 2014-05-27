@@ -41,7 +41,7 @@ public class DispatchOperationBodyComputationState extends OperationBodyComputat
 			return expectedType;
 		}
 		if (dispatcher != null) {
-			JvmOperation operation = (JvmOperation) getMember();
+			JvmOperation operation = (JvmOperation) getContainer();
 			if (!InferredTypeIndicator.isInferred(dispatcher.getReturnType())) {
 				LightweightTypeReference result = getResolvedTypes().getActualType(dispatcher);
 				if (result != null)

@@ -21,8 +21,9 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
+import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
-import org.summer.dsl.model.types.JvmEnumerationType;
+import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
@@ -30,6 +31,7 @@ import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
@@ -47,10 +49,12 @@ import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XContinueStatment;
 import org.summer.dsl.model.xbase.XDoWhileStatment;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
@@ -76,7 +80,11 @@ import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceResult;
+import org.summer.dsl.xbase.typesystem.internal.AbstractTypeComputationState;
+import org.summer.dsl.xbase.typesystem.internal.FunctionBodyComputationState;
 import org.summer.dsl.xbase.typesystem.internal.ITypeLiteralLinkingCandidate;
+import org.summer.dsl.xbase.typesystem.internal.ResolvedTypes;
+import org.summer.dsl.xbase.typesystem.internal.StackedResolvedTypes;
 import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
 import org.summer.dsl.xbase.typesystem.references.CompoundTypeReference;
@@ -92,12 +100,10 @@ import org.summer.dsl.xbase.typesystem.references.WildcardTypeReference;
 import org.summer.dsl.xbase.typesystem.util.CommonTypeComputationServices;
 import org.summer.dsl.xbase.typesystem.util.ConstraintAwareTypeArgumentCollector;
 import org.summer.dsl.xbase.typesystem.util.DeclaratorTypeArgumentCollector;
-import org.summer.dsl.xbase.typesystem.util.ExtendedEarlyExitComputer;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.UnboundTypeParameterPreservingSubstitutor;
 import org.summer.dsl.xbase.validation.IssueCodes;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 /**
@@ -164,37 +170,39 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 	
-	public void computeTypes(XStatment expression, ITypeComputationState state) {
-		if (expression instanceof XDoWhileStatment) {
-			_computeTypes((XDoWhileStatment)expression, state);
-		} else if (expression instanceof XWhileStatment) {
-			_computeTypes((XWhileStatment)expression, state);
-		} else if (expression instanceof XBlockStatment) {
-			_computeTypes((XBlockStatment)expression, state);
-		} else if (expression instanceof XForLoopStatment) {
-			_computeTypes((XForLoopStatment)expression, state);
-		} else if (expression instanceof XForEachStatment) {
-			_computeTypes((XForEachStatment)expression, state);
-		} else if (expression instanceof XIfStatment) {
-			_computeTypes((XIfStatment)expression, state);
-		} else if (expression instanceof XReturnStatment) {
-			_computeTypes((XReturnStatment)expression, state);
-		} else if (expression instanceof XSwitchStatment) {
-			_computeTypes((XSwitchStatment)expression, state);
-		} else if (expression instanceof XThrowStatment) {
-			_computeTypes((XThrowStatment)expression, state);
-		} else if (expression instanceof XTryCatchFinallyStatment) {
-			_computeTypes((XTryCatchFinallyStatment)expression, state);
-		} else if (expression instanceof XVariableDeclarationList) {
-			_computeTypes((XVariableDeclarationList)expression, state);
-		} else if (expression instanceof XVariableDeclaration) {
-			_computeTypes((XVariableDeclaration)expression, state);
-		} else if (expression instanceof XBreakStatment) {
-			_computeTypes((XBreakStatment)expression, state);
-		} else if (expression instanceof XContinueStatment) {
-			_computeTypes((XContinueStatment)expression, state);
+	public void computeTypes(XStatment statment, ITypeComputationState state) {
+		if (statment instanceof XDoWhileStatment) {
+			_computeTypes((XDoWhileStatment)statment, state);
+		} else if (statment instanceof XWhileStatment) {
+			_computeTypes((XWhileStatment)statment, state);
+		} else if (statment instanceof XBlockStatment) {
+			_computeTypes((XBlockStatment)statment, state);
+		} else if (statment instanceof XForLoopStatment) {
+			_computeTypes((XForLoopStatment)statment, state);
+		} else if (statment instanceof XForEachStatment) {
+			_computeTypes((XForEachStatment)statment, state);
+		} else if (statment instanceof XIfStatment) {
+			_computeTypes((XIfStatment)statment, state);
+		} else if (statment instanceof XReturnStatment) {
+			_computeTypes((XReturnStatment)statment, state);
+		} else if (statment instanceof XSwitchStatment) {
+			_computeTypes((XSwitchStatment)statment, state);
+		} else if (statment instanceof XThrowStatment) {
+			_computeTypes((XThrowStatment)statment, state);
+		} else if (statment instanceof XTryCatchFinallyStatment) {
+			_computeTypes((XTryCatchFinallyStatment)statment, state);
+		} else if (statment instanceof XVariableDeclarationList) {
+			_computeTypes((XVariableDeclarationList)statment, state);
+		} else if (statment instanceof XBreakStatment) {
+			_computeTypes((XBreakStatment)statment, state);
+		} else if (statment instanceof XContinueStatment) {
+			_computeTypes((XContinueStatment)statment, state);
+		} else if (statment instanceof XFunctionDeclaration) {
+			_computeTypes((XFunctionDeclaration)statment, state);
+		} else if (statment instanceof XExpressionStatment) {
+			_computeTypes((XExpressionStatment)statment, state);
 		} else { 
-			throw new UnsupportedOperationException("Missing type computation for expression type: " + expression.eClass().getName() + " / " + state);
+			throw new UnsupportedOperationException("Missing type computation for expression type: " + statment.eClass().getName() + " / " + state);
 		}
 	}
 
@@ -485,19 +493,236 @@ public class XbaseTypeComputer implements ITypeComputer {
 		return switchExpression.getCases();
 	}
 	
-	protected void _computeTypes(XBlockStatment object, ITypeComputationState state) {
-		List<XStatment> children = object.getStatments();
-		for(int i = 0; i < children.size(); i++) {
-			XStatment statment = children.get(i);
-			ITypeComputationState expressionState = state.withoutExpectation(); // no expectation
-			computeTypes(statment, expressionState);
+	protected void _computeTypes(final XForEachStatment object, final ITypeComputationState state) {
+		JvmFormalParameter declaredParam = object.getDeclaredParam();
+		ITypeComputationState eachState = state.withoutExpectation();
+		if (declaredParam != null) {
+			LightweightTypeReference parameterType = computeForLoopParameterType(object, state);
+			eachState = assignType(declaredParam, parameterType, eachState);
+		}
+		computeTypes(object.getStatment(), eachState);
+		
+//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+//		state.acceptActualType(primitiveVoid);
+	}
+	
+	protected ITypeComputationState assignType(JvmFormalParameter param, @Nullable LightweightTypeReference type, ITypeComputationState state) {
+		return state.assignType(param, type);
+	}
+
+	@Nullable
+	protected LightweightTypeReference computeForLoopParameterType(final XForEachStatment object,
+			final ITypeComputationState state) {
+		JvmFormalParameter declaredParam = object.getDeclaredParam();
+		LightweightTypeReference parameterType = getDeclaredParameterType(declaredParam, state);
+//		final JvmGenericType iterableType = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, object); //cym comment
+		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.JvmType;
+		
+		if (parameterType != null && !parameterType.isPrimitiveVoid()) {
+			final CompoundTypeReference withSynonyms = new CompoundTypeReference(state.getReferenceOwner(), true);
+			LightweightTypeReference iterableOrArray = getAndEnhanceIterableOrArrayFromComponent(parameterType, iterableType, withSynonyms);
 			
-			if (statment instanceof XVariableDeclarationList) {
-				XVariableDeclarationList declList = (XVariableDeclarationList) statment;
-				for(XExpression exp : declList.getDeclarations()){
-					addLocalToCurrentScope((XVariableDeclaration)exp, state);
+			ITypeComputationState iterableState = state.withExpectation(withSynonyms);
+			ITypeComputationResult forExpressionResult = iterableState.computeTypes(object.getExpression());
+			LightweightTypeReference forExpressionType = forExpressionResult.getActualExpressionType();
+			if (forExpressionType!= null) {
+				if (forExpressionType.isAny() || forExpressionType.isUnknown()) {
+					iterableState.refineExpectedType(object.getExpression(), iterableOrArray);
+				} else if (forExpressionType.isResolved()) {
+					TypeConformanceResult assignability = iterableOrArray.internalIsAssignableFrom(forExpressionType, new TypeConformanceComputationArgument());
+					if (assignability.isConformant() && !assignability.getConformanceHints().contains(ConformanceHint.RAWTYPE_CONVERSION))
+						iterableState.refineExpectedType(object.getExpression(), forExpressionType);
+					else {
+						ArrayTypeReference array = forExpressionType.tryConvertToArray();
+						if (array != null) {
+							LightweightTypeReference arrayComponentType = array.getComponentType();
+							if (parameterType.isAssignableFrom(arrayComponentType)) {
+								iterableState.refineExpectedType(object.getExpression(), forExpressionType);
+							} else {
+								LightweightTypeReference rawArrayComponentType = arrayComponentType.getRawTypeReference();
+								AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
+										Severity.ERROR, 
+										IssueCodes.INCOMPATIBLE_TYPES, 
+										String.format("Type mismatch: cannot convert from element type %s to %s", rawArrayComponentType.getSimpleName(), parameterType.getSimpleName()), 
+										object, 
+										XbasePackage.Literals.XFOR_EACH_STATMENT__EXPRESSION, -1, null);
+								state.addDiagnostic(diagnostic);
+							}
+						}
+					}
 				}
 			}
+		} else {
+			ITypeReferenceOwner owner = state.getReferenceOwner();
+			LightweightTypeReference iterable = null;
+			if (iterableType == null) {
+//				iterable = new UnknownTypeReference(owner, Iterable.class.getName());  //cym comment
+				iterable = new UnknownTypeReference(owner, "Iterable");
+			} else {
+//				WildcardTypeReference wildcard = new WildcardTypeReference(owner);
+//				ParameterizedTypeReference iterableTypeRef = new ParameterizedTypeReference(owner, iterableType);
+//				UnboundTypeReference unbound = state.createUnboundTypeReference(object, iterableType.getTypeParameters().get(0));
+//				wildcard.addUpperBound(unbound);
+//				iterableTypeRef.addTypeArgument(wildcard);
+//				iterable = iterableTypeRef;
+//				// TODO do we have to add synonyms, too?
+			}
+			ITypeComputationState iterableState = state.withExpectation(iterable); 
+			ITypeComputationResult forExpressionResult = iterableState.computeTypes(object.getExpression());
+			LightweightTypeReference forExpressionType = forExpressionResult.getActualExpressionType();
+			if (forExpressionType != null) {
+				if (!forExpressionType.isAny() && (iterable.isAssignableFrom(forExpressionType) || forExpressionType.isArray())) {
+					iterableState.refineExpectedType(object.getExpression(), forExpressionType);
+				}
+				parameterType = getElementOrComponentType(forExpressionType, state);
+			}
+		}
+		return parameterType;
+	}
+	
+	protected void _computeTypes(XReturnStatment object, ITypeComputationState state) {
+		XExpression returnValue = object.getExpression();
+		ITypeComputationState expressionState = state.withReturnExpectation();
+		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+		if (returnValue != null) {
+			expressionState.computeTypes(returnValue);
+			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
+		} else {
+			state.acceptActualType(primitiveVoid, ConformanceHint.EXPLICIT_VOID_RETURN);
+			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
+		}
+	}
+	
+	protected void _computeTypes(XFunctionDeclaration function, ITypeComputationState state) {
+		AbstractTypeComputationState typeState = (AbstractTypeComputationState) state;
+		StackedResolvedTypes childResolvedTypes = declareTypeParameters(typeState.getResolvedTypes(), function);
+		FunctionBodyComputationState state1 = new FunctionBodyComputationState(childResolvedTypes, typeState.getFeatureScopeSession(), function);
+		state1.computeTypes();
+//		computeAnnotationTypes(childResolvedTypes, featureScopeSession, field);
+		
+//		if (childResolvedTypes instanceof StackedResolvedTypes)
+//			((StackedResolvedTypes) childResolvedTypes).mergeIntoParent();
+		
+//		computeTypes(function.getBody(), state);
+	}
+	
+	protected StackedResolvedTypes declareTypeParameters(ResolvedTypes resolvedTypes, JvmIdentifiableElement declarator) {
+		StackedResolvedTypes childResolvedTypes = resolvedTypes.pushTypes();
+		if (declarator instanceof JvmTypeParameterDeclarator) {
+			JvmTypeParameterDeclarator casted = (JvmTypeParameterDeclarator) declarator;
+			if (isStatic(declarator) && !(declarator instanceof JvmConstructor)) {
+				childResolvedTypes.replaceDeclaredTypeParameters(casted.getTypeParameters());
+			} else {
+				childResolvedTypes.addDeclaredTypeParameters(casted.getTypeParameters());
+			}
+		}
+		return childResolvedTypes;
+	}
+	
+	protected boolean isStatic(JvmIdentifiableElement declarator) {
+		if (declarator instanceof JvmFeature) {
+			return ((JvmFeature) declarator).isStatic();
+		}
+//		if (declarator instanceof JvmDeclaredType) {
+//			return ((JvmDeclaredType) declarator).isStatic();
+//		}
+		return false;
+	}
+	
+	protected void _computeTypes(XExpressionStatment exprStatment, ITypeComputationState state) {
+		computeTypes(exprStatment.getExpression(), state);
+	}
+	
+	protected void _computeTypes(XBreakStatment object, ITypeComputationState state) {
+		
+	}
+	
+	protected void _computeTypes(XContinueStatment object, ITypeComputationState state) {
+
+	}
+	
+	protected void _computeTypes(XThrowStatment object, ITypeComputationState state) {
+		ITypeComputationState expressionState = state.withoutExpectation();
+		expressionState.computeTypes(object.getExpression());
+	}
+
+	protected void _computeTypes(XWhileStatment object, ITypeComputationState state) {
+		computeWhileLoopBody(object, state, true);
+		
+//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+//		state.acceptActualType(primitiveVoid);
+	}
+
+	protected void computeWhileLoopBody(XAbstractWhileStatment object, ITypeComputationState state, boolean autocast) {
+		ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(Buildin.Boolean.JvmType, state));
+		XExpression predicate = object.getPredicate();
+		conditionExpectation.computeTypes(predicate);
+		
+		XStatment body = object.getBody();
+		ITypeComputationState bodyState = state.withoutExpectation();
+		computeTypes(body, bodyState);
+	}
+
+	/**
+	 * Since we are sure that the loop body is executed at least once, the early exit information
+	 * of the loop body expression can be used for the outer expression.
+	 */
+	protected void _computeTypes(XDoWhileStatment object, ITypeComputationState state) {
+		computeWhileLoopBody(object, state, false);
+//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+//		state.acceptActualType(primitiveVoid);
+	}
+	
+	protected void _computeTypes(XBlockStatment object, ITypeComputationState state) {
+		List<XStatment> children = object.getStatments();
+		if (children.isEmpty()) {
+			for (ITypeExpectation expectation: state.getExpectations()) {
+				LightweightTypeReference expectedType = expectation.getExpectedType();
+				if (expectedType != null && expectedType.isPrimitiveVoid()) {
+					expectation.acceptActualType(getPrimitiveVoid(state), ConformanceHint.CHECKED, ConformanceHint.SUCCESS);
+				} else {
+					expectation.acceptActualType(new AnyTypeReference(expectation.getReferenceOwner()), ConformanceHint.UNCHECKED);
+				}
+			}
+		} else {
+//			state.withinScope(object);  //cym comment
+			for(int i = 0; i < children.size(); i++) {
+				XStatment statment = children.get(i);
+//				ITypeComputationState expressionState = state.withoutExpectation(); // no expectation
+				
+				computeTypes(statment, state);
+				if (statment instanceof XVariableDeclarationList) {
+					XVariableDeclarationList declList = (XVariableDeclarationList) statment;
+					for(XExpression exp : declList.getDeclarations()){
+						addLocalToCurrentScope((XVariableDeclaration)exp, state);
+					}
+				}
+			}
+//			XStatment lastStatment = children.get(children.size() - 1);
+//			for (ITypeExpectation expectation: state.getExpectations()) {
+//				LightweightTypeReference expectedType = expectation.getExpectedType();
+//				if (expectedType != null && expectedType.isPrimitiveVoid()) {
+//					ITypeComputationState expressionState = state.withoutExpectation(); // no expectation
+////					expressionState.computeTypes(lastExpression);
+//					computeTypes(lastStatment, expressionState);
+//					if (lastStatment instanceof XVariableDeclaration) {
+//						addLocalToCurrentScope((XVariableDeclaration)lastStatment, state);
+//					}
+//					expectation.acceptActualType(getPrimitiveVoid(state), ConformanceHint.CHECKED, ConformanceHint.SUCCESS);
+//				} else {
+////					state.computeTypes(lastStatment);
+//					computeTypes(lastStatment, state);
+//					// add the last expression to the scope, too in order validate for duplicate names, even
+//					// though the variable declaration could be removed automatically to keep only the side effect
+//					// of the initializer
+//					if (lastStatment instanceof XVariableDeclarationList) {
+//						XVariableDeclarationList declList = (XVariableDeclarationList) lastStatment;
+//						for(XExpression exp : declList.getDeclarations()){
+//							addLocalToCurrentScope((XVariableDeclaration)exp, state);
+//						}
+//					}
+//				}
+//			}
 		}
 	}
 
@@ -561,18 +786,18 @@ public class XbaseTypeComputer implements ITypeComputer {
 			if (lightweightTypeReference != null) {
 				
 				//cym comment
-//				variableType = lightweightTypeReference;
+				variableType = lightweightTypeReference;
 //				ExtendedEarlyExitComputer earlyExitComputer = state.getReferenceOwner().getServices().getEarlyExitComputer();
 //				if (earlyExitComputer.isDefiniteEarlyExit(computedType.getExpression())) {
-					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
-							Severity.ERROR,
-							IssueCodes.UNREACHABLE_CODE, 
-							"Dead code: The variable " + object.getSimpleName() + " will never be assigned.",
-							object,
-							XbasePackage.Literals.XVARIABLE_DECLARATION__NAME,
-							-1,
-							null);
-					state.addDiagnostic(diagnostic);
+//					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
+//							Severity.ERROR,
+//							IssueCodes.UNREACHABLE_CODE, 
+//							"Dead code: The variable " + object.getSimpleName() + " will never be assigned.",
+//							object,
+//							XbasePackage.Literals.XVARIABLE_DECLARATION__NAME,
+//							-1,
+//							null);
+//					state.addDiagnostic(diagnostic);
 //				}
 			} else {
 				variableType = computedType.getActualExpressionType();
@@ -580,8 +805,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			if (variableType != null && variableType.isPrimitiveVoid()) {
 				variableType = new UnknownTypeReference(variableType.getOwner());
 			}
-			state.assignType(object, variableType, false);
-			state.addExtensionToCurrentScope(object);
+			state.assignType(object, variableType, false);  
+//			state.addExtensionToCurrentScope(object);
 		}
 		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
 		state.acceptActualType(primitiveVoid);
@@ -812,92 +1037,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 
-	protected void _computeTypes(final XForEachStatment object, final ITypeComputationState state) {
-		JvmFormalParameter declaredParam = object.getDeclaredParam();
-		ITypeComputationState eachState = state.withoutExpectation();
-		if (declaredParam != null) {
-			LightweightTypeReference parameterType = computeForLoopParameterType(object, state);
-			eachState = assignType(declaredParam, parameterType, eachState);
-		}
-		computeTypes(object.getStatment(), eachState);
-		
-//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
-//		state.acceptActualType(primitiveVoid);
-	}
-	
-	protected ITypeComputationState assignType(JvmFormalParameter param, @Nullable LightweightTypeReference type, ITypeComputationState state) {
-		return state.assignType(param, type);
-	}
 
-	@Nullable
-	protected LightweightTypeReference computeForLoopParameterType(final XForEachStatment object,
-			final ITypeComputationState state) {
-		JvmFormalParameter declaredParam = object.getDeclaredParam();
-		LightweightTypeReference parameterType = getDeclaredParameterType(declaredParam, state);
-//		final JvmGenericType iterableType = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, object); //cym comment
-		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.JvmType;
-		
-		if (parameterType != null && !parameterType.isPrimitiveVoid()) {
-			final CompoundTypeReference withSynonyms = new CompoundTypeReference(state.getReferenceOwner(), true);
-			LightweightTypeReference iterableOrArray = getAndEnhanceIterableOrArrayFromComponent(parameterType, iterableType, withSynonyms);
-			
-			ITypeComputationState iterableState = state.withExpectation(withSynonyms);
-			ITypeComputationResult forExpressionResult = iterableState.computeTypes(object.getExpression());
-			LightweightTypeReference forExpressionType = forExpressionResult.getActualExpressionType();
-			if (forExpressionType!= null) {
-				if (forExpressionType.isAny() || forExpressionType.isUnknown()) {
-					iterableState.refineExpectedType(object.getExpression(), iterableOrArray);
-				} else if (forExpressionType.isResolved()) {
-					TypeConformanceResult assignability = iterableOrArray.internalIsAssignableFrom(forExpressionType, new TypeConformanceComputationArgument());
-					if (assignability.isConformant() && !assignability.getConformanceHints().contains(ConformanceHint.RAWTYPE_CONVERSION))
-						iterableState.refineExpectedType(object.getExpression(), forExpressionType);
-					else {
-						ArrayTypeReference array = forExpressionType.tryConvertToArray();
-						if (array != null) {
-							LightweightTypeReference arrayComponentType = array.getComponentType();
-							if (parameterType.isAssignableFrom(arrayComponentType)) {
-								iterableState.refineExpectedType(object.getExpression(), forExpressionType);
-							} else {
-								LightweightTypeReference rawArrayComponentType = arrayComponentType.getRawTypeReference();
-								AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(
-										Severity.ERROR, 
-										IssueCodes.INCOMPATIBLE_TYPES, 
-										String.format("Type mismatch: cannot convert from element type %s to %s", rawArrayComponentType.getSimpleName(), parameterType.getSimpleName()), 
-										object, 
-										XbasePackage.Literals.XFOR_EACH_STATMENT__EXPRESSION, -1, null);
-								state.addDiagnostic(diagnostic);
-							}
-						}
-					}
-				}
-			}
-		} else {
-			ITypeReferenceOwner owner = state.getReferenceOwner();
-			LightweightTypeReference iterable = null;
-			if (iterableType == null) {
-//				iterable = new UnknownTypeReference(owner, Iterable.class.getName());  //cym comment
-				iterable = new UnknownTypeReference(owner, "Iterable");
-			} else {
-//				WildcardTypeReference wildcard = new WildcardTypeReference(owner);
-//				ParameterizedTypeReference iterableTypeRef = new ParameterizedTypeReference(owner, iterableType);
-//				UnboundTypeReference unbound = state.createUnboundTypeReference(object, iterableType.getTypeParameters().get(0));
-//				wildcard.addUpperBound(unbound);
-//				iterableTypeRef.addTypeArgument(wildcard);
-//				iterable = iterableTypeRef;
-//				// TODO do we have to add synonyms, too?
-			}
-			ITypeComputationState iterableState = state.withExpectation(iterable); 
-			ITypeComputationResult forExpressionResult = iterableState.computeTypes(object.getExpression());
-			LightweightTypeReference forExpressionType = forExpressionResult.getActualExpressionType();
-			if (forExpressionType != null) {
-				if (!forExpressionType.isAny() && (iterable.isAssignableFrom(forExpressionType) || forExpressionType.isArray())) {
-					iterableState.refineExpectedType(object.getExpression(), forExpressionType);
-				}
-				parameterType = getElementOrComponentType(forExpressionType, state);
-			}
-		}
-		return parameterType;
-	}
 
 	protected LightweightTypeReference getAndEnhanceIterableOrArrayFromComponent(LightweightTypeReference parameterType, JvmGenericType iterableType,
 			final CompoundTypeReference compoundResult) {
@@ -984,32 +1124,6 @@ public class XbaseTypeComputer implements ITypeComputer {
 		return state.getConverter().toLightweightReference(parameterType);
 	}
 
-	protected void _computeTypes(XWhileStatment object, ITypeComputationState state) {
-		computeWhileLoopBody(object, state, true);
-		
-//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
-//		state.acceptActualType(primitiveVoid);
-	}
-
-	protected void computeWhileLoopBody(XAbstractWhileStatment object, ITypeComputationState state, boolean autocast) {
-		ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(Buildin.Boolean.JvmType, state));
-		XExpression predicate = object.getPredicate();
-		conditionExpectation.computeTypes(predicate);
-		
-		XStatment body = object.getBody();
-		ITypeComputationState bodyState = state.withoutExpectation();
-		computeTypes(body, bodyState);
-	}
-
-	/**
-	 * Since we are sure that the loop body is executed at least once, the early exit information
-	 * of the loop body expression can be used for the outer expression.
-	 */
-	protected void _computeTypes(XDoWhileStatment object, ITypeComputationState state) {
-		computeWhileLoopBody(object, state, false);
-//		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
-//		state.acceptActualType(primitiveVoid);
-	}
 
 	protected void _computeTypes(XTypeLiteral object, ITypeComputationState state) {
 		JvmType type = object.getType();
@@ -1078,69 +1192,13 @@ public class XbaseTypeComputer implements ITypeComputer {
 		state.acceptActualType(bool);
 	}
 
-	protected void _computeTypes(XThrowStatment object, ITypeComputationState state) {
-//		LightweightTypeReference throwable = getTypeForName(Throwable.class, state);
-//		ITypeComputationState expressionState = state.withExpectation(throwable);
-//		ITypeComputationResult types = expressionState.computeTypes(object.getExpression());
-//		LightweightTypeReference thrownException = types.getActualExpressionType();
-//		state.acceptActualType(getPrimitiveVoid(state), ConformanceHint.NO_IMPLICIT_RETURN);
-		
-//		LightweightTypeReference throwable = getTypeForName(Throwable.class, state);
-		ITypeComputationState expressionState = state.withoutExpectation();
-		expressionState.computeTypes(object.getExpression());
-//		LightweightTypeReference thrownException = types.getActualExpressionType();
-//		state.acceptActualType(getPrimitiveVoid(state), ConformanceHint.NO_IMPLICIT_RETURN);
-		
-		
-		//cym comment
-//		if (thrownException != null && !thrownException.isUnknown()) {
-//			if (!state.isIgnored(IssueCodes.UNHANDLED_EXCEPTION) && thrownException.isSubtypeOf(Throwable.class)
-//					&& !thrownException.isSubtypeOf(RuntimeException.class)) {
-//				boolean declarationFound = false;
-//				for (LightweightTypeReference declaredException : state.getExpectedExceptions())
-//					if (declaredException.isAssignableFrom(thrownException)) {
-//						declarationFound = true;
-//						break;
-//					}
-//				if (!declarationFound)
-//					state.addDiagnostic(new EObjectDiagnosticImpl(
-//							expressionState.getSeverity(IssueCodes.UNHANDLED_EXCEPTION),
-//							IssueCodes.UNHANDLED_EXCEPTION,
-//							"Unhandled exception type " + thrownException.getSimpleName(),
-//							object,
-//							XbasePackage.Literals.XTHROW_EXPRESSION__EXPRESSION,
-//							-1,
-//							new String[] { 
-//								EcoreUtil.getURI(thrownException.getType()).toString(),
-//								EcoreUtil.getURI(object).toString()
-//							}));
-//			}
-//		}
-	}
 
-	protected void _computeTypes(XReturnStatment object, ITypeComputationState state) {
-		XExpression returnValue = object.getExpression();
-		ITypeComputationState expressionState = state.withReturnExpectation();
-		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
-		if (returnValue != null) {
-			expressionState.computeTypes(returnValue);
-			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
-		} else {
-			state.acceptActualType(primitiveVoid, ConformanceHint.EXPLICIT_VOID_RETURN);
-			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
-		}
-	}
-	
 	protected void _computeTypes(XPostfixOperation object, ITypeComputationState state) {
 		ITypeComputationState numberState = state.withExpectation(getTypeForName(Buildin.Number.JvmType, state));
 		numberState.computeTypes(object.getOperand());
 				
 		LightweightTypeReference numberType = getTypeForName(Buildin.Number.JvmType, state);
 		state.acceptActualType(numberType);
-	}
-	
-	protected void _computeTypes(XBreakStatment object, ITypeComputationState state) {
-		
 	}
 	
 	protected void _computeTypes(XTernaryOperation object, ITypeComputationState state) {
@@ -1166,13 +1224,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 			processor.commit();
 		}
 	}
-	
-	
-	
-	protected void _computeTypes(XContinueStatment object, ITypeComputationState state) {
 
-	}
-	
 	protected void _computeTypes(XIndexOperation object, ITypeComputationState state) {
 		LightweightTypeReference bool = getTypeForName(Integer.TYPE, state);
 		state.acceptActualType(bool);
@@ -1199,26 +1251,14 @@ public class XbaseTypeComputer implements ITypeComputer {
 //	}
 	
 	protected void _computeTypes(XTryCatchFinallyStatment object, ITypeComputationState state) {
-//		List<LightweightTypeReference> caughtExceptions = Lists.newArrayList();
-		OwnedConverter converter = state.getConverter();
 		XCatchClause catchClause = object.getCatchClause();
-//		if (catchClause.getDeclaredParam() != null && catchClause.getDeclaredParam().getParameterType() != null)
-//			caughtExceptions.add(converter.toLightweightReference(catchClause.getDeclaredParam().getParameterType()));
-//		state.withExpectedExceptions(caughtExceptions).computeTypes(object.getExpression());
-//		catchClause = object.getCatchClauses();
-//			JvmFormalParameter catchClauseParam = catchClause.getDeclaredParam();
-//			JvmTypeReference parameterType = catchClauseParam.getParameterType();
-//			LightweightTypeReference lightweightReference = parameterType != null 
-//					? state.getConverter().toLightweightReference(parameterType)
-//					: new AnyTypeReference(state.getReferenceOwner());
-//			ITypeComputationState catchClauseState = assignType(catchClauseParam, lightweightReference, state);
 		if(catchClause != null){
-			computeTypes(catchClause.getStatment(), state.withoutExpectation());
+			computeTypes(catchClause.getStatment(), state);
 		}
 
 //		}
 		// TODO validate / handle return / throw in finally block
-		computeTypes(object.getFinallyStatment(), state.withoutExpectation());
+		computeTypes(object.getFinallyStatment(), state);
 	}
 	
 	protected void _computeTypes(final XAssignment assignment, ITypeComputationState state) {

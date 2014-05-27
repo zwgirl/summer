@@ -21,16 +21,16 @@ class XbaseImageAdornments {
 		0	
 			.or(abstract, ABSTRACT)
 			.or(final, FINAL) 
-			.or(static, STATIC)
+//			.or(static, STATIC)
 			.or(deprecated, DEPRECATED)
 	}
 	
 	def dispatch get(JvmField it) {
 		0	
-			.or(final, FINAL) 
+			.or(const, FINAL) 
 			.or(static, STATIC) 
 			.or(deprecated, DEPRECATED)
-			.or(volatile, VOLATILE)
+//			.or(volatile, VOLATILE)
 			.or(transient, TRANSIENT)
 	}
 	
@@ -42,8 +42,8 @@ class XbaseImageAdornments {
 	def dispatch get(JvmOperation it) {
 		val adornment = 0	
 			.or(abstract, ABSTRACT)
-			.or(final, FINAL) 
-			.or(synchronized, SYNCHRONIZED) 
+//			.or(final, FINAL) 
+//			.or(synchronized, SYNCHRONIZED) 
 			.or(static, STATIC) 
 			.or(deprecated, DEPRECATED)
 			.or(native, 0x4000) // JavaElementImageDescription.NATIVE not available before 3.7

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
 
@@ -52,7 +53,7 @@ public class CachingTypeScope extends AbstractScope {
 	}
 	
 	@Override
-	protected void doGetElements(JvmType type, List<IEObjectDescription> result) {
+	public void doGetElements(JvmType type, List<IEObjectDescription> result) {
 		parent.doGetElements(type, result);
 	}
 

@@ -622,13 +622,13 @@ public abstract class LightweightTypeReference {
 		return new ParameterizedTypeReference(getOwner(), rawType);
 	}
 	
-	protected JvmType findNonNullType(Class<?> type) {
-		JvmType result = findType(type);
-		if (result == null) {
-			throw new IllegalStateException("Cannot find type " + type);
-		}
-		return result;
-	}
+//	protected JvmType findNonNullType(Class<?> type) {
+//		JvmType result = findType(type);
+//		if (result == null) {
+//			throw new IllegalStateException("Cannot find type " + type);
+//		}
+//		return result;
+//	}
 
 	/**
 	 * Returns true if this type reference represents an type with the given

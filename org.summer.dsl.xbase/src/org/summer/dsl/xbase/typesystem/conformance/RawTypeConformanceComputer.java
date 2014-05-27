@@ -690,87 +690,90 @@ public class RawTypeConformanceComputer {
 	}
 	
 	protected int doIsConformant(ParameterizedTypeReference left, ParameterizedTypeReference right, int flags) {
-		if (left.getType() == right.getType()) {
-			return doIsConformantTypeArguments(left, right, flags);
-		}
-		if (left.isPrimitiveVoid() || right.isPrimitiveVoid()) {
-			return flags;
-		}
-		if ((flags & (ALLOW_BOXING_UNBOXING | ALLOW_PRIMITIVE_WIDENING)) != 0) {
-			Primitive leftPrimitiveKind = left.getPrimitiveKind();
-			if (leftPrimitiveKind != null) {
-				Primitive rightPrimitiveKind = right.getPrimitiveKind();
-				if (rightPrimitiveKind != null) {
-					if ((flags & ALLOW_PRIMITIVE_WIDENING) != 0) {
-						if (isWideningConversion(leftPrimitiveKind, rightPrimitiveKind)) {
-							return flags | SUCCESS | PRIMITIVE_WIDENING;
-						}
-					}
-				} else if ((flags & ALLOW_BOXING_UNBOXING) != 0) {
-					rightPrimitiveKind = right.getPrimitiveKindIfWrapperType();
-					if (rightPrimitiveKind != null) {
-						if (rightPrimitiveKind == leftPrimitiveKind || isWideningConversion(leftPrimitiveKind, rightPrimitiveKind)) {
-							return flags | SUCCESS | UNBOXING;
-						}
-					}
-				}
-				if (!(right.getType().eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER))
-					return flags;
-			} else if ((flags & ALLOW_BOXING_UNBOXING) != 0) {
-				Primitive rightPrimitiveKind = right.getPrimitiveKind();
-				if (rightPrimitiveKind != null) {
-//					if (left.isType(Object.class)) {  //cym comment
-					if (left.isType(Buildin.Object.JvmType)) {
-						return flags | SUCCESS | BOXING;
-					}
-//					if (left.isType(String.class)) {  //cym comment
-					if (left.isType(Buildin.String.JvmType)) {
-						return flags;
-					}
-					LightweightTypeReference wrapper = WrapperTypeLookup.getWrapperType(right, rightPrimitiveKind);
-					int result = doIsConformant(left, (ParameterizedTypeReference) wrapper, flags);
-					if ((result & SUCCESS) != 0)
-						return result | BOXING;
-					return flags;
-				}
-			}
-		} else if (left.isPrimitive() || right.isPrimitive()) {
-			return flags;
-		}
-		if ((flags & AS_TYPE_ARGUMENT) != 0)
-			return flags;
-//		if (left.isType(Object.class)) {  //cym comment
-		if (left.isType(Buildin.Object.JvmType)) {
-			return flags | SUCCESS | SUBTYPE;
-		}
-		JvmType leftType = left.getType();
-		JvmType rightType = right.getType();
-		if (leftType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE) {
-			JvmGenericType castedLeftType = (JvmGenericType) leftType;
-			if (castedLeftType.isFinal()) {
-				if (rightType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER && getSuperType(right, castedLeftType) != null) {
-					return flags | SUCCESS | SUBTYPE;
-				}
-				return flags;
-			}
-			if (!(castedLeftType instanceof JvmInterfaceType) && rightType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && rightType instanceof JvmInterfaceType) {
-				return flags;
-			}
-		} else if (leftType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER) {
-			if (rightType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER && getSuperType(right, leftType) != null) {
-				return flags | SUCCESS | SUBTYPE;
-			}
-			return flags;
-		}
-		ParameterizedTypeReference rightSuperType = (ParameterizedTypeReference) getSuperType(right, leftType);
-		if (rightSuperType != null) {
-			int result = doIsConformantTypeArguments(left, rightSuperType, flags);
-			if ((result & SUCCESS) != 0) {
-				return result | SUBTYPE;
-			}
-			return result;
-		}
-		return isAssignableAsFunctionType(left, right, flags);
+		return flags | SUCCESS; 
+		
+		//cym comment
+//		if (left.getType() == right.getType()) {
+//			return doIsConformantTypeArguments(left, right, flags);
+//		}
+//		if (left.isPrimitiveVoid() || right.isPrimitiveVoid()) {
+//			return flags;
+//		}
+//		if ((flags & (ALLOW_BOXING_UNBOXING | ALLOW_PRIMITIVE_WIDENING)) != 0) {
+//			Primitive leftPrimitiveKind = left.getPrimitiveKind();
+//			if (leftPrimitiveKind != null) {
+//				Primitive rightPrimitiveKind = right.getPrimitiveKind();
+//				if (rightPrimitiveKind != null) {
+//					if ((flags & ALLOW_PRIMITIVE_WIDENING) != 0) {
+//						if (isWideningConversion(leftPrimitiveKind, rightPrimitiveKind)) {
+//							return flags | SUCCESS | PRIMITIVE_WIDENING;
+//						}
+//					}
+//				} else if ((flags & ALLOW_BOXING_UNBOXING) != 0) {
+//					rightPrimitiveKind = right.getPrimitiveKindIfWrapperType();
+//					if (rightPrimitiveKind != null) {
+//						if (rightPrimitiveKind == leftPrimitiveKind || isWideningConversion(leftPrimitiveKind, rightPrimitiveKind)) {
+//							return flags | SUCCESS | UNBOXING;
+//						}
+//					}
+//				}
+//				if (!(right.getType().eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER))
+//					return flags;
+//			} else if ((flags & ALLOW_BOXING_UNBOXING) != 0) {
+//				Primitive rightPrimitiveKind = right.getPrimitiveKind();
+//				if (rightPrimitiveKind != null) {
+////					if (left.isType(Object.class)) {  //cym comment
+//					if (left.isType(Buildin.Object.JvmType)) {
+//						return flags | SUCCESS | BOXING;
+//					}
+////					if (left.isType(String.class)) {  //cym comment
+//					if (left.isType(Buildin.String.JvmType)) {
+//						return flags;
+//					}
+//					LightweightTypeReference wrapper = WrapperTypeLookup.getWrapperType(right, rightPrimitiveKind);
+//					int result = doIsConformant(left, (ParameterizedTypeReference) wrapper, flags);
+//					if ((result & SUCCESS) != 0)
+//						return result | BOXING;
+//					return flags;
+//				}
+//			}
+//		} else if (left.isPrimitive() || right.isPrimitive()) {
+//			return flags;
+//		}
+//		if ((flags & AS_TYPE_ARGUMENT) != 0)
+//			return flags;
+////		if (left.isType(Object.class)) {  //cym comment
+//		if (left.isType(Buildin.Object.JvmType)) {
+//			return flags | SUCCESS | SUBTYPE;
+//		}
+//		JvmType leftType = left.getType();
+//		JvmType rightType = right.getType();
+//		if (leftType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE) {
+//			JvmGenericType castedLeftType = (JvmGenericType) leftType;
+//			if (castedLeftType.isFinal()) {
+//				if (rightType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER && getSuperType(right, castedLeftType) != null) {
+//					return flags | SUCCESS | SUBTYPE;
+//				}
+//				return flags;
+//			}
+//			if (!(castedLeftType instanceof JvmInterfaceType) && rightType.eClass() == TypesPackage.Literals.JVM_GENERIC_TYPE && rightType instanceof JvmInterfaceType) {
+//				return flags;
+//			}
+//		} else if (leftType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER) {
+//			if (rightType.eClass() == TypesPackage.Literals.JVM_TYPE_PARAMETER && getSuperType(right, leftType) != null) {
+//				return flags | SUCCESS | SUBTYPE;
+//			}
+//			return flags;
+//		}
+//		ParameterizedTypeReference rightSuperType = (ParameterizedTypeReference) getSuperType(right, leftType);
+//		if (rightSuperType != null) {
+//			int result = doIsConformantTypeArguments(left, rightSuperType, flags);
+//			if ((result & SUCCESS) != 0) {
+//				return result | SUBTYPE;
+//			}
+//			return result;
+//		}
+//		return isAssignableAsFunctionType(left, right, flags);
 	}
 	
 	protected int isAssignableAsFunctionType(ParameterizedTypeReference left,

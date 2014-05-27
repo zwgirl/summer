@@ -4,6 +4,7 @@ package org.summer.dsl.model.types.impl;
 
 import java.lang.Iterable;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -672,6 +673,15 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getJvmModule_Package() {
+		return (EAttribute)jvmModuleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJvmType() {
 		return jvmTypeEClass;
 	}
@@ -1330,7 +1340,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	public EReference getJvmField_Type() {
-		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(5);
+		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1365,8 +1375,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmField_DefaultValue() {
-		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(6);
+	public EAttribute getJvmField_Property() {
+		return (EAttribute)jvmFieldEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1374,7 +1384,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmField_Set() {
+	public EReference getJvmField_DefaultValue() {
 		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1383,8 +1393,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmField_Get() {
+	public EReference getJvmField_Set() {
 		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmField_Get() {
+		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2107,6 +2126,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmModuleEClass, JVM_MODULE__CONTENTS);
 		createEReference(jvmModuleEClass, JVM_MODULE__EXPORT_SECTION);
 		createEReference(jvmModuleEClass, JVM_MODULE__ROOT);
+		createEAttribute(jvmModuleEClass, JVM_MODULE__PACKAGE);
 
 		jvmTypeEClass = createEClass(JVM_TYPE);
 
@@ -2213,6 +2233,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEAttribute(jvmFieldEClass, JVM_FIELD__TRANSIENT);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__VIRTAUL);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__OVERRIDE);
+		createEAttribute(jvmFieldEClass, JVM_FIELD__PROPERTY);
 		createEReference(jvmFieldEClass, JVM_FIELD__TYPE);
 		createEReference(jvmFieldEClass, JVM_FIELD__DEFAULT_VALUE);
 		createEReference(jvmFieldEClass, JVM_FIELD__SET);
@@ -2445,6 +2466,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEReference(getJvmModule_Contents(), ecorePackage.getEObject(), null, "contents", null, 0, -1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmModule_ExportSection(), theXtypePackage.getXExportSection(), null, "exportSection", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmModule_Root(), theXamlPackage.getXObjectElement(), null, "root", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmModule_Package(), ecorePackage.getEString(), "package", null, 0, 1, JvmModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmTypeEClass, JvmType.class, "JvmType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2648,6 +2670,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEAttribute(getJvmField_Transient(), ecorePackage.getEBoolean(), "transient", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmField_Virtaul(), ecorePackage.getEBoolean(), "virtaul", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmField_Override(), ecorePackage.getEBoolean(), "override", "false", 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmField_Property(), ecorePackage.getEBoolean(), "property", "false", 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_Type(), this.getJvmTypeReference(), null, "type", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_DefaultValue(), theXbasePackage.getXExpression(), null, "defaultValue", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_Set(), theXbasePackage.getXStatment(), null, "set", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

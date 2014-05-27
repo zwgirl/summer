@@ -42,7 +42,7 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
-import org.summer.dsl.model.xbase.XFunction;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -66,6 +66,8 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XWhileStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
+import org.summer.dsl.model.xtype.XtypePackage;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess;
 
 @SuppressWarnings("all")
@@ -101,7 +103,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 			case TypesPackage.JVM_GENERIC_ARRAY_TYPE_REFERENCE:
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
 					sequence_JvmTypeReference(context, (JvmGenericArrayTypeReference) semanticObject); 
 					return; 
 				}
@@ -116,7 +118,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
 				   context == grammarAccess.getJvmParameterizedTypeReferenceRule() ||
 				   context == grammarAccess.getJvmTypeReferenceRule() ||
-				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0()) {
+				   context == grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0()) {
 					sequence_JvmParameterizedTypeReference(context, (JvmParameterizedTypeReference) semanticObject); 
 					return; 
 				}
@@ -567,10 +569,10 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
-			case XbasePackage.XFUNCTION:
-				if(context == grammarAccess.getXFunctionRule() ||
+			case XbasePackage.XFUNCTION_DECLARATION:
+				if(context == grammarAccess.getXFunctionDeclarationRule() ||
 				   context == grammarAccess.getXStatmentRule()) {
-					sequence_XFunction(context, (XFunction) semanticObject); 
+					sequence_XFunctionDeclaration(context, (XFunctionDeclaration) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1169,7 +1171,8 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 				}
 				else break;
 			case XbasePackage.XVARIABLE_DECLARATION_LIST:
-				if(context == grammarAccess.getXVariableDeclarationListRule()) {
+				if(context == grammarAccess.getXStatmentRule() ||
+				   context == grammarAccess.getXVariableDeclarationListRule()) {
 					sequence_XVariableDeclarationList(context, (XVariableDeclarationList) semanticObject); 
 					return; 
 				}
@@ -1178,6 +1181,16 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 				if(context == grammarAccess.getXStatmentRule() ||
 				   context == grammarAccess.getXWhileStatmentRule()) {
 					sequence_XWhileStatment(context, (XWhileStatment) semanticObject); 
+					return; 
+				}
+				else break;
+			}
+		else if(semanticObject.eClass().getEPackage() == XtypePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case XtypePackage.XFUNCTION_TYPE_REF:
+				if(context == grammarAccess.getJvmArgumentTypeReferenceRule() ||
+				   context == grammarAccess.getJvmTypeReferenceRule() ||
+				   context == grammarAccess.getXFunctionTypeRefRule()) {
+					sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1260,7 +1273,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     componentType=JvmTypeReference_JvmGenericArrayTypeReference_1_0_0
+	 *     componentType=JvmTypeReference_JvmGenericArrayTypeReference_0_1_0_0
 	 */
 	protected void sequence_JvmTypeReference(EObject context, JvmGenericArrayTypeReference semanticObject) {
 		if(errorAcceptor != null) {
@@ -1269,7 +1282,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_1_0_0(), semanticObject.getComponentType());
+		feeder.accept(grammarAccess.getJvmTypeReferenceAccess().getJvmGenericArrayTypeReferenceComponentTypeAction_0_1_0_0(), semanticObject.getComponentType());
 		feeder.finish();
 	}
 	
@@ -1481,7 +1494,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     ((declaredFormalParameters+=JvmFormalParameter declaredFormalParameters+=JvmFormalParameter*)? expression=XExpression)
+	 *     ((declaredFormalParameters+=JvmFormalParameter declaredFormalParameters+=JvmFormalParameter*)? statment=XBlockStatment)
 	 */
 	protected void sequence_XClosure(EObject context, XClosure semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1531,7 +1544,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     expression=XPrimaryExpression
+	 *     expression=XExpression
 	 */
 	protected void sequence_XExpressionStatment(EObject context, XExpressionStatment semanticObject) {
 		if(errorAcceptor != null) {
@@ -1540,7 +1553,7 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getXExpressionStatmentAccess().getExpressionXPrimaryExpressionParserRuleCall_0_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getXExpressionStatmentAccess().getExpressionXExpressionParserRuleCall_0_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -1618,13 +1631,22 @@ public abstract class AbstractXbaseSemanticSequencer extends AbstractDelegatingS
 	 *     (
 	 *         exported?='export'? 
 	 *         (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)? 
-	 *         returnType=JvmTypeReference? 
-	 *         name=ValidID 
+	 *         returnType=JvmTypeReference 
+	 *         simpleName=ValidID 
 	 *         (declaredFormalParameters+=JvmFormalParameter declaredFormalParameters+=JvmFormalParameter*)? 
 	 *         body=XBlockStatment
 	 *     )
 	 */
-	protected void sequence_XFunction(EObject context, XFunction semanticObject) {
+	protected void sequence_XFunctionDeclaration(EObject context, XFunctionDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((paramTypes+=JvmTypeReference paramTypes+=JvmTypeReference*)? returnType=JvmTypeReference)
+	 */
+	protected void sequence_XFunctionTypeRef(EObject context, XFunctionTypeRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

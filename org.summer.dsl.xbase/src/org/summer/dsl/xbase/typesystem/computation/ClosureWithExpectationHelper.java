@@ -43,6 +43,7 @@ import org.summer.dsl.xbase.typesystem.util.TypeParameterByUnboundSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 /**
  * Strategy to compute types for lambda expression that do have an expected type.
@@ -54,6 +55,9 @@ import com.google.common.collect.Lists;
  */
 @NonNullByDefault
 public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
+	
+	@Inject
+	private ITypeComputer computer;
 
 	private final JvmOperation operation;
 
@@ -94,24 +98,26 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		}
 		ITypeAssigner typeAssigner = getState().withRootExpectation(expectedReturnType).assignTypes();
 		ITypeComputationState closureBodyTypeComputationState = getClosureBodyTypeComputationState(typeAssigner);
-		ITypeComputationResult expressionResult = closureBodyTypeComputationState.computeTypes(getClosure().getExpression());
+//		ITypeComputationResult expressionResult = closureBodyTypeComputationState.computeTypes(getClosure().getStatment());  //cym comment
+		computer.computeTypes(getClosure().getStatment(), closureBodyTypeComputationState);
 
-		ConformanceHint hint = processExpressionType(expressionResult);
-
-		if (resultClosureType.getReturnType() == null)
-			throw new IllegalStateException("Closure has no return type assigned");
-		if (!validParameterTypes || hint == ConformanceHint.INCOMPATIBLE) {
-			if (hint == null)
-				markIncompatibleParameterList();
-			else if (validParameterTypes)
-				markCompatibleParameterList();
-			else
-				markIncompatible();
-		} else if (hint == ConformanceHint.LAMBDA_RAW_COMPATIBLE) {
-			markRawCompatible();
-		} else {
-			markUncheckedValid();
-		}
+		
+		//cym comment
+//		ConformanceHint hint = processExpressionType(expressionResult);  
+//		if (resultClosureType.getReturnType() == null)
+//			throw new IllegalStateException("Closure has no return type assigned");
+//		if (!validParameterTypes || hint == ConformanceHint.INCOMPATIBLE) {
+//			if (hint == null)
+//				markIncompatibleParameterList();
+//			else if (validParameterTypes)
+//				markCompatibleParameterList();
+//			else
+//				markIncompatible();
+//		} else if (hint == ConformanceHint.LAMBDA_RAW_COMPATIBLE) {
+//			markRawCompatible();
+//		} else {
+//			markUncheckedValid();
+//		}
 	}
 
 	protected void markUncheckedValid() {

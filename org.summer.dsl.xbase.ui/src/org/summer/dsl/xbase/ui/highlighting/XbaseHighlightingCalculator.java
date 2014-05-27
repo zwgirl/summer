@@ -46,6 +46,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XUnaryOperation;
@@ -229,6 +230,10 @@ public class XbaseHighlightingCalculator implements ISemanticHighlightingCalcula
 				}
 			}
 			if(feature instanceof JvmAnnotationTarget && DeprecationUtil.isDeprecated((JvmAnnotationTarget)feature)){
+				highlightFeatureCall(featureCall, acceptor, XbaseHighlightingConfiguration.DEPRECATED_MEMBERS);
+			}
+			
+			if(feature instanceof XFunctionDeclaration){
 				highlightFeatureCall(featureCall, acceptor, XbaseHighlightingConfiguration.DEPRECATED_MEMBERS);
 			}
 		}

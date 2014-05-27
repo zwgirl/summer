@@ -3,6 +3,7 @@
 package org.summer.dsl.model.xbase.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -12,47 +13,40 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>XFunction Declaration</b></em>'.
+ * An implementation of the model object '<em><b>XFunction</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getDeclaredFormalParameters <em>Declared Formal Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class XFunctionDeclarationImpl extends XExpressionImpl implements XFunctionDeclaration {
+public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunctionDeclaration {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getDeclaredFormalParameters() <em>Declared Formal Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getDeclaredFormalParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected EList<JvmFormalParameter> declaredFormalParameters;
 
 	/**
 	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -62,7 +56,27 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * @generated
 	 * @ordered
 	 */
-	protected XExpression body;
+	protected XStatment body;
+
+	/**
+	 * The default value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleName = SIMPLE_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
@@ -75,14 +89,34 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	protected JvmTypeReference returnType;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParameters()
+	 * @see #getTypeParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<JvmFormalParameter> parameters;
+	protected EList<JvmTypeParameter> typeParameters;
+
+	/**
+	 * The default value of the '{@link #isExported() <em>Exported</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExported()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean EXPORTED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isExported() <em>Exported</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExported()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean exported = EXPORTED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,8 +142,11 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public EList<JvmFormalParameter> getDeclaredFormalParameters() {
+		if (declaredFormalParameters == null) {
+			declaredFormalParameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS);
+		}
+		return declaredFormalParameters;
 	}
 
 	/**
@@ -117,19 +154,7 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XFUNCTION_DECLARATION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public XExpression getBody() {
+	public XStatment getBody() {
 		return body;
 	}
 
@@ -138,8 +163,8 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBody(XExpression newBody, NotificationChain msgs) {
-		XExpression oldBody = body;
+	public NotificationChain basicSetBody(XStatment newBody, NotificationChain msgs) {
+		XStatment oldBody = body;
 		body = newBody;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XFUNCTION_DECLARATION__BODY, oldBody, newBody);
@@ -153,7 +178,7 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBody(XExpression newBody) {
+	public void setBody(XStatment newBody) {
 		if (newBody != body) {
 			NotificationChain msgs = null;
 			if (body != null)
@@ -215,11 +240,89 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<JvmFormalParameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, XbasePackage.XFUNCTION_DECLARATION__PARAMETERS);
+	public EList<JvmTypeParameter> getTypeParameters() {
+		if (typeParameters == null) {
+			typeParameters = new EObjectContainmentEList<JvmTypeParameter>(JvmTypeParameter.class, this, XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS);
 		}
-		return parameters;
+		return typeParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isExported() {
+		return exported;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExported(boolean newExported) {
+		boolean oldExported = exported;
+		exported = newExported;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XFUNCTION_DECLARATION__EXPORTED, oldExported, exported));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<JvmFormalParameter> getFormalParameters() {
+		return getDeclaredFormalParameters();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getIdentifier() {
+		return simpleName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleName() {
+		return simpleName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleName(String newSimpleName) {
+		String oldSimpleName = simpleName;
+		simpleName = newSimpleName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XFUNCTION_DECLARATION__SIMPLE_NAME, oldSimpleName, simpleName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getQualifiedName() {
+		return simpleName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getQualifiedName(char innerClassDelimiter) {
+		return simpleName;
 	}
 
 	/**
@@ -230,12 +333,14 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS:
+				return ((InternalEList<?>)getDeclaredFormalParameters()).basicRemove(otherEnd, msgs);
 			case XbasePackage.XFUNCTION_DECLARATION__BODY:
 				return basicSetBody(null, msgs);
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return basicSetReturnType(null, msgs);
-			case XbasePackage.XFUNCTION_DECLARATION__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
+				return ((InternalEList<?>)getTypeParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -248,14 +353,18 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case XbasePackage.XFUNCTION_DECLARATION__NAME:
-				return getName();
+			case XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS:
+				return getDeclaredFormalParameters();
 			case XbasePackage.XFUNCTION_DECLARATION__BODY:
 				return getBody();
+			case XbasePackage.XFUNCTION_DECLARATION__SIMPLE_NAME:
+				return getSimpleName();
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return getReturnType();
-			case XbasePackage.XFUNCTION_DECLARATION__PARAMETERS:
-				return getParameters();
+			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
+				return getTypeParameters();
+			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
+				return isExported();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,18 +378,25 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case XbasePackage.XFUNCTION_DECLARATION__NAME:
-				setName((String)newValue);
+			case XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS:
+				getDeclaredFormalParameters().clear();
+				getDeclaredFormalParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
 				return;
 			case XbasePackage.XFUNCTION_DECLARATION__BODY:
-				setBody((XExpression)newValue);
+				setBody((XStatment)newValue);
+				return;
+			case XbasePackage.XFUNCTION_DECLARATION__SIMPLE_NAME:
+				setSimpleName((String)newValue);
 				return;
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				setReturnType((JvmTypeReference)newValue);
 				return;
-			case XbasePackage.XFUNCTION_DECLARATION__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
+			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
+				getTypeParameters().clear();
+				getTypeParameters().addAll((Collection<? extends JvmTypeParameter>)newValue);
+				return;
+			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
+				setExported((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,17 +410,23 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XFUNCTION_DECLARATION__NAME:
-				setName(NAME_EDEFAULT);
+			case XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS:
+				getDeclaredFormalParameters().clear();
 				return;
 			case XbasePackage.XFUNCTION_DECLARATION__BODY:
-				setBody((XExpression)null);
+				setBody((XStatment)null);
+				return;
+			case XbasePackage.XFUNCTION_DECLARATION__SIMPLE_NAME:
+				setSimpleName(SIMPLE_NAME_EDEFAULT);
 				return;
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				setReturnType((JvmTypeReference)null);
 				return;
-			case XbasePackage.XFUNCTION_DECLARATION__PARAMETERS:
-				getParameters().clear();
+			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
+				getTypeParameters().clear();
+				return;
+			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
+				setExported(EXPORTED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -318,14 +440,18 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case XbasePackage.XFUNCTION_DECLARATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XbasePackage.XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS:
+				return declaredFormalParameters != null && !declaredFormalParameters.isEmpty();
 			case XbasePackage.XFUNCTION_DECLARATION__BODY:
 				return body != null;
+			case XbasePackage.XFUNCTION_DECLARATION__SIMPLE_NAME:
+				return SIMPLE_NAME_EDEFAULT == null ? simpleName != null : !SIMPLE_NAME_EDEFAULT.equals(simpleName);
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return returnType != null;
-			case XbasePackage.XFUNCTION_DECLARATION__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
+				return typeParameters != null && !typeParameters.isEmpty();
+			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
+				return exported != EXPORTED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -340,10 +466,12 @@ public class XFunctionDeclarationImpl extends XExpressionImpl implements XFuncti
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (simpleName: ");
+		result.append(simpleName);
+		result.append(", exported: ");
+		result.append(exported);
 		result.append(')');
 		return result.toString();
 	}
 
-} //XFunctionDeclarationImpl
+} //XFunctionImpl

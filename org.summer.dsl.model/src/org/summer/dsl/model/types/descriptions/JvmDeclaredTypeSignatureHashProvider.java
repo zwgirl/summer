@@ -129,8 +129,8 @@ public class JvmDeclaredTypeSignatureHashProvider {
 				appendVisibility(type.getVisibility()).append(" ");
 				if (type.isAbstract())
 					append("abstract ");
-				if (type.isStatic())
-					append("static ");
+//				if (type.isStatic())
+//					append("static ");
 				if (type.isFinal())
 					append("final ");
 				append("class ").append(type.getIdentifier());
@@ -218,8 +218,8 @@ public class JvmDeclaredTypeSignatureHashProvider {
 				append("abstract ");
 			if (operation.isStatic())
 				append("static ");
-			if (operation.isFinal())
-				append("final ");
+//			if (operation.isFinal())
+//				append("final ");
 			appendType(operation.getReturnType()).appendTypeParameters(operation).append(" ")
 					.append(operation.getSimpleName()).append("(");
 			for (JvmFormalParameter p : operation.getParameters()) {
@@ -237,7 +237,7 @@ public class JvmDeclaredTypeSignatureHashProvider {
 			appendVisibility(field.getVisibility()).append(" ");
 			if (field.isStatic())
 				append("static ");
-			if (field.isFinal())
+//			if (field.isFinal())
 				append("final ");
 			return appendType(field.getType()).append(" ").append(field.getSimpleName());
 		}

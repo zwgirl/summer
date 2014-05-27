@@ -47,7 +47,6 @@ public class AnnotationValueTypeComputationState extends AbstractRootTypeComputa
 	@Override
 	@Nullable
 	protected LightweightTypeReference getExpectedType() {
-//		JvmOperation operation = annotationValue.getOperation();
 		JvmField field = annotationValue.getField();
 		LightweightTypeReference result = getResolvedTypes().getActualType(field);
 		if (result != null && result.isArray()) {

@@ -24,7 +24,6 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 
 import com.google.common.collect.Lists;
-import java.lang.Iterable;
 
 /**
  * <!-- begin-user-doc -->

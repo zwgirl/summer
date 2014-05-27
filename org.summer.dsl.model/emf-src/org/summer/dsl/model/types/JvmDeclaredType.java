@@ -3,6 +3,8 @@
 package org.summer.dsl.model.types;
 
 import java.lang.Iterable;
+import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -39,9 +41,9 @@ public interface JvmDeclaredType extends JvmMember, JvmComponentType {
 	 * @return the value of the '<em>Super Types</em>' containment reference list.
 	 * @see org.summer.dsl.model.types.TypesPackage#getJvmDeclaredType_SuperTypes()
 	 * @model containment="true"
-	 * @generated
+	 * @generated NOT
 	 */
-	EList<JvmTypeReference> getSuperTypes();
+	List<JvmTypeReference> getSuperTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.

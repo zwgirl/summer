@@ -13,6 +13,9 @@ import org.eclipse.xtext.ui.generator.*
 import org.eclipse.xtext.generator.parser.antlr.*
 import org.eclipse.xtext.resource.XtextResourceSet 
 
+
+var grammarURI = "classpath:/org/summer/dsl/xbase/Xbase.xtext"
+var file.extensions = "___xbase1"
 var projectName = "org.summer.dsl.xbase"
 var runtimeProject = "../${projectName}"
 var uiProject = "${runtimeProject}.ui"
@@ -21,29 +24,30 @@ var memoize = false
 
 Workflow {
 	
-    bean = StandaloneSetup {
-    	scanClassPath = true
-    	platformUri = "${runtimeProject}/.."
-    	// The following two lines can be removed, if Xbase is not used.
-    	registerGeneratedEPackage = "org.summer.dsl.model.xbase.XbasePackage"
-    	registerGenModelFile = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
-    }
-    
+//    bean = StandaloneSetup {
+//    	scanClassPath = true
+//    	platformUri = "${runtimeProject}/.."
+//    	// The following two lines can be removed, if Xbase is not used.
+//    	registerGeneratedEPackage = "org.summer.dsl.model.xbase.XbasePackage"
+//    	registerGenModelFile = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
+//    }
+//    
+//	bean = StandaloneSetup {
+//		ignoreBrokenProjectFiles = true
+//		scanClassPath = true
+//		registerGenModelFile = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
+//	}
+	
 	bean = StandaloneSetup {
 		ignoreBrokenProjectFiles = true
 		scanClassPath = true
 		registerGenModelFile = "platform:/resource/org.summer.dsl.model/model/DslModel.genmodel"
 	}
-
-//	component = DirectoryCleaner {
-//		directory="${runtimeProject}/emf-gen"
-//	}
 	
-//	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
-//		genModel = "platform:/resource/${projectName}/model/DslModel.genmodel"
-//		srcPath ="platform:/resource/${projectName}/src"
-//		srcPath ="platform:/resource/org.eclipse.xtext.common.types/src"
-//	}
+	bean = StandaloneSetup {
+		resourceSet = XtextResourceSet : resourceSet {}
+		registerEcoreFile = "platform:/resource/org.summer.dsl.model/model/DslModel.ecore"
+	}
 
 	component = DirectoryCleaner {
 		directory="${uiProject}/src-gen"
@@ -59,13 +63,20 @@ Workflow {
 		projectNameUi = "${projectName}.ui"
 
 		language = {
-//			forcedResourceSet = xbaseResourceSet
-			uri = "classpath:/org/summer/dsl/xbase/Xbase.xtext" 	
-			fileExtensions = "___xbase1"
+			forcedResourceSet = resourceSet
+			uri = grammarURI
+			fileExtensions = file.extensions
 			fragment = grammarAccess.GrammarAccessFragment {}
 			fragment = serializer.SerializerFragment {
 				// generateDebugData = true
 			}
+			
+//			uri = "classpath:/org/summer/dsl/xbase/Xbase.xtext" 	
+//			fileExtensions = "___xbase1"
+//			fragment = grammarAccess.GrammarAccessFragment {}
+//			fragment = serializer.SerializerFragment {
+//				// generateDebugData = true
+//			}
 			fragment = resourceFactory.ResourceFactoryFragment {
 				fileExtensions = "___xbase1"
 			}

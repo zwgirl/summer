@@ -11,14 +11,17 @@ import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmDelegateType;
 import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 
 import com.google.common.collect.Lists;
 
-public class RootScope implements IScope{
+public class RootScope extends AbstractScope{
 	
 	private IScope parent;
 
@@ -77,33 +80,31 @@ public class RootScope implements IScope{
 					result.add(EObjectDescription.create(delegate.getSimpleName(), delegate));
 				}
 			} else if(obj instanceof XVariableDeclarationList){
-				XVariableDeclarationList varDeclList  = (XVariableDeclarationList) obj;
-				for(XExpression exp : varDeclList.getDeclarations()){
-					XVariableDeclaration var = (XVariableDeclaration) exp;
-					if(var.getName()!=null && !var.getName().isEmpty()){
-						result.add(EObjectDescription.create(var.getSimpleName(), var));
+				XVariableDeclarationList declList = (XVariableDeclarationList) obj;
+				List<XExpression> decls = declList.getDeclarations();
+				for(XExpression exp : decls){
+					XVariableDeclaration varDecl = (XVariableDeclaration) exp;
+					if(varDecl.getName()!=null && !varDecl.getName().isEmpty()){
+						result.add(EObjectDescription.create(varDecl.getSimpleName(), varDecl));
 					}
 				}
-			} else if(obj instanceof XClosure){
-				XClosure closure  = (XClosure) obj;
-				if(closure.getName() == null || closure.getName().isEmpty()){
+				
+			} else if(obj instanceof XFunctionDeclaration){
+				XFunctionDeclaration function  = (XFunctionDeclaration) obj;
+				if(function.getSimpleName() == null || function.getSimpleName().isEmpty()){
 					continue;
 				}
-				result.add(EObjectDescription.create(closure.getName(), obj));
+				result.add(EObjectDescription.create(function.getSimpleName(), function));
 			}
 		}
 		
 		return result;
 	}
 
-	public IEObjectDescription getSingleElement(EObject object) {
+	@Override
+	public void doGetElements(JvmType type, List<IEObjectDescription> result) {
 		// FIXME Auto-generated method stub
-		return null;
-	}
-
-	public Iterable<IEObjectDescription> getElements(EObject object) {
-		// FIXME Auto-generated method stub
-		return null;
+		
 	}
 
 }

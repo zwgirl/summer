@@ -111,22 +111,30 @@ public class SsUIValidator extends XbaseUIValidator {
 
 	@Check
 	public void checkModuleNamespaceConventions(JvmModule module) {
-		String expectedPackage = getExpectedPackageName(module);
-		String moduleName = module.getSimpleName();
-		String[] segments = moduleName.split("\\.");
-		String[] tag = new String[segments.length-1];
-		System.arraycopy(segments, 0, tag, 0, segments.length-1);
-		QualifiedName qfn = QualifiedName.create(tag);
+//		String expectedPackage = getExpectedPackageName(module);
+//		String moduleName = module.getSimpleName();
+//		String[] segments = moduleName.split("\\.");
+//		String[] tag = new String[segments.length-1];
+//		System.arraycopy(segments, 0, tag, 0, segments.length-1);
+//		QualifiedName qfn = QualifiedName.create(tag);
+//		
+//		if(expectedPackage != null && !((isEmpty(expectedPackage) && moduleName == null) || expectedPackage.equals(qfn.toString()))) {
+//			String packageName = expectedPackage;
+//			if(expectedPackage == null ||expectedPackage.isEmpty() ){
+//				packageName = DEFAULT_PACKEGE;
+//			}
+//			error("The declared module '" + notNull(moduleName) + "' does not match the expected namespace '" + 
+//					packageName + "'",
+//					TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, expectedPackage);
+//		}
 		
-		if(expectedPackage != null && !((isEmpty(expectedPackage) && moduleName == null) || expectedPackage.equals(qfn.toString()))) {
-			String packageName = expectedPackage;
-			if(expectedPackage == null ||expectedPackage.isEmpty() ){
-				packageName = DEFAULT_PACKEGE;
-			}
-			error("The declared module '" + notNull(moduleName) + "' does not match the expected namespace '" + 
-					packageName + "'",
+		String expectedPackage = getExpectedPackageName(module);
+		String declaredPackage = module.getPackage();
+		if(expectedPackage != null && !((isEmpty(expectedPackage) && declaredPackage == null) || expectedPackage.equals(declaredPackage))) {
+			error("The declared package '" + notNull(declaredPackage) + "' does not match the expected package '" + notNull(expectedPackage) + "'",
 					TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, expectedPackage);
 		}
+		
 	}
 	
 	@Check
@@ -147,8 +155,8 @@ public class SsUIValidator extends XbaseUIValidator {
 	
 	
 
-	protected String getExpectedPackageName(JvmModule xtendFile) {
-		URI fileURI = xtendFile.eResource().getURI();
+	protected String getExpectedPackageName(JvmModule module) {
+		URI fileURI = module.eResource().getURI();
 		for(Pair<IStorage, IProject> storage: storage2UriMapper.getStorages(fileURI)) {
 			if(storage.getFirst() instanceof IFile) {
 				IPath fileWorkspacePath = storage.getFirst().getFullPath();

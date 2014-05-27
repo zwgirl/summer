@@ -14,7 +14,58 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.xbase.*;
+import org.summer.dsl.model.xbase.RichStringLiteral;
+import org.summer.dsl.model.xbase.XAbstractFeatureCall;
+import org.summer.dsl.model.xbase.XAbstractWhileStatment;
+import org.summer.dsl.model.xbase.XArrayLiteral;
+import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XBinaryOperation;
+import org.summer.dsl.model.xbase.XBlockStatment;
+import org.summer.dsl.model.xbase.XBooleanLiteral;
+import org.summer.dsl.model.xbase.XBreakStatment;
+import org.summer.dsl.model.xbase.XCasePart;
+import org.summer.dsl.model.xbase.XCastedExpression;
+import org.summer.dsl.model.xbase.XCatchClause;
+import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xbase.XCollectionLiteral;
+import org.summer.dsl.model.xbase.XConstructorCall;
+import org.summer.dsl.model.xbase.XContinueStatment;
+import org.summer.dsl.model.xbase.XDoWhileStatment;
+import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XExpressionStatment;
+import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFieldLiteralPart;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
+import org.summer.dsl.model.xbase.XIfStatment;
+import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XInstanceOfExpression;
+import org.summer.dsl.model.xbase.XKeyValuePair;
+import org.summer.dsl.model.xbase.XListLiteral;
+import org.summer.dsl.model.xbase.XMemberFeatureCall;
+import org.summer.dsl.model.xbase.XMemberFeatureCall1;
+import org.summer.dsl.model.xbase.XNullLiteral;
+import org.summer.dsl.model.xbase.XNumberLiteral;
+import org.summer.dsl.model.xbase.XObjectLiteral;
+import org.summer.dsl.model.xbase.XObjectLiteralPart;
+import org.summer.dsl.model.xbase.XPostfixOperation;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XSetLiteral;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XStringLiteral;
+import org.summer.dsl.model.xbase.XStructLiteral;
+import org.summer.dsl.model.xbase.XSwitchStatment;
+import org.summer.dsl.model.xbase.XTemplate;
+import org.summer.dsl.model.xbase.XTernaryOperation;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
+import org.summer.dsl.model.xbase.XTypeLiteral;
+import org.summer.dsl.model.xbase.XUnaryOperation;
+import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
+import org.summer.dsl.model.xbase.XWhileStatment;
+import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -245,10 +296,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXIndexOperationAdapter();
 			}
 			@Override
-			public Adapter caseXFunctionDeclaration(XFunctionDeclaration object) {
-				return createXFunctionDeclarationAdapter();
-			}
-			@Override
 			public Adapter caseXObjectLiteral(XObjectLiteral object) {
 				return createXObjectLiteralAdapter();
 			}
@@ -277,8 +324,8 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createRichStringLiteralAdapter();
 			}
 			@Override
-			public Adapter caseXFunction(XFunction object) {
-				return createXFunctionAdapter();
+			public Adapter caseXFunctionDeclaration(XFunctionDeclaration object) {
+				return createXFunctionDeclarationAdapter();
 			}
 			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
@@ -1043,20 +1090,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRichStringLiteralAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XFunction <em>XFunction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XFunction
-	 * @generated
-	 */
-	public Adapter createXFunctionAdapter() {
 		return null;
 	}
 

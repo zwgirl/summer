@@ -8,8 +8,7 @@
 package org.summer.dsl.xbase.typesystem.internal;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 
 /**
@@ -17,23 +16,18 @@ import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
  * TODO JavaDoc, toString
  */
 @NonNullByDefault
-public abstract class AbstractLogicalContainerAwareRootComputationState extends AbstractRootTypeComputationState {
+public abstract class AbstractLogicalContainerAwareRootComputationState extends AbstractRootTypeComputationState2 {
 
-	private final JvmMember member;
+	private final JvmIdentifiableElement container;
 
 	protected AbstractLogicalContainerAwareRootComputationState(ResolvedTypes resolvedTypes,
-			IFeatureScopeSession featureScopeSession, JvmMember member) {
+			IFeatureScopeSession featureScopeSession, JvmIdentifiableElement container) {
 		super(resolvedTypes, featureScopeSession);
-		this.member = member;
+		this.container = container;
 	}
 	
-	protected JvmMember getMember() {
-		return member;
-	}
-	
-	@Override
-	protected XExpression getRootExpression() {
-		return ((LogicalContainerAwareReentrantTypeResolver) getResolver()).getLogicalContainerProvider().getAssociatedExpression(getMember());
+	protected JvmIdentifiableElement getContainer() {
+		return container;
 	}
 	
 }

@@ -389,8 +389,8 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 			return Primitive.Short;
 		} else if ("java.lang.Float".equals(name)) {
 			return Primitive.Float;
-//		} else if ("java.lang.Void".equals(name)) {
-//			return Primitive.Void;
+		} else if ("java.lang.Void".equals(name)) {
+			return Primitive.Void;
 		}
 		return null;
 	}

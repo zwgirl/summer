@@ -12,7 +12,7 @@ ruleJvmModule :
 			ruleType |
 			ruleDelegateType
 		) |
-		ruleXStatment ';'?
+		ruleXStatment
 	)* ruleXExportSection? '}'
 ;
 
@@ -144,7 +144,7 @@ ruleJvmModule :
 		ruleJvmTypeReference ruleValidID
 	) (
 		'=' ruleXLiteral
-	)? ';'?
+	)? ';'
 ;
 
 // Rule Member
@@ -155,9 +155,9 @@ ruleJvmModule :
 		) (
 			(
 				'=' ruleXExpression
-			)? ';'? |
-			'{' 'get' ruleXBlockStatment (
-				'set' ruleXBlockStatment
+			)? ';' |
+			'{' 'get' ruleXBlockStatment? (
+				'set' ruleXBlockStatment?
 			)? '}'
 		) |
 		ruleMethodModifier* 'function' (
@@ -189,7 +189,7 @@ ruleJvmModule :
 			'{' 'add' ruleXBlockStatment (
 				'remove' ruleXBlockStatment
 			)? '}'
-		)? ';'
+		)?
 	)
 ;
 
@@ -634,7 +634,7 @@ ruleJvmModule :
 
 // Rule XExpressionStatment
  ruleXExpressionStatment :
-	ruleXPrimaryExpression ';'
+	ruleXExpression ';'?
 ;
 
 // Rule XClosure
@@ -732,7 +732,7 @@ ruleJvmModule :
 		'const'
 	) ruleXVariableDeclaration (
 		',' ruleXVariableDeclaration
-	)*
+	)* ';'
 ;
 
 // Rule XVariableDeclaration
@@ -861,24 +861,24 @@ ruleJvmModule :
 
 // Rule XThrowStatment
  ruleXThrowStatment :
-	'throw' ruleXExpression
+	'throw' ruleXExpression ';'
 ;
 
 // Rule XReturnStatment
  ruleXReturnStatment :
 	'return' ( (
 	ruleXExpression
-	) => ruleXExpression )?
+	) => ruleXExpression )? ';'
 ;
 
 // Rule XBreakStatment
  ruleXBreakStatment :
-	'break'
+	'break' ';'
 ;
 
 // Rule XContinueStatment
  ruleXContinueStatment :
-	'continue'
+	'continue' ';'
 ;
 
 // Rule XTryCatchFinallyStatment
@@ -984,12 +984,22 @@ ruleJvmModule :
  ruleJvmTypeReference :
 	ruleJvmParameterizedTypeReference ( (
 	ruleArrayBrackets
-	) => ruleArrayBrackets )*
+	) => ruleArrayBrackets )* |
+	ruleXFunctionTypeRef
 ;
 
 // Rule ArrayBrackets
  ruleArrayBrackets :
 	'[' ']'
+;
+
+// Rule XFunctionTypeRef
+ ruleXFunctionTypeRef :
+	'@' '(' (
+		ruleJvmTypeReference (
+			',' ruleJvmTypeReference
+		)*
+	)? ')' '=>' ruleJvmTypeReference
 ;
 
 // Rule JvmParameterizedTypeReference

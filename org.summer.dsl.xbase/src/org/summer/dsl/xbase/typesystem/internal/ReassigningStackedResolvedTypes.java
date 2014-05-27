@@ -93,7 +93,7 @@ public class ReassigningStackedResolvedTypes extends StackedResolvedTypes {
 	}
 	
 	@Override
-	protected void mergeIntoParent() {
+	public void mergeIntoParent() {
 		throw new UnsupportedOperationException("Should not be invoked");
 	}
 	

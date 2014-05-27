@@ -5,12 +5,17 @@ package org.summer.dsl.model.xaml.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.summer.dsl.model.xaml.*;
+import org.summer.dsl.model.xaml.XAbstractAttribute;
+import org.summer.dsl.model.xaml.XAttachAttribute;
+import org.summer.dsl.model.xaml.XAttributeElement;
+import org.summer.dsl.model.xaml.XElement;
+import org.summer.dsl.model.xaml.XGeneralAttribute;
+import org.summer.dsl.model.xaml.XMarkupExtenson;
+import org.summer.dsl.model.xaml.XObjectElement;
+import org.summer.dsl.model.xaml.XamlFactory;
+import org.summer.dsl.model.xaml.XamlPackage;
 
 /**
  * <!-- begin-user-doc -->

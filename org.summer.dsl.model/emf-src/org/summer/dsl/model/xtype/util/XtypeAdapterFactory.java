@@ -4,16 +4,20 @@ package org.summer.dsl.model.xtype.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmTypeReference;
-
-import org.summer.dsl.model.xtype.*;
+import org.summer.dsl.model.xtype.XComputedTypeReference;
+import org.summer.dsl.model.xtype.XExportDeclaration;
+import org.summer.dsl.model.xtype.XExportItem;
+import org.summer.dsl.model.xtype.XExportSection;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
+import org.summer.dsl.model.xtype.XImportDeclaration;
+import org.summer.dsl.model.xtype.XImportItem;
+import org.summer.dsl.model.xtype.XImportSection;
+import org.summer.dsl.model.xtype.XtypePackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -4,12 +4,9 @@ package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
@@ -28,6 +25,7 @@ import org.summer.dsl.model.xbase.XStatment;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isVirtaul <em>Virtaul</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isOverride <em>Override</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isProperty <em>Property</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getSet <em>Set</em>}</li>
@@ -137,6 +135,26 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * @ordered
 	 */
 	protected boolean override = OVERRIDE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isProperty() <em>Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PROPERTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isProperty() <em>Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean property = PROPERTY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -350,6 +368,27 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isProperty() {
+		return property;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProperty(boolean newProperty) {
+		boolean oldProperty = property;
+		property = newProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__PROPERTY, oldProperty, property));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XExpression getDefaultValue() {
 		return defaultValue;
 	}
@@ -512,6 +551,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return isVirtaul();
 			case TypesPackage.JVM_FIELD__OVERRIDE:
 				return isOverride();
+			case TypesPackage.JVM_FIELD__PROPERTY:
+				return isProperty();
 			case TypesPackage.JVM_FIELD__TYPE:
 				return getType();
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
@@ -546,6 +587,9 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return;
 			case TypesPackage.JVM_FIELD__OVERRIDE:
 				setOverride((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_FIELD__PROPERTY:
+				setProperty((Boolean)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__TYPE:
 				setType((JvmTypeReference)newValue);
@@ -586,6 +630,9 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__OVERRIDE:
 				setOverride(OVERRIDE_EDEFAULT);
 				return;
+			case TypesPackage.JVM_FIELD__PROPERTY:
+				setProperty(PROPERTY_EDEFAULT);
+				return;
 			case TypesPackage.JVM_FIELD__TYPE:
 				setType((JvmTypeReference)null);
 				return;
@@ -620,6 +667,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return virtaul != VIRTAUL_EDEFAULT;
 			case TypesPackage.JVM_FIELD__OVERRIDE:
 				return override != OVERRIDE_EDEFAULT;
+			case TypesPackage.JVM_FIELD__PROPERTY:
+				return property != PROPERTY_EDEFAULT;
 			case TypesPackage.JVM_FIELD__TYPE:
 				return type != null;
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
@@ -652,6 +701,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		result.append(virtaul);
 		result.append(", override: ");
 		result.append(override);
+		result.append(", property: ");
+		result.append(property);
 		result.append(')');
 		return result.toString();
 	}

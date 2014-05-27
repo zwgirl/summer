@@ -10,26 +10,15 @@ package org.summer.ss.core.scoping;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IStorage;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.IPackageFragmentRoot;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.linking.impl.ImportedNamesAdapter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.CompilerPhases;
-import org.eclipse.xtext.resource.ResourceSetFactory;
-import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
@@ -50,20 +39,21 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.types.access.IJvmTypeProvider;
 import org.summer.dsl.model.types.xtext.AbstractTypeScope;
 import org.summer.dsl.model.types.xtext.AbstractTypeScopeProvider;
-import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XStructLiteral;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
+import org.summer.dsl.xbase.resource.ImportScope;
+import org.summer.dsl.xbase.resource.PrimitivesScope;
+import org.summer.dsl.xbase.resource.RootScope;
 import org.summer.dsl.xbase.scoping.AbstractNestedTypeAwareImportNormalizer;
+import org.summer.dsl.xbase.scoping.AbstractScope;
+import org.summer.dsl.xbase.scoping.NamespaceUtil;
 import org.summer.dsl.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.ConstructorTypeScopeWrapper;
 import org.summer.dsl.xbase.typesystem.util.IVisibilityHelper;
-import org.summer.ss.core.resource.ImportScope;
-import org.summer.ss.core.resource.PrimitivesScope;
-import org.summer.ss.core.resource.RootScope;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -252,8 +242,8 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				current = tpd.getTypeParameters();
 			} else if(syntacticContainer instanceof JvmOperation){
 				JvmOperation jop = (JvmOperation) syntacticContainer;
-				XClosure closure = (XClosure) jop.getFunction();	
-				current = closure.getTypeParameters();
+//				XClosure closure = (XClosure) jop.getFunction();	
+				current = jop.getTypeParameters();
 			}
 				
 			if (current!=null && !current.isEmpty()) {

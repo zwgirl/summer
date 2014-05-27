@@ -13,7 +13,58 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.xbase.*;
+import org.summer.dsl.model.xbase.RichStringLiteral;
+import org.summer.dsl.model.xbase.XAbstractFeatureCall;
+import org.summer.dsl.model.xbase.XAbstractWhileStatment;
+import org.summer.dsl.model.xbase.XArrayLiteral;
+import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XBinaryOperation;
+import org.summer.dsl.model.xbase.XBlockStatment;
+import org.summer.dsl.model.xbase.XBooleanLiteral;
+import org.summer.dsl.model.xbase.XBreakStatment;
+import org.summer.dsl.model.xbase.XCasePart;
+import org.summer.dsl.model.xbase.XCastedExpression;
+import org.summer.dsl.model.xbase.XCatchClause;
+import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xbase.XCollectionLiteral;
+import org.summer.dsl.model.xbase.XConstructorCall;
+import org.summer.dsl.model.xbase.XContinueStatment;
+import org.summer.dsl.model.xbase.XDoWhileStatment;
+import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XExpressionStatment;
+import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFieldLiteralPart;
+import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
+import org.summer.dsl.model.xbase.XIfStatment;
+import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XInstanceOfExpression;
+import org.summer.dsl.model.xbase.XKeyValuePair;
+import org.summer.dsl.model.xbase.XListLiteral;
+import org.summer.dsl.model.xbase.XMemberFeatureCall;
+import org.summer.dsl.model.xbase.XMemberFeatureCall1;
+import org.summer.dsl.model.xbase.XNullLiteral;
+import org.summer.dsl.model.xbase.XNumberLiteral;
+import org.summer.dsl.model.xbase.XObjectLiteral;
+import org.summer.dsl.model.xbase.XObjectLiteralPart;
+import org.summer.dsl.model.xbase.XPostfixOperation;
+import org.summer.dsl.model.xbase.XReturnStatment;
+import org.summer.dsl.model.xbase.XSetLiteral;
+import org.summer.dsl.model.xbase.XStatment;
+import org.summer.dsl.model.xbase.XStringLiteral;
+import org.summer.dsl.model.xbase.XStructLiteral;
+import org.summer.dsl.model.xbase.XSwitchStatment;
+import org.summer.dsl.model.xbase.XTemplate;
+import org.summer.dsl.model.xbase.XTernaryOperation;
+import org.summer.dsl.model.xbase.XThrowStatment;
+import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
+import org.summer.dsl.model.xbase.XTypeLiteral;
+import org.summer.dsl.model.xbase.XUnaryOperation;
+import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
+import org.summer.dsl.model.xbase.XWhileStatment;
+import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -383,13 +434,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XFUNCTION_DECLARATION: {
-				XFunctionDeclaration xFunctionDeclaration = (XFunctionDeclaration)theEObject;
-				T result = caseXFunctionDeclaration(xFunctionDeclaration);
-				if (result == null) result = caseXExpression(xFunctionDeclaration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case XbasePackage.XOBJECT_LITERAL: {
 				XObjectLiteral xObjectLiteral = (XObjectLiteral)theEObject;
 				T result = caseXObjectLiteral(xObjectLiteral);
@@ -449,11 +493,11 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XFUNCTION: {
-				XFunction xFunction = (XFunction)theEObject;
-				T result = caseXFunction(xFunction);
-				if (result == null) result = caseXStatment(xFunction);
-				if (result == null) result = caseJvmIdentifiableElement(xFunction);
+			case XbasePackage.XFUNCTION_DECLARATION: {
+				XFunctionDeclaration xFunctionDeclaration = (XFunctionDeclaration)theEObject;
+				T result = caseXFunctionDeclaration(xFunctionDeclaration);
+				if (result == null) result = caseXStatment(xFunctionDeclaration);
+				if (result == null) result = caseJvmIdentifiableElement(xFunctionDeclaration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1223,21 +1267,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRichStringLiteral(RichStringLiteral object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XFunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XFunction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXFunction(XFunction object) {
 		return null;
 	}
 

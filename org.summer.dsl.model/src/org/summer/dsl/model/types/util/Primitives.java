@@ -45,7 +45,7 @@ public class Primitives {
 //		Long,
 		Float,
 		Double,
-//		Void, 
+		Void, 
 		Boolean
 	}
 	
@@ -75,9 +75,9 @@ public class Primitives {
 		if (Double.TYPE.getName().equals(name)) {
 			return Primitive.Double;
 		}
-//		if (Void.TYPE.getName().equals(name)) {
-//			return Primitive.Void;
-//		}
+		if (Void.TYPE.getName().equals(name)) {
+			return Primitive.Void;
+		}
 		throw new IllegalArgumentException("Unkown primitive "+name);
 	}
 	
@@ -135,8 +135,8 @@ public class Primitives {
 				return Buildin.Double.JvmType;
 			case Boolean :
 				return Buildin.Boolean.JvmType;
-//			case Void :
-//				return BuildInTypes.getInstance().getByteType(primitive.eResource());
+			case Void :
+				return Buildin.Void.JvmType;
 			default :
 				throw new IllegalArgumentException("Not a primitive : "+primitive);
 		}
@@ -159,8 +159,8 @@ public class Primitives {
 			return typeReferences.findDeclaredType(Double.TYPE, type);
 		} else if (typeReferences.is(type, Boolean.class)) {
 			return typeReferences.findDeclaredType(Boolean.TYPE, type);
-//		} else if (typeReferences.is(type, Void.class)) {
-//			return typeReferences.findDeclaredType(Void.TYPE, type);
+		} else if (typeReferences.is(type, Void.class)) {
+			return typeReferences.findDeclaredType(Void.TYPE, type);
 		}
 		return null;
 	}
@@ -195,8 +195,8 @@ public class Primitives {
 			return true;
 		} else if (typeReferences.is(type, Buildin.Boolean.JvmType)) {
 			return true;
-//		} else if (typeReferences.is(type, Void.class)) {
-//			return true;
+		} else if (typeReferences.is(type, Buildin.Void.JvmType)) {
+			return true;
 		}
 		if (type instanceof JvmTypeParameter) {
 			EList<JvmTypeConstraint> constraints = ((JvmTypeParameter)type).getConstraints();
@@ -286,8 +286,8 @@ public class Primitives {
 					return typeReferences.getTypeForName(Buildin.Double.JvmType, typeRef.getType());
 				} else if (typeReferences.is(typeRef, Buildin.Boolean.JvmType)) {
 					return typeReferences.getTypeForName(Buildin.Boolean.JvmType, typeRef.getType());
-//				} else if (typeReferences.is(type, Void.class)) {
-//					return typeReferences.getTypeForName(Void.TYPE, type.getType());
+				} else if (typeReferences.is(typeRef, Buildin.Void.JvmType)) {
+					return typeReferences.getTypeForName(Buildin.Void.JvmType, typeRef.getType());
 				}
 				return typeRef;
 			}

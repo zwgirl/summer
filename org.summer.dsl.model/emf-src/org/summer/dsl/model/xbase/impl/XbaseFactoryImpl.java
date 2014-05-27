@@ -27,7 +27,6 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XFieldLiteralPart;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
-import org.summer.dsl.model.xbase.XFunction;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
@@ -146,7 +145,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XFIELD_LITERAL_PART: return createXFieldLiteralPart();
 			case XbasePackage.XTEMPLATE: return createXTemplate();
 			case XbasePackage.RICH_STRING_LITERAL: return createRichStringLiteral();
-			case XbasePackage.XFUNCTION: return createXFunction();
+			case XbasePackage.XFUNCTION_DECLARATION: return createXFunctionDeclaration();
 			case XbasePackage.XEXPRESSION_STATMENT: return createXExpressionStatment();
 			
 			default:
@@ -551,11 +550,6 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 		return xMemberFeatureCall;
 	}
 
-	public XFunctionDeclaration createXFunctionDeclaration() {
-		// TODO Auto-generated method stub
-		return new XFunctionDeclarationImpl();
-	}
-
 	public XKeyValuePair createXKeyValuePair() {
 		return new XKeyValuePairImpl();
 	}
@@ -580,32 +574,26 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 		return new XForEachStatmentImpl();
 	}
 
-	@Override
 	public XStructLiteral createXStructLiteral() {
 		return new XStructLiteralImpl();
 	}
 
-	@Override
 	public XFieldLiteralPart createXFieldLiteralPart() {
 		return new XFieldLiteralPartImpl();
 	}
 
-	@Override
 	public XTemplate createXTemplate() {
 		return new XTemplateImpl();
 	}
 
-	@Override
 	public RichStringLiteral createRichStringLiteral() {
 		return new RichStringLiteralImpl();
 	}
 
-	@Override
-	public XFunction createXFunction() {
-		return new XFunctionImpl();
+	public XFunctionDeclaration createXFunctionDeclaration() {
+		return new XFunctionDeclarationImpl();
 	}
 
-	@Override
 	public XExpressionStatment createXExpressionStatment() {
 		return new XExpressionStatmentImpl();
 	}

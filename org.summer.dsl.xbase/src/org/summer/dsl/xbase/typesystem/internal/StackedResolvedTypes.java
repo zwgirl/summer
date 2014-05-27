@@ -56,7 +56,7 @@ public class StackedResolvedTypes extends ResolvedTypes {
 		return parent;
 	}
 	
-	protected void mergeIntoParent() {
+	public void mergeIntoParent() {
 		prepareMergeIntoParent();
 		performMergeIntoParent();
 	}
@@ -417,11 +417,11 @@ public class StackedResolvedTypes extends ResolvedTypes {
 		closeBracket(result, indentation);
 	}
 	
-	@Override
-	@Nullable
-	protected LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression) {
-		return parent.getExpectedTypeForAssociatedExpression(member, expression);
-	}
+//	@Override
+//	@Nullable
+//	protected LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression) {
+//		return parent.getExpectedTypeForAssociatedExpression(member, expression);
+//	}
 	
 	@Override
 	protected void markToBeInferred(XExpression expression) {

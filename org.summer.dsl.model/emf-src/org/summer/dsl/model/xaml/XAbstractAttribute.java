@@ -3,10 +3,8 @@
 package org.summer.dsl.model.xaml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmType;
-
 import org.summer.dsl.model.xbase.XExpression;
 
 /**

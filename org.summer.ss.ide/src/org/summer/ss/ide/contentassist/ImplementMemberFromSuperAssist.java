@@ -126,7 +126,7 @@ public class ImplementMemberFromSuperAssist {
 		if (executable.getDeclaringType() != overrider && visibilityService.isVisible(executable, overrider)) {
 			if (executable instanceof JvmOperation) {
 				JvmOperation operation = (JvmOperation) executable;
-				return !operation.isFinal() && !operation.isStatic();
+				return /*!operation.isFinal() &&*/ !operation.isStatic();
 			} else {
 				return executable instanceof JvmConstructor
 						&& contains(transform(overrider.getSuperTypes(), new Function<JvmTypeReference, JvmType>() {

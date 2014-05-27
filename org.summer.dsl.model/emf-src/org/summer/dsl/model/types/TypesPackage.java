@@ -151,13 +151,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_MODULE__ROOT = JVM_TYPE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__PACKAGE = JVM_TYPE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_MODULE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 5;
+	int JVM_MODULE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmVoidImpl <em>Jvm Void</em>}' class.
@@ -1520,13 +1529,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_FIELD__OVERRIDE = JVM_FEATURE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FIELD__PROPERTY = JVM_FEATURE_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__TYPE = JVM_FEATURE_FEATURE_COUNT + 5;
+	int JVM_FIELD__TYPE = JVM_FEATURE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
@@ -1535,7 +1553,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__DEFAULT_VALUE = JVM_FEATURE_FEATURE_COUNT + 6;
+	int JVM_FIELD__DEFAULT_VALUE = JVM_FEATURE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Set</b></em>' containment reference.
@@ -1544,7 +1562,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__SET = JVM_FEATURE_FEATURE_COUNT + 7;
+	int JVM_FIELD__SET = JVM_FEATURE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Get</b></em>' containment reference.
@@ -1553,7 +1571,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__GET = JVM_FEATURE_FEATURE_COUNT + 8;
+	int JVM_FIELD__GET = JVM_FEATURE_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Field</em>' class.
@@ -1562,7 +1580,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD_FEATURE_COUNT = JVM_FEATURE_FEATURE_COUNT + 9;
+	int JVM_FIELD_FEATURE_COUNT = JVM_FEATURE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmEnumerationLiteralImpl <em>Jvm Enumeration Literal</em>}' class.
@@ -1681,6 +1699,15 @@ public interface TypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int JVM_ENUMERATION_LITERAL__OVERRIDE = JVM_FIELD__OVERRIDE;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_ENUMERATION_LITERAL__PROPERTY = JVM_FIELD__PROPERTY;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -4166,6 +4193,17 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmModule_Root();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Package</em>'.
+	 * @see org.summer.dsl.model.types.JvmModule#getPackage()
+	 * @see #getJvmModule()
+	 * @generated
+	 */
+	EAttribute getJvmModule_Package();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmType <em>Jvm Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4981,6 +5019,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJvmField_Override();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Property</em>'.
+	 * @see org.summer.dsl.model.types.JvmField#isProperty()
+	 * @see #getJvmField()
+	 * @generated
+	 */
+	EAttribute getJvmField_Property();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmField#getDefaultValue <em>Default Value</em>}'.
@@ -5907,6 +5956,14 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_MODULE__ROOT = eINSTANCE.getJvmModule_Root();
 
 		/**
+		 * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_MODULE__PACKAGE = eINSTANCE.getJvmModule_Package();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmTypeImpl <em>Jvm Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6581,6 +6638,14 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JVM_FIELD__OVERRIDE = eINSTANCE.getJvmField_Override();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_FIELD__PROPERTY = eINSTANCE.getJvmField_Property();
 
 		/**
 		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.

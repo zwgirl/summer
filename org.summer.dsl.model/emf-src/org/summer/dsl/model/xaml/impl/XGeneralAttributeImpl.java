@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xaml.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.summer.dsl.model.xaml.XGeneralAttribute;
 import org.summer.dsl.model.xaml.XamlPackage;
 

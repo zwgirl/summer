@@ -20,11 +20,15 @@ import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.UnknownTypeReference;
 
+import com.google.inject.Inject;
+
 /**
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @NonNullByDefault
 public class UnknownClosureTypeHelper extends AbstractClosureTypeHelper {
+	@Inject
+	ITypeComputer computer;
 
 	protected UnknownClosureTypeHelper(XClosure closure, ITypeExpectation expectation, ITypeComputationState state) {
 		super(closure, expectation, state);
@@ -34,8 +38,8 @@ public class UnknownClosureTypeHelper extends AbstractClosureTypeHelper {
 	protected void computeTypes() {
 		ITypeAssigner typeAssigner = getState().withoutRootExpectation().assignTypes();
 		ITypeComputationState closureBodyTypeComputationState = getClosureBodyTypeComputationState(typeAssigner);
-		closureBodyTypeComputationState.computeTypes(getClosure().getExpression());
-		
+//		closureBodyTypeComputationState.computeTypes(getClosure().getExpression());  //cym comment
+		computer.computeTypes(getClosure().getStatment(), closureBodyTypeComputationState);
 		getExpectation().acceptActualType(new UnknownTypeReference(getExpectation().getReferenceOwner()), ConformanceHint.UNCHECKED);
 	}
 

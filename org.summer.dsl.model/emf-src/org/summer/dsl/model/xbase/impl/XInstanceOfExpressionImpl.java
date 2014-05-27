@@ -4,14 +4,10 @@ package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.summer.dsl.model.types.JvmTypeReference;
-
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XbasePackage;

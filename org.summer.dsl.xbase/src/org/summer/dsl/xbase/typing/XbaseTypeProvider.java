@@ -327,7 +327,7 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 	 * @param index the feature index 
 	 */
 	protected JvmTypeReference _expectedType(XClosure closure, EReference reference, int index, boolean rawType) {
-		if (reference == XbasePackage.Literals.XCLOSURE__EXPRESSION) {
+		if (reference == XbasePackage.Literals.XCLOSURE__STATMENT) {
 			JvmTypeReference functionType = getExpectedType(closure, rawType);
 			if (functionType != null) {
 				JvmOperation operation = closures.findImplementingOperation(functionType, closure.eResource());
@@ -1020,17 +1020,19 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 		}
 		if (procedure && singleMethod != null)
 			returnType = singleMethod.getReturnType();
-		else
-			returnType = getCommonReturnType(object.getExpression(), true);
-		if (returnType instanceof JvmAnyTypeReference) {
-			JvmTypeReference type = getExpectedType(object.getExpression());
-			if (singleMethod != null) {
-				if (isResolved(type, singleMethod, rawType))
-					returnType = type;
-			} else {
-				returnType = type;
-			}
-		}
+		
+		//cym comment
+//		else
+//			returnType = getCommonReturnType(object.getStatment(), true);
+//		if (returnType instanceof JvmAnyTypeReference) {
+//			JvmTypeReference type = getExpectedType(object.getStatment());
+//			if (singleMethod != null) {
+//				if (isResolved(type, singleMethod, rawType))
+//					returnType = type;
+//			} else {
+//				returnType = type;
+//			}
+//		}
 		List<JvmTypeReference> parameterTypes = Lists.newArrayList();
 		List<JvmFormalParameter> params = object.getFormalParameters();
 		for (JvmFormalParameter param : params) {
@@ -1531,10 +1533,11 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 	public JvmTypeReference getExpectedReturnType(XExpression expr, boolean rawType) {
 		XClosure closure = EcoreUtil2.getContainerOfType(expr, XClosure.class);
 		if (closure!=null) {
-			JvmTypeReference expectedReturnType = getExpectedType(closure.getExpression());
-			if (expectedReturnType != null) {
-				return expectedReturnType;
-			}
+			//cym comment
+//			JvmTypeReference expectedReturnType = getExpectedType(closure.getStatment());
+//			if (expectedReturnType != null) {
+//				return expectedReturnType;
+//			}
 			return null;
 		}
 		JvmIdentifiableElement logicalContainer = getLogicalContainerProvider().getNearestLogicalContainer(expr);

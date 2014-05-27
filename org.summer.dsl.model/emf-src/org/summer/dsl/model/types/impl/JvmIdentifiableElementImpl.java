@@ -3,9 +3,7 @@
 package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.TypesPackage;
 

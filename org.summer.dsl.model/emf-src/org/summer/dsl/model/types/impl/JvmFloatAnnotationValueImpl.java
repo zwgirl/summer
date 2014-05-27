@@ -5,11 +5,8 @@ package org.summer.dsl.model.types.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-
 import org.summer.dsl.model.types.JvmFloatAnnotationValue;
 import org.summer.dsl.model.types.TypesPackage;
 

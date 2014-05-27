@@ -9,6 +9,7 @@ package org.summer.dsl.xbase.typesystem.computation;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 
 import com.google.inject.ImplementedBy;
 
@@ -105,5 +106,7 @@ public interface ITypeComputer {
 	 * @see ITypeComputationState#computeTypes(XExpression)
 	 */
 	void computeTypes(XExpression expression, ITypeComputationState state);
+	
+	void computeTypes(XStatment expression, ITypeComputationState state);
 
 }

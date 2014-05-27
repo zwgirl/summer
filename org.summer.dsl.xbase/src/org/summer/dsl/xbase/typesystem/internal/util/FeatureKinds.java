@@ -15,6 +15,7 @@ import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 
 /**
@@ -53,6 +54,9 @@ public class FeatureKinds {
 		if (feature instanceof XClosure) {
 			return "closure";
 		}
-		throw new IllegalStateException();
+		if (feature instanceof XFunctionDeclaration) {
+			return "function";
+		}
+		throw new IllegalStateException("unknow feature " + feature);
 	}
 }

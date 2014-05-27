@@ -5,19 +5,15 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.summer.ss.core.resource;
+package org.summer.dsl.xbase.resource;
 
 import java.util.List;
 
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
@@ -27,7 +23,7 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xtype.XImportDeclaration;
 import org.summer.dsl.model.xtype.XImportItem;
 import org.summer.dsl.model.xtype.XImportSection;
-import org.summer.ss.core.scoping.NamespaceUtil;
+import org.summer.dsl.xbase.scoping.NamespaceUtil;
 
 import com.google.common.collect.Lists;
 
@@ -91,12 +87,6 @@ public class ImportScope implements IScope {
 		}
 		List<XImportDeclaration> importDecls = importSection.getImportDeclarations();
 		for(XImportDeclaration importDecl : importDecls){
-//			String uriStr = importDecl.getModuleName();
-//			XtextResourceSet resourceSet = (XtextResourceSet) resource.getResourceSet();
-//			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation().append(uriStr);
-//			URI uri = URI.createFileURI(path.toOSString());
-//			Resource resource = resourceSet.getResource(uri, true);
-//			result.add(EObjectDescription.create(importDecl.getModuleName(), resource.getContents().get(0)));
 			Resource res = NamespaceUtil.getResource(importDecl);
 			if(res.getContents().size()>0){
 				result.add(EObjectDescription.create(importDecl.getModuleName(), resource.getContents().get(0)));

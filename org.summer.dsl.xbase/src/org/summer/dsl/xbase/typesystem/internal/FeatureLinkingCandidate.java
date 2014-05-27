@@ -33,6 +33,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
@@ -162,7 +163,7 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 			return false;
 		} else if (super.validate(result)) {   
 //			if (isExplicitOperationCallOrBuilderSyntax() && !(getFeature() instanceof JvmExecutable)) {   // cym comment
-			if (isExplicitOperationCallOrBuilderSyntax() && !(getFeature() instanceof JvmExecutable || getFeature() instanceof XClosure 
+			if (isExplicitOperationCallOrBuilderSyntax() && !(getFeature() instanceof JvmExecutable || getFeature() instanceof XClosure || getFeature() instanceof XFunctionDeclaration
 					|| (getFeature() instanceof XVariableDeclaration && ((XVariableDeclaration)getFeature()).getType() instanceof XFunctionTypeRef) )
 					) {   
 				String typeName = getFeatureTypeName();

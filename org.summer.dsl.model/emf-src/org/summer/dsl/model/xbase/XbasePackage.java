@@ -1196,13 +1196,13 @@ public interface XbasePackage extends EPackage {
 	int XCLOSURE__DECLARED_FORMAL_PARAMETERS = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * The feature id for the '<em><b>Statment</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCLOSURE__EXPRESSION = XEXPRESSION_FEATURE_COUNT + 1;
+	int XCLOSURE__STATMENT = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Explicit Syntax</b></em>' attribute.
@@ -2314,52 +2314,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFunctionDeclaration()
 	 * @generated
 	 */
-	int XFUNCTION_DECLARATION = 43;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION__NAME = XEXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Body</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION__BODY = XEXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION__RETURN_TYPE = XEXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION__PARAMETERS = XEXPRESSION_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>XFunction Declaration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 4;
+	int XFUNCTION_DECLARATION = 50;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralImpl <em>XObject Literal</em>}' class.
@@ -2369,7 +2324,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteral()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL = 44;
+	int XOBJECT_LITERAL = 43;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2514,7 +2469,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteralPart()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL_PART = 45;
+	int XOBJECT_LITERAL_PART = 44;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2625,6 +2580,15 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL_PART__OVERRIDE = TypesPackage.JVM_FIELD__OVERRIDE;
 
 	/**
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__PROPERTY = TypesPackage.JVM_FIELD__PROPERTY;
+
+	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2677,7 +2641,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXArrayLiteral()
 	 * @generated
 	 */
-	int XARRAY_LITERAL = 46;
+	int XARRAY_LITERAL = 45;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2705,7 +2669,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStructLiteral()
 	 * @generated
 	 */
-	int XSTRUCT_LITERAL = 47;
+	int XSTRUCT_LITERAL = 46;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -2751,7 +2715,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFieldLiteralPart()
 	 * @generated
 	 */
-	int XFIELD_LITERAL_PART = 48;
+	int XFIELD_LITERAL_PART = 47;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2788,7 +2752,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTemplate()
 	 * @generated
 	 */
-	int XTEMPLATE = 49;
+	int XTEMPLATE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2816,7 +2780,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getRichStringLiteral()
 	 * @generated
 	 */
-	int RICH_STRING_LITERAL = 50;
+	int RICH_STRING_LITERAL = 49;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2837,23 +2801,13 @@ public interface XbasePackage extends EPackage {
 	int RICH_STRING_LITERAL_FEATURE_COUNT = XSTRING_LITERAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XFunctionImpl <em>XFunction</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xbase.impl.XFunctionImpl
-	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFunction()
-	 * @generated
-	 */
-	int XFUNCTION = 51;
-
-	/**
 	 * The feature id for the '<em><b>Declared Formal Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__DECLARED_FORMAL_PARAMETERS = XSTATMENT_FEATURE_COUNT + 0;
+	int XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS = XSTATMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -2862,16 +2816,16 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__BODY = XSTATMENT_FEATURE_COUNT + 1;
+	int XFUNCTION_DECLARATION__BODY = XSTATMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__NAME = XSTATMENT_FEATURE_COUNT + 2;
+	int XFUNCTION_DECLARATION__SIMPLE_NAME = XSTATMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
@@ -2880,7 +2834,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__RETURN_TYPE = XSTATMENT_FEATURE_COUNT + 3;
+	int XFUNCTION_DECLARATION__RETURN_TYPE = XSTATMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
@@ -2889,7 +2843,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__TYPE_PARAMETERS = XSTATMENT_FEATURE_COUNT + 4;
+	int XFUNCTION_DECLARATION__TYPE_PARAMETERS = XSTATMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Exported</b></em>' attribute.
@@ -2898,16 +2852,16 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION__EXPORTED = XSTATMENT_FEATURE_COUNT + 5;
+	int XFUNCTION_DECLARATION__EXPORTED = XSTATMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the '<em>XFunction</em>' class.
+	 * The number of structural features of the '<em>XFunction Declaration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 6;
+	int XFUNCTION_DECLARATION_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
@@ -3789,15 +3743,15 @@ public interface XbasePackage extends EPackage {
 	EReference getXClosure_DeclaredFormalParameters();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XClosure#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XClosure#getStatment <em>Statment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see org.summer.dsl.model.xbase.XClosure#getExpression()
+	 * @return the meta object for the containment reference '<em>Statment</em>'.
+	 * @see org.summer.dsl.model.xbase.XClosure#getStatment()
 	 * @see #getXClosure()
 	 * @generated
 	 */
-	EReference getXClosure_Expression();
+	EReference getXClosure_Statment();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XClosure#isExplicitSyntax <em>Explicit Syntax</em>}'.
@@ -4505,15 +4459,15 @@ public interface XbasePackage extends EPackage {
 	EClass getXFunctionDeclaration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getDeclaredFormalParameters <em>Declared Formal Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getName()
+	 * @return the meta object for the containment reference list '<em>Declared Formal Parameters</em>'.
+	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getDeclaredFormalParameters()
 	 * @see #getXFunctionDeclaration()
 	 * @generated
 	 */
-	EAttribute getXFunctionDeclaration_Name();
+	EReference getXFunctionDeclaration_DeclaredFormalParameters();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getBody <em>Body</em>}'.
@@ -4527,6 +4481,17 @@ public interface XbasePackage extends EPackage {
 	EReference getXFunctionDeclaration_Body();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getSimpleName <em>Simple Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Simple Name</em>'.
+	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getSimpleName()
+	 * @see #getXFunctionDeclaration()
+	 * @generated
+	 */
+	EAttribute getXFunctionDeclaration_SimpleName();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getReturnType <em>Return Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4538,15 +4503,26 @@ public interface XbasePackage extends EPackage {
 	EReference getXFunctionDeclaration_ReturnType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getTypeParameters <em>Type Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getParameters()
+	 * @return the meta object for the containment reference list '<em>Type Parameters</em>'.
+	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getTypeParameters()
 	 * @see #getXFunctionDeclaration()
 	 * @generated
 	 */
-	EReference getXFunctionDeclaration_Parameters();
+	EReference getXFunctionDeclaration_TypeParameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#isExported <em>Exported</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exported</em>'.
+	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#isExported()
+	 * @see #getXFunctionDeclaration()
+	 * @generated
+	 */
+	EAttribute getXFunctionDeclaration_Exported();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XObjectLiteral <em>XObject Literal</em>}'.
@@ -4694,82 +4670,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRichStringLiteral();
-
-	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XFunction <em>XFunction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XFunction</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction
-	 * @generated
-	 */
-	EClass getXFunction();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunction#getDeclaredFormalParameters <em>Declared Formal Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Declared Formal Parameters</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#getDeclaredFormalParameters()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EReference getXFunction_DeclaredFormalParameters();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XFunction#getBody <em>Body</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Body</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#getBody()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EReference getXFunction_Body();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunction#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#getName()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EAttribute getXFunction_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XFunction#getReturnType <em>Return Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Return Type</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#getReturnType()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EReference getXFunction_ReturnType();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunction#getTypeParameters <em>Type Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Type Parameters</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#getTypeParameters()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EReference getXFunction_TypeParameters();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunction#isExported <em>Exported</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Exported</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunction#isExported()
-	 * @see #getXFunction()
-	 * @generated
-	 */
-	EAttribute getXFunction_Exported();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5496,12 +5396,12 @@ public interface XbasePackage extends EPackage {
 		EReference XCLOSURE__DECLARED_FORMAL_PARAMETERS = eINSTANCE.getXClosure_DeclaredFormalParameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Statment</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XCLOSURE__EXPRESSION = eINSTANCE.getXClosure_Expression();
+		EReference XCLOSURE__STATMENT = eINSTANCE.getXClosure_Statment();
 
 		/**
 		 * The meta object literal for the '<em><b>Explicit Syntax</b></em>' attribute feature.
@@ -6074,12 +5974,12 @@ public interface XbasePackage extends EPackage {
 		EClass XFUNCTION_DECLARATION = eINSTANCE.getXFunctionDeclaration();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Declared Formal Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XFUNCTION_DECLARATION__NAME = eINSTANCE.getXFunctionDeclaration_Name();
+		EReference XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS = eINSTANCE.getXFunctionDeclaration_DeclaredFormalParameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
@@ -6090,6 +5990,14 @@ public interface XbasePackage extends EPackage {
 		EReference XFUNCTION_DECLARATION__BODY = eINSTANCE.getXFunctionDeclaration_Body();
 
 		/**
+		 * The meta object literal for the '<em><b>Simple Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XFUNCTION_DECLARATION__SIMPLE_NAME = eINSTANCE.getXFunctionDeclaration_SimpleName();
+
+		/**
 		 * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6098,12 +6006,20 @@ public interface XbasePackage extends EPackage {
 		EReference XFUNCTION_DECLARATION__RETURN_TYPE = eINSTANCE.getXFunctionDeclaration_ReturnType();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Type Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XFUNCTION_DECLARATION__PARAMETERS = eINSTANCE.getXFunctionDeclaration_Parameters();
+		EReference XFUNCTION_DECLARATION__TYPE_PARAMETERS = eINSTANCE.getXFunctionDeclaration_TypeParameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XFUNCTION_DECLARATION__EXPORTED = eINSTANCE.getXFunctionDeclaration_Exported();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralImpl <em>XObject Literal</em>}' class.
@@ -6230,64 +6146,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass RICH_STRING_LITERAL = eINSTANCE.getRichStringLiteral();
-
-		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XFunctionImpl <em>XFunction</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xbase.impl.XFunctionImpl
-		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFunction()
-		 * @generated
-		 */
-		EClass XFUNCTION = eINSTANCE.getXFunction();
-
-		/**
-		 * The meta object literal for the '<em><b>Declared Formal Parameters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XFUNCTION__DECLARED_FORMAL_PARAMETERS = eINSTANCE.getXFunction_DeclaredFormalParameters();
-
-		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XFUNCTION__BODY = eINSTANCE.getXFunction_Body();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XFUNCTION__NAME = eINSTANCE.getXFunction_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XFUNCTION__RETURN_TYPE = eINSTANCE.getXFunction_ReturnType();
-
-		/**
-		 * The meta object literal for the '<em><b>Type Parameters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XFUNCTION__TYPE_PARAMETERS = eINSTANCE.getXFunction_TypeParameters();
-
-		/**
-		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XFUNCTION__EXPORTED = eINSTANCE.getXFunction_Exported();
 
 	}
 

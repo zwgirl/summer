@@ -3,11 +3,8 @@
 package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.summer.dsl.model.types.JvmUnknownTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 

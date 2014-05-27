@@ -16,8 +16,8 @@ public class XBlockExpressionImplCustom extends XBlockStatmentImpl {
 
 	@Override
 	public String toString() {
-		if (expressions != null) {
-			return String.format("{\n  %s\n}", Joiner.on("\n  ").join(expressions));
+		if (statments != null) {
+			return String.format("{\n  %s\n}", Joiner.on("\n  ").join(statments));
 		}
 		return "{}";
 	}

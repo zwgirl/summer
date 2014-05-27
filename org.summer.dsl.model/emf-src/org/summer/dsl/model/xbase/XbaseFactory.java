@@ -436,15 +436,6 @@ public interface XbaseFactory extends EFactory {
 	RichStringLiteral createRichStringLiteral();
 
 	/**
-	 * Returns a new object of class '<em>XFunction</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XFunction</em>'.
-	 * @generated
-	 */
-	XFunction createXFunction();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

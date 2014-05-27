@@ -11,13 +11,12 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.xtext.util.PolymorphicDispatcher;
-import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCatchClause;
-import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XDoWhileStatment;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XReturnStatment;
@@ -25,7 +24,7 @@ import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XThrowStatment;
 import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
-import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XWhileStatment;
 
 import com.google.common.collect.Lists;
@@ -69,6 +68,14 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
 	
 	protected Collection<ExitPoint> _exitPoints(XThrowStatment expression) {
 		return Collections.singletonList(new ExitPoint(expression, true));
+	}
+	
+	protected Collection<ExitPoint> _exitPoints(XVariableDeclarationList statment) {
+		return Collections.emptyList();
+	}
+	
+	protected Collection<ExitPoint> _exitPoints(XExpressionStatment expression) {
+		return Collections.emptyList();
 	}
 	
 	protected Collection<ExitPoint> _exitPoints(XBlockStatment expression) {

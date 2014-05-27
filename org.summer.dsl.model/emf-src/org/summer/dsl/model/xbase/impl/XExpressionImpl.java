@@ -3,9 +3,7 @@
 package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
 

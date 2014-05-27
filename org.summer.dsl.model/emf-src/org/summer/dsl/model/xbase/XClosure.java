@@ -17,7 +17,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#getDeclaredFormalParameters <em>Declared Formal Parameters</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XClosure#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XClosure#getStatment <em>Statment</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#isExplicitSyntax <em>Explicit Syntax</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#getImplicitParameter <em>Implicit Parameter</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#getName <em>Name</em>}</li>
@@ -50,30 +50,30 @@ public interface XClosure extends XExpression, JvmIdentifiableElement {
 	EList<JvmFormalParameter> getDeclaredFormalParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Statment</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Statment</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' containment reference.
-	 * @see #setExpression(XExpression)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXClosure_Expression()
+	 * @return the value of the '<em>Statment</em>' containment reference.
+	 * @see #setStatment(XStatment)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXClosure_Statment()
 	 * @model containment="true"
 	 * @generated
 	 */
-	XExpression getExpression();
+	XStatment getStatment();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XClosure#getExpression <em>Expression</em>}' containment reference.
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XClosure#getStatment <em>Statment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' containment reference.
-	 * @see #getExpression()
+	 * @param value the new value of the '<em>Statment</em>' containment reference.
+	 * @see #getStatment()
 	 * @generated
 	 */
-	void setExpression(XExpression value);
+	void setStatment(XStatment value);
 
 	/**
 	 * Returns the value of the '<em><b>Explicit Syntax</b></em>' attribute.

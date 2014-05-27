@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;

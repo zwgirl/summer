@@ -102,8 +102,8 @@ public class ArrayTypeReference extends LightweightTypeReference {
 			return result;
 		}
 		List<LightweightTypeReference> result = Lists.newArrayListWithCapacity(2);
-		result.add(new ParameterizedTypeReference(getOwner(), findNonNullType(Cloneable.class)));
-		result.add(new ParameterizedTypeReference(getOwner(), findNonNullType(Serializable.class)));
+//		result.add(new ParameterizedTypeReference(getOwner(), findNonNullType(Cloneable.class)));
+//		result.add(new ParameterizedTypeReference(getOwner(), findNonNullType(Serializable.class)));
 		return result;
 	}
 	

@@ -664,32 +664,26 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 		return new JvmAnnotationValueImplCustom();
 	}
 
-	@Override
 	public JvmStructType createJvmStructType() {
 		return new JvmStructTypeImpl();
 	}
 
-	@Override
 	public JvmDelegateType createJvmDelegateType() {
 		return new JvmDelegateTypeImpl();
 	}
 
-	@Override
 	public JvmEvent createJvmEvent() {
 		return new JvmEventImpl();
 	}
 
-	@Override
 	public JvmInterfaceType createJvmInterfaceType() {
 		return new JvmInterfaceTypeImpl();
 	}
 
-	@Override
 	public JvmRemoteType createJvmRemoteType() {
 		return new JvmRemoteTypeImpl();
 	}
 
-	@Override
 	public JvmBeanType createJvmBeanType() {
 		return new JvmBeanTypeImpl();
 	}

@@ -47,9 +47,11 @@ public class XbaseBatchTypeProvider extends XbaseTypeProvider {
 	@Override
 	public JvmTypeReference getExpectedReturnType(XExpression expression, boolean rawType) {
 		XClosure containingClosure = EcoreUtil2.getContainerOfType(expression, XClosure.class);
-		if (containingClosure != null) {
-			return getExpectedType(containingClosure.getExpression());
-		}
+		
+		//cym comment
+//		if (containingClosure != null) {
+//			return getExpectedType(containingClosure.getStatment());
+//		}
 		JvmIdentifiableElement container = containerProvider.getNearestLogicalContainer(expression);
 		if (container instanceof JvmOperation) {
 			return ((JvmOperation) container).getReturnType();

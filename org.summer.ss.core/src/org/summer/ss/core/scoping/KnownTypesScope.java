@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -103,7 +104,7 @@ public class KnownTypesScope extends AbstractScope {
 	}
 	
 	@Override
-	protected void doGetElements(JvmType type, List<IEObjectDescription> result) {
+	public void doGetElements(JvmType type, List<IEObjectDescription> result) {
 		for(int i = 0; i < types.size(); i++) {
 			JvmType knownType = types.get(i);
 			if (EcoreUtil.isAncestor(knownType, type)) {

@@ -9,10 +9,10 @@ package org.summer.dsl.model.xbase.impl;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.util.Strings;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.TypesFactory;
-import org.eclipse.xtext.util.Strings;
-import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 
 import com.google.common.base.Joiner;
@@ -24,7 +24,7 @@ public class XClosureImplCustom extends XClosureImpl {
 
 	@Override
 	public String toString() {
-		String expressionAsString = Strings.emptyIfNull(expression == null ? null : expression.toString());
+		String expressionAsString = Strings.emptyIfNull(statment == null ? null : statment.toString());
 		if (isExplicitSyntax()) {
 			return String.format("[%s | %s ]", Joiner.on(", ").join(getFormalParameters()), expressionAsString);
 		} else {
@@ -35,7 +35,7 @@ public class XClosureImplCustom extends XClosureImpl {
 	@Override
 	public EList<JvmFormalParameter> getFormalParameters() {
 		EList<JvmFormalParameter> parameters = getDeclaredFormalParameters();
-		if (expression != null && parameters.isEmpty() && !isExplicitSyntax()) {
+		if (statment != null && parameters.isEmpty() && !isExplicitSyntax()) {
 			BasicEList<JvmFormalParameter> result = new BasicEList<JvmFormalParameter>(1);
 			result.add(getImplicitParameter());
 			return result;
@@ -52,8 +52,8 @@ public class XClosureImplCustom extends XClosureImpl {
 	 * Doing it like this is much simpler and also ensures proper notifications.
 	 */
 	@Override
-	public void setExpression(XExpression newExpression) {
-		super.setExpression(newExpression);
+	public void setStatment(XStatment newExpression) {
+		super.setStatment(newExpression);
 		/**
 		 * Add the implicit parameter for the short cut syntax [ my-expression-using-it ]
 		 */

@@ -19,6 +19,7 @@ import org.summer.dsl.model.xbase.XStatment;
  *   <li>{@link org.summer.dsl.model.types.JvmField#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isVirtaul <em>Virtaul</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isOverride <em>Override</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isProperty <em>Property</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getSet <em>Set</em>}</li>
@@ -187,6 +188,33 @@ public interface JvmField extends JvmFeature {
 	 * @generated
 	 */
 	void setOverride(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Property</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Property</em>' attribute.
+	 * @see #setProperty(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Property()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isProperty();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isProperty <em>Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Property</em>' attribute.
+	 * @see #isProperty()
+	 * @generated
+	 */
+	void setProperty(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.

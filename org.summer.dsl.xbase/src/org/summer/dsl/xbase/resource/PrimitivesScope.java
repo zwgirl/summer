@@ -1,4 +1,4 @@
-package org.summer.ss.core.resource;
+package org.summer.dsl.xbase.resource;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -11,7 +11,7 @@ import org.eclipse.xtext.scoping.IScope;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.access.impl.Primitives;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
-import org.summer.ss.core.scoping.AbstractScope;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 
 import com.google.common.collect.Lists;
 
@@ -81,7 +81,7 @@ public class PrimitivesScope extends AbstractScope{
 	}
 
 	@Override
-	protected void doGetElements(JvmType type, List<IEObjectDescription> result) {
+	public void doGetElements(JvmType type, List<IEObjectDescription> result) {
 		// FIXME Auto-generated method stub
 		
 	}

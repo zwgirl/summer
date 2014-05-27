@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xtype;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 
 /**

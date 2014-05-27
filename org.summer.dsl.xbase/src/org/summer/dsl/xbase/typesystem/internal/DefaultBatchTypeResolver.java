@@ -7,7 +7,6 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.typesystem.internal;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -15,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.eclipse.xtext.scoping.IScope;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.typesystem.IBatchTypeResolver;
@@ -55,19 +54,48 @@ public class DefaultBatchTypeResolver implements IBatchTypeResolver {
 		return nonArtificialObject;
 	}
 	
+//	public IScope getFeatureScope(@Nullable XAbstractFeatureCall featureCall) {
+//		if (featureCall == null || featureCall.eIsProxy()) {
+//			return IScope.NULLSCOPE;
+//		}
+//		List<EObject> roots = getEntryPoints(featureCall);
+//		for(EObject root: roots) {
+//			AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
+//			if (resolver.isHandled(featureCall)) {
+//				return resolver.getFeatureScope(featureCall);
+//			}
+//		}
+//		return IScope.NULLSCOPE;
+//	}
+	
 	public IScope getFeatureScope(@Nullable XAbstractFeatureCall featureCall) {
 		if (featureCall == null || featureCall.eIsProxy()) {
 			return IScope.NULLSCOPE;
 		}
-		List<EObject> roots = getEntryPoints(featureCall);
-		for(EObject root: roots) {
-			AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
-			if (resolver.isHandled(featureCall)) {
-				return resolver.getFeatureScope(featureCall);
-			}
+		EObject root = getEntryPoint(featureCall);
+		AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
+		if (resolver.isHandled(featureCall)) {
+			return resolver.getFeatureScope(featureCall);
 		}
+		
 		return IScope.NULLSCOPE;
 	}
+	
+//	public IResolvedTypes getResolvedTypesInContextOf(@Nullable EObject context) {
+//		if (context == null || context.eIsProxy())
+//			return IResolvedTypes.NULL;
+//		// TODO: remove when we switch to an Xtend scope provider without artificial feature calls  
+//		EObject nonArtificialObject = getNonArtificialObject(context);
+//		// TODO end
+//		List<EObject> roots = getEntryPoints(nonArtificialObject);
+//		for(EObject root: roots) {
+//			AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
+//			if (resolver.isHandled(context)) {
+//				return resolver.getResolvedTypesInContextOf(context);
+//			}
+//		}
+//		return IResolvedTypes.NULL;
+//	}
 	
 	public IResolvedTypes getResolvedTypesInContextOf(@Nullable EObject context) {
 		if (context == null || context.eIsProxy())
@@ -75,35 +103,43 @@ public class DefaultBatchTypeResolver implements IBatchTypeResolver {
 		// TODO: remove when we switch to an Xtend scope provider without artificial feature calls  
 		EObject nonArtificialObject = getNonArtificialObject(context);
 		// TODO end
-		List<EObject> roots = getEntryPoints(nonArtificialObject);
-		for(EObject root: roots) {
-			AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
-			if (resolver.isHandled(context)) {
-				return resolver.getResolvedTypesInContextOf(context);
-			}
+		EObject root = getEntryPoint(nonArtificialObject);
+		AbstractRootedReentrantTypeResolver resolver = getOrCreateResolver(root);
+		if (resolver.isHandled(context)) {
+			return resolver.getResolvedTypesInContextOf(context);
 		}
 		return IResolvedTypes.NULL;
 	}
 
+//	protected IReentrantTypeResolver getTypeResolver(EObject object) {
+//		List<EObject> roots = getEntryPoints(object);
+//		if (roots.size() == 1) {
+//			IReentrantTypeResolver result = getOrCreateResolver(roots.get(0));
+//			return result;
+//		}
+//		if (roots.isEmpty()) {
+//			return IReentrantTypeResolver.NULL;
+//		}
+//		CompoundReentrantTypeResolver result = new CompoundReentrantTypeResolver();
+//		for(EObject root: roots) {
+//			result.addResolver(getOrCreateResolver(root));
+//		}
+//		return result;
+//	}
+	
 	protected IReentrantTypeResolver getTypeResolver(EObject object) {
-		List<EObject> roots = getEntryPoints(object);
-		if (roots.size() == 1) {
-			IReentrantTypeResolver result = getOrCreateResolver(roots.get(0));
-			return result;
-		}
-		if (roots.isEmpty()) {
-			return IReentrantTypeResolver.NULL;
-		}
-		CompoundReentrantTypeResolver result = new CompoundReentrantTypeResolver();
-		for(EObject root: roots) {
-			result.addResolver(getOrCreateResolver(root));
-		}
+//		EObject root = getEntryPoint(object);
+		IReentrantTypeResolver result = getOrCreateResolver(getEntryPoint(object));
 		return result;
 	}
 	
-	protected List<EObject> getEntryPoints(EObject object) {
-		return Collections.singletonList(EcoreUtil.getRootContainer(object));
-	}
+//	protected List<EObject> getEntryPoints(EObject object) {
+//		return Collections.singletonList(EcoreUtil.getRootContainer(object));
+//	}
+	
+	EObject getEntryPoint(EObject object) {
+	return EcoreUtil.getRootContainer(object);
+}
 	
 	protected AbstractRootedReentrantTypeResolver getOrCreateResolver(EObject root) {
 		final List<Adapter> adapters = root.eAdapters();

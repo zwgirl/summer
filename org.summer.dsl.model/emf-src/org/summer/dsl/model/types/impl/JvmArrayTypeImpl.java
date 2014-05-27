@@ -4,14 +4,10 @@ package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.summer.dsl.model.types.JvmArrayType;
 import org.summer.dsl.model.types.JvmComponentType;
 import org.summer.dsl.model.types.TypesPackage;

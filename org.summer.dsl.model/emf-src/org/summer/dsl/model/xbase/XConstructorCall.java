@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xbase;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmTypeReference;
 

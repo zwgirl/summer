@@ -381,8 +381,8 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 		return toOwnedReference(result);
 	}
 	
-	@Nullable
-	protected abstract LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression);
+//	@Nullable
+//	protected abstract LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression);
 	
 	@Nullable
 	public LightweightTypeReference getReturnType(XExpression expression) {
@@ -1115,7 +1115,7 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 		}
 	}
 	
-	protected StackedResolvedTypes pushTypes() {
+	public StackedResolvedTypes pushTypes() {
 		return new StackedResolvedTypes(this);
 	}
 	

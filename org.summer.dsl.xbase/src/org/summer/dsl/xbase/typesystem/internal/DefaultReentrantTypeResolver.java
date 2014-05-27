@@ -25,6 +25,7 @@ import org.eclipse.xtext.validation.IssueSeveritiesProvider;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XSwitchStatment;
 import org.summer.dsl.model.xbase.XbaseFactory;
 import org.summer.dsl.xbase.scoping.batch.IBatchScopeProvider;
@@ -287,6 +288,13 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 					}
 					typeComputer.computeTypes(expression, state);
 				}
+
+				@Override
+				public void computeTypes(XStatment expression,
+						ITypeComputationState state) {
+					throw new UnsupportedOperationException();
+					
+				}
 			};
 		} else if (abortOn instanceof XCasePart) {
 			final XCasePart casePart = (XCasePart) abortOn;
@@ -323,6 +331,13 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 					} else {
 						typeComputer.computeTypes(expression, state);
 					}
+				}
+
+				@Override
+				public void computeTypes(XStatment expression,
+						ITypeComputationState state) {
+					throw new UnsupportedOperationException();
+					
 				}
 			};
 		}

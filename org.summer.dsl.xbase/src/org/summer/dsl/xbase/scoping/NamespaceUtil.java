@@ -1,4 +1,4 @@
-package org.summer.ss.core.scoping;
+package org.summer.dsl.xbase.scoping;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;

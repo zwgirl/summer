@@ -3,11 +3,8 @@
 package org.summer.dsl.model.types.impl;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.summer.dsl.model.types.JvmEnumerationLiteral;
 import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.TypesPackage;

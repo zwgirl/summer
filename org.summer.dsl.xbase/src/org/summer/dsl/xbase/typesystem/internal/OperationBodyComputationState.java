@@ -14,12 +14,10 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmOperation;
-import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
-import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
+import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
 /**
@@ -53,33 +51,39 @@ public class OperationBodyComputationState extends AbstractLogicalContainerAware
 	@Override
 	@Nullable
 	protected LightweightTypeReference getExpectedType() {
-		JvmOperation operation = (JvmOperation) getMember();
-		LightweightTypeReference expectedType = ((LogicalContainerAwareReentrantTypeResolver)getResolver()).getReturnTypeOfOverriddenOperation(operation, resolvedTypes, getFeatureScopeSession());
-		if (expectedType != null) {
-			InferredTypeIndicator.resolveTo(operation.getReturnType(), expectedType.toJavaCompliantTypeReference());
-			return expectedType;
-		}
-		return getResolvedTypes().getExpectedTypeForAssociatedExpression(getMember(), getNonNullRootExpression());
+		return getResolvedTypes().getConverter().toLightweightReference(getContainer().getReturnType());
 	}
 	
 	@Override
 	protected ITypeComputationResult createNoTypeResult() {
-		JvmOperation operation = (JvmOperation) getMember();
-		LightweightTypeReference expectedType = ((LogicalContainerAwareReentrantTypeResolver)getResolver()).getReturnTypeOfOverriddenOperation(operation, resolvedTypes, getFeatureScopeSession());
-		if (expectedType != null) {
-			InferredTypeIndicator.resolveTo(operation.getReturnType(), expectedType.toJavaCompliantTypeReference());
-		}
-		return new NoTypeResult(getMember(), resolvedTypes.getReferenceOwner());
+		return new NoTypeResult(getContainer(), resolvedTypes.getReferenceOwner());
 	}
 	
-	//cym added
 	@Override
-	protected XExpression getRootExpression() {
-		JvmOperation operation = (JvmOperation) getMember();
-		XStatment statment = operation.getBody();
-		if(statment instanceof XBlockStatment){
-			return statment.
-		}
-		return closure.getExpression();
+	protected JvmOperation getContainer() {
+		return (JvmOperation) super.getContainer();
 	}
+
+	@Override
+	public void computeTypes() {
+		 getResolver().getTypeComputer().computeTypes(getContainer().getBody(), this);
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(ResolvedTypes types,
+			AbstractTypeExpectation expectation, LightweightTypeReference type,
+			boolean returnType, ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected LightweightTypeReference acceptType(XExpression alreadyHandled,
+			ResolvedTypes types, AbstractTypeExpectation expectation,
+			LightweightTypeReference type, boolean returnType,
+			ConformanceHint... conformanceHint) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

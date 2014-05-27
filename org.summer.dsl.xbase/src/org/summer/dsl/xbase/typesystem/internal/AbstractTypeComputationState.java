@@ -64,7 +64,7 @@ import com.google.common.collect.Lists;
 @NonNullByDefault
 public abstract class AbstractTypeComputationState implements ITypeComputationState {
 	protected final ResolvedTypes resolvedTypes;
-	private IFeatureScopeSession featureScopeSession;
+	protected IFeatureScopeSession featureScopeSession;
 	private final DefaultReentrantTypeResolver reentrantTypeResolver;
 	private List<AbstractTypeExpectation> expectations;
 	
@@ -78,23 +78,23 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 		this.reentrantTypeResolver = resolvedTypes.getResolver();
 	}
 	
-	protected ResolvedTypes getResolvedTypes() {
+	public ResolvedTypes getResolvedTypes() {
 		return resolvedTypes;
 	}
 	
-	protected IFeatureScopeSession getFeatureScopeSession() {
+	public IFeatureScopeSession getFeatureScopeSession() {
 		return featureScopeSession;
 	}
 	
-	protected TypeReferences getTypeReferences() {
+	public TypeReferences getTypeReferences() {
 		return reentrantTypeResolver.getServices().getTypeReferences();
 	}
 	
-	protected ITypeComputer getTypeComputer() {
+	public ITypeComputer getTypeComputer() {
 		return reentrantTypeResolver.getTypeComputer();
 	}
 	
-	protected DefaultReentrantTypeResolver getResolver() {
+	public DefaultReentrantTypeResolver getResolver() {
 		return reentrantTypeResolver;
 	}
 	
@@ -322,7 +322,6 @@ public abstract class AbstractTypeComputationState implements ITypeComputationSt
 		}
 	}
 
-	@SuppressWarnings({ "null", "unused" })
 	public void reassignType(JvmIdentifiableElement refinable, LightweightTypeReference type) {
 		if (type == null)
 			throw new IllegalArgumentException("Reassigned type may not be null");

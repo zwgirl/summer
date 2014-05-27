@@ -12,24 +12,24 @@ package org.summer.dsl.model.xbase.impl;
  */
 public class XSwitchExpressionImplCustom extends XSwitchStatmentImpl {
 
-	@Override
-	public String getIdentifier() {
-		return getLocalVarName();
-	}
-	
-	@Override
-	public String getSimpleName() {
-		return getLocalVarName();
-	}
-	
-	@Override
-	public String getQualifiedName(char innerClassDelimiter) {
-		return getLocalVarName();
-	}
-	
-	@Override
-	public String getQualifiedName() {
-		return getLocalVarName();
-	}
+//	@Override
+//	public String getIdentifier() {
+//		return getLocalVarName();
+//	}
+//	
+//	@Override
+//	public String getSimpleName() {
+//		return getLocalVarName();
+//	}
+//	
+//	@Override
+//	public String getQualifiedName(char innerClassDelimiter) {
+//		return getLocalVarName();
+//	}
+//	
+//	@Override
+//	public String getQualifiedName() {
+//		return getLocalVarName();
+//	}
 	
 }

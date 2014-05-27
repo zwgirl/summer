@@ -14,6 +14,7 @@ import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmVoid;
 import org.summer.dsl.model.types.access.impl.Primitives;
 import org.summer.dsl.model.types.xtext.AbstractTypeScope;
+import org.summer.dsl.xbase.scoping.AbstractScope;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -44,7 +45,7 @@ public class PrimitiveAwareScope extends AbstractScope {
 	}
 	
 	@Override
-	protected void doGetElements(JvmType type, List<IEObjectDescription> result) {
+	public void doGetElements(JvmType type, List<IEObjectDescription> result) {
 		if (type instanceof JvmVoid) {
 			result.add(EObjectDescription.create("void", type));
 			return;

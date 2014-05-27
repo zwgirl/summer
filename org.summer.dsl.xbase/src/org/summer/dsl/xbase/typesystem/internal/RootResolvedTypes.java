@@ -15,17 +15,18 @@ import java.util.Set;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmMember;
-import org.summer.dsl.model.types.JvmTypeReference;
 import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.IAcceptor;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.eclipse.xtext.validation.IssueSeverities;
+import org.summer.dsl.model.types.JvmFormalParameter;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.typesystem.computation.ILinkingCandidate;
 import org.summer.dsl.xbase.typesystem.computation.ITypeExpectation;
@@ -82,14 +83,14 @@ public class RootResolvedTypes extends ResolvedTypes {
 		}
 	}
 	
-	@Override
-	@Nullable
-	protected LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression) {
-		if (toBeInferredRootExpressions != null && toBeInferredRootExpressions.contains(expression)) {
-			return null;
-		}
-		return getActualType(member);
-	}
+//	@Override
+//	@Nullable
+//	protected LightweightTypeReference getExpectedTypeForAssociatedExpression(JvmMember member, XExpression expression) {
+//		if (toBeInferredRootExpressions != null && toBeInferredRootExpressions.contains(expression)) {
+//			return null;
+//		}
+//		return getActualType(member);
+//	}
 	
 	@Override
 	protected void markToBeInferred(XExpression expression) {
@@ -139,7 +140,7 @@ public class RootResolvedTypes extends ResolvedTypes {
 			LightweightTypeReference actualType = typeData.getActualType();
 			ITypeExpectation expectation = typeData.getExpectation();
 			if (!typeData.getConformanceHints().contains(ConformanceHint.NO_IMPLICIT_RETURN) && !typeData.getConformanceHints().contains(ConformanceHint.PROPAGATED_TYPE)) {
-				if (actualType.isPrimitiveVoid() && isIntentionalEarlyExit(expression)) {
+				if (actualType.isPrimitiveVoid() /*&& isIntentionalEarlyExit(expression)*/) {   //cym comment
 					return;
 				}
 				LightweightTypeReference expectedType = expectation.getExpectedType();
@@ -172,7 +173,7 @@ public class RootResolvedTypes extends ResolvedTypes {
 	 *   }
 	 * </pre>
 	 */
-	protected boolean isIntentionalEarlyExit(@Nullable XExpression expression) {
+	protected boolean isIntentionalEarlyExit(@Nullable XStatment expression) {
 		ExtendedEarlyExitComputer earlyExitComputer = getReferenceOwner().getServices().getEarlyExitComputer();
 		return earlyExitComputer.isIntentionalEarlyExit(expression);
 	}

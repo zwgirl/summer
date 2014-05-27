@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.summer.ss.core.scoping;
+package org.summer.dsl.xbase.scoping;
 
 import java.util.Iterator;
 import java.util.List;
@@ -72,7 +72,7 @@ public abstract class AbstractScope implements IScope {
 		return result;
 	}
 
-	protected abstract void doGetElements(JvmType type, List<IEObjectDescription> result);
+	public abstract void doGetElements(JvmType type, List<IEObjectDescription> result);
 
 	public Iterable<IEObjectDescription> getAllElements() {
 		throw new UnsupportedOperationException();

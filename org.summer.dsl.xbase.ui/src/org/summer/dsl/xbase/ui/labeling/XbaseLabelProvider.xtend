@@ -4,26 +4,25 @@ import com.google.inject.Inject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.viewers.StyledString
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 import org.summer.dsl.model.types.JvmAnnotationType
 import org.summer.dsl.model.types.JvmConstructor
+import org.summer.dsl.model.types.JvmEnumerationLiteral
 import org.summer.dsl.model.types.JvmEnumerationType
 import org.summer.dsl.model.types.JvmField
 import org.summer.dsl.model.types.JvmFormalParameter
 import org.summer.dsl.model.types.JvmGenericType
 import org.summer.dsl.model.types.JvmIdentifiableElement
+import org.summer.dsl.model.types.JvmInterfaceType
 import org.summer.dsl.model.types.JvmOperation
 import org.summer.dsl.model.types.JvmTypeParameter
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
-import org.summer.dsl.model.xbase.XAbstractFeatureCall
 import org.summer.dsl.model.xbase.XCasePart
-import org.summer.dsl.model.xbase.XSwitchExpression
+import org.summer.dsl.model.xbase.XFunctionDeclaration
 import org.summer.dsl.model.xbase.XVariableDeclaration
-import org.summer.dsl.xbase.typesystem.IBatchTypeResolver
-import org.summer.dsl.xbase.validation.UIStrings
 import org.summer.dsl.model.xtype.XImportDeclaration
 import org.summer.dsl.model.xtype.XImportSection
-import org.summer.dsl.model.types.JvmInterfaceType
-import org.summer.dsl.model.types.JvmEnumerationLiteral
+import org.summer.dsl.xbase.typesystem.IBatchTypeResolver
+import org.summer.dsl.xbase.validation.UIStrings
 
 class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	
@@ -120,11 +119,22 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 		if (importDeclaration.getAlias() != null) 
 			importDeclaration.getAlias()
 		else
-			importDeclaration.module.simpleName
+			importDeclaration.moduleName
 	}
 
 	protected def String text(XImportSection importSection) {
 		return "import declarations";
+	}
+	
+	protected def dispatch ImageDescriptor imageDescriptor(XFunctionDeclaration functionDeclaration) {
+		images.forLocalVariable(adornments.get(functionDeclaration))
+	}
+	
+	protected def String text(XFunctionDeclaration functionDeclaration) {
+		if (functionDeclaration.simpleName != null) 
+			functionDeclaration.simpleName
+		else
+			"annomous function"
 	}
 
 	protected def String text(XVariableDeclaration variableDeclaration) {
@@ -141,18 +151,18 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	protected def String text(XCasePart casePart) {
-		if (casePart.eContainer instanceof XSwitchExpression) {
-			val switchExpression = casePart.eContainer as XSwitchExpression
-			if (switchExpression != null) {
-				if (switchExpression.getLocalVarName != null)
-					return switchExpression.getLocalVarName
-				if (switchExpression.getSwitch instanceof XAbstractFeatureCall) {
-					val call = switchExpression.getSwitch as XAbstractFeatureCall
-					if (call.getFeature != null)
-						return call.getFeature.getSimpleName
-				}
-			}
-		}
+//		if (casePart.eContainer instanceof XSwitchStatment) {
+//			val switchExpression = casePart.eContainer as XSwitchStatment
+//			if (switchExpression != null) {
+//				if (switchExpression.getLocalVarName != null)
+//					return switchExpression.getLocalVarName
+//				if (switchExpression.getSwitch instanceof XAbstractFeatureCall) {
+//					val call = switchExpression.getSwitch as XAbstractFeatureCall
+//					if (call.getFeature != null)
+//						return call.getFeature.getSimpleName
+//				}
+//			}
+//		}
 		null
 	}
 

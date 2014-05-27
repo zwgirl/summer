@@ -1,4 +1,4 @@
-package org.summer.ss.core.resource;
+package org.summer.dsl.xbase.resource;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;

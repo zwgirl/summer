@@ -34,6 +34,7 @@ import org.summer.dsl.model.xtype.XImportSection;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getExportSection <em>Export Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getRoot <em>Root</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getPackage <em>Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -99,6 +100,26 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * @ordered
 	 */
 	protected XObjectElement root;
+
+	/**
+	 * The default value of the '{@link #getPackage() <em>Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PACKAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPackage() <em>Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String package_ = PACKAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,6 +307,27 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getPackage() {
+		return package_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPackage(String newPackage) {
+		String oldPackage = package_;
+		package_ = newPackage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__PACKAGE, oldPackage, package_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -319,6 +361,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return getExportSection();
 			case TypesPackage.JVM_MODULE__ROOT:
 				return getRoot();
+			case TypesPackage.JVM_MODULE__PACKAGE:
+				return getPackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -348,6 +392,9 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 			case TypesPackage.JVM_MODULE__ROOT:
 				setRoot((XObjectElement)newValue);
 				return;
+			case TypesPackage.JVM_MODULE__PACKAGE:
+				setPackage((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -375,6 +422,9 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 			case TypesPackage.JVM_MODULE__ROOT:
 				setRoot((XObjectElement)null);
 				return;
+			case TypesPackage.JVM_MODULE__PACKAGE:
+				setPackage(PACKAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -397,11 +447,12 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return exportSection != null;
 			case TypesPackage.JVM_MODULE__ROOT:
 				return root != null;
+			case TypesPackage.JVM_MODULE__PACKAGE:
+				return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
 		}
 		return super.eIsSet(featureID);
 	}
 	
-	@Override
 	public String getModuleName() {
 		String[] segments = simpleName.split("\\.");
 		return segments[segments.length-1];
@@ -419,11 +470,12 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (simpleName: ");
 		result.append(simpleName);
+		result.append(", package: ");
+		result.append(package_);
 		result.append(')');
 		return result.toString();
 	}
 
-	@Override
 	public Iterable<JvmDeclaredType> getJvmDeclaredTypes() {
 		List<JvmDeclaredType> result = new LinkedList<JvmDeclaredType>();
 		for(EObject object : getContents()){

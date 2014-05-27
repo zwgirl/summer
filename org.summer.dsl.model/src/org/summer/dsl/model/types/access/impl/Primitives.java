@@ -45,6 +45,7 @@ public class Primitives {
 		    .put("byte", "Byte") 
 		    .put("double", "Double") 
 		    .put("short", "Short") 
+		    .put("void", "Void") 
 		    .build();
 	
 }
