@@ -222,7 +222,6 @@ public class Storage2UriMapperImpl implements IStorage2UriMapperExtension {
 		return ResourcesPlugin.getWorkspace().getRoot();
 	}
 
-	@SuppressWarnings("null")
 	public URI getUri(IStorage storage) {
 		if (!uriValidator.isPossiblyManaged(storage))
 			return null;
@@ -234,8 +233,8 @@ public class Storage2UriMapperImpl implements IStorage2UriMapperExtension {
 
 	private URI internalGetUri(@NonNull IStorage storage) {
 		if (storage instanceof IFile) {
-			return URI.createPlatformResourceURI(storage.getFullPath().toString(), true);  //cym comment
-//			return URI.createFileURI(((IFile) storage).getLocation().toString());
+//			return URI.createPlatformResourceURI(storage.getFullPath().toString(), true);  //cym comment
+			return URI.createFileURI(((IFile) storage).getLocation().toString());
 		} 
 		return contribution.getUri(storage);
 	}
