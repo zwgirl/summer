@@ -16,9 +16,10 @@ import org.summer.dsl.model.xtype.XFunctionTypeRef;
  */
 public abstract class AbstractXtypeReferenceVisitor<Result> extends AbstractTypeReferenceVisitor.InheritanceAware<Result> implements XtypeReferenceVisitor<Result> {
 
-	public Result doVisitFunctionTypeReference(XFunctionTypeRef reference) {
-		return doVisitSpecializedTypeReference(reference);
-	}
+	//cym comment
+//	public Result doVisitFunctionTypeReference(XFunctionTypeRef reference) {
+//		return doVisitSpecializedTypeReference(reference);
+//	}
 
 	public Result doVisitComputedTypeReference(XComputedTypeReference reference) {
 		return doVisitSpecializedTypeReference(reference);

@@ -151,7 +151,14 @@ ruleJvmModule :
  ruleMember :
 	ruleJvmAnnotation* (
 		ruleFieldModifier* (
-			ruleJvmTypeReference ruleValidID
+			ruleJvmTypeReference (
+				ruleValidID |
+				'this' '[' (
+					ruleJvmFormalParameter (
+						',' ruleJvmFormalParameter
+					)*
+				)? ']'
+			)
 		) (
 			(
 				'=' ruleXExpression
@@ -229,7 +236,7 @@ ruleJvmModule :
  ruleFieldModifier :
 	'static' |
 	'const' |
-	'virtaul' |
+	'virtual' |
 	'override' |
 	'transient'
 ;
@@ -237,7 +244,7 @@ ruleJvmModule :
 // Rule MethodModifier
  ruleMethodModifier :
 	'override' |
-	'virtaul' |
+	'virtual' |
 	'static' |
 	'native' |
 	'overload' |
@@ -780,7 +787,8 @@ ruleJvmModule :
 // Rule IdOrSuper
  ruleIdOrSuper :
 	ruleFeatureCallID |
-	'super'
+	'super' |
+	'this'
 ;
 
 // Rule XObjectLiteral

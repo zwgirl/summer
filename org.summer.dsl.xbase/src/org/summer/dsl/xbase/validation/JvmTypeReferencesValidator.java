@@ -31,6 +31,7 @@ import org.summer.dsl.model.types.util.TypeReferences;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
 import org.summer.dsl.xbase.jvmmodel.IJvmModelAssociations;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XtypePackage;
 
 import com.google.inject.Inject;

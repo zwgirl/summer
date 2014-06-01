@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.summer.dsl.model.types.*;
 import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
@@ -249,6 +250,10 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseJvmField(JvmField object) {
 				return createJvmFieldAdapter();
+			}
+			@Override
+			public Adapter caseJvmIndexer(JvmIndexer object) {
+				return createJvmIndexerAdapter();
 			}
 			@Override
 			public Adapter caseJvmEvent(JvmEvent object) {
@@ -819,6 +824,20 @@ public class TypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmFieldAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmIndexer <em>Jvm Indexer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmIndexer
+	 * @generated
+	 */
+	public Adapter createJvmIndexerAdapter() {
 		return null;
 	}
 

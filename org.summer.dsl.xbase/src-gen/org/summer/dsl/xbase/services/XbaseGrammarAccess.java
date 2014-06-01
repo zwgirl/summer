@@ -1119,10 +1119,7 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPlusSignPlusSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		private final Keyword cHyphenMinusHyphenMinusKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		
-		////OpUnary:
-		// //	"!" | "-" | "+";
-		// //	|PrefixOp
-		// OpUnary:
+		//OpUnary:
 		//	"!" | "-" | "+" | "~" | "++" | "--";
 		public ParserRule getRule() { return rule; }
 
@@ -1203,30 +1200,28 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
 		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
 		private final Group cGroup_1_0_0_0 = (Group)cGroup_1_0_0.eContents().get(0);
-		private final Action cXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0 = (Action)cGroup_1_0_0_0.eContents().get(0);
-		private final Assignment cExplicitOperationCallAssignment_1_0_0_0_1 = (Assignment)cGroup_1_0_0_0.eContents().get(1);
-		private final Keyword cExplicitOperationCallLeftParenthesisKeyword_1_0_0_0_1_0 = (Keyword)cExplicitOperationCallAssignment_1_0_0_0_1.eContents().get(0);
+		private final Action cXCallerFunctionAction_1_0_0_0_0 = (Action)cGroup_1_0_0_0.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_0_0_0_1 = (Keyword)cGroup_1_0_0_0.eContents().get(1);
 		private final Group cGroup_1_0_1 = (Group)cGroup_1_0.eContents().get(1);
-		private final Assignment cMemberCallArgumentsAssignment_1_0_1_0 = (Assignment)cGroup_1_0_1.eContents().get(0);
-		private final RuleCall cMemberCallArgumentsXExpressionParserRuleCall_1_0_1_0_0 = (RuleCall)cMemberCallArgumentsAssignment_1_0_1_0.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_0_1_0 = (Assignment)cGroup_1_0_1.eContents().get(0);
+		private final RuleCall cArgumentsXExpressionParserRuleCall_1_0_1_0_0 = (RuleCall)cArgumentsAssignment_1_0_1_0.eContents().get(0);
 		private final Group cGroup_1_0_1_1 = (Group)cGroup_1_0_1.eContents().get(1);
 		private final Keyword cCommaKeyword_1_0_1_1_0 = (Keyword)cGroup_1_0_1_1.eContents().get(0);
-		private final Assignment cMemberCallArgumentsAssignment_1_0_1_1_1 = (Assignment)cGroup_1_0_1_1.eContents().get(1);
-		private final RuleCall cMemberCallArgumentsXExpressionParserRuleCall_1_0_1_1_1_0 = (RuleCall)cMemberCallArgumentsAssignment_1_0_1_1_1.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_0_1_1_1 = (Assignment)cGroup_1_0_1_1.eContents().get(1);
+		private final RuleCall cArgumentsXExpressionParserRuleCall_1_0_1_1_1_0 = (RuleCall)cArgumentsAssignment_1_0_1_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_0_2 = (Keyword)cGroup_1_0.eContents().get(2);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
 		private final Group cGroup_1_1_0 = (Group)cGroup_1_1.eContents().get(0);
 		private final Group cGroup_1_1_0_0 = (Group)cGroup_1_1_0.eContents().get(0);
-		private final Action cXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0 = (Action)cGroup_1_1_0_0.eContents().get(0);
-		private final Assignment cIndexedOperationAssignment_1_1_0_0_1 = (Assignment)cGroup_1_1_0_0.eContents().get(1);
-		private final Keyword cIndexedOperationLeftSquareBracketKeyword_1_1_0_0_1_0 = (Keyword)cIndexedOperationAssignment_1_1_0_0_1.eContents().get(0);
+		private final Action cXIndexerSourceAction_1_1_0_0_0 = (Action)cGroup_1_1_0_0.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1_1_0_0_1 = (Keyword)cGroup_1_1_0_0.eContents().get(1);
 		private final Group cGroup_1_1_1 = (Group)cGroup_1_1.eContents().get(1);
-		private final Assignment cMemberCallArgumentsAssignment_1_1_1_0 = (Assignment)cGroup_1_1_1.eContents().get(0);
-		private final RuleCall cMemberCallArgumentsXExpressionParserRuleCall_1_1_1_0_0 = (RuleCall)cMemberCallArgumentsAssignment_1_1_1_0.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_1_1_0 = (Assignment)cGroup_1_1_1.eContents().get(0);
+		private final RuleCall cArgumentsXExpressionParserRuleCall_1_1_1_0_0 = (RuleCall)cArgumentsAssignment_1_1_1_0.eContents().get(0);
 		private final Group cGroup_1_1_1_1 = (Group)cGroup_1_1_1.eContents().get(1);
 		private final Keyword cCommaKeyword_1_1_1_1_0 = (Keyword)cGroup_1_1_1_1.eContents().get(0);
-		private final Assignment cMemberCallArgumentsAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
-		private final RuleCall cMemberCallArgumentsXExpressionParserRuleCall_1_1_1_1_1_0 = (RuleCall)cMemberCallArgumentsAssignment_1_1_1_1_1.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_1_1_1_1 = (Assignment)cGroup_1_1_1_1.eContents().get(1);
+		private final RuleCall cArgumentsXExpressionParserRuleCall_1_1_1_1_1_0 = (RuleCall)cArgumentsAssignment_1_1_1_1_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_1_1_2 = (Keyword)cGroup_1_1.eContents().get(2);
 		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
 		private final Group cGroup_1_2_0 = (Group)cGroup_1_2.eContents().get(0);
@@ -1271,174 +1266,20 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMemberCallArgumentsXExpressionParserRuleCall_1_3_3_1_1_1_0 = (RuleCall)cMemberCallArgumentsAssignment_1_3_3_1_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_3_3_2 = (Keyword)cGroup_1_3_3.eContents().get(2);
 		
-		////XIndexOperation returns XExpression:
-		//
-		//// 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
-		//
-		////;
-		// //IndexOp:
-		// //	'['
-		// //;
-		// //XMemberFeatureCall returns XExpression:
-		// //	XPrimaryExpression
-		//
-		////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-		// //			=>explicitOperationCall?='(' 
-		// //				(
-		//
-		////				    memberCallArguments+=XShortClosure
-		//
-		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')')?
-		//
-		////			memberCallArguments+=XClosure?
-		// //		)*;
-		// //XMemberFeatureCall returns XExpression:
-		// //	XPrimaryExpression
-		//
-		////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-		// //			=>explicitOperationCall?='(' 
-		// //				(
-		//
-		////				    memberCallArguments+=XShortClosure
-		//
-		////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')')?
-		//
-		////			memberCallArguments+=XClosure?
-		// //		)*;
-		// //XExpressionCall returns XExpression:
-		// //		XMemberFeatureCall
-		//
-		////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-		//
-		////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-		// //		 ')')
-		// //;
-		// //
-		//
-		////XMemberFeatureCall returns XExpression:
-		// //	XPrimaryExpression
-		//
-		////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-		// //			=>explicitOperationCall?='(' 
-		// //				(
-		//
-		////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')')?
-		// //		)*;
-		//
-		////XMemberFeatureCall returns XExpression:
-		// //	XPrimaryExpression
-		//
-		////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-		//
-		////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-		// //		 ')'
-		//
-		////	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
-		//
-		////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-		// //		 ']'
-		//
-		////	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-		// //		(
-		// //			(
-		// //			=>explicitOperationCall?='(' 
-		//
-		////				(
-		// //				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')')?
-		//
-		////			
-		// ////			|
-		// //			(
-		// //			=>indexedOperation?='[' 
-		// //				(
-		//
-		////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			']')?
-		// //			
-		// //		)
-		//
-		////		)*;
-		// //XMemberFeatureCall returns XExpression:
-		// //	XPrimaryExpression
-		//
-		////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-		//
-		////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-		// //		 ')'
-		//
-		////	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-		//
-		////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		//
-		////		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-		// //		(
-		// //			(
-		// //			=>explicitOperationCall?='(' 
-		//
-		////				(
-		// //				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')')?
-		//
-		////		)
-		// //		)*;
-		// XMemberFeatureCall returns XExpression:
-		//	XPrimaryExpression (=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(")
-		//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")"
-		//	//	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
-		//
-		//	| => ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
-		//	memberCallArguments+=XExpression)*)? "]" | => ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-		//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
-		//	({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
+		//XMemberFeatureCall returns XExpression:
+		//	XPrimaryExpression (=> ({XCaller.function=current} "(") (arguments+=XExpression ("," arguments+=XExpression)*)? ")" |
+		//	=> ({XIndexer.source=current} "[") (arguments+=XExpression ("," arguments+=XExpression)*)? "]" | =>
+		//	({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+		//	value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")) ("<"
 		//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 		//	feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="("
 		//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")?)*;
 		public ParserRule getRule() { return rule; }
 
-		//XPrimaryExpression (=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(")
-		//(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")"
-		////	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
-		//
-		//| => ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
-		//memberCallArguments+=XExpression)*)? "]" | => ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-		//feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
-		//({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
+		//XPrimaryExpression (=> ({XCaller.function=current} "(") (arguments+=XExpression ("," arguments+=XExpression)*)? ")" | =>
+		//({XIndexer.source=current} "[") (arguments+=XExpression ("," arguments+=XExpression)*)? "]" | =>
+		//({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+		//value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")) ("<"
 		//typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 		//feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="(" (memberCallArguments+=XExpression
 		//("," memberCallArguments+=XExpression)*)? ")")?)*
@@ -1447,115 +1288,101 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//XPrimaryExpression
 		public RuleCall getXPrimaryExpressionParserRuleCall_0() { return cXPrimaryExpressionParserRuleCall_0; }
 
-		//(=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(") (memberCallArguments+=XExpression (","
-		//memberCallArguments+=XExpression)*)? ")"
-		////	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
-		//
-		//| => ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
-		//memberCallArguments+=XExpression)*)? "]" | => ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-		//feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
-		//({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
+		//(=> ({XCaller.function=current} "(") (arguments+=XExpression ("," arguments+=XExpression)*)? ")" | =>
+		//({XIndexer.source=current} "[") (arguments+=XExpression ("," arguments+=XExpression)*)? "]" | =>
+		//({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+		//value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")) ("<"
 		//typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 		//feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="(" (memberCallArguments+=XExpression
 		//("," memberCallArguments+=XExpression)*)? ")")?)*
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(") (memberCallArguments+=XExpression (","
-		//memberCallArguments+=XExpression)*)? ")"
+		//=> ({XCaller.function=current} "(") (arguments+=XExpression ("," arguments+=XExpression)*)? ")"
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(")
+		//=> ({XCaller.function=current} "(")
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
-		//{XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="("
+		//{XCaller.function=current} "("
 		public Group getGroup_1_0_0_0() { return cGroup_1_0_0_0; }
 
-		//{XMemberFeatureCall1.memberCallTarget=current}
-		public Action getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() { return cXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0; }
-
-		//explicitOperationCall?="("
-		public Assignment getExplicitOperationCallAssignment_1_0_0_0_1() { return cExplicitOperationCallAssignment_1_0_0_0_1; }
+		//{XCaller.function=current}
+		public Action getXCallerFunctionAction_1_0_0_0_0() { return cXCallerFunctionAction_1_0_0_0_0; }
 
 		//"("
-		public Keyword getExplicitOperationCallLeftParenthesisKeyword_1_0_0_0_1_0() { return cExplicitOperationCallLeftParenthesisKeyword_1_0_0_0_1_0; }
+		public Keyword getLeftParenthesisKeyword_1_0_0_0_1() { return cLeftParenthesisKeyword_1_0_0_0_1; }
 
-		//(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)?
+		//(arguments+=XExpression ("," arguments+=XExpression)*)?
 		public Group getGroup_1_0_1() { return cGroup_1_0_1; }
 
-		//memberCallArguments+=XExpression
-		public Assignment getMemberCallArgumentsAssignment_1_0_1_0() { return cMemberCallArgumentsAssignment_1_0_1_0; }
+		//arguments+=XExpression
+		public Assignment getArgumentsAssignment_1_0_1_0() { return cArgumentsAssignment_1_0_1_0; }
 
 		//XExpression
-		public RuleCall getMemberCallArgumentsXExpressionParserRuleCall_1_0_1_0_0() { return cMemberCallArgumentsXExpressionParserRuleCall_1_0_1_0_0; }
+		public RuleCall getArgumentsXExpressionParserRuleCall_1_0_1_0_0() { return cArgumentsXExpressionParserRuleCall_1_0_1_0_0; }
 
-		//("," memberCallArguments+=XExpression)*
+		//("," arguments+=XExpression)*
 		public Group getGroup_1_0_1_1() { return cGroup_1_0_1_1; }
 
 		//","
 		public Keyword getCommaKeyword_1_0_1_1_0() { return cCommaKeyword_1_0_1_1_0; }
 
-		//memberCallArguments+=XExpression
-		public Assignment getMemberCallArgumentsAssignment_1_0_1_1_1() { return cMemberCallArgumentsAssignment_1_0_1_1_1; }
+		//arguments+=XExpression
+		public Assignment getArgumentsAssignment_1_0_1_1_1() { return cArgumentsAssignment_1_0_1_1_1; }
 
 		//XExpression
-		public RuleCall getMemberCallArgumentsXExpressionParserRuleCall_1_0_1_1_1_0() { return cMemberCallArgumentsXExpressionParserRuleCall_1_0_1_1_1_0; }
+		public RuleCall getArgumentsXExpressionParserRuleCall_1_0_1_1_1_0() { return cArgumentsXExpressionParserRuleCall_1_0_1_1_1_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_1_0_2() { return cRightParenthesisKeyword_1_0_2; }
 
-		//=> ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
-		//memberCallArguments+=XExpression)*)? "]"
+		//=> ({XIndexer.source=current} "[") (arguments+=XExpression ("," arguments+=XExpression)*)? "]"
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//=> ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[")
+		//=> ({XIndexer.source=current} "[")
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 
-		//{XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="["
+		//{XIndexer.source=current} "["
 		public Group getGroup_1_1_0_0() { return cGroup_1_1_0_0; }
 
-		//{XMemberFeatureCall1.memberCallTarget=current}
-		public Action getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() { return cXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0; }
-
-		//indexedOperation?="["
-		public Assignment getIndexedOperationAssignment_1_1_0_0_1() { return cIndexedOperationAssignment_1_1_0_0_1; }
+		//{XIndexer.source=current}
+		public Action getXIndexerSourceAction_1_1_0_0_0() { return cXIndexerSourceAction_1_1_0_0_0; }
 
 		//"["
-		public Keyword getIndexedOperationLeftSquareBracketKeyword_1_1_0_0_1_0() { return cIndexedOperationLeftSquareBracketKeyword_1_1_0_0_1_0; }
+		public Keyword getLeftSquareBracketKeyword_1_1_0_0_1() { return cLeftSquareBracketKeyword_1_1_0_0_1; }
 
-		//(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)?
+		//(arguments+=XExpression ("," arguments+=XExpression)*)?
 		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 
-		//memberCallArguments+=XExpression
-		public Assignment getMemberCallArgumentsAssignment_1_1_1_0() { return cMemberCallArgumentsAssignment_1_1_1_0; }
+		//arguments+=XExpression
+		public Assignment getArgumentsAssignment_1_1_1_0() { return cArgumentsAssignment_1_1_1_0; }
 
 		//XExpression
-		public RuleCall getMemberCallArgumentsXExpressionParserRuleCall_1_1_1_0_0() { return cMemberCallArgumentsXExpressionParserRuleCall_1_1_1_0_0; }
+		public RuleCall getArgumentsXExpressionParserRuleCall_1_1_1_0_0() { return cArgumentsXExpressionParserRuleCall_1_1_1_0_0; }
 
-		//("," memberCallArguments+=XExpression)*
+		//("," arguments+=XExpression)*
 		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
 
 		//","
 		public Keyword getCommaKeyword_1_1_1_1_0() { return cCommaKeyword_1_1_1_1_0; }
 
-		//memberCallArguments+=XExpression
-		public Assignment getMemberCallArgumentsAssignment_1_1_1_1_1() { return cMemberCallArgumentsAssignment_1_1_1_1_1; }
+		//arguments+=XExpression
+		public Assignment getArgumentsAssignment_1_1_1_1_1() { return cArgumentsAssignment_1_1_1_1_1; }
 
 		//XExpression
-		public RuleCall getMemberCallArgumentsXExpressionParserRuleCall_1_1_1_1_1_0() { return cMemberCallArgumentsXExpressionParserRuleCall_1_1_1_1_1_0; }
+		public RuleCall getArgumentsXExpressionParserRuleCall_1_1_1_1_1_0() { return cArgumentsXExpressionParserRuleCall_1_1_1_1_1_0; }
 
 		//"]"
 		public Keyword getRightSquareBracketKeyword_1_1_2() { return cRightSquareBracketKeyword_1_1_2; }
 
-		//=> ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-		//feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+		//=> ({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+		//value=XAssignment
 		public Group getGroup_1_2() { return cGroup_1_2; }
 
-		//=> ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-		//feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+		//=> ({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
 		public Group getGroup_1_2_0() { return cGroup_1_2_0; }
 
-		//{XAssignment.assignable=current} "." / *|explicitStatic?="::" * / feature=[types::JvmIdentifiableElement|FeatureCallID]
-		//OpSingleAssign
+		//{XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign
 		public Group getGroup_1_2_0_0() { return cGroup_1_2_0_0; }
 
 		//{XAssignment.assignable=current}
@@ -1582,22 +1409,21 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//XAssignment
 		public RuleCall getValueXAssignmentParserRuleCall_1_2_1_0() { return cValueXAssignmentParserRuleCall_1_2_1_0; }
 
-		//=> ({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
-		//typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
-		//feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="(" (memberCallArguments+=XExpression
-		//("," memberCallArguments+=XExpression)*)? ")")?
+		//=> ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")) ("<" typeArguments+=JvmArgumentTypeReference
+		//("," typeArguments+=JvmArgumentTypeReference)* ">")? feature=[types::JvmIdentifiableElement|FeatureCallID] (=>
+		//explicitOperationCall?="(" (memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")?
 		public Group getGroup_1_3() { return cGroup_1_3; }
 
-		//=> ({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?."))
+		//=> ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?."))
 		public Group getGroup_1_3_0() { return cGroup_1_3_0; }
 
-		//{XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")
+		//{XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")
 		public Group getGroup_1_3_0_0() { return cGroup_1_3_0_0; }
 
 		//{XMemberFeatureCall.memberCallTarget=current}
 		public Action getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() { return cXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0; }
 
-		//"." / *|explicitStatic?="::" * / | nullSafe?="?."
+		//"." | nullSafe?="?."
 		public Alternatives getAlternatives_1_3_0_0_1() { return cAlternatives_1_3_0_0_1; }
 
 		//"."
@@ -1687,29 +1513,11 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cXParenthesizedExpressionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		////XMemberFeatureCall1 returns XExpression:
-		// //	XPrimaryExpression
-		// //	(=>({XMemberFeatureCall.memberCallTarget=current}
-		//
-		////		(=>explicitOperationCall?="(")
-		// //	) 
-		//
-		////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-		// //				(
-		//
-		////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-		// //				)? 
-		// //			')'
-		// //		)*
-		// //	;
-		//
 		//XPrimaryExpression returns XExpression:
-		//	XConstructorCall | XFeatureCall | XLiteral | //	XClosure |
-		// XParenthesizedExpression;
+		//	XConstructorCall | XFeatureCall | XLiteral | XParenthesizedExpression;
 		public ParserRule getRule() { return rule; }
 
-		//XConstructorCall | XFeatureCall | XLiteral | //	XClosure |
-		// XParenthesizedExpression
+		//XConstructorCall | XFeatureCall | XLiteral | XParenthesizedExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//XConstructorCall
@@ -1721,8 +1529,7 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		//XLiteral
 		public RuleCall getXLiteralParserRuleCall_2() { return cXLiteralParserRuleCall_2; }
 
-		////	XClosure |
-		// XParenthesizedExpression
+		//XParenthesizedExpression
 		public RuleCall getXParenthesizedExpressionParserRuleCall_3() { return cXParenthesizedExpressionParserRuleCall_3; }
 	}
 
@@ -1740,12 +1547,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXTypeLiteralParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
 		private final RuleCall cXTemplateLiteralParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
-		////	|
-		// //	XKeyValuePair
-		// XLiteral returns XExpression: //	XCollectionLiteral |
-		// XObjectLiteral | XStructLiteral |
-		//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral |
-		//	XTemplateLiteral;
+		//XLiteral returns XExpression: //	XCollectionLiteral |
+		// XObjectLiteral | XStructLiteral | XArrayLiteral | XClosure |
+		//	XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | XTemplateLiteral;
 		public ParserRule getRule() { return rule; }
 
 		////	XCollectionLiteral |
@@ -2863,38 +2667,25 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		////	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
 		//
 		////	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-		// //	(=>explicitOperationCall?='(' 
-		// //		(
-		//
-		////		    featureCallArguments+=XShortClosure
-		//
-		////		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-		// //		)? 
-		// //	')')?
-		//
-		////	featureCallArguments+=XClosure?;
-		// XFeatureCall returns XExpression:
-		//	{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
-		//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
-		//	("," featureCallArguments+=XExpression)*)? ")")? //		(=>indexedOperation?='[' 
-		// //			(
-		//
-		//	//			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-		// //			)? 
-		//
-		//	//		']' =>(OpSingleAssign value=XExpression)?)?
-		//;
-		public ParserRule getRule() { return rule; }
-
-		//{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
-		//feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
-		//("," featureCallArguments+=XExpression)*)? ")")? //		(=>indexedOperation?='[' 
+		// //	(
+		// //		(=>explicitOperationCall?='(' 
 		// //			(
 		//
 		////			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
 		// //			)? 
+		// //		')')?
+		// //	)
+		// //;
 		//
-		////		']' =>(OpSingleAssign value=XExpression)?)?
+		//XFeatureCall returns XExpression:
+		//	{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
+		//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
+		//	("," featureCallArguments+=XExpression)*)? ")")?;
+		public ParserRule getRule() { return rule; }
+
+		//{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
+		//feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
+		//("," featureCallArguments+=XExpression)*)? ")")?
 		public Group getGroup() { return cGroup; }
 
 		//{XFeatureCall}
@@ -2974,6 +2765,12 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FeatureCallID");
 		private final RuleCall cValidIDParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
+		////XCallee returns XCallee:
+		// //	'('
+		// //	(arguments+=XExpression (',' arguments+=XExpression)*)?
+		// //	')'
+		// //;
+		//
 		////	| 'extends' 
 		// //	| 'static' 
 		// //	| 'import' 
@@ -2991,12 +2788,13 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cFeatureCallIDParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Keyword cSuperKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cThisKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//IdOrSuper:
-		//	FeatureCallID | "super";
+		//	FeatureCallID | "super" | "this";
 		public ParserRule getRule() { return rule; }
 
-		//FeatureCallID | "super"
+		//FeatureCallID | "super" | "this"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//FeatureCallID
@@ -3004,6 +2802,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"super"
 		public Keyword getSuperKeyword_1() { return cSuperKeyword_1; }
+
+		//"this"
+		public Keyword getThisKeyword_2() { return cThisKeyword_2; }
 	}
 
 	public class XObjectLiteralElements extends AbstractParserRuleElementFinder {
@@ -3020,20 +2821,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMembersXObjectLiteralPartParserRuleCall_4_1_0 = (RuleCall)cMembersAssignment_4_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		////XObjectLiteral returns XExpression:
-		// //	{XObjectLiteral}
-		// //	'new' '{'
-		//
-		////		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
-		// //	'}'
-		// //;
-		// //
-		//
-		////XObjectLiteralPart returns types::JvmMember:
-		// //	{XObjectLiteralPart}
-		// //	simpleName=ID ':' value=XExpression
-		// //;
-		//
 		//XObjectLiteral returns XExpression:
 		//	{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}";
 		public ParserRule getRule() { return rule; }
@@ -4989,10 +4776,7 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXUnaryOperationAccess().getRule();
 	}
 
-	////OpUnary:
-	// //	"!" | "-" | "+";
-	// //	|PrefixOp
-	// OpUnary:
+	//OpUnary:
 	//	"!" | "-" | "+" | "~" | "++" | "--";
 	public OpUnaryElements getOpUnaryAccess() {
 		return (pOpUnary != null) ? pOpUnary : (pOpUnary = new OpUnaryElements());
@@ -5015,161 +4799,11 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXCastedExpressionAccess().getRule();
 	}
 
-	////XIndexOperation returns XExpression:
-	//
-	//// 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
-	//
-	////;
-	// //IndexOp:
-	// //	'['
-	// //;
-	// //XMemberFeatureCall returns XExpression:
-	// //	XPrimaryExpression
-	//
-	////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-	// //			=>explicitOperationCall?='(' 
-	// //				(
-	//
-	////				    memberCallArguments+=XShortClosure
-	//
-	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')')?
-	//
-	////			memberCallArguments+=XClosure?
-	// //		)*;
-	// //XMemberFeatureCall returns XExpression:
-	// //	XPrimaryExpression
-	//
-	////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-	// //			=>explicitOperationCall?='(' 
-	// //				(
-	//
-	////				    memberCallArguments+=XShortClosure
-	//
-	////				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')')?
-	//
-	////			memberCallArguments+=XClosure?
-	// //		)*;
-	// //XExpressionCall returns XExpression:
-	// //		XMemberFeatureCall
-	//
-	////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-	//
-	////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	// //		 ')')
-	// //;
-	// //
-	//
-	////XMemberFeatureCall returns XExpression:
-	// //	XPrimaryExpression
-	//
-	////	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-	// //			=>explicitOperationCall?='(' 
-	// //				(
-	//
-	////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')')?
-	// //		)*;
-	//
-	////XMemberFeatureCall returns XExpression:
-	// //	XPrimaryExpression
-	//
-	////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-	//
-	////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	// //		 ')'
-	//
-	////	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
-	//
-	////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	// //		 ']'
-	//
-	////	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-	// //		(
-	// //			(
-	// //			=>explicitOperationCall?='(' 
-	//
-	////				(
-	// //				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')')?
-	//
-	////			
-	// ////			|
-	// //			(
-	// //			=>indexedOperation?='[' 
-	// //				(
-	//
-	////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			']')?
-	// //			
-	// //		)
-	//
-	////		)*;
-	// //XMemberFeatureCall returns XExpression:
-	// //	XPrimaryExpression
-	//
-	////	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-	//
-	////		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-	// //		 ')'
-	//
-	////	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-	//
-	////	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	//
-	////		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-	// //		(
-	// //			(
-	// //			=>explicitOperationCall?='(' 
-	//
-	////				(
-	// //				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')')?
-	//
-	////		)
-	// //		)*;
-	// XMemberFeatureCall returns XExpression:
-	//	XPrimaryExpression (=> ({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?="(")
-	//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")"
-	//	//	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
-	//
-	//	| => ({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?="[") (memberCallArguments+=XExpression (","
-	//	memberCallArguments+=XExpression)*)? "]" | => ({XAssignment.assignable=current} "." / *|explicitStatic?="::" * /
-	//	feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment | =>
-	//	({XMemberFeatureCall.memberCallTarget=current} ("." / *|explicitStatic?="::" * / | nullSafe?="?.")) ("<"
+	//XMemberFeatureCall returns XExpression:
+	//	XPrimaryExpression (=> ({XCaller.function=current} "(") (arguments+=XExpression ("," arguments+=XExpression)*)? ")" |
+	//	=> ({XIndexer.source=current} "[") (arguments+=XExpression ("," arguments+=XExpression)*)? "]" | =>
+	//	({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign)
+	//	value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?.")) ("<"
 	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
 	//	feature=[types::JvmIdentifiableElement|FeatureCallID] (=> explicitOperationCall?="("
 	//	(memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")?)*;
@@ -5181,25 +4815,8 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXMemberFeatureCallAccess().getRule();
 	}
 
-	////XMemberFeatureCall1 returns XExpression:
-	// //	XPrimaryExpression
-	// //	(=>({XMemberFeatureCall.memberCallTarget=current}
-	//
-	////		(=>explicitOperationCall?="(")
-	// //	) 
-	//
-	////		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-	// //				(
-	//
-	////				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-	// //				)? 
-	// //			')'
-	// //		)*
-	// //	;
-	//
 	//XPrimaryExpression returns XExpression:
-	//	XConstructorCall | XFeatureCall | XLiteral | //	XClosure |
-	// XParenthesizedExpression;
+	//	XConstructorCall | XFeatureCall | XLiteral | XParenthesizedExpression;
 	public XPrimaryExpressionElements getXPrimaryExpressionAccess() {
 		return (pXPrimaryExpression != null) ? pXPrimaryExpression : (pXPrimaryExpression = new XPrimaryExpressionElements());
 	}
@@ -5208,12 +4825,9 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXPrimaryExpressionAccess().getRule();
 	}
 
-	////	|
-	// //	XKeyValuePair
-	// XLiteral returns XExpression: //	XCollectionLiteral |
-	// XObjectLiteral | XStructLiteral |
-	//	XArrayLiteral | XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral |
-	//	XTemplateLiteral;
+	//XLiteral returns XExpression: //	XCollectionLiteral |
+	// XObjectLiteral | XStructLiteral | XArrayLiteral | XClosure |
+	//	XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral | XTemplateLiteral;
 	public XLiteralElements getXLiteralAccess() {
 		return (pXLiteral != null) ? pXLiteral : (pXLiteral = new XLiteralElements());
 	}
@@ -5409,27 +5023,20 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	////	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
 	//
 	////	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-	// //	(=>explicitOperationCall?='(' 
-	// //		(
-	//
-	////		    featureCallArguments+=XShortClosure
-	//
-	////		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-	// //		)? 
-	// //	')')?
-	//
-	////	featureCallArguments+=XClosure?;
-	// XFeatureCall returns XExpression:
-	//	{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
-	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
-	//	("," featureCallArguments+=XExpression)*)? ")")? //		(=>indexedOperation?='[' 
+	// //	(
+	// //		(=>explicitOperationCall?='(' 
 	// //			(
 	//
-	//	//			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+	////			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
 	// //			)? 
+	// //		')')?
+	// //	)
+	// //;
 	//
-	//	//		']' =>(OpSingleAssign value=XExpression)?)?
-	//;
+	//XFeatureCall returns XExpression:
+	//	{XFeatureCall} ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
+	//	feature=[types::JvmIdentifiableElement|IdOrSuper] (=> explicitOperationCall?="(" (featureCallArguments+=XExpression
+	//	("," featureCallArguments+=XExpression)*)? ")")?;
 	public XFeatureCallElements getXFeatureCallAccess() {
 		return (pXFeatureCall != null) ? pXFeatureCall : (pXFeatureCall = new XFeatureCallElements());
 	}
@@ -5438,6 +5045,12 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getXFeatureCallAccess().getRule();
 	}
 
+	////XCallee returns XCallee:
+	// //	'('
+	// //	(arguments+=XExpression (',' arguments+=XExpression)*)?
+	// //	')'
+	// //;
+	//
 	////	| 'extends' 
 	// //	| 'static' 
 	// //	| 'import' 
@@ -5453,7 +5066,7 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IdOrSuper:
-	//	FeatureCallID | "super";
+	//	FeatureCallID | "super" | "this";
 	public IdOrSuperElements getIdOrSuperAccess() {
 		return (pIdOrSuper != null) ? pIdOrSuper : (pIdOrSuper = new IdOrSuperElements());
 	}
@@ -5462,20 +5075,6 @@ public class XbaseGrammarAccess extends AbstractGrammarElementFinder {
 		return getIdOrSuperAccess().getRule();
 	}
 
-	////XObjectLiteral returns XExpression:
-	// //	{XObjectLiteral}
-	// //	'new' '{'
-	//
-	////		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
-	// //	'}'
-	// //;
-	// //
-	//
-	////XObjectLiteralPart returns types::JvmMember:
-	// //	{XObjectLiteralPart}
-	// //	simpleName=ID ':' value=XExpression
-	// //;
-	//
 	//XObjectLiteral returns XExpression:
 	//	{XObjectLiteral} "new" "{" members+=XObjectLiteralPart ("," members+=XObjectLiteralPart)* "}";
 	public XObjectLiteralElements getXObjectLiteralAccess() {

@@ -47,6 +47,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmIndexer;
 import org.summer.dsl.model.types.JvmIntAnnotationValue;
 import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLongAnnotationValue;
@@ -315,6 +316,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * @generated
 	 */
 	private EClass jvmFieldEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jvmIndexerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1393,7 +1401,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmField_Set() {
+	public EReference getJvmField_Parameters() {
 		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1402,8 +1410,35 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJvmField_Get() {
+	public EReference getJvmField_Set() {
 		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJvmField_Get() {
+		return (EReference)jvmFieldEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmField_Indexer() {
+		return (EAttribute)jvmFieldEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJvmIndexer() {
+		return jvmIndexerEClass;
 	}
 
 	/**
@@ -2236,8 +2271,12 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEAttribute(jvmFieldEClass, JVM_FIELD__PROPERTY);
 		createEReference(jvmFieldEClass, JVM_FIELD__TYPE);
 		createEReference(jvmFieldEClass, JVM_FIELD__DEFAULT_VALUE);
+		createEReference(jvmFieldEClass, JVM_FIELD__PARAMETERS);
 		createEReference(jvmFieldEClass, JVM_FIELD__SET);
 		createEReference(jvmFieldEClass, JVM_FIELD__GET);
+		createEAttribute(jvmFieldEClass, JVM_FIELD__INDEXER);
+
+		jvmIndexerEClass = createEClass(JVM_INDEXER);
 
 		jvmEventEClass = createEClass(JVM_EVENT);
 		createEAttribute(jvmEventEClass, JVM_EVENT__STATIC);
@@ -2420,6 +2459,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		jvmMemberEClass.getESuperTypes().add(this.getJvmAnnotationTarget());
 		jvmFeatureEClass.getESuperTypes().add(this.getJvmMember());
 		jvmFieldEClass.getESuperTypes().add(this.getJvmFeature());
+		jvmIndexerEClass.getESuperTypes().add(this.getJvmField());
 		jvmEventEClass.getESuperTypes().add(this.getJvmFeature());
 		jvmExecutableEClass.getESuperTypes().add(this.getJvmFeature());
 		jvmExecutableEClass.getESuperTypes().add(this.getJvmTypeParameterDeclarator());
@@ -2673,8 +2713,12 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEAttribute(getJvmField_Property(), ecorePackage.getEBoolean(), "property", "false", 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_Type(), this.getJvmTypeReference(), null, "type", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_DefaultValue(), theXbasePackage.getXExpression(), null, "defaultValue", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJvmField_Parameters(), this.getJvmFormalParameter(), null, "parameters", null, 0, -1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_Set(), theXbasePackage.getXStatment(), null, "set", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmField_Get(), theXbasePackage.getXStatment(), null, "get", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmField_Indexer(), ecorePackage.getEBoolean(), "indexer", "false", 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jvmIndexerEClass, JvmIndexer.class, "JvmIndexer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(jvmEventEClass, JvmEvent.class, "JvmEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmEvent_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, JvmEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

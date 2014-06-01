@@ -68,22 +68,13 @@ public interface XtypePackage extends EPackage {
 	int XFUNCTION_TYPE_REF = 0;
 
 	/**
-	 * The feature id for the '<em><b>Equivalent</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_TYPE_REF__EQUIVALENT = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE__EQUIVALENT;
-
-	/**
 	 * The feature id for the '<em><b>Param Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_TYPE_REF__PARAM_TYPES = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE_FEATURE_COUNT + 0;
+	int XFUNCTION_TYPE_REF__PARAM_TYPES = TypesPackage.JVM_TYPE_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
@@ -92,7 +83,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_TYPE_REF__RETURN_TYPE = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE_FEATURE_COUNT + 1;
+	int XFUNCTION_TYPE_REF__RETURN_TYPE = TypesPackage.JVM_TYPE_REFERENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -101,7 +92,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_TYPE_REF__TYPE = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE_FEATURE_COUNT + 2;
+	int XFUNCTION_TYPE_REF__TYPE = TypesPackage.JVM_TYPE_REFERENCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Instance Context</b></em>' attribute.
@@ -110,7 +101,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_TYPE_REF__INSTANCE_CONTEXT = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE_FEATURE_COUNT + 3;
+	int XFUNCTION_TYPE_REF__INSTANCE_CONTEXT = TypesPackage.JVM_TYPE_REFERENCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>XFunction Type Ref</em>' class.
@@ -119,7 +110,7 @@ public interface XtypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_TYPE_REF_FEATURE_COUNT = TypesPackage.JVM_SPECIALIZED_TYPE_REFERENCE_FEATURE_COUNT + 4;
+	int XFUNCTION_TYPE_REF_FEATURE_COUNT = TypesPackage.JVM_TYPE_REFERENCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xtype.impl.XComputedTypeReferenceImpl <em>XComputed Type Reference</em>}' class.

@@ -168,10 +168,10 @@ public class XtendTypeComputer extends XbaseTypeComputer {
 //		return result;
 //	}
 
-	@Override
-	protected void _computeTypes(XClosure object, ITypeComputationState state) {
-		for(ITypeExpectation expectation: state.getExpectations()) {
-			new ExtensionAwareClosureTypeComputer(object, expectation, state).computeTypes();
-		}
-	}
+//	@Override
+//	protected void _computeTypes(XClosure object, ITypeComputationState state) {
+//		for(ITypeExpectation expectation: state.getExpectations()) {
+//			new ExtensionAwareClosureTypeComputer(object, expectation, state).computeTypes();
+//		}
+//	}
 }

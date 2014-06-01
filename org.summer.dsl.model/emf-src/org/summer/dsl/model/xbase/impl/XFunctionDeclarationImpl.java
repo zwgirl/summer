@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xbase.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -13,8 +12,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.impl.JvmTypeParameterDeclaratorImpl;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -30,14 +29,13 @@ import org.summer.dsl.model.xbase.XbasePackage;
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunctionDeclaration {
+public class XFunctionDeclarationImpl extends JvmTypeParameterDeclaratorImpl implements XFunctionDeclaration {
 	/**
 	 * The cached value of the '{@link #getDeclaredFormalParameters() <em>Declared Formal Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -87,16 +85,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 	 * @ordered
 	 */
 	protected JvmTypeReference returnType;
-
-	/**
-	 * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypeParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<JvmTypeParameter> typeParameters;
 
 	/**
 	 * The default value of the '{@link #isExported() <em>Exported</em>}' attribute.
@@ -240,18 +228,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<JvmTypeParameter> getTypeParameters() {
-		if (typeParameters == null) {
-			typeParameters = new EObjectContainmentEList<JvmTypeParameter>(JvmTypeParameter.class, this, XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS);
-		}
-		return typeParameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isExported() {
 		return exported;
 	}
@@ -274,7 +250,7 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 	 * @generated
 	 */
 	public EList<JvmFormalParameter> getFormalParameters() {
-		return getDeclaredFormalParameters();
+		return declaredFormalParameters;
 	}
 
 	/**
@@ -339,8 +315,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 				return basicSetBody(null, msgs);
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return basicSetReturnType(null, msgs);
-			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
-				return ((InternalEList<?>)getTypeParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -361,8 +335,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 				return getSimpleName();
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return getReturnType();
-			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
-				return getTypeParameters();
 			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
 				return isExported();
 		}
@@ -391,10 +363,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				setReturnType((JvmTypeReference)newValue);
 				return;
-			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
-				getTypeParameters().clear();
-				getTypeParameters().addAll((Collection<? extends JvmTypeParameter>)newValue);
-				return;
 			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
 				setExported((Boolean)newValue);
 				return;
@@ -422,9 +390,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				setReturnType((JvmTypeReference)null);
 				return;
-			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
-				getTypeParameters().clear();
-				return;
 			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
 				setExported(EXPORTED_EDEFAULT);
 				return;
@@ -448,8 +413,6 @@ public class XFunctionDeclarationImpl extends XStatmentImpl implements XFunction
 				return SIMPLE_NAME_EDEFAULT == null ? simpleName != null : !SIMPLE_NAME_EDEFAULT.equals(simpleName);
 			case XbasePackage.XFUNCTION_DECLARATION__RETURN_TYPE:
 				return returnType != null;
-			case XbasePackage.XFUNCTION_DECLARATION__TYPE_PARAMETERS:
-				return typeParameters != null && !typeParameters.isEmpty();
 			case XbasePackage.XFUNCTION_DECLARATION__EXPORTED:
 				return exported != EXPORTED_EDEFAULT;
 		}

@@ -379,31 +379,31 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	}
 	
 	@Check
-	public void checkReturn(XReturnStatment expr) {
-		IResolvedTypes resolvedTypes = typeResolver.resolveTypes(expr);
+	public void checkReturn(XReturnStatment returnStatment) {
+		IResolvedTypes resolvedTypes = typeResolver.resolveTypes(returnStatment);
 		
-//		LightweightTypeReference expectedReturnType = resolvedTypes.getExpectedReturnType(expr);
-//		if (expectedReturnType == null) {
-//			return;
-//		}
-//		if (expectedReturnType.isPrimitiveVoid()) {
-//			if (expr.getExpression() != null)
-//				error("Void functions cannot return a value.", expr, null,
-//						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
-//		} else {
-//			if (expr.getExpression() == null)
-//				error("The function must return a result of type " + expectedReturnType.getSimpleName() + ".", expr, null,
-//						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
-//			else {
-//				LightweightTypeReference expressionType = getActualType(expr.getExpression());
-//				if (expressionType.isPrimitiveVoid()) {
-//					error("Incompatible types. Expected " + getNameOfTypes(expectedReturnType) + " but was "
-//							+ canonicalName(expressionType), expr.getExpression(), null,
-//							ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
-//				}
-//			}
-//
-//		}
+		LightweightTypeReference expectedReturnType = resolvedTypes.getExpectedReturnType(returnStatment.getExpression());
+		if (expectedReturnType == null) {
+			return;
+		}
+		if (expectedReturnType.isPrimitiveVoid()) {
+			if (returnStatment.getExpression() != null)
+				error("Void functions cannot return a value.", returnStatment, null,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
+		} else {
+			if (returnStatment.getExpression() == null)
+				error("The function must return a result of type " + expectedReturnType.getSimpleName() + ".", returnStatment, null,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INVALID_RETURN);
+			else {
+				LightweightTypeReference expressionType = getActualType(returnStatment.getExpression());
+				if (expressionType.isPrimitiveVoid()) {
+					error("Incompatible types. Expected " + getNameOfTypes(expectedReturnType) + " but was "
+							+ canonicalName(expressionType), returnStatment.getExpression(), null,
+							ValidationMessageAcceptor.INSIGNIFICANT_INDEX, INCOMPATIBLE_TYPES);
+				}
+			}
+
+		}
 	}
 
 //	protected boolean isImplicitReturn(XExpression expr) {
@@ -1013,13 +1013,14 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		}
 	}
 
-	@Check
-	public void checkClosureParams(XClosure closure) {
-		if (closure.getFormalParameters().size() > 6) {
-			error("The maximum number of parameters for a closure is six.", closure,
-					Literals.XCLOSURE__DECLARED_FORMAL_PARAMETERS, 6, TOO_MANY_PARAMS_IN_CLOSURE);
-		}
-	}
+	//cym comment
+//	@Check
+//	public void checkClosureParams(XClosure closure) {
+//		if (closure.getFormalParameters().size() > 6) {
+//			error("The maximum number of parameters for a closure is six.", closure,
+//					Literals.XCLOSURE__DECLARED_FORMAL_PARAMETERS, 6, TOO_MANY_PARAMS_IN_CLOSURE);
+//		}
+//	}
 
 	//TODO switch expression not of type boolean
 	//TODO apply cast rules case's type guards
@@ -1039,7 +1040,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 
 	@Check
 	public  void checkLocalUsageOfDeclared(XVariableDeclaration variableDeclaration) {
-		if(!isIgnored(UNUSED_LOCAL_VARIABLE) && !isLocallyUsed(variableDeclaration, variableDeclaration.eContainer())){
+		if(!isIgnored(UNUSED_LOCAL_VARIABLE) && !isLocallyUsed(variableDeclaration, variableDeclaration.eContainer().eContainer())){
 			String message = "The value of the local variable " + variableDeclaration.getName() + " is not used";
 			addIssueToState(UNUSED_LOCAL_VARIABLE, message, XbasePackage.Literals.XVARIABLE_DECLARATION__NAME);
 		}
@@ -1052,6 +1053,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		}
 	}
 
+	//TODO 需要结合Summer的import语义来改写
 	@Check
 	public void checkImports(XImportSection importSection) {
 		if (importSection.getImportDeclarations().isEmpty())

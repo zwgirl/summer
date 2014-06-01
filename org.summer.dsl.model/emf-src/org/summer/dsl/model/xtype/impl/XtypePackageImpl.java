@@ -518,7 +518,7 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		xFunctionTypeRefEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
+		xFunctionTypeRefEClass.getESuperTypes().add(theTypesPackage.getJvmTypeReference());
 		xComputedTypeReferenceEClass.getESuperTypes().add(theTypesPackage.getJvmSpecializedTypeReference());
 		xImportDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
 

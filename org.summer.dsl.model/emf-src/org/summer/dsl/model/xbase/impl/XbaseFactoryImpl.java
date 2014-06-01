@@ -15,6 +15,7 @@ import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XBreakStatment;
+import org.summer.dsl.model.xbase.XCaller;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
@@ -29,12 +30,10 @@ import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
-import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XIndexer;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
-import org.summer.dsl.model.xbase.XKeyValuePair;
 import org.summer.dsl.model.xbase.XListLiteral;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
@@ -134,9 +133,8 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XCONTINUE_STATMENT: return createXContinueStatment();
 			case XbasePackage.XPOSTFIX_OPERATION: return createXPostfixOperation();
 			case XbasePackage.XTERNARY_OPERATION: return createXTernaryOperation();
-			case XbasePackage.XINDEX_OPERATION: return createXIndexOperation();
-			case XbasePackage.XMEMBER_FEATURE_CALL1: return createXMemberFeatureCall1();
-			case XbasePackage.XKEY_VALUE_PAIR: return createXKeyValuePair();
+			case XbasePackage.XINDEXER: return createXIndexer();
+			case XbasePackage.XCALLER: return createXCaller();
 			case XbasePackage.XOBJECT_LITERAL: return createXObjectLiteral();
 			case XbasePackage.XARRAY_LITERAL: return createXArrayLiteral();
 			case XbasePackage.XOBJECT_LITERAL_PART: return createXObjectLiteralPart();
@@ -483,7 +481,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	 */
 	public XReturnStatment createXReturnStatment()
 	{
-		XReturnExpressionImplCustom xReturnExpression = new XReturnExpressionImplCustom();
+		XReturnStatmentmplCustom xReturnExpression = new XReturnStatmentmplCustom();
 		return xReturnExpression;
 	}
 	
@@ -521,8 +519,12 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 		return new XTernaryOperationImpl();
 	}
 
-	public XIndexOperation createXIndexOperation() {
-		return new XIndexOperationImpl();
+	public XIndexer createXIndexer() {
+		return new XIndexerImpl();
+	}
+	
+	public XCaller createXCaller() {
+		return new XCallerImpl();
 	}
 
 	/**
@@ -543,15 +545,6 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	@Deprecated
 	public static XbasePackage getPackage() {
 		return XbasePackage.eINSTANCE;
-	}
-
-	public XMemberFeatureCall1 createXMemberFeatureCall1() {
-		XMemberFeatureCall1ImplCustom xMemberFeatureCall = new XMemberFeatureCall1ImplCustom();
-		return xMemberFeatureCall;
-	}
-
-	public XKeyValuePair createXKeyValuePair() {
-		return new XKeyValuePairImpl();
 	}
 
 	public XObjectLiteral createXObjectLiteral() {

@@ -31,7 +31,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XIndexer;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.model.xbase.XbaseFactory;
@@ -432,9 +432,9 @@ public class FeatureScopes implements IFeatureNames {
 			return ((XAssignment) call).getAssignable();
 		}
 		
-		if (call instanceof XIndexOperation) {
-			return ((XIndexOperation) call).getExpression();
-		}
+//		if (call instanceof XIndexer) {
+//			return ((XIndexer) call).getExpression();
+//		}
 		return null;
 	}
 

@@ -9,8 +9,8 @@ package org.summer.dsl.xbase.typesystem.computation;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
-import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
@@ -75,7 +75,7 @@ public abstract class AbstractClosureTypeHelper {
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	@Nullable
-	public abstract JvmOperation getOperation();
+	public abstract FunctionTypeReference getFunction();
 
 	protected void deferredBindTypeArgument(@Nullable LightweightTypeReference declared, LightweightTypeReference actual, final BoundTypeArgumentSource source) {
 		if (declared != null) { 

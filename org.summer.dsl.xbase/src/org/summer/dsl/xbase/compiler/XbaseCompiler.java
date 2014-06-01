@@ -58,7 +58,7 @@ import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
 import org.summer.dsl.model.xbase.XIfStatment;
-import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XIndexer;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XListLiteral;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -511,8 +511,8 @@ public class XbaseCompiler extends FeatureCallCompiler {
 			_toJavaExpression((XPostfixOperation) obj, appendable);
 		} else if (obj instanceof XPostfixOperation) {
 			_toJavaExpression((XPostfixOperation) obj, appendable);
-		} else if (obj instanceof XIndexOperation) {
-			_toJavaExpression((XIndexOperation) obj, appendable);
+		} else if (obj instanceof XIndexer) {
+			_toJavaExpression((XIndexer) obj, appendable);
 		} else if (obj instanceof XTernaryOperation) {
 			_toJavaExpression((XTernaryOperation) obj, appendable);
 		} else if (obj instanceof XVariableDeclarationList) {
@@ -799,9 +799,9 @@ public class XbaseCompiler extends FeatureCallCompiler {
 		b.append("++");
 	}
 	
-	protected void _toJavaExpression(XIndexOperation expr, ITreeAppendable b) {
+	protected void _toJavaExpression(XIndexer expr, ITreeAppendable b) {
 		b.append("[");
-		internalToJavaExpression(expr.getIndex(), b);
+//		internalToJavaExpression(expr.getIndex(), b);
 		b.append("]");
 	}
 	

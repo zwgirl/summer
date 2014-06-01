@@ -12,6 +12,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.xbase.XClosure;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypes;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
@@ -38,12 +39,16 @@ public class ClosureTypeComputer {
 	private final ITypeExpectation expectation;
 	private AbstractClosureTypeHelper strategy;
 	
-	public ClosureTypeComputer(XClosure closure, ITypeExpectation expectation, ITypeComputationState state) {
+	private final XbaseTypeComputer computer;
+	
+	public ClosureTypeComputer(XClosure closure, ITypeExpectation expectation, ITypeComputationState state, XbaseTypeComputer xbaseTypeComputer) {
 		this.closure = closure;
 		this.expectation = expectation;
 		this.state = state;
 		this.services = state.getReferenceOwner().getServices();
 		this.functionTypes = services.getFunctionTypes();
+		
+		this.computer = xbaseTypeComputer;
 	}
 	
 	public void computeTypes() {
@@ -56,20 +61,27 @@ public class ClosureTypeComputer {
 	 * 
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
+//	public void selectStrategy() {
+//		LightweightTypeReference expectedType = expectation.getExpectedType();
+//		if (expectedType == null) {
+//			strategy = getClosureWithoutExpectationHelper();
+//		} else {
+//			JvmOperation operation = functionTypes.findImplementingOperation(expectedType);
+//			JvmType type = expectedType.getType();
+//			int closureParameterSize = closure.getFormalParameters().size();
+//			if (operation == null || operation.getParameters().size() != closureParameterSize || type == null) {
+//				strategy = getClosureWithoutExpectationHelper();
+//			} else {
+//				strategy = createClosureWithExpectationHelper(operation);
+//			}
+//		}
+//		
+//	}
+	
 	public void selectStrategy() {
 		LightweightTypeReference expectedType = expectation.getExpectedType();
-		if (expectedType == null) {
-			strategy = getClosureWithoutExpectationHelper();
-		} else {
-			JvmOperation operation = functionTypes.findImplementingOperation(expectedType);
-			JvmType type = expectedType.getType();
-			int closureParameterSize = closure.getFormalParameters().size();
-			if (operation == null || operation.getParameters().size() != closureParameterSize || type == null) {
-				strategy = getClosureWithoutExpectationHelper();
-			} else {
-				strategy = createClosureWithExpectationHelper(operation);
-			}
-		}
+//		services.getTypeReferences().createTypeRef(type, typeArgs);
+		strategy = createClosureWithExpectationHelper((FunctionTypeReference)expectedType);
 		
 	}
 
@@ -87,8 +99,12 @@ public class ClosureTypeComputer {
 ////		return createUnknownClosureTypeHelper();
 //	}
 
-	protected ClosureWithExpectationHelper createClosureWithExpectationHelper(JvmOperation operation) {
-		return new ClosureWithExpectationHelper(closure, operation, expectation, state);
+//	protected ClosureWithExpectationHelper createClosureWithExpectationHelper(JvmOperation operation) {
+//		return new ClosureWithExpectationHelper(closure, operation, expectation, state);
+//	}
+	
+	protected ClosureWithExpectationHelper createClosureWithExpectationHelper(FunctionTypeReference function) {
+		return new ClosureWithExpectationHelper(closure, function, expectation, state, computer);
 	}
 	
 	protected UnknownClosureTypeHelper createUnknownClosureTypeHelper() {
@@ -123,15 +139,15 @@ public class ClosureTypeComputer {
 		return strategy.getExpectedClosureType();
 	}
 
-	/**
-	 * This method is only public for testing purpose.
-	 * 
-	 * @noreference This method is not intended to be referenced by clients.
-	 */
-	@Nullable
-	public JvmOperation getOperation() {
-		if (strategy == null)
-			selectStrategy();
-		return strategy.getOperation();
-	}
+//	/**
+//	 * This method is only public for testing purpose.
+//	 * 
+//	 * @noreference This method is not intended to be referenced by clients.
+//	 */
+//	@Nullable
+//	public JvmOperation getOperation() {
+//		if (strategy == null)
+//			selectStrategy();
+//		return strategy.getFunction();
+//	}
 }

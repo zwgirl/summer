@@ -51,6 +51,7 @@ import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XBreakStatment;
+import org.summer.dsl.model.xbase.XCaller;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
@@ -65,9 +66,9 @@ import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
+import org.summer.dsl.model.xbase.XIndexer;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
@@ -358,8 +359,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -399,8 +400,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -440,8 +441,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -490,8 +491,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -522,6 +523,47 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 					return; 
 				}
 				else break;
+			case XbasePackage.XCALLER:
+				if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAndExpressionRule() ||
+				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAssignmentRule() ||
+				   context == grammarAccess.getXAssignmentAccess().getXAssignmentAssignableAction_1_0_0_0() ||
+				   context == grammarAccess.getXBitwiseExpressionRule() ||
+				   context == grammarAccess.getXBitwiseExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXCastedExpressionRule() ||
+				   context == grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0() ||
+				   context == grammarAccess.getXEqualityExpressionRule() ||
+				   context == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXExpressionRule() ||
+				   context == grammarAccess.getXMemberFeatureCallRule() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
+				   context == grammarAccess.getXMultiAssignmentRule() ||
+				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXMultiplicativeExpressionRule() ||
+				   context == grammarAccess.getXMultiplicativeExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXOrExpressionRule() ||
+				   context == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXParenthesizedExpressionRule() ||
+				   context == grammarAccess.getXPostfixOperationRule() ||
+				   context == grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0() ||
+				   context == grammarAccess.getXPrimaryExpressionRule() ||
+				   context == grammarAccess.getXRelationalExpressionRule() ||
+				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXShiftExpressionRule() ||
+				   context == grammarAccess.getXShiftExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXTernaryOperationRule() ||
+				   context == grammarAccess.getXTernaryOperationAccess().getXTernaryOperationConditionAction_1_0_0_0() ||
+				   context == grammarAccess.getXUnaryOperationRule()) {
+					sequence_XMemberFeatureCall(context, (XCaller) semanticObject); 
+					return; 
+				}
+				else break;
 			case XbasePackage.XCASE_PART:
 				if(context == grammarAccess.getXCasePartRule()) {
 					sequence_XCasePart(context, (XCasePart) semanticObject); 
@@ -544,8 +586,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -593,8 +635,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -635,8 +677,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -698,8 +740,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -757,6 +799,47 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 					return; 
 				}
 				else break;
+			case XbasePackage.XINDEXER:
+				if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAndExpressionRule() ||
+				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXAssignmentRule() ||
+				   context == grammarAccess.getXAssignmentAccess().getXAssignmentAssignableAction_1_0_0_0() ||
+				   context == grammarAccess.getXBitwiseExpressionRule() ||
+				   context == grammarAccess.getXBitwiseExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXCastedExpressionRule() ||
+				   context == grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0() ||
+				   context == grammarAccess.getXEqualityExpressionRule() ||
+				   context == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXExpressionRule() ||
+				   context == grammarAccess.getXMemberFeatureCallRule() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
+				   context == grammarAccess.getXMultiAssignmentRule() ||
+				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXMultiplicativeExpressionRule() ||
+				   context == grammarAccess.getXMultiplicativeExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXOrExpressionRule() ||
+				   context == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXParenthesizedExpressionRule() ||
+				   context == grammarAccess.getXPostfixOperationRule() ||
+				   context == grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0() ||
+				   context == grammarAccess.getXPrimaryExpressionRule() ||
+				   context == grammarAccess.getXRelationalExpressionRule() ||
+				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXShiftExpressionRule() ||
+				   context == grammarAccess.getXShiftExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
+				   context == grammarAccess.getXTernaryOperationRule() ||
+				   context == grammarAccess.getXTernaryOperationAccess().getXTernaryOperationConditionAction_1_0_0_0() ||
+				   context == grammarAccess.getXUnaryOperationRule()) {
+					sequence_XMemberFeatureCall(context, (XIndexer) semanticObject); 
+					return; 
+				}
+				else break;
 			case XbasePackage.XINSTANCE_OF_EXPRESSION:
 				if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -773,8 +856,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -814,8 +897,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -839,47 +922,6 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 					return; 
 				}
 				else break;
-			case XbasePackage.XMEMBER_FEATURE_CALL1:
-				if(context == grammarAccess.getXAdditiveExpressionRule() ||
-				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXAndExpressionRule() ||
-				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXAssignmentRule() ||
-				   context == grammarAccess.getXAssignmentAccess().getXAssignmentAssignableAction_1_0_0_0() ||
-				   context == grammarAccess.getXBitwiseExpressionRule() ||
-				   context == grammarAccess.getXBitwiseExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXCastedExpressionRule() ||
-				   context == grammarAccess.getXCastedExpressionAccess().getXCastedExpressionTargetAction_1_0_0_0() ||
-				   context == grammarAccess.getXEqualityExpressionRule() ||
-				   context == grammarAccess.getXEqualityExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXExpressionRule() ||
-				   context == grammarAccess.getXMemberFeatureCallRule() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
-				   context == grammarAccess.getXMultiAssignmentRule() ||
-				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXMultiplicativeExpressionRule() ||
-				   context == grammarAccess.getXMultiplicativeExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXOrExpressionRule() ||
-				   context == grammarAccess.getXOrExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXParenthesizedExpressionRule() ||
-				   context == grammarAccess.getXPostfixOperationRule() ||
-				   context == grammarAccess.getXPostfixOperationAccess().getXPostfixOperationOperandAction_1_0_0() ||
-				   context == grammarAccess.getXPrimaryExpressionRule() ||
-				   context == grammarAccess.getXRelationalExpressionRule() ||
-				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
-				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXShiftExpressionRule() ||
-				   context == grammarAccess.getXShiftExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
-				   context == grammarAccess.getXTernaryOperationRule() ||
-				   context == grammarAccess.getXTernaryOperationAccess().getXTernaryOperationConditionAction_1_0_0_0() ||
-				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XMemberFeatureCall(context, (XMemberFeatureCall1) semanticObject); 
-					return; 
-				}
-				else break;
 			case XbasePackage.XNULL_LITERAL:
 				if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -897,8 +939,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -940,8 +982,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -983,8 +1025,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1031,8 +1073,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1080,8 +1122,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1124,8 +1166,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1174,8 +1216,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1216,8 +1258,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1272,8 +1314,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXLiteralRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1314,8 +1356,8 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 				   context == grammarAccess.getXExpressionRule() ||
 				   context == grammarAccess.getXMemberFeatureCallRule() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXAssignmentAssignableAction_1_2_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_0_0_0_0() ||
-				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCall1MemberCallTargetAction_1_1_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXCallerFunctionAction_1_0_0_0_0() ||
+				   context == grammarAccess.getXMemberFeatureCallAccess().getXIndexerSourceAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXMemberFeatureCallAccess().getXMemberFeatureCallMemberCallTargetAction_1_3_0_0_0() ||
 				   context == grammarAccess.getXMultiAssignmentRule() ||
 				   context == grammarAccess.getXMultiAssignmentAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1502,8 +1544,15 @@ public abstract class AbstractSsSemanticSequencer extends XbaseSemanticSequencer
 	 * Constraint:
 	 *     (
 	 *         (
-	 *             (annotationInfo=Member_JvmField_2_0_0 modifiers+=FieldModifier* (type=JvmTypeReference simpleName=ValidID)) | 
-	 *             (annotationInfo=Member_JvmField_2_0_0 (type=JvmTypeReference simpleName=ValidID))
+	 *             (
+	 *                 annotationInfo=Member_JvmField_2_0_0 
+	 *                 modifiers+=FieldModifier* 
+	 *                 (type=JvmTypeReference (simpleName=ValidID | (indexer?='this' (parameters+=JvmFormalParameter parameters+=JvmFormalParameter*)?)))
+	 *             ) | 
+	 *             (
+	 *                 annotationInfo=Member_JvmField_2_0_0 
+	 *                 (type=JvmTypeReference (simpleName=ValidID | (indexer?='this' (parameters+=JvmFormalParameter parameters+=JvmFormalParameter*)?)))
+	 *             )
 	 *         ) 
 	 *         (defaultValue=XExpression? | (property?='{' get=XBlockStatment? set=XBlockStatment?))
 	 *     )

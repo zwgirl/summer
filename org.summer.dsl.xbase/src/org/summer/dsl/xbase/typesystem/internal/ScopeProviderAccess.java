@@ -35,11 +35,12 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.util.Strings;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
+import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
+import org.summer.dsl.model.xbase.XIndexerCall;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.scoping.batch.IIdentifiableElementDescription;
@@ -77,7 +78,8 @@ public class ScopeProviderAccess {
 			return new AppliedFeatureLinkingCandidate(result);
 		}
 		EObject proxyOrResolved = (EObject) featureCall.eGet(XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, false);
-		if (proxyOrResolved == null && !(featureCall instanceof XMemberFeatureCall1 &&((XMemberFeatureCall1)featureCall).isIndexedOperation())) {
+		if (proxyOrResolved == null && !(featureCall instanceof XIndexerCall &&((XIndexerCall)featureCall).isIndexedOperation() ||
+				featureCall instanceof XAssignment)) {
 			return new NullFeatureLinkingCandidate(featureCall, state);
 		}
 		

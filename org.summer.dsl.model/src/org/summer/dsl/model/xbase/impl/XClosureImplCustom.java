@@ -52,8 +52,8 @@ public class XClosureImplCustom extends XClosureImpl {
 	 * Doing it like this is much simpler and also ensures proper notifications.
 	 */
 	@Override
-	public void setStatment(XStatment newExpression) {
-		super.setStatment(newExpression);
+	public void setStatment(XStatment statment) {
+		super.setStatment(statment);
 		/**
 		 * Add the implicit parameter for the short cut syntax [ my-expression-using-it ]
 		 */

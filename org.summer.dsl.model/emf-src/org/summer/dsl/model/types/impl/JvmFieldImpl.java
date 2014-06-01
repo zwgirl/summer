@@ -2,12 +2,17 @@
  */
 package org.summer.dsl.model.types.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.types.JvmField;
+import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XExpression;
@@ -28,8 +33,10 @@ import org.summer.dsl.model.xbase.XStatment;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isProperty <em>Property</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getSet <em>Set</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#getGet <em>Get</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isIndexer <em>Indexer</em>}</li>
  * </ul>
  * </p>
  *
@@ -177,6 +184,16 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	protected XExpression defaultValue;
 
 	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<JvmFormalParameter> parameters;
+
+	/**
 	 * The cached value of the '{@link #getSet() <em>Set</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,6 +212,26 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * @ordered
 	 */
 	protected XStatment get;
+
+	/**
+	 * The default value of the '{@link #isIndexer() <em>Indexer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INDEXER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIndexer() <em>Indexer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIndexer()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean indexer = INDEXER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -432,6 +469,18 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<JvmFormalParameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, TypesPackage.JVM_FIELD__PARAMETERS);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XStatment getSet() {
 		return set;
 	}
@@ -518,6 +567,27 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isIndexer() {
+		return indexer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIndexer(boolean newIndexer) {
+		boolean oldIndexer = indexer;
+		indexer = newIndexer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__INDEXER, oldIndexer, indexer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -525,6 +595,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return basicSetType(null, msgs);
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				return basicSetDefaultValue(null, msgs);
+			case TypesPackage.JVM_FIELD__PARAMETERS:
+				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case TypesPackage.JVM_FIELD__SET:
 				return basicSetSet(null, msgs);
 			case TypesPackage.JVM_FIELD__GET:
@@ -557,10 +629,14 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return getType();
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				return getDefaultValue();
+			case TypesPackage.JVM_FIELD__PARAMETERS:
+				return getParameters();
 			case TypesPackage.JVM_FIELD__SET:
 				return getSet();
 			case TypesPackage.JVM_FIELD__GET:
 				return getGet();
+			case TypesPackage.JVM_FIELD__INDEXER:
+				return isIndexer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -570,6 +646,7 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -597,11 +674,18 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				setDefaultValue((XExpression)newValue);
 				return;
+			case TypesPackage.JVM_FIELD__PARAMETERS:
+				getParameters().clear();
+				getParameters().addAll((Collection<? extends JvmFormalParameter>)newValue);
+				return;
 			case TypesPackage.JVM_FIELD__SET:
 				setSet((XStatment)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__GET:
 				setGet((XStatment)newValue);
+				return;
+			case TypesPackage.JVM_FIELD__INDEXER:
+				setIndexer((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -639,11 +723,17 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				setDefaultValue((XExpression)null);
 				return;
+			case TypesPackage.JVM_FIELD__PARAMETERS:
+				getParameters().clear();
+				return;
 			case TypesPackage.JVM_FIELD__SET:
 				setSet((XStatment)null);
 				return;
 			case TypesPackage.JVM_FIELD__GET:
 				setGet((XStatment)null);
+				return;
+			case TypesPackage.JVM_FIELD__INDEXER:
+				setIndexer(INDEXER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -673,10 +763,14 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 				return type != null;
 			case TypesPackage.JVM_FIELD__DEFAULT_VALUE:
 				return defaultValue != null;
+			case TypesPackage.JVM_FIELD__PARAMETERS:
+				return parameters != null && !parameters.isEmpty();
 			case TypesPackage.JVM_FIELD__SET:
 				return set != null;
 			case TypesPackage.JVM_FIELD__GET:
 				return get != null;
+			case TypesPackage.JVM_FIELD__INDEXER:
+				return indexer != INDEXER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -703,6 +797,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		result.append(override);
 		result.append(", property: ");
 		result.append(property);
+		result.append(", indexer: ");
+		result.append(indexer);
 		result.append(')');
 		return result.toString();
 	}

@@ -147,7 +147,8 @@ Member returns types::JvmMember:
 		(	
 			{types::JvmField.annotationInfo = current} modifiers+=FieldModifier*
 			(
-				type=JvmTypeReference simpleName=ValidID
+				type=JvmTypeReference (simpleName=ValidID |
+				(indexer ?= 'this' '['(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ']'))
 			)
 			(
 				(('=' defaultValue=XExpression)? ';')
@@ -160,6 +161,23 @@ Member returns types::JvmMember:
 				)
 			)
 		) 
+//		|
+//		(	
+//			{types::JvmIndexer.annotationInfo = current} modifiers+=FieldModifier*
+//			(
+//				type=JvmTypeReference 'operator' '['(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ']'
+//			)
+//			(
+//				(('=' defaultValue=XExpression)? ';')
+//				|
+//				(
+//				property ?= '{'
+//					'get' (get=XBlockStatment)? 
+//					('set' (set=XBlockStatment)?)?
+//				'}'
+//				)
+//			)
+//		) 
 		|
 	 	(
 			{types::JvmOperation.annotationInfo = current} modifiers+=MethodModifier*
@@ -194,64 +212,6 @@ Member returns types::JvmMember:
 		)
 	)
 ;
-
-//XClosure returns xbase::XExpression:
-//	{xbase::XClosure}
-//	(exported?='export')? 'function' 
-//		('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//		 (name=ValidID | (operator?='operator' name= (OpAdd | OpMulti| BinaryBitwiseOp| ShiftOp)))?
-//		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')'
-//			(':' returnType=JvmTypeReference)?
-//		
-//		(expression=XBlockExpression 
-//			| ';'
-//		) 
-//	;
-
-//XClosure returns xbase::XExpression:
-//	{xbase::XClosure}
-//	(exported?='export')? 'function' 
-//		('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//		 (name=FunctionID)?
-//		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')'
-//			(':' returnType=JvmTypeReference)?
-//		
-//		(expression=XBlockExpression 
-//			| ';'
-//		) 
-//	;
-
-//XFunction returns xbase::XFunction:
-//	{xbase::XFunction}
-//	(exported?='export')? 
-//	'function' 
-//		=>('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//		(returnType=JvmTypeReference)?
-//		 name=FunctionID
-//		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')'
-////		('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
-//		
-//	expression=XBlockExpression 
-//	;
-	
-//XExecute returns xbase::XExecute:
-//	'function' 
-//		=>('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//		(returnType=JvmTypeReference)?
-//		 name=FunctionID
-//;
-	
-//XExecute returns xbase::XExecute:
-//	'function' 
-//		=>('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-//		(returnType=JvmTypeReference)?
-//		 name=FunctionID
-//		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')'
-//		('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
-//		(expression=XBlockExpression 
-//			| ';'
-//		) 
-//;
 	
 FunctionID:
 	ValidID | Operators
@@ -301,7 +261,7 @@ ClassModofier:
 FieldModifier:
 		'static' | 
 		'const' |
-		'virtaul' |
+		'virtual' |
 		'override' |
 		'transient' 
 ;
@@ -314,7 +274,7 @@ FieldModifier:
 //;
 
 MethodModifier:
-		'override' | 'virtaul' |'static' | 'native' |'overload' | 'abstract'
+		'override' | 'virtual' |'static' | 'native' |'overload' | 'abstract'
 ; 
 
 //MethodModifier:

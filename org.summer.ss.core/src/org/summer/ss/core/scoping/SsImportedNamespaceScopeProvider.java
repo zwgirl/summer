@@ -147,7 +147,12 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 			//处理原始类型
 			AbstractScope result = new RootScope(fileResource, primitivesScope);
 			//处理泛型参数，添加到当前的Scope上。
-			JvmMember syntacticContainer = EcoreUtil2.getContainerOfType(context, JvmMember.class);
+//			JvmMember syntacticContainer = EcoreUtil2.getContainerOfType(context, JvmMember.class);
+//			if (syntacticContainer != null) {
+//				result = getContainerScope(syntacticContainer, result);
+//			}
+			
+			JvmTypeParameterDeclarator syntacticContainer = EcoreUtil2.getContainerOfType(context, JvmTypeParameterDeclarator.class);
 			if (syntacticContainer != null) {
 				result = getContainerScope(syntacticContainer, result);
 			}
@@ -232,19 +237,43 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 //		return result;
 //	}
 	
-	private AbstractScope getContainerScope(JvmMember syntacticContainer, AbstractScope result) {
+//	private AbstractScope getContainerScope(JvmMember syntacticContainer, AbstractScope result) {
+//		List<List<JvmTypeParameter>> typeParameters = null;
+//		while(syntacticContainer != null) {
+//			// scope for JvmTypeParameterDeclarator
+//			List<JvmTypeParameter> current = null;
+//			if(syntacticContainer instanceof JvmGenericType){
+//				JvmTypeParameterDeclarator tpd = (JvmTypeParameterDeclarator) syntacticContainer;
+//				current = tpd.getTypeParameters();
+//			} else if(syntacticContainer instanceof JvmOperation){
+//				JvmOperation jop = (JvmOperation) syntacticContainer;
+////				XClosure closure = (XClosure) jop.getFunction();	
+//				current = jop.getTypeParameters();
+//			}
+//				
+//			if (current!=null && !current.isEmpty()) {
+//				if (typeParameters == null) {
+//					typeParameters = Lists.newArrayListWithCapacity(3);
+//				}
+//				typeParameters.add(current);
+//			}
+//
+//			EObject container = syntacticContainer.eContainer();
+//			if (container instanceof JvmGenericType) {
+//				syntacticContainer = (JvmGenericType) container;
+//			} else {
+//				if (typeParameters == null)
+//					return result;
+//				return new TypeParameterScope(typeParameters, result);
+//			}
+//		}
+//		return result;
+//	}
+	
+	private AbstractScope getContainerScope(JvmTypeParameterDeclarator syntacticContainer, AbstractScope result) {
 		List<List<JvmTypeParameter>> typeParameters = null;
 		while(syntacticContainer != null) {
-			// scope for JvmTypeParameterDeclarator
-			List<JvmTypeParameter> current = null;
-			if(syntacticContainer instanceof JvmGenericType){
-				JvmTypeParameterDeclarator tpd = (JvmTypeParameterDeclarator) syntacticContainer;
-				current = tpd.getTypeParameters();
-			} else if(syntacticContainer instanceof JvmOperation){
-				JvmOperation jop = (JvmOperation) syntacticContainer;
-//				XClosure closure = (XClosure) jop.getFunction();	
-				current = jop.getTypeParameters();
-			}
+			List<JvmTypeParameter> current = syntacticContainer.getTypeParameters();
 				
 			if (current!=null && !current.isEmpty()) {
 				if (typeParameters == null) {
@@ -252,13 +281,12 @@ public class SsImportedNamespaceScopeProvider extends XImportSectionNamespaceSco
 				}
 				typeParameters.add(current);
 			}
-
-			EObject container = syntacticContainer.eContainer();
-			if (container instanceof JvmGenericType) {
-				syntacticContainer = (JvmGenericType) container;
-			} else {
-				if (typeParameters == null)
+			syntacticContainer = EcoreUtil2.getContainerOfType(syntacticContainer.eContainer(), JvmTypeParameterDeclarator.class);
+			if (syntacticContainer == null) {
+				if (typeParameters == null){
 					return result;
+				}
+				
 				return new TypeParameterScope(typeParameters, result);
 			}
 		}

@@ -105,7 +105,7 @@ public class FunctionTypeReference extends ParameterizedTypeReference {
 	public JvmTypeReference toTypeReference() {
 		XFunctionTypeRef result = getOwner().getServices().getXtypeFactory().createXFunctionTypeRef();
 		result.setType(getType());
-		result.setEquivalent(super.toTypeReference());
+//		result.setEquivalent(super.toTypeReference());
 		if (parameterTypes != null) {
 			for(LightweightTypeReference parameterType: parameterTypes) {
 				result.getParamTypes().add(parameterType.toTypeReference());

@@ -13,8 +13,14 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmParameterizedTypeReference;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
+import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
@@ -71,7 +77,18 @@ public class ModuleComputationState extends AbstractLogicalContainerAwareRootCom
 				ClassTypeComputationState state = new ClassTypeComputationState(resolvedTypes, featureScopeSession, (JvmGenericType) obj);
 				state.computeTypes();
 				
-			} else if (obj instanceof XStatment) {
+			} else if(obj instanceof XFunctionDeclaration){
+				XFunctionDeclaration function = (XFunctionDeclaration) obj;
+				
+				StackedResolvedTypes functionResolvedTypes = declareTypeParameters(resolvedTypes, function);
+				
+				LightweightTypeReference lightweightReference = resolvedTypes.getConverter().toLightweightReference(function.getReturnType());
+				functionResolvedTypes.setType(function, lightweightReference);
+				
+				FunctionComputationState state = new FunctionComputationState(functionResolvedTypes, featureScopeSession, function);
+				state.computeTypes();
+				functionResolvedTypes.mergeIntoParent();
+			}  else if (obj instanceof XStatment) {
 				XStatment statment = (XStatment) obj;
 				getResolver().getTypeComputer().computeTypes(statment, this);
 				
@@ -83,14 +100,33 @@ public class ModuleComputationState extends AbstractLogicalContainerAwareRootCom
 						}
 					}
 				}
-			} else if(obj instanceof XFunctionDeclaration){
-				XFunctionDeclaration function = (XFunctionDeclaration) obj;
-				FunctionBodyComputationState state = new FunctionBodyComputationState(resolvedTypes, featureScopeSession, function);
-				state.computeTypes();
-			} else if(obj instanceof XObjectElement){
+			}else if(obj instanceof XObjectElement){
 				System.out.println(obj);
 			}
 		}
+	}
+	
+	protected StackedResolvedTypes declareTypeParameters(ResolvedTypes resolvedTypes, JvmIdentifiableElement declarator) {
+		StackedResolvedTypes childResolvedTypes = resolvedTypes.pushTypes();
+		if (declarator instanceof JvmTypeParameterDeclarator) {
+			JvmTypeParameterDeclarator casted = (JvmTypeParameterDeclarator) declarator;
+			if (isStatic(declarator) && !(declarator instanceof JvmConstructor)) {
+				childResolvedTypes.replaceDeclaredTypeParameters(casted.getTypeParameters());
+			} else {
+				childResolvedTypes.addDeclaredTypeParameters(casted.getTypeParameters());
+			}
+		}
+		return childResolvedTypes;
+	}
+	
+	protected boolean isStatic(JvmIdentifiableElement declarator) {
+		if (declarator instanceof JvmFeature) {
+			return ((JvmFeature) declarator).isStatic();
+		}
+//		if (declarator instanceof JvmDeclaredType) {
+//			return ((JvmDeclaredType) declarator).isStatic();
+//		}
+		return false;
 	}
 
 	@Override

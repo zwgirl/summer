@@ -78,7 +78,6 @@ public class XtypeSwitch<T> extends Switch<T> {
 			case XtypePackage.XFUNCTION_TYPE_REF: {
 				XFunctionTypeRef xFunctionTypeRef = (XFunctionTypeRef)theEObject;
 				T result = caseXFunctionTypeRef(xFunctionTypeRef);
-				if (result == null) result = caseJvmSpecializedTypeReference(xFunctionTypeRef);
 				if (result == null) result = caseJvmTypeReference(xFunctionTypeRef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

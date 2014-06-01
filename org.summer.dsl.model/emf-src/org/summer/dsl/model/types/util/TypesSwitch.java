@@ -5,6 +5,7 @@ package org.summer.dsl.model.types.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.summer.dsl.model.types.*;
 import org.summer.dsl.model.types.JvmAnnotationAnnotationValue;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
@@ -406,6 +407,17 @@ public class TypesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJvmMember(jvmField);
 				if (result == null) result = caseJvmAnnotationTarget(jvmField);
 				if (result == null) result = caseJvmIdentifiableElement(jvmField);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TypesPackage.JVM_INDEXER: {
+				JvmIndexer jvmIndexer = (JvmIndexer)theEObject;
+				T result = caseJvmIndexer(jvmIndexer);
+				if (result == null) result = caseJvmField(jvmIndexer);
+				if (result == null) result = caseJvmFeature(jvmIndexer);
+				if (result == null) result = caseJvmMember(jvmIndexer);
+				if (result == null) result = caseJvmAnnotationTarget(jvmIndexer);
+				if (result == null) result = caseJvmIdentifiableElement(jvmIndexer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1089,6 +1101,21 @@ public class TypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmField(JvmField object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Indexer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Indexer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmIndexer(JvmIndexer object) {
 		return null;
 	}
 

@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -35,9 +34,10 @@ import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.xbase.XAssignment;
-import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
@@ -898,7 +898,17 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 			return getArityMismatch((JvmExecutable) identifiable, getArguments());
 		} else if (getExpression() instanceof XAssignment) {
 			return getArguments().size() - 1;
-		} else if(identifiable instanceof XClosure){   // cym  add
+		} else if(identifiable instanceof XFunctionDeclaration){   // cym  add
+			XFunctionDeclaration function = (XFunctionDeclaration) identifiable;
+			int fixedArityParamCount = function.getDeclaredFormalParameters().size();
+//			if (function.isVarArgs()) {
+//				fixedArityParamCount--;
+//				if (arguments.size() >= fixedArityParamCount) {
+//					return 0;
+//				}
+//			}
+			return fixedArityParamCount - getArguments().size();
+		}  else if(identifiable instanceof XClosure){   // cym  add
 			XClosure closure = (XClosure) identifiable;
 			int fixedArityParamCount = closure.getDeclaredFormalParameters().size();
 //			if (closure.isVarArgs()) {
@@ -910,11 +920,19 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 			return fixedArityParamCount - getArguments().size();
 		} else if(identifiable instanceof XVariableDeclaration){   // cym  add
 			XVariableDeclaration var = (XVariableDeclaration) identifiable;
-			if(var.getType() instanceof XFunctionTypeRef){
-				XFunctionTypeRef ref = (XFunctionTypeRef) var.getType();
-				int fixedArityParamCount = ref.getParamTypes().size();
-				return fixedArityParamCount - getArguments().size();
+			
+			XExpression expr = getExpression();
+			if(expr instanceof XFeatureCall){
+				XFeatureCall featureCall = (XFeatureCall) expr;
+				if(featureCall.isExplicitOperationCall()){
+					if(var.getType() instanceof XFunctionTypeRef){
+						XFunctionTypeRef ref = (XFunctionTypeRef) var.getType();
+						int fixedArityParamCount = ref.getParamTypes().size();
+						return fixedArityParamCount - getArguments().size();
+					}
+				}
 			}
+
 			return 0;
 			
 		} else {

@@ -2,6 +2,7 @@
  */
 package org.summer.dsl.model.types;
 
+import org.eclipse.emf.common.util.EList;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XStatment;
 
@@ -22,8 +23,10 @@ import org.summer.dsl.model.xbase.XStatment;
  *   <li>{@link org.summer.dsl.model.types.JvmField#isProperty <em>Property</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getSet <em>Set</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#getGet <em>Get</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isIndexer <em>Indexer</em>}</li>
  * </ul>
  * </p>
  *
@@ -243,6 +246,22 @@ public interface JvmField extends JvmFeature {
 	void setDefaultValue(XExpression value);
 
 	/**
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link org.summer.dsl.model.types.JvmFormalParameter}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Parameters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<JvmFormalParameter> getParameters();
+
+	/**
 	 * Returns the value of the '<em><b>Set</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -293,5 +312,32 @@ public interface JvmField extends JvmFeature {
 	 * @generated
 	 */
 	void setGet(XStatment value);
+
+	/**
+	 * Returns the value of the '<em><b>Indexer</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Indexer</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Indexer</em>' attribute.
+	 * @see #setIndexer(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Indexer()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isIndexer();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isIndexer <em>Indexer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Indexer</em>' attribute.
+	 * @see #isIndexer()
+	 * @generated
+	 */
+	void setIndexer(boolean value);
 
 } // JvmField

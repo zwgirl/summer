@@ -23,6 +23,7 @@ import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmUpperBound;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.arguments.IFeatureCallArgumentSlot;
 import org.summer.dsl.xbase.typesystem.arguments.IFeatureCallArguments;
@@ -32,6 +33,7 @@ import org.summer.dsl.xbase.typesystem.computation.ITypeExpectation;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
+import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightBoundTypeArgument;
 import org.summer.dsl.xbase.typesystem.references.LightweightMergedBoundTypeArgument;
@@ -362,7 +364,15 @@ public abstract class AbstractLinkingCandidate<Expression extends XExpression> i
 		if (!expectation.isNoTypeExpectation()) {
 			substitutedFeatureType = deferredBindTypeArgument(expectation, substitutedFeatureType);
 		}
-		expectation.acceptActualType(substitutedFeatureType, ConformanceHint.UNCHECKED);
+		
+		//cym added. 
+		//process FunctionTypeReference call
+		if((featureType instanceof FunctionTypeReference) && (getExpression() instanceof XFeatureCall) && (((XFeatureCall)getExpression()).isExplicitOperationCall())){
+			FunctionTypeReference funType = (FunctionTypeReference) featureType;
+			expectation.acceptActualType(funType.getReturnType(), ConformanceHint.UNCHECKED);
+		}else{
+			expectation.acceptActualType(substitutedFeatureType, ConformanceHint.UNCHECKED);
+		}
 		state.getStackedResolvedTypes().mergeIntoParent();
 	}
 	

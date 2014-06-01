@@ -51,7 +51,7 @@ public class UnknownClosureTypeHelper extends AbstractClosureTypeHelper {
 
 	@Nullable
 	@Override
-	public JvmOperation getOperation() {
+	public JvmOperation getFunction() {
 		return null;
 	}
 

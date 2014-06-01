@@ -391,8 +391,8 @@ public abstract class AbstractXbaseCompiler {
 	 * @param isReferenced unused, but necessary for dispatching purpose
 	 */
 	public void _toJavaStatement(XStatment func, ITreeAppendable b, boolean isReferenced) {
-		throw new UnsupportedOperationException("Coudn't find a compilation strategy for expressions of type "
-				+ func.getClass().getCanonicalName());
+//		throw new UnsupportedOperationException("Coudn't find a compilation strategy for expressions of type "
+//				+ func.getClass().getCanonicalName());
 	}
 
 	/**

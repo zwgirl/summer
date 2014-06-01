@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.impl.JvmSpecializedTypeReferenceImplCustom;
+import org.summer.dsl.model.types.impl.JvmTypeReferenceImpl;
+import org.summer.dsl.model.types.impl.JvmTypeReferenceImplCustom;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XtypePackage;
 
@@ -34,7 +35,7 @@ import org.summer.dsl.model.xtype.XtypePackage;
  *
  * @generated NOT
  */
-public class XFunctionTypeRefImpl extends JvmSpecializedTypeReferenceImplCustom implements XFunctionTypeRef {
+public class XFunctionTypeRefImpl extends JvmTypeReferenceImplCustom implements XFunctionTypeRef {
 	/**
 	 * The cached value of the '{@link #getParamTypes() <em>Param Types</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

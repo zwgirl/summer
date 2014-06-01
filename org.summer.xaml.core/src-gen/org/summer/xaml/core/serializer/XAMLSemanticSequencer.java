@@ -52,7 +52,7 @@ import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XIndexOperation;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
+import org.summer.dsl.model.xbase.XIndexerCall;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
@@ -675,7 +675,7 @@ public class XAMLSemanticSequencer extends SsSemanticSequencer {
 				   context == grammarAccess.getXTernaryOperationRule() ||
 				   context == grammarAccess.getXTernaryOperationAccess().getXTernaryOperationConditionAction_1_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XMemberFeatureCall(context, (XMemberFeatureCall1) semanticObject); 
+					sequence_XMemberFeatureCall(context, (XIndexerCall) semanticObject); 
 					return; 
 				}
 				else break;

@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xtype;
 
 import org.eclipse.emf.common.util.EList;
-import org.summer.dsl.model.types.JvmSpecializedTypeReference;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
 
@@ -26,7 +25,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface XFunctionTypeRef extends JvmSpecializedTypeReference {
+public interface XFunctionTypeRef extends JvmTypeReference {
 	/**
 	 * Returns the value of the '<em><b>Param Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.summer.dsl.model.types.JvmTypeReference}.

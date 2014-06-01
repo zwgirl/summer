@@ -22,12 +22,12 @@ import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.summer.dsl.model.types.JvmConstructor;
-import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmIndexer;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -56,7 +56,7 @@ import org.summer.dsl.model.xbase.XForEachStatment;
 import org.summer.dsl.model.xbase.XForLoopStatment;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
-import org.summer.dsl.model.xbase.XIndexOperation;
+import org.summer.dsl.model.xbase.XIndexer;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
@@ -81,7 +81,7 @@ import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceResult;
 import org.summer.dsl.xbase.typesystem.internal.AbstractTypeComputationState;
-import org.summer.dsl.xbase.typesystem.internal.FunctionBodyComputationState;
+import org.summer.dsl.xbase.typesystem.internal.FunctionComputationState;
 import org.summer.dsl.xbase.typesystem.internal.ITypeLiteralLinkingCandidate;
 import org.summer.dsl.xbase.typesystem.internal.ResolvedTypes;
 import org.summer.dsl.xbase.typesystem.internal.StackedResolvedTypes;
@@ -125,6 +125,9 @@ public class XbaseTypeComputer implements ITypeComputer {
 	private CommonTypeComputationServices services;
 	
 	public void computeTypes(XExpression expression, ITypeComputationState state) {
+		if(expression == null){
+			return;
+		}
 		if (expression instanceof XAssignment) {
 			_computeTypes((XAssignment)expression, state);
 		} else if (expression instanceof XAbstractFeatureCall) {
@@ -155,8 +158,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XVariableDeclaration)expression, state);
 		} else if (expression instanceof XPostfixOperation) {
 			_computeTypes((XPostfixOperation)expression, state);
-		} else if (expression instanceof XIndexOperation) {
-			_computeTypes((XIndexOperation)expression, state);
+		} else if (expression instanceof XIndexer) {
+			_computeTypes((XIndexer)expression, state);
 		} else if (expression instanceof XTernaryOperation) {
 			_computeTypes((XTernaryOperation)expression, state);
 		} else if (expression instanceof XObjectLiteral) {
@@ -171,6 +174,10 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	public void computeTypes(XStatment statment, ITypeComputationState state) {
+		if(statment == null){
+			return;
+		}
+		
 		if (statment instanceof XDoWhileStatment) {
 			_computeTypes((XDoWhileStatment)statment, state);
 		} else if (statment instanceof XWhileStatment) {
@@ -596,7 +603,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	protected void _computeTypes(XFunctionDeclaration function, ITypeComputationState state) {
 		AbstractTypeComputationState typeState = (AbstractTypeComputationState) state;
 		StackedResolvedTypes childResolvedTypes = declareTypeParameters(typeState.getResolvedTypes(), function);
-		FunctionBodyComputationState state1 = new FunctionBodyComputationState(childResolvedTypes, typeState.getFeatureScopeSession(), function);
+		FunctionComputationState state1 = new FunctionComputationState(childResolvedTypes, typeState.getFeatureScopeSession(), function);
 		state1.computeTypes();
 //		computeAnnotationTypes(childResolvedTypes, featureScopeSession, field);
 		
@@ -1001,7 +1008,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	
 	protected void _computeTypes(XClosure object, ITypeComputationState state) {
 		for(ITypeExpectation expectation: state.getExpectations()) {
-			new ClosureTypeComputer(object, expectation, state).computeTypes();
+			new ClosureTypeComputer(object, expectation, state, this).computeTypes();
 		}
 	}
 
@@ -1225,9 +1232,40 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 
-	protected void _computeTypes(XIndexOperation object, ITypeComputationState state) {
-		LightweightTypeReference bool = getTypeForName(Integer.TYPE, state);
-		state.acceptActualType(bool);
+	protected void _computeTypes(XIndexer object, ITypeComputationState state) {
+		//计算source，找对source的类型
+		//找出这个类型的indexer
+		//计算参数类型，按照方法的形式来计算
+		//找出这个indexer返回类型
+		
+		for(XExpression argument : object.getArguments()){
+			state.withoutExpectation().computeTypes(argument);
+		}
+		
+		ITypeComputationResult result = state.computeTypes(object.getSource());
+		LightweightTypeReference actualType = result.getActualExpressionType();
+		JvmType jvmType = actualType.getType();
+		if(!(jvmType instanceof JvmGenericType)){
+			throw new IllegalStateException();
+		}
+		JvmGenericType type = (JvmGenericType) jvmType;
+		JvmField indexer = null;
+		for(JvmMember member : type.getMembers()){
+			if(member instanceof JvmField && ((JvmField)member).isIndexer()){
+				indexer = (JvmIndexer) member;
+				break;
+			}
+		}
+		
+		if(indexer == null){
+			throw new IllegalStateException();
+		}
+		
+		object.setFeature(indexer);
+		LightweightTypeReference typeRef = state.getConverter().toLightweightReference(indexer.getType());
+		state.acceptActualType(typeRef);
+		
+
 	}
 	
 //	protected void _computeTypes(XTryCatchFinallyExpression object, ITypeComputationState state) {

@@ -138,8 +138,6 @@ XUnaryOperation returns XExpression:
 	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XUnaryOperation
 	| XCastedExpression;
 
-//OpUnary:
-//	"!" | "-" | "+";
 	
 OpUnary:
 	'!'
@@ -148,7 +146,6 @@ OpUnary:
 	|'~'
 	|'++' 
 	| '--'
-//	|PrefixOp
 ;
 
 //DeleteExpression returns XExpression:
@@ -159,124 +156,16 @@ XCastedExpression returns XExpression:
 	XMemberFeatureCall (=>({XCastedExpression.target=current} 'as') type=JvmTypeReference)*
 ;
 
-//XIndexOperation returns XExpression:
-// 	XMemberFeatureCall (=> ({XIndexOperation.expression=current} feature=[types::JvmIdentifiableElement|IndexOp]) index=XExpression "]" )* //(=>'=' value = XExpression)
-//;
-//IndexOp:
-//	'['
-//;
-
-//XMemberFeatureCall returns XExpression:
-//	XPrimaryExpression
-//	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				    memberCallArguments+=XShortClosure
-//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//			memberCallArguments+=XClosure?
-//		)*;
-
-//XMemberFeatureCall returns XExpression:
-//	XPrimaryExpression
-//	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				    memberCallArguments+=XShortClosure
-//				  |	memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//			memberCallArguments+=XClosure?
-//		)*;
-
-//XExpressionCall returns XExpression:
-//		XMemberFeatureCall
-//	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-//		 ')')
-//;
-//
-//XMemberFeatureCall returns XExpression:
-//	XPrimaryExpression
-//	(=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|FeatureCallID] (
-//			=>explicitOperationCall?='(' 
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//		)*;
-
-//XMemberFeatureCall returns XExpression:
-//	XPrimaryExpression
-//	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-//		 ')'
-//	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
-//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-//		 ']'
-//	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-//		(
-//			(
-//			=>explicitOperationCall?='(' 
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//			
-////			|
-//			(
-//			=>indexedOperation?='[' 
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			']')?
-//			
-//		)
-//		)*;
-
-//XMemberFeatureCall returns XExpression:
-//	XPrimaryExpression
-//	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-//		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
-//		 ')'
-//	|=>({XAssignment.assignable=current} ('.'|explicitStatic?="::") feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?."|explicitStatic?="::")) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//		feature=[types::JvmIdentifiableElement|FeatureCallID] 
-//		(
-//			(
-//			=>explicitOperationCall?='(' 
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')')?
-//		)
-//		)*;
-
 XMemberFeatureCall returns XExpression:
 	XPrimaryExpression
-	(=>({XMemberFeatureCall1.memberCallTarget=current} explicitOperationCall?='(')
-		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+	(=>({XCaller.function=current} '(')
+		 (arguments+=XExpression (',' arguments+=XExpression)*)?
 		 ')'
- 	|=>({XMemberFeatureCall1.memberCallTarget=current} indexedOperation?='[')
-		 (memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*)?
+ 	|=>({XIndexer.source=current} '[')
+		 (arguments+=XExpression (',' arguments+=XExpression)*)?
 		 ']'
-	|=>({XAssignment.assignable=current} ('.' /*|explicitStatic?="::" */) feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
-//	|=>({XAssignment.assignable=current} indexedOperation ?= '[' index = XExpression ']' OpSingleAssign) value=XAssignment
-	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?." /*|explicitStatic?="::" */)) 
+	|=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?." )) 
 		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
 		feature=[types::JvmIdentifiableElement|FeatureCallID] 
 		(
@@ -288,26 +177,12 @@ XMemberFeatureCall returns XExpression:
 			')')?
 		)
 		)*;
-		
-//XMemberFeatureCall1 returns XExpression:
-//	XPrimaryExpression
-//	(=>({XMemberFeatureCall.memberCallTarget=current}
-//		(=>explicitOperationCall?="(")
-//	) 
-//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
-//				(
-//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
-//				)? 
-//			')'
-//		)*
-//	;
 
 
 XPrimaryExpression returns XExpression:
 	XConstructorCall |
 	XFeatureCall |
 	XLiteral |
-//	XClosure |
 	XParenthesizedExpression;
 
 XLiteral returns XExpression:
@@ -322,8 +197,6 @@ XLiteral returns XExpression:
 	XStringLiteral |
 	XTypeLiteral |
 	XTemplateLiteral
-//	|
-//	XKeyValuePair
 ;
 
 XStatment returns XStatment:
@@ -447,13 +320,14 @@ FullJvmFormalParameter returns types::JvmFormalParameter:
 //	{XFeatureCall}
 //	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
 //	feature=[types::JvmIdentifiableElement|IdOrSuper] 
-//	(=>explicitOperationCall?='(' 
-//		(
-//		    featureCallArguments+=XShortClosure
-//		  |	featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-//		)? 
-//	')')?
-//	featureCallArguments+=XClosure?;
+//	(
+//		(=>explicitOperationCall?='(' 
+//			(
+//			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+//			)? 
+//		')')?
+//	)
+//;
 
 XFeatureCall returns XExpression:
 	{XFeatureCall}
@@ -465,14 +339,14 @@ XFeatureCall returns XExpression:
 			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
 			)? 
 		')')?
-
-//		(=>indexedOperation?='[' 
-//			(
-//			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
-//			)? 
-//		']' =>(OpSingleAssign value=XExpression)?)?
 	)
 ;
+
+//XCallee returns XCallee:
+//	'('
+//	(arguments+=XExpression (',' arguments+=XExpression)*)?
+//	')'
+//;
 	
 FeatureCallID:
 	ValidID 
@@ -483,21 +357,8 @@ FeatureCallID:
 ;
 
 IdOrSuper :
-	FeatureCallID | 'super'
+	FeatureCallID | 'super' | 'this'
 ;
-	
-	
-//XObjectLiteral returns XExpression:
-//	{XObjectLiteral}
-//	'new' '{'
-//		properties +=XObjectLiteralPart (',' properties +=XObjectLiteralPart)*
-//	'}'
-//;
-//
-//XObjectLiteralPart returns types::JvmMember:
-//	{XObjectLiteralPart}
-//	simpleName=ID ':' value=XExpression
-//;
 
 XObjectLiteral returns XExpression:
 	{XObjectLiteral}

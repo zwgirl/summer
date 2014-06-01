@@ -1169,35 +1169,31 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	}
 	
 	private ModifierValidator classModifierValidator = new ModifierValidator(
-//			newArrayList("public", "package", "static", "final", "abstract"), this);
-			newArrayList("final", "abstract"), this);
+			newArrayList("abstract"), this);
 		
 	private ModifierValidator interfaceModifierValidator = new ModifierValidator(
-//			newArrayList("public", "package", "abstract"), this);
-			newArrayList("public"), this);
+			Collections.<String>emptyList(), this);
 		
 	private ModifierValidator enumModifierValidator = new ModifierValidator(
-			newArrayList("public"), this);
+			Collections.<String>emptyList(), this);
 		
 	private ModifierValidator fieldModifierValidator = new ModifierValidator(
-//			newArrayList("public", "protected", "package", "private", "static", "final", "val", "var", "extension"), this);
-			newArrayList("static", "final", "val", "const"), this);
+			newArrayList("static", "virtual", "const"), this);
 		
 	private ModifierValidator fieldInInterfaceModifierValidator = new ModifierValidator(
-			newArrayList("public", "static", "final", "val"), this);
+			Collections.<String>emptyList(), this);
 		
 	private ModifierValidator constructorModifierValidator = new ModifierValidator(
-			newArrayList(visibilityModifers), this);
+			Collections.<String>emptyList(), this);
 		
 	private ModifierValidator methodModifierValidator = new ModifierValidator(
-//			newArrayList("public", "protected", "package", "private", "static", "abstract", "dispatch", "final", "function", "override"), this);
-			newArrayList("static", "abstract", "overload", "final", "function", "override", "native"), this);
+			newArrayList("static", "abstract", "overload", "function", "override", "native", "virtual"), this);
 		
 	private ModifierValidator methodInInterfaceModifierValidator = new ModifierValidator(
-			newArrayList("public", "abstract", "def", "override"), this);
+			newArrayList("abstract", "override"), this);
 		
 	private ModifierValidator annotationTypeModifierValidator = new ModifierValidator(
-			newArrayList("public", "package", "abstract"), this);
+			Collections.<String>emptyList(), this);
 		
 	@Check
 	protected void checkModifiers(JvmGenericType xtendClass) {

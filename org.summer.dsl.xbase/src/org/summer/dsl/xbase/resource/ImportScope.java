@@ -88,6 +88,9 @@ public class ImportScope implements IScope {
 		List<XImportDeclaration> importDecls = importSection.getImportDeclarations();
 		for(XImportDeclaration importDecl : importDecls){
 			Resource res = NamespaceUtil.getResource(importDecl);
+			if(res == null){
+				continue;
+			}
 			if(res.getContents().size()>0){
 				result.add(EObjectDescription.create(importDecl.getModuleName(), resource.getContents().get(0)));
 			}

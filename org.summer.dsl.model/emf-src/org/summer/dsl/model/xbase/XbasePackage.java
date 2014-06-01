@@ -599,14 +599,32 @@ public interface XbasePackage extends EPackage {
 	int XMEMBER_FEATURE_CALL_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 9;
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XMemberFeatureCall1Impl <em>XMember Feature Call1</em>}' class.
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XCallerImpl <em>XCaller</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xbase.impl.XMemberFeatureCall1Impl
-	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXMemberFeatureCall1()
+	 * @see org.summer.dsl.model.xbase.impl.XCallerImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXCaller()
 	 * @generated
 	 */
-	int XMEMBER_FEATURE_CALL1 = 11;
+	int XCALLER = 11;
+
+	/**
+	 * The feature id for the '<em><b>Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCALLER__FUNCTION = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCALLER__ARGUMENTS = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -615,142 +633,62 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__FEATURE = XABSTRACT_FEATURE_CALL__FEATURE;
+	int XCALLER__FEATURE = XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
+	 * The number of structural features of the '<em>XCaller</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__TYPE_ARGUMENTS = XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS;
+	int XCALLER_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XIndexerImpl <em>XIndexer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XIndexerImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXIndexer()
+	 * @generated
+	 */
+	int XINDEXER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__IMPLICIT_RECEIVER = XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER;
+	int XINDEXER__SOURCE = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
+	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__INVALID_FEATURE_ISSUE_CODE = XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE;
+	int XINDEXER__ARGUMENTS = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__VALID_FEATURE = XABSTRACT_FEATURE_CALL__VALID_FEATURE;
+	int XINDEXER__FEATURE = XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
+	 * The number of structural features of the '<em>XIndexer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XMEMBER_FEATURE_CALL1__IMPLICIT_FIRST_ARGUMENT = XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
-
-	/**
-	 * The feature id for the '<em><b>Member Call Target</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__MEMBER_CALL_TARGET = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Member Call Arguments</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__MEMBER_CALL_ARGUMENTS = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Explicit Operation Call</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__EXPLICIT_OPERATION_CALL = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Explicit Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__EXPLICIT_STATIC = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Null Safe</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__NULL_SAFE = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Type Literal</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__TYPE_LITERAL = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Static With Declaring Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__STATIC_WITH_DECLARING_TYPE = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Package Fragment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__PACKAGE_FRAGMENT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Indexed Operation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1__INDEXED_OPERATION = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 8;
-
-	/**
-	 * The number of structural features of the '<em>XMember Feature Call1</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XMEMBER_FEATURE_CALL1_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 9;
+	int XINDEXER_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XFeatureCallImpl <em>XFeature Call</em>}' class.
@@ -760,7 +698,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFeatureCall()
 	 * @generated
 	 */
-	int XFEATURE_CALL = 12;
+	int XFEATURE_CALL = 13;
 
 	/**
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -887,7 +825,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXConstructorCall()
 	 * @generated
 	 */
-	int XCONSTRUCTOR_CALL = 13;
+	int XCONSTRUCTOR_CALL = 14;
 
 	/**
 	 * The feature id for the '<em><b>Constructor</b></em>' reference.
@@ -951,7 +889,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXBooleanLiteral()
 	 * @generated
 	 */
-	int XBOOLEAN_LITERAL = 14;
+	int XBOOLEAN_LITERAL = 15;
 
 	/**
 	 * The feature id for the '<em><b>Is True</b></em>' attribute.
@@ -979,7 +917,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXNullLiteral()
 	 * @generated
 	 */
-	int XNULL_LITERAL = 15;
+	int XNULL_LITERAL = 16;
 
 	/**
 	 * The number of structural features of the '<em>XNull Literal</em>' class.
@@ -998,7 +936,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXNumberLiteral()
 	 * @generated
 	 */
-	int XNUMBER_LITERAL = 16;
+	int XNUMBER_LITERAL = 17;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1026,7 +964,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStringLiteral()
 	 * @generated
 	 */
-	int XSTRING_LITERAL = 17;
+	int XSTRING_LITERAL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1054,7 +992,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXCollectionLiteral()
 	 * @generated
 	 */
-	int XCOLLECTION_LITERAL = 18;
+	int XCOLLECTION_LITERAL = 19;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -1082,7 +1020,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXListLiteral()
 	 * @generated
 	 */
-	int XLIST_LITERAL = 19;
+	int XLIST_LITERAL = 20;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -1101,52 +1039,6 @@ public interface XbasePackage extends EPackage {
 	 * @ordered
 	 */
 	int XLIST_LITERAL_FEATURE_COUNT = XCOLLECTION_LITERAL_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XKeyValuePairImpl <em>XKey Value Pair</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xbase.impl.XKeyValuePairImpl
-	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXKeyValuePair()
-	 * @generated
-	 */
-	int XKEY_VALUE_PAIR = 20;
-
-	/**
-	 * The feature id for the '<em><b>Key1</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XKEY_VALUE_PAIR__KEY1 = XEXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XKEY_VALUE_PAIR__VALUE = XEXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XKEY_VALUE_PAIR__KEY = XEXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>XKey Value Pair</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XKEY_VALUE_PAIR_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XSetLiteralImpl <em>XSet Literal</em>}' class.
@@ -2216,97 +2108,6 @@ public interface XbasePackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XIndexOperationImpl <em>XIndex Operation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.summer.dsl.model.xbase.impl.XIndexOperationImpl
-	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXIndexOperation()
-	 * @generated
-	 */
-	int XINDEX_OPERATION = 42;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__FEATURE = XABSTRACT_FEATURE_CALL__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Type Arguments</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__TYPE_ARGUMENTS = XABSTRACT_FEATURE_CALL__TYPE_ARGUMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Implicit Receiver</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__IMPLICIT_RECEIVER = XABSTRACT_FEATURE_CALL__IMPLICIT_RECEIVER;
-
-	/**
-	 * The feature id for the '<em><b>Invalid Feature Issue Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__INVALID_FEATURE_ISSUE_CODE = XABSTRACT_FEATURE_CALL__INVALID_FEATURE_ISSUE_CODE;
-
-	/**
-	 * The feature id for the '<em><b>Valid Feature</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__VALID_FEATURE = XABSTRACT_FEATURE_CALL__VALID_FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Implicit First Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__IMPLICIT_FIRST_ARGUMENT = XABSTRACT_FEATURE_CALL__IMPLICIT_FIRST_ARGUMENT;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__EXPRESSION = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Index</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION__INDEX = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>XIndex Operation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XINDEX_OPERATION_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl <em>XFunction Declaration</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2314,7 +2115,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFunctionDeclaration()
 	 * @generated
 	 */
-	int XFUNCTION_DECLARATION = 50;
+	int XFUNCTION_DECLARATION = 49;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralImpl <em>XObject Literal</em>}' class.
@@ -2324,7 +2125,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteral()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL = 43;
+	int XOBJECT_LITERAL = 42;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2469,7 +2270,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXObjectLiteralPart()
 	 * @generated
 	 */
-	int XOBJECT_LITERAL_PART = 44;
+	int XOBJECT_LITERAL_PART = 43;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2607,6 +2408,15 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL_PART__DEFAULT_VALUE = TypesPackage.JVM_FIELD__DEFAULT_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__PARAMETERS = TypesPackage.JVM_FIELD__PARAMETERS;
+
+	/**
 	 * The feature id for the '<em><b>Set</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2625,6 +2435,15 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL_PART__GET = TypesPackage.JVM_FIELD__GET;
 
 	/**
+	 * The feature id for the '<em><b>Indexer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XOBJECT_LITERAL_PART__INDEXER = TypesPackage.JVM_FIELD__INDEXER;
+
+	/**
 	 * The number of structural features of the '<em>XObject Literal Part</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2641,7 +2460,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXArrayLiteral()
 	 * @generated
 	 */
-	int XARRAY_LITERAL = 45;
+	int XARRAY_LITERAL = 44;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -2669,7 +2488,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXStructLiteral()
 	 * @generated
 	 */
-	int XSTRUCT_LITERAL = 46;
+	int XSTRUCT_LITERAL = 45;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -2715,7 +2534,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXFieldLiteralPart()
 	 * @generated
 	 */
-	int XFIELD_LITERAL_PART = 47;
+	int XFIELD_LITERAL_PART = 46;
 
 	/**
 	 * The feature id for the '<em><b>Field</b></em>' reference.
@@ -2752,7 +2571,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXTemplate()
 	 * @generated
 	 */
-	int XTEMPLATE = 48;
+	int XTEMPLATE = 47;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2780,7 +2599,7 @@ public interface XbasePackage extends EPackage {
 	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getRichStringLiteral()
 	 * @generated
 	 */
-	int RICH_STRING_LITERAL = 49;
+	int RICH_STRING_LITERAL = 48;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2801,13 +2620,22 @@ public interface XbasePackage extends EPackage {
 	int RICH_STRING_LITERAL_FEATURE_COUNT = XSTRING_LITERAL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XFUNCTION_DECLARATION__TYPE_PARAMETERS = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR__TYPE_PARAMETERS;
+
+	/**
 	 * The feature id for the '<em><b>Declared Formal Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS = XSTATMENT_FEATURE_COUNT + 0;
+	int XFUNCTION_DECLARATION__DECLARED_FORMAL_PARAMETERS = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -2816,7 +2644,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION__BODY = XSTATMENT_FEATURE_COUNT + 1;
+	int XFUNCTION_DECLARATION__BODY = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
@@ -2825,7 +2653,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION__SIMPLE_NAME = XSTATMENT_FEATURE_COUNT + 2;
+	int XFUNCTION_DECLARATION__SIMPLE_NAME = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Return Type</b></em>' containment reference.
@@ -2834,16 +2662,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION__RETURN_TYPE = XSTATMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Type Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XFUNCTION_DECLARATION__TYPE_PARAMETERS = XSTATMENT_FEATURE_COUNT + 4;
+	int XFUNCTION_DECLARATION__RETURN_TYPE = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Exported</b></em>' attribute.
@@ -2852,7 +2671,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION__EXPORTED = XSTATMENT_FEATURE_COUNT + 5;
+	int XFUNCTION_DECLARATION__EXPORTED = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>XFunction Declaration</em>' class.
@@ -2861,7 +2680,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XFUNCTION_DECLARATION_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 6;
+	int XFUNCTION_DECLARATION_FEATURE_COUNT = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 5;
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
@@ -3315,113 +3134,90 @@ public interface XbasePackage extends EPackage {
 	EAttribute getXMemberFeatureCall_IndexedOperation();
 
 	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1 <em>XMember Feature Call1</em>}'.
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XCaller <em>XCaller</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XMember Feature Call1</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1
+	 * @return the meta object for class '<em>XCaller</em>'.
+	 * @see org.summer.dsl.model.xbase.XCaller
 	 * @generated
 	 */
-	EClass getXMemberFeatureCall1();
+	EClass getXCaller();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#getMemberCallTarget <em>Member Call Target</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XCaller#getFunction <em>Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Member Call Target</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#getMemberCallTarget()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the containment reference '<em>Function</em>'.
+	 * @see org.summer.dsl.model.xbase.XCaller#getFunction()
+	 * @see #getXCaller()
 	 * @generated
 	 */
-	EReference getXMemberFeatureCall1_MemberCallTarget();
+	EReference getXCaller_Function();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#getMemberCallArguments <em>Member Call Arguments</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XCaller#getArguments <em>Arguments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Member Call Arguments</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#getMemberCallArguments()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the containment reference list '<em>Arguments</em>'.
+	 * @see org.summer.dsl.model.xbase.XCaller#getArguments()
+	 * @see #getXCaller()
 	 * @generated
 	 */
-	EReference getXMemberFeatureCall1_MemberCallArguments();
+	EReference getXCaller_Arguments();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isExplicitOperationCall <em>Explicit Operation Call</em>}'.
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xbase.XCaller#getFeature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Explicit Operation Call</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isExplicitOperationCall()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the reference '<em>Feature</em>'.
+	 * @see org.summer.dsl.model.xbase.XCaller#getFeature()
+	 * @see #getXCaller()
 	 * @generated
 	 */
-	EAttribute getXMemberFeatureCall1_ExplicitOperationCall();
+	EReference getXCaller_Feature();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isExplicitStatic <em>Explicit Static</em>}'.
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XIndexer <em>XIndexer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Explicit Static</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isExplicitStatic()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for class '<em>XIndexer</em>'.
+	 * @see org.summer.dsl.model.xbase.XIndexer
 	 * @generated
 	 */
-	EAttribute getXMemberFeatureCall1_ExplicitStatic();
+	EClass getXIndexer();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isNullSafe <em>Null Safe</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XIndexer#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Null Safe</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isNullSafe()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the containment reference '<em>Source</em>'.
+	 * @see org.summer.dsl.model.xbase.XIndexer#getSource()
+	 * @see #getXIndexer()
 	 * @generated
 	 */
-	EAttribute getXMemberFeatureCall1_NullSafe();
+	EReference getXIndexer_Source();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isTypeLiteral <em>Type Literal</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XIndexer#getArguments <em>Arguments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type Literal</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isTypeLiteral()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the containment reference list '<em>Arguments</em>'.
+	 * @see org.summer.dsl.model.xbase.XIndexer#getArguments()
+	 * @see #getXIndexer()
 	 * @generated
 	 */
-	EAttribute getXMemberFeatureCall1_TypeLiteral();
+	EReference getXIndexer_Arguments();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isStaticWithDeclaringType <em>Static With Declaring Type</em>}'.
+	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xbase.XIndexer#getFeature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Static With Declaring Type</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isStaticWithDeclaringType()
-	 * @see #getXMemberFeatureCall1()
+	 * @return the meta object for the reference '<em>Feature</em>'.
+	 * @see org.summer.dsl.model.xbase.XIndexer#getFeature()
+	 * @see #getXIndexer()
 	 * @generated
 	 */
-	EAttribute getXMemberFeatureCall1_StaticWithDeclaringType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isPackageFragment <em>Package Fragment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Package Fragment</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isPackageFragment()
-	 * @see #getXMemberFeatureCall1()
-	 * @generated
-	 */
-	EAttribute getXMemberFeatureCall1_PackageFragment();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1#isIndexedOperation <em>Indexed Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Indexed Operation</em>'.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1#isIndexedOperation()
-	 * @see #getXMemberFeatureCall1()
-	 * @generated
-	 */
-	EAttribute getXMemberFeatureCall1_IndexedOperation();
+	EReference getXIndexer_Feature();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XFeatureCall <em>XFeature Call</em>}'.
@@ -3667,49 +3463,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getXListLiteral();
-
-	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XKeyValuePair <em>XKey Value Pair</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XKey Value Pair</em>'.
-	 * @see org.summer.dsl.model.xbase.XKeyValuePair
-	 * @generated
-	 */
-	EClass getXKeyValuePair();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XKeyValuePair#getKey <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Key</em>'.
-	 * @see org.summer.dsl.model.xbase.XKeyValuePair#getKey()
-	 * @see #getXKeyValuePair()
-	 * @generated
-	 */
-	EReference getXKeyValuePair_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XKeyValuePair#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see org.summer.dsl.model.xbase.XKeyValuePair#getValue()
-	 * @see #getXKeyValuePair()
-	 * @generated
-	 */
-	EReference getXKeyValuePair_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XKeyValuePair#getKey1 <em>Key1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key1</em>'.
-	 * @see org.summer.dsl.model.xbase.XKeyValuePair#getKey1()
-	 * @see #getXKeyValuePair()
-	 * @generated
-	 */
-	EAttribute getXKeyValuePair_Key1();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XSetLiteral <em>XSet Literal</em>}'.
@@ -4417,38 +4170,6 @@ public interface XbasePackage extends EPackage {
 	EReference getXTernaryOperation_Condition();
 
 	/**
-	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XIndexOperation <em>XIndex Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>XIndex Operation</em>'.
-	 * @see org.summer.dsl.model.xbase.XIndexOperation
-	 * @generated
-	 */
-	EClass getXIndexOperation();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XIndexOperation#getExpression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expression</em>'.
-	 * @see org.summer.dsl.model.xbase.XIndexOperation#getExpression()
-	 * @see #getXIndexOperation()
-	 * @generated
-	 */
-	EReference getXIndexOperation_Expression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XIndexOperation#getIndex <em>Index</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Index</em>'.
-	 * @see org.summer.dsl.model.xbase.XIndexOperation#getIndex()
-	 * @see #getXIndexOperation()
-	 * @generated
-	 */
-	EReference getXIndexOperation_Index();
-
-	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XFunctionDeclaration <em>XFunction Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4501,17 +4222,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXFunctionDeclaration_ReturnType();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getTypeParameters <em>Type Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Type Parameters</em>'.
-	 * @see org.summer.dsl.model.xbase.XFunctionDeclaration#getTypeParameters()
-	 * @see #getXFunctionDeclaration()
-	 * @generated
-	 */
-	EReference getXFunctionDeclaration_TypeParameters();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XFunctionDeclaration#isExported <em>Exported</em>}'.
@@ -5052,86 +4762,72 @@ public interface XbasePackage extends EPackage {
 		EAttribute XMEMBER_FEATURE_CALL__INDEXED_OPERATION = eINSTANCE.getXMemberFeatureCall_IndexedOperation();
 
 		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XMemberFeatureCall1Impl <em>XMember Feature Call1</em>}' class.
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XCallerImpl <em>XCaller</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xbase.impl.XMemberFeatureCall1Impl
-		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXMemberFeatureCall1()
+		 * @see org.summer.dsl.model.xbase.impl.XCallerImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXCaller()
 		 * @generated
 		 */
-		EClass XMEMBER_FEATURE_CALL1 = eINSTANCE.getXMemberFeatureCall1();
+		EClass XCALLER = eINSTANCE.getXCaller();
 
 		/**
-		 * The meta object literal for the '<em><b>Member Call Target</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XMEMBER_FEATURE_CALL1__MEMBER_CALL_TARGET = eINSTANCE.getXMemberFeatureCall1_MemberCallTarget();
+		EReference XCALLER__FUNCTION = eINSTANCE.getXCaller_Function();
 
 		/**
-		 * The meta object literal for the '<em><b>Member Call Arguments</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XMEMBER_FEATURE_CALL1__MEMBER_CALL_ARGUMENTS = eINSTANCE.getXMemberFeatureCall1_MemberCallArguments();
+		EReference XCALLER__ARGUMENTS = eINSTANCE.getXCaller_Arguments();
 
 		/**
-		 * The meta object literal for the '<em><b>Explicit Operation Call</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XMEMBER_FEATURE_CALL1__EXPLICIT_OPERATION_CALL = eINSTANCE.getXMemberFeatureCall1_ExplicitOperationCall();
+		EReference XCALLER__FEATURE = eINSTANCE.getXCaller_Feature();
 
 		/**
-		 * The meta object literal for the '<em><b>Explicit Static</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XIndexerImpl <em>XIndexer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XIndexerImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXIndexer()
 		 * @generated
 		 */
-		EAttribute XMEMBER_FEATURE_CALL1__EXPLICIT_STATIC = eINSTANCE.getXMemberFeatureCall1_ExplicitStatic();
+		EClass XINDEXER = eINSTANCE.getXIndexer();
 
 		/**
-		 * The meta object literal for the '<em><b>Null Safe</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Source</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XMEMBER_FEATURE_CALL1__NULL_SAFE = eINSTANCE.getXMemberFeatureCall1_NullSafe();
+		EReference XINDEXER__SOURCE = eINSTANCE.getXIndexer_Source();
 
 		/**
-		 * The meta object literal for the '<em><b>Type Literal</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XMEMBER_FEATURE_CALL1__TYPE_LITERAL = eINSTANCE.getXMemberFeatureCall1_TypeLiteral();
+		EReference XINDEXER__ARGUMENTS = eINSTANCE.getXIndexer_Arguments();
 
 		/**
-		 * The meta object literal for the '<em><b>Static With Declaring Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XMEMBER_FEATURE_CALL1__STATIC_WITH_DECLARING_TYPE = eINSTANCE.getXMemberFeatureCall1_StaticWithDeclaringType();
-
-		/**
-		 * The meta object literal for the '<em><b>Package Fragment</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XMEMBER_FEATURE_CALL1__PACKAGE_FRAGMENT = eINSTANCE.getXMemberFeatureCall1_PackageFragment();
-
-		/**
-		 * The meta object literal for the '<em><b>Indexed Operation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XMEMBER_FEATURE_CALL1__INDEXED_OPERATION = eINSTANCE.getXMemberFeatureCall1_IndexedOperation();
+		EReference XINDEXER__FEATURE = eINSTANCE.getXIndexer_Feature();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XFeatureCallImpl <em>XFeature Call</em>}' class.
@@ -5332,40 +5028,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass XLIST_LITERAL = eINSTANCE.getXListLiteral();
-
-		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XKeyValuePairImpl <em>XKey Value Pair</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xbase.impl.XKeyValuePairImpl
-		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXKeyValuePair()
-		 * @generated
-		 */
-		EClass XKEY_VALUE_PAIR = eINSTANCE.getXKeyValuePair();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XKEY_VALUE_PAIR__KEY = eINSTANCE.getXKeyValuePair_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XKEY_VALUE_PAIR__VALUE = eINSTANCE.getXKeyValuePair_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Key1</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute XKEY_VALUE_PAIR__KEY1 = eINSTANCE.getXKeyValuePair_Key1();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XSetLiteralImpl <em>XSet Literal</em>}' class.
@@ -5938,32 +5600,6 @@ public interface XbasePackage extends EPackage {
 		EReference XTERNARY_OPERATION__CONDITION = eINSTANCE.getXTernaryOperation_Condition();
 
 		/**
-		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XIndexOperationImpl <em>XIndex Operation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.summer.dsl.model.xbase.impl.XIndexOperationImpl
-		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXIndexOperation()
-		 * @generated
-		 */
-		EClass XINDEX_OPERATION = eINSTANCE.getXIndexOperation();
-
-		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XINDEX_OPERATION__EXPRESSION = eINSTANCE.getXIndexOperation_Expression();
-
-		/**
-		 * The meta object literal for the '<em><b>Index</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XINDEX_OPERATION__INDEX = eINSTANCE.getXIndexOperation_Index();
-
-		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XFunctionDeclarationImpl <em>XFunction Declaration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6004,14 +5640,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XFUNCTION_DECLARATION__RETURN_TYPE = eINSTANCE.getXFunctionDeclaration_ReturnType();
-
-		/**
-		 * The meta object literal for the '<em><b>Type Parameters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XFUNCTION_DECLARATION__TYPE_PARAMETERS = eINSTANCE.getXFunctionDeclaration_TypeParameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Exported</b></em>' attribute feature.

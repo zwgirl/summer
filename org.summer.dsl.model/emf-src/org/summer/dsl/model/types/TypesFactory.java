@@ -238,6 +238,15 @@ public interface TypesFactory extends EFactory {
 	JvmField createJvmField();
 
 	/**
+	 * Returns a new object of class '<em>Jvm Indexer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Jvm Indexer</em>'.
+	 * @generated
+	 */
+	JvmIndexer createJvmIndexer();
+
+	/**
 	 * Returns a new object of class '<em>Jvm Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

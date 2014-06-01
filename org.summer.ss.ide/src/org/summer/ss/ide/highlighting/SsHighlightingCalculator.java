@@ -178,6 +178,10 @@ public class SsHighlightingCalculator extends XbaseHighlightingCalculator {
 
 	private void highlightXElement(IHighlightedPositionAcceptor acceptor,
 			XElement element) {
+		if(!(element.getType() instanceof JvmDeclaredType)){
+			return;
+		}
+		
 		JvmDeclaredType type = (JvmDeclaredType) element.getType();
 		if(type.getSimpleName() != null && type.getSimpleName().length() > 0){
 			highlightObjectAtFeature(acceptor, element, XamlPackage.eINSTANCE.getXElement_Type(), XbaseHighlightingConfiguration.EXTENSION_METHOD_INVOCATION);

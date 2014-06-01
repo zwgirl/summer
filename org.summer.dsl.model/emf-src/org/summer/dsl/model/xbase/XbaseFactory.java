@@ -94,13 +94,13 @@ public interface XbaseFactory extends EFactory {
 	XMemberFeatureCall createXMemberFeatureCall();
 
 	/**
-	 * Returns a new object of class '<em>XMember Feature Call1</em>'.
+	 * Returns a new object of class '<em>XCaller</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XMember Feature Call1</em>'.
+	 * @return a new object of class '<em>XCaller</em>'.
 	 * @generated
 	 */
-	XMemberFeatureCall1 createXMemberFeatureCall1();
+	XCaller createXCaller();
 
 	/**
 	 * Returns a new object of class '<em>XFeature Call</em>'.
@@ -164,15 +164,6 @@ public interface XbaseFactory extends EFactory {
 	 * @generated
 	 */
 	XListLiteral createXListLiteral();
-
-	/**
-	 * Returns a new object of class '<em>XKey Value Pair</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XKey Value Pair</em>'.
-	 * @generated
-	 */
-	XKeyValuePair createXKeyValuePair();
 
 	/**
 	 * Returns a new object of class '<em>XSet Literal</em>'.
@@ -355,13 +346,13 @@ public interface XbaseFactory extends EFactory {
 	XTernaryOperation createXTernaryOperation();
 
 	/**
-	 * Returns a new object of class '<em>XIndex Operation</em>'.
+	 * Returns a new object of class '<em>XIndexer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>XIndex Operation</em>'.
+	 * @return a new object of class '<em>XIndexer</em>'.
 	 * @generated
 	 */
-	XIndexOperation createXIndexOperation();
+	XIndexer createXIndexer();
 
 	/**
 	 * Returns a new object of class '<em>XFunction Declaration</em>'.

@@ -131,7 +131,7 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 				state.computeTypes();
 				
 				computeAnnotationTypes(fieldResolvedTypes, childSession, field);
-				mergeChildTypes(fieldResolvedTypes);
+				fieldResolvedTypes.mergeIntoParent();
 			} else if (member instanceof JvmOperation) {
 				JvmOperation operation = (JvmOperation) member;
 				StackedResolvedTypes operationResolvedTypes = declareTypeParameters(classResolvedTypes, operation);
@@ -139,11 +139,11 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 				LightweightTypeReference lightweightReference = operationResolvedTypes.getConverter().toLightweightReference(operation.getReturnType());
 				operationResolvedTypes.setType(operation, lightweightReference);
 				
-				OperationBodyComputationState state = new OperationBodyComputationState(operationResolvedTypes, operation.isStatic() ? childSession : childSession.toInstanceContext(), operation);
+				OperationComputationState state = new OperationComputationState(operationResolvedTypes, operation.isStatic() ? childSession : childSession.toInstanceContext(), operation);
 				state.computeTypes();
 				
 				computeAnnotationTypes(operationResolvedTypes, childSession, operation);
-				mergeChildTypes(operationResolvedTypes);
+				operationResolvedTypes.mergeIntoParent();
 			} else if (member instanceof JvmConstructor) {
 				JvmConstructor constructor = (JvmConstructor) member;
 				StackedResolvedTypes constructorResolvedTypes = declareTypeParameters(classResolvedTypes, constructor);
@@ -161,14 +161,11 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 					computeAnnotationTypes(constructorResolvedTypes, childSession, parameter);
 				}
 				
-				mergeChildTypes(constructorResolvedTypes);
+				constructorResolvedTypes.mergeIntoParent();
 			}
 		}
-	}
-	
-	protected void mergeChildTypes(ResolvedTypes childResolvedTypes) {
-		if (childResolvedTypes instanceof StackedResolvedTypes)
-			((StackedResolvedTypes) childResolvedTypes).mergeIntoParent();
+		
+		classResolvedTypes.mergeIntoParent();
 	}
 	
 	protected void computeAnnotationTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession sessions, JvmExecutable operation) {

@@ -33,6 +33,7 @@ import org.summer.dsl.model.types.JvmFloatAnnotationValue;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericArrayTypeReference;
 import org.summer.dsl.model.types.JvmGenericType;
+import org.summer.dsl.model.types.JvmIndexer;
 import org.summer.dsl.model.types.JvmIntAnnotationValue;
 import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmLongAnnotationValue;
@@ -147,6 +148,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 			case TypesPackage.JVM_REMOTE_TYPE: return createJvmRemoteType();
 			case TypesPackage.JVM_EVENT: return createJvmEvent();
 			case TypesPackage.JVM_BEAN_TYPE: return createJvmBeanType();
+			case TypesPackage.JVM_INDEXER: return createJvmIndexer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -686,6 +688,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory {
 
 	public JvmBeanType createJvmBeanType() {
 		return new JvmBeanTypeImpl();
+	}
+
+	public JvmIndexer createJvmIndexer() {
+		return new JvmIndexerImpl();
 	}
 
 } //TypesFactoryImpl

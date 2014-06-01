@@ -14,58 +14,8 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.xbase.RichStringLiteral;
-import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XAbstractWhileStatment;
-import org.summer.dsl.model.xbase.XArrayLiteral;
-import org.summer.dsl.model.xbase.XAssignment;
-import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockStatment;
-import org.summer.dsl.model.xbase.XBooleanLiteral;
-import org.summer.dsl.model.xbase.XBreakStatment;
-import org.summer.dsl.model.xbase.XCasePart;
-import org.summer.dsl.model.xbase.XCastedExpression;
-import org.summer.dsl.model.xbase.XCatchClause;
-import org.summer.dsl.model.xbase.XClosure;
-import org.summer.dsl.model.xbase.XCollectionLiteral;
-import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XContinueStatment;
-import org.summer.dsl.model.xbase.XDoWhileStatment;
-import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XExpressionStatment;
-import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XFieldLiteralPart;
-import org.summer.dsl.model.xbase.XForEachStatment;
-import org.summer.dsl.model.xbase.XForLoopStatment;
-import org.summer.dsl.model.xbase.XFunctionDeclaration;
-import org.summer.dsl.model.xbase.XIfStatment;
-import org.summer.dsl.model.xbase.XIndexOperation;
-import org.summer.dsl.model.xbase.XInstanceOfExpression;
-import org.summer.dsl.model.xbase.XKeyValuePair;
-import org.summer.dsl.model.xbase.XListLiteral;
-import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
-import org.summer.dsl.model.xbase.XNullLiteral;
-import org.summer.dsl.model.xbase.XNumberLiteral;
-import org.summer.dsl.model.xbase.XObjectLiteral;
-import org.summer.dsl.model.xbase.XObjectLiteralPart;
-import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XReturnStatment;
-import org.summer.dsl.model.xbase.XSetLiteral;
-import org.summer.dsl.model.xbase.XStatment;
-import org.summer.dsl.model.xbase.XStringLiteral;
-import org.summer.dsl.model.xbase.XStructLiteral;
-import org.summer.dsl.model.xbase.XSwitchStatment;
-import org.summer.dsl.model.xbase.XTemplate;
-import org.summer.dsl.model.xbase.XTernaryOperation;
-import org.summer.dsl.model.xbase.XThrowStatment;
-import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
-import org.summer.dsl.model.xbase.XTypeLiteral;
-import org.summer.dsl.model.xbase.XUnaryOperation;
-import org.summer.dsl.model.xbase.XVariableDeclaration;
-import org.summer.dsl.model.xbase.XVariableDeclarationList;
-import org.summer.dsl.model.xbase.XWhileStatment;
-import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
+import org.summer.dsl.model.xbase.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -168,8 +118,12 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXMemberFeatureCallAdapter();
 			}
 			@Override
-			public Adapter caseXMemberFeatureCall1(XMemberFeatureCall1 object) {
-				return createXMemberFeatureCall1Adapter();
+			public Adapter caseXCaller(XCaller object) {
+				return createXCallerAdapter();
+			}
+			@Override
+			public Adapter caseXIndexer(XIndexer object) {
+				return createXIndexerAdapter();
 			}
 			@Override
 			public Adapter caseXFeatureCall(XFeatureCall object) {
@@ -202,10 +156,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseXListLiteral(XListLiteral object) {
 				return createXListLiteralAdapter();
-			}
-			@Override
-			public Adapter caseXKeyValuePair(XKeyValuePair object) {
-				return createXKeyValuePairAdapter();
 			}
 			@Override
 			public Adapter caseXSetLiteral(XSetLiteral object) {
@@ -292,10 +242,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXTernaryOperationAdapter();
 			}
 			@Override
-			public Adapter caseXIndexOperation(XIndexOperation object) {
-				return createXIndexOperationAdapter();
-			}
-			@Override
 			public Adapter caseXObjectLiteral(XObjectLiteral object) {
 				return createXObjectLiteralAdapter();
 			}
@@ -358,6 +304,10 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseJvmField(JvmField object) {
 				return createJvmFieldAdapter();
+			}
+			@Override
+			public Adapter caseJvmTypeParameterDeclarator(JvmTypeParameterDeclarator object) {
+				return createJvmTypeParameterDeclaratorAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -534,16 +484,30 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XMemberFeatureCall1 <em>XMember Feature Call1</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XCaller <em>XCaller</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XMemberFeatureCall1
+	 * @see org.summer.dsl.model.xbase.XCaller
 	 * @generated
 	 */
-	public Adapter createXMemberFeatureCall1Adapter() {
+	public Adapter createXCallerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XIndexer <em>XIndexer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XIndexer
+	 * @generated
+	 */
+	public Adapter createXIndexerAdapter() {
 		return null;
 	}
 
@@ -656,20 +620,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXListLiteralAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XKeyValuePair <em>XKey Value Pair</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XKeyValuePair
-	 * @generated
-	 */
-	public Adapter createXKeyValuePairAdapter() {
 		return null;
 	}
 
@@ -968,20 +918,6 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XIndexOperation <em>XIndex Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.summer.dsl.model.xbase.XIndexOperation
-	 * @generated
-	 */
-	public Adapter createXIndexOperationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XFunctionDeclaration <em>XFunction Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1202,6 +1138,20 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJvmFieldAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.types.JvmTypeParameterDeclarator <em>Jvm Type Parameter Declarator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.types.JvmTypeParameterDeclarator
+	 * @generated
+	 */
+	public Adapter createJvmTypeParameterDeclaratorAdapter() {
 		return null;
 	}
 

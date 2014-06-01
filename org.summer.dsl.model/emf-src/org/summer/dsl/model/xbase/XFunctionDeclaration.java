@@ -5,7 +5,7 @@ package org.summer.dsl.model.xbase;
 import org.eclipse.emf.common.util.EList;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmTypeParameter;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 
 /**
@@ -20,7 +20,6 @@ import org.summer.dsl.model.types.JvmTypeReference;
  *   <li>{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getBody <em>Body</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XFunctionDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XFunctionDeclaration#isExported <em>Exported</em>}</li>
  * </ul>
  * </p>
@@ -29,7 +28,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface XFunctionDeclaration extends XStatment, JvmIdentifiableElement {
+public interface XFunctionDeclaration extends JvmTypeParameterDeclarator, XStatment, JvmIdentifiableElement {
 	/**
 	 * Returns the value of the '<em><b>Declared Formal Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link org.summer.dsl.model.types.JvmFormalParameter}.
@@ -123,22 +122,6 @@ public interface XFunctionDeclaration extends XStatment, JvmIdentifiableElement 
 	 * @generated
 	 */
 	void setReturnType(JvmTypeReference value);
-
-	/**
-	 * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link org.summer.dsl.model.types.JvmTypeParameter}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type Parameters</em>' containment reference list.
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXFunctionDeclaration_TypeParameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<JvmTypeParameter> getTypeParameters();
 
 	/**
 	 * Returns the value of the '<em><b>Exported</b></em>' attribute.

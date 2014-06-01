@@ -13,12 +13,12 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmFormalParameter;
-import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
+import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
 /**
@@ -44,7 +44,9 @@ public class ConstructorBodyComputationState extends AbstractLogicalContainerAwa
 	
 	@Override
 	protected LightweightTypeReference getExpectedType() {
-		return getResolvedTypes().getConverter().toLightweightReference(getTypeReferences().getTypeForName(Buildin.Void.JvmType, getContainer()));
+//		return getResolvedTypes().getConverter().toLightweightReference(getTypeReferences().getTypeForName(Buildin.Void.JvmType, getContainer()));
+		return new AnyTypeReference(getResolvedTypes().getConverter().getOwner());
+		
 	}
 	
 	@Override

@@ -13,58 +13,8 @@ import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
-import org.summer.dsl.model.xbase.RichStringLiteral;
-import org.summer.dsl.model.xbase.XAbstractFeatureCall;
-import org.summer.dsl.model.xbase.XAbstractWhileStatment;
-import org.summer.dsl.model.xbase.XArrayLiteral;
-import org.summer.dsl.model.xbase.XAssignment;
-import org.summer.dsl.model.xbase.XBinaryOperation;
-import org.summer.dsl.model.xbase.XBlockStatment;
-import org.summer.dsl.model.xbase.XBooleanLiteral;
-import org.summer.dsl.model.xbase.XBreakStatment;
-import org.summer.dsl.model.xbase.XCasePart;
-import org.summer.dsl.model.xbase.XCastedExpression;
-import org.summer.dsl.model.xbase.XCatchClause;
-import org.summer.dsl.model.xbase.XClosure;
-import org.summer.dsl.model.xbase.XCollectionLiteral;
-import org.summer.dsl.model.xbase.XConstructorCall;
-import org.summer.dsl.model.xbase.XContinueStatment;
-import org.summer.dsl.model.xbase.XDoWhileStatment;
-import org.summer.dsl.model.xbase.XExpression;
-import org.summer.dsl.model.xbase.XExpressionStatment;
-import org.summer.dsl.model.xbase.XFeatureCall;
-import org.summer.dsl.model.xbase.XFieldLiteralPart;
-import org.summer.dsl.model.xbase.XForEachStatment;
-import org.summer.dsl.model.xbase.XForLoopStatment;
-import org.summer.dsl.model.xbase.XFunctionDeclaration;
-import org.summer.dsl.model.xbase.XIfStatment;
-import org.summer.dsl.model.xbase.XIndexOperation;
-import org.summer.dsl.model.xbase.XInstanceOfExpression;
-import org.summer.dsl.model.xbase.XKeyValuePair;
-import org.summer.dsl.model.xbase.XListLiteral;
-import org.summer.dsl.model.xbase.XMemberFeatureCall;
-import org.summer.dsl.model.xbase.XMemberFeatureCall1;
-import org.summer.dsl.model.xbase.XNullLiteral;
-import org.summer.dsl.model.xbase.XNumberLiteral;
-import org.summer.dsl.model.xbase.XObjectLiteral;
-import org.summer.dsl.model.xbase.XObjectLiteralPart;
-import org.summer.dsl.model.xbase.XPostfixOperation;
-import org.summer.dsl.model.xbase.XReturnStatment;
-import org.summer.dsl.model.xbase.XSetLiteral;
-import org.summer.dsl.model.xbase.XStatment;
-import org.summer.dsl.model.xbase.XStringLiteral;
-import org.summer.dsl.model.xbase.XStructLiteral;
-import org.summer.dsl.model.xbase.XSwitchStatment;
-import org.summer.dsl.model.xbase.XTemplate;
-import org.summer.dsl.model.xbase.XTernaryOperation;
-import org.summer.dsl.model.xbase.XThrowStatment;
-import org.summer.dsl.model.xbase.XTryCatchFinallyStatment;
-import org.summer.dsl.model.xbase.XTypeLiteral;
-import org.summer.dsl.model.xbase.XUnaryOperation;
-import org.summer.dsl.model.xbase.XVariableDeclaration;
-import org.summer.dsl.model.xbase.XVariableDeclarationList;
-import org.summer.dsl.model.xbase.XWhileStatment;
-import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
+import org.summer.dsl.model.xbase.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -199,11 +149,17 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XMEMBER_FEATURE_CALL1: {
-				XMemberFeatureCall1 xMemberFeatureCall1 = (XMemberFeatureCall1)theEObject;
-				T result = caseXMemberFeatureCall1(xMemberFeatureCall1);
-				if (result == null) result = caseXAbstractFeatureCall(xMemberFeatureCall1);
-				if (result == null) result = caseXExpression(xMemberFeatureCall1);
+			case XbasePackage.XCALLER: {
+				XCaller xCaller = (XCaller)theEObject;
+				T result = caseXCaller(xCaller);
+				if (result == null) result = caseXExpression(xCaller);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XINDEXER: {
+				XIndexer xIndexer = (XIndexer)theEObject;
+				T result = caseXIndexer(xIndexer);
+				if (result == null) result = caseXExpression(xIndexer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -262,13 +218,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 				T result = caseXListLiteral(xListLiteral);
 				if (result == null) result = caseXCollectionLiteral(xListLiteral);
 				if (result == null) result = caseXExpression(xListLiteral);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case XbasePackage.XKEY_VALUE_PAIR: {
-				XKeyValuePair xKeyValuePair = (XKeyValuePair)theEObject;
-				T result = caseXKeyValuePair(xKeyValuePair);
-				if (result == null) result = caseXExpression(xKeyValuePair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -426,14 +375,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case XbasePackage.XINDEX_OPERATION: {
-				XIndexOperation xIndexOperation = (XIndexOperation)theEObject;
-				T result = caseXIndexOperation(xIndexOperation);
-				if (result == null) result = caseXAbstractFeatureCall(xIndexOperation);
-				if (result == null) result = caseXExpression(xIndexOperation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case XbasePackage.XOBJECT_LITERAL: {
 				XObjectLiteral xObjectLiteral = (XObjectLiteral)theEObject;
 				T result = caseXObjectLiteral(xObjectLiteral);
@@ -496,6 +437,7 @@ public class XbaseSwitch<T> extends Switch<T> {
 			case XbasePackage.XFUNCTION_DECLARATION: {
 				XFunctionDeclaration xFunctionDeclaration = (XFunctionDeclaration)theEObject;
 				T result = caseXFunctionDeclaration(xFunctionDeclaration);
+				if (result == null) result = caseJvmTypeParameterDeclarator(xFunctionDeclaration);
 				if (result == null) result = caseXStatment(xFunctionDeclaration);
 				if (result == null) result = caseJvmIdentifiableElement(xFunctionDeclaration);
 				if (result == null) result = defaultCase(theEObject);
@@ -671,17 +613,32 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XMember Feature Call1</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XCaller</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XMember Feature Call1</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XCaller</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseXMemberFeatureCall1(XMemberFeatureCall1 object) {
+	public T caseXCaller(XCaller object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XIndexer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XIndexer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXIndexer(XIndexer object) {
 		return null;
 	}
 
@@ -802,21 +759,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXListLiteral(XListLiteral object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XKey Value Pair</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XKey Value Pair</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXKeyValuePair(XKeyValuePair object) {
 		return null;
 	}
 
@@ -1136,21 +1078,6 @@ public class XbaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XIndex Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XIndex Operation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseXIndexOperation(XIndexOperation object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>XFunction Declaration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1387,6 +1314,21 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJvmField(JvmField object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Jvm Type Parameter Declarator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Jvm Type Parameter Declarator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJvmTypeParameterDeclarator(JvmTypeParameterDeclarator object) {
 		return null;
 	}
 

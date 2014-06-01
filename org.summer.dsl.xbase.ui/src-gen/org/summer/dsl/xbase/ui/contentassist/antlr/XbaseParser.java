@@ -287,12 +287,10 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXUnaryOperationAccess().getFeatureAssignment_0_1(), "rule__XUnaryOperation__FeatureAssignment_0_1");
 					put(grammarAccess.getXUnaryOperationAccess().getOperandAssignment_0_2(), "rule__XUnaryOperation__OperandAssignment_0_2");
 					put(grammarAccess.getXCastedExpressionAccess().getTypeAssignment_1_1(), "rule__XCastedExpression__TypeAssignment_1_1");
-					put(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallAssignment_1_0_0_0_1(), "rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_0_0_0_1");
-					put(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsAssignment_1_0_1_0(), "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_0_1_0");
-					put(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsAssignment_1_0_1_1_1(), "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_0_1_1_1");
-					put(grammarAccess.getXMemberFeatureCallAccess().getIndexedOperationAssignment_1_1_0_0_1(), "rule__XMemberFeatureCall__IndexedOperationAssignment_1_1_0_0_1");
-					put(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsAssignment_1_1_1_0(), "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_1_0");
-					put(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsAssignment_1_1_1_1_1(), "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_1_1_1");
+					put(grammarAccess.getXMemberFeatureCallAccess().getArgumentsAssignment_1_0_1_0(), "rule__XMemberFeatureCall__ArgumentsAssignment_1_0_1_0");
+					put(grammarAccess.getXMemberFeatureCallAccess().getArgumentsAssignment_1_0_1_1_1(), "rule__XMemberFeatureCall__ArgumentsAssignment_1_0_1_1_1");
+					put(grammarAccess.getXMemberFeatureCallAccess().getArgumentsAssignment_1_1_1_0(), "rule__XMemberFeatureCall__ArgumentsAssignment_1_1_1_0");
+					put(grammarAccess.getXMemberFeatureCallAccess().getArgumentsAssignment_1_1_1_1_1(), "rule__XMemberFeatureCall__ArgumentsAssignment_1_1_1_1_1");
 					put(grammarAccess.getXMemberFeatureCallAccess().getFeatureAssignment_1_2_0_0_2(), "rule__XMemberFeatureCall__FeatureAssignment_1_2_0_0_2");
 					put(grammarAccess.getXMemberFeatureCallAccess().getValueAssignment_1_2_1(), "rule__XMemberFeatureCall__ValueAssignment_1_2_1");
 					put(grammarAccess.getXMemberFeatureCallAccess().getNullSafeAssignment_1_3_0_0_1_1(), "rule__XMemberFeatureCall__NullSafeAssignment_1_3_0_0_1_1");

@@ -7,17 +7,17 @@
  *******************************************************************************/
 package org.summer.ss.core.validation;
 
-import static com.google.common.collect.Sets.*;
-import static org.summer.dsl.model.types.TypesPackage.Literals.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Sets.newHashSet;
+import static org.eclipse.xtext.util.Strings.equal;
+import static org.summer.dsl.model.types.TypesPackage.Literals.JVM_MEMBER__MODIFIERS;
 
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.summer.dsl.model.types.JvmMember;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.Check;
+import org.summer.dsl.model.types.JvmMember;
 
 /**
  * @author Jan Koehnlein - Initial contribution and API
@@ -35,11 +35,16 @@ public class ModifierValidator {
 	public ModifierValidator(List<String> allowedModifiers, AbstractDeclarativeValidator validator) {
 		this.allowedModifiers = newHashSet(allowedModifiers);
 		this.validator = validator;
-		StringBuffer buffer = new StringBuffer(allowedModifiers.get(0));
-		for(int i=1; i<allowedModifiers.size()-1; ++i) 
-			buffer.append(", ").append(allowedModifiers.get(i));
-		if(allowedModifiers.size() > 1) 
-			buffer.append(" & ").append(allowedModifiers.get(allowedModifiers.size()-1));
+		StringBuilder buffer = new StringBuilder();
+		
+		boolean comma = false;
+		for(int i=0; i<allowedModifiers.size(); ++i) {
+			if(comma){
+				buffer.append(", ");
+			}
+			
+			buffer.append(allowedModifiers.get(i));
+		}
 		allowedModifiersAsString = buffer.toString();
 	}
 	
@@ -47,10 +52,7 @@ public class ModifierValidator {
 	protected void checkModifiers(JvmMember member, String memberName) {
 		Set<String> seenModifiers = newHashSet();
 		boolean visibilitySeen = false;
-		boolean abstractSeen = false;
-		boolean staticSeen = false;
-		boolean finalSeen = false;
-		boolean varSeen = false;
+		boolean virtualSeen = false;
 
 		for(int i=0; i<member.getModifiers().size(); ++i) {
 			String modifier = member.getModifiers().get(i);
@@ -70,39 +72,13 @@ public class ModifierValidator {
 					visibilitySeen = true;
 				}
 			} 
-			if(equal(modifier, "abstract")) {
-				if(finalSeen) {
-					error("The " + memberName + " can either be abstract or final, not both",
+			if(equal(modifier, "override")){
+				if(virtualSeen) {
+					error("The " + memberName + " can either be virtual or override, not both",
 							member, i);
 				}
-				if(staticSeen) {
-					error("The " + memberName + " can either be abstract or static, not both",
-							member, i);
-				}
-				abstractSeen = true;
-			} else if(equal(modifier, "static")) {
-				if(abstractSeen) {
-					error("The " + memberName + " can either be abstract or static, not both",
-							member, i);
-				}
-				staticSeen = true;
-			} else if(equal(modifier, "final") || equal(modifier, "val")) {
-				if(abstractSeen) {
-					error("The " + memberName + " can either be abstract or final, not both",
-							member, i);
-				}
-				if(varSeen) {
-					error("The " + memberName + " can either be var or val / final, not both",
-							member, i);
-				}
-				finalSeen = true;
-			} else if(equal(modifier, "var")) {
-				if(finalSeen) {
-					error("The " + memberName + " can either be var or val / final, not both",
-							member, i);
-				}
-				varSeen = true;
-			}
+				virtualSeen = true;
+			} 
 		}
 	}
 	

@@ -13,6 +13,7 @@ import org.summer.dsl.model.types.JvmField
 import org.summer.dsl.model.types.JvmFormalParameter
 import org.summer.dsl.model.types.JvmGenericType
 import org.summer.dsl.model.types.JvmIdentifiableElement
+import org.summer.dsl.model.types.JvmIndexer
 import org.summer.dsl.model.types.JvmInterfaceType
 import org.summer.dsl.model.types.JvmOperation
 import org.summer.dsl.model.types.JvmTypeParameter
@@ -92,6 +93,10 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 
 	protected def String text(JvmField field) {
 		field.simpleName + " : " + field.type.simpleName
+	}
+	
+	protected def String text(JvmIndexer field) {
+		field.simpleName + " : " + "indexer"
 	}
 	
 	

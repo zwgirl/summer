@@ -12,7 +12,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.InferredTypeIndicator;
-import org.summer.dsl.xbase.typesystem.internal.OperationBodyComputationState;
+import org.summer.dsl.xbase.typesystem.internal.OperationComputationState;
 import org.summer.dsl.xbase.typesystem.internal.ResolvedTypes;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
@@ -20,7 +20,7 @@ import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 @NonNullByDefault
-public class DispatchOperationBodyComputationState extends OperationBodyComputationState {
+public class DispatchOperationBodyComputationState extends OperationComputationState {
 
 	private JvmOperation dispatcher;
 

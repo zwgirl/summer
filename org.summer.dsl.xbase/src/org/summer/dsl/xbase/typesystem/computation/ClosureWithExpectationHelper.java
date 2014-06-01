@@ -17,7 +17,6 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
-import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
@@ -25,6 +24,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
@@ -42,7 +42,6 @@ import org.summer.dsl.xbase.typesystem.util.DeferredTypeParameterHintCollector;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterByUnboundSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 /**
@@ -56,28 +55,39 @@ import com.google.inject.Inject;
 @NonNullByDefault
 public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 	
-	@Inject
 	private ITypeComputer computer;
 
-	private final JvmOperation operation;
+//	private final JvmOperation operation;
+	private final FunctionTypeReference functionRef;
 
 	private FunctionTypeReference expectedClosureType;
 	private FunctionTypeReference resultClosureType;
 
 	private boolean validParameterTypes = true;
 
-	protected ClosureWithExpectationHelper(XClosure closure, JvmOperation operation, ITypeExpectation expectation, ITypeComputationState state) {
+//	protected ClosureWithExpectationHelper(XClosure closure, JvmOperation operation, ITypeExpectation expectation, ITypeComputationState state) {
+//		super(closure, expectation, state);
+//		this.operation = operation;
+//		if (operation == null || expectation.getExpectedType() == null) {
+//			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
+//		}
+//		prepareComputation();
+//	}
+	
+	protected ClosureWithExpectationHelper(XClosure closure, FunctionTypeReference function, ITypeExpectation expectation, ITypeComputationState state, 
+			XbaseTypeComputer computer) {
 		super(closure, expectation, state);
-		this.operation = operation;
-		if (operation == null || expectation.getExpectedType() == null) {
+		this.functionRef = function;
+		this.computer = computer;
+		if (function == null || expectation.getExpectedType() == null) {
 			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
 		}
 		prepareComputation();
 	}
 
 	@Override
-	public JvmOperation getOperation() {
-		return operation;
+	public FunctionTypeReference getFunction() {
+		return functionRef;
 	}
 
 	@Override
@@ -97,9 +107,9 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 			throw new IllegalStateException("expected return type may not be null");
 		}
 		ITypeAssigner typeAssigner = getState().withRootExpectation(expectedReturnType).assignTypes();
-		ITypeComputationState closureBodyTypeComputationState = getClosureBodyTypeComputationState(typeAssigner);
+		ITypeComputationState state = getClosureBodyTypeComputationState(typeAssigner);
 //		ITypeComputationResult expressionResult = closureBodyTypeComputationState.computeTypes(getClosure().getStatment());  //cym comment
-		computer.computeTypes(getClosure().getStatment(), closureBodyTypeComputationState);
+		computer.computeTypes(getClosure().getStatment(), state);
 
 		
 		//cym comment
@@ -154,7 +164,7 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		if (type == null) {
 			throw new IllegalStateException();
 		}
-		expectedClosureType = initKnownClosureType(type, operation);
+		expectedClosureType = initKnownClosureType(type, functionRef);
 		deferredBindTypeArgument(expectedType, expectedClosureType, BoundTypeArgumentSource.INFERRED_CONSTRAINT);
 	}
 
@@ -165,7 +175,42 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		}
 	}
 
-	protected FunctionTypeReference initKnownClosureType(JvmType type, JvmOperation operation) {
+//	protected FunctionTypeReference initKnownClosureType(JvmType type, JvmOperation operation) {
+//		ITypeReferenceOwner owner = getExpectation().getReferenceOwner();
+//		FunctionTypeReference result = new FunctionTypeReference(owner, type);
+//		OwnedConverter converter = new OwnedConverter(owner);
+//		TypeParameterByUnboundSubstitutor substitutor = new TypeParameterByUnboundSubstitutor(
+//				Collections.<JvmTypeParameter, LightweightMergedBoundTypeArgument> emptyMap(), owner) {
+//			@Override
+//			protected UnboundTypeReference createUnboundTypeReference(JvmTypeParameter type) {
+//				UnboundTypeReference result = getExpectation().createUnboundTypeReference(getClosure(), type);
+//				return result;
+//			}
+//		};
+//		if (type instanceof JvmTypeParameterDeclarator) {
+//			List<JvmTypeParameter> typeParameters = ((JvmTypeParameterDeclarator) type).getTypeParameters();
+//			for (JvmTypeParameter typeParameter : typeParameters) {
+//				ParameterizedTypeReference parameterReference = new ParameterizedTypeReference(owner, typeParameter);
+//				LightweightTypeReference substituted = substitutor.substitute(parameterReference);
+//				result.addTypeArgument(substituted);
+//			}
+//			Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> definedMapping = new DeclaratorTypeArgumentCollector().getTypeParameterMapping(result);
+//			substitutor.enhanceMapping(definedMapping);
+//		}
+//		LightweightTypeReference declaredReturnType = converter.toLightweightReference(operation.getReturnType());
+//		for (JvmFormalParameter parameter : operation.getParameters()) {
+//			LightweightTypeReference lightweight = converter.toLightweightReference(parameter.getParameterType());
+//			LightweightTypeReference lowerBound = lightweight.getLowerBoundSubstitute();
+//			LightweightTypeReference substituted = substitutor.substitute(lowerBound);
+//			result.addParameterType(substituted);
+//		}
+//		LightweightTypeReference returnType = declaredReturnType;
+//		LightweightTypeReference substituted = substitutor.substitute(returnType);
+//		result.setReturnType(substituted);
+//		return result;
+//	}
+	
+	protected FunctionTypeReference initKnownClosureType(JvmType type, FunctionTypeReference function) {
 		ITypeReferenceOwner owner = getExpectation().getReferenceOwner();
 		FunctionTypeReference result = new FunctionTypeReference(owner, type);
 		OwnedConverter converter = new OwnedConverter(owner);
@@ -187,10 +232,10 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 			Map<JvmTypeParameter, LightweightMergedBoundTypeArgument> definedMapping = new DeclaratorTypeArgumentCollector().getTypeParameterMapping(result);
 			substitutor.enhanceMapping(definedMapping);
 		}
-		LightweightTypeReference declaredReturnType = converter.toLightweightReference(operation.getReturnType());
-		for (JvmFormalParameter parameter : operation.getParameters()) {
-			LightweightTypeReference lightweight = converter.toLightweightReference(parameter.getParameterType());
-			LightweightTypeReference lowerBound = lightweight.getLowerBoundSubstitute();
+		LightweightTypeReference declaredReturnType = function.getReturnType();
+		for (LightweightTypeReference parType : function.getParameterTypes()) {
+//			LightweightTypeReference lightweight = converter.toLightweightReference(parType);
+			LightweightTypeReference lowerBound = parType.getLowerBoundSubstitute();
 			LightweightTypeReference substituted = substitutor.substitute(lowerBound);
 			result.addParameterType(substituted);
 		}
@@ -284,14 +329,14 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		if (knownType != null && knownType instanceof JvmGenericType) {
 			result.assignType(IFeatureNames.SELF, knownType, expectedType);
 		}
-		List<JvmTypeReference> exceptions = operation.getExceptions();
-		if (exceptions.isEmpty())
+//		List<JvmTypeReference> exceptions = operation.getExceptions();
+//		if (exceptions.isEmpty())
 			return result;
-		List<LightweightTypeReference> expectedExceptions = Lists.newArrayListWithCapacity(exceptions.size());
-		for (JvmTypeReference exception : exceptions) {
-			expectedExceptions.add(typeAssigner.toLightweightTypeReference(exception));
-		}
-		return result.withExpectedExceptions(expectedExceptions);
+//		List<LightweightTypeReference> expectedExceptions = Lists.newArrayListWithCapacity(exceptions.size());
+//		for (JvmTypeReference exception : exceptions) {
+//			expectedExceptions.add(typeAssigner.toLightweightTypeReference(exception));
+//		}
+//		return result.withExpectedExceptions(expectedExceptions);
 	}
 
 	/**

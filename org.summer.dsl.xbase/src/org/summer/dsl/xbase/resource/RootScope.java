@@ -72,7 +72,9 @@ public class RootScope extends AbstractScope{
 		for(EObject obj: contents){
 			if(obj instanceof JvmDeclaredType){
 				JvmDeclaredType jvmType = (JvmDeclaredType) obj;
-				result.add(EObjectDescription.create(jvmType.getSimpleName(), jvmType));
+				if(!(jvmType.getSimpleName() == null || jvmType.getSimpleName().isEmpty())){
+					result.add(EObjectDescription.create(jvmType.getSimpleName(), jvmType));
+				}
 				
 			} else if(obj instanceof JvmDelegateType){
 				JvmDelegateType delegate  = (JvmDelegateType) obj;

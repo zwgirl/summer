@@ -475,7 +475,8 @@ ruleXExpression :
 // Rule IdOrSuper
  ruleIdOrSuper :
 	ruleFeatureCallID |
-	'super'
+	'super' |
+	'this'
 ;
 
 // Rule XObjectLiteral

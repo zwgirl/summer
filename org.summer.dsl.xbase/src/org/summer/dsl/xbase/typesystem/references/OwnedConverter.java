@@ -213,12 +213,12 @@ public class OwnedConverter extends AbstractXtypeReferenceVisitor<LightweightTyp
 	@Override
 	public LightweightTypeReference doVisitFunctionTypeReference(XFunctionTypeRef reference) {
 		FunctionTypeReference result = new FunctionTypeReference(owner, reference.getType());
-		JvmTypeReference equivalent = reference.getEquivalent();
-		if (equivalent instanceof JvmParameterizedTypeReference) {
-			for(JvmTypeReference argument: ((JvmParameterizedTypeReference)equivalent).getArguments()) {
-				result.addTypeArgument(visit(argument));
-			}
-		}
+//		JvmTypeReference equivalent = reference.getEquivalent();
+//		if (equivalent instanceof JvmParameterizedTypeReference) {
+//			for(JvmTypeReference argument: ((JvmParameterizedTypeReference)equivalent).getArguments()) {
+//				result.addTypeArgument(visit(argument));
+//			}
+//		}
 		for(JvmTypeReference parameter: reference.getParamTypes()) {
 			result.addParameterType(visit(parameter));
 		}
