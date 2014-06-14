@@ -819,7 +819,7 @@ public class DeclaredTypeFactory implements ITypeFactory<Class<?>> {
 	protected JvmFormalParameter createFormalParameter(Type parameterType, String paramName,
 			JvmMember container, GenericDeclaration member, Annotation[] annotations) {
 		JvmFormalParameter result = TypesFactory.eINSTANCE.createJvmFormalParameter();
-		result.setName(paramName);
+		result.setSimpleName(paramName);
 		if (isLocal(parameterType, member)) {
 			result.setParameterType(createLocalTypeReference(parameterType, (JvmTypeParameterDeclarator) container,
 					member));

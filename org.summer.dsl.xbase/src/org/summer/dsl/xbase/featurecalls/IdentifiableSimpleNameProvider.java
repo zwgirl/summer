@@ -26,10 +26,10 @@ public class IdentifiableSimpleNameProvider {
 			return ((JvmFeature) element).getSimpleName();
 		}
 		if (element instanceof JvmFormalParameter) {
-			return ((JvmFormalParameter) element).getName();
+			return ((JvmFormalParameter) element).getSimpleName();
 		}
 		if (element instanceof XVariableDeclaration) {
-			return ((XVariableDeclaration) element).getName();
+			return ((XVariableDeclaration) element).getSimpleName();
 		}
 		return element.getSimpleName();
 	}

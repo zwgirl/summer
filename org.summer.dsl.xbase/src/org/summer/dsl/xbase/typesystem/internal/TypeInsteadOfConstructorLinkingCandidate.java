@@ -35,6 +35,7 @@ import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
 import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IIdentifiableElementDescription;
 import org.summer.dsl.xbase.typesystem.computation.IConstructorLinkingCandidate;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
@@ -97,7 +98,8 @@ public class TypeInsteadOfConstructorLinkingCandidate extends AbstractUnresolvab
 	public boolean validate(IAcceptor<? super AbstractDiagnostic> result) {
 		JvmType type = (JvmType) description.getElementOrProxy();
 		String typeKind = "";
-		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid) {
+//		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid) {
+		if (type.isPrimitive() || type == Buildin.Void.JvmType) {
 			typeKind = "primitive type";
 		} else if (type instanceof JvmAnnotationType) {
 			typeKind = "annotation type";

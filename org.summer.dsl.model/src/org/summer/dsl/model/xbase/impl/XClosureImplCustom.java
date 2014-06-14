@@ -32,36 +32,36 @@ public class XClosureImplCustom extends XClosureImpl {
 		}
 	}
 	
-	@Override
-	public EList<JvmFormalParameter> getFormalParameters() {
-		EList<JvmFormalParameter> parameters = getDeclaredFormalParameters();
-		if (statment != null && parameters.isEmpty() && !isExplicitSyntax()) {
-			BasicEList<JvmFormalParameter> result = new BasicEList<JvmFormalParameter>(1);
-			result.add(getImplicitParameter());
-			return result;
-		}
-		return parameters;
-	}
+//	@Override
+//	public EList<JvmFormalParameter> getFormalParameters() {
+//		EList<JvmFormalParameter> parameters = getDeclaredFormalParameters();
+//		if (statment != null && parameters.isEmpty() && !isExplicitSyntax()) {
+//			BasicEList<JvmFormalParameter> result = new BasicEList<JvmFormalParameter>(1);
+//			result.add(getImplicitParameter());
+//			return result;
+//		}
+//		return parameters;
+//	}
 
-	/**
-	 * Sets the closure's expression.
-	 * ATTENTION! Also sets an implicit receiver if {@link #isExplicitSyntax()} wasn't set to true.
-	 * This is based on the assumption that a closure is constructed by the xbase parser and that the syntax is such that
-	 * the explicit parameter list is set before the expression is set.
-	 * 
-	 * Doing it like this is much simpler and also ensures proper notifications.
-	 */
-	@Override
-	public void setStatment(XStatment statment) {
-		super.setStatment(statment);
-		/**
-		 * Add the implicit parameter for the short cut syntax [ my-expression-using-it ]
-		 */
-		if (!isExplicitSyntax()) {
-			JvmFormalParameter implicitParameter = TypesFactory.eINSTANCE.createJvmFormalParameter();
-			implicitParameter.setName(IFeatureNames.IT.toString());
-			super.setImplicitParameter(implicitParameter);
-		}
-	}
+//	/**
+//	 * Sets the closure's expression.
+//	 * ATTENTION! Also sets an implicit receiver if {@link #isExplicitSyntax()} wasn't set to true.
+//	 * This is based on the assumption that a closure is constructed by the xbase parser and that the syntax is such that
+//	 * the explicit parameter list is set before the expression is set.
+//	 * 
+//	 * Doing it like this is much simpler and also ensures proper notifications.
+//	 */
+//	@Override
+//	public void setStatment(XStatment statment) {
+//		super.setStatment(statment);
+//		/**
+//		 * Add the implicit parameter for the short cut syntax [ my-expression-using-it ]
+//		 */
+//		if (!isExplicitSyntax()) {
+//			JvmFormalParameter implicitParameter = TypesFactory.eINSTANCE.createJvmFormalParameter();
+//			implicitParameter.setSimpleName(IFeatureNames.IT.toString());
+//			super.setImplicitParameter(implicitParameter);
+//		}
+//	}
 	
 }

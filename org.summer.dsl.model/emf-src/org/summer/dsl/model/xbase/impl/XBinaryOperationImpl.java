@@ -20,6 +20,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XBinaryOperationImpl#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XBinaryOperationImpl#getRightOperand <em>Right Operand</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XBinaryOperationImpl#isReassignFirstArgument <em>Reassign First Argument</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +46,26 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	 * @ordered
 	 */
 	protected XExpression rightOperand;
+
+	/**
+	 * The default value of the '{@link #isReassignFirstArgument() <em>Reassign First Argument</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReassignFirstArgument()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean REASSIGN_FIRST_ARGUMENT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isReassignFirstArgument() <em>Reassign First Argument</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReassignFirstArgument()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean reassignFirstArgument = REASSIGN_FIRST_ARGUMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,6 +177,27 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isReassignFirstArgument() {
+		return reassignFirstArgument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReassignFirstArgument(boolean newReassignFirstArgument) {
+		boolean oldReassignFirstArgument = reassignFirstArgument;
+		reassignFirstArgument = newReassignFirstArgument;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT, oldReassignFirstArgument, reassignFirstArgument));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -179,6 +221,8 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 				return getLeftOperand();
 			case XbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				return getRightOperand();
+			case XbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+				return isReassignFirstArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,6 +240,9 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 				return;
 			case XbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				setRightOperand((XExpression)newValue);
+				return;
+			case XbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+				setReassignFirstArgument((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,6 +262,9 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 			case XbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				setRightOperand((XExpression)null);
 				return;
+			case XbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+				setReassignFirstArgument(REASSIGN_FIRST_ARGUMENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -231,8 +281,31 @@ public class XBinaryOperationImpl extends XAbstractFeatureCallImplCustom impleme
 				return leftOperand != null;
 			case XbasePackage.XBINARY_OPERATION__RIGHT_OPERAND:
 				return rightOperand != null;
+			case XbasePackage.XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT:
+				return reassignFirstArgument != REASSIGN_FIRST_ARGUMENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (reassignFirstArgument: ");
+		result.append(reassignFirstArgument);
+		result.append(')');
+		return result.toString();
+	}
+
+	@Override
+	public boolean isOperation() {
+		return true;
 	}
 
 } //XBinaryOperationImpl

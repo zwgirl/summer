@@ -384,17 +384,17 @@ public class SsCompiler extends XbaseCompiler {
 		}
 	}
 
-	protected void appendExtensionAnnotation(EObject context, ITreeAppendable appendable, boolean newLine) {
-		JvmType extension = getTypeReferences().findDeclaredType(Extension.class, context);
-		if (extension != null) {
-			appendable.append("@");
-			appendable.append(extension);
-			if (!newLine)
-				appendable.append(" ");
-			else
-				appendable.newLine();
-		}
-	}
+//	protected void appendExtensionAnnotation(EObject context, ITreeAppendable appendable, boolean newLine) {
+//		JvmType extension = getTypeReferences().findDeclaredType(Extension.class, context);
+//		if (extension != null) {
+//			appendable.append("@");
+//			appendable.append(extension);
+//			if (!newLine)
+//				appendable.append(" ");
+//			else
+//				appendable.newLine();
+//		}
+//	}
 	
 //	@Override
 //	protected JvmTypeReference appendVariableTypeAndName(XVariableDeclaration varDeclaration, ITreeAppendable appendable) {
@@ -403,11 +403,11 @@ public class SsCompiler extends XbaseCompiler {
 //		return super.appendVariableTypeAndName(varDeclaration, appendable);
 //	}
 	
-	@Override
-	protected void appendForLoopParameter(XForEachStatment expr, ITreeAppendable appendable) {
-		appendExtensionAnnotation(expr.getDeclaredParam(), expr, appendable, false);
-		super.appendForLoopParameter(expr, appendable);
-	}
+//	@Override
+//	protected void appendForLoopParameter(XForEachStatment expr, ITreeAppendable appendable) {
+//		appendExtensionAnnotation(expr.getDeclaredParam(), expr, appendable, false);
+//		super.appendForLoopParameter(expr, appendable);
+//	}
 	
 	@Override
 	protected void appendClosureParameter(JvmFormalParameter closureParam, JvmTypeReference parameterType,

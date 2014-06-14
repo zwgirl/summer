@@ -260,4 +260,12 @@ public interface XAbstractFeatureCall extends XExpression {
 	 */
 	boolean isTypeLiteral();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isOperation();
+
 } // XAbstractFeatureCall

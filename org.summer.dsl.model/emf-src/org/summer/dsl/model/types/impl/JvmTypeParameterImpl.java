@@ -27,14 +27,14 @@ import org.summer.dsl.model.types.TypesPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl#getConstraints <em>Constraints</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmTypeParameterImpl#getDeclarator <em>Declarator</em>}</li>
  * </ul>
  * </p>
  *
- * @generated NOT
+ * @generated
  */
-public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements JvmTypeParameter {
+public class JvmTypeParameterImpl extends JvmComponentTypeImpl implements JvmTypeParameter {
 	/**
 	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -46,24 +46,24 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 	protected EList<JvmTypeConstraint> constraints;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String SIMPLE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String simpleName = SIMPLE_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,8 +101,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public String getSimpleName() {
+		return simpleName;
 	}
 
 	/**
@@ -110,11 +110,11 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setSimpleName(String newSimpleName) {
+		String oldSimpleName = simpleName;
+		simpleName = newSimpleName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_TYPE_PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_TYPE_PARAMETER__SIMPLE_NAME, oldSimpleName, simpleName));
 	}
 
 	/**
@@ -217,8 +217,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 		switch (featureID) {
 			case TypesPackage.JVM_TYPE_PARAMETER__CONSTRAINTS:
 				return getConstraints();
-			case TypesPackage.JVM_TYPE_PARAMETER__NAME:
-				return getName();
+			case TypesPackage.JVM_TYPE_PARAMETER__SIMPLE_NAME:
+				return getSimpleName();
 			case TypesPackage.JVM_TYPE_PARAMETER__DECLARATOR:
 				return getDeclarator();
 		}
@@ -238,8 +238,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 				getConstraints().clear();
 				getConstraints().addAll((Collection<? extends JvmTypeConstraint>)newValue);
 				return;
-			case TypesPackage.JVM_TYPE_PARAMETER__NAME:
-				setName((String)newValue);
+			case TypesPackage.JVM_TYPE_PARAMETER__SIMPLE_NAME:
+				setSimpleName((String)newValue);
 				return;
 			case TypesPackage.JVM_TYPE_PARAMETER__DECLARATOR:
 				setDeclarator((JvmTypeParameterDeclarator)newValue);
@@ -259,8 +259,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 			case TypesPackage.JVM_TYPE_PARAMETER__CONSTRAINTS:
 				getConstraints().clear();
 				return;
-			case TypesPackage.JVM_TYPE_PARAMETER__NAME:
-				setName(NAME_EDEFAULT);
+			case TypesPackage.JVM_TYPE_PARAMETER__SIMPLE_NAME:
+				setSimpleName(SIMPLE_NAME_EDEFAULT);
 				return;
 			case TypesPackage.JVM_TYPE_PARAMETER__DECLARATOR:
 				setDeclarator((JvmTypeParameterDeclarator)null);
@@ -279,8 +279,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 		switch (featureID) {
 			case TypesPackage.JVM_TYPE_PARAMETER__CONSTRAINTS:
 				return constraints != null && !constraints.isEmpty();
-			case TypesPackage.JVM_TYPE_PARAMETER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case TypesPackage.JVM_TYPE_PARAMETER__SIMPLE_NAME:
+				return SIMPLE_NAME_EDEFAULT == null ? simpleName != null : !SIMPLE_NAME_EDEFAULT.equals(simpleName);
 			case TypesPackage.JVM_TYPE_PARAMETER__DECLARATOR:
 				return getDeclarator() != null;
 		}
@@ -329,8 +329,8 @@ public class JvmTypeParameterImpl extends JvmComponentTypeImplCustom implements 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (simpleName: ");
+		result.append(simpleName);
 		result.append(')');
 		return result.toString();
 	}

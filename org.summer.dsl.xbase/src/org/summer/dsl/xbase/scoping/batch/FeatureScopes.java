@@ -42,6 +42,7 @@ import org.summer.dsl.xbase.typesystem.IResolvedTypes;
 import org.summer.dsl.xbase.typesystem.computation.IFeatureLinkingCandidate;
 import org.summer.dsl.xbase.typesystem.computation.SynonymTypesProvider;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
+import org.summer.dsl.xbase.typesystem.internal.FeatureLinkHelper;
 import org.summer.dsl.xbase.typesystem.internal.ScopeProviderAccess;
 import org.summer.dsl.xbase.typesystem.override.IResolvedFeatures;
 import org.summer.dsl.xbase.typesystem.references.CompoundTypeReference;
@@ -217,10 +218,10 @@ public class FeatureScopes implements IFeatureNames {
 			boolean typeLiteral = false;
 			IScope root = createTypeLiteralScope(featureCall, receiver, session, resolvedTypes, receiverType, linkedReceiver);
 			if (root != null) {
-				if (featureCall instanceof XMemberFeatureCall && ((XMemberFeatureCall) featureCall).isExplicitStatic()) {
+//				if (featureCall instanceof XMemberFeatureCall && ((XMemberFeatureCall) featureCall).isExplicitStatic()) {
                     return root;
-                }
-				typeLiteral = true;
+//                }
+//				typeLiteral = true;
 			} else {
 				root = IScope.NULLSCOPE;
 			}
@@ -348,7 +349,7 @@ public class FeatureScopes implements IFeatureNames {
 			// 'this' is a valid implicit first argument, e.g. implementations of Iterable may use #filter on themselves
 			result = createImplicitExtensionScope(THIS, featureCall, session, resolvedTypes, result);
 			// 'it' has a higher priority than 'this' as implicit first argument
-			result = createImplicitExtensionScope(IT, featureCall, session, resolvedTypes, result);
+//			result = createImplicitExtensionScope(IT, featureCall, session, resolvedTypes, result);
 			return result;
 		} else {
 			result = createStaticExtensionsScope(receiver, receiverType, false, featureCall, parent, session);
@@ -361,7 +362,7 @@ public class FeatureScopes implements IFeatureNames {
 		IScope result = parent;
 		if (receiver == null) {
 			result = createImplicitStaticScope(THIS, featureCall, session, resolvedTypes, result);
-			result = createImplicitStaticScope(IT, featureCall, session, resolvedTypes, result);
+//			result = createImplicitStaticScope(IT, featureCall, session, resolvedTypes, result);
 			return result;
 		} else {
 			TypeBucket receiverBucket = new TypeBucket(-1, Collections.singletonList(receiverType.getType()), resolvedFeaturesProvider);
@@ -383,7 +384,7 @@ public class FeatureScopes implements IFeatureNames {
 		IScope result = parent;
 		if (firstArgument == null) {
 			result = createDynamicExtensionsScope(THIS, featureCall, session, resolvedTypes, result);
-			result = createDynamicExtensionsScope(IT, featureCall, session, resolvedTypes, result);
+//			result = createDynamicExtensionsScope(IT, featureCall, session, resolvedTypes, result);
 			return result;
 		} else {
 			result = createDynamicExtensionsScope(firstArgument, firstArgumentType, false, featureCall, parent, session);
@@ -419,23 +420,7 @@ public class FeatureScopes implements IFeatureNames {
 	}
 
 	protected XExpression getSyntacticalReceiver(final XAbstractFeatureCall call) {
-		if (call instanceof XMemberFeatureCall) {
-			return ((XMemberFeatureCall) call).getMemberCallTarget();
-		}
-		if (call instanceof XBinaryOperation) {
-			return ((XBinaryOperation) call).getLeftOperand();
-		}
-		if (call instanceof XUnaryOperation) {
-			return ((XUnaryOperation) call).getOperand();
-		}
-		if (call instanceof XAssignment) {
-			return ((XAssignment) call).getAssignable();
-		}
-		
-//		if (call instanceof XIndexer) {
-//			return ((XIndexer) call).getExpression();
-//		}
-		return null;
+		return new FeatureLinkHelper().getSyntacticReceiver(call);
 	}
 
 	protected IScope createTypeLiteralScope(EObject featureCall, IScope parent, IFeatureScopeSession session, IResolvedTypes resolvedTypes, QualifiedName parentSegments) {
@@ -449,7 +434,7 @@ public class FeatureScopes implements IFeatureNames {
 	protected IScope createImplicitFeatureCallScope(EObject featureCall, IScope parent, IFeatureScopeSession session, IResolvedTypes resolvedTypes) {
 		IScope result = parent;
 		result = createImplicitFeatureCallScope(THIS, featureCall, session, resolvedTypes, result);
-		result = createImplicitFeatureCallScope(IT, featureCall, session, resolvedTypes, result);
+//		result = createImplicitFeatureCallScope(IT, featureCall, session, resolvedTypes, result);
 		return result;
 	}
 

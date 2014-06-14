@@ -13,10 +13,10 @@ import "http://www.summer.org/dsl/model/types" as types
 import "http://www.summer.org/dsl/model/xaml" as xaml
 
 JvmModule returns types::JvmModule : 
-	('package' package=QualifiedName)?
+	('package' packageName=QualifiedName)?
 	'module' simpleName=ID '{'
 	importSection=XImportSection? 
-	root=XObjectElement
+	root=XObjectElement?
 	(contents+=(Type | DelegateType) 
 	| (contents+= XStatment )  )*
 	
@@ -77,6 +77,7 @@ Type returns types::JvmDeclaredType :
 	  	'class' simpleName=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?  
 	   	("extends" extends=JvmParameterizedTypeReference)? 
 	   	('implements' implements+=JvmParameterizedTypeReference (',' implements+=JvmParameterizedTypeReference)*)?'{'
+	   		root=XObjectElement?
 		   (members+=Member)*
 	   	'}'
 	 |
@@ -161,30 +162,15 @@ Member returns types::JvmMember:
 				)
 			)
 		) 
-//		|
-//		(	
-//			{types::JvmIndexer.annotationInfo = current} modifiers+=FieldModifier*
-//			(
-//				type=JvmTypeReference 'operator' '['(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ']'
-//			)
-//			(
-//				(('=' defaultValue=XExpression)? ';')
-//				|
-//				(
-//				property ?= '{'
-//					'get' (get=XBlockStatment)? 
-//					('set' (set=XBlockStatment)?)?
-//				'}'
-//				)
-//			)
-//		) 
 		|
 	 	(
 			{types::JvmOperation.annotationInfo = current} modifiers+=MethodModifier*
 			'function' 
 				('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
 				returnType=JvmTypeReference
-				 simpleName=FunctionID
+				 (simpleName=FunctionID | 
+				 	(operator ?= 'operator' simpleName=Operators)
+				 )
 				'('(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ')'
 					
 					('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
@@ -214,7 +200,7 @@ Member returns types::JvmMember:
 ;
 	
 FunctionID:
-	ValidID | Operators
+	ValidID //| Operators
 ;
 
 Operators:

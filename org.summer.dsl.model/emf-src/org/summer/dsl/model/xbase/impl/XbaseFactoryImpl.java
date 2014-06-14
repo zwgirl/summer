@@ -38,6 +38,7 @@ import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
+import org.summer.dsl.model.xbase.XParenthesizedExpression;
 import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XSetLiteral;
@@ -145,6 +146,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.RICH_STRING_LITERAL: return createRichStringLiteral();
 			case XbasePackage.XFUNCTION_DECLARATION: return createXFunctionDeclaration();
 			case XbasePackage.XEXPRESSION_STATMENT: return createXExpressionStatment();
+			case XbasePackage.XPARENTHESIZED_EXPRESSION: return createXParenthesizedExpression();
 			
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -589,6 +591,10 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 
 	public XExpressionStatment createXExpressionStatment() {
 		return new XExpressionStatmentImpl();
+	}
+
+	public XParenthesizedExpression createXParenthesizedExpression() {
+		return new XParenthesizedExpressionImpl();
 	}
 
 } //XbaseFactoryImpl

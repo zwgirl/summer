@@ -34,7 +34,6 @@ import com.google.inject.Inject;
  * 
  * @author Sven Efftinge - Initial contribution and API
  */
-@SuppressWarnings("all")
 public class ConstantExpressionValidator {
   @Inject
   @Extension
@@ -46,7 +45,7 @@ public class ConstantExpressionValidator {
   
   @Inject
   @Extension
-  private XExpressionHelper _xExpressionHelper;
+  private XExpressionHelper expressionHelper;
   
   protected boolean _isConstant(final XExpression expression) {
     return false;
@@ -83,7 +82,6 @@ public class ConstantExpressionValidator {
   }
   
 	protected boolean _isConstant(final XAbstractFeatureCall expression) {
-		// JvmIdentifiableElement _feature = expression.getFeature();
 		final JvmIdentifiableElement feature = expression.getFeature();
 
 		if (feature instanceof JvmEnumerationLiteral) {

@@ -268,7 +268,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XBLOCK_STATMENT__STATMENTS = XSTATMENT_FEATURE_COUNT + 0;
+	int XBLOCK_STATMENT__STATMENTS = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>XBlock Statment</em>' class.
@@ -277,7 +277,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XBLOCK_STATMENT_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 1;
+	int XBLOCK_STATMENT_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationImpl <em>XVariable Declaration</em>}' class.
@@ -299,13 +299,13 @@ public interface XbasePackage extends EPackage {
 	int XVARIABLE_DECLARATION__TYPE = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XVARIABLE_DECLARATION__NAME = XEXPRESSION_FEATURE_COUNT + 1;
+	int XVARIABLE_DECLARATION__SIMPLE_NAME = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -609,13 +609,13 @@ public interface XbasePackage extends EPackage {
 	int XCALLER = 11;
 
 	/**
-	 * The feature id for the '<em><b>Function</b></em>' containment reference.
+	 * The feature id for the '<em><b>Executable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCALLER__FUNCTION = XEXPRESSION_FEATURE_COUNT + 0;
+	int XCALLER__EXECUTABLE = XEXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -627,22 +627,13 @@ public interface XbasePackage extends EPackage {
 	int XCALLER__ARGUMENTS = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCALLER__FEATURE = XEXPRESSION_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>XCaller</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCALLER_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
+	int XCALLER_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XIndexerImpl <em>XIndexer</em>}' class.
@@ -1160,13 +1151,22 @@ public interface XbasePackage extends EPackage {
 	int XCLOSURE__EXPORTED = XEXPRESSION_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Explicit Return</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLOSURE__EXPLICIT_RETURN = XEXPRESSION_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>XClosure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCLOSURE_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 9;
+	int XCLOSURE_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XCastedExpressionImpl <em>XCasted Expression</em>}' class.
@@ -1288,13 +1288,22 @@ public interface XbasePackage extends EPackage {
 	int XBINARY_OPERATION__RIGHT_OPERAND = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Reassign First Argument</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>XBinary Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XBINARY_OPERATION_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 2;
+	int XBINARY_OPERATION_FEATURE_COUNT = XABSTRACT_FEATURE_CALL_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XUnaryOperationImpl <em>XUnary Operation</em>}' class.
@@ -2683,6 +2692,34 @@ public interface XbasePackage extends EPackage {
 	int XFUNCTION_DECLARATION_FEATURE_COUNT = TypesPackage.JVM_TYPE_PARAMETER_DECLARATOR_FEATURE_COUNT + 5;
 
 	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XParenthesizedExpressionImpl <em>XParenthesized Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XParenthesizedExpressionImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXParenthesizedExpression()
+	 * @generated
+	 */
+	int XPARENTHESIZED_EXPRESSION = 50;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPARENTHESIZED_EXPRESSION__EXPRESSION = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>XParenthesized Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPARENTHESIZED_EXPRESSION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2884,15 +2921,15 @@ public interface XbasePackage extends EPackage {
 	EReference getXVariableDeclaration_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclaration#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XVariableDeclaration#getSimpleName <em>Simple Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.xbase.XVariableDeclaration#getName()
+	 * @return the meta object for the attribute '<em>Simple Name</em>'.
+	 * @see org.summer.dsl.model.xbase.XVariableDeclaration#getSimpleName()
 	 * @see #getXVariableDeclaration()
 	 * @generated
 	 */
-	EAttribute getXVariableDeclaration_Name();
+	EAttribute getXVariableDeclaration_SimpleName();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XVariableDeclaration#getRight <em>Right</em>}'.
@@ -3144,15 +3181,15 @@ public interface XbasePackage extends EPackage {
 	EClass getXCaller();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XCaller#getFunction <em>Function</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XCaller#getExecutable <em>Executable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Function</em>'.
-	 * @see org.summer.dsl.model.xbase.XCaller#getFunction()
+	 * @return the meta object for the containment reference '<em>Executable</em>'.
+	 * @see org.summer.dsl.model.xbase.XCaller#getExecutable()
 	 * @see #getXCaller()
 	 * @generated
 	 */
-	EReference getXCaller_Function();
+	EReference getXCaller_Executable();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XCaller#getArguments <em>Arguments</em>}'.
@@ -3164,17 +3201,6 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXCaller_Arguments();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.summer.dsl.model.xbase.XCaller#getFeature <em>Feature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Feature</em>'.
-	 * @see org.summer.dsl.model.xbase.XCaller#getFeature()
-	 * @see #getXCaller()
-	 * @generated
-	 */
-	EReference getXCaller_Feature();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XIndexer <em>XIndexer</em>}'.
@@ -3584,6 +3610,17 @@ public interface XbasePackage extends EPackage {
 	EAttribute getXClosure_Exported();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XClosure#isExplicitReturn <em>Explicit Return</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Explicit Return</em>'.
+	 * @see org.summer.dsl.model.xbase.XClosure#isExplicitReturn()
+	 * @see #getXClosure()
+	 * @generated
+	 */
+	EAttribute getXClosure_ExplicitReturn();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XCastedExpression <em>XCasted Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3646,6 +3683,17 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getXBinaryOperation_RightOperand();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XBinaryOperation#isReassignFirstArgument <em>Reassign First Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reassign First Argument</em>'.
+	 * @see org.summer.dsl.model.xbase.XBinaryOperation#isReassignFirstArgument()
+	 * @see #getXBinaryOperation()
+	 * @generated
+	 */
+	EAttribute getXBinaryOperation_ReassignFirstArgument();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XUnaryOperation <em>XUnary Operation</em>}'.
@@ -4235,6 +4283,27 @@ public interface XbasePackage extends EPackage {
 	EAttribute getXFunctionDeclaration_Exported();
 
 	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XParenthesizedExpression <em>XParenthesized Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XParenthesized Expression</em>'.
+	 * @see org.summer.dsl.model.xbase.XParenthesizedExpression
+	 * @generated
+	 */
+	EClass getXParenthesizedExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XParenthesizedExpression#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see org.summer.dsl.model.xbase.XParenthesizedExpression#getExpression()
+	 * @see #getXParenthesizedExpression()
+	 * @generated
+	 */
+	EReference getXParenthesizedExpression_Expression();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XObjectLiteral <em>XObject Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4572,12 +4641,12 @@ public interface XbasePackage extends EPackage {
 		EReference XVARIABLE_DECLARATION__TYPE = eINSTANCE.getXVariableDeclaration_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Simple Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute XVARIABLE_DECLARATION__NAME = eINSTANCE.getXVariableDeclaration_Name();
+		EAttribute XVARIABLE_DECLARATION__SIMPLE_NAME = eINSTANCE.getXVariableDeclaration_SimpleName();
 
 		/**
 		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -4772,12 +4841,12 @@ public interface XbasePackage extends EPackage {
 		EClass XCALLER = eINSTANCE.getXCaller();
 
 		/**
-		 * The meta object literal for the '<em><b>Function</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Executable</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XCALLER__FUNCTION = eINSTANCE.getXCaller_Function();
+		EReference XCALLER__EXECUTABLE = eINSTANCE.getXCaller_Executable();
 
 		/**
 		 * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
@@ -4786,14 +4855,6 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XCALLER__ARGUMENTS = eINSTANCE.getXCaller_Arguments();
-
-		/**
-		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XCALLER__FEATURE = eINSTANCE.getXCaller_Feature();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XIndexerImpl <em>XIndexer</em>}' class.
@@ -5122,6 +5183,14 @@ public interface XbasePackage extends EPackage {
 		EAttribute XCLOSURE__EXPORTED = eINSTANCE.getXClosure_Exported();
 
 		/**
+		 * The meta object literal for the '<em><b>Explicit Return</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XCLOSURE__EXPLICIT_RETURN = eINSTANCE.getXClosure_ExplicitReturn();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XCastedExpressionImpl <em>XCasted Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5172,6 +5241,14 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XBINARY_OPERATION__RIGHT_OPERAND = eINSTANCE.getXBinaryOperation_RightOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Reassign First Argument</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT = eINSTANCE.getXBinaryOperation_ReassignFirstArgument();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XUnaryOperationImpl <em>XUnary Operation</em>}' class.
@@ -5648,6 +5725,24 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute XFUNCTION_DECLARATION__EXPORTED = eINSTANCE.getXFunctionDeclaration_Exported();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XParenthesizedExpressionImpl <em>XParenthesized Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XParenthesizedExpressionImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXParenthesizedExpression()
+		 * @generated
+		 */
+		EClass XPARENTHESIZED_EXPRESSION = eINSTANCE.getXParenthesizedExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPARENTHESIZED_EXPRESSION__EXPRESSION = eINSTANCE.getXParenthesizedExpression_Expression();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralImpl <em>XObject Literal</em>}' class.

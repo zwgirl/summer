@@ -158,7 +158,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 			}
 			
 			final XtendTypeDeclaration declaration = (XtendTypeDeclaration) obj;
-			if (Strings.isEmpty(declaration.getName()))
+			if (Strings.isEmpty(declaration.getSimpleName()))
 				continue;
 			
 			if (declaration instanceof XtendAnnotationType) {
@@ -263,7 +263,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	
 	protected void setNameAndAssociate(XModule file, XtendTypeDeclaration xtendType, JvmDeclaredType javaType) {
 		javaType.setPackageName(file.getPackage());
-		javaType.setSimpleName(xtendType.getName());
+		javaType.setSimpleName(xtendType.getSimpleName());
 		javaType.setVisibility(JvmVisibility.PUBLIC);
 		setFileHeader(file, javaType);
 		associator.associatePrimary(xtendType, javaType);
@@ -281,10 +281,10 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		for (XtendMember member : source.getMembers()) {
 			if (member instanceof XtendField) {
 				XtendField field = (XtendField) member;
-				if (!Strings.isEmpty(field.getName())) {
+				if (!Strings.isEmpty(field.getSimpleName())) {
 					JvmOperation operation = typesFactory.createJvmOperation();
 					associator.associatePrimary(member, operation);
-					operation.setSimpleName(field.getName());
+					operation.setSimpleName(field.getSimpleName());
 					JvmTypeReference returnType = null;
 					if (field.getType() != null) {
 						returnType = jvmTypesBuilder.cloneWithProxies(field.getType());
@@ -336,9 +336,9 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		
 		for (XtendMember member : source.getMembers()) {
 			if (member instanceof XtendField
-					|| (member instanceof XtendFunction && ((XtendFunction) member).getName() != null)
+					|| (member instanceof XtendFunction && ((XtendFunction) member).getSimpleName() != null)
 					|| member instanceof XtendConstructor
-					|| (member instanceof XtendEvent &&  ((XtendEvent) member).getName() != null)
+					|| (member instanceof XtendEvent &&  ((XtendEvent) member).getSimpleName() != null)
 					) {
 				transform(member, inferredJvmType, true);
 			}
@@ -363,7 +363,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		fixTypeParameters(inferredJvmType);
 		for (XtendMember member : source.getMembers()) {
 			if (member instanceof XtendField
-					|| (member instanceof XtendFunction && ((XtendFunction) member).getName() != null)) {
+					|| (member instanceof XtendFunction && ((XtendFunction) member).getSimpleName() != null)) {
 				transform(member, inferredJvmType, false);
 			}
 		}
@@ -456,7 +456,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 								final EList<JvmFormalParameter> parameters = superConstructor.getParameters();
 								for (Iterator<JvmFormalParameter> iterator = parameters.iterator(); iterator.hasNext();) {
 									JvmFormalParameter jvmFormalParameter = iterator.next();
-									appendable.append(jvmFormalParameter.getName());
+									appendable.append(jvmFormalParameter.getSimpleName());
 									if (iterator.hasNext())
 										appendable.append(", ");
 								}
@@ -466,7 +466,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 									i < constructor.getParameters().size(); i++) {
 								JvmFormalParameter p = constructor.getParameters().get(i);
 								JvmField jvmField = namesToField.get(p.getSimpleName());
-								appendable.newLine().append("this.").append(jvmField.getSimpleName()).append(" = ").append(p.getName()).append(";");
+								appendable.newLine().append("this.").append(jvmField.getSimpleName()).append(" = ").append(p.getSimpleName()).append(";");
 							}
 						}
 					});
@@ -573,7 +573,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 			result.getParameters().add(parameter);
 			parameter.setParameterType(jvmTypesBuilder.inferredType());
 			JvmFormalParameter parameter2 = first.getParameters().get(i);
-			parameter.setName(parameter2.getName());
+			parameter.setSimpleName(parameter2.getSimpleName());
 		}
 		jvmTypesBuilder.setBody(result, compileStrategies.forDispatcher(result, sortedOperations));
 		JvmVisibility commonVisibility = null;
@@ -613,7 +613,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		JvmConstructor constructor = typesFactory.createJvmConstructor();
 		target.getMembers().add(constructor);
 		associator.associate(source, constructor);
-		constructor.setSimpleName(source.getName());
+		constructor.setSimpleName(source.getSimpleName());
 		constructor.setVisibility(JvmVisibility.PUBLIC);
 		typeExtensions.setSynthetic(constructor, true);
 	}
@@ -651,7 +651,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 			operation.setFinal(source.isFinal());
 		container.getMembers().add(operation);
 		associator.associatePrimary(source, operation);
-		String sourceName = source.getName();
+		String sourceName = source.getSimpleName();
 		JvmVisibility visibility = source.getVisibility();
 		if (allowDispatch && source.isDispatch()) {
 			if (source.getDeclaredVisibility() == null)
@@ -689,7 +689,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	protected void transformCreateExtension(XtendFunction source, CreateExtensionInfo createExtensionInfo,
 			JvmGenericType container, JvmOperation operation, @Nullable JvmTypeReference returnType) {
 		JvmField cacheVar = jvmTypesBuilder.toField(
-				source, CREATE_CHACHE_VARIABLE_PREFIX + source.getName(), jvmTypesBuilder.inferredType());
+				source, CREATE_CHACHE_VARIABLE_PREFIX + source.getSimpleName(), jvmTypesBuilder.inferredType());
 		if (cacheVar != null) {
 			cacheVar.setFinal(true);
 			jvmTypesBuilder.setInitializer(cacheVar, compileStrategies.forCacheVariable(source));
@@ -697,7 +697,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 
 			JvmOperation initializer = typesFactory.createJvmOperation();
 			container.getMembers().add(initializer);
-			initializer.setSimpleName(CREATE_INITIALIZER_PREFIX + source.getName());
+			initializer.setSimpleName(CREATE_INITIALIZER_PREFIX + source.getSimpleName());
 			initializer.setVisibility(JvmVisibility.PRIVATE);
 			initializer.setReturnType(typeReferences.getTypeForName(Void.TYPE, source));
 			for (JvmTypeReference exception : source.getExceptions()) {
@@ -709,7 +709,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 
 			// the first parameter is the created object
 			JvmFormalParameter jvmParam = typesFactory.createJvmFormalParameter();
-			jvmParam.setName(createExtensionInfo.getName());
+			jvmParam.setSimpleName(createExtensionInfo.getSimpleName());
 			// TODO consider type parameters
 			jvmParam.setParameterType(jvmTypesBuilder.inferredType());
 			
@@ -719,7 +719,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 			// add all others
 			for (XtendParameter parameter : source.getParameters()) {
 				jvmParam = typesFactory.createJvmFormalParameter();
-				jvmParam.setName(parameter.getName());
+				jvmParam.setSimpleName(parameter.getSimpleName());
 				jvmParam.setParameterType(jvmTypesBuilder.cloneWithProxies(parameter.getParameterType()));
 				initializer.getParameters().add(jvmParam);
 				associator.associate(parameter, jvmParam);
@@ -732,7 +732,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 
 	protected void translateParameter(JvmExecutable executable, XtendParameter parameter) {
 		JvmFormalParameter jvmParam = typesFactory.createJvmFormalParameter();
-		jvmParam.setName(parameter.getName());
+		jvmParam.setSimpleName(parameter.getSimpleName());
 		if (parameter.isVarArg()) {
 			executable.setVarArgs(true);
 			JvmGenericArrayTypeReference arrayType = typeReferences.createArrayType(jvmTypesBuilder
@@ -769,7 +769,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	}
 	
 	protected void transform(XtendField source, JvmGenericType container) {
-		if ((source.isExtension() && source.getType() != null) || source.getName() != null) {
+		if ((source.isExtension() && source.getType() != null) || source.getSimpleName() != null) {
 			JvmField field = typesFactory.createJvmField();
 			final String computeFieldName = computeFieldName(source);
 			field.setSimpleName(computeFieldName);
@@ -828,7 +828,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 	protected void transform(XtendEnumLiteral literal, JvmDeclaredType container) {
 		JvmEnumerationLiteral jvmLiteral = typesFactory.createJvmEnumerationLiteral();
 		associator.associatePrimary(literal, jvmLiteral);
-		jvmLiteral.setSimpleName(literal.getName());
+		jvmLiteral.setSimpleName(literal.getSimpleName());
 		jvmLiteral.setVisibility(JvmVisibility.PUBLIC);
 		jvmLiteral.setStatic(true);
 		jvmLiteral.setFinal(true);
@@ -850,7 +850,7 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 		for (XtendMember member : xtendClass.getMembers()) {
 			if (member instanceof XtendFunction) {
 				XtendFunction function = (XtendFunction) member;
-				String name = function.getName();
+				String name = function.getSimpleName();
 				if (name != null && name.equals(simpleName)) {
 					boolean allMatched = true;
 					if (function.getParameters().size() == parameters.size()) {
@@ -870,8 +870,8 @@ public class SsJvmModelInferrer implements IJvmModelInferrer {
 
 	@Nullable
 	protected String computeFieldName(XtendField field) {
-		if (field.getName() != null)
-			return field.getName();
+		if (field.getSimpleName() != null)
+			return field.getSimpleName();
 		JvmTypeReference type = field.getType();
 		String name = null;
 		if (type != null) {

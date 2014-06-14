@@ -210,18 +210,18 @@ public class CompoundTypeReference extends LightweightTypeReference {
 //	}
 	
 	@Override
-	public boolean isType(JvmType clazz) {
+	public boolean isType(JvmType type) {
 		if (components == null)
 			return false;
 		if (isSynonym()) {
 			for(LightweightTypeReference component: components) {
-				if (component.isType(clazz))
+				if (component.isType(type))
 					return true;
 			}
 			return false;
 		} else {
 			for(LightweightTypeReference component: components) {
-				if (!component.isType(clazz))
+				if (!component.isType(type))
 					return false;
 			}
 			return true;

@@ -712,7 +712,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 			return throwClassCastException(forLoop.getExpression(), iterableOrIterator, java.lang.Iterable.class);
 		}
 		IEvaluationContext forkedContext = context.fork();
-		QualifiedName paramName = QualifiedName.create(forLoop.getDeclaredParam().getName());
+		QualifiedName paramName = QualifiedName.create(forLoop.getDeclaredParam().getSimpleName());
 		forkedContext.newValue(paramName, null);
 		while (iter.hasNext()) {
 			Object next = iter.next();
@@ -862,7 +862,7 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 				}
 			}
 		}
-		context.newValue(QualifiedName.create(variableDecl.getName()), initialValue);
+		context.newValue(QualifiedName.create(variableDecl.getSimpleName()), initialValue);
 		return null;
 	}
 
@@ -1164,9 +1164,9 @@ public class XbaseInterpreter implements IExpressionInterpreter {
 		if (variable.getType() != null) {
 			JvmTypeReference type = variable.getType();
 			Object coerced = coerceArgumentType(value, type);
-			context.assignValue(QualifiedName.create(variable.getName()), coerced);
+			context.assignValue(QualifiedName.create(variable.getSimpleName()), coerced);
 		} else {
-			context.assignValue(QualifiedName.create(variable.getName()), value);
+			context.assignValue(QualifiedName.create(variable.getSimpleName()), value);
 		}
 		return value;
 	}

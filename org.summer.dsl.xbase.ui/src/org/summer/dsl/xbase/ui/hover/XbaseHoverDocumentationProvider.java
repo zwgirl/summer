@@ -239,7 +239,7 @@ public class XbaseHoverDocumentationProvider implements IEObjectHoverDocumentati
 		List<String> result = Lists.newArrayList();
 		if (context instanceof JvmExecutable) {
 			for (JvmFormalParameter param : ((JvmExecutable) context).getParameters()) {
-				result.add(param.getName());
+				result.add(param.getSimpleName());
 			}
 		}
 		return result;

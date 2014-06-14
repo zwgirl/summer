@@ -34,7 +34,8 @@ import org.summer.dsl.model.xtype.XImportSection;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getExportSection <em>Export Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getRoot <em>Root</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getPackageName <em>Package Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmModuleImpl#getIdentifier <em>Identifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,24 +103,34 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	protected XObjectElement root;
 
 	/**
-	 * The default value of the '{@link #getPackage() <em>Package</em>}' attribute.
+	 * The default value of the '{@link #getPackageName() <em>Package Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPackage()
+	 * @see #getPackageName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PACKAGE_EDEFAULT = null;
+	protected static final String PACKAGE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPackage() <em>Package</em>}' attribute.
+	 * The cached value of the '{@link #getPackageName() <em>Package Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPackage()
+	 * @see #getPackageName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String package_ = PACKAGE_EDEFAULT;
+	protected String packageName = PACKAGE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -307,8 +318,8 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPackage() {
-		return package_;
+	public String getPackageName() {
+		return packageName;
 	}
 
 	/**
@@ -316,11 +327,11 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPackage(String newPackage) {
-		String oldPackage = package_;
-		package_ = newPackage;
+	public void setPackageName(String newPackageName) {
+		String oldPackageName = packageName;
+		packageName = newPackageName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__PACKAGE, oldPackage, package_));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__PACKAGE_NAME, oldPackageName, packageName));
 	}
 
 	/**
@@ -361,8 +372,10 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return getExportSection();
 			case TypesPackage.JVM_MODULE__ROOT:
 				return getRoot();
-			case TypesPackage.JVM_MODULE__PACKAGE:
-				return getPackage();
+			case TypesPackage.JVM_MODULE__PACKAGE_NAME:
+				return getPackageName();
+			case TypesPackage.JVM_MODULE__IDENTIFIER:
+				return getIdentifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -392,8 +405,11 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 			case TypesPackage.JVM_MODULE__ROOT:
 				setRoot((XObjectElement)newValue);
 				return;
-			case TypesPackage.JVM_MODULE__PACKAGE:
-				setPackage((String)newValue);
+			case TypesPackage.JVM_MODULE__PACKAGE_NAME:
+				setPackageName((String)newValue);
+				return;
+			case TypesPackage.JVM_MODULE__IDENTIFIER:
+				setIdentifier((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -422,8 +438,11 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 			case TypesPackage.JVM_MODULE__ROOT:
 				setRoot((XObjectElement)null);
 				return;
-			case TypesPackage.JVM_MODULE__PACKAGE:
-				setPackage(PACKAGE_EDEFAULT);
+			case TypesPackage.JVM_MODULE__PACKAGE_NAME:
+				setPackageName(PACKAGE_NAME_EDEFAULT);
+				return;
+			case TypesPackage.JVM_MODULE__IDENTIFIER:
+				setIdentifier(IDENTIFIER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -447,8 +466,10 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 				return exportSection != null;
 			case TypesPackage.JVM_MODULE__ROOT:
 				return root != null;
-			case TypesPackage.JVM_MODULE__PACKAGE:
-				return PACKAGE_EDEFAULT == null ? package_ != null : !PACKAGE_EDEFAULT.equals(package_);
+			case TypesPackage.JVM_MODULE__PACKAGE_NAME:
+				return PACKAGE_NAME_EDEFAULT == null ? packageName != null : !PACKAGE_NAME_EDEFAULT.equals(packageName);
+			case TypesPackage.JVM_MODULE__IDENTIFIER:
+				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -470,8 +491,10 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (simpleName: ");
 		result.append(simpleName);
-		result.append(", package: ");
-		result.append(package_);
+		result.append(", packageName: ");
+		result.append(packageName);
+		result.append(", identifier: ");
+		result.append(identifier);
 		result.append(')');
 		return result.toString();
 	}
@@ -484,6 +507,42 @@ public class JvmModuleImpl extends JvmTypeImpl implements JvmModule {
 			}
 		}
 		return result;
+	}
+	
+	private String identifier;
+	
+	@Override
+	public final String getIdentifier() {
+		if (identifier != null)
+			return identifier;
+		String identifier = computeIdentifier();
+		this.identifier = identifier;
+		return identifier;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentifier(String newIdentifier) {
+		String oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_MODULE__IDENTIFIER, oldIdentifier, identifier));
+	}
+
+	protected String computeIdentifier() {
+		if (simpleName == null)
+			return null;
+		return packageName + "." + simpleName;
+	}
+	
+	
+	@Override
+	public String getQualifiedName(char innerClassDelimiter) {
+		
+		return simpleName;
 	}
 
 } //JvmModuleImpl

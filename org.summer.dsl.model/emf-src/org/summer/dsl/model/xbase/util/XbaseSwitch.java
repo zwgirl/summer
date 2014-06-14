@@ -115,6 +115,7 @@ public class XbaseSwitch<T> extends Switch<T> {
 			case XbasePackage.XBLOCK_STATMENT: {
 				XBlockStatment xBlockStatment = (XBlockStatment)theEObject;
 				T result = caseXBlockStatment(xBlockStatment);
+				if (result == null) result = caseXExpression(xBlockStatment);
 				if (result == null) result = caseXStatment(xBlockStatment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -440,6 +441,13 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = caseJvmTypeParameterDeclarator(xFunctionDeclaration);
 				if (result == null) result = caseXStatment(xFunctionDeclaration);
 				if (result == null) result = caseJvmIdentifiableElement(xFunctionDeclaration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XPARENTHESIZED_EXPRESSION: {
+				XParenthesizedExpression xParenthesizedExpression = (XParenthesizedExpression)theEObject;
+				T result = caseXParenthesizedExpression(xParenthesizedExpression);
+				if (result == null) result = caseXExpression(xParenthesizedExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1089,6 +1097,21 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXFunctionDeclaration(XFunctionDeclaration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XParenthesized Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XParenthesized Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXParenthesizedExpression(XParenthesizedExpression object) {
 		return null;
 	}
 

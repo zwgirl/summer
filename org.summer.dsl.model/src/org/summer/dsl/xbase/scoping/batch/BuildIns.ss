@@ -1,6 +1,6 @@
 package summer.lang 
 module BuildIns{
-	<Object />
+//	<Object />
 	export class Object{   
 		constructor (){}       
 		 
@@ -11,17 +11,22 @@ module BuildIns{
 		function void freeze(){}   
 //	function getOwnPropertyDescriptor(){}
 //	function getOwnPropertyNames(){}   
-//	function getPrototypeOf(){return null;}
+//	function getPrototypeOf(){return null;}  
 		function Boolean is(){}
 		function Boolean isExtensible(){}   
 		function Boolean isFrozen(){} 
-		function Boolean isSealed(){}  
+		function Boolean isSealed(){}    
 		
 		const static Type Type;  
+//		Object this[String propName]{set{} get{}}
+		function Type getType(){} 
 		
-		function Type getType(){}
+		function boolean operator ==(Object that){}
+		function boolean operator ===(Object that){}
+		function boolean operator !==(Object that){}
+		function boolean operator !=(Object that){}
 //	function Collection<String> keys(){return null} 
-//	function preventExtensions(){}
+//	function preventExtensions(){} 
 //	function seal(){}
 //	function setPrototypeOf(){}
 	}  
@@ -60,9 +65,14 @@ module BuildIns{
 		constructor(){
 		}   
 		
-	   function String +(String left, String right){}
-		
-		function Boolean operator_equals(String left, String right){}
+	   function String operator +( String right){}
+	   function boolean operator >( String right){}
+	    
+	   function boolean operator >=( String right){}
+	     
+	   function boolean operator <=( String right){}
+	   function boolean operator <(String right){}  
+	   function boolean operator !=( String right){}
 		 
 		/**
 	 * Returns the character at the specified index.
@@ -194,7 +204,7 @@ module BuildIns{
 	 */
 		function String trimLeft(){}
 		
-		/**
+		/** 
 	 * Trims whitespace from the right side of the string.
 	 */
 		function String trimRight(){}
@@ -205,10 +215,18 @@ module BuildIns{
 		function String valueOf(){}
 		 
 	} 
+	 export class Date extends Object{
+	 	
+	 }
 	export class Boolean extends Object{
 		constructor (Object value){} 
 		
 		constructor (){}
+		
+	   function  Boolean operator &&(int other){}
+	   function  Boolean operator !(){}
+	   function  Boolean operator ||(int shiftAmount){}
+	   function  Boolean operator >>(int shiftAmount){}
 		 
 	}
 	
@@ -218,30 +236,103 @@ module BuildIns{
 		static const Object NaN = new Object();          
 //	public static final Object NEGATIVE_INFINITY = new Object()
 //	public static final Object POSITIVE_INFINITY = new Object()
-		function Number + (Number lhs, Number rhs){
+		function Number operator += ( Number rhs){
 			
 		} 
 		
-		function Number += (Number lhs, Number rhs){
+		function Number operator - ( ){
 			
+		}
+		
+		function Number operator ++ ( ){ 
+		}
+		
+		function Number operator + (Number rhs){
+		}
+		
+		function Number operator + (){
 		} 
 		
-		function Number operator_plus(Number lhs, Number rhs){
-			
+		function Number operator -= ( Number rhs){
 		} 
 		
+		function Number operator - (Number rhs){
+		} 
+		
+		function Number operator *= ( Number rhs){
+		} 
+		
+		function Number operator * (Number rhs){
+		}
+		
+		function Number operator %= ( Number rhs){
+		} 
+		
+		function Number operator %(Number rhs){
+		} 
+		
+		function Number operator /= ( Number rhs){
+		} 
+		
+		function Number operator / (Number rhs){
+		} 
+		
+	   function boolean operator >( Number right){}
+	    
+	   function boolean operator >=( Number right){}
+	     
+	   function boolean operator <=( Number right){}
+	   function boolean operator <(Number right){}  
+	   //function boolean operator !=( Number right){}
 	}
 	
 	export class Byte extends Number{
-		
+	   function Byte operator &(int other){}
+	   function Byte operator |(int other){} 
+	   function Byte operator ^(int other){}
+	   function  Byte operator ~(){}
+	   function Byte operator <<(int shiftAmount){}
+	   function  Byte operator >>(int shiftAmount){}
+	   
+ 	   function  Byte operator &=(int other){}
+	   function  Byte operator |=(int other){}
+	   function  Byte operator ^=(int other){}
+	   function  Byte operator ~(){}
+	   function  Byte operator <<=(int shiftAmount){}
+	   function  Byte operator >>=(int shiftAmount){}
 	}
 	
 	export class Short extends Number{
-		
+	   function  Short operator &(int other){}
+	   function  Short operator |(int other){}
+	   function  Short operator ^(int other){}
+	   function  Short operator ~(){}
+	   function  Short operator <<(int shiftAmount){}
+	   function  Short operator >>(int shiftAmount){}
+	   
+  	   function  Short operator &=(int other){}
+	   function  Short operator |=(int other){}
+	   function  Short operator ^=(int other){}
+	   function  Short operator ~(){}
+	   function  Short operator <<=(int shiftAmount){}
+	   function  Short operator >>=(int shiftAmount){}
 	}
 	
 	export class Integer extends Number{
-		
+	   function int operator &(int other){}
+	   function int operator |(int other){} 
+	   function int operator ^(int other){}
+	   function  int operator ~(){}
+	   function int operator <<(int shiftAmount){}
+	   function  int operator >>(int shiftAmount){}
+	   
+   	   function int operator &=(int other){}
+	   function int operator |=(int other){}
+	   function int operator ^=(int other){}
+	   function  int operator ~(){}
+	   function int operator <<=(int shiftAmount){}
+	   function  int operator >>=(int shiftAmount){}
+  
 	}
 	
 	export class Float extends Number{
@@ -308,13 +399,15 @@ module BuildIns{
 		constructor(K key, V value){
 //			this.key = key;
 //			this.value = value;
-		}
+		} 
 		
 //	K key;
 //	V value;
 	}
 	
-//export class Map<K, V> extends Collection<Entry<K, V>> {  
+	export class Map<K, V> extends Collection<Entry<K, V>> {  
+		 
+	}
 		
 //	Integer size;//返回成员总数。
 ////	function ^set(K key, V value) {}//设置一个键值对。
@@ -382,7 +475,9 @@ module BuildIns{
 	}
 	
 	export  class Error extends Object{
-		
+		constructor(String message){
+			
+		}
 	} 
 	
 	export class Set<T extends Object> extends Object{

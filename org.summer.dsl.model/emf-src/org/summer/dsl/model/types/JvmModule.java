@@ -21,7 +21,8 @@ import org.summer.dsl.model.xtype.XImportSection;
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getContents <em>Contents</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getExportSection <em>Export Section</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmModule#getRoot <em>Root</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmModule#getPackageName <em>Package Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmModule#getIdentifier <em>Identifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,30 +152,56 @@ public interface JvmModule extends JvmType {
 	void setRoot(XObjectElement value);
 
 	/**
-	 * Returns the value of the '<em><b>Package</b></em>' attribute.
+	 * Returns the value of the '<em><b>Package Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Package</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Package Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Package</em>' attribute.
-	 * @see #setPackage(String)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_Package()
+	 * @return the value of the '<em>Package Name</em>' attribute.
+	 * @see #setPackageName(String)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_PackageName()
 	 * @model
 	 * @generated
 	 */
-	String getPackage();
+	String getPackageName();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getPackageName <em>Package Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Package</em>' attribute.
-	 * @see #getPackage()
+	 * @param value the new value of the '<em>Package Name</em>' attribute.
+	 * @see #getPackageName()
 	 * @generated
 	 */
-	void setPackage(String value);
+	void setPackageName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Identifier</em>' attribute.
+	 * @see #setIdentifier(String)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmModule_Identifier()
+	 * @model
+	 * @generated
+	 */
+	String getIdentifier();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmModule#getIdentifier <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Identifier</em>' attribute.
+	 * @see #getIdentifier()
+	 * @generated
+	 */
+	void setIdentifier(String value);
 
 	Iterable<JvmDeclaredType> getJvmDeclaredTypes();
 	

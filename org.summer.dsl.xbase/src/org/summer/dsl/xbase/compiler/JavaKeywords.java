@@ -21,7 +21,7 @@ public class JavaKeywords {
 	
 	private final static Set<String> JAVA_KEYWORDS= Sets.newHashSet(
 			"abstract" ,
-	        "assert" , // added in 1.4
+//	        "assert" , // added in 1.4
 	        "boolean" ,
 	        "break" ,
 	        "byte" ,
@@ -60,7 +60,7 @@ public class JavaKeywords {
 	        "return" ,
 	        "short" ,
 	        "static" ,
-	        "strictfp" , // added in 1.2
+//	        "strictfp" , // added in 1.2
 	        "super" ,
 	        "switch" ,
 	        "synchronized" ,

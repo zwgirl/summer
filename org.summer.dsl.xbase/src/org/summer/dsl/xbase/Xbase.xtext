@@ -158,7 +158,7 @@ XCastedExpression returns XExpression:
 
 XMemberFeatureCall returns XExpression:
 	XPrimaryExpression
-	(=>({XCaller.function=current} '(')
+	(=>({XCaller.executable=current} '(')
 		 (arguments+=XExpression (',' arguments+=XExpression)*)?
 		 ')'
  	|=>({XIndexer.source=current} '[')
@@ -224,7 +224,7 @@ XExpressionStatment returns XExpressionStatment:
 XClosure returns XExpression:
 	{XClosure} 
 	'function' 
-		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')'
+		'('(declaredFormalParameters+=JvmFormalParameter (',' declaredFormalParameters+=JvmFormalParameter)*)? ')' (explicitReturn ?='=>' returnType = JvmTypeReference)?
 		statment=XBlockStatment 
 	;
 XFunctionDeclaration returns XFunctionDeclaration:
@@ -241,7 +241,8 @@ XFunctionDeclaration returns XFunctionDeclaration:
 	;
 
 XParenthesizedExpression returns XExpression:
-	'(' XExpression ')' ;
+	{XParenthesizedExpression}
+	'(' expression = XExpression ')' ;
 
 XIfStatment returns XStatment:
 	{XIfStatment}
@@ -306,15 +307,15 @@ XVariableDeclarationList returns XStatment:
 
 XVariableDeclaration returns XExpression: 
 	{XVariableDeclaration}
-	(=>(type=JvmTypeReference name=ValidID) | name=ValidID) =>('=' right=XExpression)?
+	(=>(type=JvmTypeReference simpleName=ValidID) | simpleName=ValidID) =>('=' right=XExpression)?
 ;
 	
 JvmFormalParameter returns types::JvmFormalParameter:
 	annotations+=JvmAnnotation* 
-	(parameterType=JvmTypeReference)? varArg?='...'? name=ValidID (=>'=' defaultValue = XExpression)?;
+	(parameterType=JvmTypeReference)? varArg?='...'? simpleName=ValidID (=>'=' defaultValue = XExpression)?;
 
 FullJvmFormalParameter returns types::JvmFormalParameter:
-	parameterType=JvmTypeReference name=ValidID (=>'=' defaultValue = XExpression)?;
+	parameterType=JvmTypeReference simpleName=ValidID (=>'=' defaultValue = XExpression)?;
 
 //XFeatureCall returns XExpression:
 //	{XFeatureCall}
@@ -1027,7 +1028,7 @@ JvmLowerBound returns types::JvmLowerBound:
  'super' typeReference=JvmTypeReference;
 
 JvmTypeParameter returns types::JvmTypeParameter:
-  name=ValidID 
+  simpleName=ValidID 
   (constraints+=JvmUpperBound (constraints+=JvmUpperBoundAnded)*)?;
 
 QualifiedNameWithWildcard :

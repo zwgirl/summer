@@ -146,7 +146,7 @@ public class XbaseDeclarativeHoverSignatureProvider {
 		EObject container = parameter.eContainer();
 		JvmTypeReference type = typeProvider.getTypeForIdentifiable(parameter);
 		if (type != null) {
-			String signature = parameter.getName();
+			String signature = parameter.getSimpleName();
 			String signatureOfFather = getSimpleSignature(container);
 			if(signatureOfFather != null){
 				signature += JavaElementLabels.CONCAT_STRING + signatureOfFather;
@@ -155,7 +155,7 @@ public class XbaseDeclarativeHoverSignatureProvider {
 				return signature + " : " + type.getSimpleName();
 			return type.getSimpleName() + " " + signature;
 		}
-		return parameter.getName();
+		return parameter.getSimpleName();
 	}
 
 	protected String _signature(JvmTypeParameter parameter, boolean typeAtEnd){

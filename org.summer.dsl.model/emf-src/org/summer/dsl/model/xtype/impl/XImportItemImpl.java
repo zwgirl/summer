@@ -139,6 +139,19 @@ public class XImportItemImpl extends MinimalEObjectImpl.Container implements XIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getIdentifier() {
+		if(alias!=null && !alias.isEmpty()){
+			return alias;
+		}
+		
+		return getImportedId().getSimpleName();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {

@@ -14,7 +14,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getType <em>Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XVariableDeclaration#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
@@ -51,30 +51,30 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	void setType(JvmTypeReference value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Simple Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclaration_Name()
+	 * @return the value of the '<em>Simple Name</em>' attribute.
+	 * @see #setSimpleName(String)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXVariableDeclaration_SimpleName()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	String getSimpleName();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclaration#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XVariableDeclaration#getSimpleName <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Simple Name</em>' attribute.
+	 * @see #getSimpleName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setSimpleName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Right</b></em>' containment reference.
@@ -101,5 +101,13 @@ public interface XVariableDeclaration extends XExpression, JvmIdentifiableElemen
 	 * @generated
 	 */
 	void setRight(XExpression value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isReadonly();
 
 } // XVariableDeclaration

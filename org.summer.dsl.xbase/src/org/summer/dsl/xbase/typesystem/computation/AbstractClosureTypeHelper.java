@@ -11,6 +11,7 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
+import org.summer.dsl.xbase.typesystem.internal.AbstractTypeComputationState;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
@@ -28,19 +29,19 @@ import org.summer.dsl.xbase.typesystem.util.ExpectationTypeParameterHintCollecto
 @NonNullByDefault
 public abstract class AbstractClosureTypeHelper {
 
-	private final XClosure closure;
-	private final ITypeComputationState state;
+	protected final XClosure closure;
+	private final AbstractTypeComputationState state;
 	private final CommonTypeComputationServices services;
 	private final ITypeExpectation expectation;
 	
-	protected AbstractClosureTypeHelper(XClosure closure, ITypeExpectation expectation, ITypeComputationState state) {
+	protected AbstractClosureTypeHelper(XClosure closure, ITypeExpectation expectation, AbstractTypeComputationState state) {
 		this.closure = closure;
 		this.expectation = expectation;
 		this.state = state;
 		this.services = state.getReferenceOwner().getServices();
 	}
 	
-	protected ITypeComputationState getState() {
+	protected AbstractTypeComputationState getState() {
 		return state;
 	}
 	

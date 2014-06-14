@@ -7,28 +7,25 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.compiler;
 
-import static com.google.common.collect.Lists.*;
-import static com.google.common.collect.Maps.*;
-import static com.google.common.collect.Sets.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newLinkedHashSet;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.codegen.util.CodeGenUtil;
-import org.eclipse.xtext.EcoreUtil2;
 import org.summer.dsl.model.types.JvmArrayType;
-import org.summer.dsl.model.types.JvmDeclaredType;
+import org.summer.dsl.model.types.JvmModule;
 import org.summer.dsl.model.types.JvmPrimitiveType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
-import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.JvmVoid;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.collect.Sets;
 
@@ -58,34 +55,16 @@ public class ImportManager {
 		this(organizeImports, null);
 	}
 
-	public ImportManager(boolean organizeImports, JvmDeclaredType thisType) {
-		this(organizeImports, thisType, '.');
+	public ImportManager(boolean organizeImports, JvmModule thisModule) {
+		this(organizeImports, thisModule, '.');
 	}
 
-	public ImportManager(boolean organizeImports, JvmDeclaredType thisType, char innerTypeSeparator) {
+	public ImportManager(boolean organizeImports, JvmModule thisModule, char innerTypeSeparator) {
 		this.organizeImports = organizeImports;
 		this.innerTypeSeparator = innerTypeSeparator;
-		if (thisType != null) {
-			thisTypeSimpleNames.add(thisType.getSimpleName());
-			thisTypeQualifiedNames.add(thisType.getQualifiedName(innerTypeSeparator));
-			thisCollidesWithJavaLang |= CodeGenUtil.isJavaLangType(thisType.getSimpleName());
-			registerSimpleNamesOfInnerClasses(thisType, new LinkedHashSet<JvmType>());
-		}
-	}
-
-	protected void registerSimpleNamesOfInnerClasses(JvmDeclaredType thisType, LinkedHashSet<JvmType> handled) {
-		if (!handled.add(thisType))
-			return;
-		List<JvmDeclaredType> nested = EcoreUtil2.typeSelect(thisType.getMembers(), JvmDeclaredType.class);
-		for (JvmDeclaredType jvmDeclaredType : nested) {
-			thisTypeSimpleNames.add(jvmDeclaredType.getSimpleName());
-			thisTypeQualifiedNames.add(jvmDeclaredType.getQualifiedName(innerTypeSeparator));
-			thisCollidesWithJavaLang |= CodeGenUtil.isJavaLangType(jvmDeclaredType.getSimpleName());
-		}
-		for (JvmTypeReference superType: thisType.getSuperTypes()) {
-			if (superType.getType() instanceof JvmDeclaredType) {
-				registerSimpleNamesOfInnerClasses((JvmDeclaredType) superType.getType(), handled);
-			}
+		if (thisModule != null) {
+			thisTypeSimpleNames.add(thisModule.getSimpleName());
+			thisTypeQualifiedNames.add(thisModule.getQualifiedName(innerTypeSeparator));
 		}
 	}
 
@@ -101,12 +80,10 @@ public class ImportManager {
 		return sb;
 	}
 
-	private Pattern JAVA_LANG_PACK = Pattern.compile("java\\.lang\\.[\\w]+");
-
-	private boolean thisCollidesWithJavaLang;
 
 	public void appendType(final JvmType type, StringBuilder builder) {
-		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid || type instanceof JvmTypeParameter) {
+//		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid || type instanceof JvmTypeParameter) {
+		if (type.isPrimitive() || type == Buildin.Void.JvmType || type instanceof JvmTypeParameter) {
 			builder.append(type.getQualifiedName(innerTypeSeparator));
 		} else if (type instanceof JvmArrayType) {
 			appendType(((JvmArrayType) type).getComponentType(), builder);
@@ -115,22 +92,8 @@ public class ImportManager {
 			final String qualifiedName = type.getQualifiedName(innerTypeSeparator);
 			String nameToImport = qualifiedName;
 			String shortName = type.getSimpleName();
-			if (shouldUseQualifiedNestedName(qualifiedName)) {
-				JvmType outerContainer = type;
-				while (outerContainer.eContainer() instanceof JvmType) {
-					outerContainer = (JvmType) outerContainer.eContainer();
-				}
-				if (type != outerContainer) {
-					nameToImport = outerContainer.getQualifiedName(innerTypeSeparator);
-					shortName = outerContainer.getSimpleName()+qualifiedName.substring(nameToImport.length());
-				}
-			}
 			appendType(qualifiedName, shortName, nameToImport, builder);
 		}
-	}
-
-	protected boolean shouldUseQualifiedNestedName(String identifier) {
-		return !identifier.startsWith("org.summer.dsl.xbase.lib.");
 	}
 
 	public void appendType(final Class<?> type, StringBuilder builder) {
@@ -143,16 +106,6 @@ public class ImportManager {
 			final String qualifiedName = type.getCanonicalName();
 			String nameToImport = qualifiedName;
 			String shortName = type.getSimpleName();
-			if (shouldUseQualifiedNestedName(qualifiedName)) {
-				Class<?> outerContainer = type;
-				while (outerContainer.getDeclaringClass() != null) {
-					outerContainer = outerContainer.getDeclaringClass();
-				}
-				if (type != outerContainer) {
-					nameToImport = outerContainer.getCanonicalName();
-					shortName = outerContainer.getSimpleName()+qualifiedName.substring(nameToImport.length());
-				}
-			}
 			appendType(qualifiedName, shortName, nameToImport, builder);
 		}
 	}
@@ -177,8 +130,7 @@ public class ImportManager {
 	}
 
 	protected boolean allowsSimpleName(String qualifiedName, String simpleName) {
-		return thisTypeQualifiedNames.contains(qualifiedName) || (!thisCollidesWithJavaLang && JAVA_LANG_PACK.matcher(qualifiedName).matches())
-				|| equal(qualifiedName, simpleName);
+		return thisTypeQualifiedNames.contains(qualifiedName) || equal(qualifiedName, simpleName);
 	}
 
 	protected boolean needsQualifiedName(String qualifiedName, String simpleName) {

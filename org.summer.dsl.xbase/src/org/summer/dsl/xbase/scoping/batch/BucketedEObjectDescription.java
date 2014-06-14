@@ -14,6 +14,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
@@ -58,7 +59,14 @@ public abstract class BucketedEObjectDescription extends EObjectDescription impl
 		EObject object = getEObjectOrProxy();
 		if (object instanceof JvmIdentifiableElement) {
 			JvmIdentifiableElement identifiable = (JvmIdentifiableElement) object;
-			StringBuilder builder = new StringBuilder(identifiable.getSimpleName());
+			
+			StringBuilder builder=null;
+			if(identifiable instanceof JvmConstructor){  //cym add
+				builder = new StringBuilder(((JvmConstructor)identifiable).getDeclaringType().getSimpleName()); 
+			}else{
+				builder = new StringBuilder(identifiable.getSimpleName());
+			}
+			
 			computeShadowingKey(identifiable, builder);
 			return builder.toString();
 		}

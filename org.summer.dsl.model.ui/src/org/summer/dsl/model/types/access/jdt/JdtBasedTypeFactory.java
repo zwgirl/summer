@@ -165,7 +165,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 							} else if (size == parameterNames.length - 1) {
 								for (int i = 1; i < parameterNames.length; i++) {
 									String string = parameterNames[i];
-									parameters.get(i - 1).setName(string);
+									parameters.get(i - 1).setSimpleName(string);
 								}
 							} else {
 								throw new IllegalStateException("unmatching arity for java method "+javaMethod.toString()+" and "+getExecutable().getIdentifier());
@@ -1330,7 +1330,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 			}
 			for (int i = 0; i < parameterNames.length; i++) {
 				String string = parameterNames[i];
-				parameters.get(i).setName(string);
+				parameters.get(i).setSimpleName(string);
 			}
 		}
 
@@ -1366,8 +1366,8 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 		private void synthesizeNames(List<JvmFormalParameter> parameters) {
 			int i = 0;
 			for (JvmFormalParameter p : parameters) {
-				if (p.getName() == null) {
-					p.setName("arg"+i);
+				if (p.getSimpleName() == null) {
+					p.setSimpleName("arg"+i);
 				}
 				i++;
 			}
@@ -1415,7 +1415,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 				}
 				for (int i = 2; i < parameterNames.length; i++) {
 					String string = parameterNames[i];
-					parameters.get(i - 2).setName(string);
+					parameters.get(i - 2).setSimpleName(string);
 				}
 			}
 		}
@@ -1452,7 +1452,7 @@ public class JdtBasedTypeFactory implements ITypeFactory<IType> {
 	protected JvmFormalParameter createFormalParameter(ITypeBinding parameterType, String paramName, IAnnotationBinding[] annotations) {
 		JvmFormalParameter result = TypesFactory.eINSTANCE.createJvmFormalParameter();
 		if (paramName != null)
-			result.setName(paramName);
+			result.setSimpleName(paramName);
 		result.setParameterType(createTypeReference(parameterType));
 		if (annotations != null && annotations.length > 0) {
 			InternalEList<JvmAnnotationReference> parameterAnnotations = (InternalEList<JvmAnnotationReference>)result.getAnnotations();

@@ -25,6 +25,7 @@ import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.summer.dsl.xbase.compiler.ISourceAppender;
 import org.summer.dsl.xbase.imports.RewritableImportSection;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReferenceSerializer;
 import org.summer.dsl.xbase.ui.contentassist.WhitespaceHelper;
@@ -186,7 +187,8 @@ public class DocumentSourceAppender implements ISourceAppender {
 	}
 
 	public void appendType(final @NonNull JvmType type, @NonNull StringBuilder builder) {
-		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid || type instanceof JvmTypeParameter) {
+//		if (type instanceof JvmPrimitiveType || type instanceof JvmVoid || type instanceof JvmTypeParameter) {
+		if (type.isPrimitive() || type == Buildin.Void.JvmType || type instanceof JvmTypeParameter) {
 			builder.append(type.getQualifiedName(getInnerTypeSeparator()));
 		} else if (type instanceof JvmArrayType) {
 			appendType(((JvmArrayType) type).getComponentType(), builder);

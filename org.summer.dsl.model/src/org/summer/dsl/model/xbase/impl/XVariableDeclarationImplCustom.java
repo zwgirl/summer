@@ -14,22 +14,22 @@ public class XVariableDeclarationImplCustom extends XVariableDeclarationImpl {
 	
 	@Override
 	public String getIdentifier() {
-		return name;
+		return simpleName;
 	}
 	
 	@Override
 	public String getSimpleName() {
-		return name;
+		return simpleName;
 	}
 	
 	@Override
 	public String getQualifiedName() {
-		return name;
+		return simpleName;
 	}
 	
 	@Override
 	public String getQualifiedName(char innerClassDelimiter) {
-		return name;
+		return simpleName;
 	}
 	
 	@Override

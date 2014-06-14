@@ -35,6 +35,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#isOperator <em>Operator</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#isExported <em>Exported</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XClosureImpl#isExplicitReturn <em>Explicit Return</em>}</li>
  * </ul>
  * </p>
  *
@@ -170,6 +171,26 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	 * @ordered
 	 */
 	protected boolean exported = EXPORTED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isExplicitReturn() <em>Explicit Return</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExplicitReturn()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean EXPLICIT_RETURN_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isExplicitReturn() <em>Explicit Return</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExplicitReturn()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean explicitReturn = EXPLICIT_RETURN_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -432,10 +453,29 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isExplicitReturn() {
+		return explicitReturn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExplicitReturn(boolean newExplicitReturn) {
+		boolean oldExplicitReturn = explicitReturn;
+		explicitReturn = newExplicitReturn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCLOSURE__EXPLICIT_RETURN, oldExplicitReturn, explicitReturn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public EList<JvmFormalParameter> getFormalParameters() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getDeclaredFormalParameters();
 	}
 
 	public String getIdentifier() {
@@ -502,6 +542,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 				return getTypeParameters();
 			case XbasePackage.XCLOSURE__EXPORTED:
 				return isExported();
+			case XbasePackage.XCLOSURE__EXPLICIT_RETURN:
+				return isExplicitReturn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -544,6 +586,9 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 			case XbasePackage.XCLOSURE__EXPORTED:
 				setExported((Boolean)newValue);
 				return;
+			case XbasePackage.XCLOSURE__EXPLICIT_RETURN:
+				setExplicitReturn((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -583,6 +628,9 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 			case XbasePackage.XCLOSURE__EXPORTED:
 				setExported(EXPORTED_EDEFAULT);
 				return;
+			case XbasePackage.XCLOSURE__EXPLICIT_RETURN:
+				setExplicitReturn(EXPLICIT_RETURN_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -613,6 +661,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 				return typeParameters != null && !typeParameters.isEmpty();
 			case XbasePackage.XCLOSURE__EXPORTED:
 				return exported != EXPORTED_EDEFAULT;
+			case XbasePackage.XCLOSURE__EXPLICIT_RETURN:
+				return explicitReturn != EXPLICIT_RETURN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -635,6 +685,8 @@ public class XClosureImpl extends XExpressionImpl implements XClosure {
 		result.append(operator);
 		result.append(", exported: ");
 		result.append(exported);
+		result.append(", explicitReturn: ");
+		result.append(explicitReturn);
 		result.append(')');
 		return result.toString();
 	}

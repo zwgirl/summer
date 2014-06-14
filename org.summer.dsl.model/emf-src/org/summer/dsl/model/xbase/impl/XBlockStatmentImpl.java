@@ -27,7 +27,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  *
  * @generated
  */
-public class XBlockStatmentImpl extends XStatmentImpl implements XBlockStatment {
+public class XBlockStatmentImpl extends XExpressionImpl implements XBlockStatment {
 	/**
 	 * The cached value of the '{@link #getStatments() <em>Statments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

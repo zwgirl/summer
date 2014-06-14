@@ -68,7 +68,7 @@ public class FieldSetTypeComputationState extends AbstractRootTypeComputationSta
 
 	@Override
 	public void computeTypes() {
-		getResolver().getTypeComputer().computeTypes(statment, this);
+		getResolver().getTypeComputer().computeTypes((XStatment)statment, this);
 	}
 
 	@Override

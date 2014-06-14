@@ -116,7 +116,7 @@ public class CacheMethodCompileStrategy implements Procedures.Procedure1<ITreeAp
 		appendable.newLine().append("}");
 		appendable.newLine().append(initializerMethod.getSimpleName()).append("(").append(resultVarName);
 		for (JvmFormalParameter parameter : cacheMethod.getParameters()) {
-			appendable.append(", ").append(parameter.getName());
+			appendable.append(", ").append(parameter.getSimpleName());
 		}
 		appendable.append(");");
 		// return the result

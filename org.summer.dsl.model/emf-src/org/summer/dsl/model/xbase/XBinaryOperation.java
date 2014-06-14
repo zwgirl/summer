@@ -13,6 +13,7 @@ package org.summer.dsl.model.xbase;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XBinaryOperation#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XBinaryOperation#getRightOperand <em>Right Operand</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XBinaryOperation#isReassignFirstArgument <em>Reassign First Argument</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,5 +73,32 @@ public interface XBinaryOperation extends XAbstractFeatureCall {
 	 * @generated
 	 */
 	void setRightOperand(XExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Reassign First Argument</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Reassign First Argument</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Reassign First Argument</em>' attribute.
+	 * @see #setReassignFirstArgument(boolean)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXBinaryOperation_ReassignFirstArgument()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isReassignFirstArgument();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XBinaryOperation#isReassignFirstArgument <em>Reassign First Argument</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Reassign First Argument</em>' attribute.
+	 * @see #isReassignFirstArgument()
+	 * @generated
+	 */
+	void setReassignFirstArgument(boolean value);
 
 } // XBinaryOperation

@@ -483,4 +483,12 @@ public class JvmDelegateTypeImpl extends JvmTypeParameterDeclaratorImpl implemen
 		return result.toString();
 	}
 
+	public boolean isPrimitive() {
+		return false;
+	}
+
+	public void setPrimitive(boolean flag) {
+		
+	}
+
 } //JvmDelegateTypeImpl

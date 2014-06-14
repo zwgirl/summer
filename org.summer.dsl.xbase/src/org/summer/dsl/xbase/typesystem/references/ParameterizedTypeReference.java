@@ -713,7 +713,7 @@ public class ParameterizedTypeReference extends LightweightTypeReference {
 			if (Buildin.Object.JvmType.getIdentifier().equals(identifier)) {
 				return getServices().getTypeReferences().createTypeRef(rawType);
 			}
-		} else if (thisType.eClass() != TypesPackage.Literals.JVM_VOID && thisType.eClass() != TypesPackage.Literals.JVM_MODULE) {
+		} else if (thisType.eClass() != TypesPackage.Literals.JVM_DELEGATE_TYPE && thisType.eClass() != TypesPackage.Literals.JVM_VOID && thisType.eClass() != TypesPackage.Literals.JVM_MODULE) {
 			List<JvmTypeReference> superTypes = ((JvmDeclaredType) thisType).getSuperTypes();
 			for(int i = 0, size = superTypes.size(); i < size; i++) {
 				JvmTypeReference superType = superTypes.get(i);

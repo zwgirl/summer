@@ -129,7 +129,7 @@ public class SsUIValidator extends XbaseUIValidator {
 //		}
 		
 		String expectedPackage = getExpectedPackageName(module);
-		String declaredPackage = module.getPackage();
+		String declaredPackage = module.getPackageName();
 		if(expectedPackage != null && !((isEmpty(expectedPackage) && declaredPackage == null) || expectedPackage.equals(declaredPackage))) {
 			error("The declared package '" + notNull(declaredPackage) + "' does not match the expected package '" + notNull(expectedPackage) + "'",
 					TypesPackage.Literals.JVM_MODULE__SIMPLE_NAME, ValidationMessageAcceptor.INSIGNIFICANT_INDEX, IssueCodes.WRONG_PACKAGE, expectedPackage);

@@ -28,6 +28,7 @@ import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmIndexer;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
@@ -41,6 +42,7 @@ import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XBreakStatment;
+import org.summer.dsl.model.xbase.XCaller;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCastedExpression;
 import org.summer.dsl.model.xbase.XCatchClause;
@@ -61,6 +63,7 @@ import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
+import org.summer.dsl.model.xbase.XParenthesizedExpression;
 import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XStatment;
@@ -76,6 +79,7 @@ import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XWhileStatment;
 import org.summer.dsl.model.xbase.XbasePackage;
+import org.summer.dsl.model.xbase.impl.XAbstractFeatureCallImpl;
 import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
 import org.summer.dsl.xbase.typesystem.conformance.TypeConformanceComputationArgument;
@@ -88,6 +92,7 @@ import org.summer.dsl.xbase.typesystem.internal.StackedResolvedTypes;
 import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ArrayTypeReference;
 import org.summer.dsl.xbase.typesystem.references.CompoundTypeReference;
+import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.references.LightweightMergedBoundTypeArgument;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
@@ -168,6 +173,10 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XStructLiteral)expression, state);
 		} else if (expression instanceof XArrayLiteral) {
 			_computeTypes((XArrayLiteral)expression, state);
+		} else if (expression instanceof XCaller) {
+			_computeTypes((XCaller)expression, state);
+		} else if (expression instanceof XParenthesizedExpression) {
+			_computeTypes((XParenthesizedExpression)expression, state);
 		} else { 
 			throw new UnsupportedOperationException("Missing type computation for expression type: " + expression.eClass().getName() + " / " + state);
 		}
@@ -204,8 +213,8 @@ public class XbaseTypeComputer implements ITypeComputer {
 			_computeTypes((XBreakStatment)statment, state);
 		} else if (statment instanceof XContinueStatment) {
 			_computeTypes((XContinueStatment)statment, state);
-		} else if (statment instanceof XFunctionDeclaration) {
-			_computeTypes((XFunctionDeclaration)statment, state);
+//		} else if (statment instanceof XFunctionDeclaration) {
+//			_computeTypes((XFunctionDeclaration)statment, state);
 		} else if (statment instanceof XExpressionStatment) {
 			_computeTypes((XExpressionStatment)statment, state);
 		} else { 
@@ -523,7 +532,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 		JvmFormalParameter declaredParam = object.getDeclaredParam();
 		LightweightTypeReference parameterType = getDeclaredParameterType(declaredParam, state);
 //		final JvmGenericType iterableType = (JvmGenericType) services.getTypeReferences().findDeclaredType(Iterable.class, object); //cym comment
-		final JvmGenericType iterableType = (JvmGenericType) Buildin.Iterable.JvmType;
+		final JvmInterfaceType iterableType = (JvmInterfaceType) Buildin.Iterable.JvmType;
 		
 		if (parameterType != null && !parameterType.isPrimitiveVoid()) {
 			final CompoundTypeReference withSynonyms = new CompoundTypeReference(state.getReferenceOwner(), true);
@@ -591,6 +600,14 @@ public class XbaseTypeComputer implements ITypeComputer {
 		XExpression returnValue = object.getExpression();
 		ITypeComputationState expressionState = state.withReturnExpectation();
 		LightweightTypeReference primitiveVoid = getPrimitiveVoid(state);
+//		if (returnValue != null) {
+//			expressionState.computeTypes(returnValue);
+//			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
+//		} else {
+//			state.acceptActualType(primitiveVoid, ConformanceHint.EXPLICIT_VOID_RETURN);
+//			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
+//		}
+		
 		if (returnValue != null) {
 			expressionState.computeTypes(returnValue);
 			state.acceptActualType(primitiveVoid, ConformanceHint.NO_IMPLICIT_RETURN);
@@ -600,18 +617,18 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 	}
 	
-	protected void _computeTypes(XFunctionDeclaration function, ITypeComputationState state) {
-		AbstractTypeComputationState typeState = (AbstractTypeComputationState) state;
-		StackedResolvedTypes childResolvedTypes = declareTypeParameters(typeState.getResolvedTypes(), function);
-		FunctionComputationState state1 = new FunctionComputationState(childResolvedTypes, typeState.getFeatureScopeSession(), function);
-		state1.computeTypes();
-//		computeAnnotationTypes(childResolvedTypes, featureScopeSession, field);
-		
-//		if (childResolvedTypes instanceof StackedResolvedTypes)
-//			((StackedResolvedTypes) childResolvedTypes).mergeIntoParent();
-		
-//		computeTypes(function.getBody(), state);
-	}
+//	protected void _computeTypes(XFunctionDeclaration function, ITypeComputationState state) {
+//		AbstractTypeComputationState typeState = (AbstractTypeComputationState) state;
+//		StackedResolvedTypes childResolvedTypes = declareTypeParameters(typeState.getResolvedTypes(), function);
+//		FunctionComputationState state1 = new FunctionComputationState(childResolvedTypes, typeState.getFeatureScopeSession(), function);
+//		state1.computeTypes();
+////		computeAnnotationTypes(childResolvedTypes, featureScopeSession, field);
+//		
+////		if (childResolvedTypes instanceof StackedResolvedTypes)
+////			((StackedResolvedTypes) childResolvedTypes).mergeIntoParent();
+//		
+////		computeTypes(function.getBody(), state);
+//	}
 	
 	protected StackedResolvedTypes declareTypeParameters(ResolvedTypes resolvedTypes, JvmIdentifiableElement declarator) {
 		StackedResolvedTypes childResolvedTypes = resolvedTypes.pushTypes();
@@ -681,29 +698,55 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	protected void _computeTypes(XBlockStatment object, ITypeComputationState state) {
+		AbstractTypeComputationState aState = (AbstractTypeComputationState) state;
 		List<XStatment> children = object.getStatments();
-		if (children.isEmpty()) {
-			for (ITypeExpectation expectation: state.getExpectations()) {
-				LightweightTypeReference expectedType = expectation.getExpectedType();
-				if (expectedType != null && expectedType.isPrimitiveVoid()) {
-					expectation.acceptActualType(getPrimitiveVoid(state), ConformanceHint.CHECKED, ConformanceHint.SUCCESS);
-				} else {
-					expectation.acceptActualType(new AnyTypeReference(expectation.getReferenceOwner()), ConformanceHint.UNCHECKED);
-				}
+//		if (children.isEmpty()) {
+//			for (ITypeExpectation expectation: state.getExpectations()) {
+//				LightweightTypeReference expectedType = expectation.getExpectedType();
+//				if (expectedType != null && expectedType.isPrimitiveVoid()) {
+//					expectation.acceptActualType(getPrimitiveVoid(state), ConformanceHint.CHECKED, ConformanceHint.SUCCESS);
+//				} else {
+//					expectation.acceptActualType(new AnyTypeReference(expectation.getReferenceOwner()), ConformanceHint.UNCHECKED);
+//				}
+//			}
+//		} else {
+		for(XStatment statment : children) {
+			if (statment instanceof XFunctionDeclaration) {
+				state.addLocalToCurrentScope((JvmIdentifiableElement) statment);
 			}
-		} else {
+		}
 //			state.withinScope(object);  //cym comment
-			for(int i = 0; i < children.size(); i++) {
-				XStatment statment = children.get(i);
-//				ITypeComputationState expressionState = state.withoutExpectation(); // no expectation
-				
-				computeTypes(statment, state);
-				if (statment instanceof XVariableDeclarationList) {
-					XVariableDeclarationList declList = (XVariableDeclarationList) statment;
-					for(XExpression exp : declList.getDeclarations()){
-						addLocalToCurrentScope((XVariableDeclaration)exp, state);
+		for(XStatment statment : children) {
+				if(statment instanceof XFunctionDeclaration){
+					XFunctionDeclaration function = (XFunctionDeclaration) statment;
+					
+					StackedResolvedTypes functionResolvedTypes = declareTypeParameters(aState.getResolvedTypes(), function);
+					
+					LightweightTypeReference lightweightReference = aState.getConverter().toLightweightReference(function.getReturnType());
+					functionResolvedTypes.setType(function, lightweightReference);
+					
+					FunctionComputationState functionState = new FunctionComputationState(functionResolvedTypes, aState.getFeatureScopeSession(), function);
+					functionState.computeTypes();
+					functionResolvedTypes.mergeIntoParent();
+				}  else {
+					computeTypes(statment, state);
+					
+					if(statment instanceof XVariableDeclarationList){
+						if (statment instanceof XVariableDeclarationList) {
+							XVariableDeclarationList declList = (XVariableDeclarationList) statment;
+							for(XExpression exp : declList.getDeclarations()){
+								state.addLocalToCurrentScope((XVariableDeclaration)exp);
+							}
+						}
 					}
 				}
+//				computeTypes(statment, state);
+//				if (statment instanceof XVariableDeclarationList) {
+//					XVariableDeclarationList declList = (XVariableDeclarationList) statment;
+//					for(XExpression exp : declList.getDeclarations()){
+//						addLocalToCurrentScope((XVariableDeclaration)exp, state);
+//					}
+//				}
 			}
 //			XStatment lastStatment = children.get(children.size() - 1);
 //			for (ITypeExpectation expectation: state.getExpectations()) {
@@ -730,7 +773,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 //					}
 //				}
 //			}
-		}
+//		}
 	}
 
 	protected void addLocalToCurrentScope(XVariableDeclaration localVariable, ITypeComputationState state) {
@@ -823,6 +866,20 @@ public class XbaseTypeComputer implements ITypeComputer {
 		List<? extends IConstructorLinkingCandidate> candidates = state.getLinkingCandidates(constructorCall);
 		ILinkingCandidate best = getBestCandidate(candidates);
 		best.applyToComputationState();
+	}
+	
+	protected void _computeTypes(final XCaller caller, ITypeComputationState state) {
+		LightweightTypeReference functionType = new FunctionTypeReference(state.getReferenceOwner(), Buildin.Function.JvmType);
+		ITypeComputationState functionState = state.withExpectation(functionType);
+		XExpression function = caller.getExecutable();
+		functionState.computeTypes(function);
+//		for(XExpression argument : caller.getArguments()){
+//			computeTypes(argument, state);
+//		}
+	}
+	
+	protected void _computeTypes(final XParenthesizedExpression exp, ITypeComputationState state) {
+		computeTypes(exp.getExpression(), state);
 	}
 	
 	/**
@@ -1006,9 +1063,9 @@ public class XbaseTypeComputer implements ITypeComputer {
 		return Collections.emptyList();
 	}
 	
-	protected void _computeTypes(XClosure object, ITypeComputationState state) {
+	protected void _computeTypes(XClosure closure, ITypeComputationState state) {
 		for(ITypeExpectation expectation: state.getExpectations()) {
-			new ClosureTypeComputer(object, expectation, state, this).computeTypes();
+			new ClosureTypeComputer(closure, expectation, state, this).computeTypes();
 		}
 	}
 
@@ -1046,7 +1103,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 
 
 
-	protected LightweightTypeReference getAndEnhanceIterableOrArrayFromComponent(LightweightTypeReference parameterType, JvmGenericType iterableType,
+	protected LightweightTypeReference getAndEnhanceIterableOrArrayFromComponent(LightweightTypeReference parameterType, JvmInterfaceType iterableType,
 			final CompoundTypeReference compoundResult) {
 		if (parameterType.isUnknown()) {
 			compoundResult.addComponent(parameterType);
@@ -1238,32 +1295,32 @@ public class XbaseTypeComputer implements ITypeComputer {
 		//计算参数类型，按照方法的形式来计算
 		//找出这个indexer返回类型
 		
-		for(XExpression argument : object.getArguments()){
-			state.withoutExpectation().computeTypes(argument);
-		}
+//		for(XExpression argument : object.getArguments()){
+//			state.withoutExpectation().computeTypes(argument);
+//		}
+//		
+//		ITypeComputationResult result = state.computeTypes(object.getSource());
+//		LightweightTypeReference actualType = result.getActualExpressionType();
+//		JvmType jvmType = actualType.getType();
+//		if(!(jvmType instanceof JvmGenericType)){
+//			throw new IllegalStateException();
+//		}
+//		JvmGenericType type = (JvmGenericType) jvmType;
+//		JvmField indexer = null;
+//		for(JvmMember member : type.getMembers()){
+//			if(member instanceof JvmField && ((JvmField)member).isIndexer()){
+//				indexer = (JvmIndexer) member;
+//				break;
+//			}
+//		}
 		
-		ITypeComputationResult result = state.computeTypes(object.getSource());
-		LightweightTypeReference actualType = result.getActualExpressionType();
-		JvmType jvmType = actualType.getType();
-		if(!(jvmType instanceof JvmGenericType)){
-			throw new IllegalStateException();
-		}
-		JvmGenericType type = (JvmGenericType) jvmType;
-		JvmField indexer = null;
-		for(JvmMember member : type.getMembers()){
-			if(member instanceof JvmField && ((JvmField)member).isIndexer()){
-				indexer = (JvmIndexer) member;
-				break;
-			}
-		}
-		
-		if(indexer == null){
-			throw new IllegalStateException();
-		}
-		
-		object.setFeature(indexer);
-		LightweightTypeReference typeRef = state.getConverter().toLightweightReference(indexer.getType());
-		state.acceptActualType(typeRef);
+//		if(indexer == null){
+//			throw new IllegalStateException();
+//		}
+//		
+//		object.setFeature(indexer);
+//		LightweightTypeReference typeRef = state.getConverter().toLightweightReference(indexer.getType());
+//		state.acceptActualType(typeRef);
 		
 
 	}
@@ -1300,6 +1357,24 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	protected void _computeTypes(final XAssignment assignment, ITypeComputationState state) {
+		//TODO 需要处理期望类型和实际类型
+		if(((XAbstractFeatureCallImpl)assignment).basicGetFeature() == null){
+			computeTypes(assignment.getAssignable(), state);
+			if(assignment.getAssignable() instanceof XFeatureCall){
+				XFeatureCall featureCall = (XFeatureCall) assignment.getAssignable();
+				List<IFeatureLinkingCandidate> candidates = ((AbstractTypeComputationState)state).getLinkingCandidates(featureCall);
+				
+				if(candidates.size()>0 && candidates.get(0).getFeature() instanceof JvmField){
+					JvmField field = (JvmField) candidates.get(0).getFeature();
+					ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(field.getType().getType(), state));
+					conditionExpectation.computeTypes(assignment.getValue());
+				}
+			}
+//			computeTypes(assignment.getAssignable(), state);
+//			computeTypes(assignment.getValue(), state);
+			return;
+		}
+		
 		List<? extends IFeatureLinkingCandidate> candidates = state.getLinkingCandidates(assignment);
 		ILinkingCandidate best = getBestCandidate(candidates);
 		JvmIdentifiableElement feature = best.getFeature();

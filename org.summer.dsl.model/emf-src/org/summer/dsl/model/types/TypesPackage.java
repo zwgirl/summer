@@ -151,13 +151,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_MODULE__ROOT = JVM_TYPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' attribute.
+	 * The feature id for the '<em><b>Package Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_MODULE__PACKAGE = JVM_TYPE_FEATURE_COUNT + 5;
+	int JVM_MODULE__PACKAGE_NAME = JVM_TYPE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_MODULE__IDENTIFIER = JVM_TYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Jvm Module</em>' class.
@@ -166,7 +175,7 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_MODULE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 6;
+	int JVM_MODULE_FEATURE_COUNT = JVM_TYPE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmVoidImpl <em>Jvm Void</em>}' class.
@@ -864,13 +873,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_TYPE_PARAMETER__CONSTRAINTS = JVM_COMPONENT_TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_TYPE_PARAMETER__NAME = JVM_COMPONENT_TYPE_FEATURE_COUNT + 1;
+	int JVM_TYPE_PARAMETER__SIMPLE_NAME = JVM_COMPONENT_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Declarator</b></em>' container reference.
@@ -1963,13 +1972,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_GENERIC_TYPE__IMPLEMENTS = JVM_DECLARED_TYPE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_GENERIC_TYPE__ROOT = JVM_DECLARED_TYPE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Generic Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_GENERIC_TYPE_FEATURE_COUNT = JVM_DECLARED_TYPE_FEATURE_COUNT + 3;
+	int JVM_GENERIC_TYPE_FEATURE_COUNT = JVM_DECLARED_TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmInterfaceTypeImpl <em>Jvm Interface Type</em>}' class.
@@ -3418,13 +3436,22 @@ public interface TypesPackage extends EPackage {
 	int JVM_OPERATION__BODY = JVM_EXECUTABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_OPERATION__OPERATOR = JVM_EXECUTABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 8;
+	int JVM_OPERATION_FEATURE_COUNT = JVM_EXECUTABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.
@@ -3446,13 +3473,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_FORMAL_PARAMETER__ANNOTATIONS = JVM_ANNOTATION_TARGET__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FORMAL_PARAMETER__NAME = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 0;
+	int JVM_FORMAL_PARAMETER__SIMPLE_NAME = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -4419,15 +4446,26 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmModule_Root();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmModule#getPackage <em>Package</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmModule#getPackageName <em>Package Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Package</em>'.
-	 * @see org.summer.dsl.model.types.JvmModule#getPackage()
+	 * @return the meta object for the attribute '<em>Package Name</em>'.
+	 * @see org.summer.dsl.model.types.JvmModule#getPackageName()
 	 * @see #getJvmModule()
 	 * @generated
 	 */
-	EAttribute getJvmModule_Package();
+	EAttribute getJvmModule_PackageName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmModule#getIdentifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Identifier</em>'.
+	 * @see org.summer.dsl.model.types.JvmModule#getIdentifier()
+	 * @see #getJvmModule()
+	 * @generated
+	 */
+	EAttribute getJvmModule_Identifier();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmType <em>Jvm Type</em>}'.
@@ -4718,15 +4756,15 @@ public interface TypesPackage extends EPackage {
 	EClass getJvmTypeParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmTypeParameter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmTypeParameter#getSimpleName <em>Simple Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.types.JvmTypeParameter#getName()
+	 * @return the meta object for the attribute '<em>Simple Name</em>'.
+	 * @see org.summer.dsl.model.types.JvmTypeParameter#getSimpleName()
 	 * @see #getJvmTypeParameter()
 	 * @generated
 	 */
-	EAttribute getJvmTypeParameter_Name();
+	EAttribute getJvmTypeParameter_SimpleName();
 
 	/**
 	 * Returns the meta object for the container reference '{@link org.summer.dsl.model.types.JvmTypeParameter#getDeclarator <em>Declarator</em>}'.
@@ -4916,6 +4954,17 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJvmGenericType_Implements();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmGenericType#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root</em>'.
+	 * @see org.summer.dsl.model.types.JvmGenericType#getRoot()
+	 * @see #getJvmGenericType()
+	 * @generated
+	 */
+	EReference getJvmGenericType_Root();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmInterfaceType <em>Jvm Interface Type</em>}'.
@@ -5550,6 +5599,17 @@ public interface TypesPackage extends EPackage {
 	EReference getJvmOperation_Body();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmOperation#isOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see org.summer.dsl.model.types.JvmOperation#isOperator()
+	 * @see #getJvmOperation()
+	 * @generated
+	 */
+	EAttribute getJvmOperation_Operator();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmFormalParameter <em>Jvm Formal Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5560,15 +5620,15 @@ public interface TypesPackage extends EPackage {
 	EClass getJvmFormalParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmFormalParameter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmFormalParameter#getSimpleName <em>Simple Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.summer.dsl.model.types.JvmFormalParameter#getName()
+	 * @return the meta object for the attribute '<em>Simple Name</em>'.
+	 * @see org.summer.dsl.model.types.JvmFormalParameter#getSimpleName()
 	 * @see #getJvmFormalParameter()
 	 * @generated
 	 */
-	EAttribute getJvmFormalParameter_Name();
+	EAttribute getJvmFormalParameter_SimpleName();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmFormalParameter#getParameterType <em>Parameter Type</em>}'.
@@ -6214,12 +6274,20 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_MODULE__ROOT = eINSTANCE.getJvmModule_Root();
 
 		/**
-		 * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Package Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JVM_MODULE__PACKAGE = eINSTANCE.getJvmModule_Package();
+		EAttribute JVM_MODULE__PACKAGE_NAME = eINSTANCE.getJvmModule_PackageName();
+
+		/**
+		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_MODULE__IDENTIFIER = eINSTANCE.getJvmModule_Identifier();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmTypeImpl <em>Jvm Type</em>}' class.
@@ -6456,12 +6524,12 @@ public interface TypesPackage extends EPackage {
 		EClass JVM_TYPE_PARAMETER = eINSTANCE.getJvmTypeParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Simple Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JVM_TYPE_PARAMETER__NAME = eINSTANCE.getJvmTypeParameter_Name();
+		EAttribute JVM_TYPE_PARAMETER__SIMPLE_NAME = eINSTANCE.getJvmTypeParameter_SimpleName();
 
 		/**
 		 * The meta object literal for the '<em><b>Declarator</b></em>' container reference feature.
@@ -6624,6 +6692,14 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JVM_GENERIC_TYPE__IMPLEMENTS = eINSTANCE.getJvmGenericType_Implements();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JVM_GENERIC_TYPE__ROOT = eINSTANCE.getJvmGenericType_Root();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmInterfaceTypeImpl <em>Jvm Interface Type</em>}' class.
@@ -7132,6 +7208,14 @@ public interface TypesPackage extends EPackage {
 		EReference JVM_OPERATION__BODY = eINSTANCE.getJvmOperation_Body();
 
 		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_OPERATION__OPERATOR = eINSTANCE.getJvmOperation_Operator();
+
+		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl <em>Jvm Formal Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7142,12 +7226,12 @@ public interface TypesPackage extends EPackage {
 		EClass JVM_FORMAL_PARAMETER = eINSTANCE.getJvmFormalParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Simple Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JVM_FORMAL_PARAMETER__NAME = eINSTANCE.getJvmFormalParameter_Name();
+		EAttribute JVM_FORMAL_PARAMETER__SIMPLE_NAME = eINSTANCE.getJvmFormalParameter_SimpleName();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameter Type</b></em>' containment reference feature.

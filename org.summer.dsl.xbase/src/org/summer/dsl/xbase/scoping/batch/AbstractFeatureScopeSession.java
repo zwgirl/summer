@@ -100,9 +100,9 @@ public abstract class AbstractFeatureScopeSession implements IFeatureScopeSessio
 		AbstractNestedFeatureScopeSession result = tryCreateNestedSessionWithVisibilityContext(elements, owner, IFeatureNames.THIS);
 		if (result != null)
 			return result;
-		result = tryCreateNestedSessionWithVisibilityContext(elements, owner, IFeatureNames.SELF);
-		if (result != null)
-			return result;
+//		result = tryCreateNestedSessionWithVisibilityContext(elements, owner, IFeatureNames.SELF);
+//		if (result != null)
+//			return result;
 		result = new FeatureScopeSessionWithLocalElements(this, elements);
 		return result;
 	}
@@ -113,16 +113,16 @@ public abstract class AbstractFeatureScopeSession implements IFeatureScopeSessio
 		if (elements.containsKey(thisName)) {
 			JvmIdentifiableElement associatedWithThis = elements.get(thisName);
 			if (associatedWithThis instanceof JvmType) {
-				if (IFeatureNames.SELF.equals(thisName)) {
-					IEObjectDescription thisDescription = getLocalElement(IFeatureNames.THIS);
-					if (thisDescription != null && thisDescription.getEObjectOrProxy() instanceof JvmDeclaredType) {
-						JvmDeclaredType thisType = (JvmDeclaredType) thisDescription.getEObjectOrProxy();
-						LightweightTypeReference context = new ParameterizedTypeReference(owner, (JvmType) associatedWithThis);
-						FeatureScopeSessionWithContext contextSession = new FeatureScopeSessionWithContext(this, context, thisType.getPackageName());
-						AbstractNestedFeatureScopeSession result = new FeatureScopeSessionWithLocalElements(contextSession, elements);
-						return result;
-					}
-				}
+//				if (IFeatureNames.SELF.equals(thisName)) {
+//					IEObjectDescription thisDescription = getLocalElement(IFeatureNames.THIS);
+//					if (thisDescription != null && thisDescription.getEObjectOrProxy() instanceof JvmDeclaredType) {
+//						JvmDeclaredType thisType = (JvmDeclaredType) thisDescription.getEObjectOrProxy();
+//						LightweightTypeReference context = new ParameterizedTypeReference(owner, (JvmType) associatedWithThis);
+//						FeatureScopeSessionWithContext contextSession = new FeatureScopeSessionWithContext(this, context, thisType.getPackageName());
+//						AbstractNestedFeatureScopeSession result = new FeatureScopeSessionWithLocalElements(contextSession, elements);
+//						return result;
+//					}
+//				}
 				LightweightTypeReference context = new ParameterizedTypeReference(owner, (JvmType) associatedWithThis);
 				FeatureScopeSessionWithContext contextSession = new FeatureScopeSessionWithContext(this, context);
 				AbstractNestedFeatureScopeSession result = new FeatureScopeSessionWithLocalElements(contextSession, elements);

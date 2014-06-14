@@ -92,6 +92,16 @@ public class JvmEnumerationLiteralImpl extends JvmFieldImpl implements JvmEnumer
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
+	
+	@Override
+	public boolean isStatic() {
+		return true;
+	}
+	
+	@Override
+	public boolean isConst() {
+		return true;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

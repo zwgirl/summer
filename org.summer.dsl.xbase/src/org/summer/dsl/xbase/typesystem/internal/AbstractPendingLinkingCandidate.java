@@ -184,7 +184,7 @@ public abstract class AbstractPendingLinkingCandidate<Expression extends XExpres
 	 */
 	protected String getTypeParameterAsString(JvmTypeParameter typeParameter) {
 		StringBuilder b = new StringBuilder();
-		b.append(typeParameter.getName());
+		b.append(typeParameter.getSimpleName());
 		OwnedConverter ownedConverter = new OwnedConverter(getState().getReferenceOwner());
 		if(!typeParameter.getConstraints().isEmpty()) {
 			for(int j=0; j<typeParameter.getConstraints().size(); ++j) {

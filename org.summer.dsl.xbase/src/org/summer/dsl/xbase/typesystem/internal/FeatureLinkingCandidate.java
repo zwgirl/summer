@@ -189,15 +189,19 @@ public class FeatureLinkingCandidate extends AbstractPendingLinkingCandidate<XAb
 				}
 			}
 			JvmIdentifiableElement feature = getFeature();
-			if (feature instanceof XVariableDeclaration && ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isReadonly()) {
-				XClosure containingClosure = EcoreUtil2.getContainerOfType(getExpression(), XClosure.class);
-				if (containingClosure != null && !EcoreUtil.isAncestor(containingClosure, feature)) {
-					String message = String.format("Cannot refer to the non-final variable %s inside a lambda expression", feature.getSimpleName());
-					AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
-							IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS, message, getExpression(),
-							XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
-					result.accept(diagnostic);
-					return false;
+			if (feature instanceof XVariableDeclaration){
+				XVariableDeclaration var = (XVariableDeclaration) feature;
+				if(var.eContainer() instanceof XVariableDeclarationList && ((XVariableDeclarationList)((XVariableDeclaration) feature).eContainer()).isReadonly()) {
+
+					XClosure containingClosure = EcoreUtil2.getContainerOfType(getExpression(), XClosure.class);
+					if (containingClosure != null && !EcoreUtil.isAncestor(containingClosure, feature)) {
+						String message = String.format("Cannot refer to the non-final variable %s inside a lambda expression", feature.getSimpleName());
+						AbstractDiagnostic diagnostic = new EObjectDiagnosticImpl(Severity.ERROR,
+								IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS, message, getExpression(),
+								XbasePackage.Literals.XABSTRACT_FEATURE_CALL__FEATURE, -1, null);
+						result.accept(diagnostic);
+						return false;
+					}
 				}
 			}
 		}

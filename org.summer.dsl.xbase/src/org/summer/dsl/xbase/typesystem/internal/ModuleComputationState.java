@@ -14,13 +14,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmConstructor;
+import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
+import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmModule;
-import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
-import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xaml.XObjectElement;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFunctionDeclaration;
@@ -75,6 +75,14 @@ public class ModuleComputationState extends AbstractLogicalContainerAwareRootCom
 		for (EObject obj : contents) {
 			if (obj instanceof JvmGenericType) {
 				ClassTypeComputationState state = new ClassTypeComputationState(resolvedTypes, featureScopeSession, (JvmGenericType) obj);
+				state.computeTypes();
+				
+			} else if (obj instanceof JvmEnumerationType) {
+				EnumTypeComputationState state = new EnumTypeComputationState(resolvedTypes, featureScopeSession, (JvmEnumerationType) obj);
+				state.computeTypes();
+				
+			} else if (obj instanceof JvmInterfaceType) {
+				InterfaceTypeComputationState state = new InterfaceTypeComputationState(resolvedTypes, featureScopeSession, (JvmInterfaceType) obj);
 				state.computeTypes();
 				
 			} else if(obj instanceof XFunctionDeclaration){

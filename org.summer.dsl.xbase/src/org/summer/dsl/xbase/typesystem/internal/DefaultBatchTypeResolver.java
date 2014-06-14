@@ -166,7 +166,7 @@ public class DefaultBatchTypeResolver implements IBatchTypeResolver {
 							if (e != null) {
 								throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving", e);
 							}
-							throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving");
+//							throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving");
 						}
 					}
 				}

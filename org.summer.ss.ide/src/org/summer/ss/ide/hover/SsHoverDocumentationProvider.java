@@ -93,12 +93,12 @@ public class SsHoverDocumentationProvider extends XbaseHoverDocumentationProvide
 		List<String> result = super.initParameterNames();
 		if (context instanceof JvmOperation) {
 			for (JvmFormalParameter param : ((JvmOperation) context).getParameters()) {
-				result.add(param.getName());
+				result.add(param.getSimpleName());
 			}
 		}
 		if (context instanceof JvmConstructor) {
 			for (JvmFormalParameter param : ((JvmConstructor) context).getParameters()) {
-				result.add(param.getName());
+				result.add(param.getSimpleName());
 			}
 		}
 		return result;

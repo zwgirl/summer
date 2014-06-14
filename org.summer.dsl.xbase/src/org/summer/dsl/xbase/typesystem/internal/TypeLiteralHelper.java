@@ -67,21 +67,38 @@ public class TypeLiteralHelper {
 //		throw new IllegalArgumentException(String.valueOf(feature));
 //	}
 	
+//	protected LightweightTypeReference getAsClassLiteral(JvmIdentifiableElement feature) {
+//		if (feature instanceof JvmType) {
+//			ITypeReferenceOwner owner = state.getReferenceOwner();
+//			ParameterizedTypeReference result = new ParameterizedTypeReference(owner, Buildin.Type.JvmType);
+////			if (result == null) {
+////				return new UnknownTypeReference(owner, "Type");
+////			}
+//			LightweightTypeReference argumentType = new ParameterizedTypeReference(owner, (JvmType) feature);
+//			if (argumentType.isPrimitiveVoid()) {
+//				ParameterizedTypeReference voidType = new ParameterizedTypeReference(owner, Buildin.Void.JvmType);
+////				if (voidType == null) {
+////					argumentType = new UnknownTypeReference(owner, Void.class.getName());
+////				} else {
+//					argumentType = voidType;
+////				}
+//			} else {
+//				argumentType = argumentType.getWrapperTypeIfPrimitive();
+//			}
+//			result.addTypeArgument(argumentType);
+//			return result;
+//		}
+//		throw new IllegalArgumentException(String.valueOf(feature));
+//	}
+	
 	protected LightweightTypeReference getAsClassLiteral(JvmIdentifiableElement feature) {
 		if (feature instanceof JvmType) {
 			ITypeReferenceOwner owner = state.getReferenceOwner();
-			ParameterizedTypeReference result = new ParameterizedTypeReference(owner, Buildin.Type.JvmType);
-//			if (result == null) {
-//				return new UnknownTypeReference(owner, "Type");
-//			}
+			ParameterizedTypeReference result = new ParameterizedTypeReference(owner, (JvmType) feature);
 //			LightweightTypeReference argumentType = new ParameterizedTypeReference(owner, (JvmType) feature);
 //			if (argumentType.isPrimitiveVoid()) {
-//				ParameterizedTypeReference voidType = getRawTypeForName(Void.class, owner);
-//				if (voidType == null) {
-//					argumentType = new UnknownTypeReference(owner, Void.class.getName());
-//				} else {
-//					argumentType = voidType;
-//				}
+//				ParameterizedTypeReference voidType = new ParameterizedTypeReference(owner, Buildin.Void.JvmType);
+//				argumentType = voidType;
 //			} else {
 //				argumentType = argumentType.getWrapperTypeIfPrimitive();
 //			}

@@ -83,6 +83,7 @@ import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
 import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.impl.FeatureCallToJavaMapping;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -833,7 +834,8 @@ public class XbaseTypeProvider extends AbstractTypeProvider {
 		if (reference instanceof JvmAnyTypeReference)
 			return false;
 		// TODO use IEarlyExitComputer
-		if (reference.getType() instanceof JvmVoid && !reference.getType().eIsProxy())
+//		if (reference.getType() instanceof JvmVoid && !reference.getType().eIsProxy())
+		if (reference.getType() == Buildin.Void.JvmType && !reference.getType().eIsProxy())
 			return true;
 		return false;
 	}

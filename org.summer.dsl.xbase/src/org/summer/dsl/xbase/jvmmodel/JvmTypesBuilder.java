@@ -717,7 +717,7 @@ public class JvmTypesBuilder {
 		if(sourceElement == null || name == null)
 			return null;
 		JvmFormalParameter result = typesFactory.createJvmFormalParameter();
-		result.setName(name);
+		result.setSimpleName(name);
 		result.setParameterType(cloneWithProxies(typeRef));
 		return associate(sourceElement, result);
 	}

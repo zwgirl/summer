@@ -29,6 +29,7 @@ import org.summer.dsl.model.xbase.XStatment;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isOverload <em>Overload</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmOperationImpl#isOperator <em>Operator</em>}</li>
  * </ul>
  * </p>
  *
@@ -174,6 +175,26 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 	 * @ordered
 	 */
 	protected XStatment body;
+
+	/**
+	 * The default value of the '{@link #isOperator() <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOperator()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OPERATOR_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOperator() <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOperator()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean operator = OPERATOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -423,6 +444,27 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isOperator() {
+		return operator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOperator(boolean newOperator) {
+		boolean oldOperator = operator;
+		operator = newOperator;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_OPERATION__OPERATOR, oldOperator, operator));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -458,6 +500,8 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 				return getReturnType();
 			case TypesPackage.JVM_OPERATION__BODY:
 				return getBody();
+			case TypesPackage.JVM_OPERATION__OPERATOR:
+				return isOperator();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -493,6 +537,9 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 				return;
 			case TypesPackage.JVM_OPERATION__BODY:
 				setBody((XStatment)newValue);
+				return;
+			case TypesPackage.JVM_OPERATION__OPERATOR:
+				setOperator((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -530,6 +577,9 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 			case TypesPackage.JVM_OPERATION__BODY:
 				setBody((XStatment)null);
 				return;
+			case TypesPackage.JVM_OPERATION__OPERATOR:
+				setOperator(OPERATOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -558,6 +608,8 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 				return returnType != null;
 			case TypesPackage.JVM_OPERATION__BODY:
 				return body != null;
+			case TypesPackage.JVM_OPERATION__OPERATOR:
+				return operator != OPERATOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -584,6 +636,8 @@ public class JvmOperationImpl extends JvmExecutableImpl implements JvmOperation 
 		result.append(native_);
 		result.append(", overload: ");
 		result.append(overload);
+		result.append(", operator: ");
+		result.append(operator);
 		result.append(')');
 		return result.toString();
 	}

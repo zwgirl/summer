@@ -122,6 +122,10 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 		for (JvmMember member : members) {
 			if (member instanceof JvmField) {
 				JvmField field = (JvmField) member;
+				if(member.getModifiers().contains("static")){
+					field.setStatic(true);
+				}
+				
 				StackedResolvedTypes fieldResolvedTypes = declareTypeParameters(classResolvedTypes, field);
 				
 				LightweightTypeReference lightweightReference = fieldResolvedTypes.getConverter().toLightweightReference(field.getType());
@@ -153,7 +157,7 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 				LightweightTypeReference lightweightReference = constructorResolvedTypes.getConverter().toLightweightReference(asReference);
 				constructorResolvedTypes.setType(constructor, lightweightReference);
 				
-				ConstructorBodyComputationState state = new ConstructorBodyComputationState(constructorResolvedTypes, childSession, constructor);
+				ConstructorBodyComputationState state = new ConstructorBodyComputationState(constructorResolvedTypes, childSession.toInstanceContext(), constructor);
 				state.computeTypes();
 				
 				computeAnnotationTypes(constructorResolvedTypes, childSession, constructor);
@@ -167,6 +171,31 @@ public class ClassTypeComputationState extends AbstractLogicalContainerAwareRoot
 		
 		classResolvedTypes.mergeIntoParent();
 	}
+	
+//	IFeatureScopeSession childSession = addExtensionsToMemberSession(resolvedTypes, featureScopeSession, type);
+//	List<JvmMember> members = type.getMembers();
+//	for(int i = 0; i < members.size(); i++) {
+//		JvmMember member = members.get(i);
+//		if(member instanceof JvmField){
+//			JvmField field = (JvmField) member;
+//			if(member.getModifiers().contains("static")){
+//				field.setStatic(true);
+//			}
+//		}
+//		
+//		if(member instanceof JvmOperation){
+//			JvmOperation operation = (JvmOperation) member;
+//			if(member.getModifiers().contains("static")){
+//				operation.setStatic(true);
+//			}
+//			
+//			if(operation.getModifiers().contains("overload")){
+//				operation.setOverload(true);
+//			}
+//		}
+//
+//		computeTypes(preparedResolvedTypes, resolvedTypes, childSession, members.get(i));
+//	}
 	
 	protected void computeAnnotationTypes(ResolvedTypes resolvedTypes, IFeatureScopeSession sessions, JvmExecutable operation) {
 		computeAnnotationTypes(resolvedTypes, sessions, (JvmAnnotationTarget) operation);

@@ -84,7 +84,7 @@ public class SsHoverSignatureProvider extends XbaseDeclarativeHoverSignatureProv
 		EObject container = parameter.eContainer();
 		JvmTypeReference type = parameter.getParameterType();
 		if (type != null) {
-			String signature = parameter.getName();
+			String signature = parameter.getSimpleName();
 			String signatureOfFather = getSimpleSignature(container);
 			if(signatureOfFather != null){
 				signature += JavaElementLabels.CONCAT_STRING + signatureOfFather;
@@ -93,7 +93,7 @@ public class SsHoverSignatureProvider extends XbaseDeclarativeHoverSignatureProv
 				return signature + " : " + type.getSimpleName();
 			return type.getSimpleName() + " " + signature;
 		}
-		return parameter.getName();
+		return parameter.getSimpleName();
 	}
 
 	protected String _signature(JvmConstructor constructor, boolean typeAtEnd) {

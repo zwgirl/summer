@@ -97,7 +97,7 @@ public class JvmModelCompleter {
 		valueOf.setSimpleName("valueOf");
 		valueOf.setReturnType(references.createTypeRef(element));
 		JvmFormalParameter param = typesFactory.createJvmFormalParameter();
-		param.setName("name");
+		param.setSimpleName("name");
 		param.setParameterType(references.getTypeForName(String.class, element));
 		valueOf.getParameters().add(param);
 		typeExtensions.setSynthetic(valueOf, true);

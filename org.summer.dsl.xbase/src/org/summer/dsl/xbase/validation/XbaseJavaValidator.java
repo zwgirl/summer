@@ -106,6 +106,7 @@ import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XInstanceOfExpression;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
@@ -289,8 +290,12 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		}
 	}
 
+//	protected boolean isPrimitiveVoid(JvmTypeReference typeReference) {
+//		return typeReference != null && typeReference.getType() != null && !typeReference.getType().eIsProxy() && typeReference.getType() instanceof JvmVoid;
+//	}
+	
 	protected boolean isPrimitiveVoid(JvmTypeReference typeReference) {
-		return typeReference != null && typeReference.getType() != null && !typeReference.getType().eIsProxy() && typeReference.getType() instanceof JvmVoid;
+		return typeReference != null && typeReference.getType() != null && !typeReference.getType().eIsProxy() && typeReference.getType() == Buildin.Void.JvmType;
 	}
 
 	@Check
@@ -300,8 +305,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		LightweightTypeReference variableType = typeResolver.resolveTypes(declaration).getActualType((JvmIdentifiableElement) declaration);
 		// TODO move to type resolver
 		if (variableType != null && variableType.isPrimitiveVoid()) {
-			error("void is an invalid type for the variable " + declaration.getName(), declaration,
-					XbasePackage.Literals.XVARIABLE_DECLARATION__NAME, INVALID_USE_OF_TYPE);
+			error("void is an invalid type for the variable " + declaration.getSimpleName(), declaration,
+					XbasePackage.Literals.XVARIABLE_DECLARATION__SIMPLE_NAME, INVALID_USE_OF_TYPE);
 		}
 	}
 	
@@ -447,7 +452,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 				if(currentParent == typeParameter.eContainer())
 					return;
 				else if(isStaticContext(currentParent)) 
-					error("Cannot make a static reference to the non-static type " + typeParameter.getName(), 
+					error("Cannot make a static reference to the non-static type " + typeParameter.getSimpleName(), 
 							ref, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, -1, STATIC_ACCESS_TO_INSTANCE_MEMBER);
 				currentParent = currentParent.eContainer();
 			}
@@ -461,6 +466,22 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 			return ((JvmFeature) element).isStatic();
 		if(element instanceof JvmModule)
 			return true;
+		
+		if(element instanceof XFunctionDeclaration){
+			//判断其容器
+			//1、如果是Module，为static
+			//2、如果在JvmFeature中，则取决于JvmFeature是否是static
+			//3、如果是在Function中，则递归处理
+			//4、如果是field的初始化表达式，仍然取决于field是否是static
+			
+		} 
+		
+		if(element instanceof XClosure){
+			//判断其容器
+			//1、如果是JvmFeature,则取决于Feature是否是static
+			//2、如果是在function中，则继续递归寻找
+			//3、如果是在Module中，static
+		}
 		return false;
 	}
 	
@@ -685,7 +706,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 				error("Value must be initialized", declaration.eContainer(), Literals.XVARIABLE_DECLARATION_LIST__READONLY,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, MISSING_INITIALIZATION);
 			if (declaration.getType() == null)
-				error("Type cannot be derived", declaration, Literals.XVARIABLE_DECLARATION__NAME,
+				error("Type cannot be derived", declaration, Literals.XVARIABLE_DECLARATION__SIMPLE_NAME,
 						ValidationMessageAcceptor.INSIGNIFICANT_INDEX, MISSING_TYPE);
 		}
 	}
@@ -1041,8 +1062,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	@Check
 	public  void checkLocalUsageOfDeclared(XVariableDeclaration variableDeclaration) {
 		if(!isIgnored(UNUSED_LOCAL_VARIABLE) && !isLocallyUsed(variableDeclaration, variableDeclaration.eContainer().eContainer())){
-			String message = "The value of the local variable " + variableDeclaration.getName() + " is not used";
-			addIssueToState(UNUSED_LOCAL_VARIABLE, message, XbasePackage.Literals.XVARIABLE_DECLARATION__NAME);
+			String message = "The value of the local variable " + variableDeclaration.getSimpleName() + " is not used";
+			addIssueToState(UNUSED_LOCAL_VARIABLE, message, XbasePackage.Literals.XVARIABLE_DECLARATION__SIMPLE_NAME);
 		}
 	}
 	
@@ -1346,8 +1367,8 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	protected void checkNoJavaStyleTypeCasting(INode node) {
 		BidiTreeIterator<INode> iterator = node.getAsTreeIterable().reverse().iterator();
 		ILeafNode child = getFirstLeafNode(iterator);
-		if (child != null && child.getGrammarElement() == grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2()) {
-			INode expressionNode = getNode(iterator, grammarAccess.getXParenthesizedExpressionAccess().getXExpressionParserRuleCall_1());
+		if (child != null && child.getGrammarElement() == grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_3()) {
+			INode expressionNode = getNode(iterator, grammarAccess.getXParenthesizedExpressionAccess().getExpressionXExpressionParserRuleCall_2_0());
 			EObject semanticObject = NodeModelUtils.findActualSemanticObjectFor(expressionNode);
 			if (semanticObject instanceof XFeatureCall || semanticObject instanceof XMemberFeatureCall) {
 				XAbstractFeatureCall featureCall = (XAbstractFeatureCall) semanticObject;

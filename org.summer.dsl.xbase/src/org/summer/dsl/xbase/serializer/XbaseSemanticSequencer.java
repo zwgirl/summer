@@ -297,7 +297,7 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 		// (explicitOperationCall?='(' (memberCallArguments+=XShortClosure | (memberCallArguments+=XExpression memberCallArguments+=XExpression*))?)? memberCallArguments+=XClosure? 
 		if (featureCall.isExplicitOperationCallOrBuilderSyntax()) {
 			if (featureCall.isExplicitOperationCall())
-				acceptor.accept(memberFeatureCallElements.getExplicitOperationCallLeftParenthesisKeyword_1_0_0_0_1_0());
+				acceptor.accept(memberFeatureCallElements.getExplicitOperationCallLeftParenthesisKeyword_1_3_3_0_0());
 			List<XExpression> arguments = featureCall.getMemberCallArguments();
 			if (!arguments.isEmpty()) {
 					int diff = 0;
@@ -306,9 +306,9 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 					}
 					if (featureCall.isExplicitOperationCall()) {
 						if (arguments.size() - diff > 0)
-							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_0_1_0_0(), arguments.get(0), 0);
+							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_3_3_1_1_1_0(), arguments.get(0), 0);
 						for (int i = 1; i < arguments.size() - diff; i++)
-							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_0_1_0_0(), arguments.get(i), i);
+							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_3_3_1_1_1_0(), arguments.get(i), i);
 					}
 					if (diff != 0) {
 						int lastIdx = arguments.size() - 1;

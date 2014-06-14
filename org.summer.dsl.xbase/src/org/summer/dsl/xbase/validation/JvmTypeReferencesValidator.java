@@ -132,7 +132,7 @@ public class JvmTypeReferencesValidator extends AbstractDeclarativeValidator {
 		if(type instanceof JvmTypeParameterDeclarator) {
 			b.append("<");
 			for(Iterator<JvmTypeParameter> i =  ((JvmTypeParameterDeclarator)type).getTypeParameters().iterator(); i.hasNext();) {
-				b.append(i.next().getName());
+				b.append(i.next().getSimpleName());
 				if(i.hasNext())
 					b.append(",");
 			}

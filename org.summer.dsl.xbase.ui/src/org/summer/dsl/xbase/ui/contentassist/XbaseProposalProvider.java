@@ -860,7 +860,7 @@ public class XbaseProposalProvider extends AbstractXbaseProposalProvider impleme
 				}
 			}
 			result.append(' ');
-			result.append(notNull(parameter.getName()));
+			result.append(notNull(parameter.getSimpleName()));
 		}
 	}
 

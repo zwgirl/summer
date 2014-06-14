@@ -71,7 +71,6 @@ public class SsLinkingDiagnosticMessageProvider extends LinkingDiagnosticMessage
 			JvmDeclaredType xtendType = EcoreUtil2.getContainerOfType(featureCall, JvmDeclaredType.class);
 			if(xtendType != null){
 				String clazzName = xtendType.getSimpleName();
-				@SuppressWarnings("deprecation")
 				List<XExpression> explicitArguments = featureCall.getExplicitArguments();
 				String firstPartOfMessage = "The method ";
 				if(explicitArguments.size() == 0 || featureCall instanceof XAssignment)

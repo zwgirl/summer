@@ -34,5 +34,15 @@ public abstract class JvmTypeImpl extends JvmIdentifiableElementImplCustom imple
 	protected EClass eStaticClass() {
 		return TypesPackage.Literals.JVM_TYPE;
 	}
+	
+	private boolean flag = false;
+	public boolean isPrimitive() {
+		return this.flag;
+	}
+	
+	public void setPrimitive(boolean flag) {
+		this.flag  = flag;
+		
+	}
 
 } //JvmTypeImpl

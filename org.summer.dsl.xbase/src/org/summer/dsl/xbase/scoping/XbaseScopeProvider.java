@@ -600,8 +600,8 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 			return;
 		List<LocalVarDescription> descriptions = newArrayList();
 		for (JvmFormalParameter p : parameters) {
-			if (p.getName() != null)
-				descriptions.add(new LocalVarDescription(QualifiedName.create(p.getName()), p));
+			if (p.getSimpleName() != null)
+				descriptions.add(new LocalVarDescription(QualifiedName.create(p.getSimpleName()), p));
 		}
 		acceptor.accept("operation "+context.getSimpleName(), descriptions);
 	}
@@ -612,8 +612,8 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 			return;
 		List<LocalVarDescription> descriptions = newArrayList();
 		for (JvmFormalParameter p : parameters) {
-			if (p.getName() != null)
-				descriptions.add(new LocalVarDescription(QualifiedName.create(p.getName()), p));
+			if (p.getSimpleName() != null)
+				descriptions.add(new LocalVarDescription(QualifiedName.create(p.getSimpleName()), p));
 		}
 		acceptor.accept("constructor "+context.getSimpleName(), descriptions);
 	}
@@ -684,7 +684,7 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 				XVariableDeclarationList declList = (XVariableDeclarationList) expression;
 				for(XExpression exp : declList.getDeclarations()){
 					XVariableDeclaration varDecl = (XVariableDeclaration) exp;
-					if (varDecl.getName() != null) {
+					if (varDecl.getSimpleName() != null) {
 						IValidatedEObjectDescription desc = createLocalVarDescription(varDecl);
 						if (referredFromClosure && declList.isReadonly())
 							desc.setIssueCode(IssueCodes.INVALID_MUTABLE_VARIABLE_ACCESS);
@@ -702,7 +702,7 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 		List<IValidatedEObjectDescription> descriptions = Lists.newArrayList();
 		EList<JvmFormalParameter> params = closure.getFormalParameters();
 		for (JvmFormalParameter p : params) {
-			if (p.getName() != null) {
+			if (p.getSimpleName() != null) {
 				IValidatedEObjectDescription desc = createLocalVarDescription(p);
 				descriptions.add(desc);
 			}
@@ -978,16 +978,16 @@ public class XbaseScopeProvider extends DelegatingScopeProvider {
 	}
 
 	protected void createLocalScopeForParameter(JvmFormalParameter p, LocalVariableAcceptor acceptor) {
-		if (p.getName() != null)
+		if (p.getSimpleName() != null)
 			acceptor.accept("JvmFormalParameter", createLocalVarDescription(p));
 	}
 
 	protected IValidatedEObjectDescription createLocalVarDescription(JvmFormalParameter p) {
-		return new LocalVarDescription(QualifiedName.create(p.getName()), p);
+		return new LocalVarDescription(QualifiedName.create(p.getSimpleName()), p);
 	}
 
 	protected IValidatedEObjectDescription createLocalVarDescription(XVariableDeclaration varDecl) {
-		return new LocalVarDescription(QualifiedName.create(varDecl.getName()), varDecl);
+		return new LocalVarDescription(QualifiedName.create(varDecl.getSimpleName()), varDecl);
 	}
 	
 	protected DefaultJvmFeatureDescriptionProvider newDefaultFeatureDescriptionProvider() {

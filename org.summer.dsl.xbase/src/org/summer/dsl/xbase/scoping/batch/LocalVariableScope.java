@@ -36,8 +36,8 @@ public class LocalVariableScope extends AbstractSessionBasedScope {
 	
 	@Override
 	protected Collection<IEObjectDescription> getLocalElementsByName(QualifiedName name) {
-		if (canBeLocalVariable())
-			return Collections.emptyList();
+//		if (canBeLocalVariable())
+//			return Collections.emptyList();
 		IEObjectDescription element = getSession().getLocalElement(name);
 		if (element == null)
 			return Collections.emptyList();

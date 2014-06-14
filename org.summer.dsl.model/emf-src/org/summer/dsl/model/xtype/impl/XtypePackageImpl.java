@@ -547,6 +547,8 @@ public class XtypePackageImpl extends EPackageImpl implements XtypePackage {
 		initEReference(getXImportItem_ImportedId(), theTypesPackage.getJvmIdentifiableElement(), null, "importedId", null, 0, 1, XImportItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXImportItem_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, XImportItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(xImportItemEClass, ecorePackage.getEString(), "getIdentifier", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(xExportSectionEClass, XExportSection.class, "XExportSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXExportSection_ExportDeclarations(), this.getXExportDeclaration(), null, "exportDeclarations", null, 0, -1, XExportSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

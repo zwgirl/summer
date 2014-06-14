@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface XBlockStatment extends XStatment {
+public interface XBlockStatment extends XExpression, XStatment {
 	/**
 	 * Returns the value of the '<em><b>Statments</b></em>' containment reference list.
 	 * The list contents are of type {@link org.summer.dsl.model.xbase.XStatment}.

@@ -11,7 +11,7 @@ package org.summer.dsl.model.types;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.JvmTypeParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmTypeParameter#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmTypeParameter#getDeclarator <em>Declarator</em>}</li>
  * </ul>
  * </p>
@@ -22,30 +22,30 @@ package org.summer.dsl.model.types;
  */
 public interface JvmTypeParameter extends JvmComponentType, JvmConstraintOwner {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Simple Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmTypeParameter_Name()
+	 * @return the value of the '<em>Simple Name</em>' attribute.
+	 * @see #setSimpleName(String)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmTypeParameter_SimpleName()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	String getSimpleName();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmTypeParameter#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmTypeParameter#getSimpleName <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Simple Name</em>' attribute.
+	 * @see #getSimpleName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setSimpleName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Declarator</b></em>' container reference.

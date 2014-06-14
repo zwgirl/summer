@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.summer.dsl.model.types.JvmTypeReference;
 import org.eclipse.xtext.util.Strings;
+import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
@@ -22,6 +22,7 @@ import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.xbase.compiler.output.ITreeAppendable;
 import org.summer.dsl.xbase.typesystem.computation.NumberLiterals;
+import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 
 import com.google.common.base.Joiner;
 import com.google.inject.Inject;
@@ -77,17 +78,17 @@ public class LiteralsCompiler extends TypeConvertingCompiler {
 	 * @since 2.4
 	 */
 	protected void toJavaExpression(XStringLiteral literal, ITreeAppendable appendable, boolean useUnicodeEscapes) {
-		JvmTypeReference type = getType(literal);
-		if (getTypeReferences().is(type, Character.TYPE)) {
-			String javaString = Strings.convertToJavaString(literal.getValue(), useUnicodeEscapes);
-			appendable.append("'").append(javaString).append("'");
-		} else if (getTypeReferences().is(type, Character.class)) {
-			String javaString = Strings.convertToJavaString(literal.getValue(), useUnicodeEscapes);
-			appendable.append("Character.valueOf('").append(javaString).append("')");
-		} else {
+		LightweightTypeReference type = getLightweightType(literal);
+//		if (type.isType(Character.TYPE)) {
+//			String javaString = Strings.convertToJavaString(literal.getValue(), useUnicodeEscapes);
+//			appendable.append("'").append(javaString).append("'");
+//		} else if (type.isType(Character.class)) {
+//			String javaString = Strings.convertToJavaString(literal.getValue(), useUnicodeEscapes);
+//			appendable.append("Character.valueOf('").append(javaString).append("')");
+//		} else {
 			String javaString = Strings.convertToJavaString(literal.getValue(), useUnicodeEscapes);
 			appendable.append("\"").append(javaString).append("\"");
-		}
+//		}
 	}
 	
 	public void _toJavaStatement(final XStringLiteral expr, ITreeAppendable b, boolean isReferenced) {
@@ -129,72 +130,72 @@ public class LiteralsCompiler extends TypeConvertingCompiler {
 
 	public void _toJavaExpression(XNumberLiteral expr, ITreeAppendable b) {
 		JvmTypeReference type = getType(expr);
-		if(getTypeReferences().is(type, BigInteger.class)) {
-			BigInteger value = numberLiterals.toBigInteger(expr);
-			if (BigInteger.ZERO.equals(value)) {
-				b.append(type.getType()).append(".ZERO");
-			} else if (BigInteger.ONE.equals(value)) {
-				b.append(type.getType()).append(".ONE");
-			} else if (BigInteger.TEN.equals(value)) {
-				b.append(type.getType()).append(".TEN");
-			} else {
-				long longValue = value.longValue();
-				int base = numberLiterals.getBase(expr); 
-				if (base == 10 && BigInteger.valueOf(longValue).equals(value)) {
-					b.append(type.getType()).append(".valueOf(").append(Long.toString(longValue)).append("L)");
-				} else {
-					String digits = numberLiterals.getDigits(expr);
-					String exponent = numberLiterals.getExponent(expr, digits);
-					if (exponent != null) {
-						if (exponent.length() == 1) {
-							exponent = null;
-							digits = value.toString(base);
-						} else {
-							int e = digits.indexOf('e');
-							if (e == -1) {
-								e = digits.indexOf('E');
-							}
-							digits = digits.substring(0, e);
-						}
-					}
-					b.append("new ").append(type.getType()).append("(\"")
-						.append(digits).append("\"");
-					if (base != 10) {
-						b.append(", ").append(Integer.toString(base));
-					}
-					b.append(")");
-					if (exponent != null) {
-						int exponentAsInt = Integer.parseInt(exponent, base);
-						String exponentAsString = null;
-						if (base == 16) {
-							exponentAsString = "0x" + Integer.toString(exponentAsInt, base);
-						} else {
-							exponentAsString = Integer.toString(exponentAsInt);
-						}
-						b.append(".multiply(").append(type.getType()).append(".TEN.pow(").append(exponentAsString).append("))");
-					}
-				}
-			}
-		} else if(getTypeReferences().is(type, BigDecimal.class)) {
-			BigDecimal value = numberLiterals.toBigDecimal(expr);
-			if (BigDecimal.ZERO.equals(value)) {
-				b.append(type.getType()).append(".ZERO");
-			} else if (BigDecimal.ONE.equals(value)) {
-				b.append(type.getType()).append(".ONE");
-			} else if (BigDecimal.TEN.equals(value)) {
-				b.append(type.getType()).append(".TEN");
-			} else {
-				long longValue = value.longValue();
-				if (numberLiterals.getBase(expr) == 10 && BigDecimal.valueOf(longValue).equals(value)) {
-					b.append(type.getType()).append(".valueOf(").append(Long.toString(longValue)).append("L)");
-				} else {
-					b.append("new ").append(type.getType()).append("(\"")
-						.append(numberLiterals.getDigits(expr)).append("\")");
-				}
-			}
-		} else {
+//		if(type.is(type, BigInteger.class)) {
+//			BigInteger value = numberLiterals.toBigInteger(expr);
+//			if (BigInteger.ZERO.equals(value)) {
+//				b.append(type.getType()).append(".ZERO");
+//			} else if (BigInteger.ONE.equals(value)) {
+//				b.append(type.getType()).append(".ONE");
+//			} else if (BigInteger.TEN.equals(value)) {
+//				b.append(type.getType()).append(".TEN");
+//			} else {
+//				long longValue = value.longValue();
+//				int base = numberLiterals.getBase(expr); 
+//				if (base == 10 && BigInteger.valueOf(longValue).equals(value)) {
+//					b.append(type.getType()).append(".valueOf(").append(Long.toString(longValue)).append("L)");
+//				} else {
+//					String digits = numberLiterals.getDigits(expr);
+//					String exponent = numberLiterals.getExponent(expr, digits);
+//					if (exponent != null) {
+//						if (exponent.length() == 1) {
+//							exponent = null;
+//							digits = value.toString(base);
+//						} else {
+//							int e = digits.indexOf('e');
+//							if (e == -1) {
+//								e = digits.indexOf('E');
+//							}
+//							digits = digits.substring(0, e);
+//						}
+//					}
+//					b.append("new ").append(type.getType()).append("(\"")
+//						.append(digits).append("\"");
+//					if (base != 10) {
+//						b.append(", ").append(Integer.toString(base));
+//					}
+//					b.append(")");
+//					if (exponent != null) {
+//						int exponentAsInt = Integer.parseInt(exponent, base);
+//						String exponentAsString = null;
+//						if (base == 16) {
+//							exponentAsString = "0x" + Integer.toString(exponentAsInt, base);
+//						} else {
+//							exponentAsString = Integer.toString(exponentAsInt);
+//						}
+//						b.append(".multiply(").append(type.getType()).append(".TEN.pow(").append(exponentAsString).append("))");
+//					}
+//				}
+//			}
+//		} else if(type.is(type, BigDecimal.class)) {
+//			BigDecimal value = numberLiterals.toBigDecimal(expr);
+//			if (BigDecimal.ZERO.equals(value)) {
+//				b.append(type.getType()).append(".ZERO");
+//			} else if (BigDecimal.ONE.equals(value)) {
+//				b.append(type.getType()).append(".ONE");
+//			} else if (BigDecimal.TEN.equals(value)) {
+//				b.append(type.getType()).append(".TEN");
+//			} else {
+//				long longValue = value.longValue();
+//				if (numberLiterals.getBase(expr) == 10 && BigDecimal.valueOf(longValue).equals(value)) {
+//					b.append(type.getType()).append(".valueOf(").append(Long.toString(longValue)).append("L)");
+//				} else {
+//					b.append("new ").append(type.getType()).append("(\"")
+//						.append(numberLiterals.getDigits(expr)).append("\")");
+//				}
+//			}
+//		} else {
 			b.append(numberLiterals.toJavaLiteral(expr));
-		}
+//		}
 	}
 	
 	public void _toJavaStatement(XNumberLiteral expr, ITreeAppendable b, boolean isReferenced) {

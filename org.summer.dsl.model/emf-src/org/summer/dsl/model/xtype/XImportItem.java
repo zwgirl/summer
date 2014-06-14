@@ -75,4 +75,12 @@ public interface XImportItem extends EObject {
 	 */
 	void setAlias(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getIdentifier();
+
 } // XImportItem

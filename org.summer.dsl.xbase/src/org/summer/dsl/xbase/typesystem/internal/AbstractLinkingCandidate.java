@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.summer.dsl.model.types.JvmEnumerationType;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmType;

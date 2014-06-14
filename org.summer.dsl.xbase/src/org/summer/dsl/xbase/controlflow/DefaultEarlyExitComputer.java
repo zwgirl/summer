@@ -12,12 +12,16 @@ import java.util.Collections;
 
 import org.eclipse.xtext.util.PolymorphicDispatcher;
 import org.summer.dsl.model.xbase.XBlockStatment;
+import org.summer.dsl.model.xbase.XBreakStatment;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XCatchClause;
+import org.summer.dsl.model.xbase.XContinueStatment;
 import org.summer.dsl.model.xbase.XDoWhileStatment;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XForEachStatment;
+import org.summer.dsl.model.xbase.XForLoopStatment;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XIfStatment;
 import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XStatment;
@@ -66,8 +70,19 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
 		return Collections.singletonList(new ExitPoint(expression, false));
 	}
 	
+	protected Collection<ExitPoint> _exitPoints(XForLoopStatment statment) {
+		Collection<ExitPoint> exitPoints = getExitPoints(statment.getStatment());
+		if (isNotEmpty(exitPoints))
+			return exitPoints;
+		return Collections.emptyList();
+	}
+	
 	protected Collection<ExitPoint> _exitPoints(XThrowStatment expression) {
 		return Collections.singletonList(new ExitPoint(expression, true));
+	}
+	
+	protected Collection<ExitPoint> _exitPoints(XFunctionDeclaration function) {
+		return Collections.emptyList();
 	}
 	
 	protected Collection<ExitPoint> _exitPoints(XVariableDeclarationList statment) {
@@ -91,6 +106,14 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
 		Collection<ExitPoint> exitPoints = getExitPoints(expression.getStatment());
 		if (isNotEmpty(exitPoints))
 			return exitPoints;
+		return Collections.emptyList();
+	}
+	
+	protected Collection<ExitPoint> _exitPoints(XBreakStatment expression) {
+		return Collections.emptyList();
+	}
+	
+	protected Collection<ExitPoint> _exitPoints(XContinueStatment expression) {
 		return Collections.emptyList();
 	}
 	

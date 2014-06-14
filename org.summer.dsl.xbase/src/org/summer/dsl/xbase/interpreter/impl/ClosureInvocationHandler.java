@@ -57,7 +57,7 @@ public class ClosureInvocationHandler extends AbstractClosureInvocationHandler {
 					closure.getFormalParameters().size() + " but was: " + args.length);
 		int i = 0;
 		for(JvmFormalParameter param: closure.getFormalParameters()) {
-			context.newValue(QualifiedName.create(param.getName()), args[i]);
+			context.newValue(QualifiedName.create(param.getSimpleName()), args[i]);
 			i++;
 		}
 	}

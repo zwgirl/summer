@@ -86,7 +86,7 @@ public class RootScope extends AbstractScope{
 				List<XExpression> decls = declList.getDeclarations();
 				for(XExpression exp : decls){
 					XVariableDeclaration varDecl = (XVariableDeclaration) exp;
-					if(varDecl.getName()!=null && !varDecl.getName().isEmpty()){
+					if(varDecl.getSimpleName()!=null && !varDecl.getSimpleName().isEmpty()){
 						result.add(EObjectDescription.create(varDecl.getSimpleName(), varDecl));
 					}
 				}

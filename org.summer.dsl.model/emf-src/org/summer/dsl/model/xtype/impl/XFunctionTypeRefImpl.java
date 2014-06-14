@@ -3,7 +3,6 @@
 package org.summer.dsl.model.xtype.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -14,7 +13,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeReference;
-import org.summer.dsl.model.types.impl.JvmTypeReferenceImpl;
 import org.summer.dsl.model.types.impl.JvmTypeReferenceImplCustom;
 import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.model.xtype.XtypePackage;

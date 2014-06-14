@@ -540,7 +540,7 @@ abstract class JvmExecutableDeclarationImpl<T extends JvmExecutable> extends Jvm
 		checkJavaIdentifier(name, "name");
 		Preconditions.checkArgument(type != null, "type cannot be null");
 		val param = TypesFactory.eINSTANCE.createJvmFormalParameter
-		param.name = name
+		param.simpleName = name
 		param.parameterType = compilationUnit.toJvmTypeReference(type)
 		delegate.parameters.add(param)
 		return compilationUnit.toParameterDeclaration(param)
@@ -560,7 +560,7 @@ class JvmParameterDeclarationImpl extends JvmAnnotationTargetImpl<JvmFormalParam
 	
 	override setSimpleName(String name) {
 		checkJavaIdentifier(name, "name");
-		delegate.name = name
+		delegate.simpleName = name
 	}
 	
 }

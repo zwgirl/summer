@@ -339,7 +339,7 @@ public class ExtractMethodRefactoring extends Refactoring {
 								neededTypeParameters.add((JvmTypeParameter) type);
 						}
 					} else if (element instanceof JvmFormalParameter)
-						localFeatureNames.add(((JvmFormalParameter) element).getName());
+						localFeatureNames.add(((JvmFormalParameter) element).getSimpleName());
 					else if (element instanceof XVariableDeclaration)
 						localFeatureNames.add(((XVariableDeclaration) element).getIdentifier());
 				}

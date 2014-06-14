@@ -568,6 +568,15 @@ public class JvmDeclaredTypeImpl extends JvmMemberImplCustom implements JvmDecla
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+	
+	private boolean flag = false;
+	public void setPrimitive(boolean flag) {
+		this.flag = flag;
+	}
+	
+	public boolean isPrimitive() {
+		return this.flag;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

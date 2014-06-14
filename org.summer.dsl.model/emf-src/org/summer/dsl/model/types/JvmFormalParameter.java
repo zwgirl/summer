@@ -13,7 +13,7 @@ import org.summer.dsl.model.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#isVarArg <em>Var Arg</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getDefaultValue <em>Default Value</em>}</li>
@@ -26,30 +26,30 @@ import org.summer.dsl.model.xbase.XExpression;
  */
 public interface JvmFormalParameter extends JvmAnnotationTarget {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Simple Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmFormalParameter_Name()
+	 * @return the value of the '<em>Simple Name</em>' attribute.
+	 * @see #setSimpleName(String)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmFormalParameter_SimpleName()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	String getSimpleName();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmFormalParameter#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmFormalParameter#getSimpleName <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Simple Name</em>' attribute.
+	 * @see #getSimpleName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setSimpleName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameter Type</b></em>' containment reference.

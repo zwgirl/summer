@@ -2542,19 +2542,52 @@ ruleXClosure returns [EObject current=null]
     {
     	newLeafNode(otherlv_6, grammarAccess.getXClosureAccess().getRightParenthesisKeyword_4());
     }
+((
 (
+		lv_explicitReturn_7_0=	'=>' 
+    {
+        newLeafNode(lv_explicitReturn_7_0, grammarAccess.getXClosureAccess().getExplicitReturnEqualsSignGreaterThanSignKeyword_5_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getXClosureRule());
+	        }
+       		setWithLastConsumed($current, "explicitReturn", true, "=>");
+	    }
+
+)
+)(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXClosureAccess().getStatmentXBlockStatmentParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getXClosureAccess().getReturnTypeJvmTypeReferenceParserRuleCall_5_1_0()); 
 	    }
-		lv_statment_7_0=ruleXBlockStatment		{
+		lv_returnType_8_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getXClosureRule());
+	        }
+       		set(
+       			$current, 
+       			"returnType",
+        		lv_returnType_8_0, 
+        		"JvmTypeReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getXClosureAccess().getStatmentXBlockStatmentParserRuleCall_6_0()); 
+	    }
+		lv_statment_9_0=ruleXBlockStatment		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXClosureRule());
 	        }
        		set(
        			$current, 
        			"statment",
-        		lv_statment_7_0, 
+        		lv_statment_9_0, 
         		"XBlockStatment");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -2788,22 +2821,37 @@ ruleXParenthesizedExpression returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='(' 
+((
     {
-    	newLeafNode(otherlv_0, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getXParenthesizedExpressionAccess().getXParenthesizedExpressionAction_0(),
+            $current);
     }
+)	otherlv_1='(' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getXParenthesizedExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
+	    }
+		lv_expression_2_0=ruleXExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getXParenthesizedExpressionRule());
+	        }
+       		set(
+       			$current, 
+       			"expression",
+        		lv_expression_2_0, 
+        		"XExpression");
+	        afterParserOrEnumRuleCall();
+	    }
 
-    { 
-        newCompositeNode(grammarAccess.getXParenthesizedExpressionAccess().getXExpressionParserRuleCall_1()); 
-    }
-    this_XExpression_1=ruleXExpression
-    { 
-        $current = $this_XExpression_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-	otherlv_2=')' 
+)
+)	otherlv_3=')' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2());
+    	newLeafNode(otherlv_3, grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_3());
     }
 )
 ;
@@ -3711,16 +3759,16 @@ ruleValidID
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_1_0_0_1_0()); 
+	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getSimpleNameValidIDParserRuleCall_1_0_0_1_0()); 
 	    }
-		lv_name_2_0=ruleValidID		{
+		lv_simpleName_2_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXVariableDeclarationRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_2_0, 
+       			"simpleName",
+        		lv_simpleName_2_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -3730,16 +3778,16 @@ ruleValidID
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_1_1_0()); 
+	        newCompositeNode(grammarAccess.getXVariableDeclarationAccess().getSimpleNameValidIDParserRuleCall_1_1_0()); 
 	    }
-		lv_name_3_0=ruleValidID		{
+		lv_simpleName_3_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getXVariableDeclarationRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_3_0, 
+       			"simpleName",
+        		lv_simpleName_3_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -3847,16 +3895,16 @@ ruleJvmFormalParameter returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getNameValidIDParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getJvmFormalParameterAccess().getSimpleNameValidIDParserRuleCall_3_0()); 
 	    }
-		lv_name_3_0=ruleValidID		{
+		lv_simpleName_3_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJvmFormalParameterRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_3_0, 
+       			"simpleName",
+        		lv_simpleName_3_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -6411,16 +6459,16 @@ ruleJvmTypeParameter returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getNameValidIDParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getJvmTypeParameterAccess().getSimpleNameValidIDParserRuleCall_0_0()); 
 	    }
-		lv_name_0_0=ruleValidID		{
+		lv_simpleName_0_0=ruleValidID		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getJvmTypeParameterRule());
 	        }
        		set(
        			$current, 
-       			"name",
-        		lv_name_0_0, 
+       			"simpleName",
+        		lv_simpleName_0_0, 
         		"ValidID");
 	        afterParserOrEnumRuleCall();
 	    }

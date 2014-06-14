@@ -247,16 +247,16 @@ public class XFunctionDeclarationImpl extends JvmTypeParameterDeclaratorImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<JvmFormalParameter> getFormalParameters() {
-		return declaredFormalParameters;
+		return getDeclaredFormalParameters();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getIdentifier() {
 		return simpleName;
@@ -286,7 +286,7 @@ public class XFunctionDeclarationImpl extends JvmTypeParameterDeclaratorImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getQualifiedName() {
 		return simpleName;
@@ -295,7 +295,7 @@ public class XFunctionDeclarationImpl extends JvmTypeParameterDeclaratorImpl imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getQualifiedName(char innerClassDelimiter) {
 		return simpleName;

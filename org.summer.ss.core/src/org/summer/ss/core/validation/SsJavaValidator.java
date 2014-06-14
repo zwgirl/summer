@@ -106,6 +106,7 @@ import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XExpressionStatment;
 import org.summer.dsl.model.xbase.XFeatureCall;
+import org.summer.dsl.model.xbase.XFunctionDeclaration;
 import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
@@ -114,6 +115,7 @@ import org.summer.dsl.model.xbase.XbasePackage.Literals;
 import org.summer.dsl.xbase.compiler.JavaKeywords;
 import org.summer.dsl.xbase.jvmmodel.ILogicalContainerProvider;
 import org.summer.dsl.xbase.jvmmodel.JvmTypeExtensions;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.typesystem.legacy.StandardTypeReferenceOwner;
 import org.summer.dsl.xbase.typesystem.override.IOverrideCheckResult.OverrideCheckDetails;
@@ -345,6 +347,30 @@ public class SsJavaValidator extends XbaseJavaValidator {
 				error("A vararg must be the last parameter.", param, TypesPackage.Literals.JVM_FORMAL_PARAMETER__VAR_ARG, INVALID_USE_OF_VAR_ARG);
 			}
 		}
+	}
+	
+	@Check
+	public void checkFunctionReturnType(XFunctionDeclaration function){
+		JvmTypeReference typeRef = function.getReturnType();
+		if(!typeRef.getType().equals(Buildin.Void.JvmType)){
+			XBlockStatment bs = (XBlockStatment) function.getBody();
+			if(bs.getStatments() == null || bs.getStatments().isEmpty()){
+				error(String.format("This method must return a result of type %s.", typeRef.getSimpleName()), function, XbasePackage.Literals.XFUNCTION_DECLARATION__SIMPLE_NAME, INVALID_USE_OF_TYPE);
+			}else{
+				for(XStatment statment : bs.getStatments()){
+					if(statment instanceof XReturnStatment){
+						return;
+					}
+				}
+				
+				error(String.format("This method must return a result of type %s.", typeRef.getSimpleName()), function, XbasePackage.Literals.XFUNCTION_DECLARATION__SIMPLE_NAME, INVALID_USE_OF_TYPE);
+			}
+		}
+	}
+	
+	@Check
+	public void checkDeadCode(XBlockStatment block){
+		
 	}
 	
 	@Check  
@@ -794,7 +820,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		if(statment instanceof XExpressionStatment){
 			XExpressionStatment expressionStat = (XExpressionStatment) statment;
 			if(expressionStat.getExpression() instanceof XFeatureCall) {
-				JvmIdentifiableElement feature = ((XFeatureCall)expressionStat).getFeature();
+				JvmIdentifiableElement feature = ((XFeatureCall)expressionStat.getExpression()).getFeature();
 				return (feature != null && !feature.eIsProxy() && feature instanceof JvmConstructor);
 			}
 		}
@@ -844,9 +870,9 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	@Check
 	public void checkParameterNames(JvmOperation function) {
 		for (int i = 0; i < function.getParameters().size(); ++i) {
-			String leftParameterName = function.getParameters().get(i).getName();
+			String leftParameterName = function.getParameters().get(i).getSimpleName();
 			for (int j = i + 1; j < function.getParameters().size(); ++j) {
-				if (equal(leftParameterName, function.getParameters().get(j).getName())) {
+				if (equal(leftParameterName, function.getParameters().get(j).getSimpleName())) {
 					error("Duplicate parameter " + leftParameterName, TypesPackage.Literals.JVM_EXECUTABLE__PARAMETERS, i, DUPLICATE_PARAMETER_NAME);
 					error("Duplicate parameter " + leftParameterName, TypesPackage.Literals.JVM_EXECUTABLE__PARAMETERS, j, DUPLICATE_PARAMETER_NAME);
 				}
@@ -905,9 +931,9 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	@Check
 	public void checkParameterNames(JvmConstructor constructor) {
 		for (int i = 0; i < constructor.getParameters().size(); ++i) {
-			String leftParameterName = constructor.getParameters().get(i).getName();
+			String leftParameterName = constructor.getParameters().get(i).getSimpleName();
 			for (int j = i + 1; j < constructor.getParameters().size(); ++j) {
-				if (equal(leftParameterName, constructor.getParameters().get(j).getName())) {
+				if (equal(leftParameterName, constructor.getParameters().get(j).getSimpleName())) {
 					error("Duplicate parameter " + leftParameterName, TypesPackage.Literals.JVM_EXECUTABLE__PARAMETERS, i, DUPLICATE_PARAMETER_NAME);
 					error("Duplicate parameter " + leftParameterName, TypesPackage.Literals.JVM_EXECUTABLE__PARAMETERS, j, DUPLICATE_PARAMETER_NAME);
 				}
@@ -973,7 +999,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 					if(id instanceof JvmDeclaredType){
 						error("The element "+id.getSimpleName()+" is already defined.", id, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
 					}else if(id instanceof XVariableDeclaration){
-						error("The element "+id.getSimpleName()+" is already defined.", id, XbasePackage.Literals.XVARIABLE_DECLARATION__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
+						error("The element "+id.getSimpleName()+" is already defined.", id, XbasePackage.Literals.XVARIABLE_DECLARATION__SIMPLE_NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
 					}else if(id instanceof XClosure){
 						error("The element "+id.getSimpleName()+" is already defined.", id, XbasePackage.Literals.XCLOSURE__NAME, -1, IssueCodes.DUPLICATE_TYPE_NAME);
 					}
@@ -1094,14 +1120,14 @@ public class SsJavaValidator extends XbaseJavaValidator {
 			return;
 		checkNoJavaKeyword(member, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME);
 		for (JvmTypeParameter p : member.getTypeParameters()) {
-			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__NAME);
+			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__SIMPLE_NAME);
 		}
 	}
 	
 	@Check
 	public void checkJavaKeywordConflict(JvmConstructor member) {
 		for (JvmTypeParameter p : member.getTypeParameters()) {
-			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__NAME);
+			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__SIMPLE_NAME);
 		}
 	}
 	
@@ -1113,7 +1139,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	@Check
 	public void checkJavaKeywordConflict(JvmInterfaceType member) {
 		for (JvmTypeParameter p : member.getTypeParameters()) {
-			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__NAME);
+			checkNoJavaKeyword(p, TypesPackage.Literals.JVM_TYPE_PARAMETER__SIMPLE_NAME);
 		}
 	}
 	
@@ -1125,19 +1151,19 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		}
 	}
 	
-	@Check
-	public void checkNonInitializedFieldsHaveAType(JvmField field) {
-		if (field.getType() == null && field.getDefaultValue() == null) {
-			error("The field "+field.getSimpleName()+" needs an explicit type since there is no initialization expression to infer the type from.", field, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, TOO_LITTLE_TYPE_INFORMATION);
-		}
-	}
-	
-	@Check
-	public void checkFieldsAreCalledSelf(JvmField field) {
-		if ("self".equals(field.getSimpleName())) {
-			addIssue("'self' is a discouraged name", field, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, VARIABLE_NAME_DISCOURAGED);
-		}
-	}
+//	@Check
+//	public void checkNonInitializedFieldsHaveAType(JvmField field) {
+//		if (field.getType() == null && field.getDefaultValue() == null) {
+//			error("The field "+field.getSimpleName()+" needs an explicit type since there is no initialization expression to infer the type from.", field, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, TOO_LITTLE_TYPE_INFORMATION);
+//		}
+//	}
+//	
+//	@Check
+//	public void checkFieldsAreCalledSelf(JvmField field) {
+//		if ("self".equals(field.getSimpleName())) {
+//			addIssue("'self' is a discouraged name", field, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, VARIABLE_NAME_DISCOURAGED);
+//		}
+//	}
 	
 	@Check
 	public void checkJavaDocRefs(JvmMember member){

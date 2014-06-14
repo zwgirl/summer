@@ -48,7 +48,7 @@ public class HoverUiStrings extends UIStrings {
 				}
 			} else 
 				buffer.append("[null]");
-			buffer.append(" " + parameter.getName());
+			buffer.append(" " + parameter.getSimpleName());
 		}
 		return buffer.toString();
 	}

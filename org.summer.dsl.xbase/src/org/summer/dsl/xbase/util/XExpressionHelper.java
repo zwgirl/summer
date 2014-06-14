@@ -7,11 +7,12 @@
  *******************************************************************************/
 package org.summer.dsl.xbase.util;
 
-import static com.google.common.collect.Iterables.*;
-import static org.eclipse.xtext.util.Strings.*;
+import static com.google.common.collect.Iterables.contains;
+import static org.eclipse.xtext.util.Strings.equal;
 
 import java.util.List;
 
+import org.eclipse.xtext.naming.QualifiedName;
 import org.summer.dsl.model.types.JvmAnnotationReference;
 import org.summer.dsl.model.types.JvmAnnotationTarget;
 import org.summer.dsl.model.types.JvmConstructor;
@@ -21,7 +22,6 @@ import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
 import org.summer.dsl.model.types.JvmOperation;
 import org.summer.dsl.model.types.util.TypeReferences;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAssignment;
 import org.summer.dsl.model.xbase.XBinaryOperation;
@@ -32,12 +32,20 @@ import org.summer.dsl.model.xbase.XConstructorCall;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
+import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XStringLiteral;
 import org.summer.dsl.model.xbase.XTypeLiteral;
 import org.summer.dsl.xbase.lib.BooleanExtensions;
+import org.summer.dsl.xbase.lib.ByteExtensions;
+import org.summer.dsl.xbase.lib.CharacterExtensions;
+import org.summer.dsl.xbase.lib.DoubleExtensions;
+import org.summer.dsl.xbase.lib.FloatExtensions;
 import org.summer.dsl.xbase.lib.Inline;
+import org.summer.dsl.xbase.lib.IntegerExtensions;
+import org.summer.dsl.xbase.lib.LongExtensions;
 import org.summer.dsl.xbase.lib.ObjectExtensions;
 import org.summer.dsl.xbase.lib.Pure;
+import org.summer.dsl.xbase.lib.ShortExtensions;
 import org.summer.dsl.xbase.scoping.featurecalls.OperatorMapping;
 
 import com.google.inject.Inject;
@@ -175,5 +183,54 @@ public class XExpressionHelper {
 
 	public boolean isInlined(XAbstractFeatureCall call) {
 		return findInlineAnnotation(call) != null;
+	}
+	
+	public boolean isGetAndAssign(XAbstractFeatureCall featureCall) {
+		if (!(featureCall instanceof XPostfixOperation)) {
+			return false;
+		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, DoubleExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, DoubleExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, FloatExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, FloatExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, LongExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, LongExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, IntegerExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, IntegerExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, ShortExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, ShortExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, CharacterExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, CharacterExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.MINUS_MINUS, ByteExtensions.class)) {
+//			return true;
+//		}
+//		if (isOperatorFromExtension(featureCall, OperatorMapping.PLUS_PLUS, ByteExtensions.class)) {
+//			return true;
+//		}
+		return false;
 	}
 }

@@ -333,7 +333,9 @@ ruleXExpression :
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' ruleXBlockStatment
+	)? ')' (
+		'=>' ruleJvmTypeReference
+	)? ruleXBlockStatment
 ;
 
 // Rule XFunctionDeclaration

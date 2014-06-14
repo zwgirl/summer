@@ -24,8 +24,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	protected AbstractElementAlias match_XExportSection_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_XExpressionStatment_SemicolonKeyword_1_q;
 	protected AbstractElementAlias match_XImportSection_SemicolonKeyword_1_q;
-	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_a;
-	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -36,8 +34,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 		match_XExportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXExportSectionAccess().getSemicolonKeyword_1());
 		match_XExpressionStatment_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionStatmentAccess().getSemicolonKeyword_1());
 		match_XImportSection_SemicolonKeyword_1_q = new TokenAlias(false, true, grammarAccess.getXImportSectionAccess().getSemicolonKeyword_1());
-		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
-		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 	}
 	
 	@Override
@@ -89,10 +85,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 				emit_XExpressionStatment_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XImportSection_SemicolonKeyword_1_q.equals(syntax))
 				emit_XImportSection_SemicolonKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XParenthesizedExpression_LeftParenthesisKeyword_0_a.equals(syntax))
-				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XParenthesizedExpression_LeftParenthesisKeyword_0_p.equals(syntax))
-				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -142,22 +134,6 @@ public abstract class AbstractSsSyntacticSequencer extends AbstractSyntacticSequ
 	 *     ';'?
 	 */
 	protected void emit_XImportSection_SemicolonKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '('*
-	 */
-	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '('+
-	 */
-	protected void emit_XParenthesizedExpression_LeftParenthesisKeyword_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -4,6 +4,7 @@ package org.summer.dsl.model.types;
 
 import java.lang.Iterable;
 import java.util.List;
+import org.summer.dsl.model.xaml.XObjectElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +16,7 @@ import java.util.List;
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.JvmGenericType#getExtends <em>Extends</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmGenericType#getImplements <em>Implements</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmGenericType#getRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +66,32 @@ public interface JvmGenericType extends JvmDeclaredType, JvmTypeParameterDeclara
 	 * @generated NOT
 	 */
 	List<JvmParameterizedTypeReference> getImplements();
+
+	/**
+	 * Returns the value of the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Root</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Root</em>' containment reference.
+	 * @see #setRoot(XObjectElement)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmGenericType_Root()
+	 * @model containment="true"
+	 * @generated
+	 */
+	XObjectElement getRoot();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmGenericType#getRoot <em>Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Root</em>' containment reference.
+	 * @see #getRoot()
+	 * @generated
+	 */
+	void setRoot(XObjectElement value);
 
 	/**
 	 * <!-- begin-user-doc -->

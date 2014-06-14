@@ -45,6 +45,7 @@ import org.summer.dsl.model.xbase.XNullLiteral;
 import org.summer.dsl.model.xbase.XNumberLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteral;
 import org.summer.dsl.model.xbase.XObjectLiteralPart;
+import org.summer.dsl.model.xbase.XParenthesizedExpression;
 import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XReturnStatment;
 import org.summer.dsl.model.xbase.XSetLiteral;
@@ -379,6 +380,13 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass xParenthesizedExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass xObjectLiteralEClass = null;
 
 	/**
@@ -671,7 +679,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getXVariableDeclaration_Name() {
+	public EAttribute getXVariableDeclaration_SimpleName() {
 		return (EAttribute)xVariableDeclarationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -887,7 +895,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXCaller_Function() {
+	public EReference getXCaller_Executable() {
 		return (EReference)xCallerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -898,15 +906,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 */
 	public EReference getXCaller_Arguments() {
 		return (EReference)xCallerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getXCaller_Feature() {
-		return (EReference)xCallerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1256,6 +1255,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getXClosure_ExplicitReturn() {
+		return (EAttribute)xClosureEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getXCastedExpression() {
 		return xCastedExpressionEClass;
 	}
@@ -1303,6 +1311,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 */
 	public EReference getXBinaryOperation_RightOperand() {
 		return (EReference)xBinaryOperationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXBinaryOperation_ReassignFirstArgument() {
+		return (EAttribute)xBinaryOperationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1805,6 +1822,24 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getXParenthesizedExpression() {
+		return xParenthesizedExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXParenthesizedExpression_Expression() {
+		return (EReference)xParenthesizedExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getXObjectLiteral() {
 		return xObjectLiteralEClass;
 	}
@@ -1980,7 +2015,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		xVariableDeclarationEClass = createEClass(XVARIABLE_DECLARATION);
 		createEReference(xVariableDeclarationEClass, XVARIABLE_DECLARATION__TYPE);
-		createEAttribute(xVariableDeclarationEClass, XVARIABLE_DECLARATION__NAME);
+		createEAttribute(xVariableDeclarationEClass, XVARIABLE_DECLARATION__SIMPLE_NAME);
 		createEReference(xVariableDeclarationEClass, XVARIABLE_DECLARATION__RIGHT);
 
 		xVariableDeclarationListEClass = createEClass(XVARIABLE_DECLARATION_LIST);
@@ -2008,9 +2043,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		createEAttribute(xMemberFeatureCallEClass, XMEMBER_FEATURE_CALL__INDEXED_OPERATION);
 
 		xCallerEClass = createEClass(XCALLER);
-		createEReference(xCallerEClass, XCALLER__FUNCTION);
+		createEReference(xCallerEClass, XCALLER__EXECUTABLE);
 		createEReference(xCallerEClass, XCALLER__ARGUMENTS);
-		createEReference(xCallerEClass, XCALLER__FEATURE);
 
 		xIndexerEClass = createEClass(XINDEXER);
 		createEReference(xIndexerEClass, XINDEXER__SOURCE);
@@ -2060,6 +2094,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		createEAttribute(xClosureEClass, XCLOSURE__OPERATOR);
 		createEReference(xClosureEClass, XCLOSURE__TYPE_PARAMETERS);
 		createEAttribute(xClosureEClass, XCLOSURE__EXPORTED);
+		createEAttribute(xClosureEClass, XCLOSURE__EXPLICIT_RETURN);
 
 		xCastedExpressionEClass = createEClass(XCASTED_EXPRESSION);
 		createEReference(xCastedExpressionEClass, XCASTED_EXPRESSION__TYPE);
@@ -2068,6 +2103,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xBinaryOperationEClass = createEClass(XBINARY_OPERATION);
 		createEReference(xBinaryOperationEClass, XBINARY_OPERATION__LEFT_OPERAND);
 		createEReference(xBinaryOperationEClass, XBINARY_OPERATION__RIGHT_OPERAND);
+		createEAttribute(xBinaryOperationEClass, XBINARY_OPERATION__REASSIGN_FIRST_ARGUMENT);
 
 		xUnaryOperationEClass = createEClass(XUNARY_OPERATION);
 		createEReference(xUnaryOperationEClass, XUNARY_OPERATION__OPERAND);
@@ -2162,6 +2198,9 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		createEAttribute(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__SIMPLE_NAME);
 		createEReference(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__RETURN_TYPE);
 		createEAttribute(xFunctionDeclarationEClass, XFUNCTION_DECLARATION__EXPORTED);
+
+		xParenthesizedExpressionEClass = createEClass(XPARENTHESIZED_EXPRESSION);
+		createEReference(xParenthesizedExpressionEClass, XPARENTHESIZED_EXPRESSION__EXPRESSION);
 	}
 
 	/**
@@ -2198,6 +2237,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xIfStatmentEClass.getESuperTypes().add(this.getXStatment());
 		xExpressionStatmentEClass.getESuperTypes().add(this.getXStatment());
 		xSwitchStatmentEClass.getESuperTypes().add(this.getXStatment());
+		xBlockStatmentEClass.getESuperTypes().add(this.getXExpression());
 		xBlockStatmentEClass.getESuperTypes().add(this.getXStatment());
 		xVariableDeclarationEClass.getESuperTypes().add(this.getXExpression());
 		xVariableDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
@@ -2245,6 +2285,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xFunctionDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmTypeParameterDeclarator());
 		xFunctionDeclarationEClass.getESuperTypes().add(this.getXStatment());
 		xFunctionDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
+		xParenthesizedExpressionEClass.getESuperTypes().add(this.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xExpressionEClass, XExpression.class, "XExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2273,8 +2314,10 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		initEClass(xVariableDeclarationEClass, XVariableDeclaration.class, "XVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXVariableDeclaration_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getXVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXVariableDeclaration_SimpleName(), ecorePackage.getEString(), "simpleName", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXVariableDeclaration_Right(), this.getXExpression(), null, "right", null, 0, 1, XVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(xVariableDeclarationEClass, ecorePackage.getEBoolean(), "isReadonly", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(xVariableDeclarationListEClass, XVariableDeclarationList.class, "XVariableDeclarationList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXVariableDeclarationList_Declarations(), this.getXExpression(), null, "declarations", null, 0, -1, XVariableDeclarationList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2307,6 +2350,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		addEOperation(xAbstractFeatureCallEClass, ecorePackage.getEBoolean(), "isTypeLiteral", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(xAbstractFeatureCallEClass, ecorePackage.getEBoolean(), "isOperation", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(xMemberFeatureCallEClass, XMemberFeatureCall.class, "XMemberFeatureCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXMemberFeatureCall_MemberCallTarget(), this.getXExpression(), null, "memberCallTarget", null, 0, 1, XMemberFeatureCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXMemberFeatureCall_MemberCallArguments(), this.getXExpression(), null, "memberCallArguments", null, 0, -1, XMemberFeatureCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2319,9 +2364,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEAttribute(getXMemberFeatureCall_IndexedOperation(), ecorePackage.getEBoolean(), "indexedOperation", "false", 0, 1, XMemberFeatureCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xCallerEClass, XCaller.class, "XCaller", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXCaller_Function(), this.getXExpression(), null, "function", null, 0, 1, XCaller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXCaller_Executable(), this.getXExpression(), null, "executable", null, 0, 1, XCaller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXCaller_Arguments(), this.getXExpression(), null, "arguments", null, 0, -1, XCaller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXCaller_Feature(), theTypesPackage.getJvmIdentifiableElement(), null, "feature", null, 0, 1, XCaller.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xIndexerEClass, XIndexer.class, "XIndexer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXIndexer_Source(), this.getXExpression(), null, "source", null, 0, 1, XIndexer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2371,6 +2415,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEAttribute(getXClosure_Operator(), ecorePackage.getEBoolean(), "operator", "false", 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXClosure_TypeParameters(), theTypesPackage.getJvmTypeParameter(), null, "typeParameters", null, 0, -1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getXClosure_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXClosure_ExplicitReturn(), ecorePackage.getEBoolean(), "explicitReturn", null, 0, 1, XClosure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(xClosureEClass, theTypesPackage.getJvmFormalParameter(), "getFormalParameters", 0, -1, IS_UNIQUE, IS_ORDERED);
 
@@ -2381,6 +2426,7 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEClass(xBinaryOperationEClass, XBinaryOperation.class, "XBinaryOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXBinaryOperation_LeftOperand(), this.getXExpression(), null, "leftOperand", null, 0, 1, XBinaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXBinaryOperation_RightOperand(), this.getXExpression(), null, "rightOperand", null, 0, 1, XBinaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXBinaryOperation_ReassignFirstArgument(), ecorePackage.getEBoolean(), "reassignFirstArgument", "false", 0, 1, XBinaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xUnaryOperationEClass, XUnaryOperation.class, "XUnaryOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXUnaryOperation_Operand(), this.getXExpression(), null, "operand", null, 0, 1, XUnaryOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2477,6 +2523,9 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEAttribute(getXFunctionDeclaration_Exported(), ecorePackage.getEBoolean(), "exported", "false", 0, 1, XFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(xFunctionDeclarationEClass, theTypesPackage.getJvmFormalParameter(), "getFormalParameters", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(xParenthesizedExpressionEClass, XParenthesizedExpression.class, "XParenthesizedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXParenthesizedExpression_Expression(), this.getXExpression(), null, "expression", null, 0, 1, XParenthesizedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

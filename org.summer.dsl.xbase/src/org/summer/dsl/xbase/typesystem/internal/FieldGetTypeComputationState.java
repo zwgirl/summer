@@ -15,6 +15,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XExpression;
+import org.summer.dsl.model.xbase.XStatment;
 import org.summer.dsl.xbase.scoping.batch.IFeatureScopeSession;
 import org.summer.dsl.xbase.typesystem.computation.ITypeComputationResult;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
@@ -69,8 +70,7 @@ public class FieldGetTypeComputationState extends AbstractRootTypeComputationSta
 
 	@Override
 	public void computeTypes() {
-//		ExpressionTypeComputationState state = createExpressionComputationState(expression, typeResolution)
-		getResolver().getTypeComputer().computeTypes(statment, this);
+		getResolver().getTypeComputer().computeTypes((XStatment)statment, this);
 	}
 
 	@Override

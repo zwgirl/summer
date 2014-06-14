@@ -335,5 +335,15 @@ public class XImportDeclarationImpl extends JvmIdentifiableElementImpl implement
 		result.append(')');
 		return result.toString();
 	}
+	
+	@Override
+	public String getIdentifier() {
+		if(alias !=null && !alias.isEmpty()){
+			return alias;
+		}
+		String namespace = getImportedNamespace();
+		return namespace.split("\\.")[0];
+		
+	}
 
 } //XImportDeclarationImpl

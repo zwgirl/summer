@@ -158,6 +158,7 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXClosureAccess().getGroup(), "rule__XClosure__Group__0");
 					put(grammarAccess.getXClosureAccess().getGroup_3(), "rule__XClosure__Group_3__0");
 					put(grammarAccess.getXClosureAccess().getGroup_3_1(), "rule__XClosure__Group_3_1__0");
+					put(grammarAccess.getXClosureAccess().getGroup_5(), "rule__XClosure__Group_5__0");
 					put(grammarAccess.getXFunctionDeclarationAccess().getGroup(), "rule__XFunctionDeclaration__Group__0");
 					put(grammarAccess.getXFunctionDeclarationAccess().getGroup_3(), "rule__XFunctionDeclaration__Group_3__0");
 					put(grammarAccess.getXFunctionDeclarationAccess().getGroup_3_0(), "rule__XFunctionDeclaration__Group_3_0__0");
@@ -303,7 +304,9 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXExpressionStatmentAccess().getExpressionAssignment_0(), "rule__XExpressionStatment__ExpressionAssignment_0");
 					put(grammarAccess.getXClosureAccess().getDeclaredFormalParametersAssignment_3_0(), "rule__XClosure__DeclaredFormalParametersAssignment_3_0");
 					put(grammarAccess.getXClosureAccess().getDeclaredFormalParametersAssignment_3_1_1(), "rule__XClosure__DeclaredFormalParametersAssignment_3_1_1");
-					put(grammarAccess.getXClosureAccess().getStatmentAssignment_5(), "rule__XClosure__StatmentAssignment_5");
+					put(grammarAccess.getXClosureAccess().getExplicitReturnAssignment_5_0(), "rule__XClosure__ExplicitReturnAssignment_5_0");
+					put(grammarAccess.getXClosureAccess().getReturnTypeAssignment_5_1(), "rule__XClosure__ReturnTypeAssignment_5_1");
+					put(grammarAccess.getXClosureAccess().getStatmentAssignment_6(), "rule__XClosure__StatmentAssignment_6");
 					put(grammarAccess.getXFunctionDeclarationAccess().getExportedAssignment_1(), "rule__XFunctionDeclaration__ExportedAssignment_1");
 					put(grammarAccess.getXFunctionDeclarationAccess().getTypeParametersAssignment_3_0_1(), "rule__XFunctionDeclaration__TypeParametersAssignment_3_0_1");
 					put(grammarAccess.getXFunctionDeclarationAccess().getTypeParametersAssignment_3_0_2_1(), "rule__XFunctionDeclaration__TypeParametersAssignment_3_0_2_1");
@@ -312,6 +315,7 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXFunctionDeclarationAccess().getDeclaredFormalParametersAssignment_7_0(), "rule__XFunctionDeclaration__DeclaredFormalParametersAssignment_7_0");
 					put(grammarAccess.getXFunctionDeclarationAccess().getDeclaredFormalParametersAssignment_7_1_1(), "rule__XFunctionDeclaration__DeclaredFormalParametersAssignment_7_1_1");
 					put(grammarAccess.getXFunctionDeclarationAccess().getBodyAssignment_9(), "rule__XFunctionDeclaration__BodyAssignment_9");
+					put(grammarAccess.getXParenthesizedExpressionAccess().getExpressionAssignment_2(), "rule__XParenthesizedExpression__ExpressionAssignment_2");
 					put(grammarAccess.getXIfStatmentAccess().getIfAssignment_3(), "rule__XIfStatment__IfAssignment_3");
 					put(grammarAccess.getXIfStatmentAccess().getThenAssignment_5(), "rule__XIfStatment__ThenAssignment_5");
 					put(grammarAccess.getXIfStatmentAccess().getElseAssignment_6_1(), "rule__XIfStatment__ElseAssignment_6_1");
@@ -339,16 +343,16 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXVariableDeclarationListAccess().getDeclarationsAssignment_3(), "rule__XVariableDeclarationList__DeclarationsAssignment_3");
 					put(grammarAccess.getXVariableDeclarationListAccess().getDeclarationsAssignment_4_1(), "rule__XVariableDeclarationList__DeclarationsAssignment_4_1");
 					put(grammarAccess.getXVariableDeclarationAccess().getTypeAssignment_1_0_0_0(), "rule__XVariableDeclaration__TypeAssignment_1_0_0_0");
-					put(grammarAccess.getXVariableDeclarationAccess().getNameAssignment_1_0_0_1(), "rule__XVariableDeclaration__NameAssignment_1_0_0_1");
-					put(grammarAccess.getXVariableDeclarationAccess().getNameAssignment_1_1(), "rule__XVariableDeclaration__NameAssignment_1_1");
+					put(grammarAccess.getXVariableDeclarationAccess().getSimpleNameAssignment_1_0_0_1(), "rule__XVariableDeclaration__SimpleNameAssignment_1_0_0_1");
+					put(grammarAccess.getXVariableDeclarationAccess().getSimpleNameAssignment_1_1(), "rule__XVariableDeclaration__SimpleNameAssignment_1_1");
 					put(grammarAccess.getXVariableDeclarationAccess().getRightAssignment_2_0_1(), "rule__XVariableDeclaration__RightAssignment_2_0_1");
 					put(grammarAccess.getJvmFormalParameterAccess().getAnnotationsAssignment_0(), "rule__JvmFormalParameter__AnnotationsAssignment_0");
 					put(grammarAccess.getJvmFormalParameterAccess().getParameterTypeAssignment_1(), "rule__JvmFormalParameter__ParameterTypeAssignment_1");
 					put(grammarAccess.getJvmFormalParameterAccess().getVarArgAssignment_2(), "rule__JvmFormalParameter__VarArgAssignment_2");
-					put(grammarAccess.getJvmFormalParameterAccess().getNameAssignment_3(), "rule__JvmFormalParameter__NameAssignment_3");
+					put(grammarAccess.getJvmFormalParameterAccess().getSimpleNameAssignment_3(), "rule__JvmFormalParameter__SimpleNameAssignment_3");
 					put(grammarAccess.getJvmFormalParameterAccess().getDefaultValueAssignment_4_1(), "rule__JvmFormalParameter__DefaultValueAssignment_4_1");
 					put(grammarAccess.getFullJvmFormalParameterAccess().getParameterTypeAssignment_0(), "rule__FullJvmFormalParameter__ParameterTypeAssignment_0");
-					put(grammarAccess.getFullJvmFormalParameterAccess().getNameAssignment_1(), "rule__FullJvmFormalParameter__NameAssignment_1");
+					put(grammarAccess.getFullJvmFormalParameterAccess().getSimpleNameAssignment_1(), "rule__FullJvmFormalParameter__SimpleNameAssignment_1");
 					put(grammarAccess.getFullJvmFormalParameterAccess().getDefaultValueAssignment_2_1(), "rule__FullJvmFormalParameter__DefaultValueAssignment_2_1");
 					put(grammarAccess.getXFeatureCallAccess().getTypeArgumentsAssignment_1_1(), "rule__XFeatureCall__TypeArgumentsAssignment_1_1");
 					put(grammarAccess.getXFeatureCallAccess().getTypeArgumentsAssignment_1_2_1(), "rule__XFeatureCall__TypeArgumentsAssignment_1_2_1");
@@ -412,7 +416,7 @@ public class XbaseParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceAssignment_1(), "rule__JvmUpperBound__TypeReferenceAssignment_1");
 					put(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceAssignment_1(), "rule__JvmUpperBoundAnded__TypeReferenceAssignment_1");
 					put(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceAssignment_1(), "rule__JvmLowerBound__TypeReferenceAssignment_1");
-					put(grammarAccess.getJvmTypeParameterAccess().getNameAssignment_0(), "rule__JvmTypeParameter__NameAssignment_0");
+					put(grammarAccess.getJvmTypeParameterAccess().getSimpleNameAssignment_0(), "rule__JvmTypeParameter__SimpleNameAssignment_0");
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_0(), "rule__JvmTypeParameter__ConstraintsAssignment_1_0");
 					put(grammarAccess.getJvmTypeParameterAccess().getConstraintsAssignment_1_1(), "rule__JvmTypeParameter__ConstraintsAssignment_1_1");
 				}

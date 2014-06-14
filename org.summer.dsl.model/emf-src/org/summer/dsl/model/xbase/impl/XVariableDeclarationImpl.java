@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XVariableDeclaration;
+import org.summer.dsl.model.xbase.XVariableDeclarationList;
 import org.summer.dsl.model.xbase.XbasePackage;
 
 /**
@@ -20,7 +21,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationImpl#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XVariableDeclarationImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
@@ -39,24 +40,24 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	protected JvmTypeReference type;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String SIMPLE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String simpleName = SIMPLE_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -135,27 +136,6 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XVARIABLE_DECLARATION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public XExpression getRight() {
 		return right;
 	}
@@ -197,28 +177,47 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isExported() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return ((XVariableDeclarationList)eContainer()).isExported();
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isReadonly() {
+		return ((XVariableDeclarationList)eContainer()).isReadonly();
 	}
 
 	public String getIdentifier() {
-		return name;
+		return simpleName;
 	}
 	
 	public String getSimpleName() {
-		return name;
+		return simpleName;
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleName(String newSimpleName) {
+		String oldSimpleName = simpleName;
+		simpleName = newSimpleName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XVARIABLE_DECLARATION__SIMPLE_NAME, oldSimpleName, simpleName));
+	}
+
 	public String getQualifiedName() {
-		return name;
+		return simpleName;
 	}
 	
 	public String getQualifiedName(char innerClassDelimiter) {
-		return name;
+		return simpleName;
 	}
 
 	/**
@@ -247,8 +246,8 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		switch (featureID) {
 			case XbasePackage.XVARIABLE_DECLARATION__TYPE:
 				return getType();
-			case XbasePackage.XVARIABLE_DECLARATION__NAME:
-				return getName();
+			case XbasePackage.XVARIABLE_DECLARATION__SIMPLE_NAME:
+				return getSimpleName();
 			case XbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				return getRight();
 		}
@@ -260,15 +259,14 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case XbasePackage.XVARIABLE_DECLARATION__TYPE:
 				setType((JvmTypeReference)newValue);
 				return;
-			case XbasePackage.XVARIABLE_DECLARATION__NAME:
-				setName((String)newValue);
+			case XbasePackage.XVARIABLE_DECLARATION__SIMPLE_NAME:
+				setSimpleName((String)newValue);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				setRight((XExpression)newValue);
@@ -288,8 +286,8 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 			case XbasePackage.XVARIABLE_DECLARATION__TYPE:
 				setType((JvmTypeReference)null);
 				return;
-			case XbasePackage.XVARIABLE_DECLARATION__NAME:
-				setName(NAME_EDEFAULT);
+			case XbasePackage.XVARIABLE_DECLARATION__SIMPLE_NAME:
+				setSimpleName(SIMPLE_NAME_EDEFAULT);
 				return;
 			case XbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				setRight((XExpression)null);
@@ -308,8 +306,8 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		switch (featureID) {
 			case XbasePackage.XVARIABLE_DECLARATION__TYPE:
 				return type != null;
-			case XbasePackage.XVARIABLE_DECLARATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case XbasePackage.XVARIABLE_DECLARATION__SIMPLE_NAME:
+				return SIMPLE_NAME_EDEFAULT == null ? simpleName != null : !SIMPLE_NAME_EDEFAULT.equals(simpleName);
 			case XbasePackage.XVARIABLE_DECLARATION__RIGHT:
 				return right != null;
 		}
@@ -326,8 +324,8 @@ public class XVariableDeclarationImpl extends XExpressionImpl implements XVariab
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (simpleName: ");
+		result.append(simpleName);
 		result.append(')');
 		return result.toString();
 	}

@@ -19,36 +19,31 @@ import org.eclipse.emf.ecore.EReference;
 public class JvmFormalParameterImplCustom extends JvmFormalParameterImpl {
 	
 	@Override
-	public String getName() {
-		if (name == null) {
+	public String getSimpleName() {
+		if (simpleName == null) {
 			EObject executable = eContainer();
 			if (executable instanceof JvmExecutableImplCustom) {
 				JvmExecutableImplCustom jvmExecutableImplCustom = (JvmExecutableImplCustom) executable;
 				jvmExecutableImplCustom.runInitializer();
 			}
 		}
-		return name;
+		return simpleName;
 	}
 
 	@Override
 	public String getIdentifier() {
-		return getName();
-	}
-	
-	@Override
-	public String getSimpleName() {
-		return getName();
+		return getSimpleName();
 	}
 	
 	@Override
 	public String getQualifiedName(char innerClassDelimiter) {
-		return getName();
+		return getSimpleName();
 	}
 
 	@Override
 	public String toString() {
-		if (name != null) {
-			return "param " + name;
+		if (simpleName != null) {
+			return "param " + simpleName;
 		}
 		String result = "param [name not computed]";
 		EObject executable = eContainer();

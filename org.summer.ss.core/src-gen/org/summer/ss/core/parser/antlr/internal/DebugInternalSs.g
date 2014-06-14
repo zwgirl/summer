@@ -7,7 +7,7 @@
 ruleJvmModule :
 	(
 		'package' ruleQualifiedName
-	)? 'module' RULE_ID '{' ruleXImportSection? ruleXObjectElement (
+	)? 'module' RULE_ID '{' ruleXImportSection? ruleXObjectElement? (
 		(
 			ruleType |
 			ruleDelegateType
@@ -79,7 +79,7 @@ ruleJvmModule :
 			'implements' ruleJvmParameterizedTypeReference (
 				',' ruleJvmParameterizedTypeReference
 			)*
-		)? '{' ruleMember* '}' |
+		)? '{' ruleXObjectElement? ruleMember* '}' |
 		'export'? 'interface' ruleValidID (
 			'<' ruleJvmTypeParameter (
 				',' ruleJvmTypeParameter
@@ -171,7 +171,10 @@ ruleJvmModule :
 			'<' ruleJvmTypeParameter (
 				',' ruleJvmTypeParameter
 			)* '>'
-		)? ruleJvmTypeReference ruleFunctionID '(' (
+		)? ruleJvmTypeReference (
+			ruleFunctionID |
+			'operator' ruleOperators
+		) '(' (
 			ruleJvmFormalParameter (
 				',' ruleJvmFormalParameter
 			)*
@@ -202,8 +205,7 @@ ruleJvmModule :
 
 // Rule FunctionID
  ruleFunctionID :
-	ruleValidID |
-	ruleOperators
+	ruleValidID
 ;
 
 // Rule Operators
@@ -650,7 +652,9 @@ ruleJvmModule :
 		ruleJvmFormalParameter (
 			',' ruleJvmFormalParameter
 		)*
-	)? ')' ruleXBlockStatment
+	)? ')' (
+		'=>' ruleJvmTypeReference
+	)? ruleXBlockStatment
 ;
 
 // Rule XFunctionDeclaration

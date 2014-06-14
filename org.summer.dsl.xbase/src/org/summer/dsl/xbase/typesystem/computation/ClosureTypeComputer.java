@@ -81,8 +81,8 @@ public class ClosureTypeComputer {
 	public void selectStrategy() {
 		LightweightTypeReference expectedType = expectation.getExpectedType();
 //		services.getTypeReferences().createTypeRef(type, typeArgs);
-		strategy = createClosureWithExpectationHelper((FunctionTypeReference)expectedType);
-		
+//		strategy = createClosureWithExpectationHelper((FunctionTypeReference)expectedType);
+		strategy = new ClosureWithExpectationHelper(closure, (FunctionTypeReference)expectedType, expectation, state, computer);
 	}
 
 

@@ -15,13 +15,14 @@ import org.summer.dsl.model.types.JvmType;
 
 
 public enum Buildin {
-	Object("object"), Boolean("boolean"), Function("function"), String("string"), Number("number"), Array(
-			"array"), Date("date"), Integer("int"), Byte("byte"), Short("short"), Float("float"), Double("double"),
-			Iterable("iterable"), List("list"), Type("Type"), Void("Void"), Collection("Collection"), Map("Map");
+	Object("object", false), Boolean("boolean", true), Function("function", true), String("string", true), Number("number", true), Array(
+			"array", false), Date("date", false), Integer("int", true), Byte("byte", true), Short("short", true), Float("float", true), Double("double", true),
+			Iterable("iterable", false), List("list", false), Type("Type", false), Void("Void", true), Collection("Collection", false), Map("Map", false);
 
-	private Buildin(String name) {
+	private Buildin(String name, boolean primitive) {
 		this.JvmType = getType(this);
 		this.PrimitiveName = name;
+		this.JvmType.setPrimitive(primitive);
 	}
 
 	public final JvmDeclaredType JvmType;

@@ -25,6 +25,7 @@ import org.summer.dsl.model.types.JvmTypeReference;
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#isOperator <em>Operator</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XClosure#isExported <em>Exported</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.XClosure#isExplicitReturn <em>Explicit Return</em>}</li>
  * </ul>
  * </p>
  *
@@ -248,6 +249,32 @@ public interface XClosure extends XExpression, JvmIdentifiableElement {
 	 * @generated
 	 */
 	void setExported(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Explicit Return</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Explicit Return</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Explicit Return</em>' attribute.
+	 * @see #setExplicitReturn(boolean)
+	 * @see org.summer.dsl.model.xbase.XbasePackage#getXClosure_ExplicitReturn()
+	 * @model
+	 * @generated
+	 */
+	boolean isExplicitReturn();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XClosure#isExplicitReturn <em>Explicit Return</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Explicit Return</em>' attribute.
+	 * @see #isExplicitReturn()
+	 * @generated
+	 */
+	void setExplicitReturn(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

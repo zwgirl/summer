@@ -24,6 +24,7 @@ import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XFeatureCall;
 import org.summer.dsl.model.xbase.XMemberFeatureCall;
+import org.summer.dsl.model.xbase.XPostfixOperation;
 import org.summer.dsl.model.xbase.XUnaryOperation;
 import org.summer.dsl.xbase.typesystem.references.LightweightTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ParameterizedTypeReference;
@@ -54,6 +55,9 @@ public class FeatureLinkHelper {
 			if (expression instanceof XUnaryOperation) {
 				return ((XUnaryOperation) expression).getOperand();
 			}
+			if (expression instanceof XPostfixOperation) {
+				return ((XPostfixOperation) expression).getOperand();
+			}
 		}
 		return null;
 	}
@@ -70,6 +74,9 @@ public class FeatureLinkHelper {
 		}
 		if (expression instanceof XBinaryOperation) {
 			return Collections.singletonList(((XBinaryOperation) expression).getRightOperand());
+		}
+		if (expression instanceof XPostfixOperation) {
+			return Collections.emptyList();
 		}
 		// explicit condition to make sure we thought about it
 		if (expression instanceof XUnaryOperation) {

@@ -23,6 +23,7 @@ import static org.summer.dsl.model.types.TypesPackage.Literals.*
 import static org.summer.dsl.model.xtype.XtypePackage.Literals.*
 
 import static extension org.summer.dsl.model.xtype.util.XFunctionTypeRefs.*
+import org.summer.dsl.xbase.scoping.batch.Buildin
 
 /**
  * @author Anton Kosyakov - Initial contribution and API
@@ -75,7 +76,7 @@ class IndexingOwnedConverter extends OwnedConverter {
 			return false;
 		if (type.eIsProxy)
 			return false;
-		if (type instanceof JvmVoid)
+		if (type == Buildin.Void.JvmType) //		if (type instanceof JvmVoid)
 			return true;
 		return false;
 	}

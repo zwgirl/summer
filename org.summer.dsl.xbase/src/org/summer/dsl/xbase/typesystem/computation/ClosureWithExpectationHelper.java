@@ -24,9 +24,10 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.XClosure;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XbasePackage;
-import org.summer.dsl.model.xtype.XFunctionTypeRef;
 import org.summer.dsl.xbase.scoping.batch.IFeatureNames;
 import org.summer.dsl.xbase.typesystem.conformance.ConformanceHint;
+import org.summer.dsl.xbase.typesystem.internal.AbstractTypeComputationState;
+import org.summer.dsl.xbase.typesystem.internal.ClosureBodyComputationState;
 import org.summer.dsl.xbase.typesystem.references.AnyTypeReference;
 import org.summer.dsl.xbase.typesystem.references.FunctionTypeReference;
 import org.summer.dsl.xbase.typesystem.references.ITypeReferenceOwner;
@@ -41,8 +42,6 @@ import org.summer.dsl.xbase.typesystem.util.DeclaratorTypeArgumentCollector;
 import org.summer.dsl.xbase.typesystem.util.DeferredTypeParameterHintCollector;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterByUnboundSubstitutor;
 import org.summer.dsl.xbase.typesystem.util.TypeParameterSubstitutor;
-
-import com.google.inject.Inject;
 
 /**
  * Strategy to compute types for lambda expression that do have an expected type.
@@ -76,13 +75,13 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 	
 	protected ClosureWithExpectationHelper(XClosure closure, FunctionTypeReference function, ITypeExpectation expectation, ITypeComputationState state, 
 			XbaseTypeComputer computer) {
-		super(closure, expectation, state);
+		super(closure, expectation, (AbstractTypeComputationState) state);
 		this.functionRef = function;
 		this.computer = computer;
-		if (function == null || expectation.getExpectedType() == null) {
-			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
-		}
-		prepareComputation();
+//		if (function == null || expectation.getExpectedType() == null) {
+//			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
+//		}
+//		prepareComputation();
 	}
 
 	@Override
@@ -97,19 +96,21 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 
 	@Override
 	protected void computeTypes() {
-		prepareResultType();
-		if (resultClosureType == null) {
-			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
-		}
-
-		LightweightTypeReference expectedReturnType = expectedClosureType.getReturnType();
-		if (expectedReturnType == null) {
-			throw new IllegalStateException("expected return type may not be null");
-		}
-		ITypeAssigner typeAssigner = getState().withRootExpectation(expectedReturnType).assignTypes();
-		ITypeComputationState state = getClosureBodyTypeComputationState(typeAssigner);
-//		ITypeComputationResult expressionResult = closureBodyTypeComputationState.computeTypes(getClosure().getStatment());  //cym comment
-		computer.computeTypes(getClosure().getStatment(), state);
+//		prepareResultType();
+//		if (resultClosureType == null) {
+//			throw new IllegalStateException("Cannot locate appropriate operation for " + getClosure());
+//		}
+//
+//		LightweightTypeReference expectedReturnType = expectedClosureType.getReturnType();
+//		if (expectedReturnType == null) {
+//			throw new IllegalStateException("expected return type may not be null");
+//		}
+		
+		ClosureBodyComputationState state = new ClosureBodyComputationState(getState().getResolvedTypes(), getState().getFeatureScopeSession(), closure);
+		state.computeTypes();
+//		ITypeAssigner typeAssigner = getState().withRootExpectation(expectedReturnType).assignTypes();
+//		ITypeComputationState closureBodyTypeComputationState = getClosureBodyTypeComputationState(typeAssigner);
+//		ITypeComputationResult expressionResult = closureBodyTypeComputationState.computeTypes(getClosure().getExpression());
 
 		
 		//cym comment
@@ -325,10 +326,10 @@ public class ClosureWithExpectationHelper extends AbstractClosureTypeHelper {
 		if (expectedType == null) {
 			throw new IllegalStateException();
 		}
-		JvmType knownType = expectedType.getType();
-		if (knownType != null && knownType instanceof JvmGenericType) {
-			result.assignType(IFeatureNames.SELF, knownType, expectedType);
-		}
+//		JvmType knownType = expectedType.getType();
+//		if (knownType != null && knownType instanceof JvmGenericType) {
+//			result.assignType(IFeatureNames.SELF, knownType, expectedType);
+//		}
 //		List<JvmTypeReference> exceptions = operation.getExceptions();
 //		if (exceptions.isEmpty())
 			return result;

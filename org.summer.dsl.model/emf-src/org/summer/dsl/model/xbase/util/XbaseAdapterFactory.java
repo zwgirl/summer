@@ -274,6 +274,10 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXFunctionDeclarationAdapter();
 			}
 			@Override
+			public Adapter caseXParenthesizedExpression(XParenthesizedExpression object) {
+				return createXParenthesizedExpressionAdapter();
+			}
+			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
 				return createJvmIdentifiableElementAdapter();
 			}
@@ -928,6 +932,20 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXFunctionDeclarationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XParenthesizedExpression <em>XParenthesized Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XParenthesizedExpression
+	 * @generated
+	 */
+	public Adapter createXParenthesizedExpressionAdapter() {
 		return null;
 	}
 

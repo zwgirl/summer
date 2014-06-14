@@ -19,35 +19,35 @@ import org.summer.dsl.model.xbase.XExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getSimpleName <em>Simple Name</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#isVarArg <em>Var Arg</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  * </p>
  *
- * @generated NOT
+ * @generated
  */
 public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements JvmFormalParameter {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String SIMPLE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getSimpleName() <em>Simple Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getSimpleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String simpleName = SIMPLE_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameterType() <em>Parameter Type</em>}' containment reference.
@@ -113,8 +113,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public String getSimpleName() {
+		return simpleName;
 	}
 
 	/**
@@ -122,11 +122,11 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setSimpleName(String newSimpleName) {
+		String oldSimpleName = simpleName;
+		simpleName = newSimpleName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FORMAL_PARAMETER__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FORMAL_PARAMETER__SIMPLE_NAME, oldSimpleName, simpleName));
 	}
 
 	/**
@@ -226,8 +226,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TypesPackage.JVM_FORMAL_PARAMETER__NAME:
-				return getName();
+			case TypesPackage.JVM_FORMAL_PARAMETER__SIMPLE_NAME:
+				return getSimpleName();
 			case TypesPackage.JVM_FORMAL_PARAMETER__PARAMETER_TYPE:
 				return getParameterType();
 			case TypesPackage.JVM_FORMAL_PARAMETER__VAR_ARG:
@@ -246,8 +246,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TypesPackage.JVM_FORMAL_PARAMETER__NAME:
-				setName((String)newValue);
+			case TypesPackage.JVM_FORMAL_PARAMETER__SIMPLE_NAME:
+				setSimpleName((String)newValue);
 				return;
 			case TypesPackage.JVM_FORMAL_PARAMETER__PARAMETER_TYPE:
 				setParameterType((JvmTypeReference)newValue);
@@ -270,8 +270,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_FORMAL_PARAMETER__NAME:
-				setName(NAME_EDEFAULT);
+			case TypesPackage.JVM_FORMAL_PARAMETER__SIMPLE_NAME:
+				setSimpleName(SIMPLE_NAME_EDEFAULT);
 				return;
 			case TypesPackage.JVM_FORMAL_PARAMETER__PARAMETER_TYPE:
 				setParameterType((JvmTypeReference)null);
@@ -294,8 +294,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TypesPackage.JVM_FORMAL_PARAMETER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case TypesPackage.JVM_FORMAL_PARAMETER__SIMPLE_NAME:
+				return SIMPLE_NAME_EDEFAULT == null ? simpleName != null : !SIMPLE_NAME_EDEFAULT.equals(simpleName);
 			case TypesPackage.JVM_FORMAL_PARAMETER__PARAMETER_TYPE:
 				return parameterType != null;
 			case TypesPackage.JVM_FORMAL_PARAMETER__VAR_ARG:
@@ -316,8 +316,8 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (simpleName: ");
+		result.append(simpleName);
 		result.append(", varArg: ");
 		result.append(varArg);
 		result.append(')');

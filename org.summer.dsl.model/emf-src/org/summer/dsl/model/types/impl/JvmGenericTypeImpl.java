@@ -23,7 +23,9 @@ import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.types.TypesPackage;
 
+import org.summer.dsl.model.xaml.XObjectElement;
 import com.google.common.collect.Lists;
+import java.lang.Iterable;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +37,7 @@ import com.google.common.collect.Lists;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getImplements <em>Implements</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmGenericTypeImpl#getRoot <em>Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +73,16 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 	 * @ordered
 	 */
 	protected EList<JvmParameterizedTypeReference> implements_;
+
+	/**
+	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected XObjectElement root;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +176,49 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public XObjectElement getRoot() {
+		return root;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRoot(XObjectElement newRoot, NotificationChain msgs) {
+		XObjectElement oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_GENERIC_TYPE__ROOT, oldRoot, newRoot);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoot(XObjectElement newRoot) {
+		if (newRoot != root) {
+			NotificationChain msgs = null;
+			if (root != null)
+				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_GENERIC_TYPE__ROOT, null, msgs);
+			if (newRoot != null)
+				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TypesPackage.JVM_GENERIC_TYPE__ROOT, null, msgs);
+			msgs = basicSetRoot(newRoot, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_GENERIC_TYPE__ROOT, newRoot, newRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Iterable<JvmTypeReference> getExtendedInterfaces() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -231,6 +287,8 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 				return basicSetExtends(null, msgs);
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
 				return ((InternalEList<?>)getImplements()).basicRemove(otherEnd, msgs);
+			case TypesPackage.JVM_GENERIC_TYPE__ROOT:
+				return basicSetRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -249,6 +307,8 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 				return getExtends();
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
 				return getImplements();
+			case TypesPackage.JVM_GENERIC_TYPE__ROOT:
+				return getRoot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,6 +333,9 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 				getImplements().clear();
 				getImplements().addAll((Collection<? extends JvmParameterizedTypeReference>)newValue);
 				return;
+			case TypesPackage.JVM_GENERIC_TYPE__ROOT:
+				setRoot((XObjectElement)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -294,6 +357,9 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
 				getImplements().clear();
 				return;
+			case TypesPackage.JVM_GENERIC_TYPE__ROOT:
+				setRoot((XObjectElement)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -312,6 +378,8 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 				return extends_ != null;
 			case TypesPackage.JVM_GENERIC_TYPE__IMPLEMENTS:
 				return implements_ != null && !implements_.isEmpty();
+			case TypesPackage.JVM_GENERIC_TYPE__ROOT:
+				return root != null;
 		}
 		return super.eIsSet(featureID);
 	}

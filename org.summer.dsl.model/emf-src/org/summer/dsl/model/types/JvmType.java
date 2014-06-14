@@ -14,4 +14,6 @@ package org.summer.dsl.model.types;
  * @generated
  */
 public interface JvmType extends JvmIdentifiableElement {
+	boolean isPrimitive();
+	void setPrimitive(boolean flag);
 } // JvmType

@@ -189,6 +189,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 	
 	public IResolvedTypes reentrantResolve() {
 		if (resolving) {
+//			return IResolvedTypes.NULL; 
 			throw new UnsupportedOperationException("TODO: import a functional handle on the type resolution that delegates to the best available (current, but evolving) result");
 		}
 		StoppedTask task = Stopwatches.forTask("DefaultReentrantTypeResolver.resolve");
@@ -377,7 +378,7 @@ public class DefaultReentrantTypeResolver extends AbstractRootedReentrantTypeRes
 		return featureNameValidator.isDiscouragedName(name);
 	}
 	
-	protected ITypeComputer getTypeComputer() {
+	public ITypeComputer getTypeComputer() {
 		return typeComputer;
 	}
 

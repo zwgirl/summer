@@ -111,9 +111,9 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 	protected def String text(JvmFormalParameter parameter) {
 		val parameterType = parameter.parameterType
 		if (parameterType == null)
-			parameter.name
+			parameter.simpleName
 		else
-			parameterType.getSimpleName + " " + parameter.name
+			parameterType.getSimpleName + " " + parameter.simpleName
 	}
 
 	protected def dispatch ImageDescriptor imageDescriptor(XVariableDeclaration variableDeclaration) {
@@ -146,9 +146,9 @@ class XbaseLabelProvider extends DefaultEObjectLabelProvider {
 		val resolvedTypes = typeResolver.resolveTypes(variableDeclaration)
 		val type = resolvedTypes.getActualType(variableDeclaration as JvmIdentifiableElement)
 		if (type != null)
-			type.getSimpleName + " " + variableDeclaration.name
+			type.getSimpleName + " " + variableDeclaration.simpleName
 		else 
-			variableDeclaration.name
+			variableDeclaration.simpleName
 	}
 
 	protected def dispatch ImageDescriptor imageDescriptor(JvmTypeParameter parameter) {

@@ -141,7 +141,9 @@ public class NumberLiterals {
 				return Buildin.Integer.JvmType;
 			} 
 			
-			throw new IllegalArgumentException("Invalid type qualifier ");
+			return Buildin.Float.JvmType;
+			
+//			throw new IllegalArgumentException("Invalid type qualifier ");
 		}
 		
 		

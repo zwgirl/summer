@@ -168,5 +168,10 @@ public class XUnaryOperationImpl extends XAbstractFeatureCallImplCustom implemen
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	@Override
+	public boolean isOperation() {
+		return true;
+	}
 
 } //XUnaryOperationImpl
