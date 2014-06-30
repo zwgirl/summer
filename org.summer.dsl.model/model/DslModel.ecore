@@ -264,12 +264,14 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JvmVisibility">
-      <eLiterals name="PRIVATE"/>
+      <eLiterals name="DEFAULT"/>
       <eLiterals name="PUBLIC" value="1"/>
+      <eLiterals name="PROTECTED" value="2"/>
+      <eLiterals name="PRIVATE" value="3"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmField" eSuperTypes="#//types/JvmFeature">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="static" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="const" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="final" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtaul" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="override" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -338,6 +340,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="varArg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//xbase/XExpression"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="out" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JvmAnnotationTarget" abstract="true"
         eSuperTypes="#//types/JvmIdentifiableElement">
@@ -473,14 +479,14 @@
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cases" upperBound="-1"
           eType="#//xbase/XCasePart" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="default" eType="#//xbase/XStatment"
-          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XCasePart">
       <eStructuralFeatures xsi:type="ecore:EReference" name="case" eType="#//xbase/XExpression"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="then" eType="#//xbase/XStatment"
-          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="statments" upperBound="-1"
+          eType="#//xbase/XStatment" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          transient="true" defaultValueLiteral="false" derived="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XBlockStatment" eSuperTypes="#//xbase/XExpression #//xbase/XStatment">
       <eStructuralFeatures xsi:type="ecore:EReference" name="statments" upperBound="-1"
@@ -801,6 +807,20 @@
           defaultValueLiteral="false"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="XParenthesizedExpression" eSuperTypes="#//xbase/XExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//xbase/XExpression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XAssignment1" eSuperTypes="#//xbase/XExpression">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assignable" eType="#//xbase/XExpression"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//xbase/XExpression"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="XArgument" eSuperTypes="#//xbase/XExpression">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="out" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//xbase/XExpression"
           containment="true"/>
     </eClassifiers>

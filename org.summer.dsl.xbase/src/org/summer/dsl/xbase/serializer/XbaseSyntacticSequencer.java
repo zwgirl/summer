@@ -119,11 +119,11 @@ public class XbaseSyntacticSequencer extends AbstractXbaseSyntacticSequencer {
 						if (nodes != null) {
 							ISynNavigable fromState = transition;
 							RuleCallStack stack = contexts.peek().getStack().clone();
-							List<ISynState> path = fromState.getShortestStackpruningPathTo(grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2(), stack);
+							List<ISynState> path = fromState.getShortestStackpruningPathTo(grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_3(), stack);
 							if (path != null) {
 								for(ISynState synState: path) {
 									if (synState.getType() != SynStateType.UNASSIGNED_PARSER_RULE_EXIT) {
-										if (synState.getGrammarElement() == grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_2()) {
+										if (synState.getGrammarElement() == grammarAccess.getXParenthesizedExpressionAccess().getRightParenthesisKeyword_3()) {
 											super.emit_XConstructorCall___LeftParenthesisKeyword_4_0_RightParenthesisKeyword_4_2__q(semanticObject, transition,	nodes);
 											return;
 										}		

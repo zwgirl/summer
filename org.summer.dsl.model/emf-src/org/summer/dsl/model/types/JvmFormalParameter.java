@@ -17,6 +17,8 @@ import org.summer.dsl.model.xbase.XExpression;
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#isVarArg <em>Var Arg</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#isRef <em>Ref</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmFormalParameter#isOut <em>Out</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,5 +130,59 @@ public interface JvmFormalParameter extends JvmAnnotationTarget {
 	 * @generated
 	 */
 	void setDefaultValue(XExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>Ref</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ref</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ref</em>' attribute.
+	 * @see #setRef(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmFormalParameter_Ref()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isRef();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmFormalParameter#isRef <em>Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ref</em>' attribute.
+	 * @see #isRef()
+	 * @generated
+	 */
+	void setRef(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Out</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Out</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Out</em>' attribute.
+	 * @see #setOut(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmFormalParameter_Out()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isOut();
+
+	/**
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmFormalParameter#isOut <em>Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Out</em>' attribute.
+	 * @see #isOut()
+	 * @generated
+	 */
+	void setOut(boolean value);
 
 } // JvmFormalParameter

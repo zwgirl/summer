@@ -9,8 +9,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.summer.dsl.model.xbase.RichStringLiteral;
+import org.summer.dsl.model.xbase.XArgument;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XAssignment1;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
@@ -102,6 +104,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case XbasePackage.XIF_STATMENT: return createXIfStatment();
+			case XbasePackage.XARGUMENT: return createXArgument();
 			case XbasePackage.XSWITCH_STATMENT: return createXSwitchStatment();
 			case XbasePackage.XCASE_PART: return createXCasePart();
 			case XbasePackage.XBLOCK_STATMENT: return createXBlockStatment();
@@ -129,6 +132,7 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 			case XbasePackage.XTRY_CATCH_FINALLY_STATMENT: return createXTryCatchFinallyStatment();
 			case XbasePackage.XCATCH_CLAUSE: return createXCatchClause();
 			case XbasePackage.XASSIGNMENT: return createXAssignment();
+			case XbasePackage.XASSIGNMENT1: return createXAssignment1();
 			case XbasePackage.XRETURN_STATMENT: return createXReturnStatment();
 			case XbasePackage.XBREAK_STATMENT: return createXBreakStatment();
 			case XbasePackage.XCONTINUE_STATMENT: return createXContinueStatment();
@@ -475,6 +479,12 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 		XAssignmentImplCustom xAssignment = new XAssignmentImplCustom();
 		return xAssignment;
 	}
+	
+	public XAssignment1 createXAssignment1()
+	{
+		XAssignment1Impl xAssignment = new XAssignment1Impl();
+		return xAssignment;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -595,6 +605,10 @@ public class XbaseFactoryImpl extends EFactoryImpl implements XbaseFactory {
 
 	public XParenthesizedExpression createXParenthesizedExpression() {
 		return new XParenthesizedExpressionImpl();
+	}
+
+	public XArgument createXArgument() {
+		return new XArgumentImpl();
 	}
 
 } //XbaseFactoryImpl

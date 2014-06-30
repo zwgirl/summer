@@ -90,7 +90,7 @@ public class ConstantExpressionValidator {
 
 		if (feature instanceof JvmField) {
 			JvmField field = (JvmField) feature;
-			if (field.isStatic() && field.isConst()) {
+			if (field.isStatic() && field.isFinal()) {
 				return true;
 			}
 

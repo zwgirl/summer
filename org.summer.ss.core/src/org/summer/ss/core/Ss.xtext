@@ -148,7 +148,7 @@ Member returns types::JvmMember:
 		(	
 			{types::JvmField.annotationInfo = current} modifiers+=FieldModifier*
 			(
-				type=JvmTypeReference (simpleName=ValidID |
+				type=JvmTypeReference (simpleName=FeatureCallID |
 				(indexer ?= 'this' '['(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ']'))
 			)
 			(
@@ -168,7 +168,7 @@ Member returns types::JvmMember:
 			'function' 
 				('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
 				returnType=JvmTypeReference
-				 (simpleName=FunctionID | 
+				 (simpleName=FeatureCallID | 
 				 	(operator ?= 'operator' simpleName=Operators)
 				 )
 				'('(parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ')'
@@ -181,13 +181,13 @@ Member returns types::JvmMember:
 	 	| 
 	 	(
 			{types::JvmConstructor.annotationInfo = current} //modifiers+=CommonModifier*
-			'constructor' 
+			modifiers+=ConstructorModofier* 'constructor' 
 			('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
 			'(' (parameters+=JvmFormalParameter (',' parameters+=JvmFormalParameter)*)? ')'
 			body=XBlockStatment
 		)
 		| (
-			{types::JvmEvent.annotationInfo = current} //modifiers+=EventModifier*
+			{types::JvmEvent.annotationInfo = current} modifiers+=FieldModifier*
 			'event' type=JvmTypeReference simpleName=ValidID 
 			(
 				'{'
@@ -197,10 +197,6 @@ Member returns types::JvmMember:
 			)?
 		)
 	)
-;
-	
-FunctionID:
-	ValidID //| Operators
 ;
 
 Operators:
@@ -238,7 +234,7 @@ ClassModofier:
 //		 'static' 
 ////		| 'export'
 ////		| 'dispatch' 
-//		| 'const'
+//		| 'final'
 //		| 'native'
 //		| 'override'
 //		| 'virtaul'
@@ -246,10 +242,20 @@ ClassModofier:
 
 FieldModifier:
 		'static' | 
-		'const' |
+		'final' |
 		'virtual' |
 		'override' |
 		'transient' 
+	    | 'public'
+		| 'private' 
+		| 'protected'
+;
+
+ConstructorModofier:
+	'static'|
+	'private'
+	|'protected'
+	|'public'
 ;
 
 //EventModifier:
@@ -261,6 +267,9 @@ FieldModifier:
 
 MethodModifier:
 		'override' | 'virtual' |'static' | 'native' |'overload' | 'abstract'
+		    | 'public'
+			| 'private' 
+   			| 'protected'
 ; 
 
 //MethodModifier:
@@ -272,14 +281,22 @@ MethodModifier:
 //	'create' (name=ValidID ':')? createExpression=XExpression
 //;
 
-ValidID:
-	ID 
-//	| 'create' 
-//	| 'annotation'
-;
+//MemberID:
+//	ID 
+//	| 'set' 
+//	| 'get'
+//	| 'add'
+//	| 'remove'
+//;
 
 FeatureCallID:
 	ID 
+	| 'set' 
+	| 'get'
+	| 'add'
+	| 'remove'
+//	| 'ref'
+//	| 'out'
 //	| 'abstract' 
 //	| 'annotation' 
 //	| 'class' 

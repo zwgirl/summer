@@ -1356,7 +1356,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getJvmField_Const() {
+	public EAttribute getJvmField_Final() {
 		return (EAttribute)jvmFieldEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1700,6 +1700,24 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 	 */
 	public EReference getJvmFormalParameter_DefaultValue() {
 		return (EReference)jvmFormalParameterEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmFormalParameter_Ref() {
+		return (EAttribute)jvmFormalParameterEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJvmFormalParameter_Out() {
+		return (EAttribute)jvmFormalParameterEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2293,7 +2311,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		jvmFieldEClass = createEClass(JVM_FIELD);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__STATIC);
-		createEAttribute(jvmFieldEClass, JVM_FIELD__CONST);
+		createEAttribute(jvmFieldEClass, JVM_FIELD__FINAL);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__TRANSIENT);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__VIRTAUL);
 		createEAttribute(jvmFieldEClass, JVM_FIELD__OVERRIDE);
@@ -2338,6 +2356,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		createEReference(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__PARAMETER_TYPE);
 		createEAttribute(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__VAR_ARG);
 		createEReference(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__DEFAULT_VALUE);
+		createEAttribute(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__REF);
+		createEAttribute(jvmFormalParameterEClass, JVM_FORMAL_PARAMETER__OUT);
 
 		jvmAnnotationTargetEClass = createEClass(JVM_ANNOTATION_TARGET);
 		createEReference(jvmAnnotationTargetEClass, JVM_ANNOTATION_TARGET__ANNOTATIONS);
@@ -2738,7 +2758,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 
 		initEClass(jvmFieldEClass, JvmField.class, "JvmField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJvmField_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJvmField_Const(), ecorePackage.getEBoolean(), "const", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmField_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmField_Transient(), ecorePackage.getEBoolean(), "transient", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmField_Virtaul(), ecorePackage.getEBoolean(), "virtaul", null, 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmField_Override(), ecorePackage.getEBoolean(), "override", "false", 0, 1, JvmField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2783,6 +2803,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage {
 		initEReference(getJvmFormalParameter_ParameterType(), this.getJvmTypeReference(), null, "parameterType", null, 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJvmFormalParameter_VarArg(), ecorePackage.getEBoolean(), "varArg", null, 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJvmFormalParameter_DefaultValue(), theXbasePackage.getXExpression(), null, "defaultValue", null, 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmFormalParameter_Ref(), ecorePackage.getEBoolean(), "ref", "false", 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJvmFormalParameter_Out(), ecorePackage.getEBoolean(), "out", "false", 0, 1, JvmFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jvmAnnotationTargetEClass, JvmAnnotationTarget.class, "JvmAnnotationTarget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJvmAnnotationTarget_Annotations(), this.getJvmAnnotationReference(), null, "annotations", null, 0, -1, JvmAnnotationTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

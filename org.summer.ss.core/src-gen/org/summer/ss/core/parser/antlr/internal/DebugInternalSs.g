@@ -152,7 +152,7 @@ ruleJvmModule :
 	ruleJvmAnnotation* (
 		ruleFieldModifier* (
 			ruleJvmTypeReference (
-				ruleValidID |
+				ruleFeatureCallID |
 				'this' '[' (
 					ruleJvmFormalParameter (
 						',' ruleJvmFormalParameter
@@ -172,7 +172,7 @@ ruleJvmModule :
 				',' ruleJvmTypeParameter
 			)* '>'
 		)? ruleJvmTypeReference (
-			ruleFunctionID |
+			ruleFeatureCallID |
 			'operator' ruleOperators
 		) '(' (
 			ruleJvmFormalParameter (
@@ -186,7 +186,7 @@ ruleJvmModule :
 			ruleXBlockStatment |
 			';'
 		) |
-		'constructor' (
+		ruleConstructorModofier* 'constructor' (
 			'<' ruleJvmTypeParameter (
 				',' ruleJvmTypeParameter
 			)* '>'
@@ -195,17 +195,12 @@ ruleJvmModule :
 				',' ruleJvmFormalParameter
 			)*
 		)? ')' ruleXBlockStatment |
-		'event' ruleJvmTypeReference ruleValidID (
+		ruleFieldModifier* 'event' ruleJvmTypeReference ruleValidID (
 			'{' 'add' ruleXBlockStatment (
 				'remove' ruleXBlockStatment
 			)? '}'
 		)?
 	)
-;
-
-// Rule FunctionID
- ruleFunctionID :
-	ruleValidID
 ;
 
 // Rule Operators
@@ -237,10 +232,21 @@ ruleJvmModule :
 // Rule FieldModifier
  ruleFieldModifier :
 	'static' |
-	'const' |
+	'final' |
 	'virtual' |
 	'override' |
-	'transient'
+	'transient' |
+	'public' |
+	'private' |
+	'protected'
+;
+
+// Rule ConstructorModofier
+ ruleConstructorModofier :
+	'static' |
+	'private' |
+	'protected' |
+	'public'
 ;
 
 // Rule MethodModifier
@@ -250,17 +256,19 @@ ruleJvmModule :
 	'static' |
 	'native' |
 	'overload' |
-	'abstract'
-;
-
-// Rule ValidID
- ruleValidID :
-	RULE_ID
+	'abstract' |
+	'public' |
+	'private' |
+	'protected'
 ;
 
 // Rule FeatureCallID
  ruleFeatureCallID :
-	RULE_ID
+	RULE_ID |
+	'set' |
+	'get' |
+	'add' |
+	'remove'
 ;
 
 // Rule XElement
@@ -324,15 +332,15 @@ ruleJvmModule :
 
 // Rule XExpression
  ruleXExpression :
-	ruleXAssignment
+	ruleXAssignment1
 ;
 
-// Rule XAssignment
- ruleXAssignment :
+// Rule XAssignment1
+ ruleXAssignment1 :
 	ruleXMultiAssignment (
 		( (
 		ruleOpSingleAssign
-		) => ruleOpSingleAssign ) ruleXMultiAssignment
+		) => ruleOpSingleAssign ) ruleXAssignment1
 	)?
 ;
 
@@ -577,7 +585,7 @@ ruleJvmModule :
 		'.' ruleFeatureCallID ruleOpSingleAssign
 		) => (
 			'.' ruleFeatureCallID ruleOpSingleAssign
-		) ) ruleXAssignment |
+		) ) ruleXAssignment1 |
 		( (
 		'.' |
 		'?.'
@@ -592,8 +600,8 @@ ruleJvmModule :
 			( (
 			'('
 			) => '(' ) (
-				ruleXExpression (
-					',' ruleXExpression
+				ruleXArgument (
+					',' ruleXArgument
 				)*
 			)? ')'
 		)?
@@ -690,14 +698,15 @@ ruleJvmModule :
 
 // Rule XSwitchStatment
  ruleXSwitchStatment :
-	'switch' '(' ruleXExpression ')' '{' ruleXCasePart* (
-		'default' ':' ruleXStatment
-	)? '}'
+	'switch' '(' ruleXExpression ')' '{' ruleXCasePart* '}'
 ;
 
 // Rule XCasePart
  ruleXCasePart :
-	'case' ruleXExpression ':' ruleXStatment
+	(
+		'case' ruleXExpression ':' |
+		'default' ':'
+	) ruleXStatment*
 ;
 
 // Rule XForLoopStatment
@@ -750,11 +759,11 @@ ruleJvmModule :
  ruleXVariableDeclaration :
 	(
 		( (
-		ruleJvmTypeReference ruleValidID
+		ruleJvmTypeReference ruleVarID
 		) => (
-			ruleJvmTypeReference ruleValidID
+			ruleJvmTypeReference ruleVarID
 		) ) |
-		ruleValidID
+		ruleVarID
 	) ( (
 	'=' ruleXExpression
 	) => (
@@ -762,13 +771,38 @@ ruleJvmModule :
 	) )?
 ;
 
+// Rule VarID
+ ruleVarID :
+	ruleValidID |
+	'add' |
+	'remove' |
+	'get' |
+	'set' |
+	'ref' |
+	'out'
+;
+
 // Rule JvmFormalParameter
  ruleJvmFormalParameter :
-	ruleJvmAnnotation* ruleJvmTypeReference? '...'? ruleValidID (
+	ruleJvmAnnotation* (
+		'ref' |
+		'out'
+	)? ruleJvmTypeReference '...'? ruleParameterID (
 		( (
 		'='
 		) => '=' ) ruleXExpression
 	)?
+;
+
+// Rule ParameterID
+ ruleParameterID :
+	ruleValidID |
+	'add' |
+	'remove' |
+	'get' |
+	'set' |
+	'ref' |
+	'out'
 ;
 
 // Rule XFeatureCall
@@ -781,11 +815,19 @@ ruleJvmModule :
 		( (
 		'('
 		) => '(' ) (
-			ruleXExpression (
-				',' ruleXExpression
+			ruleXArgument (
+				',' ruleXArgument
 			)*
 		)? ')'
 	)?
+;
+
+// Rule XArgument
+ ruleXArgument :
+	(
+		'ref' |
+		'out'
+	)? ruleXExpression
 ;
 
 // Rule IdOrSuper
@@ -1059,6 +1101,11 @@ ruleJvmModule :
 	ruleValidID (
 		ruleJvmUpperBound ruleJvmUpperBoundAnded*
 	)?
+;
+
+// Rule ValidID
+ ruleValidID :
+	RULE_ID
 ;
 
 RULE_HEX :

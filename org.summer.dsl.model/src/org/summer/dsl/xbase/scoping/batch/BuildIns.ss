@@ -10,15 +10,15 @@ module BuildIns{
 		function void defineProperty(){} 
 		function void freeze(){}   
 //	function getOwnPropertyDescriptor(){}
-//	function getOwnPropertyNames(){}   
+//	function getOwnPropertyNames(){}    
 //	function getPrototypeOf(){return null;}  
 		function Boolean is(){}
 		function Boolean isExtensible(){}   
 		function Boolean isFrozen(){} 
 		function Boolean isSealed(){}    
 		
-		const static Type Type;  
-//		Object this[String propName]{set{} get{}}
+		final static Type Type;  
+//		Object this[String propName]{set{} get{}} 
 		function Type getType(){} 
 		
 		function boolean operator ==(Object that){}
@@ -65,6 +65,7 @@ module BuildIns{
 		constructor(){
 		}   
 		
+	  function String operator +=( String right){}
 	   function String operator +( String right){}
 	   function boolean operator >( String right){}
 	    
@@ -233,7 +234,7 @@ module BuildIns{
 	export class Number extends Object{
 //	public static final Number MAX_VALUE = 1.7976931348623157E+308
 //	public static final Number MIN_VALUE = 5E-324
-		static const Object NaN = new Object();          
+		static final Object NaN = new Object();          
 //	public static final Object NEGATIVE_INFINITY = new Object()
 //	public static final Object POSITIVE_INFINITY = new Object()
 		function Number operator += ( Number rhs){
@@ -417,8 +418,8 @@ module BuildIns{
 //	
 //
 ////  import {Name} from '@name';
-////  const keysName = new Name;  // These should be non global.
-////  const valsName = new Name;
+////  final keysName = new Name;  // These should be non global.
+////  final valsName = new Name;
 //
 //    constructor(Iterable<Entry<K, V> >iterable /* = []*/) {
 ////      this[keysName] = [];
@@ -428,26 +429,26 @@ module BuildIns{
 ////      } 
 //    }
 ////    function ^get(K key) :V{
-//////      const keys = this[keysName];
-//////      const i = indexOfIdentical(keys, key);
+//////      final keys = this[keysName];
+//////      final i = indexOfIdentical(keys, key);
 //////      return i < 0 ? undefined : this[valsName][i];
 ////    }
 //    function has(K key):Boolean {
-////      const keys = this[keysName];
+////      final keys = this[keysName];
 ////      return indexOfIdentical(keys, key) >= 0;
 //    }
 ////    function ^set(K key, V val) { 
-//////      const keys = this[keysName];
-//////      const vals = this[valsName];
+//////      final keys = this[keysName];
+//////      final vals = this[valsName];
 //////      let i = indexOfIdentical(keys, key);
 //////      if (i < 0) { i = keys.length; }
 //////      keys[i] = key;
 //////      vals[i] = val;
 ////    }
 //    function delete(K key):Boolean {
-////      const keys = this[keysName];
-////      const vals = this[valsName];
-////      const i = indexOfIdentical(keys, key);
+////      final keys = this[keysName];
+////      final vals = this[valsName];
+////      final i = indexOfIdentical(keys, key);
 ////      if (i < 0) { return false; }
 ////      keys.splice(i, 1);
 ////      vals.splice(i, 1);

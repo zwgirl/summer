@@ -20,8 +20,6 @@ import static org.summer.dsl.xbase.validation.IssueCodes.ASSIGNMENT_TO_FINAL;
 import static org.summer.dsl.xbase.validation.IssueCodes.INCOMPATIBLE_RETURN_TYPE;
 import static org.summer.dsl.xbase.validation.IssueCodes.INVALID_IDENTIFIER;
 import static org.summer.dsl.xbase.validation.IssueCodes.INVALID_USE_OF_TYPE;
-import static org.summer.dsl.xbase.validation.IssueCodes.TOO_LITTLE_TYPE_INFORMATION;
-import static org.summer.dsl.xbase.validation.IssueCodes.VARIABLE_NAME_DISCOURAGED;
 import static org.summer.ss.core.validation.IssueCodes.ABSTRACT_METHOD_MISSING_RETURN_TYPE;
 import static org.summer.ss.core.validation.IssueCodes.ABSTRACT_METHOD_WITH_BODY;
 import static org.summer.ss.core.validation.IssueCodes.CLASS_EXPECTED;
@@ -84,6 +82,7 @@ import org.summer.dsl.model.types.JvmAnnotationType;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmDeclaredType;
 import org.summer.dsl.model.types.JvmEnumerationType;
+import org.summer.dsl.model.types.JvmEvent;
 import org.summer.dsl.model.types.JvmExecutable;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
@@ -748,11 +747,11 @@ public class SsJavaValidator extends XbaseJavaValidator {
 			return false;
 		} else {
 			switch (o1) {
-//				case DEFAULT:  //cym comment
+//				case DEFAULT:  
 //					return o2 != JvmVisibility.PRIVATE;
 				case PRIVATE:
 					return true;
-//				case PROTECTED:   //cym comment
+//				case PROTECTED:   
 //					return o2 == JvmVisibility.PUBLIC;
 				case PUBLIC:
 					return false;
@@ -785,7 +784,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 					}
 					error("No default constructor in super type " + superType.getSimpleName() + "." +
 							xtendClass.getSimpleName() + " must define an explicit constructor.",
-							xtendClass, TypesPackage.Literals.JVM_DELEGATE_TYPE__SIMPLE_NAME, MISSING_CONSTRUCTOR, toArray(issueData, String.class));
+							xtendClass, TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, MISSING_CONSTRUCTOR, toArray(issueData, String.class));
 				} else {
 //					for(JvmConstructor constructor: constructors) {
 //						XExpression expression = containerProvider.getAssociatedExpression(constructor);
@@ -913,7 +912,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 							TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, -1, ABSTRACT_METHOD_MISSING_RETURN_TYPE);
 				}
 			} else if(function.eContainer() instanceof JvmInterfaceType) {
-				JvmGenericType declarator = (JvmGenericType) function.eContainer();
+				JvmInterfaceType declarator = (JvmInterfaceType) function.eContainer();
 //				if (function.getCreateExtensionInfo() != null) {
 //					error("'Create'-method " + function.getSimpleName() + " is not permitted in an interface", TypesPackage.Literals.JVM_MEMBER__SIMPLE_NAME, -1, CREATE_FUNCTIONS_MUST_NOT_BE_ABSTRACT);
 //					return;
@@ -1195,7 +1194,7 @@ public class SsJavaValidator extends XbaseJavaValidator {
 	}
 	
 	private ModifierValidator classModifierValidator = new ModifierValidator(
-			newArrayList("abstract"), this);
+			newArrayList("abstract", "native"), this);
 		
 	private ModifierValidator interfaceModifierValidator = new ModifierValidator(
 			Collections.<String>emptyList(), this);
@@ -1204,16 +1203,22 @@ public class SsJavaValidator extends XbaseJavaValidator {
 			Collections.<String>emptyList(), this);
 		
 	private ModifierValidator fieldModifierValidator = new ModifierValidator(
-			newArrayList("static", "virtual", "const"), this);
+			newArrayList("static", "virtual", "final", "virtual", "override", "transient",
+					"private", "protected", "public"), this);
+	
+	private ModifierValidator eventModifierValidator = new ModifierValidator(
+			newArrayList("static", "virtual", "final", "virtual", "override", "transient",
+					"private", "protected", "public"), this);
 		
 	private ModifierValidator fieldInInterfaceModifierValidator = new ModifierValidator(
-			Collections.<String>emptyList(), this);
+			newArrayList("static", "final"), this);
 		
 	private ModifierValidator constructorModifierValidator = new ModifierValidator(
-			Collections.<String>emptyList(), this);
+			newArrayList("static", "private", "protected", "public"), this);
 		
 	private ModifierValidator methodModifierValidator = new ModifierValidator(
-			newArrayList("static", "abstract", "overload", "function", "override", "native", "virtual"), this);
+			newArrayList("static", "abstract", "overload", "function", "override", "native", "virtual",
+					"private", "protected", "public"), this);
 		
 	private ModifierValidator methodInInterfaceModifierValidator = new ModifierValidator(
 			newArrayList("abstract", "override"), this);
@@ -1238,6 +1243,15 @@ public class SsJavaValidator extends XbaseJavaValidator {
 		else if((field.getDeclaringType() instanceof JvmInterfaceType) 
 				|| field.getDeclaringType() instanceof JvmAnnotationType)
 			fieldInInterfaceModifierValidator.checkModifiers(field,  "field " + field.getSimpleName());
+	}
+	
+	@Check
+	protected void checkModifiers(JvmEvent event) {
+		if(event.getDeclaringType() instanceof JvmGenericType)
+			eventModifierValidator.checkModifiers(event, "event " + event.getSimpleName());
+		else if((event.getDeclaringType() instanceof JvmInterfaceType) 
+				|| event.getDeclaringType() instanceof JvmAnnotationType)
+			eventModifierValidator.checkModifiers(event,  "field " + event.getSimpleName());
 	}
 	
 	@Check

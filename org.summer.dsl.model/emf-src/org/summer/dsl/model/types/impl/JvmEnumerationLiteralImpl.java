@@ -99,7 +99,7 @@ public class JvmEnumerationLiteralImpl extends JvmFieldImpl implements JvmEnumer
 	}
 	
 	@Override
-	public boolean isConst() {
+	public boolean isFinal() {
 		return true;
 	}
 

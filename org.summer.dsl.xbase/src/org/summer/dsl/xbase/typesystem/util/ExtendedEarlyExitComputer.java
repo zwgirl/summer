@@ -88,15 +88,19 @@ public class ExtendedEarlyExitComputer {
 			return isDefiniteEarlyExit(ifExpression.getThen()) && isDefiniteEarlyExit(ifExpression.getElse());
 		} else if (expression instanceof XSwitchStatment) {
 			XSwitchStatment switchExpression = (XSwitchStatment) expression;
-			if (isDefiniteEarlyExit(switchExpression.getDefault())) {
+//			if (isDefiniteEarlyExit(switchExpression.getDefault())) {
 				for(XCasePart caseExpression: switchExpression.getCases()) {
-					if (!isDefiniteEarlyExit(caseExpression.getThen())) {
-						return false;
+					if(caseExpression.getStatments() != null){
+						for(XStatment statment : caseExpression.getStatments()){
+							if (!isDefiniteEarlyExit(statment)) {
+								return false;
+							}
+						}
 					}
 				}
-				return true;
-			}
-			return false;
+//				return true;
+//			}
+//			return false;
 		} else if (expression instanceof XTryCatchFinallyStatment) {
 			XTryCatchFinallyStatment tryExpression = (XTryCatchFinallyStatment) expression;
 			if (isDefiniteEarlyExit(tryExpression.getFinallyStatment())) {

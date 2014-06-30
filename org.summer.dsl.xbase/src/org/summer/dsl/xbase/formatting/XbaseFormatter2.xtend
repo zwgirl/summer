@@ -332,10 +332,10 @@ class XbaseFormatter2 extends AbstractFormatter {
 		if (closingBracket?.hiddenLeafsBefore != null) {
 			return closingBracket.hiddenLeafsBefore.newLines > 0
 		}
-		return switch block : closure.expression {
-			XBlockStatment: block.statments.size > 1 && block.statments.eachExpressionInOwnLine
-			default : false
-		}
+//		return switch block : closure.expression {
+//			XBlockStatment: block.statments.size > 1 && block.statments.eachExpressionInOwnLine
+//			default : false
+//		}
 	}
 
 	def protected boolean isEachExpressionInOwnLine(Iterable<? extends XStatment> expressions) {
@@ -754,95 +754,95 @@ class XbaseFormatter2 extends AbstractFormatter {
 	}
 
 	def protected dispatch void format(XSwitchStatment expr, FormattableDocument format) {
-		val containsBlockExpr = expr.cases.exists[then instanceof XBlockStatment]
-		val switchSL = !containsBlockExpr && !expr.nodeForEObject.text.trim.contains("\n")
-		val caseSL = !containsBlockExpr && !expr.cases.exists[nodeForEObject.text.trim.contains("\n")] && !expr.^default?.nodeForEObject?.text?.contains("\n")
-		val open = expr.nodeForKeyword("{")
-		val close = expr.nodeForKeyword("}")
-		format += expr.nodeForKeyword("switch").append[oneSpace]
-		if (switchSL) {
-			format += open.prepend[oneSpace]
-			format += open.append[oneSpace]
-			for (c : expr.cases) {
-				val cnode = c.then.nodeForEObject
-				format += cnode.prepend[oneSpace]
-				format += cnode.append[oneSpace]
-			}
-			if(expr.^default != null) {
-				format += expr.nodeForKeyword("default").append[noSpace]
-				format += expr.^default.nodeForEObject.surround[oneSpace]
-			}
-		} else if (caseSL) {
-			format += open.prepend[cfg(bracesInNewLine)]
-			format += open.append[newLine; increaseIndentation]
-			for (c : expr.cases) {
-				format += c.then.nodeForEObject.prepend[oneSpace]
-				if (c != expr.cases.last)
-					format += c.nodeForEObject.append[newLine]
-			}
-			if(expr.^default != null) {
-				format += expr.nodeForKeyword("default").surround([newLine], [noSpace])
-				format += expr.^default.nodeForEObject.prepend[oneSpace]
-			}
-			format += close.prepend[newLine; decreaseIndentation]
-		} else {
-			format += open.prepend[cfg(bracesInNewLine)]
-			format += open.append[newLine; increaseIndentation]
-			for (c : expr.cases) {
-				val cnode = c.then.nodeForEObject
-				if (c.then instanceof XBlockStatment) {
-					format += cnode.prepend[cfg(bracesInNewLine)]
-					if (expr.^default != null || c != expr.cases.last)
-						format += cnode.append[newLine]
-					else
-						format += cnode.append[newLine; decreaseIndentation]
-				} else {
-					format += cnode.prepend[newLine; increaseIndentation]
-					if (expr.^default != null || c != expr.cases.last)
-						format += cnode.append[newLine; decreaseIndentation]
-					else
-						format += cnode.append[newLine; decreaseIndentationChange = -2]
-				}
-			}
-			if(expr.^default != null) {
-				format += expr.nodeForKeyword("default").append[noSpace]
-				if (expr.^default instanceof XBlockStatment) {
-					format += expr.^default.nodeForEObject.surround([cfg(bracesInNewLine)], [newLine; decreaseIndentation])
-				} else {
-					format += expr.^default.nodeForEObject.surround([newLine; increaseIndentation], [newLine; decreaseIndentationChange = -2])
-				}
-			}
-		}
-		for (c : expr.cases) {
-			if (c.^case != null) {
-				val casenode = c.nodeForFeature(XCASE_PART__CASE)
-				format += casenode.prepend[oneSpace]
-				format += casenode.append[noSpace]
-			}
-			c.^case.format(format)
-			c.then.format(format)
-		}
-		if(expr.^default != null)
-			expr.^default.format(format)
+//		val containsBlockExpr = expr.cases.exists[statments instanceof XBlockStatment]
+//		val switchSL = !containsBlockExpr && !expr.nodeForEObject.text.trim.contains("\n")
+//		val caseSL = !containsBlockExpr && !expr.cases.exists[nodeForEObject.text.trim.contains("\n")] && !expr.^default?.nodeForEObject?.text?.contains("\n")
+//		val open = expr.nodeForKeyword("{")
+//		val close = expr.nodeForKeyword("}")
+//		format += expr.nodeForKeyword("switch").append[oneSpace]
+//		if (switchSL) {
+//			format += open.prepend[oneSpace]
+//			format += open.append[oneSpace]
+//			for (c : expr.cases) {
+//				val cnode = c.statments.nodeForEObject
+//				format += cnode.prepend[oneSpace]
+//				format += cnode.append[oneSpace]
+//			}
+//			if(expr.^default != null) {
+//				format += expr.nodeForKeyword("default").append[noSpace]
+//				format += expr.^default.nodeForEObject.surround[oneSpace]
+//			}
+//		} else if (caseSL) {
+//			format += open.prepend[cfg(bracesInNewLine)]
+//			format += open.append[newLine; increaseIndentation]
+//			for (c : expr.cases) {
+//				format += c.statments.nodeForEObject.prepend[oneSpace]
+//				if (c != expr.cases.last)
+//					format += c.nodeForEObject.append[newLine]
+//			}
+//			if(expr.^default != null) {
+//				format += expr.nodeForKeyword("default").surround([newLine], [noSpace])
+//				format += expr.^default.nodeForEObject.prepend[oneSpace]
+//			}
+//			format += close.prepend[newLine; decreaseIndentation]
+//		} else {
+//			format += open.prepend[cfg(bracesInNewLine)]
+//			format += open.append[newLine; increaseIndentation]
+//			for (c : expr.cases) {
+//				val cnode = c.statments.nodeForEObject
+//				if (c.statments instanceof XBlockStatment) {
+//					format += cnode.prepend[cfg(bracesInNewLine)]
+//					if (expr.^default != null || c != expr.cases.last)
+//						format += cnode.append[newLine]
+//					else
+//						format += cnode.append[newLine; decreaseIndentation]
+//				} else {
+//					format += cnode.prepend[newLine; increaseIndentation]
+//					if (expr.^default != null || c != expr.cases.last)
+//						format += cnode.append[newLine; decreaseIndentation]
+//					else
+//						format += cnode.append[newLine; decreaseIndentationChange = -2]
+//				}
+//			}
+//			if(expr.^default != null) {
+//				format += expr.nodeForKeyword("default").append[noSpace]
+//				if (expr.^default instanceof XBlockStatment) {
+//					format += expr.^default.nodeForEObject.surround([cfg(bracesInNewLine)], [newLine; decreaseIndentation])
+//				} else {
+//					format += expr.^default.nodeForEObject.surround([newLine; increaseIndentation], [newLine; decreaseIndentationChange = -2])
+//				}
+//			}
+//		}
+//		for (c : expr.cases) {
+//			if (c.^case != null) {
+//				val casenode = c.nodeForFeature(XCASE_PART__CASE)
+//				format += casenode.prepend[oneSpace]
+//				format += casenode.append[noSpace]
+//			}
+//			c.^case.format(format)
+//			c.statments.format(format)
+//		}
+//		if(expr.^default != null)
+//			expr.^default.format(format)
 	}
 
 	def protected dispatch void format(XClosure expr, FormattableDocument format) {
-		val open = expr.nodeForKeyword("[") 
-		val close = expr.nodeForKeyword("]")
-		val children = switch x:expr.expression {
-			XBlockStatment: x.statments
-			default: newArrayList(x)
-		}
-		if (expr.declaredFormalParameters.empty && children.empty) {
-			if(open.hiddenLeafsAfter.containsComment)
-				format += open.append[newLine increaseIndentation decreaseIndentation]
-			else
-				format += open.append[noSpace]
-		} else if (expr.isMultilineLambda) {
-//			formatClosureMultiLine(expr, open, children, close, format)  //cym comment
-		} else {
-//			formatClosureWrapIfNeeded(expr, open, children, close, format) //cym comment
-		}
+//		val open = expr.nodeForKeyword("[") 
+//		val close = expr.nodeForKeyword("]")
+//		val children = switch x:expr.expression {
+//			XBlockStatment: x.statments
+//			default: newArrayList(x)
+//		}
+//		if (expr.declaredFormalParameters.empty && children.empty) {
+//			if(open.hiddenLeafsAfter.containsComment)
+//				format += open.append[newLine increaseIndentation decreaseIndentation]
+//			else
+//				format += open.append[noSpace]
+//		} else if (expr.isMultilineLambda) {
+////			formatClosureMultiLine(expr, open, children, close, format)  //cym comment
+//		} else {
+////			formatClosureWrapIfNeeded(expr, open, children, close, format) //cym comment
+//		}
 	}
 
 	def protected void formatClosureMultiLine(XClosure expr, INode open, Collection<XExpression> children, INode close,

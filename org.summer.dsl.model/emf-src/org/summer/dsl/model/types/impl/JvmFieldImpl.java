@@ -26,7 +26,7 @@ import org.summer.dsl.model.xbase.XStatment;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isConst <em>Const</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isVirtaul <em>Virtaul</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFieldImpl#isOverride <em>Override</em>}</li>
@@ -64,24 +64,24 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	protected boolean static_ = STATIC_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isConst() <em>Const</em>}' attribute.
+	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isConst()
+	 * @see #isFinal()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CONST_EDEFAULT = false;
+	protected static final boolean FINAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isConst() <em>Const</em>}' attribute.
+	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isConst()
+	 * @see #isFinal()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean const_ = CONST_EDEFAULT;
+	protected boolean final_ = FINAL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isTransient() <em>Transient</em>}' attribute.
@@ -278,8 +278,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isConst() {
-		return const_;
+	public boolean isFinal() {
+		return final_;
 	}
 
 	/**
@@ -287,11 +287,11 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConst(boolean newConst) {
-		boolean oldConst = const_;
-		const_ = newConst;
+	public void setFinal(boolean newFinal) {
+		boolean oldFinal = final_;
+		final_ = newFinal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__CONST, oldConst, const_));
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FIELD__FINAL, oldFinal, final_));
 	}
 
 	/**
@@ -615,8 +615,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		switch (featureID) {
 			case TypesPackage.JVM_FIELD__STATIC:
 				return isStatic();
-			case TypesPackage.JVM_FIELD__CONST:
-				return isConst();
+			case TypesPackage.JVM_FIELD__FINAL:
+				return isFinal();
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				return isTransient();
 			case TypesPackage.JVM_FIELD__VIRTAUL:
@@ -653,8 +653,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__STATIC:
 				setStatic((Boolean)newValue);
 				return;
-			case TypesPackage.JVM_FIELD__CONST:
-				setConst((Boolean)newValue);
+			case TypesPackage.JVM_FIELD__FINAL:
+				setFinal((Boolean)newValue);
 				return;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				setTransient((Boolean)newValue);
@@ -702,8 +702,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 			case TypesPackage.JVM_FIELD__STATIC:
 				setStatic(STATIC_EDEFAULT);
 				return;
-			case TypesPackage.JVM_FIELD__CONST:
-				setConst(CONST_EDEFAULT);
+			case TypesPackage.JVM_FIELD__FINAL:
+				setFinal(FINAL_EDEFAULT);
 				return;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				setTransient(TRANSIENT_EDEFAULT);
@@ -749,8 +749,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		switch (featureID) {
 			case TypesPackage.JVM_FIELD__STATIC:
 				return static_ != STATIC_EDEFAULT;
-			case TypesPackage.JVM_FIELD__CONST:
-				return const_ != CONST_EDEFAULT;
+			case TypesPackage.JVM_FIELD__FINAL:
+				return final_ != FINAL_EDEFAULT;
 			case TypesPackage.JVM_FIELD__TRANSIENT:
 				return transient_ != TRANSIENT_EDEFAULT;
 			case TypesPackage.JVM_FIELD__VIRTAUL:
@@ -787,8 +787,8 @@ public class JvmFieldImpl extends JvmFeatureImpl implements JvmField {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (static: ");
 		result.append(static_);
-		result.append(", const: ");
-		result.append(const_);
+		result.append(", final: ");
+		result.append(final_);
 		result.append(", transient: ");
 		result.append(transient_);
 		result.append(", virtaul: ");

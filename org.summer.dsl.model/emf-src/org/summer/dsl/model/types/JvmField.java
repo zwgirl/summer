@@ -16,7 +16,7 @@ import org.summer.dsl.model.xbase.XStatment;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isStatic <em>Static</em>}</li>
- *   <li>{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isVirtaul <em>Virtaul</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.JvmField#isOverride <em>Override</em>}</li>
@@ -62,30 +62,30 @@ public interface JvmField extends JvmFeature {
 	void setStatic(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Const</b></em>' attribute.
+	 * Returns the value of the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Const</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Const</em>' attribute.
-	 * @see #setConst(boolean)
-	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Const()
+	 * @return the value of the '<em>Final</em>' attribute.
+	 * @see #setFinal(boolean)
+	 * @see org.summer.dsl.model.types.TypesPackage#getJvmField_Final()
 	 * @model
 	 * @generated
 	 */
-	boolean isConst();
+	boolean isFinal();
 
 	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}' attribute.
+	 * Sets the value of the '{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Const</em>' attribute.
-	 * @see #isConst()
+	 * @param value the new value of the '<em>Final</em>' attribute.
+	 * @see #isFinal()
 	 * @generated
 	 */
-	void setConst(boolean value);
+	void setFinal(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.

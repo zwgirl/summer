@@ -21,10 +21,13 @@ import org.summer.dsl.model.types.JvmParameterizedTypeReference;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
 import org.summer.dsl.model.types.JvmTypeReference;
+import org.summer.dsl.model.types.TypesFactory;
 import org.summer.dsl.model.types.TypesPackage;
-
 import org.summer.dsl.model.xaml.XObjectElement;
+import org.summer.dsl.xbase.scoping.batch.Buildin;
+
 import com.google.common.collect.Lists;
+
 import java.lang.Iterable;
 
 /**
@@ -119,10 +122,20 @@ public class JvmGenericTypeImpl extends JvmDeclaredTypeImplCustom implements Jvm
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public JvmParameterizedTypeReference getExtends() {
-		return extends_;
+		if(extends_ != null){
+			return extends_;
+		}
+		
+		if(!getSimpleName().equals("Object")){
+			JvmParameterizedTypeReference result =TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+			result.setType(Buildin.Object.JvmType);
+			return result;
+		}
+		
+		return null;
 	}
 
 	/**

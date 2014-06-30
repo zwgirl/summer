@@ -38,7 +38,7 @@ import org.summer.dsl.model.xbase.XbasePackage;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XAdditiveExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XAndExpressionElements;
-import org.summer.dsl.xbase.services.XbaseGrammarAccess.XAssignmentElements;
+import org.summer.dsl.xbase.services.XbaseGrammarAccess.XAssignment1Elements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XConstructorCallElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XEqualityExpressionElements;
 import org.summer.dsl.xbase.services.XbaseGrammarAccess.XFeatureCallElements;
@@ -199,9 +199,9 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 					}
 					if (featureCall.isExplicitOperationCall()) {
 						if (arguments.size() - diff > 0)
-							acceptor.accept(featureCallElements.getFeatureCallArgumentsXExpressionParserRuleCall_3_1_0_0(), arguments.get(0), 0);
+							acceptor.accept(featureCallElements.getFeatureCallArgumentsXArgumentParserRuleCall_3_1_0_0(), arguments.get(0), 0);
 						for (int i = 1; i < arguments.size() - diff; i++)
-							acceptor.accept(featureCallElements.getFeatureCallArgumentsXExpressionParserRuleCall_3_1_0_0(), arguments.get(i), i);
+							acceptor.accept(featureCallElements.getFeatureCallArgumentsXArgumentParserRuleCall_3_1_0_0(), arguments.get(i), i);
 					}
 					if (diff != 0) {
 						int lastIdx = arguments.size() - 1;
@@ -306,9 +306,9 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 					}
 					if (featureCall.isExplicitOperationCall()) {
 						if (arguments.size() - diff > 0)
-							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_3_3_1_1_1_0(), arguments.get(0), 0);
+							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXArgumentParserRuleCall_1_3_3_1_1_1_0(), arguments.get(0), 0);
 						for (int i = 1; i < arguments.size() - diff; i++)
-							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXExpressionParserRuleCall_1_3_3_1_1_1_0(), arguments.get(i), i);
+							acceptor.accept(memberFeatureCallElements.getMemberCallArgumentsXArgumentParserRuleCall_1_3_3_1_1_1_0(), arguments.get(i), i);
 					}
 					if (diff != 0) {
 						int lastIdx = arguments.size() - 1;
@@ -388,12 +388,12 @@ public class XbaseSemanticSequencer extends AbstractXbaseSemanticSequencer {
 //		sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression(context, operation);
 //	}
 	
-	/**
-	 * This is for backwards compatibility < 2.3RC3 due to change in the naming strategy for sequencer methods
-	 */
-	@Deprecated
-	protected void sequence_XAssignment(EObject context, XAssignment semanticObject) {
-		super.sequence_XAssignment_XMemberFeatureCall(context, semanticObject);
-	}
+//	/**
+//	 * This is for backwards compatibility < 2.3RC3 due to change in the naming strategy for sequencer methods
+//	 */
+//	@Deprecated
+//	protected void sequence_XAssignment(EObject context, XAssignment semanticObject) {
+//		super.sequence_XAssignment_XMemberFeatureCall(context, semanticObject);
+//	}
 	
 }

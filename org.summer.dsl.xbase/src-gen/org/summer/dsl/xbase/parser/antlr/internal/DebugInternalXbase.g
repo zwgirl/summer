@@ -5,15 +5,15 @@
 // Rule XExpression
 
 ruleXExpression :
-	ruleXAssignment
+	ruleXAssignment1
 ;
 
-// Rule XAssignment
- ruleXAssignment :
+// Rule XAssignment1
+ ruleXAssignment1 :
 	ruleXMultiAssignment (
 		( (
 		ruleOpSingleAssign
-		) => ruleOpSingleAssign ) ruleXMultiAssignment
+		) => ruleOpSingleAssign ) ruleXAssignment1
 	)?
 ;
 
@@ -258,7 +258,7 @@ ruleXExpression :
 		'.' ruleFeatureCallID ruleOpSingleAssign
 		) => (
 			'.' ruleFeatureCallID ruleOpSingleAssign
-		) ) ruleXAssignment |
+		) ) ruleXAssignment1 |
 		( (
 		'.' |
 		'?.'
@@ -273,8 +273,8 @@ ruleXExpression :
 			( (
 			'('
 			) => '(' ) (
-				ruleXExpression (
-					',' ruleXExpression
+				ruleXArgument (
+					',' ruleXArgument
 				)*
 			)? ')'
 		)?
@@ -371,14 +371,15 @@ ruleXExpression :
 
 // Rule XSwitchStatment
  ruleXSwitchStatment :
-	'switch' '(' ruleXExpression ')' '{' ruleXCasePart* (
-		'default' ':' ruleXStatment
-	)? '}'
+	'switch' '(' ruleXExpression ')' '{' ruleXCasePart* '}'
 ;
 
 // Rule XCasePart
  ruleXCasePart :
-	'case' ruleXExpression ':' ruleXStatment
+	(
+		'case' ruleXExpression ':' |
+		'default' ':'
+	) ruleXStatment*
 ;
 
 // Rule XForLoopStatment
@@ -431,11 +432,11 @@ ruleXExpression :
  ruleXVariableDeclaration :
 	(
 		( (
-		ruleJvmTypeReference ruleValidID
+		ruleJvmTypeReference ruleVarID
 		) => (
-			ruleJvmTypeReference ruleValidID
+			ruleJvmTypeReference ruleVarID
 		) ) |
-		ruleValidID
+		ruleVarID
 	) ( (
 	'=' ruleXExpression
 	) => (
@@ -443,13 +444,38 @@ ruleXExpression :
 	) )?
 ;
 
+// Rule VarID
+ ruleVarID :
+	ruleValidID |
+	'add' |
+	'remove' |
+	'get' |
+	'set' |
+	'ref' |
+	'out'
+;
+
 // Rule JvmFormalParameter
  ruleJvmFormalParameter :
-	ruleJvmAnnotation* ruleJvmTypeReference? '...'? ruleValidID (
+	ruleJvmAnnotation* (
+		'ref' |
+		'out'
+	)? ruleJvmTypeReference '...'? ruleParameterID (
 		( (
 		'='
 		) => '=' ) ruleXExpression
 	)?
+;
+
+// Rule ParameterID
+ ruleParameterID :
+	ruleValidID |
+	'add' |
+	'remove' |
+	'get' |
+	'set' |
+	'ref' |
+	'out'
 ;
 
 // Rule XFeatureCall
@@ -462,11 +488,19 @@ ruleXExpression :
 		( (
 		'('
 		) => '(' ) (
-			ruleXExpression (
-				',' ruleXExpression
+			ruleXArgument (
+				',' ruleXArgument
 			)*
 		)? ')'
 	)?
+;
+
+// Rule XArgument
+ ruleXArgument :
+	(
+		'ref' |
+		'out'
+	)? ruleXExpression
 ;
 
 // Rule FeatureCallID

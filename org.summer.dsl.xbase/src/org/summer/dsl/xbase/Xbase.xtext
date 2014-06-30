@@ -13,18 +13,31 @@ import "http://www.summer.org/dsl/model/xtype" as xtype
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 XExpression returns XExpression :
-	XAssignment;
+	XAssignment1;
 
 //XAssignment returns XExpression :
-//	{XAssignment} feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign value=XAssignment |	
+//	{XAssignment} feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign value=XAssignment |
 //	XOrExpression (
 //		=>({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpMultiAssign]) rightOperand=XAssignment
 //	)?;
 
-XAssignment returns XExpression :
+//XAssignment returns XExpression :
+////	 feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign value=XAssignment |	
+//	XMultiAssignment (
+//		=>({XAssignment.assignable=current} OpSingleAssign) value=XMultiAssignment
+//	)?;
+//
+//OpSingleAssign:
+//	'='
+//;
+//
+//XMultiAssignment returns XExpression:
+//	XOrExpression (=>({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpMultiAssign]) rightOperand=XOrExpression)*;
+
+XAssignment1 returns XExpression :
 //	 feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign value=XAssignment |	
 	XMultiAssignment (
-		=>({XAssignment.assignable=current} OpSingleAssign) value=XMultiAssignment
+		=>({XAssignment1.assignable=current} OpSingleAssign) value=XAssignment1
 	)?;
 
 OpSingleAssign:
@@ -156,6 +169,29 @@ XCastedExpression returns XExpression:
 	XMemberFeatureCall (=>({XCastedExpression.target=current} 'as') type=JvmTypeReference)*
 ;
 
+//XMemberFeatureCall returns XExpression:
+//	XPrimaryExpression
+//	(=>({XCaller.executable=current} '(')
+//		 (arguments+=XExpression (',' arguments+=XExpression)*)?
+//		 ')'
+// 	|=>({XIndexer.source=current} '[')
+//		 (arguments+=XExpression (',' arguments+=XExpression)*)?
+//		 ']'
+//	|=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment1
+//	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?." )) 
+//		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
+//		feature=[types::JvmIdentifiableElement|FeatureCallID] 
+//		(
+//			(
+//			=>explicitOperationCall?='(' 
+//				(
+//				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+//				)? 
+//			')')?
+//		)
+//		)*
+//;
+
 XMemberFeatureCall returns XExpression:
 	XPrimaryExpression
 	(=>({XCaller.executable=current} '(')
@@ -164,7 +200,7 @@ XMemberFeatureCall returns XExpression:
  	|=>({XIndexer.source=current} '[')
 		 (arguments+=XExpression (',' arguments+=XExpression)*)?
 		 ']'
-	|=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment
+	|=>({XAssignment.assignable=current} '.' feature=[types::JvmIdentifiableElement|FeatureCallID] OpSingleAssign) value=XAssignment1
 	|=>({XMemberFeatureCall.memberCallTarget=current} ("."|nullSafe?="?." )) 
 		('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')?  
 		feature=[types::JvmIdentifiableElement|FeatureCallID] 
@@ -172,11 +208,12 @@ XMemberFeatureCall returns XExpression:
 			(
 			=>explicitOperationCall?='(' 
 				(
-				  memberCallArguments+=XExpression (',' memberCallArguments+=XExpression)*
+				  memberCallArguments+=XArgument (',' memberCallArguments+=XArgument)*
 				)? 
 			')')?
 		)
-		)*;
+		)*
+;
 
 
 XPrimaryExpression returns XExpression:
@@ -212,8 +249,8 @@ XStatment returns XStatment:
 	XTryCatchFinallyStatment |
 	XBreakStatment|
 	XContinueStatment |
-	XFunctionDeclaration |
-	XExpressionStatment
+	XFunctionDeclaration 
+	| XExpressionStatment
 	|XVariableDeclarationList
 ;
 
@@ -255,12 +292,13 @@ XSwitchStatment returns XStatment:
 	{XSwitchStatment}
 	'switch' '(' switch=XExpression ')' '{'
 	(cases+=XCasePart)*
-	('default' ':' default=XStatment )?
+//	('default' ':' (default=XStatment)? )?
 	'}';
 
 XCasePart:
-	 'case' case=XExpression
-		':' then=XStatment
+	{XCasePart}
+	 (('case' case=XExpression ':')  | (default ?= 'default' ':'))
+		 statments+=XStatment*
 	;
 
 XForLoopStatment returns XStatment:
@@ -307,15 +345,52 @@ XVariableDeclarationList returns XStatment:
 
 XVariableDeclaration returns XExpression: 
 	{XVariableDeclaration}
-	(=>(type=JvmTypeReference simpleName=ValidID) | simpleName=ValidID) =>('=' right=XExpression)?
+	(=>(type=JvmTypeReference simpleName=VarID) | simpleName=VarID) =>('=' right=XExpression)?
+;
+
+VarID:
+	ValidID 
+	| 'add' 
+	| 'remove' 
+	| 'get' 
+	| 'set'
+	| 'ref'
+	| 'out'
 ;
 	
+//JvmFormalParameter returns types::JvmFormalParameter:
+//	annotations+=JvmAnnotation* 
+//	(parameterType=JvmTypeReference)? varArg?='...'? simpleName=ValidID (=>'=' defaultValue = XExpression)?;
+
 JvmFormalParameter returns types::JvmFormalParameter:
 	annotations+=JvmAnnotation* 
-	(parameterType=JvmTypeReference)? varArg?='...'? simpleName=ValidID (=>'=' defaultValue = XExpression)?;
+	(ref ?= 'ref' | out ?= 'out')? parameterType=JvmTypeReference varArg?='...'? simpleName=ParameterID (=>'=' defaultValue = XExpression)?;
+	
+ParameterID:
+	ValidID 
+	| 'add' 
+	| 'remove' 
+	| 'get' 
+	| 'set'
+	| 'ref'
+	| 'out'
+;
 
-FullJvmFormalParameter returns types::JvmFormalParameter:
-	parameterType=JvmTypeReference simpleName=ValidID (=>'=' defaultValue = XExpression)?;
+//FullJvmFormalParameter returns types::JvmFormalParameter:
+//	parameterType=JvmTypeReference simpleName=ValidID (=>'=' defaultValue = XExpression)?;
+
+//XFeatureCall returns XExpression:
+//	{XFeatureCall}
+//	('<' typeArguments+=JvmArgumentTypeReference (',' typeArguments+=JvmArgumentTypeReference)* '>')? 
+//	feature=[types::JvmIdentifiableElement|IdOrSuper] 
+//	(
+//		(=>explicitOperationCall?='(' 
+//			(
+//			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+//			)? 
+//		')')?
+//	)
+//;
 
 //XFeatureCall returns XExpression:
 //	{XFeatureCall}
@@ -337,10 +412,15 @@ XFeatureCall returns XExpression:
 	(
 		(=>explicitOperationCall?='(' 
 			(
-			  featureCallArguments+=XExpression (',' featureCallArguments+=XExpression)*
+			  featureCallArguments+=XArgument (',' featureCallArguments+=XArgument)*
 			)? 
 		')')?
 	)
+;
+
+XArgument returns XExpression:
+	{XArgument}
+	(ref ?= 'ref' | out ?='out')? expression = XExpression
 ;
 
 //XCallee returns XCallee:

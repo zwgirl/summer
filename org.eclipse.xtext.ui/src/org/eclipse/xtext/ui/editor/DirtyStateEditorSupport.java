@@ -142,7 +142,7 @@ public class DirtyStateEditorSupport implements IXtextModelListener, IResourceDe
 				return Status.OK_STATUS;
 			}
 			try {
-				unloadAffectedResourcesAndReparseDocument(document, affectedResources, isReparseRequired[0]);
+//				unloadAffectedResourcesAndReparseDocument(document, affectedResources, isReparseRequired[0]);
 				for (int i = 0; i < event.getSecond(); i++) {
 					pendingChanges.poll();
 				}
@@ -170,7 +170,7 @@ public class DirtyStateEditorSupport implements IXtextModelListener, IResourceDe
 					if (affectedResources != null) {
 						for (Resource affectedResource : affectedResources) {
 							affectedResource.unload();
-//							resourceSet.getResources().remove(affectedResource); //cym comment
+							resourceSet.getResources().remove(affectedResource); //cym comment
 						}
 					}
 					resource.reparse(document.get());

@@ -525,9 +525,9 @@ public abstract class ResolvedTypes implements IResolvedTypes {
 		if (!type.isOwnedBy(referenceOwner)) {
 			throw new IllegalArgumentException("type is associated with an incompatible owner");
 		}
-		if (!expectation.isOwnedBy(referenceOwner)) {
-			throw new IllegalArgumentException("expected type is associated with an incompatible owner");
-		}
+//		if (!expectation.isOwnedBy(referenceOwner)) {
+//			throw new IllegalArgumentException("expected type is associated with an incompatible owner");
+//		}
 		
 //		AbstractTypeComputationState state = expectation.getState();
 		// expectation is type parameter - type is actual - bind type

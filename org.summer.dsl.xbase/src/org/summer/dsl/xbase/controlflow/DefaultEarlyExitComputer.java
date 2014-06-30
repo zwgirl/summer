@@ -146,17 +146,21 @@ public class DefaultEarlyExitComputer implements IEarlyExitComputer {
 		Collection<ExitPoint> result = Lists.newArrayList();
 		for(XCasePart casePart: expression.getCases()) {
 			// TODO do we have an early exit if the first case condition is an early exit?
-			Collection<ExitPoint> caseExit = getExitPoints(casePart.getThen());
-			if (!isNotEmpty(caseExit))
-				return Collections.emptyList();
-			else
-				result.addAll(caseExit);
+			if(casePart.getStatments() != null){
+				for(XStatment statment : casePart.getStatments()){
+					Collection<ExitPoint> caseExit = getExitPoints(statment);
+					if (!isNotEmpty(caseExit))
+						return Collections.emptyList();
+					else
+						result.addAll(caseExit);
+				}
+			}
 		}
-		Collection<ExitPoint> defaultExit = getExitPoints(expression.getDefault());
-		if (!isNotEmpty(defaultExit))
-			return Collections.emptyList();
-		else
-			result.addAll(defaultExit);
+//		Collection<ExitPoint> defaultExit = getExitPoints(expression.getDefault());
+//		if (!isNotEmpty(defaultExit))
+//			return Collections.emptyList();
+//		else
+//			result.addAll(defaultExit);
 		return result;
 	}
 	

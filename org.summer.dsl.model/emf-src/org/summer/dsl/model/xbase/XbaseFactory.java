@@ -373,6 +373,24 @@ public interface XbaseFactory extends EFactory {
 	XParenthesizedExpression createXParenthesizedExpression();
 
 	/**
+	 * Returns a new object of class '<em>XAssignment1</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XAssignment1</em>'.
+	 * @generated
+	 */
+	XAssignment1 createXAssignment1();
+
+	/**
+	 * Returns a new object of class '<em>XArgument</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>XArgument</em>'.
+	 * @generated
+	 */
+	XArgument createXArgument();
+
+	/**
 	 * Returns a new object of class '<em>XObject Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

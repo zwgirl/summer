@@ -164,7 +164,7 @@ public class DefaultBatchTypeResolver implements IBatchTypeResolver {
 						reentrance--;
 						if (reentrance == 0 && !adapters.remove(newAdapter)) {
 							if (e != null) {
-								throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving", e);
+//								throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving", e);
 							}
 //							throw new IllegalStateException("The TypeResolutionStateAdapter was removed while resolving");
 						}

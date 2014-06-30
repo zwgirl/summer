@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.XSwitchStatment#getSwitch <em>Switch</em>}</li>
  *   <li>{@link org.summer.dsl.model.xbase.XSwitchStatment#getCases <em>Cases</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.XSwitchStatment#getDefault <em>Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,31 +63,5 @@ public interface XSwitchStatment extends XStatment {
 	 * @generated
 	 */
 	EList<XCasePart> getCases();
-
-	/**
-	 * Returns the value of the '<em><b>Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default</em>' containment reference.
-	 * @see #setDefault(XStatment)
-	 * @see org.summer.dsl.model.xbase.XbasePackage#getXSwitchStatment_Default()
-	 * @model containment="true"
-	 * @generated
-	 */
-	XStatment getDefault();
-
-	/**
-	 * Sets the value of the '{@link org.summer.dsl.model.xbase.XSwitchStatment#getDefault <em>Default</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' containment reference.
-	 * @see #getDefault()
-	 * @generated
-	 */
-	void setDefault(XStatment value);
 
 } // XSwitchExpression

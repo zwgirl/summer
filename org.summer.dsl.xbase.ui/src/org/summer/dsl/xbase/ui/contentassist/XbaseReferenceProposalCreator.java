@@ -294,7 +294,7 @@ public class XbaseReferenceProposalCreator extends TypeAwareReferenceProposalCre
 				flags |= Flags.AccStatic;
 				decorator |= JavaElementImageDescriptor.STATIC;
 			}
-			if (field.isConst()) {
+			if (field.isFinal()) {
 				flags |= Flags.AccFinal;
 				decorator |= JavaElementImageDescriptor.FINAL;
 			}

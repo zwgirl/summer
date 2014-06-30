@@ -27,7 +27,7 @@ class XbaseImageAdornments {
 	
 	def dispatch get(JvmField it) {
 		0	
-			.or(const, FINAL) 
+			.or(final, FINAL) 
 			.or(static, STATIC) 
 			.or(deprecated, DEPRECATED)
 //			.or(volatile, VOLATILE)

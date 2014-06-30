@@ -1502,13 +1502,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_FIELD__STATIC = JVM_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Const</b></em>' attribute.
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FIELD__CONST = JVM_FEATURE_FEATURE_COUNT + 1;
+	int JVM_FIELD__FINAL = JVM_FEATURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -1692,13 +1692,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_ENUMERATION_LITERAL__STATIC = JVM_FIELD__STATIC;
 
 	/**
-	 * The feature id for the '<em><b>Const</b></em>' attribute.
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_ENUMERATION_LITERAL__CONST = JVM_FIELD__CONST;
+	int JVM_ENUMERATION_LITERAL__FINAL = JVM_FIELD__FINAL;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -2775,13 +2775,13 @@ public interface TypesPackage extends EPackage {
 	int JVM_INDEXER__STATIC = JVM_FIELD__STATIC;
 
 	/**
-	 * The feature id for the '<em><b>Const</b></em>' attribute.
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_INDEXER__CONST = JVM_FIELD__CONST;
+	int JVM_INDEXER__FINAL = JVM_FIELD__FINAL;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -3509,13 +3509,31 @@ public interface TypesPackage extends EPackage {
 	int JVM_FORMAL_PARAMETER__DEFAULT_VALUE = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FORMAL_PARAMETER__REF = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JVM_FORMAL_PARAMETER__OUT = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Jvm Formal Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JVM_FORMAL_PARAMETER_FEATURE_COUNT = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 4;
+	int JVM_FORMAL_PARAMETER_FEATURE_COUNT = JVM_ANNOTATION_TARGET_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.types.impl.JvmAnnotationReferenceImpl <em>Jvm Annotation Reference</em>}' class.
@@ -5241,15 +5259,15 @@ public interface TypesPackage extends EPackage {
 	EAttribute getJvmField_Static();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isConst <em>Const</em>}'.
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmField#isFinal <em>Final</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Const</em>'.
-	 * @see org.summer.dsl.model.types.JvmField#isConst()
+	 * @return the meta object for the attribute '<em>Final</em>'.
+	 * @see org.summer.dsl.model.types.JvmField#isFinal()
 	 * @see #getJvmField()
 	 * @generated
 	 */
-	EAttribute getJvmField_Const();
+	EAttribute getJvmField_Final();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.types.JvmField#getType <em>Type</em>}'.
@@ -5662,6 +5680,28 @@ public interface TypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getJvmFormalParameter_DefaultValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmFormalParameter#isRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @see org.summer.dsl.model.types.JvmFormalParameter#isRef()
+	 * @see #getJvmFormalParameter()
+	 * @generated
+	 */
+	EAttribute getJvmFormalParameter_Ref();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.types.JvmFormalParameter#isOut <em>Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Out</em>'.
+	 * @see org.summer.dsl.model.types.JvmFormalParameter#isOut()
+	 * @see #getJvmFormalParameter()
+	 * @generated
+	 */
+	EAttribute getJvmFormalParameter_Out();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.types.JvmAnnotationTarget <em>Jvm Annotation Target</em>}'.
@@ -6934,12 +6974,12 @@ public interface TypesPackage extends EPackage {
 		EAttribute JVM_FIELD__STATIC = eINSTANCE.getJvmField_Static();
 
 		/**
-		 * The meta object literal for the '<em><b>Const</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Final</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JVM_FIELD__CONST = eINSTANCE.getJvmField_Const();
+		EAttribute JVM_FIELD__FINAL = eINSTANCE.getJvmField_Final();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -7256,6 +7296,22 @@ public interface TypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JVM_FORMAL_PARAMETER__DEFAULT_VALUE = eINSTANCE.getJvmFormalParameter_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_FORMAL_PARAMETER__REF = eINSTANCE.getJvmFormalParameter_Ref();
+
+		/**
+		 * The meta object literal for the '<em><b>Out</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JVM_FORMAL_PARAMETER__OUT = eINSTANCE.getJvmFormalParameter_Out();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.types.impl.JvmAnnotationTargetImpl <em>Jvm Annotation Target</em>}' class.

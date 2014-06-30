@@ -14,8 +14,10 @@ import org.summer.dsl.model.xaml.impl.XamlPackageImpl;
 import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAbstractWhileStatment;
+import org.summer.dsl.model.xbase.XArgument;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XAssignment1;
 import org.summer.dsl.model.xbase.XBinaryOperation;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
@@ -387,6 +389,20 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass xAssignment1EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass xArgumentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass xObjectLiteralEClass = null;
 
 	/**
@@ -607,15 +623,6 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXSwitchStatment_Default() {
-		return (EReference)xSwitchStatmentEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getXCasePart() {
 		return xCasePartEClass;
 	}
@@ -634,8 +641,17 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getXCasePart_Then() {
+	public EReference getXCasePart_Statments() {
 		return (EReference)xCasePartEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXCasePart_Default() {
+		return (EAttribute)xCasePartEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1840,6 +1856,69 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getXAssignment1() {
+		return xAssignment1EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXAssignment1_Assignable() {
+		return (EReference)xAssignment1EClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXAssignment1_Value() {
+		return (EReference)xAssignment1EClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getXArgument() {
+		return xArgumentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXArgument_Ref() {
+		return (EAttribute)xArgumentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXArgument_Out() {
+		return (EAttribute)xArgumentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getXArgument_Expression() {
+		return (EReference)xArgumentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getXObjectLiteral() {
 		return xObjectLiteralEClass;
 	}
@@ -2004,11 +2083,11 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xSwitchStatmentEClass = createEClass(XSWITCH_STATMENT);
 		createEReference(xSwitchStatmentEClass, XSWITCH_STATMENT__SWITCH);
 		createEReference(xSwitchStatmentEClass, XSWITCH_STATMENT__CASES);
-		createEReference(xSwitchStatmentEClass, XSWITCH_STATMENT__DEFAULT);
 
 		xCasePartEClass = createEClass(XCASE_PART);
 		createEReference(xCasePartEClass, XCASE_PART__CASE);
-		createEReference(xCasePartEClass, XCASE_PART__THEN);
+		createEReference(xCasePartEClass, XCASE_PART__STATMENTS);
+		createEAttribute(xCasePartEClass, XCASE_PART__DEFAULT);
 
 		xBlockStatmentEClass = createEClass(XBLOCK_STATMENT);
 		createEReference(xBlockStatmentEClass, XBLOCK_STATMENT__STATMENTS);
@@ -2201,6 +2280,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		xParenthesizedExpressionEClass = createEClass(XPARENTHESIZED_EXPRESSION);
 		createEReference(xParenthesizedExpressionEClass, XPARENTHESIZED_EXPRESSION__EXPRESSION);
+
+		xAssignment1EClass = createEClass(XASSIGNMENT1);
+		createEReference(xAssignment1EClass, XASSIGNMENT1__ASSIGNABLE);
+		createEReference(xAssignment1EClass, XASSIGNMENT1__VALUE);
+
+		xArgumentEClass = createEClass(XARGUMENT);
+		createEAttribute(xArgumentEClass, XARGUMENT__REF);
+		createEAttribute(xArgumentEClass, XARGUMENT__OUT);
+		createEReference(xArgumentEClass, XARGUMENT__EXPRESSION);
 	}
 
 	/**
@@ -2286,6 +2374,8 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		xFunctionDeclarationEClass.getESuperTypes().add(this.getXStatment());
 		xFunctionDeclarationEClass.getESuperTypes().add(theTypesPackage.getJvmIdentifiableElement());
 		xParenthesizedExpressionEClass.getESuperTypes().add(this.getXExpression());
+		xAssignment1EClass.getESuperTypes().add(this.getXExpression());
+		xArgumentEClass.getESuperTypes().add(this.getXExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(xExpressionEClass, XExpression.class, "XExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2303,11 +2393,11 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 		initEClass(xSwitchStatmentEClass, XSwitchStatment.class, "XSwitchStatment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXSwitchStatment_Switch(), this.getXExpression(), null, "switch", null, 0, 1, XSwitchStatment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXSwitchStatment_Cases(), this.getXCasePart(), null, "cases", null, 0, -1, XSwitchStatment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXSwitchStatment_Default(), this.getXStatment(), null, "default", null, 0, 1, XSwitchStatment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(xCasePartEClass, XCasePart.class, "XCasePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXCasePart_Case(), this.getXExpression(), null, "case", null, 0, 1, XCasePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXCasePart_Then(), this.getXStatment(), null, "then", null, 0, 1, XCasePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXCasePart_Statments(), this.getXStatment(), null, "statments", null, 0, -1, XCasePart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXCasePart_Default(), ecorePackage.getEBoolean(), "default", "false", 0, 1, XCasePart.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(xBlockStatmentEClass, XBlockStatment.class, "XBlockStatment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXBlockStatment_Statments(), this.getXStatment(), null, "statments", null, 0, -1, XBlockStatment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2526,6 +2616,15 @@ public class XbasePackageImpl extends EPackageImpl implements XbasePackage {
 
 		initEClass(xParenthesizedExpressionEClass, XParenthesizedExpression.class, "XParenthesizedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getXParenthesizedExpression_Expression(), this.getXExpression(), null, "expression", null, 0, 1, XParenthesizedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(xAssignment1EClass, XAssignment1.class, "XAssignment1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXAssignment1_Assignable(), this.getXExpression(), null, "assignable", null, 0, 1, XAssignment1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXAssignment1_Value(), this.getXExpression(), null, "value", null, 0, 1, XAssignment1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(xArgumentEClass, XArgument.class, "XArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getXArgument_Ref(), ecorePackage.getEBoolean(), "ref", "false", 0, 1, XArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXArgument_Out(), ecorePackage.getEBoolean(), "out", "false", 0, 1, XArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getXArgument_Expression(), this.getXExpression(), null, "expression", null, 0, 1, XArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

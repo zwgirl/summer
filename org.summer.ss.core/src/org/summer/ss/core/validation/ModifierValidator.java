@@ -44,6 +44,7 @@ public class ModifierValidator {
 			}
 			
 			buffer.append(allowedModifiers.get(i));
+			comma = true;
 		}
 		allowedModifiersAsString = buffer.toString();
 	}

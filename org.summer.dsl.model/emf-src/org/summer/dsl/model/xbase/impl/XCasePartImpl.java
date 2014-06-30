@@ -2,12 +2,16 @@
  */
 package org.summer.dsl.model.xbase.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.summer.dsl.model.xbase.XCasePart;
 import org.summer.dsl.model.xbase.XExpression;
 import org.summer.dsl.model.xbase.XStatment;
@@ -21,7 +25,8 @@ import org.summer.dsl.model.xbase.XbasePackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getCase <em>Case</em>}</li>
- *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getThen <em>Then</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#getStatments <em>Statments</em>}</li>
+ *   <li>{@link org.summer.dsl.model.xbase.impl.XCasePartImpl#isDefault <em>Default</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,14 +44,34 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	protected XExpression case_;
 
 	/**
-	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference.
+	 * The cached value of the '{@link #getStatments() <em>Statments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getThen()
+	 * @see #getStatments()
 	 * @generated
 	 * @ordered
 	 */
-	protected XStatment then;
+	protected EList<XStatment> statments;
+
+	/**
+	 * The default value of the '{@link #isDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DEFAULT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDefault() <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean default_ = DEFAULT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,8 +140,11 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XStatment getThen() {
-		return then;
+	public EList<XStatment> getStatments() {
+		if (statments == null) {
+			statments = new EObjectContainmentEList<XStatment>(XStatment.class, this, XbasePackage.XCASE_PART__STATMENTS);
+		}
+		return statments;
 	}
 
 	/**
@@ -124,14 +152,8 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetThen(XStatment newThen, NotificationChain msgs) {
-		XStatment oldThen = then;
-		then = newThen;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__THEN, oldThen, newThen);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public boolean isDefault() {
+		return default_;
 	}
 
 	/**
@@ -139,18 +161,11 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setThen(XStatment newThen) {
-		if (newThen != then) {
-			NotificationChain msgs = null;
-			if (then != null)
-				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCASE_PART__THEN, null, msgs);
-			if (newThen != null)
-				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XbasePackage.XCASE_PART__THEN, null, msgs);
-			msgs = basicSetThen(newThen, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__THEN, newThen, newThen));
+	public void setDefault(boolean newDefault) {
+		boolean oldDefault = default_;
+		default_ = newDefault;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XbasePackage.XCASE_PART__DEFAULT, oldDefault, default_));
 	}
 
 	/**
@@ -163,8 +178,8 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		switch (featureID) {
 			case XbasePackage.XCASE_PART__CASE:
 				return basicSetCase(null, msgs);
-			case XbasePackage.XCASE_PART__THEN:
-				return basicSetThen(null, msgs);
+			case XbasePackage.XCASE_PART__STATMENTS:
+				return ((InternalEList<?>)getStatments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -179,8 +194,10 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		switch (featureID) {
 			case XbasePackage.XCASE_PART__CASE:
 				return getCase();
-			case XbasePackage.XCASE_PART__THEN:
-				return getThen();
+			case XbasePackage.XCASE_PART__STATMENTS:
+				return getStatments();
+			case XbasePackage.XCASE_PART__DEFAULT:
+				return isDefault();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,14 +207,19 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case XbasePackage.XCASE_PART__CASE:
 				setCase((XExpression)newValue);
 				return;
-			case XbasePackage.XCASE_PART__THEN:
-				setThen((XStatment)newValue);
+			case XbasePackage.XCASE_PART__STATMENTS:
+				getStatments().clear();
+				getStatments().addAll((Collection<? extends XStatment>)newValue);
+				return;
+			case XbasePackage.XCASE_PART__DEFAULT:
+				setDefault((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,8 +236,11 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 			case XbasePackage.XCASE_PART__CASE:
 				setCase((XExpression)null);
 				return;
-			case XbasePackage.XCASE_PART__THEN:
-				setThen((XStatment)null);
+			case XbasePackage.XCASE_PART__STATMENTS:
+				getStatments().clear();
+				return;
+			case XbasePackage.XCASE_PART__DEFAULT:
+				setDefault(DEFAULT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -231,10 +256,28 @@ public class XCasePartImpl extends MinimalEObjectImpl.Container implements XCase
 		switch (featureID) {
 			case XbasePackage.XCASE_PART__CASE:
 				return case_ != null;
-			case XbasePackage.XCASE_PART__THEN:
-				return then != null;
+			case XbasePackage.XCASE_PART__STATMENTS:
+				return statments != null && !statments.isEmpty();
+			case XbasePackage.XCASE_PART__DEFAULT:
+				return default_ != DEFAULT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (default: ");
+		result.append(default_);
+		result.append(')');
+		return result.toString();
 	}
 
 } //XCasePartImpl

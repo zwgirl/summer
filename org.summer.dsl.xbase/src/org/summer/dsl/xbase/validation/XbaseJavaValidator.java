@@ -530,7 +530,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 		else if (assignmentFeature instanceof JvmFormalParameter)
 			error("Assignment to final parameter", Literals.XASSIGNMENT__ASSIGNABLE,
 					ValidationMessageAcceptor.INSIGNIFICANT_INDEX, ASSIGNMENT_TO_FINAL);
-		else if (assignmentFeature instanceof JvmField && ((JvmField) assignmentFeature).isConst()) {
+		else if (assignmentFeature instanceof JvmField && ((JvmField) assignmentFeature).isFinal()) {
 			JvmField field = (JvmField) assignmentFeature;
 			JvmIdentifiableElement container = logicalContainerProvider.getNearestLogicalContainer(assignment);
 			
@@ -551,7 +551,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 	protected void checkFinalFieldInitialization(JvmGenericType type) {
 		final Set<JvmField> finalFields = Sets.newLinkedHashSet(Iterables.filter(type.getDeclaredFields(), new Predicate<JvmField>() {
 			public boolean apply(JvmField input) {
-				return input.isConst();
+				return input.isFinal();
 			}
 		}));
 		if (finalFields.isEmpty())
@@ -647,7 +647,7 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 					checkInitializationRec(casepart.getCase(), fields, initializedForSure, initializedMaybe, visited);
 				Set<JvmField> initializedInCaseForSure = Sets.newLinkedHashSet(initializedForSure);
 				Set<JvmField> initializedInCaseMaybe = Sets.newLinkedHashSet(initializedMaybe);
-				checkInitializationRec(casepart.getThen(), fields, initializedInCaseForSure, initializedInCaseMaybe, visited);
+//				checkInitializationRec(casepart.getStatments(), fields, initializedInCaseForSure, initializedInCaseMaybe, visited);
 				if (initializedAllCasesForSure == null)
 					initializedAllCasesForSure = initializedInCaseForSure;
 				else {
@@ -655,19 +655,19 @@ public class XbaseJavaValidator extends AbstractXbaseJavaValidator {
 				}
 				initializedAllCasesMaybe.addAll(initializedInCaseMaybe);
 			}
-			if (switchExpr.getDefault() != null) {
-				Set<JvmField> initializedInCaseForSure = Sets.newLinkedHashSet(initializedForSure);
-				Set<JvmField> initializedInCaseMaybe = Sets.newLinkedHashSet(initializedMaybe);
-				checkInitializationRec(switchExpr.getDefault(), fields, initializedInCaseForSure, initializedInCaseMaybe, visited);
-				if (initializedAllCasesForSure == null)
-					initializedAllCasesForSure = initializedInCaseForSure;
-				else {
-					initializedAllCasesForSure.retainAll(initializedInCaseForSure);
-				}
-				initializedAllCasesMaybe.addAll(initializedInCaseMaybe);
-				
-				initializedForSure.addAll(initializedAllCasesForSure);
-			}
+//			if (switchExpr.getDefault() != null) {
+//				Set<JvmField> initializedInCaseForSure = Sets.newLinkedHashSet(initializedForSure);
+//				Set<JvmField> initializedInCaseMaybe = Sets.newLinkedHashSet(initializedMaybe);
+//				checkInitializationRec(switchExpr.getDefault(), fields, initializedInCaseForSure, initializedInCaseMaybe, visited);
+//				if (initializedAllCasesForSure == null)
+//					initializedAllCasesForSure = initializedInCaseForSure;
+//				else {
+//					initializedAllCasesForSure.retainAll(initializedInCaseForSure);
+//				}
+//				initializedAllCasesMaybe.addAll(initializedInCaseMaybe);
+//				
+//				initializedForSure.addAll(initializedAllCasesForSure);
+//			}
 			initializedMaybe.addAll(initializedAllCasesMaybe);
 		} else if (expr instanceof XFeatureCall) {
 			XFeatureCall xFeatureCall = (XFeatureCall) expr;

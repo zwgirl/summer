@@ -270,6 +270,9 @@ public class JvmDelegateTypeImpl extends JvmTypeParameterDeclaratorImpl implemen
 	 * @generated
 	 */
 	public String getIdentifier() {
+		if(identifier == null){
+			identifier = simpleName;
+		}
 		return identifier;
 	}
 
@@ -312,9 +315,7 @@ public class JvmDelegateTypeImpl extends JvmTypeParameterDeclaratorImpl implemen
 	 * @generated
 	 */
 	public String getQualifiedName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return simpleName;
 	}
 
 	/**
@@ -323,9 +324,7 @@ public class JvmDelegateTypeImpl extends JvmTypeParameterDeclaratorImpl implemen
 	 * @generated
 	 */
 	public String getQualifiedName(char innerClassDelimiter) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return simpleName;
 	}
 
 	/**

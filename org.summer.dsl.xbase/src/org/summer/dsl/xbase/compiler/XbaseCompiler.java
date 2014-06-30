@@ -36,6 +36,7 @@ import org.summer.dsl.model.types.TypesPackage;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XAssignment1;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBreakStatment;
 import org.summer.dsl.model.xbase.XCaller;
@@ -480,6 +481,8 @@ public class XbaseCompiler extends FeatureCallCompiler {
 	protected void internalToConvertedExpression(XExpression obj, ITreeAppendable appendable) {
 		if (obj instanceof XAssignment) {
 			_toJavaExpression((XAssignment) obj, appendable);
+		} else if (obj instanceof XAssignment1) {
+			_toJavaExpression((XAssignment1) obj, appendable);
 		} else if (obj instanceof XCastedExpression) {
 			_toJavaExpression((XCastedExpression) obj, appendable);
 		} else if (obj instanceof XClosure) {
@@ -598,6 +601,12 @@ public class XbaseCompiler extends FeatureCallCompiler {
 		if(expr.getFeature()!=null){
 			b.append(expr.getFeature().getSimpleName());
 		}
+		b.append(" = ");
+		internalToConvertedExpression(expr.getValue(), b);
+	}
+	
+	protected void _toJavaExpression(XAssignment1 expr, ITreeAppendable b) {
+		internalToConvertedExpression(expr.getAssignable(), b);
 		b.append(" = ");
 		internalToConvertedExpression(expr.getValue(), b);
 	}
@@ -861,18 +870,25 @@ public class XbaseCompiler extends FeatureCallCompiler {
 		b.append(" {");
 		for (XCasePart casePart : expr.getCases()) {
 			b.increaseIndentation();
-			b.newLine().append("case ");
-			
-			internalToJavaExpression(casePart.getCase(), b);
-			b.append(":");
-			b.newLine();
-			internalToJavaStatement(casePart.getThen(), b, isReferenced);
+			if(casePart.isDefault()){
+				b.newLine().append("default: ");
+			}else{
+				b.newLine().append("case ");
+				internalToJavaExpression(casePart.getCase(), b);
+				b.append(":");
+			}
+			if(casePart.getStatments() != null){
+				for(XStatment statment : casePart.getStatments()){
+					b.newLine();
+					internalToJavaStatement(statment, b, isReferenced);
+				}
+			}
 		}
-		if (expr.getDefault()!=null) {
-			b.newLine();
-			b.append("default: ");
-			internalToJavaStatement(expr.getDefault(), b, isReferenced);
-		}
+//		if (expr.getDefault()!=null) {
+//			b.newLine();
+//			b.append("default: ");
+//			internalToJavaStatement(expr.getDefault(), b, isReferenced);
+//		}
 		b.decreaseIndentation();
 		b.newLine();
 		b.append("}");

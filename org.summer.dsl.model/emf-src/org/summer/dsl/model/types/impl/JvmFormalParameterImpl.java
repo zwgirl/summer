@@ -23,6 +23,8 @@ import org.summer.dsl.model.xbase.XExpression;
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#isVarArg <em>Var Arg</em>}</li>
  *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#isRef <em>Ref</em>}</li>
+ *   <li>{@link org.summer.dsl.model.types.impl.JvmFormalParameterImpl#isOut <em>Out</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,6 +90,46 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 	 * @ordered
 	 */
 	protected XExpression defaultValue;
+
+	/**
+	 * The default value of the '{@link #isRef() <em>Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean REF_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRef() <em>Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean ref = REF_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isOut() <em>Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOut()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OUT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isOut() <em>Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOut()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean out = OUT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +276,10 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 				return isVarArg();
 			case TypesPackage.JVM_FORMAL_PARAMETER__DEFAULT_VALUE:
 				return getDefaultValue();
+			case TypesPackage.JVM_FORMAL_PARAMETER__REF:
+				return isRef();
+			case TypesPackage.JVM_FORMAL_PARAMETER__OUT:
+				return isOut();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -257,6 +303,12 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 				return;
 			case TypesPackage.JVM_FORMAL_PARAMETER__DEFAULT_VALUE:
 				setDefaultValue((XExpression)newValue);
+				return;
+			case TypesPackage.JVM_FORMAL_PARAMETER__REF:
+				setRef((Boolean)newValue);
+				return;
+			case TypesPackage.JVM_FORMAL_PARAMETER__OUT:
+				setOut((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -282,6 +334,12 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 			case TypesPackage.JVM_FORMAL_PARAMETER__DEFAULT_VALUE:
 				setDefaultValue((XExpression)null);
 				return;
+			case TypesPackage.JVM_FORMAL_PARAMETER__REF:
+				setRef(REF_EDEFAULT);
+				return;
+			case TypesPackage.JVM_FORMAL_PARAMETER__OUT:
+				setOut(OUT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +360,10 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 				return varArg != VAR_ARG_EDEFAULT;
 			case TypesPackage.JVM_FORMAL_PARAMETER__DEFAULT_VALUE:
 				return defaultValue != null;
+			case TypesPackage.JVM_FORMAL_PARAMETER__REF:
+				return ref != REF_EDEFAULT;
+			case TypesPackage.JVM_FORMAL_PARAMETER__OUT:
+				return out != OUT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -320,6 +382,10 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 		result.append(simpleName);
 		result.append(", varArg: ");
 		result.append(varArg);
+		result.append(", ref: ");
+		result.append(ref);
+		result.append(", out: ");
+		result.append(out);
 		result.append(')');
 		return result.toString();
 	}
@@ -357,6 +423,48 @@ public class JvmFormalParameterImpl extends JvmAnnotationTargetImpl implements J
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FORMAL_PARAMETER__DEFAULT_VALUE, newDefaultValue, newDefaultValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRef() {
+		return ref;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRef(boolean newRef) {
+		boolean oldRef = ref;
+		ref = newRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FORMAL_PARAMETER__REF, oldRef, ref));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isOut() {
+		return out;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOut(boolean newOut) {
+		boolean oldOut = out;
+		out = newOut;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.JVM_FORMAL_PARAMETER__OUT, oldOut, out));
 	}
 
 } //JvmFormalParameterImpl

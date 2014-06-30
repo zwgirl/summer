@@ -278,6 +278,14 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 				return createXParenthesizedExpressionAdapter();
 			}
 			@Override
+			public Adapter caseXAssignment1(XAssignment1 object) {
+				return createXAssignment1Adapter();
+			}
+			@Override
+			public Adapter caseXArgument(XArgument object) {
+				return createXArgumentAdapter();
+			}
+			@Override
 			public Adapter caseJvmIdentifiableElement(JvmIdentifiableElement object) {
 				return createJvmIdentifiableElementAdapter();
 			}
@@ -946,6 +954,34 @@ public class XbaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createXParenthesizedExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XAssignment1 <em>XAssignment1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XAssignment1
+	 * @generated
+	 */
+	public Adapter createXAssignment1Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.summer.dsl.model.xbase.XArgument <em>XArgument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.summer.dsl.model.xbase.XArgument
+	 * @generated
+	 */
+	public Adapter createXArgumentAdapter() {
 		return null;
 	}
 

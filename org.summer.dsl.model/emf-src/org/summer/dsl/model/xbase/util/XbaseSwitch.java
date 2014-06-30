@@ -451,6 +451,20 @@ public class XbaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case XbasePackage.XASSIGNMENT1: {
+				XAssignment1 xAssignment1 = (XAssignment1)theEObject;
+				T result = caseXAssignment1(xAssignment1);
+				if (result == null) result = caseXExpression(xAssignment1);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case XbasePackage.XARGUMENT: {
+				XArgument xArgument = (XArgument)theEObject;
+				T result = caseXArgument(xArgument);
+				if (result == null) result = caseXExpression(xArgument);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1112,6 +1126,36 @@ public class XbaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseXParenthesizedExpression(XParenthesizedExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XAssignment1</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XAssignment1</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXAssignment1(XAssignment1 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>XArgument</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>XArgument</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseXArgument(XArgument object) {
 		return null;
 	}
 

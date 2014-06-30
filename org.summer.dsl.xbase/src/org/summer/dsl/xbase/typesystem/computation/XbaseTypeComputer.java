@@ -21,15 +21,17 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.xtext.diagnostics.AbstractDiagnostic;
 import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.validation.EObjectDiagnosticImpl;
+import org.summer.dsl.model.types.JvmArrayType;
 import org.summer.dsl.model.types.JvmConstructor;
 import org.summer.dsl.model.types.JvmFeature;
 import org.summer.dsl.model.types.JvmField;
 import org.summer.dsl.model.types.JvmFormalParameter;
 import org.summer.dsl.model.types.JvmGenericType;
 import org.summer.dsl.model.types.JvmIdentifiableElement;
-import org.summer.dsl.model.types.JvmIndexer;
 import org.summer.dsl.model.types.JvmInterfaceType;
 import org.summer.dsl.model.types.JvmMember;
+import org.summer.dsl.model.types.JvmModule;
+import org.summer.dsl.model.types.JvmStructType;
 import org.summer.dsl.model.types.JvmType;
 import org.summer.dsl.model.types.JvmTypeParameter;
 import org.summer.dsl.model.types.JvmTypeParameterDeclarator;
@@ -37,8 +39,10 @@ import org.summer.dsl.model.types.JvmTypeReference;
 import org.summer.dsl.model.xbase.RichStringLiteral;
 import org.summer.dsl.model.xbase.XAbstractFeatureCall;
 import org.summer.dsl.model.xbase.XAbstractWhileStatment;
+import org.summer.dsl.model.xbase.XArgument;
 import org.summer.dsl.model.xbase.XArrayLiteral;
 import org.summer.dsl.model.xbase.XAssignment;
+import org.summer.dsl.model.xbase.XAssignment1;
 import org.summer.dsl.model.xbase.XBlockStatment;
 import org.summer.dsl.model.xbase.XBooleanLiteral;
 import org.summer.dsl.model.xbase.XBreakStatment;
@@ -135,8 +139,12 @@ public class XbaseTypeComputer implements ITypeComputer {
 		}
 		if (expression instanceof XAssignment) {
 			_computeTypes((XAssignment)expression, state);
+		} else if (expression instanceof XAssignment1) {
+			_computeTypes((XAssignment1)expression, state);
 		} else if (expression instanceof XAbstractFeatureCall) {
 			_computeTypes((XAbstractFeatureCall)expression, state);
+		} else if (expression instanceof XArgument) {
+			_computeTypes((XArgument)expression, state);
 		} else if (expression instanceof XTemplate) {
 			_computeTypes((XTemplate)expression, state);
 		} else if (expression instanceof XBooleanLiteral) {
@@ -494,10 +502,14 @@ public class XbaseTypeComputer implements ITypeComputer {
 			caseExpressionState.computeTypes(casePart.getCase());
 			
 			ITypeComputationState caseState = state.withoutRootExpectation();
-			computeTypes(casePart.getThen(), caseState);
+			if(casePart.getStatments() != null){
+				for(XStatment statment : casePart.getStatments()){
+					computeTypes(statment, caseState);
+				}
+			}
 		}
-		ITypeComputationState defaultState = state.withoutRootExpectation();
-		computeTypes(object.getDefault(), defaultState);
+//		ITypeComputationState defaultState = state.withoutRootExpectation();
+//		computeTypes(object.getDefault(), defaultState);
 	}
 
 	/**
@@ -956,7 +968,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 	}
 	
 	protected void _computeTypes(XArrayLiteral literal, ITypeComputationState state) {
-		JvmGenericType listType = (JvmGenericType) Buildin.Array.JvmType;
+//		JvmGenericType listType = (JvmGenericType) Buildin.Array.JvmType;
 		
 		for(ITypeExpectation expectation: state.getExpectations()) {
 			LightweightTypeReference elementTypeExpectation = null;
@@ -1203,7 +1215,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 		if (object.getArrayDimensions().isEmpty()) {
 			if (clazz.isPrimitiveVoid()) {
 //				JvmType voidType = services.getTypeReferences().findDeclaredType(Void.class, object); //cym comment
-				JvmType voidType = Buildin.Void.JvmType; //services.getTypeReferences().findDeclaredType(Void.class, object);
+				JvmType voidType = Buildin.Void.JvmType; 
 //				if (voidType == null) {
 //					clazz = new UnknownTypeReference(owner, Void.class.getName());
 //				} else {
@@ -1295,34 +1307,47 @@ public class XbaseTypeComputer implements ITypeComputer {
 		//计算参数类型，按照方法的形式来计算
 		//找出这个indexer返回类型
 		
-//		for(XExpression argument : object.getArguments()){
-//			state.withoutExpectation().computeTypes(argument);
-//		}
-//		
-//		ITypeComputationResult result = state.computeTypes(object.getSource());
-//		LightweightTypeReference actualType = result.getActualExpressionType();
-//		JvmType jvmType = actualType.getType();
-//		if(!(jvmType instanceof JvmGenericType)){
-//			throw new IllegalStateException();
-//		}
-//		JvmGenericType type = (JvmGenericType) jvmType;
-//		JvmField indexer = null;
-//		for(JvmMember member : type.getMembers()){
-//			if(member instanceof JvmField && ((JvmField)member).isIndexer()){
-//				indexer = (JvmIndexer) member;
-//				break;
-//			}
-//		}
+		for(XExpression argument : object.getArguments()){
+			state.withoutExpectation().computeTypes(argument);
+		}
+		
+		ITypeComputationResult result = state.computeTypes(object.getSource());
+		LightweightTypeReference actualType = result.getActualExpressionType();
+		JvmType jvmType = actualType.getType();
+		if(jvmType == null){
+			return;
+		}
+		if(!(jvmType instanceof JvmGenericType || jvmType instanceof JvmArrayType || jvmType instanceof JvmModule || jvmType instanceof JvmStructType)){
+			throw new IllegalStateException();
+		}
+		
+		JvmField indexer = null;
+		if(jvmType instanceof JvmGenericType){
+			JvmGenericType type = (JvmGenericType) jvmType;
+			for(JvmMember member : type.getMembers()){
+				if(member instanceof JvmField && ((JvmField)member).isIndexer()){
+					indexer =  (JvmField) member;
+					break;
+				}
+			}
+		} else if(jvmType instanceof JvmArrayType){
+			
+		} else if(jvmType instanceof JvmModule){
+			
+		} else if(jvmType instanceof JvmStructType){
+			
+		}
+
 		
 //		if(indexer == null){
 //			throw new IllegalStateException();
 //		}
-//		
-//		object.setFeature(indexer);
-//		LightweightTypeReference typeRef = state.getConverter().toLightweightReference(indexer.getType());
-//		state.acceptActualType(typeRef);
 		
-
+		if(indexer != null){
+			object.setFeature(indexer);
+			LightweightTypeReference typeRef = state.getConverter().toLightweightReference(indexer.getType());
+			state.acceptActualType(typeRef);
+		}
 	}
 	
 //	protected void _computeTypes(XTryCatchFinallyExpression object, ITypeComputationState state) {
@@ -1356,6 +1381,10 @@ public class XbaseTypeComputer implements ITypeComputer {
 		computeTypes(object.getFinallyStatment(), state);
 	}
 	
+	protected void _computeTypes(final XArgument argument, ITypeComputationState state) {
+
+	}
+	
 	protected void _computeTypes(final XAssignment assignment, ITypeComputationState state) {
 		//TODO 需要处理期望类型和实际类型
 		if(((XAbstractFeatureCallImpl)assignment).basicGetFeature() == null){
@@ -1382,6 +1411,39 @@ public class XbaseTypeComputer implements ITypeComputer {
 			state.discardReassignedTypes(feature);
 		}
 		best.applyToComputationState();
+	}
+	
+	protected void _computeTypes(final XAssignment1 assignment, ITypeComputationState state) {
+		computeTypes(assignment.getAssignable(), state);
+		if(assignment.getAssignable() instanceof XFeatureCall){
+			XFeatureCall featureCall = (XFeatureCall) assignment.getAssignable();
+			List<IFeatureLinkingCandidate> candidates = ((AbstractTypeComputationState)state).getLinkingCandidates(featureCall);
+			
+			if(candidates.size()>0 ){
+				if(candidates.get(0).getFeature() instanceof JvmField){
+					JvmField field = (JvmField) candidates.get(0).getFeature();
+					if(field.getType() != null && field.getType().getType() !=null ){
+						ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(field.getType().getType(), state));
+						conditionExpectation.computeTypes(assignment.getValue());
+					}
+				} else if(candidates.get(0).getFeature() instanceof XVariableDeclaration){
+					XVariableDeclaration var = (XVariableDeclaration) candidates.get(0).getFeature();
+					if(var.getType() !=null && var.getType().getType()!=null){
+						ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(var.getType().getType(), state));
+						conditionExpectation.computeTypes(assignment.getValue());
+					}
+				} else if(candidates.get(0).getFeature() instanceof JvmFormalParameter){
+					JvmFormalParameter par = (JvmFormalParameter) candidates.get(0).getFeature();
+					ITypeComputationState conditionExpectation = state.withExpectation(getTypeForName(par.getParameterType().getType(), state));
+					conditionExpectation.computeTypes(assignment.getValue());
+				}
+
+			}
+		}else{
+			computeTypes(assignment.getValue(), state);
+		}
+//		computeTypes(assignment.getAssignable(), state);
+//		computeTypes(assignment.getValue(), state);
 	}
 	
 	protected void _computeTypes(final XAbstractFeatureCall featureCall, ITypeComputationState state) {
@@ -1428,7 +1490,7 @@ public class XbaseTypeComputer implements ITypeComputer {
 			return ((XVariableDeclarationList) feature.eContainer()).isReadonly();  //cym modified
 		}
 		if (feature instanceof JvmField) {
-			return !((JvmField) feature).isConst();
+			return !((JvmField) feature).isFinal();
 		}
 		return false;
 	}

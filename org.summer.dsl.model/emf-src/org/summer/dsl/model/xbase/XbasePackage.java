@@ -197,22 +197,13 @@ public interface XbasePackage extends EPackage {
 	int XSWITCH_STATMENT__CASES = XSTATMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XSWITCH_STATMENT__DEFAULT = XSTATMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>XSwitch Statment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XSWITCH_STATMENT_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 3;
+	int XSWITCH_STATMENT_FEATURE_COUNT = XSTATMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XCasePartImpl <em>XCase Part</em>}' class.
@@ -234,13 +225,22 @@ public interface XbasePackage extends EPackage {
 	int XCASE_PART__CASE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Then</b></em>' containment reference.
+	 * The feature id for the '<em><b>Statments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCASE_PART__THEN = 1;
+	int XCASE_PART__STATMENTS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCASE_PART__DEFAULT = 2;
 
 	/**
 	 * The number of structural features of the '<em>XCase Part</em>' class.
@@ -249,7 +249,7 @@ public interface XbasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int XCASE_PART_FEATURE_COUNT = 2;
+	int XCASE_PART_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XBlockStatmentImpl <em>XBlock Statment</em>}' class.
@@ -2354,13 +2354,13 @@ public interface XbasePackage extends EPackage {
 	int XOBJECT_LITERAL_PART__STATIC = TypesPackage.JVM_FIELD__STATIC;
 
 	/**
-	 * The feature id for the '<em><b>Const</b></em>' attribute.
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XOBJECT_LITERAL_PART__CONST = TypesPackage.JVM_FIELD__CONST;
+	int XOBJECT_LITERAL_PART__FINAL = TypesPackage.JVM_FIELD__FINAL;
 
 	/**
 	 * The feature id for the '<em><b>Transient</b></em>' attribute.
@@ -2720,6 +2720,89 @@ public interface XbasePackage extends EPackage {
 	int XPARENTHESIZED_EXPRESSION_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XAssignment1Impl <em>XAssignment1</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XAssignment1Impl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXAssignment1()
+	 * @generated
+	 */
+	int XASSIGNMENT1 = 51;
+
+	/**
+	 * The feature id for the '<em><b>Assignable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XASSIGNMENT1__ASSIGNABLE = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XASSIGNMENT1__VALUE = XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>XAssignment1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XASSIGNMENT1_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.summer.dsl.model.xbase.impl.XArgumentImpl <em>XArgument</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.summer.dsl.model.xbase.impl.XArgumentImpl
+	 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXArgument()
+	 * @generated
+	 */
+	int XARGUMENT = 52;
+
+	/**
+	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XARGUMENT__REF = XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XARGUMENT__OUT = XEXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XARGUMENT__EXPRESSION = XEXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>XArgument</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XARGUMENT_FEATURE_COUNT = XEXPRESSION_FEATURE_COUNT + 3;
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XExpression <em>XExpression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2836,17 +2919,6 @@ public interface XbasePackage extends EPackage {
 	EReference getXSwitchStatment_Cases();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XSwitchStatment#getDefault <em>Default</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Default</em>'.
-	 * @see org.summer.dsl.model.xbase.XSwitchStatment#getDefault()
-	 * @see #getXSwitchStatment()
-	 * @generated
-	 */
-	EReference getXSwitchStatment_Default();
-
-	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XCasePart <em>XCase Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2868,15 +2940,26 @@ public interface XbasePackage extends EPackage {
 	EReference getXCasePart_Case();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XCasePart#getThen <em>Then</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.summer.dsl.model.xbase.XCasePart#getStatments <em>Statments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Then</em>'.
-	 * @see org.summer.dsl.model.xbase.XCasePart#getThen()
+	 * @return the meta object for the containment reference list '<em>Statments</em>'.
+	 * @see org.summer.dsl.model.xbase.XCasePart#getStatments()
 	 * @see #getXCasePart()
 	 * @generated
 	 */
-	EReference getXCasePart_Then();
+	EReference getXCasePart_Statments();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XCasePart#isDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default</em>'.
+	 * @see org.summer.dsl.model.xbase.XCasePart#isDefault()
+	 * @see #getXCasePart()
+	 * @generated
+	 */
+	EAttribute getXCasePart_Default();
 
 	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XBlockStatment <em>XBlock Statment</em>}'.
@@ -4304,6 +4387,81 @@ public interface XbasePackage extends EPackage {
 	EReference getXParenthesizedExpression_Expression();
 
 	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XAssignment1 <em>XAssignment1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XAssignment1</em>'.
+	 * @see org.summer.dsl.model.xbase.XAssignment1
+	 * @generated
+	 */
+	EClass getXAssignment1();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XAssignment1#getAssignable <em>Assignable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Assignable</em>'.
+	 * @see org.summer.dsl.model.xbase.XAssignment1#getAssignable()
+	 * @see #getXAssignment1()
+	 * @generated
+	 */
+	EReference getXAssignment1_Assignable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XAssignment1#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see org.summer.dsl.model.xbase.XAssignment1#getValue()
+	 * @see #getXAssignment1()
+	 * @generated
+	 */
+	EReference getXAssignment1_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XArgument <em>XArgument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>XArgument</em>'.
+	 * @see org.summer.dsl.model.xbase.XArgument
+	 * @generated
+	 */
+	EClass getXArgument();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XArgument#isRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @see org.summer.dsl.model.xbase.XArgument#isRef()
+	 * @see #getXArgument()
+	 * @generated
+	 */
+	EAttribute getXArgument_Ref();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.summer.dsl.model.xbase.XArgument#isOut <em>Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Out</em>'.
+	 * @see org.summer.dsl.model.xbase.XArgument#isOut()
+	 * @see #getXArgument()
+	 * @generated
+	 */
+	EAttribute getXArgument_Out();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.summer.dsl.model.xbase.XArgument#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see org.summer.dsl.model.xbase.XArgument#getExpression()
+	 * @see #getXArgument()
+	 * @generated
+	 */
+	EReference getXArgument_Expression();
+
+	/**
 	 * Returns the meta object for class '{@link org.summer.dsl.model.xbase.XObjectLiteral <em>XObject Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4571,14 +4729,6 @@ public interface XbasePackage extends EPackage {
 		EReference XSWITCH_STATMENT__CASES = eINSTANCE.getXSwitchStatment_Cases();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference XSWITCH_STATMENT__DEFAULT = eINSTANCE.getXSwitchStatment_Default();
-
-		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XCasePartImpl <em>XCase Part</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4597,12 +4747,20 @@ public interface XbasePackage extends EPackage {
 		EReference XCASE_PART__CASE = eINSTANCE.getXCasePart_Case();
 
 		/**
-		 * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Statments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference XCASE_PART__THEN = eINSTANCE.getXCasePart_Then();
+		EReference XCASE_PART__STATMENTS = eINSTANCE.getXCasePart_Statments();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XCASE_PART__DEFAULT = eINSTANCE.getXCasePart_Default();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XBlockStatmentImpl <em>XBlock Statment</em>}' class.
@@ -5743,6 +5901,66 @@ public interface XbasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference XPARENTHESIZED_EXPRESSION__EXPRESSION = eINSTANCE.getXParenthesizedExpression_Expression();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XAssignment1Impl <em>XAssignment1</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XAssignment1Impl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXAssignment1()
+		 * @generated
+		 */
+		EClass XASSIGNMENT1 = eINSTANCE.getXAssignment1();
+
+		/**
+		 * The meta object literal for the '<em><b>Assignable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XASSIGNMENT1__ASSIGNABLE = eINSTANCE.getXAssignment1_Assignable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XASSIGNMENT1__VALUE = eINSTANCE.getXAssignment1_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XArgumentImpl <em>XArgument</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.summer.dsl.model.xbase.impl.XArgumentImpl
+		 * @see org.summer.dsl.model.xbase.impl.XbasePackageImpl#getXArgument()
+		 * @generated
+		 */
+		EClass XARGUMENT = eINSTANCE.getXArgument();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XARGUMENT__REF = eINSTANCE.getXArgument_Ref();
+
+		/**
+		 * The meta object literal for the '<em><b>Out</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XARGUMENT__OUT = eINSTANCE.getXArgument_Out();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XARGUMENT__EXPRESSION = eINSTANCE.getXArgument_Expression();
 
 		/**
 		 * The meta object literal for the '{@link org.summer.dsl.model.xbase.impl.XObjectLiteralImpl <em>XObject Literal</em>}' class.

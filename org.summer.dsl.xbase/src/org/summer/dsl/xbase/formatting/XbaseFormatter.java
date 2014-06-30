@@ -70,7 +70,7 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 		c.setNoSpace().around(ele.getLessThanSignKeyword_1_3_1_0());
 		c.setNoSpace().before(ele.getCommaKeyword_1_0_1_1_0());
 		c.setNoSpace().around(ele.getGreaterThanSignKeyword_1_3_1_3());
-		c.setNoSpace().around(ele.getExplicitOperationCallAssignment_1_0_0_0_1());
+		c.setNoSpace().around(ele.getExplicitOperationCallAssignment_1_3_3_0());
 		c.setNoSpace().before(ele.getCommaKeyword_1_0_1_1_0());
 		c.setNoSpace().before(ele.getRightParenthesisKeyword_1_0_2());
 	}
@@ -86,8 +86,8 @@ public class XbaseFormatter extends AbstractDeclarativeFormatter {
 //	}
 
 	public void configureXParenthesizedExpression(FormattingConfig c, XParenthesizedExpressionElements ele) {
-		c.setNoSpace().after(ele.getLeftParenthesisKeyword_0());
-		c.setNoSpace().before(ele.getRightParenthesisKeyword_2());
+		c.setNoSpace().after(ele.getLeftParenthesisKeyword_1());
+		c.setNoSpace().before(ele.getRightParenthesisKeyword_3());
 	}
 
 //	public void configureXIfExpression(FormattingConfig c, XIfExpressionElements ele) {
